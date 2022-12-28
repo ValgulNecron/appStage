@@ -1,0 +1,187 @@
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe.config
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\bin\Debug\CartesAcces.pdb
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.exe
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.pdb
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\bin\Debug\itextsharp.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\bin\Debug\itextsharp.xml
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\Interop.VBIDE.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe.config
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\bin\Debug\CartesAcces.pdb
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\bin\Debug\itextsharp.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\bin\Debug\itextsharp.xml
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\Interop.VBIDE.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CopyComplete
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.exe
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 3\CartesAcces3\CartesAcces\CartesAcces\obj\Debug\CartesAcces.pdb
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe.config
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\bin\Debug\CartesAcces.pdb
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\bin\Debug\itextsharp.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\bin\Debug\itextsharp.xml
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\Interop.VBIDE.dll
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.exe
+C:\Users\BELLOT Ian\Desktop\ProjetStage\CartesAcces V2\CartesAcces\CartesAcces\obj\Debug\CartesAcces.pdb
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe.config
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\bin\Debug\CartesAcces.pdb
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\bin\Debug\itextsharp.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\bin\Debug\itextsharp.xml
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\Interop.VBIDE.dll
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CopyComplete
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.exe
+D:\COURS ANNEE 1\STAGE 1ère année\Semaine 4\CartesAcces PREND CETTE VERSION DAVID\CartesAcces\CartesAcces\obj\Debug\CartesAcces.pdb
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe.config
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\bin\Debug\CartesAcces.pdb
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\bin\Debug\itextsharp.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\bin\Debug\itextsharp.xml
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\Interop.VBIDE.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.exe
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.pdb
+D:\Nouveau dossier\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe.config
+D:\Nouveau dossier\CartesAcces\CartesAcces\bin\Debug\CartesAcces.exe
+D:\Nouveau dossier\CartesAcces\CartesAcces\bin\Debug\CartesAcces.pdb
+D:\Nouveau dossier\CartesAcces\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+D:\Nouveau dossier\CartesAcces\CartesAcces\bin\Debug\itextsharp.dll
+D:\Nouveau dossier\CartesAcces\CartesAcces\bin\Debug\itextsharp.xml
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\Interop.VBIDE.dll
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.csproj.CopyComplete
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.exe
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.pdb
+D:\Nouveau dossier\CartesAcces\CartesAcces\obj\Debug\CartesAcces.progressBarForm.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.progressBarForm.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces\CartesAcces\obj\Debug\CartesAcces.frmImportPhotoUnique.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\bin\Debug\CartesAcces.exe.config
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\bin\Debug\CartesAcces.exe
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\bin\Debug\CartesAcces.pdb
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\bin\Debug\itextsharp.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\bin\Debug\itextsharp.xml
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\Interop.VBIDE.dll
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.frmImportPhotoUnique.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.progressBarForm.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.exe
+C:\Users\BELLOT Ian\Desktop\CartesAcces - Copie\CartesAcces\obj\Debug\CartesAcces.pdb
+D:\CartesAccesFinalFinal\CartesAcces\bin\Debug\CartesAcces.exe.config
+D:\CartesAccesFinalFinal\CartesAcces\bin\Debug\CartesAcces.exe
+D:\CartesAccesFinalFinal\CartesAcces\bin\Debug\CartesAcces.pdb
+D:\CartesAccesFinalFinal\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+D:\CartesAccesFinalFinal\CartesAcces\bin\Debug\itextsharp.dll
+D:\CartesAccesFinalFinal\CartesAcces\bin\Debug\itextsharp.xml
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\Interop.VBIDE.dll
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.frmImportPhotoUnique.resources
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.progressBarForm.resources
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.csproj.CopyComplete
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.exe
+D:\CartesAccesFinalFinal\CartesAcces\obj\Debug\CartesAcces.pdb
