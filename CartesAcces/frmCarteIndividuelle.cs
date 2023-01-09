@@ -442,7 +442,7 @@ namespace CartesAcces
                 opfPath = opf.FileName;
                 // -- Ajout de l'image dans la picturebox, celle ci devient visible
                 pbPhoto.Image = new Bitmap(opfPath);
-                pbPhoto.Size = new Size(100, 150);
+                pbPhoto.Size = new Size(200, 300);
                 pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbPhoto.Visible = true;
             }
