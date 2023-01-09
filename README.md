@@ -11,3 +11,15 @@ Repos du l'application de création de cartes d'accès
 -utilisation du CSV aulieu du XLS, recherche de colonne simplifié
 
 -convaincre Troestler UTILISER LIBRAIRIE
+
+-version de l'application
+
+-rendre l'interface légèrement plus instinctive au niveau de l'acccueil
+
+-thème sombre
+
+-les photos sont allongés
+
+-sécuriser l'application (code, stratégie de mot de passe, )
+
+-base de données => NoSQL
