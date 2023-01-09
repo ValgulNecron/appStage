@@ -23,3 +23,5 @@ Repos du l'application de création de cartes d'accès
 -sécuriser l'application (code, stratégie de mot de passe, )
 
 -base de données => NoSQL
+
+! pas d'application mobile
