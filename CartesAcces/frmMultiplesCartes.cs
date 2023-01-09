@@ -116,7 +116,7 @@ namespace CartesAcces
             bool trouveBool = false;
 
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = System.IO.Path.Combine(sCurrentDirectory, @"..\..\..\FichiersPHOTO");
+            string sFile = System.IO.Path.Combine(sCurrentDirectory, @".\FichiersPHOTO");
             string sFilePath = Path.GetFullPath(sFile);
 
             DirectoryInfo directory = new DirectoryInfo(sFilePath);
@@ -132,7 +132,7 @@ namespace CartesAcces
                         break;
                     }
                 }
-                  
+
                 else if (file.Name.Substring(index, 4) == ".jpg")
                 {
                     if (nomFichierJPG == file.Name)
@@ -419,7 +419,6 @@ namespace CartesAcces
         private void btnCopierDataGrid_Click(object sender, EventArgs e)
         {
             btnValiderImpr.Enabled = true;
-           
             foreach (DataGridViewRow row in DataGridParametres.SelectedRows)
             {
                 Eleve eleve = new Eleve();

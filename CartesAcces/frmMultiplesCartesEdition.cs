@@ -166,12 +166,12 @@ namespace CartesAcces
 
             if(imprListe == true && listeEleve[indexEleve].SansEDT == false)
             {
-                pbCarteArriere.Image = Image.FromFile(@"..\..\..\FichiersEDT\" + folder + "\\" + listeCleeEleve[indexEleve] + ".png");
+                pbCarteArriere.Image = Image.FromFile(@".\FichiersEDT\" + folder + "\\" + listeCleeEleve[indexEleve] + ".png");
             }
 
             else if (listeEleve[indexEleve].SansEDT == true)
             {
-                pbCarteArriere.Image = Image.FromFile(@"..\..\..\FichiersEDT\Classes\" + listeEleve[indexEleve].ClasseEleve + ".png");
+                pbCarteArriere.Image = Image.FromFile(@".\FichiersEDT\Classes\" + listeEleve[indexEleve].ClasseEleve + ".png");
             }
 
             else
@@ -181,7 +181,7 @@ namespace CartesAcces
                     if (eleve.SansEDT == false)
                     {
                         int i = listeEleve.IndexOf(eleve);
-                        pbCarteArriere.Image = Image.FromFile(@"..\..\..\FichiersEDT\" + folder + "\\" + listeCleeEleve[i] + ".png");
+                        pbCarteArriere.Image = Image.FromFile(@".\FichiersEDT\" + folder + "\\" + listeCleeEleve[i] + ".png");
                         break;
                     }
                 }
@@ -191,7 +191,7 @@ namespace CartesAcces
         public void affichePhotoProvisoire()
         {
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = System.IO.Path.Combine(sCurrentDirectory, @"..\..\..\FichiersPHOTO\");
+            string sFile = System.IO.Path.Combine(sCurrentDirectory, @".\FichiersPHOTO\");
             string sFilePath = Path.GetFullPath(sFile);
 
             pbPhoto.Image = new Bitmap(sFilePath + "edition.jpg");
@@ -237,7 +237,7 @@ namespace CartesAcces
 
             // -- On stock l'image original dans un bitmap --
 
-            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile("..\\..\\..\\FichiersEDT\\" + folder + "\\" + listeCleeEleve[index] + ".png"));
+            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile(".\\FichiersEDT\\" + folder + "\\" + listeCleeEleve[index] + ".png"));
 
             // -- Bitmap pour l'image rognée --
             Bitmap _img = new Bitmap(cropWidthReal, cropHeightReal);
@@ -268,19 +268,19 @@ namespace CartesAcces
             switch (section)
             {
                 case "6":
-                    return "..\\..\\..\\FichiersCARTESFACES\\6eme.png";
+                    return ".\\FichiersCARTESFACES\\6eme.png";
 
                 case "5":
-                    return "..\\..\\..\\FichiersCARTESFACES\\5eme.png";
+                    return ".\\FichiersCARTESFACES\\5eme.png";
 
                 case "4":
-                    return "..\\..\\..\\FichiersCARTESFACES\\4eme.png";
+                    return ".\\FichiersCARTESFACES\\4eme.png";
 
                 case "3":
-                    return "..\\..\\..\\FichiersCARTESFACES\\3eme.png";
+                    return ".\\FichiersCARTESFACES\\3eme.png";
 
                 default:
-                    return "..\\..\\..\\FichiersCARTESFACES\\6eme.png";
+                    return ".\\FichiersCARTESFACES\\6eme.png";
             }
         }
 
@@ -352,7 +352,7 @@ namespace CartesAcces
         public string getFilePath(string file)
         {
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = Path.Combine(sCurrentDirectory, "..\\..\\..\\" + file + "\\");
+            string sFile = Path.Combine(sCurrentDirectory, ".\\" + file + "\\");
             string sFilePath = Path.GetFullPath(sFile);
 
             return sFilePath;
@@ -363,7 +363,7 @@ namespace CartesAcces
             string nomFichier = "";
 
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\FichiersPHOTO");
+            string sFile = Path.Combine(sCurrentDirectory, @".\FichiersPHOTO");
             string sFilePath = Path.GetFullPath(sFile);
 
             string sFilePathTemp = sFilePath + "\\edition.jpg";
@@ -514,7 +514,7 @@ namespace CartesAcces
                 }
                 else
                 {
-                        pbCarteArriere.Image = Image.FromFile(@"..\..\..\FichiersEDT\Classes\" + listeEleve[compt].ClasseEleve + ".png");
+                        pbCarteArriere.Image = Image.FromFile(@".\FichiersEDT\Classes\" + listeEleve[compt].ClasseEleve + ".png");
                     edtClassique = true;
                 }
 
@@ -558,7 +558,7 @@ namespace CartesAcces
                     }
                     else
                     {
-                        pbCarteArriere.Image = Image.FromFile(@"..\..\..\FichiersEDT\Classes\" + listeEleve[compt - 1].ClasseEleve + ".png");
+                        pbCarteArriere.Image = Image.FromFile(@".\FichiersEDT\Classes\" + listeEleve[compt - 1].ClasseEleve + ".png");
                         edtClassique = true;
                     }
 
