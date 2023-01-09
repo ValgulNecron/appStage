@@ -52,9 +52,7 @@ namespace CartesAcces
             this.btnSelect = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.tkbLargeurPhoto = new System.Windows.Forms.TrackBar();
-            this.tkbHauteurPhoto = new System.Windows.Forms.TrackBar();
-            this.label7 = new System.Windows.Forms.Label();
+            this.tkbTaillePhoto = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAnnulerPhoto = new System.Windows.Forms.Button();
@@ -66,8 +64,7 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.pbCarteArriere)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbLargeurPhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbHauteurPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
             this.pnlEdtPhoto.SuspendLayout();
             this.SuspendLayout();
@@ -183,11 +180,7 @@ namespace CartesAcces
             // 
             this.cbbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSection.FormattingEnabled = true;
-            this.cbbSection.Items.AddRange(new object[] {
-            "6eme",
-            "5eme",
-            "4eme",
-            "3eme"});
+            this.cbbSection.Items.AddRange(new object[] { "6eme", "5eme", "4eme", "3eme" });
             this.cbbSection.Location = new System.Drawing.Point(120, 30);
             this.cbbSection.Name = "cbbSection";
             this.cbbSection.Size = new System.Drawing.Size(121, 21);
@@ -286,8 +279,7 @@ namespace CartesAcces
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Enabled = false;
             this.btnCancel.Location = new System.Drawing.Point(391, 33);
             this.btnCancel.MaximumSize = new System.Drawing.Size(127, 23);
@@ -300,8 +292,7 @@ namespace CartesAcces
             // 
             // btnCrop
             // 
-            this.btnCrop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCrop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCrop.Enabled = false;
             this.btnCrop.Location = new System.Drawing.Point(207, 33);
             this.btnCrop.MaximumSize = new System.Drawing.Size(127, 23);
@@ -314,8 +305,7 @@ namespace CartesAcces
             // 
             // btnSelect
             // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelect.Enabled = false;
             this.btnSelect.Location = new System.Drawing.Point(21, 22);
             this.btnSelect.MaximumSize = new System.Drawing.Size(140, 50);
@@ -329,9 +319,7 @@ namespace CartesAcces
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnSave);
-            this.groupBox3.Controls.Add(this.tkbLargeurPhoto);
-            this.groupBox3.Controls.Add(this.tkbHauteurPhoto);
-            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.tkbTaillePhoto);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.btnAnnulerPhoto);
@@ -353,53 +341,28 @@ namespace CartesAcces
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // tkbLargeurPhoto
+            // tkbTaillePhoto
             // 
-            this.tkbLargeurPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tkbLargeurPhoto.Location = new System.Drawing.Point(267, 100);
-            this.tkbLargeurPhoto.Maximum = 300;
-            this.tkbLargeurPhoto.Minimum = 30;
-            this.tkbLargeurPhoto.Name = "tkbLargeurPhoto";
-            this.tkbLargeurPhoto.Size = new System.Drawing.Size(260, 45);
-            this.tkbLargeurPhoto.TabIndex = 8;
-            this.tkbLargeurPhoto.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tkbLargeurPhoto.Value = 100;
-            this.tkbLargeurPhoto.Scroll += new System.EventHandler(this.tkbLargeurPhoto_Scroll);
-            // 
-            // tkbHauteurPhoto
-            // 
-            this.tkbHauteurPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tkbHauteurPhoto.Location = new System.Drawing.Point(267, 37);
-            this.tkbHauteurPhoto.Maximum = 300;
-            this.tkbHauteurPhoto.Minimum = 30;
-            this.tkbHauteurPhoto.Name = "tkbHauteurPhoto";
-            this.tkbHauteurPhoto.Size = new System.Drawing.Size(260, 45);
-            this.tkbHauteurPhoto.TabIndex = 7;
-            this.tkbHauteurPhoto.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tkbHauteurPhoto.Value = 130;
-            this.tkbHauteurPhoto.Scroll += new System.EventHandler(this.tkbHauteurPhoto_Scroll);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(204, 105);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Largeur";
+            this.tkbTaillePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tkbTaillePhoto.Location = new System.Drawing.Point(267, 37);
+            this.tkbTaillePhoto.Maximum = 300;
+            this.tkbTaillePhoto.Minimum = 30;
+            this.tkbTaillePhoto.Name = "tkbTaillePhoto";
+            this.tkbTaillePhoto.Size = new System.Drawing.Size(260, 45);
+            this.tkbTaillePhoto.TabIndex = 7;
+            this.tkbTaillePhoto.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tkbTaillePhoto.Value = 130;
+            this.tkbTaillePhoto.Scroll += new System.EventHandler(this.tkbHauteurPhoto_Scroll);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(204, 43);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Hauteur";
+            this.label6.Text = "Taille";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -457,7 +420,7 @@ namespace CartesAcces
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1109, 704);
+            this.ClientSize = new System.Drawing.Size(1119, 704);
             this.Controls.Add(this.pnlEdtPhoto);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -474,12 +437,10 @@ namespace CartesAcces
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbLargeurPhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbHauteurPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
             this.pnlEdtPhoto.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -505,9 +466,7 @@ namespace CartesAcces
         private System.Windows.Forms.PictureBox pbPhoto;
         private System.Windows.Forms.Panel pnlEdtPhoto;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TrackBar tkbLargeurPhoto;
-        private System.Windows.Forms.TrackBar tkbHauteurPhoto;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TrackBar tkbTaillePhoto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnReset;

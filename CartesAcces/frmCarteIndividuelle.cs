@@ -442,7 +442,7 @@ namespace CartesAcces
                 opfPath = opf.FileName;
                 // -- Ajout de l'image dans la picturebox, celle ci devient visible
                 pbPhoto.Image = new Bitmap(opfPath);
-                pbPhoto.Size = new Size(100, 130);
+                pbPhoto.Size = new Size(100, 150);
                 pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbPhoto.Visible = true;
             }
@@ -491,16 +491,17 @@ namespace CartesAcces
             if (pbPhoto != null)
             {
                 // -- La hauteur en pixel de la photo change et prend la valeur de la trackbar
-                pbPhoto.Height = tkbHauteurPhoto.Value;
+                pbPhoto.Height = tkbTaillePhoto.Value;
             }
         }
-
-        private void tkbLargeurPhoto_Scroll(object sender, EventArgs e)
+        
+        private void tkbTaillePhoto_Scroll(object sender, EventArgs e)
         {
             if (pbPhoto != null)
             {
                 // -- La largeur en pixel de la photo change et prend la valeur de la trackbar
-                pbPhoto.Width = tkbLargeurPhoto.Value;
+                pbPhoto.Width = tkbTaillePhoto.Value;
+                pbPhoto.Height = Convert.ToInt32(tkbTaillePhoto.Value * 1.5);
             }
         }
 
@@ -587,6 +588,11 @@ namespace CartesAcces
         {
             ajouterEdtPerso();
             groupBox2.Enabled = false;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
