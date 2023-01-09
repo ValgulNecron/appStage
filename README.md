@@ -1,7 +1,13 @@
 # appStage \n
-Repos du l'application de création de cartes d'accès br/
--Les fichiers produis par l'application doivent se trouver au même endroit que l'exe \n
--redimension perte de résolution => faire avec un rapport hauteur / largeur \n
--barre de chargement, progression en %  \n
--utilisation du CSV aulieu du XLS, recherche de colonne simplifié \n
--convaincre Troestler UTILISER LIBRAIRIE \n
+
+Repos du l'application de création de cartes d'accès   
+
+-Les fichiers produis par l'application doivent se trouver au même endroit que l'exe
+
+-redimension perte de résolution => faire avec un rapport hauteur / largeur
+
+-barre de chargement, progression en % 
+
+-utilisation du CSV aulieu du XLS, recherche de colonne simplifié
+
+-convaincre Troestler UTILISER LIBRAIRIE
