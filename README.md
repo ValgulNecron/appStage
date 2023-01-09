@@ -1,5 +1,5 @@
 # appStage \n
-Repos du l'application de création de cartes d'accès \n
+Repos du l'application de création de cartes d'accès br/
 -Les fichiers produis par l'application doivent se trouver au même endroit que l'exe \n
 -redimension perte de résolution => faire avec un rapport hauteur / largeur \n
 -barre de chargement, progression en %  \n
