@@ -352,7 +352,7 @@ namespace CartesAcces
             this.tkbTaillePhoto.TabIndex = 7;
             this.tkbTaillePhoto.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tkbTaillePhoto.Value = 130;
-            this.tkbTaillePhoto.Scroll += new System.EventHandler(this.tkbHauteurPhoto_Scroll);
+            this.tkbTaillePhoto.Scroll += new System.EventHandler(this.tkbTaillePhoto_Scroll);
             // 
             // label6
             // 
