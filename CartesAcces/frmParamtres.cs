@@ -29,7 +29,7 @@ namespace CartesAcces
         public static string getFilePath(string file)
         {
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = Path.Combine(sCurrentDirectory, "..\\..\\..\\" + file + "\\");
+            string sFile = Path.Combine(sCurrentDirectory, ".\\" + file + "\\");
             string sFilePath = Path.GetFullPath(sFile);
 
             return sFilePath;
