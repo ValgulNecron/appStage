@@ -22,7 +22,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Eleve.setLesClasses(cbbImprClasse);
-            checkedSectionClasse();
+            Grid.checkedSectionClasse();
         }
 
         public void checkedSectionClasse()
@@ -43,7 +43,7 @@ namespace CartesAcces
             cbbImprSection.Enabled = true;
             lsbListeEleve.Enabled = true;
         }
-
+        
         public void checkedListePerso()
         {
             // dans le cas où l'utilsateur sélectionne une classe / section puis ensuite une listeperso
