@@ -21,7 +21,7 @@ namespace CartesAcces
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Excel Files Only | *xlsx; *.xls";
+                ofd.Filter = "CSV Files Only | *.csv";
                 ofd.Title = "Choose the File";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
