@@ -30,7 +30,7 @@ namespace CartesAcces
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
             Globale._estConnecter = false;
-            Form frn = new frmConnexion();
+            Globale._connexion.Show();
             form.Close();
         }
     }
