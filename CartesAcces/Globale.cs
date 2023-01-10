@@ -4,9 +4,9 @@ namespace CartesAcces
 {
     public static class Globale
     {
-        static bool _estConnecter = false;
-        static bool _estEnModeSombre = false;
-        private static string _nomUtilisateur = "";
+        // connexion
+        static public bool _estConnecter = false;
+        static public string _nomUtilisateur = "";
         
         // Listes des classes 
         public static List<string> classes6eme = new List<string>();
@@ -17,8 +17,9 @@ namespace CartesAcces
 
         // Liste d'élèves
         public static List<Eleve> listeEleve = new List<Eleve>();
-        public static List<Eleve> listeEleveSansPhoto = new List<Eleve>();   
-        public static List<Eleve> listeEleveImpr = new List<Eleve>();   
+        
+        // theme 
+        static public bool _estEnModeSombre = false;
 
         static public string _couleurDeFondClaire = "#eff1f5";
         static public string _couleurDuTexteclaire = "#4c4f69";
