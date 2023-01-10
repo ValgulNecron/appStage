@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace CartesAcces
 {
@@ -33,54 +34,6 @@ namespace CartesAcces
             string sFilePath = Path.GetFullPath(sFile);
 
             return sFilePath;
-        }
-        
-        // -- Remplis  la liste des élève grace au fichie Excel dans les fichiers de l'application --
-        public static void setLesEleves()
-        {
-            string sFilePath = getFilePath("ListeEleve") + "ImportEleve.xls";
-
-            try
-            {
-                List<Eleve> ListeProvisoire = new List<Eleve>();
-
-                Excel.Application excelApplication = new Excel.Application();
-                Excel.Workbook excelWorkbook = excelApplication.Workbooks.Open(sFilePath);
-                Excel.Worksheet excelWorksheet = excelWorkbook.Worksheets[1];
-                Excel.Range excelRange = excelWorksheet.UsedRange;
-
-                int rowCount = excelRange.Rows.Count;
-
-                for (int i = 2; i < rowCount; i++)
-                {
-                    Eleve eleve = new Eleve();
-
-                    eleve.NomEleve = excelRange.Cells[i, 1].Text;
-                    eleve.PrenomEleve = excelRange.Cells[i, 2].Text;
-                    eleve.ClasseEleve = excelRange.Cells[i, 3].Text;
-                    eleve.RegimeEleve = excelRange.Cells[i, 4].Text;
-                    eleve.OptionUnEleve = excelRange.Cells[i, 5].Text;
-                    eleve.OptionDeuxEleve = excelRange.Cells[i, 6].Text;
-                    eleve.OptionTroisEleve = excelRange.Cells[i, 7].Text;
-                    eleve.OptionQuatreEleve = excelRange.Cells[i, 8].Text;
-                    eleve.MefEleve = excelRange.Cells[i, 9].Text;
-
-                    ListeProvisoire.Add(eleve);
-                }
-
-                frmAccueil.listeEleve = ListeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
-
-                Marshal.FinalReleaseComObject(excelRange);
-                Marshal.FinalReleaseComObject(excelWorksheet);
-                excelWorkbook.Close();
-                excelApplication.Quit();
-                GC.Collect();
-            }
-            catch
-            {
-                MessageBox.Show("Pas de liste importée, afin de pouvoir créer des carte merci d'importer le fichier Excel");
-            }
-
         }
 
         // -- Une fois la feuille excel copiée, on récupère les classes et on les trie par niveaux --
