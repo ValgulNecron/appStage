@@ -16,7 +16,7 @@ namespace CartesAcces
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAccueil());
+            Application.Run(new frmConnexion());
         }
     }
 }
