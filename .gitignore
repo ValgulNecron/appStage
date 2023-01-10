@@ -491,3 +491,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+# add all file in obj/Debug folder
+obj/Debug/*
