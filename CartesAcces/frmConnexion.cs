@@ -12,12 +12,26 @@ namespace CartesAcces
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
+            /*
+            if (txtIdentifiant.Text != ClassSQL.getUser())
             {
-                Form frmAccueil = new frmAccueil();
-                this.Hide();
-                frmAccueil.Show();
+                MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                return;
+            }
+            */
+            try
+            {
+                if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
+                {
+                    Form frmAccueil = new frmAccueil();
+                    this.Hide();
+                    frmAccueil.Show();
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
             }
         }
 
