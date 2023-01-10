@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -38,6 +39,26 @@ namespace CartesAcces
         private void button1_Click(object sender, EventArgs e)
         {
             maskedTextBox1.Text = Securite.creationHash(maskedTextBox1.Text);
+        }
+
+        private void frmConnexion_Load(object sender, EventArgs e)
+        {
+            txtIdentifiant.Text = "";
+            txtMotDePasse.Text = "";
+            if (Globale._estEnModeSombre)
+            {
+                BackColor = ColorTranslator.FromHtml(Globale._couleurDeFondSombre);
+                foreach (var controle in Controls)
+                {
+                    controle.BackColor = ColorTranslator.FromHtml(Globale._couleurBoutonsSombre);
+                    controle.ForeColor = ColorTranslator.FromHtml(Globale._couleurDuTexteSombre);
+
+                }
+            }
+            else
+            {
+                
+            }
         }
     }
 }
