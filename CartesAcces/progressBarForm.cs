@@ -31,7 +31,7 @@ namespace CartesAcces
             //Globale.currentProgress = 1;
             //backgroundWorker1.ReportProgress((int)((float) Globale.currentProgress / Globale.totalSteps * 100));
 
-            frmParametres.setLesClasses();
+            Eleve.setLesClasses();
             //Globale.currentProgress = 2;
             //backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
         }

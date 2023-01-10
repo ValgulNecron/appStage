@@ -237,3 +237,30 @@ D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\BouncyCastle.Cry
 D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\itextsharp.dll
 D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\itextsharp.xml
 D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.csproj.CopyComplete
+D:\appStageV3\CartesAcces\bin\Debug\CartesAcces.exe.config
+D:\appStageV3\CartesAcces\bin\Debug\CartesAcces.exe
+D:\appStageV3\CartesAcces\bin\Debug\CartesAcces.pdb
+D:\appStageV3\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+D:\appStageV3\CartesAcces\bin\Debug\itextsharp.dll
+D:\appStageV3\CartesAcces\bin\Debug\itextsharp.xml
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.csproj.SuggestedBindingRedirects.cache
+D:\appStageV3\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+D:\appStageV3\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+D:\appStageV3\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+D:\appStageV3\CartesAcces\obj\Debug\Interop.VBIDE.dll
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.frmConnexion.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.frmImportPhotoUnique.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.progressBarForm.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.csproj.CopyComplete
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.exe
+D:\appStageV3\CartesAcces\obj\Debug\CartesAcces.pdb
