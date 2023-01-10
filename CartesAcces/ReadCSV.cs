@@ -41,14 +41,14 @@ namespace CartesAcces
                 {
                     Eleve unEleve = new Eleve();
                     unEleve.NomEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.PrenomEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.ClasseEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.RegimeEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.OptionUnEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.OptionDeuxEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.OptionTroisEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.OptionQuatreEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.MefEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
+                    unEleve.PrenomEleve = ReadCSV.getDataFromCSV(sFilePath, 1)[i];
+                    unEleve.ClasseEleve = ReadCSV.getDataFromCSV(sFilePath, 6)[i];
+                    unEleve.RegimeEleve = ReadCSV.getDataFromCSV(sFilePath, 1)[i];
+                    unEleve.OptionUnEleve = ReadCSV.getDataFromCSV(sFilePath, 7)[i];
+                    unEleve.OptionDeuxEleve = ReadCSV.getDataFromCSV(sFilePath, 8)[i];
+                    unEleve.OptionTroisEleve = ReadCSV.getDataFromCSV(sFilePath, 9)[i];
+                    unEleve.OptionQuatreEleve = ReadCSV.getDataFromCSV(sFilePath, 10)[i];
+                    unEleve.MefEleve = ReadCSV.getDataFromCSV(sFilePath, 5)[i];
 
                     listeProvisoire.Add(unEleve);
                 }

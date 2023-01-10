@@ -26,33 +26,6 @@ namespace CartesAcces
             lblDateImport.Text = Properties.Settings.Default.DateImport;
         }
 
-        // -- Une fois la feuille excel copiée, on récupère les classes et on les trie par niveaux --
-        public static void setLesClasses()
-        {
-
-            foreach (Eleve eleve in Globale.listeEleve)
-            {
-                string numClasse = eleve.ClasseEleve.Substring(0, 1);
-
-                if (numClasse == "6" && !(Globale.classes6eme.Contains(eleve.ClasseEleve)))
-                    Globale.classes6eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "5" && !(Globale.classes5eme.Contains(eleve.ClasseEleve)))
-                    Globale.classes5eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "4" && !(Globale.classes4eme.Contains(eleve.ClasseEleve)))
-                    Globale.classes4eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "3" && !(Globale.classes3eme.Contains(eleve.ClasseEleve)))
-                    Globale.classes3eme.Add(eleve.ClasseEleve);
-                else
-                 Globale.classesUnknown.Add(eleve.ClasseEleve);
-            }
-
-            Globale.classes3eme.Sort();
-            Globale.classes4eme.Sort();
-            Globale.classes5eme.Sort();
-            Globale.classes6eme.Sort();
-
-        }
-
         // -- Initialisation de la grille contenant la liste des élèves
         public void initDataGrid()
         {
@@ -61,6 +34,29 @@ namespace CartesAcces
             DataGridParametres.DataSource = Globale.listeEleve;
         }
 
+        public void importElevesBis()
+        {
+            string sourcePath = txtPathEleve.Text;
+            string destinationPath = "./importEleve.csv";
+            try
+            {
+                if (File.Exists(destinationPath))
+                {
+                    File.Delete(destinationPath);
+                }
+
+                File.Copy(sourcePath, destinationPath);
+                MessageBox.Show("Import Réussi");
+                ReadCSV.setLesEleves(destinationPath);
+                Eleve.setLesClasses();
+
+                initDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("Import Echoué");
+            }
+        }
         // -- Importation des élève (copie du fichier pdf cible vers le fichier de l'application) --
         public void importEleves()
         {
@@ -143,7 +139,7 @@ namespace CartesAcces
             Properties.Settings.Default.Save();
 
             ReadCSV.setLesEleves(sFilePath);
-            setLesClasses();
+            Eleve.setLesClasses();
 
             initDataGrid();
 
@@ -413,13 +409,17 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-            Chemin.setPathImportFileEXCEL();
+            txtPathEleve.Text = Chemin.setPathImportFileEXCEL();
+            if (txtPathEleve.Text.Length > 0)
+            {
+                btnValiderEleve.Enabled = true;
+            }
         }
 
         private void btnValiderEleve_Click(object sender, EventArgs e)
         {
             labelV.Show();
-            importEleves();
+            importElevesBis();
             lblDateImport.Text = Properties.Settings.Default.DateImport;
             labelV.Hide();
         }
@@ -427,6 +427,7 @@ namespace CartesAcces
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
             Chemin.setPathImportFilePDF();
+           
         }
 
         private void btnValiderEDT_Click(object sender, EventArgs e)
