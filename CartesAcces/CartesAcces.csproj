@@ -90,6 +90,7 @@
     <Compile Include="frmParamtres.Designer.cs">
       <DependentUpon>frmParamtres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globale.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="progressBarForm.cs">
       <SubType>Form</SubType>
