@@ -29,7 +29,7 @@ namespace CartesAcces
 
         public static bool verificationHash(string motDePasse, string savedPasswordHash)
         {
-            //on recupere le hash et le sel du mot de passe enregistré
+            //on recupere le hash et le sel du mot de passe enregistréw
             byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
             byte[] salt = new byte[16];
             Array.Copy(hashBytes, 0, salt, 0, 16);
