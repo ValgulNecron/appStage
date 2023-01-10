@@ -195,7 +195,7 @@ namespace CartesAcces
             string sFilePath = Path.GetFullPath(sFile);
 
             pbPhoto.Image = new Bitmap(sFilePath + "edition.jpg");
-            pbPhoto.Size = new Size(100, 130);
+            pbPhoto.Size = new Size(110, 165);
             pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPhoto.Visible = true;
         }
@@ -395,11 +395,6 @@ namespace CartesAcces
                     }
                 }
             }
-        }
-
-        public void gereEmploiDuTemps(Eleve eleve, int realLocX, int realLocY, int realWidth, int realHeight, Graphics ObjGraphics, Image img)
-        {
-
         }
 
         public void gereCarteFace(Eleve eleve)

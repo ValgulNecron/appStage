@@ -442,7 +442,7 @@ namespace CartesAcces
                 opfPath = opf.FileName;
                 // -- Ajout de l'image dans la picturebox, celle ci devient visible
                 pbPhoto.Image = new Bitmap(opfPath);
-                pbPhoto.Size = new Size(200, 300);
+                pbPhoto.Size = new Size(110, 165);
                 pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbPhoto.Visible = true;
             }
@@ -486,15 +486,6 @@ namespace CartesAcces
             drag = false;
         }
 
-        private void tkbHauteurPhoto_Scroll(object sender, EventArgs e)
-        {
-            if (pbPhoto != null)
-            {
-                // -- La hauteur en pixel de la photo change et prend la valeur de la trackbar
-                pbPhoto.Height = tkbTaillePhoto.Value;
-            }
-        }
-        
         private void tkbTaillePhoto_Scroll(object sender, EventArgs e)
         {
             if (pbPhoto != null)
