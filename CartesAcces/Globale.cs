@@ -32,5 +32,9 @@ namespace CartesAcces
         static public string _couleurDuTexteSombre = "#cdd6f4";
         static public string _couleurBandeauxSombre = "#94e2d5";
         static public string _couleurBoutonsSombre = "#9399b2";
+
+        //
+        static public int currentProgress = 0;
+        static public int totalSteps = 0;
     }
 }
