@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chemin.cs" />
     <Compile Include="Eleve.cs" />
     <Compile Include="frmConnexion.cs">
       <SubType>Form</SubType>

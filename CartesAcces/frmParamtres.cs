@@ -26,16 +26,6 @@ namespace CartesAcces
             lblDateImport.Text = Properties.Settings.Default.DateImport;
         }
 
-        // -- Obtention du chemin --
-        public static string getFilePath(string file)
-        {
-            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = Path.Combine(sCurrentDirectory, ".\\" + file + "\\");
-            string sFilePath = Path.GetFullPath(sFile);
-
-            return sFilePath;
-        }
-
         // -- Une fois la feuille excel copiée, on récupère les classes et on les trie par niveaux --
         public static void setLesClasses()
         {
@@ -69,47 +59,6 @@ namespace CartesAcces
             DataGridParametres.Columns.Clear();
             DataGridParametres.DataSource = null;
             DataGridParametres.DataSource = frmAccueil.listeEleve;
-        }
-
-        // -- Permet a l'utilisateur de donner le chemin du fichier excel a importer --
-        public void setPathImportFileEXCEL(TextBox txtBox, Button valider)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                ofd.Filter = "Excel Files Only | *xlsx; *.xls";
-                ofd.Title = "Choose the File";
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    txtBox.Text = ofd.FileName;
-                    valider.Enabled = true;
-                }
-            }
-        }
-
-        // -- Permet a l'utilisateur de donner le chemin du fichier PDF a importer --
-        public void setPathImportFilePDF(TextBox txtBox, Button valider)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                ofd.Filter = "PDF Files Only | *.pdf; *.PDF";
-                ofd.Title = "Choose the File";
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    txtBox.Text = ofd.FileName;
-                    valider.Enabled = true;
-                }
-            }
-        }
-
-        // -- Permet a l'utilisateur de donner le chemin du dossier de photo a importer
-        public void setPathImportFolder(TextBox txtBox, Button valider)
-        {
-            FolderBrowserDialog diag = new FolderBrowserDialog();
-            if (diag.ShowDialog() == DialogResult.OK)
-            {
-                txtBox.Text = diag.SelectedPath;
-                valider.Enabled = true;
-            }
         }
 
         // -- Importation des élève (copie du fichier pdf cible vers le fichier de l'application) --
@@ -177,7 +126,7 @@ namespace CartesAcces
                 }
             }
 
-            string sFilePath = getFilePath("ListeEleve");
+            string sFilePath = Chemin.getFilePath("ListeEleve");
 
             workbookOriginal.Close();
 
@@ -193,7 +142,7 @@ namespace CartesAcces
             Properties.Settings.Default.DateImport = DateTime.Today.ToShortDateString();
             Properties.Settings.Default.Save();
 
-            setLesEleves();
+            ReadCSV.setLesEleves(sFilePath);
             setLesClasses();
 
             initDataGrid();
@@ -501,7 +450,7 @@ namespace CartesAcces
             }
 
             // -- Nettoyage des dossiers avant enregistrement des captures --
-            DirectoryInfo directory = new DirectoryInfo(getFilePath("FichiersEDT\\" + folder));
+            DirectoryInfo directory = new DirectoryInfo(Chemin.getFilePath("FichiersEDT\\" + folder));
 
             foreach (var file in directory.GetFiles())
             {
@@ -537,7 +486,7 @@ namespace CartesAcces
                 }
 
                 // -- Destination du fichier --
-                string FileDest = getFilePath("FichiersEDT");
+                string FileDest = Chemin.getFilePath("FichiersEDT");
                 FileDest = FileDest + folder + "\\" + listeExtractPDF[i] + ".png";
 
                 // -- Enregistrement sous format PNG --
@@ -564,7 +513,7 @@ namespace CartesAcces
             {
                 foreach (var file in dir.GetFiles())
                 {
-                    string sFilePath = getFilePath("FichiersPHOTO");
+                    string sFilePath = Chemin.getFilePath("FichiersPHOTO");
 
                     Image img = Image.FromFile(file.FullName);
                     string nom = file.Name;
@@ -646,7 +595,7 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-            setPathImportFileEXCEL(txtPathEleve, btnValiderEleve);
+            Chemin.setPathImportFileEXCEL();
         }
 
         private void btnValiderEleve_Click(object sender, EventArgs e)
@@ -659,7 +608,7 @@ namespace CartesAcces
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            setPathImportFilePDF(txtPathEDT, btnValiderEDT);
+            Chemin.setPathImportFilePDF();
         }
 
         private void btnValiderEDT_Click(object sender, EventArgs e)
@@ -669,7 +618,7 @@ namespace CartesAcces
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            setPathImportFolder(txtPathPhoto, btnValiderPhoto);
+            Chemin.setPathImportFolder();
         }
 
         private void btnValiderPhoto_Click(object sender, EventArgs e)
