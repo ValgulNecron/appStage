@@ -48,7 +48,7 @@ namespace CartesAcces
             if (Globale._estEnModeSombre)
             {
                 BackColor = ColorTranslator.FromHtml(Globale._couleurDeFondSombre);
-                foreach (var controle in Controls)
+                foreach (Control controle in Controls)
                 {
                     controle.BackColor = ColorTranslator.FromHtml(Globale._couleurBoutonsSombre);
                     controle.ForeColor = ColorTranslator.FromHtml(Globale._couleurDuTexteSombre);
@@ -57,7 +57,7 @@ namespace CartesAcces
             else
             {
                 BackColor = ColorTranslator.FromHtml(Globale._couleurDeFondClaire);
-                foreach (var controle in Controls)
+                foreach (Control controle in Controls)
                 {
                     controle.BackColor = ColorTranslator.FromHtml(Globale._couleurBoutonsClaire);
                     controle.ForeColor = ColorTranslator.FromHtml(Globale._couleurDuTexteclaire);
