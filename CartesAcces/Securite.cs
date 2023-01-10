@@ -24,7 +24,7 @@ namespace CartesAcces
             Array.Copy(salt, 0, hashBytes, 0, 16);
             Array.Copy(hash, 0, hashBytes, 16, 20);
 
-            //on retourne le hash sous forme de string 
+            //on retourne le hash sous forme string encoder en base64 
             string savedPasswordHash = Convert.ToBase64String(hashBytes);
             return savedPasswordHash;
         }
