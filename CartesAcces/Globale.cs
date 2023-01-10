@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace CartesAcces
 {
     public static class Globale
     {
+        static public Form _connexion; 
         // connexion
         static public bool _estConnecter = false;
         static public string _nomUtilisateur = "";
