@@ -108,6 +108,7 @@
     <Compile Include="ReadCSV.cs" />
     <Compile Include="Securite.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Timer.cs" />
     <EmbeddedResource Include="frmAccueil.resx">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </EmbeddedResource>

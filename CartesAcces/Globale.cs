@@ -5,7 +5,6 @@
         static bool _estConnecter = false;
         static bool _estEnModeSombre = false;
         private static string _nomUtilisateur = "";
-        private static int _dureeConnexion = 0;
 
         static public string _couleurDeFondClaire = "#eff1f5";
         static public string _couleurDuTexteclaire = "#4c4f69";
