@@ -17,7 +17,9 @@ namespace CartesAcces
 
         // Liste d'élèves
         public static List<Eleve> listeEleve = new List<Eleve>();
-        
+        public static List<Eleve> listeEleveImpr = new List<Eleve>();
+        public static List<Eleve> listeEleveSansPhoto = new List<Eleve>();
+
         // theme 
         static public bool _estEnModeSombre = false;
 
