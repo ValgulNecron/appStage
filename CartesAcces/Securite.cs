@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Text.RegularExpressions;
 namespace CartesAcces
 {
     public static class Securite
     {
+        
+        public static DateTime derniereUtilisation = DateTime.Now;
         public static string creationHash(string motDePasse)
         {
             //on crée le sel qui permettra au mot de passe d'avoir un hash unique et différent à chaque fois meme si le mot de passe est le meme
@@ -47,5 +45,26 @@ namespace CartesAcces
                     throw new UnauthorizedAccessException();
             return true;
         }
+
+        public static bool validationPrerequisMdp(string motDePasse)
+        {
+            if (motDePasse.Length < 12)
+                return false;
+
+            if (!Regex.IsMatch(motDePasse, @"[a-z]"))
+                return false;
+
+            if (!Regex.IsMatch(motDePasse, @"[A-Z]"))
+                return false;
+            
+            if (!Regex.IsMatch(motDePasse, @"[0-9]"))
+                return false;
+
+            if (!Regex.IsMatch(motDePasse, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-~\\]"))
+                return false; 
+            
+            return true;
+        }
     }
+    
 }
