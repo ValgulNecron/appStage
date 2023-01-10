@@ -130,5 +130,30 @@ namespace CartesAcces
                 }
             }
         }
+        public static void setLesClasses()
+        {
+
+            foreach (Eleve eleve in Globale.listeEleve)
+            {
+                string numClasse = eleve.ClasseEleve.Substring(0, 1);
+
+                if (numClasse == "6" && !(Globale.classes6eme.Contains(eleve.ClasseEleve)))
+                    Globale.classes6eme.Add(eleve.ClasseEleve);
+                else if (numClasse == "5" && !(Globale.classes5eme.Contains(eleve.ClasseEleve)))
+                    Globale.classes5eme.Add(eleve.ClasseEleve);
+                else if (numClasse == "4" && !(Globale.classes4eme.Contains(eleve.ClasseEleve)))
+                    Globale.classes4eme.Add(eleve.ClasseEleve);
+                else if (numClasse == "3" && !(Globale.classes3eme.Contains(eleve.ClasseEleve)))
+                    Globale.classes3eme.Add(eleve.ClasseEleve);
+                else
+                    Globale.classesUnknown.Add(eleve.ClasseEleve);
+            }
+
+            Globale.classes3eme.Sort();
+            Globale.classes4eme.Sort();
+            Globale.classes5eme.Sort();
+            Globale.classes6eme.Sort();
+
+        }
     }
 }

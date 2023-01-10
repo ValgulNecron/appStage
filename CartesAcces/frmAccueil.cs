@@ -32,6 +32,8 @@ namespace CartesAcces
         private void frmAccueil_Load(object sender, EventArgs e)
         {
             progressBarForm frmWait = new progressBarForm();
+            frmWait.StartPosition = FormStartPosition.Manual;
+            frmWait.Location = new Point(800, 300);
             frmWait.Show();
             frmWait.TopMost = true;
         }

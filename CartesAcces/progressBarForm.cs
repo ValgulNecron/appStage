@@ -24,16 +24,20 @@ namespace CartesAcces
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            // Globale.currentProgress = 0;
-            // Globale.totalSteps = 2;
+            Globale.currentProgress = 1;
+            Globale.totalSteps = 3;
+            backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
 
             ReadCSV.setLesEleves("exportCSVExtraction.csv");
-            //Globale.currentProgress = 1;
-            //backgroundWorker1.ReportProgress((int)((float) Globale.currentProgress / Globale.totalSteps * 100));
+            backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+            Globale.currentProgress = 2;
 
-            frmParametres.setLesClasses();
-            //Globale.currentProgress = 2;
-            //backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+            Eleve.setLesClasses();
+            Globale.currentProgress = 3;
+            backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+
+            MessageBox.Show("Continuer");
+
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
