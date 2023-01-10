@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="frmCarteIndividuelle.cs">
       <SubType>Form</SubType>
+      <DependentUpon>packages.config</DependentUpon>
     </Compile>
     <Compile Include="frmCarteIndividuelle.Designer.cs">
       <DependentUpon>frmCarteIndividuelle.cs</DependentUpon>

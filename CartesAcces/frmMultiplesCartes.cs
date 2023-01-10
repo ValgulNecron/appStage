@@ -61,7 +61,7 @@ namespace CartesAcces
             
             DataGridParametres.Columns.Clear();
             DataGridParametres.DataSource = null;
-            DataGridParametres.DataSource = frmAccueil.listeEleve;
+            DataGridParametres.DataSource = Globale.listeEleve;
 
             DataGridParametres.Enabled = true;
             txtRechercheDataGrid.Enabled = true;
@@ -83,7 +83,7 @@ namespace CartesAcces
             List<string> LesEleves = new List<string>();
 
             section = section.Substring(0, 1);
-            foreach (Eleve eleve in frmAccueil.listeEleve)
+            foreach (Eleve eleve in Globale.listeEleve)
             {
                 if (eleve.ClasseEleve.Substring(0,1) == section)
                 {
@@ -98,7 +98,7 @@ namespace CartesAcces
         {
             List<string> LesEleves = new List<string>();
 
-            foreach(Eleve eleve in frmAccueil.listeEleve)
+            foreach(Eleve eleve in Globale.listeEleve)
             {
                 if(eleve.ClasseEleve == classe)
                 {
@@ -157,19 +157,19 @@ namespace CartesAcces
             //cependant dans ce cas là, la liste n'est pas récupérée par défaut même si le premier objet est sélectionné par défaut
             listeClassesAll.Add("");
 
-            foreach (string classe in frmAccueil.classes3eme)
+            foreach (string classe in Globale.classes3eme)
             {
                 listeClassesAll.Add(classe);
             }
-            foreach (string classe in frmAccueil.classes4eme)
+            foreach (string classe in Globale.classes4eme)
             {
                 listeClassesAll.Add(classe);
             }
-            foreach (string classe in frmAccueil.classes5eme)
+            foreach (string classe in Globale.classes5eme)
             {
                 listeClassesAll.Add(classe);
             }
-            foreach (string classe in frmAccueil.classes6eme)
+            foreach (string classe in Globale.classes6eme)
             {
                 listeClassesAll.Add(classe);
             }
@@ -180,7 +180,7 @@ namespace CartesAcces
         // -- Pour l'impression par classe, les élève de la liste initiale dont la classe correspond à la selection seront collectés --
         public void affecterElevesClasses(string uneClasse)
         {
-            foreach(Eleve eleve in frmAccueil.listeEleve)
+            foreach(Eleve eleve in Globale.listeEleve)
             {
                 if (eleve.ClasseEleve == uneClasse)
                     listeEleveImpr.Add(eleve);
@@ -190,7 +190,7 @@ namespace CartesAcces
         // -- Pour l'impression par section --
         public void affecterElevesSections(string uneSection)
         {
-            foreach(Eleve eleve in frmAccueil.listeEleve)
+            foreach(Eleve eleve in Globale.listeEleve)
             {
                 string numSection = eleve.ClasseEleve.Substring(0,1); //solution?
                 if (numSection == uneSection.Substring(0, 1))
@@ -204,7 +204,7 @@ namespace CartesAcces
         {
             DataGridParametres.Columns.Clear();
             DataGridParametres.DataSource = null;
-            DataGridParametres.DataSource = frmAccueil.listeEleve;
+            DataGridParametres.DataSource = Globale.listeEleve;
         }
 
         public void rechercheDataGrid()

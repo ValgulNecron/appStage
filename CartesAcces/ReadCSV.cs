@@ -53,7 +53,7 @@ namespace CartesAcces
                     listeProvisoire.Add(unEleve);
                 }
 
-                frmAccueil.listeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
+                Globale.listeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
             }
             catch
             {

@@ -24,10 +24,8 @@ namespace CartesAcces
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            frmParametres.setLesEleves();
+            ReadCSV.setLesEleves("exportCSVExtraction.csv");
             frmParametres.setLesClasses();
-
-
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

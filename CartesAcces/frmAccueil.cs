@@ -13,16 +13,6 @@ namespace CartesAcces
 {
     public partial class frmAccueil : Form
     {
-        // ** VARIABLES : Listes des classes **
-        public static List<string> classes6eme = new List<string>();
-        public static List<string> classes5eme = new List<string>();
-        public static List<string> classes4eme = new List<string>();
-        public static List<string> classes3eme = new List<string>();
-        public static List<string> classesUnknown = new List<string>();
-
-        // ** VARIABLES : Liste d'élèves **
-        public static List<Eleve> listeEleve = new List<Eleve>();
-
         public frmAccueil()
         {
             InitializeComponent();
@@ -44,7 +34,6 @@ namespace CartesAcces
             progressBarForm frmWait = new progressBarForm();
             frmWait.Show();
             frmWait.TopMost = true;
-
         }
 
         //Création de menu de navigation

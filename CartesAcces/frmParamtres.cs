@@ -30,26 +30,26 @@ namespace CartesAcces
         public static void setLesClasses()
         {
 
-            foreach (Eleve eleve in frmAccueil.listeEleve)
+            foreach (Eleve eleve in Globale.listeEleve)
             {
                 string numClasse = eleve.ClasseEleve.Substring(0, 1);
 
-                if (numClasse == "6" && !(frmAccueil.classes6eme.Contains(eleve.ClasseEleve)))
-                    frmAccueil.classes6eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "5" && !(frmAccueil.classes5eme.Contains(eleve.ClasseEleve)))
-                    frmAccueil.classes5eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "4" && !(frmAccueil.classes4eme.Contains(eleve.ClasseEleve)))
-                    frmAccueil.classes4eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "3" && !(frmAccueil.classes3eme.Contains(eleve.ClasseEleve)))
-                    frmAccueil.classes3eme.Add(eleve.ClasseEleve);
+                if (numClasse == "6" && !(Globale.classes6eme.Contains(eleve.ClasseEleve)))
+                    Globale.classes6eme.Add(eleve.ClasseEleve);
+                else if (numClasse == "5" && !(Globale.classes5eme.Contains(eleve.ClasseEleve)))
+                    Globale.classes5eme.Add(eleve.ClasseEleve);
+                else if (numClasse == "4" && !(Globale.classes4eme.Contains(eleve.ClasseEleve)))
+                    Globale.classes4eme.Add(eleve.ClasseEleve);
+                else if (numClasse == "3" && !(Globale.classes3eme.Contains(eleve.ClasseEleve)))
+                    Globale.classes3eme.Add(eleve.ClasseEleve);
                 else
-                    frmAccueil.classesUnknown.Add(eleve.ClasseEleve);
+                 Globale.classesUnknown.Add(eleve.ClasseEleve);
             }
 
-            frmAccueil.classes3eme.Sort();
-            frmAccueil.classes4eme.Sort();
-            frmAccueil.classes5eme.Sort();
-            frmAccueil.classes6eme.Sort();
+            Globale.classes3eme.Sort();
+            Globale.classes4eme.Sort();
+            Globale.classes5eme.Sort();
+            Globale.classes6eme.Sort();
 
         }
 
@@ -58,13 +58,13 @@ namespace CartesAcces
         {
             DataGridParametres.Columns.Clear();
             DataGridParametres.DataSource = null;
-            DataGridParametres.DataSource = frmAccueil.listeEleve;
+            DataGridParametres.DataSource = Globale.listeEleve;
         }
 
         // -- Importation des élève (copie du fichier pdf cible vers le fichier de l'application) --
         public void importEleves()
         {
-            frmAccueil.listeEleve.Clear(); // vide les objets de la liste pour ajouter les nouveaux objets par la suite afin que
+            Globale.listeEleve.Clear(); // vide les objets de la liste pour ajouter les nouveaux objets par la suite afin que
             // le DataGridView écrase l'ancien importEleves()
 
             Excel.Application excelApplication = new Excel.Application();
@@ -151,188 +151,6 @@ namespace CartesAcces
 
             MessageBox.Show("Importation réussie !");
         }
-
-        // -- Importation des fichier PDF (capture d'écran de chaques pages, l'utilisateur devra définir un rognage plus tard dans l'application) --
-        //public void importEDT()
-        //{
-        //    List<string> listeExtractPDF = new List<string>();
-        //    string sFilePath = txtPathEDT.Text;
-
-        //    // -- Message d'avertissement / prévention pour le bon déroulement du programme --
-        //    MessageBox.Show("Durant cette manipulation, merci de ne pas toucher a la souris.." + Environment.NewLine + "Un message vous indiquera lorsque l'importation sera terminée");
-
-        //    // -- Nettoyage du presse papier --
-        //    Clipboard.Clear();
-
-        //    // -- Nouvel objet process --
-        //    Process Adope = new Process();
-
-        //    // -- Le process lancera le fichier pdf ciblé --
-        //    Adope.StartInfo.FileName = sFilePath;
-        //    Adope.StartInfo.Arguments = sFilePath;
-
-        //    // -- Ouverture du fichier et mise en avant plan --
-        //    Adope.Start();
-
-        //    System.Threading.Thread.Sleep(3000);
-
-        //    Adope.WaitForInputIdle();
-
-        //    System.Threading.Thread.Sleep(3000);
-
-        //    IntPtr s = Adope.MainWindowHandle;
-
-        //    System.Threading.Thread.Sleep(3000);
-
-        //    SetForegroundWindow(s);
-
-        //    // -- L'application attendra 3s avant de passer a la suite --
-        //    System.Threading.Thread.Sleep(3000);
-
-        //    // -- Selection de tout le text de la page PDF --
-        //    SendKeys.SendWait("^(a)");
-
-        //    // -- 3s le temps que la selection se fasse --
-        //    System.Threading.Thread.Sleep(3000);
-
-        //    // -- Copie du text selectionné dans le presse papier --
-        //    SendKeys.SendWait("^(c)");
-
-        //    // -- 3s le temps de la copie .. --
-        //    System.Threading.Thread.Sleep(8000);
-
-        //    // -- Stockage de la copie dans une variable et on nettoie le presspapier --
-        //    string textPDF = Clipboard.GetText();
-        //    Clipboard.Clear();
-
-        //    // !! Recherche des lignes qui nous interesse !!
-
-        //    // -- La ligne s'arrete lorsqu'il y a un saut --
-        //    int posFin = textPDF.IndexOf("\r\n");
-
-        //    // -- On commence au premier caractère de la chaine --
-        //    int posDepart = 0;
-
-        //    // -- Tant qu'on a pas attein la fin de la variable --
-        //    while (posFin != -1)
-        //    {
-        //        // -- Toujours vrai sauf si erreur --
-        //        if (posDepart >= 0)
-        //        {
-        //            // -- Si la ligne contient la mention "Elève" .. --
-        //            if (textPDF.Substring(posDepart, 6).Contains("Elève"))
-        //            {
-        //                // -- .. Alors on affecte cette ligne a la liste --
-        //                listeExtractPDF.Add(textPDF.Substring(posDepart + 1, posFin - posDepart - 1));
-        //            }
-        //            // -- La position de départ se place au début de la ligne suivante --
-        //            posDepart = posFin + 1;
-        //            // -- La position de fin se place au saut de ligne de la ligne suivante --
-        //            posFin = textPDF.IndexOf("\r\n", posDepart + 1);
-        //        }
-        //    }
-
-        //    MessageBox.Show(listeExtractPDF.Count.ToString());
-
-        //    // !! Comptage du nombre de page du fichier !!
-
-        //    // -- Initialisation --
-        //    int pages = 0;
-
-        //    using (StreamReader sr = new StreamReader(File.OpenRead(sFilePath)))
-        //    {
-
-        //        Regex regex = new Regex(@"/Type\s*/Page[^s]");
-        //        MatchCollection matches = regex.Matches(sr.ReadToEnd());
-
-        //        pages = matches.Count;
-        //    }
-
-        //    // !! Captures de chaques pages du PDF !!
-        //    // -- Pour elever la selection, on actualise la page --
-        //    SendKeys.SendWait("{F5}");
-
-        //    // -- 3s le temps de l'actualisation .. --
-        //    System.Threading.Thread.Sleep(3000);
-
-        //    // -- Au cas ou le fichier pdf ne soit pas ouvert directement sur la premiere page, on remonte tout en haut --
-        //    for (int j = 0; j < pages; j++)
-        //    {
-        //        SendKeys.SendWait("{LEFT}");
-        //    }
-
-        //    // -- Pour trier les captures en fonction de niveau de l'élève --
-        //    string folder = "";
-        //    if (txtPathEDT.Text.Contains("3EME"))
-        //    {
-        //        folder = "3EME";
-        //    }
-        //    else if (txtPathEDT.Text.Contains("4EME"))
-        //    {
-        //        folder = "4EME";
-        //    }
-        //    else if (txtPathEDT.Text.Contains("5EME"))
-        //    {
-        //        folder = "5EME";
-        //    }
-        //    else
-        //    {
-        //        folder = "6EME";
-        //    }
-
-        //    // -- Nettoyage des dossiers avant enregistrement des captures --
-        //    DirectoryInfo directory = new DirectoryInfo(getFilePath("FichiersEDT\\" + folder));
-
-        //    foreach (var file in directory.GetFiles())
-        //    {
-        //        file.Delete();
-        //    }
-
-        //    // -- Captures --
-
-        //    // -- Pour chaques pages du pdf --
-        //    for (int i = 0; i < pages; i++)
-        //    {
-        //        // -- Rectangle pour determiner la résolution de l'écran de l'utilisateur --
-        //        Rectangle resolution = Screen.PrimaryScreen.Bounds;
-
-        //        // -- Nouveau bitmap, reprennant les dimensions de l'écran --
-        //        Bitmap captureBitmap = new Bitmap(resolution.Width, resolution.Height, PixelFormat.Format32bppArgb);
-
-        //        // -- Création d'un rectangle contenu une capture de l'écran actif --
-
-        //        Rectangle captureRectangle = Screen.AllScreens[0].Bounds;
-        //        // -- Nouvel objet Graphics --
-        //        Graphics captureGraphics = Graphics.FromImage(captureBitmap);
-
-        //        // -- Copie de la capture dans le rectangle --
-        //        captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
-
-        //        /* Si jamais il y a un "/" dans la chaine de caractère servant a renommer le fichier
-        //         * le programme plantera car ce n'est pas un caractère autorisé par Windows, il faut donc l'enlever..
-        //         */
-        //        if (listeExtractPDF[i].Contains("/"))
-        //        {
-        //            listeExtractPDF[i] = listeExtractPDF[i].Substring(0, listeExtractPDF[i].IndexOf("/")) + listeExtractPDF[i].Substring(listeExtractPDF[i].IndexOf("/") + 1);
-        //        }
-
-        //        // -- Destination du fichier --
-        //        string FileDest = getFilePath("FichiersEDT");
-        //        FileDest = FileDest + folder + "\\" + listeExtractPDF[i] + ".png";
-
-        //        // -- Enregistrement sous format PNG --
-        //        captureBitmap.Save(FileDest, ImageFormat.Png);
-
-        //        // -- Page suivante --
-        //        SendKeys.SendWait("{RIGHT}");
-
-        //        // -- 0.3s avant de reboucler --
-        //        System.Threading.Thread.Sleep(300);
-        //    }
-
-        //    MessageBox.Show("Import réussie !", "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-
-        //}
 
         public void importEDT()
         {

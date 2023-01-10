@@ -1,10 +1,22 @@
-﻿namespace CartesAcces
+﻿using System.Collections.Generic;
+
+namespace CartesAcces
 {
     public static class Globale
     {
         static bool _estConnecter = false;
         static bool _estEnModeSombre = false;
         private static string _nomUtilisateur = "";
+        
+        // Listes des classes 
+        public static List<string> classes6eme = new List<string>();
+        public static List<string> classes5eme = new List<string>();
+        public static List<string> classes4eme = new List<string>();
+        public static List<string> classes3eme = new List<string>();
+        public static List<string> classesUnknown = new List<string>();
+
+        // Liste d'élèves
+        public static List<Eleve> listeEleve = new List<Eleve>();
 
         static public string _couleurDeFondClaire = "#eff1f5";
         static public string _couleurDuTexteclaire = "#4c4f69";
