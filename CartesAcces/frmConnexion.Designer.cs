@@ -113,7 +113,6 @@ namespace CartesAcces
             this.Text = "frmConnexion";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Button btnConnexion;
