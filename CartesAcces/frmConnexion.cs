@@ -52,12 +52,16 @@ namespace CartesAcces
                 {
                     controle.BackColor = ColorTranslator.FromHtml(Globale._couleurBoutonsSombre);
                     controle.ForeColor = ColorTranslator.FromHtml(Globale._couleurDuTexteSombre);
-
                 }
             }
             else
             {
-                
+                BackColor = ColorTranslator.FromHtml(Globale._couleurDeFondClaire);
+                foreach (var controle in Controls)
+                {
+                    controle.BackColor = ColorTranslator.FromHtml(Globale._couleurBoutonsClaire);
+                    controle.ForeColor = ColorTranslator.FromHtml(Globale._couleurDuTexteclaire);
+                }
             }
         }
     }
