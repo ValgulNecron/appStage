@@ -99,6 +99,7 @@
       <DependentUpon>frmParamtres.cs</DependentUpon>
     </Compile>
     <Compile Include="Globale.cs" />
+    <Compile Include="Grid.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="progressBarForm.cs">
