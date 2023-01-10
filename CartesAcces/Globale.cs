@@ -17,6 +17,8 @@ namespace CartesAcces
 
         // Liste d'élèves
         public static List<Eleve> listeEleve = new List<Eleve>();
+        public static List<Eleve> listeEleveSansPhoto = new List<Eleve>();   
+        public static List<Eleve> listeEleveImpr = new List<Eleve>();   
 
         static public string _couleurDeFondClaire = "#eff1f5";
         static public string _couleurDuTexteclaire = "#4c4f69";

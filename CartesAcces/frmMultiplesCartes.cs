@@ -13,10 +13,6 @@ namespace CartesAcces
 {
     public partial class frmMultiplesCartes : Form
     {
-        // ** VARIABLES : Listes **
-        private List<Eleve> listeEleveSansPhoto = new List<Eleve>();     // -- Collection d'élèves initiale
-        private List<Eleve> listeEleveImpr = new List<Eleve>();     // -- Collection des élèves à imprimer
-
         // ** VARIBALES : booléens selection **
         public bool imprSection = false;
         public bool imprClasse = false;
@@ -75,80 +71,8 @@ namespace CartesAcces
             lsbListeEleve.Enabled = false;
         }
 
-        public List<string> getEleveSection(string section)
-        {
-            // l'idée est de récupérer le premier caractère d'une propriété de l'objet, ici on veut le premier caractère de la classe de l'élève, on choisit
-            //section "3ème" par exemple, on veut prendre que le caractère "3" puis on le compare au premier caractère de la classe de chaque élève de la liste
-            //si "3" est le premier caractère alors cette élève est ajouté à la liste des élèves à imprimer
-            List<string> LesEleves = new List<string>();
-
-            section = section.Substring(0, 1);
-            foreach (Eleve eleve in Globale.listeEleve)
-            {
-                if (eleve.ClasseEleve.Substring(0,1) == section)
-                {
-                    LesEleves.Add(eleve.NomEleve);
-                }
-            }
-
-            return LesEleves;
-        }
-
-        public List<string> getEleveClasse(string classe)
-        {
-            List<string> LesEleves = new List<string>();
-
-            foreach(Eleve eleve in Globale.listeEleve)
-            {
-                if(eleve.ClasseEleve == classe)
-                {
-                    LesEleves.Add(eleve.NomEleve);
-                }
-            }
-
-            return LesEleves;
-        }
-
-        public void verifPhotoEleve(Eleve eleve)
-        {
-            string nomFichierJPG = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
-            string nomFichierPNG = eleve.NomEleve + " " + eleve.PrenomEleve + ".png";
-            bool trouveBool = false;
-
-            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = System.IO.Path.Combine(sCurrentDirectory, @".\FichiersPHOTO");
-            string sFilePath = Path.GetFullPath(sFile);
-
-            DirectoryInfo directory = new DirectoryInfo(sFilePath);
-
-            foreach (var file in directory.GetFiles())
-            {
-                int index = file.Name.IndexOf(".");
-                if (file.Name.Substring(index, 4) == ".png")
-                {
-                    if (nomFichierPNG == file.Name)
-                    {
-                        trouveBool = true;
-                        break;
-                    }
-                }
-
-                else if (file.Name.Substring(index, 4) == ".jpg")
-                {
-                    if (nomFichierJPG == file.Name)
-                    {
-                        trouveBool = true;
-                        break;
-                    }
-                }
-            }
-
-            if(trouveBool == false)
-            {
-                listeEleveSansPhoto.Add(eleve);
-            }
-        }
         
+
         public void setLesClasses()
         {
             List<string> listeClassesAll = new List<string>();
@@ -183,7 +107,7 @@ namespace CartesAcces
             foreach(Eleve eleve in Globale.listeEleve)
             {
                 if (eleve.ClasseEleve == uneClasse)
-                    listeEleveImpr.Add(eleve);
+                    Globale.listeEleveImpr.Add(eleve);
             }
         }
 
@@ -195,7 +119,7 @@ namespace CartesAcces
                 string numSection = eleve.ClasseEleve.Substring(0,1); //solution?
                 if (numSection == uneSection.Substring(0, 1))
                 {
-                    listeEleveImpr.Add(eleve);
+                    Globale.listeEleveImpr.Add(eleve);
                 }
             }
         }
@@ -261,24 +185,24 @@ namespace CartesAcces
             if (imprSection == true)
                 affecterElevesSections(cbbImprSection.Text);
 
-            listeEleveSansPhoto.Clear();
+            Globale.listeEleveSansPhoto.Clear();
 
-            if (listeEleveImpr.Count == 0)
+            if (Globale.listeEleveImpr.Count == 0)
             {
                 MessageBox.Show("Veuillez selectionner une classe, une section ou bien une liste personnalisée d'élèves.");
             }
 
             else
             {
-                foreach (Eleve eleve in listeEleveImpr)
+                foreach (Eleve eleve in Globale.listeEleveImpr)
                 {
-                    verifPhotoEleve(eleve);
+                    Photo.verifPhotoEleve(eleve);
                 }
 
-                if (listeEleveSansPhoto.Count != 0)
+                if (Globale.listeEleveSansPhoto.Count != 0)
                 {
                     string msg = "Attention ! Les élèves suivant n'ont pas de photo : ";
-                    foreach (Eleve eleve in listeEleveSansPhoto)
+                    foreach (Eleve eleve in Globale.listeEleveSansPhoto)
                     {
                         msg = msg + Environment.NewLine + eleve.NomEleve + " " + eleve.PrenomEleve;
                     }
@@ -295,15 +219,15 @@ namespace CartesAcces
                         frm.imprListe = imprListe;
                         frm.imprSection = imprSection;
 
-                        frm.listeEleve = listeEleveImpr;
+                        frm.listeEleve = Globale.listeEleveImpr;
 
                         frm.affecterListeClee();
 
                         int index = 0;
-                        while (listeEleveImpr[index].SansEDT == true)
+                        while (Globale.listeEleveImpr[index].SansEDT == true)
                         {
                             index++;
-                            if (index >= listeEleveImpr.Count - 1)
+                            if (index >= Globale.listeEleveImpr.Count - 1)
                             {
                                 break;
                             }
@@ -325,15 +249,15 @@ namespace CartesAcces
                     frm.imprListe = imprListe;
                     frm.imprSection = imprSection;
 
-                    frm.listeEleve = listeEleveImpr;
+                    frm.listeEleve = Globale.listeEleveImpr;
 
                     frm.affecterListeClee();
 
                     int index = 0;
-                    while (listeEleveImpr[index].SansEDT == true)
+                    while (Globale.listeEleveImpr[index].SansEDT == true)
                     {
                         index++;
-                        if (index >= listeEleveImpr.Count - 1)
+                        if (index >= Globale.listeEleveImpr.Count - 1)
                         {
                             break;
                         }
@@ -357,7 +281,7 @@ namespace CartesAcces
             // lors de la validation sur l'édition photo l'emploi du temps associé à la création du Word est "3ARIANE" à la place de
             // "3GALILEE"
             btnValiderImpr.Enabled = true;
-            listeEleveImpr.Clear();
+            Globale.listeEleveImpr.Clear();
 
             // -- Booléen de selection --
             imprSection = false;
@@ -383,7 +307,7 @@ namespace CartesAcces
             // lors de la validation sur l'édition photo l'emploi du temps associé à la création du Word est "3ALPHA" à la place de
             // "4ORION" par exemple
             btnValiderImpr.Enabled = true;
-            listeEleveImpr.Clear();
+            Globale.listeEleveImpr.Clear();
 
             // -- Booléen de selection --
             imprSection = true;
@@ -410,7 +334,7 @@ namespace CartesAcces
 
         private void rdbListePerso_CheckedChanged(object sender, EventArgs e)
         {
-            listeEleveImpr.Clear(); // permet de clear la liste qui aurait été construite par la sélection d'une classe / d'une section avec/ou non de la validation
+            Globale.listeEleveImpr.Clear(); // permet de clear la liste qui aurait été construite par la sélection d'une classe / d'une section avec/ou non de la validation
             // si je n'ai pas cette ligne, le DataGridView (liste personnalisée) affichera une liste qui n'était pas souhaité par l'utilisateur
 
             checkedListePerso();
@@ -432,11 +356,11 @@ namespace CartesAcces
                 eleve.OptionQuatreEleve = row.Cells[7].Value.ToString();
                 eleve.MefEleve = row.Cells[8].Value.ToString();
 
-                listeEleveImpr.Add(eleve);
+                Globale.listeEleveImpr.Add(eleve);
             }
             DataGridResultats.DataSource = null;
             DataGridResultats.Refresh();
-            DataGridResultats.DataSource = listeEleveImpr;
+            DataGridResultats.DataSource = Globale.listeEleveImpr;
 
         }
 
@@ -468,7 +392,7 @@ namespace CartesAcces
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            listeEleveImpr.Clear();
+            Globale.listeEleveImpr.Clear();
             DataGridResultats.DataSource = null;
         }
 

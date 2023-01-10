@@ -14,74 +14,9 @@ namespace CartesAcces
 {
     public partial class frmImportPhotoUnique : Form
     {
-        // ** VARIABLES : Pour l'édition de l'emploi du temps (rognage) **
-        public bool selectionClick = false;     // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
-        public int cropX;       // -> Abscisse de départ du rognage
-        public int cropY;       // -> Ordonnée de départ du rognage
-        public int cropWidth;       // -> Largeur du rognage
-        public int cropHeight;      // -> Hauteur du rognage
-        public Pen cropPen;     // -> Stylo qui dessine le rectangle correspondant au rognage
-
-        // ** VARIABLES : Chemin de l'image **
-        string FilePath;
-
         public frmImportPhotoUnique()
         {
             InitializeComponent();
-        }
-
-        public void setLaPhoto(string path)
-        {
-            pbPhotoUnique.Image = Image.FromFile(path);
-            FilePath = path;
-        }
-
-        public void cropLaPhoto()
-        {
-            // -- Si la largeur a rogner est trop faible, on sort --
-            if (cropWidth < 1)
-            {
-                return;
-            }
-
-            /* -- Rectangle pour stocker l'image rognée avec les points calculés --
-                Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
-                qui sont celles des vrai fichier EDT !
-                Cela permet d'éviter les problèmes de résolution d'image après le rognage */
-
-            int widthSave = pbPhotoUnique.Width;
-            int heightSave = pbPhotoUnique.Height;
-
-
-            int cropWidthReal = (cropWidth * pbPhotoUnique.Image.Width) / pbPhotoUnique.Width;
-            int cropHeightReal = (cropHeight * pbPhotoUnique.Image.Height) / pbPhotoUnique.Height;
-            int cropXReal = (cropX * pbPhotoUnique.Image.Width) / pbPhotoUnique.Width;
-            int cropYReal = (cropY * pbPhotoUnique.Image.Height) / pbPhotoUnique.Height;
-
-            Rectangle rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
-
-            // -- On stock l'image original dans un bitmap --
-            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile(FilePath));
-
-            // -- Bitmap pour l'image rognée --
-            Bitmap _img = new Bitmap(cropWidthReal, cropHeightReal);
-
-            // -- Création d'un graphique depuis l'image rognée
-            Graphics g = Graphics.FromImage(_img);
-
-            // -- Attributs de l'image --
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            g.CompositingQuality = CompositingQuality.HighQuality;
-
-            // -- On dessine l'image original, avec les dimensions rognées dans le graphique 
-            g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
-
-            // -- Affichage dans la picturebox
-            pbPhotoUnique.Image = _img;
-            pbPhotoUnique.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbPhotoUnique.Width = widthSave;
-            pbPhotoUnique.Height = heightSave;
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -90,7 +25,7 @@ namespace CartesAcces
             Cursor = Cursors.Cross;
 
             // -- On est dans le mode selection
-            selectionClick = true;
+            Photo.selectionClick = true;
 
             // -- On peut cliquer sur rogner
             btnCrop.Enabled = true;
@@ -101,9 +36,9 @@ namespace CartesAcces
         private void btnCrop_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            selectionClick = false;
+            Photo.selectionClick = false;
 
-            cropLaPhoto();
+            Photo.cropLaPhoto(pbPhotoUnique);
 
             btnCrop.Enabled = false;
         }
@@ -111,16 +46,16 @@ namespace CartesAcces
         private void pbPhotoUnique_MouseDown(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selectionné est cliqué --
-            if (selectionClick == true)
+            if (Photo.selectionClick == true)
             {
                 // -- Si il y a clic gauche --
                 if (e.Button == System.Windows.Forms.MouseButtons.Left)
                 {
                     // -- On prend les coordonnées de départ --
-                    cropX = e.X;
-                    cropY = e.Y;
-                    cropPen = new Pen(Color.Black, 1);
-                    cropPen.DashStyle = DashStyle.DashDotDot;
+                    Photo.cropX = e.X;
+                    Photo.cropY = e.Y;
+                    Photo.cropPen = new Pen(Color.Black, 1);
+                    Photo.cropPen.DashStyle = DashStyle.DashDotDot;
                 }
                 // -- Refresh constant pour avoir un apperçu pendant la selection --
                 pbPhotoUnique.Refresh();
@@ -130,7 +65,7 @@ namespace CartesAcces
         private void pbPhotoUnique_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selection est cliqué --
-            if (selectionClick == true)
+            if (Photo.selectionClick == true)
             {
                 // -- Si pas d'image, on sort --
                 if (pbPhotoUnique.Image == null)
@@ -141,9 +76,9 @@ namespace CartesAcces
                 {
                     // -- On prend les dimensions a la fin du déplacement de la souris
                     pbPhotoUnique.Refresh();
-                    cropWidth = e.X - cropX;
-                    cropHeight = e.Y - cropY;
-                    pbPhotoUnique.CreateGraphics().DrawRectangle(cropPen, cropX, cropY, cropWidth, cropHeight);
+                    Photo.cropWidth = e.X - Photo.cropX;
+                    Photo.cropHeight = e.Y - Photo.cropY;
+                    pbPhotoUnique.CreateGraphics().DrawRectangle(Photo.cropPen, Photo.cropX, Photo.cropY, Photo.cropWidth, Photo.cropHeight);
                 }
             }
         }
@@ -154,10 +89,10 @@ namespace CartesAcces
             Cursor = Cursors.Default;
 
             // -- On est plus dans la selection --
-            selectionClick = false;
+            Photo.selectionClick = false;
 
             // -- On remet les paramètres et l'image de base --
-            pbPhotoUnique.Image = Image.FromFile(FilePath);
+            pbPhotoUnique.Image = Image.FromFile(Photo.FilePath);
             btnCrop.Enabled = false;
             btnCancel.Enabled = false;
         }

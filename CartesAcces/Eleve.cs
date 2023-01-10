@@ -43,5 +43,40 @@ namespace CartesAcces
         public string OptionQuatreEleve { get => optionQuatreEleve; set => optionQuatreEleve = value; }
         public string MefEleve { get => mefEleve; set => mefEleve = value; }
         public bool SansEDT { get => sansEDT; set => sansEDT = value; }
+        
+        public static List<string> getEleveSection(string section)
+        {
+            // l'idée est de récupérer le premier caractère d'une propriété de l'objet, ici on veut le premier caractère de la classe de l'élève, on choisit
+            //section "3ème" par exemple, on veut prendre que le caractère "3" puis on le compare au premier caractère de la classe de chaque élève de la liste
+            //si "3" est le premier caractère alors cette élève est ajouté à la liste des élèves à imprimer
+            List<string> LesEleves = new List<string>();
+
+            section = section.Substring(0, 1);
+            foreach (Eleve eleve in Globale.listeEleve)
+            {
+                if (eleve.ClasseEleve.Substring(0,1) == section)
+                {
+                    LesEleves.Add(eleve.NomEleve);
+                }
+            }
+
+            return LesEleves;
+        }
+        
+        
+        public static List<string> getEleveClasse(string classe)
+        {
+            List<string> LesEleves = new List<string>();
+
+            foreach(Eleve eleve in Globale.listeEleve)
+            {
+                if(eleve.ClasseEleve == classe)
+                {
+                    LesEleves.Add(eleve.NomEleve);
+                }
+            }
+
+            return LesEleves;
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public class Chemin
+    public static class Chemin
     {
         // -- Obtention du chemin --
         public static string getFilePath(string file)
