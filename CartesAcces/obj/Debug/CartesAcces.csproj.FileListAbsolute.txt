@@ -211,3 +211,29 @@ D:\appStage\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
 D:\appStage\CartesAcces\bin\Debug\itextsharp.dll
 D:\appStage\CartesAcces\bin\Debug\itextsharp.xml
 D:\appStage\CartesAcces\obj\Debug\CartesAcces.csproj.CopyComplete
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.csproj.AssemblyReference.cache
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\Interop.Microsoft.Office.Core.dll
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\Interop.VBIDE.dll
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.csproj.ResolveComReference.cache
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.frmAccueil.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.frmCarteIndividuelle.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.frmConnexion.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.frmImportPhotoUnique.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartes.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.frmMultiplesCartesEdition.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.frmParametres.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.progressBarForm.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.Properties.Resources.resources
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.csproj.GenerateResource.cache
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.csproj.CoreCompileInputs.cache
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.exe
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.pdb
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\CartesAcces.exe.config
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\CartesAcces.exe
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\CartesAcces.pdb
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\BouncyCastle.Crypto.dll
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\itextsharp.dll
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\bin\Debug\itextsharp.xml
+D:\Stage 2ème année\Nouveau dossier (3)\CartesAcces\obj\Debug\CartesAcces.csproj.CopyComplete
