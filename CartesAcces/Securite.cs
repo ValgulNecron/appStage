@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Text.RegularExpressions;
 namespace CartesAcces
 {
     public static class Securite
@@ -45,6 +41,26 @@ namespace CartesAcces
                 if (hashBytes[i + 16] != hash[i])
                     //si le hash est different on envoie une erreur
                     throw new UnauthorizedAccessException();
+            return true;
+        }
+
+        public static bool validationPrerequisMdp(string motDePasse)
+        {
+            if (motDePasse.Length < 12)
+                return false;
+
+            if (!Regex.IsMatch(motDePasse, @"[a-z]"))
+                return false;
+
+            if (!Regex.IsMatch(motDePasse, @"[A-Z]"))
+                return false;
+            
+            if (!Regex.IsMatch(motDePasse, @"[0-9]"))
+                return false;
+
+            if (!Regex.IsMatch(motDePasse, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-~\\]"))
+                return false; 
+            
             return true;
         }
     }
