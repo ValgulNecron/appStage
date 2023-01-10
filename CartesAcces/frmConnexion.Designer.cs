@@ -82,7 +82,7 @@ namespace CartesAcces
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(505, 458);
             this.Controls.Add(this.txtMotDePasse);
             this.Controls.Add(this.txtIdentifiant);
             this.Controls.Add(this.lblMdp);
