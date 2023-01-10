@@ -1,28 +1,33 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using System.Timers;
 
 namespace CartesAcces
 {
     public class Timer
     {
         private DateTime start;
-        private Timer timer;
+        private System.Timers.Timer timer;
         private int dureeMinute = 15;
 
         public Timer(Form form)
         {
             start = DateTime.Now;
-            timer = new Timer();
-            timer.Interval = dureeMinute / 60 / 1000; // la duree en minute mit en ms pour l'interval
-            timer.Tick = +OnTimerTick;
-
+            timer = new System.Timers.Timer(dureeMinute / 60 / 1000);
+            timer.Elapsed += OnTimeEvent;
+            timer.Enabled = true;
             form.MouseMove += Form_MouseMove;
         }
 
         private void Form_MouseMove(object sender, MouseEventArgs e)
         {
             start = DateTime.Now;
+        }
+
+        private void OnTimeEvent(object source, ElapsedEventArgs e)
+        {
+            
         }
     }
 }
