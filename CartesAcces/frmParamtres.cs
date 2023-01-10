@@ -491,9 +491,7 @@ namespace CartesAcces
 
             frmImportPhotoUnique frm = new frmImportPhotoUnique();
 
-            frm.setLaPhoto(path);
-
-
+            //Photo.setLaPhoto(path, );
 
             frm.Show();
         }

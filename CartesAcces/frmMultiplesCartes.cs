@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -21,7 +15,7 @@ namespace CartesAcces
         public frmMultiplesCartes()
         {
             InitializeComponent();
-            setLesClasses();
+            Eleve.setLesClasses(cbbImprClasse);
             checkedSectionClasse();
         }
 
@@ -43,7 +37,7 @@ namespace CartesAcces
             cbbImprSection.Enabled = true;
             lsbListeEleve.Enabled = true;
         }
-
+        
         public void checkedListePerso()
         {
             // dans le cas où l'utilsateur sélectionne une classe / section puis ensuite une listeperso
@@ -69,59 +63,6 @@ namespace CartesAcces
             cbbImprClasse.Enabled = false;
             cbbImprSection.Enabled = false;
             lsbListeEleve.Enabled = false;
-        }
-
-        
-
-        public void setLesClasses()
-        {
-            List<string> listeClassesAll = new List<string>();
-
-            //Pour cacher la valeur par défaut, aussi car la valeur par défaut sans cela prend le premier index qui est 3GALILEE par exemple
-            //cependant dans ce cas là, la liste n'est pas récupérée par défaut même si le premier objet est sélectionné par défaut
-            listeClassesAll.Add("");
-
-            foreach (string classe in Globale.classes3eme)
-            {
-                listeClassesAll.Add(classe);
-            }
-            foreach (string classe in Globale.classes4eme)
-            {
-                listeClassesAll.Add(classe);
-            }
-            foreach (string classe in Globale.classes5eme)
-            {
-                listeClassesAll.Add(classe);
-            }
-            foreach (string classe in Globale.classes6eme)
-            {
-                listeClassesAll.Add(classe);
-            }
-
-            cbbImprClasse.DataSource = listeClassesAll;
-        }
-
-        // -- Pour l'impression par classe, les élève de la liste initiale dont la classe correspond à la selection seront collectés --
-        public void affecterElevesClasses(string uneClasse)
-        {
-            foreach(Eleve eleve in Globale.listeEleve)
-            {
-                if (eleve.ClasseEleve == uneClasse)
-                    Globale.listeEleveImpr.Add(eleve);
-            }
-        }
-
-        // -- Pour l'impression par section --
-        public void affecterElevesSections(string uneSection)
-        {
-            foreach(Eleve eleve in Globale.listeEleve)
-            {
-                string numSection = eleve.ClasseEleve.Substring(0,1); //solution?
-                if (numSection == uneSection.Substring(0, 1))
-                {
-                    Globale.listeEleveImpr.Add(eleve);
-                }
-            }
         }
 
         public void initDataGrid()
@@ -180,10 +121,10 @@ namespace CartesAcces
         public void btnValiderImpr_Click(object sender, EventArgs e)
         {
             if (imprClasse == true)
-                affecterElevesClasses(cbbImprClasse.Text);
+                Eleve.affecterElevesClasses(cbbImprClasse.Text);
 
             if (imprSection == true)
-                affecterElevesSections(cbbImprSection.Text);
+                Eleve.affecterElevesSections(cbbImprSection.Text);
 
             Globale.listeEleveSansPhoto.Clear();
 
@@ -293,7 +234,7 @@ namespace CartesAcces
             cbbImprSection.Refresh();
 
         // -- Affiche liste eleve
-            lsbListeEleve.DataSource = getEleveClasse(cbbImprClasse.Text);
+            lsbListeEleve.DataSource = Eleve.getEleveClasse(cbbImprClasse.Text);
             lsbListeEleve.Refresh();
 
             // -- Comptage du nombre d'élève de la liste
@@ -319,7 +260,7 @@ namespace CartesAcces
             cbbImprClasse.Refresh();
 
         // -- Affiche liste eleve
-            lsbListeEleve.DataSource = getEleveSection(cbbImprSection.Text);
+            lsbListeEleve.DataSource = Eleve.getEleveSection(cbbImprSection.Text);
             lsbListeEleve.Refresh();
 
          // -- Comptage du nombre d'élève de la liste

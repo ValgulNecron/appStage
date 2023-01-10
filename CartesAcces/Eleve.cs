@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CartesAcces
 {
@@ -63,6 +64,33 @@ namespace CartesAcces
             return LesEleves;
         }
         
+        public static void setLesClasses(ComboBox cbbImprClasse)
+        {
+            List<string> listeClassesAll = new List<string>();
+
+            //Pour cacher la valeur par défaut, aussi car la valeur par défaut sans cela prend le premier index qui est 3GALILEE par exemple
+            //cependant dans ce cas là, la liste n'est pas récupérée par défaut même si le premier objet est sélectionné par défaut
+            listeClassesAll.Add("");
+
+            foreach (string classe in Globale.classes3eme)
+            {
+                listeClassesAll.Add(classe);
+            }
+            foreach (string classe in Globale.classes4eme)
+            {
+                listeClassesAll.Add(classe);
+            }
+            foreach (string classe in Globale.classes5eme)
+            {
+                listeClassesAll.Add(classe);
+            }
+            foreach (string classe in Globale.classes6eme)
+            {
+                listeClassesAll.Add(classe);
+            }
+
+            cbbImprClasse.DataSource = listeClassesAll;
+        }
         
         public static List<string> getEleveClasse(string classe)
         {
@@ -77,6 +105,30 @@ namespace CartesAcces
             }
 
             return LesEleves;
+        }
+
+        // -- Pour l'impression par classe, les élève de la liste initiale dont la classe
+        // correspond à la selection seront collectés --
+        public static void affecterElevesClasses(string uneClasse)
+        {
+            foreach(Eleve eleve in Globale.listeEleve)
+            {
+                if (eleve.ClasseEleve == uneClasse)
+                    Globale.listeEleveImpr.Add(eleve);
+            }
+        }
+        
+        // -- Idem pour la section -- 
+        public static void affecterElevesSections(string uneSection)
+        {
+            foreach(Eleve eleve in Globale.listeEleve)
+            {
+                string numSection = eleve.ClasseEleve.Substring(0,1); //solution?
+                if (numSection == uneSection.Substring(0, 1))
+                {
+                    Globale.listeEleveImpr.Add(eleve);
+                }
+            }
         }
     }
 }

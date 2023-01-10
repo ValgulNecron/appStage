@@ -66,19 +66,19 @@ namespace CartesAcces
             switch (cbbSection.Text)
             {
                 case "6eme":
-                    cbbClasse.DataSource = frmAccueil.classes6eme;
+                    cbbClasse.DataSource = Globale.classes6eme;
                     break;
 
                 case "5eme":
-                    cbbClasse.DataSource = frmAccueil.classes5eme;
+                    cbbClasse.DataSource = Globale.classes5eme;
                     break;
 
                 case "4eme":
-                    cbbClasse.DataSource = frmAccueil.classes4eme;
+                    cbbClasse.DataSource = Globale.classes4eme;
                     break;
 
                 case "3eme":
-                    cbbClasse.DataSource = frmAccueil.classes3eme;
+                    cbbClasse.DataSource = Globale.classes3eme;
                     break;
 
                 default:

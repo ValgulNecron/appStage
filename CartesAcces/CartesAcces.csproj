@@ -81,7 +81,6 @@
     </Compile>
     <Compile Include="frmCarteIndividuelle.cs">
       <SubType>Form</SubType>
-      <DependentUpon>packages.config</DependentUpon>
     </Compile>
     <Compile Include="frmCarteIndividuelle.Designer.cs">
       <DependentUpon>frmCarteIndividuelle.cs</DependentUpon>
@@ -146,7 +145,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
