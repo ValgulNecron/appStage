@@ -16,7 +16,7 @@ Repos du l'application de création de cartes d'accès
 
 -rendre l'interface légèrement plus instinctive au niveau de l'acccueil
 
--thème sombre
+-thème sombre / thème clair => enregistrer dans la base de données (paramètre utilisateur)
 
 -les photos sont allongés
 
