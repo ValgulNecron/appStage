@@ -25,15 +25,15 @@ namespace CartesAcces
         // theme 
         static public bool _estEnModeSombre = false;
 
-        static public string _couleurDeFondClaire = "#eff1f5";
-        static public string _couleurDuTexteclaire = "#4c4f69";
-        static public string _couleurBandeauxClaire = "#179299";
-        static public string _couleurBoutonsClaire = "#8c8fa1";
+        static public List<int> _couleurDeFondClaire = new List<int>{239, 241, 245};
+        static public List<int> _couleurDuTexteclaire = new List<int>{76, 79, 105};
+        static public List<int> _couleurBandeauxClaire =new List<int>{23, 146, 153};
+        static public List<int> _couleurBoutonsClaire = new List<int>{140, 143, 161};
         
-        static public string _couleurDeFondSombre = "#1e1e2e";
-        static public string _couleurDuTexteSombre = "#cdd6f4";
-        static public string _couleurBandeauxSombre = "#94e2d5";
-        static public string _couleurBoutonsSombre = "#9399b2";
+        static public List<int> _couleurDeFondSombre = new List<int>{30, 30, 46};
+        static public List<int> _couleurDuTexteSombre = new List<int>{148, 226, 213};
+        static public List<int> _couleurBandeauxSombre = new List<int>{239, 241, 245};
+        static public List<int> _couleurBoutonsSombre = new List<int>{127, 132, 156};
 
         //
         static public int currentProgress = 0;
