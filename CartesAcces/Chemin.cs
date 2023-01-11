@@ -6,9 +6,6 @@ namespace CartesAcces
 {
     public static class Chemin
     {
-        // -- Chemins spécifique
-        public static string pathListeEleve = "./data/ImportListeEleve/importEleve.csv";
-        
         // -- Obtention du chemin --
         public static string getFilePath(string file)
         {
