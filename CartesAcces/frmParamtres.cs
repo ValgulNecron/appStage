@@ -38,7 +38,7 @@ namespace CartesAcces
         public void importElevesBis()
         {
             string sourcePath = txtPathEleve.Text;
-            string destinationPath = "./importEleve.csv";
+            string destinationPath = Chemin.pathListeEleve;
             try
             {
                 if (File.Exists(destinationPath))
