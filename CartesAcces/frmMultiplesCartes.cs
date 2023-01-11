@@ -137,7 +137,7 @@ namespace CartesAcces
             {
                 foreach (Eleve eleve in Globale.listeEleveImpr)
                 {
-                    Photo.verifPhotoEleve(eleve);
+                    Edition.verifPhotoEleve(eleve);
                 }
 
                 if (Globale.listeEleveSansPhoto.Count != 0)
