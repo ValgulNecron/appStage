@@ -16,16 +16,59 @@ namespace CartesAcces
         public frmAccueil()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
             if (Globale._estEnModeSombre)
             {
-                pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
-                    Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
+                BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0],
+                    Globale._couleurDeFondSombre[1], Globale._couleurDeFondSombre[2]);
+                foreach (Control controle in Controls)
+                {
+                    if (controle is Button)
+                    {
+                        Button controle2 = controle as Button;
+                        controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
+                            Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                        controle2.FlatStyle = FlatStyle.Flat;
+                    }
+
+                    if (controle is TextBox)
+                    {
+                        TextBox controle2 = controle as TextBox;
+                        controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
+                            Globale._couleurTextBoxSombre[1], Globale._couleurTextBoxSombre[2]);
+                        controle2.BorderStyle = BorderStyle.None;
+                    }
+                    controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteSombre[0],
+                        Globale._couleurDuTexteSombre[1], Globale._couleurDuTexteSombre[2]);
+                    pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
+                        Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
+                }
             }
             else
             {
-                pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
-                    Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
+                BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0],
+                    Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
+                foreach (Control controle in Controls)
+                {
+                    if (controle is Button)
+                    {
+                        Button controle2 = controle as Button;
+                        controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsClaire[0],
+                            Globale._couleurBoutonsClaire[1], Globale._couleurBoutonsClaire[2]);
+                        controle2.FlatStyle = FlatStyle.Flat;
+                    }
+
+                    if (controle is TextBox)
+                    {
+                        TextBox controle2 = controle as TextBox;
+                        controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxClaire[0],
+                            Globale._couleurTextBoxClaire[1], Globale._couleurTextBoxClaire[2]);
+                        controle2.BorderStyle = BorderStyle.None;
+                    }
+                    controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteclaire[0],
+                        Globale._couleurDuTexteclaire[1], Globale._couleurDuTexteclaire[2]);
+                    pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
+                        Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
+                }
             }
         }
 
