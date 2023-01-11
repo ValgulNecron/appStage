@@ -18,9 +18,12 @@ namespace CartesAcces
                 {
                     if (controle is Button)
                     {
+                        Button controle2 = controle as Button;
                         controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
                             Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                        controle2.FlatAppearance.BorderSize = 0;
                     }
+                    if (controle is TextBox)
                     controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteSombre[0],
                         Globale._couleurDuTexteSombre[1], Globale._couleurDuTexteSombre[2]);
                 }
