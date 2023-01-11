@@ -25,7 +25,7 @@ namespace CartesAcces
             Cursor = Cursors.Cross;
 
             // -- On est dans le mode selection
-            Photo.selectionClick = true;
+            Edition.selectionClick = true;
 
             // -- On peut cliquer sur rogner
             btnCrop.Enabled = true;
@@ -36,9 +36,9 @@ namespace CartesAcces
         private void btnCrop_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            Photo.selectionClick = false;
+            Edition.selectionClick = false;
 
-            Photo.cropLaPhoto(pbPhotoUnique);
+            Edition.cropLaPhoto(pbPhotoUnique);
 
             btnCrop.Enabled = false;
         }
@@ -46,16 +46,16 @@ namespace CartesAcces
         private void pbPhotoUnique_MouseDown(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selectionné est cliqué --
-            if (Photo.selectionClick == true)
+            if (Edition.selectionClick)
             {
                 // -- Si il y a clic gauche --
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les coordonnées de départ --
-                    Photo.cropX = e.X;
-                    Photo.cropY = e.Y;
-                    Photo.cropPen = new Pen(Color.Black, 1);
-                    Photo.cropPen.DashStyle = DashStyle.DashDotDot;
+                    Edition.cropX = e.X;
+                    Edition.cropY = e.Y;
+                    Edition.cropPen = new Pen(Color.Black, 1);
+                    Edition.cropPen.DashStyle = DashStyle.DashDotDot;
                 }
                 // -- Refresh constant pour avoir un apperçu pendant la selection --
                 pbPhotoUnique.Refresh();
@@ -65,20 +65,20 @@ namespace CartesAcces
         private void pbPhotoUnique_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selection est cliqué --
-            if (Photo.selectionClick == true)
+            if (Edition.selectionClick)
             {
                 // -- Si pas d'image, on sort --
                 if (pbPhotoUnique.Image == null)
                     return;
 
                 // -- Glissement à la fin du premier clic gauche --
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les dimensions a la fin du déplacement de la souris
                     pbPhotoUnique.Refresh();
-                    Photo.cropWidth = e.X - Photo.cropX;
-                    Photo.cropHeight = e.Y - Photo.cropY;
-                    pbPhotoUnique.CreateGraphics().DrawRectangle(Photo.cropPen, Photo.cropX, Photo.cropY, Photo.cropWidth, Photo.cropHeight);
+                    Edition.cropWidth = e.X - Edition.cropX;
+                    Edition.cropHeight = e.Y - Edition.cropY;
+                    pbPhotoUnique.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY, Edition.cropWidth, Edition.cropHeight);
                 }
             }
         }
@@ -89,10 +89,10 @@ namespace CartesAcces
             Cursor = Cursors.Default;
 
             // -- On est plus dans la selection --
-            Photo.selectionClick = false;
+            Edition.selectionClick = false;
 
             // -- On remet les paramètres et l'image de base --
-            pbPhotoUnique.Image = Image.FromFile(Photo.FilePath);
+            pbPhotoUnique.Image = Image.FromFile(Edition.FilePath);
             btnCrop.Enabled = false;
             btnCancel.Enabled = false;
         }
