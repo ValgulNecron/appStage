@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using Button = System.Windows.Forms.Button;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace CartesAcces
 {
@@ -18,8 +21,18 @@ namespace CartesAcces
                 {
                     if (controle is Button)
                     {
+                        Button controle2 = controle as Button;
                         controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
                             Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                        controle2.FlatStyle = FlatStyle.Flat;
+                    }
+
+                    if (controle is TextBox)
+                    {
+                        TextBox controle2 = controle as TextBox;
+                        controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
+                            Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                        controle2.BorderStyle = BorderStyle.None;
                     }
                     controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteSombre[0],
                         Globale._couleurDuTexteSombre[1], Globale._couleurDuTexteSombre[2]);
