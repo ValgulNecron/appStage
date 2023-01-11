@@ -43,7 +43,6 @@ namespace CartesAcces
 
         private void frmConnexion_Load(object sender, EventArgs e)
         {
-            Globale._estEnModeSombre = true;
             txtIdentifiant.Text = "";
             txtMotDePasse.Text = "";
             if (Globale._estEnModeSombre)
