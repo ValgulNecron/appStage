@@ -27,15 +27,15 @@ namespace CartesAcces
         {
             Globale.currentProgress = 1;
             Globale.totalSteps = 3;
-            backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
 
             ReadCSV.setLesEleves("exportCSVExtraction.csv");
-            backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
             Globale.currentProgress = 2;
 
             Eleve.setLesClasses();
             Globale.currentProgress = 3;
-            backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
 
             MessageBox.Show("Continuer");
 
