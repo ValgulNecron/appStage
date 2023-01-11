@@ -47,20 +47,26 @@ namespace CartesAcces
             txtMotDePasse.Text = "";
             if (Globale._estEnModeSombre)
             {
-                BackColor = ColorTranslator.FromHtml(Globale._couleurDeFondSombre);
+                BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0],
+                    Globale._couleurDeFondSombre[1], Globale._couleurDeFondSombre[2]);
                 foreach (Control controle in Controls)
                 {
-                    controle.BackColor = ColorTranslator.FromHtml(Globale._couleurBoutonsSombre);
-                    controle.ForeColor = ColorTranslator.FromHtml(Globale._couleurDuTexteSombre);
+                    controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
+                        Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                    controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteSombre[0],
+                        Globale._couleurDuTexteSombre[1], Globale._couleurDuTexteSombre[2]);
                 }
             }
             else
             {
-                BackColor = ColorTranslator.FromHtml(Globale._couleurDeFondClaire);
+                BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0],
+                    Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
                 foreach (Control controle in Controls)
                 {
-                    controle.BackColor = ColorTranslator.FromHtml(Globale._couleurBoutonsClaire);
-                    controle.ForeColor = ColorTranslator.FromHtml(Globale._couleurDuTexteclaire);
+                    controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsClaire[0],
+                        Globale._couleurBoutonsClaire[1], Globale._couleurBoutonsClaire[2]);
+                    controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteclaire[0],
+                        Globale._couleurDuTexteclaire[1], Globale._couleurDuTexteclaire[2]);
                 }
             }
         }
