@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace CartesAcces
 {
@@ -15,6 +16,7 @@ namespace CartesAcces
         public frmMultiplesCartes()
         {
             InitializeComponent();
+            Couleur.setCouleurFenetre(this);
             Eleve.setLesClasses(cbbImprClasse);
             checkedSectionClasse();
         }
@@ -137,7 +139,7 @@ namespace CartesAcces
             {
                 foreach (Eleve eleve in Globale.listeEleveImpr)
                 {
-                    Photo.verifPhotoEleve(eleve);
+                    Edition.verifPhotoEleve(eleve);
                 }
 
                 if (Globale.listeEleveSansPhoto.Count != 0)

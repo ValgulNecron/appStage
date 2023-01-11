@@ -16,6 +16,17 @@ namespace CartesAcces
         public frmAccueil()
         {
             InitializeComponent();
+            Couleur.setCouleurFenetre(this);
+            if (Globale._estEnModeSombre)
+            {
+                pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
+                    Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
+            }
+            else
+            {
+                pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
+                    Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
+            }
         }
 
         private void OpenChildForm(Form childForm)

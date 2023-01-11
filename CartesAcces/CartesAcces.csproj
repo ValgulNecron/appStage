@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chemin.cs" />
+    <Compile Include="Couleur.cs" />
     <Compile Include="Edition.cs" />
     <Compile Include="Eleve.cs" />
     <Compile Include="frmConnexion.cs">
@@ -99,7 +100,6 @@
       <DependentUpon>frmParamtres.cs</DependentUpon>
     </Compile>
     <Compile Include="Globale.cs" />
-    <Compile Include="Photo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="progressBarForm.cs">
       <SubType>Form</SubType>

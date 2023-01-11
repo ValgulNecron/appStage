@@ -15,6 +15,7 @@ namespace CartesAcces
         public progressBarForm()
         {
             InitializeComponent();
+            Couleur.setCouleurFenetre(this);
         }
 
         private void progressBarForm_Load(object sender, EventArgs e)
