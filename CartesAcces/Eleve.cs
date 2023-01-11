@@ -132,10 +132,9 @@ namespace CartesAcces
         }
         public static void setLesClasses()
         {
-
             foreach (Eleve eleve in Globale.listeEleve)
             {
-                string numClasse = eleve.ClasseEleve.Substring(0, 1);
+                string numClasse = eleve.ClasseEleve.Substring(2, 1);
 
                 if (numClasse == "6" && !(Globale.classes6eme.Contains(eleve.ClasseEleve)))
                     Globale.classes6eme.Add(eleve.ClasseEleve);
@@ -148,7 +147,6 @@ namespace CartesAcces
                 else
                     Globale.classesUnknown.Add(eleve.ClasseEleve);
             }
-
             Globale.classes3eme.Sort();
             Globale.classes4eme.Sort();
             Globale.classes5eme.Sort();
