@@ -16,9 +16,11 @@ namespace CartesAcces
         {
             this.form = form;
             start = DateTime.Now;
-            timer = new System.Timers.Timer(dureeMinute * 60 * 1000);
+            timer = new System.Timers.Timer();
+            timer.Interval = dureeMinute * 60 * 1000;
             timer.Elapsed += OnTimeEvent;
             timer.Enabled = true;
+            timer.Start();  
             form.MouseMove += Form_MouseMove;
         }
 
