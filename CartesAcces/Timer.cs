@@ -9,7 +9,8 @@ namespace CartesAcces
     {
         private DateTime start;
         private System.Timers.Timer timer;
-        private int dureeMinute = 1;
+        private int dureeMinute = 15;
+        private int frequenceDesVerifEnMinute = 2;
         private Form form;
 
         public Timer(Form form)
@@ -17,7 +18,7 @@ namespace CartesAcces
             this.form = form;
             start = DateTime.Now;
             timer = new System.Timers.Timer();
-            timer.Interval = 10 * 1000;
+            timer.Interval = frequenceDesVerifEnMinute * 60 * 1000;
             timer.Elapsed += OnTimeEvent;
             timer.Enabled = true;
             timer.AutoReset = true;
@@ -32,7 +33,7 @@ namespace CartesAcces
 
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
-            if (start.Add(TimeSpan.FromSeconds(10)) <= DateTime.Now)
+            if (start.Add(TimeSpan.FromMinutes(dureeMinute)) <= DateTime.Now)
             {
                 if (Globale._estConnecter)
                 {
