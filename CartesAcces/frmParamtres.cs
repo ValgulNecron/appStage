@@ -63,8 +63,37 @@ namespace CartesAcces
 
         public void importEdtBis(string path)
         {
+            // -- Copie le PDF dans les fichier de l'app --
+            string sourcePath = txtPathEleve.Text;
+            string destinationPath = Chemin.pathListeEleve;
+            try
+            {
+                if (File.Exists(destinationPath))
+                {
+                    File.Delete(destinationPath);
+                }
+
+                File.Copy(sourcePath, destinationPath);
+                MessageBox.Show("Import Réussi");
+                ReadCSV.setLesEleves(destinationPath);
+                Eleve.setLesClasses();
+
+                initDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("Import Echoué");
+            }
+            // -- Recupère les EDT sous forme d'image
+            Globale.listeEdtImage = Pdf.getImages(path);
+            // -- Recupère les EDT sous form de page de PDF
+            Globale.listeEdt = Pdf.getPages(path);
+            
+            // -- -- -- -- --
+            
+            // -- Clé nom prenom classe... inutile ?
             List<string> listeExtractPDF = new List<string>();
-            List<iText.Layout.Element.Image> listeEdtImage = Pdf.getImages(path);
+            
             string textPDF = Pdf.getText(path);
             int nbPage = Pdf.getNbPages(path);
             

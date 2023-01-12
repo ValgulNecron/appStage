@@ -7,6 +7,11 @@ namespace CartesAcces
     public static class Chemin
     {
         public static string pathListeEleve = "./data/ImportListeEleve/ImportEleve.csv";
+        
+        public static string pathEdtEleve6e = "./data/ElevesEdt/ImportEdt6e.pdf";
+        public static string pathEdtEleve5e = "./data/ElevesEdt/ImportEdt5e.pdf";
+        public static string pathEdtEleve4e = "./data/ElevesEdt/ImportEdt4e.pdf";
+        public static string pathEdtEleve3e = "./data/ElevesEdt/ImportEdt3e.pdf";
     
         // -- Obtention du chemin --
         public static string getFilePath(string file)
