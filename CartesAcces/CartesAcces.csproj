@@ -101,6 +101,7 @@
       <DependentUpon>frmParamtres.cs</DependentUpon>
     </Compile>
     <Compile Include="Globale.cs" />
+    <Compile Include="Pdf.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="progressBarForm.cs">
       <SubType>Form</SubType>
