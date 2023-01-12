@@ -23,7 +23,7 @@ namespace CartesAcces
         public static List<Eleve> listeEleveSansPhoto = new List<Eleve>();
 
         // theme 
-        static public bool _estEnModeSombre = false;
+        static public bool _estEnModeSombre = true;
 
         static public List<int> _couleurDeFondClaire = new List<int>{220, 224, 232};
         static public List<int> _couleurDuTexteclaire = new List<int>{76, 79, 105};
