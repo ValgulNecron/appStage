@@ -21,6 +21,7 @@ namespace CartesAcces
             timer.Elapsed += OnTimeEvent;
             timer.Enabled = true;
             timer.AutoReset = true;
+            timer.Start();
             this.form.MouseMove += Form_MouseMove;
         }
 
