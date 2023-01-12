@@ -10,7 +10,7 @@ namespace CartesAcces
             string outputPattern = "./image/page_%d.jpg";
 
             var process = new Process();
-            process.StartInfo.FileName = "gs1000w32.exe"; // or the appropriate version of the executable for your system
+            process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments = $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -dPDFFitPage -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -24,7 +24,7 @@ namespace CartesAcces
             string outputFile = "output.txt";
 
             var process = new Process();
-            process.StartInfo.FileName = "gs1000w32.exe"; // or the appropriate version of the executable for your system
+            process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments = $"-o \"{outputFile}\" -I\"./font/a.ttg\" -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
