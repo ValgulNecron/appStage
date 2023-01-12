@@ -8,10 +8,10 @@ namespace CartesAcces
         public static void getImageFromPdf(string path)
         {
             string outputPattern = "./image/page_%d.jpg";
-            
+
             var process = new Process();
             process.StartInfo.FileName = "gs1000w32.exe"; // or the appropriate version of the executable for your system
-            process.StartInfo.Arguments = $"-o \"{outputPattern}\" -sDEVICE=jpeg -dJPEGQ=100 -dPDFFitPage -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
+            process.StartInfo.Arguments = $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -dPDFFitPage -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.Start();
@@ -25,7 +25,7 @@ namespace CartesAcces
 
             var process = new Process();
             process.StartInfo.FileName = "gs1000w32.exe"; // or the appropriate version of the executable for your system
-            process.StartInfo.Arguments = $"-o \"{outputFile}\" -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
+            process.StartInfo.Arguments = $"-o \"{outputFile}\" -I\"./font/a.ttg\" -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.Start();
