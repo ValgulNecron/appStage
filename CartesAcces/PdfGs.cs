@@ -9,6 +9,12 @@ namespace CartesAcces
         {
             string outputPattern = "./image/page_%d.jpg";
 
+            if (Directory.Exists("./image"))
+            {
+                Directory.Delete("./image");
+            }
+
+            Directory.CreateDirectory("./image");
             var process = new Process();
             process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments = $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -r200 -dPDFFitPage -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
