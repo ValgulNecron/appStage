@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using iText.Kernel.Pdf;
+using iText.Layout.Element;
+using Microsoft.Office.Interop.Word;
 
 namespace CartesAcces
 {
@@ -21,6 +24,10 @@ namespace CartesAcces
         public static List<Eleve> listeEleve = new List<Eleve>();
         public static List<Eleve> listeEleveImpr = new List<Eleve>();
         public static List<Eleve> listeEleveSansPhoto = new List<Eleve>();
+        
+        // Liste des EDT
+        public static List<PdfPage> listeEdt = new List<PdfPage>();
+        public static List<Image> listeEdtImage = new List<Image>();
 
         // theme 
         static public bool _estEnModeSombre = true;

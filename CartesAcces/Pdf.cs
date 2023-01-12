@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using iText.IO.Util;
 using iText.Kernel.Pdf;
@@ -18,6 +19,35 @@ namespace CartesAcces
         {
             PdfDocument pdfDoc = new PdfDocument(new PdfReader(path));
             return pdfDoc.GetNumberOfPages();
+        }
+
+        public static void savePdf(string path)
+        {
+            // -- 
+        }
+
+        public static void importEdt(string sourcePath)
+        {
+            // -- Copie le PDF dans les fichier de l'app --
+            string destinationPath = Chemin.pathListeEleve;
+            try
+            {
+                if (File.Exists(destinationPath))
+                {
+                    File.Delete(destinationPath);
+                }
+
+                File.Copy(sourcePath, destinationPath);
+                // -- Recupère les EDT sous forme d'image
+                Globale.listeEdtImage = Pdf.getImages(sourcePath);
+                // -- Recupère les EDT sous form de page de PDF
+                Globale.listeEdt = Pdf.getPages(sourcePath);
+                MessageBox.Show("Import Réussi");
+            }
+            catch
+            {
+                MessageBox.Show("Import Echoué");
+            }
         }
         
         public static string getText(string path)
