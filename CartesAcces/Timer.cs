@@ -29,9 +29,12 @@ namespace CartesAcces
 
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
-            Globale._estConnecter = false;
-            Globale._connexion.Show();
-            form.Close();
+            if (start.Add(TimeSpan.FromMinutes(15)) <= DateTime.Now)
+            {
+                Globale._estConnecter = false;
+                Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show(); });
+                form.Close();
+            }
         }
     }
 }
