@@ -14,8 +14,15 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
+            this.VisibleChanged += on_Visibility_Change;
         }
 
+        public void on_Visibility_Change(object sender, EventArgs e)
+        {
+            txtMotDePasse.Text = "";
+            txtIdentifiant.Text = "";
+        }
+        
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             /*
@@ -46,12 +53,6 @@ namespace CartesAcces
         private void button1_Click(object sender, EventArgs e)
         {
             maskedTextBox1.Text = Securite.creationHash(maskedTextBox1.Text);
-        }
-
-        private void frmConnexion_Load(object sender, EventArgs e)
-        {
-            txtIdentifiant.Text = "";
-            txtMotDePasse.Text = "";
         }
     }
 }
