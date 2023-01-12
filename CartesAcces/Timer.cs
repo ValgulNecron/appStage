@@ -17,29 +17,22 @@ namespace CartesAcces
             this.form = form;
             start = DateTime.Now;
             timer = new System.Timers.Timer();
-            timer.Interval = dureeMinute * 60 * 1000;
+            timer.Interval = 10 * 1000;
             timer.Elapsed += OnTimeEvent;
             timer.Enabled = true;
             timer.AutoReset = true;
             timer.Start();
-            form.Click += MouseMove;
-            foreach (Control controle in this.form.Controls)
-            {
-                controle.Click += MouseMove;
-                controle.MouseDoubleClick += MouseMove;
-                controle.Enter += MouseMove;
-                controle.TextChanged += MouseMove;
-            }
+            this.form.MouseMove += Form_MouseMove;
         }
 
-        private void MouseMove(object sender, EventArgs e)
+        private void Form_MouseMove(object sender, MouseEventArgs e)
         {
             start = DateTime.Now;
         }
 
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
-            if (start.Add(TimeSpan.FromMinutes(15)) <= DateTime.Now)
+            if (start.Add(TimeSpan.FromSeconds(10)) <= DateTime.Now)
             {
                 MessageBox.Show("sa fait 1min");
                 Globale._estConnecter = false;
