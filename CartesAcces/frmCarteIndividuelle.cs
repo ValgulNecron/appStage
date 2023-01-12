@@ -19,6 +19,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
+            ControlSize.SetSizeTextControl(this);
         }
         
         private void checkMef()

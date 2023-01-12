@@ -42,10 +42,12 @@ namespace CartesAcces
         public frmMultiplesCartesEdition()
         {
             InitializeComponent();
+            ControlSize.SetSizeTextControl(this);
             Couleur.setCouleurFenetre(this);
             //cache les deux éléments jusqu'à ce qu'on veut qu'ils soient visible
             progressBar1.Hide(); // animation de la barre
             label1.Hide(); // label de la barre de progression
+
         }
 
         public void affecterListeClee()

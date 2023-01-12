@@ -15,6 +15,7 @@ namespace CartesAcces
         public progressBarForm()
         {
             InitializeComponent();
+            ControlSize.SetSizeTextControl(this);
             Couleur.setCouleurFenetre(this);
         }
 

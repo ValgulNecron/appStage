@@ -16,9 +16,11 @@ namespace CartesAcces
         public frmMultiplesCartes()
         {
             InitializeComponent();
+            ControlSize.SetSizeTextControl(this);
             Couleur.setCouleurFenetre(this);
             Eleve.setLesClasses(cbbImprClasse);
             checkedSectionClasse();
+           
         }
 
         public void checkedSectionClasse()

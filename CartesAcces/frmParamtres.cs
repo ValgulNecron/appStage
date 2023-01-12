@@ -22,6 +22,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
+            ControlSize.SetSizeTextControl(this);
             initDataGrid();
             lblDateImport.Text = Properties.Settings.Default.DateImport;
         }

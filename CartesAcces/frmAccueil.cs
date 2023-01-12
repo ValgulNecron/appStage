@@ -16,6 +16,7 @@ namespace CartesAcces
         public frmAccueil()
         {
             InitializeComponent();
+            ControlSize.SetSizeTextControl(this);
             Couleur.setCouleurFenetre(this);
             if (Globale._estEnModeSombre)
             {
@@ -31,6 +32,8 @@ namespace CartesAcces
                 pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0], 
                     Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
             }
+
+          
         }
 
         private void OpenChildForm(Form childForm)

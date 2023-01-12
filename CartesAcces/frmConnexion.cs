@@ -14,6 +14,7 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
+            
         }
 
         private void btnConnexion_Click(object sender, EventArgs e)

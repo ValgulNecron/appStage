@@ -18,6 +18,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
+            ControlSize.SetSizeTextControl(this);
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
