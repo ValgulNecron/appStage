@@ -343,7 +343,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartes_Load(object sender, EventArgs e)
         {
-
+            Timer time = new Timer(this);
         }
 
         private void lsbListeEleve_SelectedIndexChanged(object sender, EventArgs e)

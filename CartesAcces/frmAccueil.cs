@@ -51,6 +51,7 @@ namespace CartesAcces
             frmWait.Location = new Point(800, 300);
             frmWait.Show();
             frmWait.TopMost = true;
+            Timer time = new Timer(this);
         }
 
         //Création de menu de navigation

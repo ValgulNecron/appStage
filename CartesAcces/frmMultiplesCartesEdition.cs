@@ -848,7 +848,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-
+            Timer time = new Timer(this);
         }
     }
 }

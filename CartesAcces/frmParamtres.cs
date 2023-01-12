@@ -382,7 +382,7 @@ namespace CartesAcces
 
         private void frmParametres_Load(object sender, EventArgs e)
         {
-
+            Timer time = new Timer(this);
         }
 
         private void label2_Click(object sender, EventArgs e)

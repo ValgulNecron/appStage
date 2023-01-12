@@ -138,5 +138,10 @@ namespace CartesAcces
                 btnSave.Enabled = false;
             }
         }
+
+        private void frmImportPhotoUnique_Load(object sender, EventArgs e)
+        {
+            Timer time = new Timer(this);
+        }
     }
 }

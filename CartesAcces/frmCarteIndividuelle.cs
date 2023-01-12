@@ -411,5 +411,10 @@ namespace CartesAcces
         {
             throw new System.NotImplementedException();
         }
+
+        private void frmCarteIndividuelle_Load(object sender, EventArgs e)
+        {
+            Timer time = new Timer(this);
+        }
     }
 }
