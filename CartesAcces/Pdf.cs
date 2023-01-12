@@ -14,6 +14,12 @@ namespace CartesAcces
 {
     public static class Pdf
     {
+        public static int getNbPages(string path)
+        {
+            PdfDocument pdfDoc = new PdfDocument(new PdfReader(path));
+            return pdfDoc.GetNumberOfPages();
+        }
+        
         public static string getText(string path)
         {
             string pageContent = "";
@@ -26,6 +32,14 @@ namespace CartesAcces
             }
             pdfDoc.Close();
             return pageContent;
+        }
+
+        public static List<PdfPage> getPages(string path)
+        {
+            List<PdfPage> listePages = new List<PdfPage>();
+            
+            
+            return listePages;
         }
 
         public static List<Image> getImages(string path)
@@ -43,34 +57,6 @@ namespace CartesAcces
             }
 
             return listeImg;
-        }
-
-        public static void imgTest(string path)
-        {
-            using (PdfDocument pdfDoc = new PdfDocument(new PdfReader("path/to/input.pdf")))
-            {
-                PdfPage page = pdfDoc.GetPage(1); // get the first page of the PDF
-
-                PdfResources resources = page.GetResources();
-                PdfDictionary xObjects = resources.GetResource(PdfName.XObject);
-
-                foreach (PdfName xObjectName in xObjects.KeySet())
-                {
-                    PdfObject xObject = xObjects.Get(xObjectName);
-                    if (xObject.IsIndirectReference())
-                    {
-                        xObject = ((PdfIndirectReference)xObject).GetRefersTo();
-                    }
-                    if (xObject.IsImage())
-                    {
-                        PdfImageXObject image = new PdfImageXObject((PdfStream)xObject);
-                        // save the image to a file
-                        image.SaveAsJpeg("path/to/output.jpg");
-                        Bitmap imgg = new Bitmap(image);
-                        var bmp = ConvertToBitmap(image);
-                    }
-                }
-            }
         }
     }
 }

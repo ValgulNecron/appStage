@@ -8,6 +8,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using iText.Layout.Element;
+using iText.Kernel.Pdf.Xobject;
 using Rectangle = System.Drawing.Rectangle;
 
 namespace CartesAcces
@@ -59,50 +61,14 @@ namespace CartesAcces
             }
         }
 
-        public void importEDT()
+        public void importEdtBis(string path)
         {
             List<string> listeExtractPDF = new List<string>();
-            string sFilePath = txtPathEDT.Text;
-
-            // -- Message d'avertissement / prévention pour le bon déroulement du programme --
-            MessageBox.Show("Durant cette manipulation, merci de ne pas toucher a la souris.." + Environment.NewLine + "Un message vous indiquera lorsque l'importation sera terminée");
-
-            // -- Nettoyage du presse papier --
-            Clipboard.Clear();
-
-            // -- Nouvel objet process --
-            Process Adope = new Process();
-
-            // -- Le process lancera le fichier pdf ciblé --
-            Adope.StartInfo.FileName = sFilePath;
-            Adope.StartInfo.Arguments = sFilePath;
-
-            // -- Ouverture du fichier et mise en avant plan --
-            Adope.Start();
-            IntPtr s = Adope.MainWindowHandle;
-            SetForegroundWindow(s);
-
-            // -- L'application attendra 3s avant de passer a la suite --
-            System.Threading.Thread.Sleep(3000);
-
-            // -- Selection de tout le text de la page PDF --
-            SendKeys.SendWait("^(a)");
-
-            // -- 3s le temps que la selection se fasse --
-            System.Threading.Thread.Sleep(3000);
-
-            // -- Copie du text selectionné dans le presse papier --
-            SendKeys.SendWait("^(c)");
-
-            // -- 3s le temps de la copie .. --
-            System.Threading.Thread.Sleep(5000);
-
-            // -- Stockage de la copie dans une variable et on nettoie le presspapier --
-            string textPDF = Clipboard.GetText();
-            Clipboard.Clear();
-
+            List<iText.Layout.Element.Image> listeEdtImage = Pdf.getImages(path);
+            string textPDF = Pdf.getText(path);
+            int nbPage = Pdf.getNbPages(path);
+            
             // !! Recherche des lignes qui nous interesse !!
-
             // -- La ligne s'arrete lorsqu'il y a un saut --
             int posFin = textPDF.IndexOf("\r\n");
 
@@ -127,105 +93,6 @@ namespace CartesAcces
                     posFin = textPDF.IndexOf("\r\n", posDepart + 1);
                 }
             }
-
-            // !! Comptage du nombre de page du fichier !!
-
-            // -- Initialisation --
-            int pages = 0;
-
-            using (StreamReader sr = new StreamReader(File.OpenRead(sFilePath)))
-            {
-
-                Regex regex = new Regex(@"/Type\s*/Page[^s]");
-                MatchCollection matches = regex.Matches(sr.ReadToEnd());
-
-                pages = matches.Count;
-            }
-
-            // !! Captures de chaques pages du PDF !!
-            // -- Pour elever la selection, on actualise la page --
-            SendKeys.SendWait("{F5}");
-
-            // -- 3s le temps de l'actualisation .. --
-            System.Threading.Thread.Sleep(5000);
-
-            // -- Au cas ou le fichier pdf ne soit pas ouvert directement sur la premiere page, on remonte tout en haut --
-            for (int j = 0; j < pages; j++)
-            {
-                SendKeys.SendWait("{LEFT}");
-            }
-
-            // -- Pour trier les captures en fonction de niveau de l'élève --
-            string folder = "";
-            if (txtPathEDT.Text.Contains("3EME"))
-            {
-                folder = "3EME";
-            }
-            else if (txtPathEDT.Text.Contains("4EME"))
-            {
-                folder = "4EME";
-            }
-            else if (txtPathEDT.Text.Contains("5EME"))
-            {
-                folder = "5EME";
-            }
-            else
-            {
-                folder = "6EME";
-            }
-
-            // -- Nettoyage des dossiers avant enregistrement des captures --
-            DirectoryInfo directory = new DirectoryInfo(Chemin.getFilePath("FichiersEDT\\" + folder));
-
-            foreach (var file in directory.GetFiles())
-            {
-                file.Delete();
-            }
-
-            // -- Captures --
-
-            // -- Pour chaques pages du pdf --
-            for (int i = 0; i < pages; i++)
-            {
-                // -- Rectangle pour determiner la résolution de l'écran de l'utilisateur --
-                Rectangle resolution = Screen.PrimaryScreen.Bounds;
-
-                // -- Nouveau bitmap, reprennant les dimensions de l'écran --
-                Bitmap captureBitmap = new Bitmap(resolution.Width, resolution.Height, PixelFormat.Format32bppArgb);
-
-                // -- Création d'un rectangle contenu une capture de l'écran actif --
-
-                Rectangle captureRectangle = Screen.AllScreens[0].Bounds;
-                // -- Nouvel objet Graphics --
-                Graphics captureGraphics = Graphics.FromImage(captureBitmap);
-
-                // -- Copie de la capture dans le rectangle --
-                captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
-
-                /* Si jamais il y a un "/" dans la chaine de caractère servant a renommer le fichier
-                 * le programme plantera car ce n'est pas un caractère autorisé par Windows, il faut donc l'enlever..
-                 */
-                if (listeExtractPDF[i].Contains("/"))
-                {
-                    listeExtractPDF[i] = listeExtractPDF[i].Substring(0, listeExtractPDF[i].IndexOf("/")) + listeExtractPDF[i].Substring(listeExtractPDF[i].IndexOf("/") + 1);
-                }
-
-                // -- Destination du fichier --
-                string FileDest = Chemin.getFilePath("FichiersEDT");
-                FileDest = FileDest + folder + "\\" + listeExtractPDF[i] + ".png";
-
-                // -- Enregistrement sous format PNG --
-                captureBitmap.Save(FileDest, ImageFormat.Png);
-
-                // -- Page suivante --
-                SendKeys.SendWait("{RIGHT}");
-
-                // -- 0.3s avant de reboucler --
-                System.Threading.Thread.Sleep(1000);
-            }
-
-            MessageBox.Show("Import réussie !", "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-
         }
 
         // -- Importation des photo des élèves --
