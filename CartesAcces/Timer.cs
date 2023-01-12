@@ -35,7 +35,7 @@ namespace CartesAcces
             {
                 Globale._estConnecter = false;
                 Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show(); });
-                form.Close();
+                form.Invoke((MethodInvoker) delegate { form.Close(); });
             }
         }
     }
