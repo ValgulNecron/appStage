@@ -36,8 +36,13 @@ namespace CartesAcces
 
         public static List<PdfPage> getPages(string path)
         {
+            PdfDocument pdfDoc = new PdfDocument(new PdfReader(path));
             List<PdfPage> listePages = new List<PdfPage>();
             
+            for (int page = 1; page <= pdfDoc.GetNumberOfPages(); page++)
+            {
+                listePages.Add(pdfDoc.GetPage(page));
+            }
             
             return listePages;
         }
@@ -49,7 +54,7 @@ namespace CartesAcces
             Document doc = new Document(pdfDoc);
             for (int page = 1; page <= pdfDoc.GetNumberOfPages(); page++)
             {
-                PdfPage origPage = pdfDoc.GetPage(1);
+                PdfPage origPage = pdfDoc.GetPage(page);
                 PdfDocument pdf = new PdfDocument(new PdfWriter(path));
                 PdfFormXObject pageCopy = origPage.CopyAsFormXObject(pdf);
                 Image image = new Image(pageCopy);

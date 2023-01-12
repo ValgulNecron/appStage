@@ -107,7 +107,7 @@ namespace CartesAcces
                 {
                     string sFilePath = Chemin.getFilePath("FichiersPHOTO");
 
-                    Image img = Image.FromFile(file.FullName);
+                    System.Drawing.Image img = System.Drawing.Image.FromFile(file.FullName);
                     string nom = file.Name;
 
                     img.Save(sFilePath + nom, System.Drawing.Imaging.ImageFormat.Png);
@@ -210,7 +210,7 @@ namespace CartesAcces
 
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
-            importEDT();
+            //importEDT();
         }
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
