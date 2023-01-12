@@ -85,16 +85,17 @@ namespace CartesAcces
                 MessageBox.Show("Import Echoué");
             }
             // -- Recupère les EDT sous forme d'image
-            PdfGs.getImageFromPdf(path);
+            Globale.listeEdtImage = Pdf.getImages(path);
             // -- Recupère les EDT sous form de page de PDF
+            Globale.listeEdt = Pdf.getPages(path);
             
             // -- -- -- -- --
             
             // -- Clé nom prenom classe... inutile ?
             List<string> listeExtractPDF = new List<string>();
             
-            string textPDF = PdfGs.getTextePdf(path);
-            int nbPage = PdfGs.getNbPagePdf();
+            string textPDF = Pdf.getText(path);
+            int nbPage = Pdf.getNbPages(path);
             
             // !! Recherche des lignes qui nous interesse !!
             // -- La ligne s'arrete lorsqu'il y a un saut --

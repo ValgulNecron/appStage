@@ -2,22 +2,22 @@
 
 Repos du l'application de création de cartes d'accès   
 
--Les fichiers produis par l'application doivent se trouver au même endroit que l'exe (fait)
+- Les fichiers produis par l'application doivent se trouver au même endroit que l'exe (fait)
 
--redimension perte de résolution => faire avec un rapport hauteur / largeur (fait)
+- redimension perte de résolution => faire avec un rapport hauteur / largeur (fait)
 
--barre de chargement, progression en % (en cours)
+- utilisation du CSV aulieu du XLS, recherche de colonne simplifié (fait)
 
--utilisation du CSV aulieu du XLS, recherche de colonne simplifié
+- verification de compatibilité (a faire) 
 
--verification de compatibilité
+- rendre l'interface légèrement plus instinctive au niveau de l'acccueil (a faire)
 
--rendre l'interface légèrement plus instinctive au niveau de l'acccueil
+- thème sombre (fait) thème clair (fait)
 
--thème sombre (en cours)
+- sécuriser l'application (code (fait), stratégie de mot de passe (fait), deco apres 15min (fait)) (fait)
 
--sécuriser l'application (code (partielle), stratégie de mot de passe, )
+- base de données => SQL (en cours)
 
--base de données => SQL
+- changement de methode pour screenshot les pdf (en cours)
 
 ! pas d'application mobile
