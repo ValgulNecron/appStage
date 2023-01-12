@@ -68,16 +68,19 @@ namespace CartesAcces
             // 
             // txtIdentifiant
             // 
+            this.txtIdentifiant.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdentifiant.Location = new System.Drawing.Point(223, 136);
+            this.txtIdentifiant.MinimumSize = new System.Drawing.Size(100, 10);
             this.txtIdentifiant.Name = "txtIdentifiant";
-            this.txtIdentifiant.Size = new System.Drawing.Size(136, 20);
+            this.txtIdentifiant.Size = new System.Drawing.Size(150, 22);
             this.txtIdentifiant.TabIndex = 3;
             // 
             // txtMotDePasse
             // 
             this.txtMotDePasse.Location = new System.Drawing.Point(223, 199);
+            this.txtMotDePasse.MinimumSize = new System.Drawing.Size(50, 10);
             this.txtMotDePasse.Name = "txtMotDePasse";
-            this.txtMotDePasse.Size = new System.Drawing.Size(136, 20);
+            this.txtMotDePasse.Size = new System.Drawing.Size(150, 20);
             this.txtMotDePasse.TabIndex = 4;
             // 
             // maskedTextBox1
@@ -113,6 +116,7 @@ namespace CartesAcces
             this.Text = "frmConnexion";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Button btnConnexion;
