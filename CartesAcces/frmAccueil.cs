@@ -21,11 +21,15 @@ namespace CartesAcces
             {
                 pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
                     Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
+                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0], 
+                    Globale._couleurDeFondSombre[1], Globale._couleurDeFondSombre[2]);
             }
             else
             {
                 pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
                     Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
+                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0], 
+                    Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
             }
         }
 

@@ -29,7 +29,7 @@ namespace CartesAcces
             Globale.totalSteps = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
 
-            ReadCSV.setLesEleves("exportCSVExtraction.csv");
+            ReadCSV.setLesEleves(Chemin.pathListeEleve);
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
             Globale.currentProgress = 2;
 

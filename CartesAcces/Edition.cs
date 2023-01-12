@@ -35,7 +35,7 @@ namespace CartesAcces
             if(cbbClasse.Text != "")
             {
                 string classe = cbbClasse.Text;
-                pbCarteArriere.Image = Image.FromFile("..\\..\\..\\FichiersEDT\\classes\\" + classe + ".png");
+                pbCarteArriere.Image = Image.FromFile("./data/FichierCartesFace/" + classe + ".png");
             }
         }
         
@@ -90,7 +90,7 @@ namespace CartesAcces
         // -- Change le fond de la carte en fonction de la section choisie
         public static void fondCarteSection(PictureBox pbCarteFace, ComboBox cbbSection)
         {
-            pbCarteFace.Image = Image.FromFile("..\\..\\..\\FichiersCARTESFACES\\" + cbbSection.Text + ".png");
+            pbCarteFace.Image = Image.FromFile("./data/FichierCartesFace/" + cbbSection.Text + ".png");
             string date = DateTime.Today.ToShortDateString();
             Font font = new Font("comic sans ms", 45, FontStyle.Bold);
             dessineTextCarteFace(font, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
@@ -132,7 +132,7 @@ namespace CartesAcces
 
             string opfPath = "";
 
-            opf.InitialDirectory = @"\..\..\..\CartesAcces\FichiersEDT";
+            opf.InitialDirectory = "./data/ElevesEdt/";
             opf.Filter = "Images (*.png, *.jpg) | *.png; *.jpg";
             opf.FilterIndex = 1;
             opf.RestoreDirectory = true;
@@ -246,7 +246,7 @@ namespace CartesAcces
             bool trouveBool = false;
 
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = System.IO.Path.Combine(sCurrentDirectory, @".\FichiersPHOTO");
+            string sFile = System.IO.Path.Combine(sCurrentDirectory, "./data/ElevesPhoto");
             string sFilePath = Path.GetFullPath(sFile);
 
             DirectoryInfo directory = new DirectoryInfo(sFilePath);
