@@ -20,6 +20,7 @@ namespace CartesAcces
             timer.Interval = dureeMinute * 60 * 1000;
             timer.Elapsed += OnTimeEvent;
             timer.Enabled = true;
+            timer.AutoReset = true;
             timer.Start();  
             form.MouseMove += Form_MouseMove;
         }
@@ -33,9 +34,18 @@ namespace CartesAcces
         {
             if (start.Add(TimeSpan.FromMinutes(15)) <= DateTime.Now)
             {
+                MessageBox.Show("sa fait 1min");
                 Globale._estConnecter = false;
-                Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show(); });
-                form.Invoke((MethodInvoker) delegate { form.Close(); });
+                Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show();
+                    MessageBox.Show(("la normalement tu a la co"));
+                });
+                form.Invoke((MethodInvoker) delegate { form.Close();
+                    MessageBox.Show("et la je te ferme l'ancien truc");
+                });
+            }
+            else
+            {
+                MessageBox.Show("y a eu un mouvement");
             }
         }
     }
