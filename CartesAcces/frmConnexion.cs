@@ -15,6 +15,7 @@ namespace CartesAcces
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
             this.VisibleChanged += on_Visibility_Change;
+            txtMotDePasse.PasswordChar = '*';
         }
 
         public void on_Visibility_Change(object sender, EventArgs e)
