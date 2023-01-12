@@ -11,6 +11,10 @@ namespace CartesAcces
 
             if (Directory.Exists("./image"))
             {
+                foreach (string file in Directory.GetFiles("./image"))
+                {
+                    File.Delete(file);
+                }
                 Directory.Delete("./image");
             }
 
