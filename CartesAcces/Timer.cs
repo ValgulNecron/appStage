@@ -33,9 +33,12 @@ namespace CartesAcces
         {
             if (start.Add(TimeSpan.FromSeconds(10)) <= DateTime.Now)
             {
-                Globale._estConnecter = false;
-                Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show(); });
-                form.Invoke((MethodInvoker) delegate { form.Close(); });
+                if (Globale._estConnecter)
+                {
+                    Globale._estConnecter = false;
+                    Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show(); });
+                    form.Invoke((MethodInvoker) delegate { form.Close(); });
+                }
             }
         }
     }

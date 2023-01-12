@@ -14,7 +14,6 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
-            
         }
 
         private void btnConnexion_Click(object sender, EventArgs e)
@@ -31,14 +30,16 @@ namespace CartesAcces
                 if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
                 {
                     Form frmAccueil = new frmAccueil();
+                    txtMotDePasse.Text = "";
+                    txtIdentifiant.Text = "";
                     this.Hide();
                     frmAccueil.Show();
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                txtMotDePasse.Text = "";
             }
         }
 
