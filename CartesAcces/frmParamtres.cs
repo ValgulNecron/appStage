@@ -61,69 +61,6 @@ namespace CartesAcces
             }
         }
 
-        public void importEdtBis(string path)
-        {
-            // -- Copie le PDF dans les fichier de l'app --
-            string sourcePath = txtPathEleve.Text;
-            string destinationPath = Chemin.pathListeEleve;
-            try
-            {
-                if (File.Exists(destinationPath))
-                {
-                    File.Delete(destinationPath);
-                }
-
-                File.Copy(sourcePath, destinationPath);
-                MessageBox.Show("Import Réussi");
-                ReadCSV.setLesEleves(destinationPath);
-                Eleve.setLesClasses();
-
-                initDataGrid();
-            }
-            catch
-            {
-                MessageBox.Show("Import Echoué");
-            }
-            // -- Recupère les EDT sous forme d'image
-            Globale.listeEdtImage = Pdf.getImages(path);
-            // -- Recupère les EDT sous form de page de PDF
-            Globale.listeEdt = Pdf.getPages(path);
-            
-            // -- -- -- -- --
-            
-            // -- Clé nom prenom classe... inutile ?
-            List<string> listeExtractPDF = new List<string>();
-            
-            string textPDF = Pdf.getText(path);
-            int nbPage = Pdf.getNbPages(path);
-            
-            // !! Recherche des lignes qui nous interesse !!
-            // -- La ligne s'arrete lorsqu'il y a un saut --
-            int posFin = textPDF.IndexOf("\r\n");
-
-            // -- On commence au premier caractère de la chaine --
-            int posDepart = 0;
-
-            // -- Tant qu'on a pas attein la fin de la variable --
-            while (posFin != -1)
-            {
-                // -- Toujours vrai sauf si erreur --
-                if (posDepart >= 0)
-                {
-                    // -- Si la ligne contient la mention "Elève" .. -- 
-                    if (textPDF.Substring(posDepart, 6).Contains("Elève"))
-                    {
-                        // -- .. Alors on affecte cette ligne a la liste --
-                        listeExtractPDF.Add(textPDF.Substring(posDepart + 1, posFin - posDepart - 1));
-                    }
-                    // -- La position de départ se place au début de la ligne suivante --
-                    posDepart = posFin + 1;
-                    // -- La position de fin se place au saut de ligne de la ligne suivante --
-                    posFin = textPDF.IndexOf("\r\n", posDepart + 1);
-                }
-            }
-        }
-
         // -- Importation des photo des élèves --
         public void importPhoto()
         {
@@ -233,13 +170,13 @@ namespace CartesAcces
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            Chemin.setPathImportFilePDF();
-           
+            txtPathEDT.Text = Chemin.setPathImportFilePDF();
+            btnValiderEDT.Enabled = true;
         }
 
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
-            //importEDT();
+            Pdf.importEdt(txtPathEDT.Text);
         }
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
