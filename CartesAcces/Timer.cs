@@ -21,11 +21,18 @@ namespace CartesAcces
             timer.Elapsed += OnTimeEvent;
             timer.Enabled = true;
             timer.AutoReset = true;
-            timer.Start();  
-            form.MouseMove += Form_MouseMove;
+            timer.Start();
+            form.Click += MouseMove;
+            foreach (Control controle in this.form.Controls)
+            {
+                controle.Click += MouseMove;
+                controle.MouseDoubleClick += MouseMove;
+                controle.Enter += MouseMove;
+                controle.TextChanged += MouseMove;
+            }
         }
 
-        private void Form_MouseMove(object sender, MouseEventArgs e)
+        private void MouseMove(object sender, EventArgs e)
         {
             start = DateTime.Now;
         }
