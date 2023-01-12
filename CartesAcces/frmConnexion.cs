@@ -14,9 +14,16 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
-            
+            this.VisibleChanged += on_Visibility_Change;
+            txtMotDePasse.PasswordChar = '*';
         }
 
+        public void on_Visibility_Change(object sender, EventArgs e)
+        {
+            txtMotDePasse.Text = "";
+            txtIdentifiant.Text = "";
+        }
+        
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             /*
@@ -30,27 +37,24 @@ namespace CartesAcces
             {
                 if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
                 {
+                    Globale._estConnecter = true;
                     Form frmAccueil = new frmAccueil();
+                    txtMotDePasse.Text = "";
+                    txtIdentifiant.Text = "";
                     this.Hide();
                     frmAccueil.Show();
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                txtMotDePasse.Text = "";
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             maskedTextBox1.Text = Securite.creationHash(maskedTextBox1.Text);
-        }
-
-        private void frmConnexion_Load(object sender, EventArgs e)
-        {
-            txtIdentifiant.Text = "";
-            txtMotDePasse.Text = "";
         }
     }
 }
