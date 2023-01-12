@@ -21,7 +21,6 @@ namespace CartesAcces
             timer.Elapsed += OnTimeEvent;
             timer.Enabled = true;
             timer.AutoReset = true;
-            timer.Start();
             this.form.MouseMove += Form_MouseMove;
         }
 
@@ -34,18 +33,9 @@ namespace CartesAcces
         {
             if (start.Add(TimeSpan.FromSeconds(10)) <= DateTime.Now)
             {
-                MessageBox.Show("sa fait 1min");
                 Globale._estConnecter = false;
-                Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show();
-                    MessageBox.Show(("la normalement tu a la co"));
-                });
-                form.Invoke((MethodInvoker) delegate { form.Close();
-                    MessageBox.Show("et la je te ferme l'ancien truc");
-                });
-            }
-            else
-            {
-                MessageBox.Show("y a eu un mouvement");
+                Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show(); });
+                form.Invoke((MethodInvoker) delegate { form.Close(); });
             }
         }
     }
