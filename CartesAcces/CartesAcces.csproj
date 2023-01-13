@@ -152,13 +152,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chemin.cs" />
-    <Compile Include="ClassSql.cs" />
-    <Compile Include="Configuration.cs" />
-    <Compile Include="ControlSize.cs" />
-    <Compile Include="Couleur.cs" />
-    <Compile Include="Edition.cs" />
-    <Compile Include="Eleve.cs" />
     <Compile Include="frmConnexion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,8 +207,6 @@
       <DependentUpon>frmSelectSection.cs</DependentUpon>
     </Compile>
     <Compile Include="Globale.cs" />
-    <Compile Include="PdfGs.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="progressBarForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,10 +214,6 @@
       <DependentUpon>progressBarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadCSV.cs" />
-    <Compile Include="Securite.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="Timer.cs" />
     <EmbeddedResource Include="frmAccueil.resx">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </EmbeddedResource>
@@ -318,6 +305,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarteAccesLib\CarteAccesLib.csproj">
+      <Project>{dd9bf0d7-d3b2-4bc8-8fd2-875aa0d637f4}</Project>
+      <Name>CarteAccesLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
