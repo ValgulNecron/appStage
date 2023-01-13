@@ -30,17 +30,14 @@ namespace CartesAcces
                 
                 string filePath = "./.config";
                 string[] lines = File.ReadAllLines(filePath);
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-                    foreach (string line in lines)
+                foreach (string line in lines)
                     {
-                        string pattern = "^" + key + "=";
+                        string pattern = "^" + key + "=.*";
                         if (!(Regex.IsMatch(line, pattern)))
                         {
                             return line;
                         }
                     }
-                }
 
                 if (value == "")
                 {
