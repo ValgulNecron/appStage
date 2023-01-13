@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -63,7 +64,7 @@ namespace CartesAcces
             var process = new Process();
             process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments =
-                $"-o \"{outputFile}\" -I\"./font/a.ttg\" -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
+                $"-o \"{outputFile}\" -I\"./font/a.ttg\" -sDEVICE=txtwrite -dNOPAUSE -dEncoding=ISO-8859-1 -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.Start();
@@ -72,7 +73,7 @@ namespace CartesAcces
             process.WaitForExit();
 
             var file = "";
-            using (var sr = new StreamReader(path))
+            using (var sr = new StreamReader(path, Encoding.GetEncoding("ISO-8859-1")))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null) file += line;
