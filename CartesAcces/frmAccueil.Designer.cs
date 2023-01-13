@@ -35,6 +35,7 @@ namespace CartesAcces
             this.btnParametres = new System.Windows.Forms.Button();
             this.btnCarteParClasse = new System.Windows.Forms.Button();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.btnAcceuil = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@ namespace CartesAcces
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnlMenu.Controls.Add(this.btnAcceuil);
             this.pnlMenu.Controls.Add(this.btnParametres);
             this.pnlMenu.Controls.Add(this.btnCarteParClasse);
             this.pnlMenu.Controls.Add(this.btnCreerCarte);
@@ -103,6 +105,20 @@ namespace CartesAcces
             this.pnlContent.TabIndex = 3;
             this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
+            // btnAcceuil
+            // 
+            this.btnAcceuil.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAcceuil.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnAcceuil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAcceuil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAcceuil.Location = new System.Drawing.Point(0, 403);
+            this.btnAcceuil.Name = "btnAcceuil";
+            this.btnAcceuil.Size = new System.Drawing.Size(170, 42);
+            this.btnAcceuil.TabIndex = 4;
+            this.btnAcceuil.Text = "Acceuil";
+            this.btnAcceuil.UseVisualStyleBackColor = false;
+            this.btnAcceuil.Click += new System.EventHandler(this.btnAcceuil_Click);
+            // 
             // frmAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +145,7 @@ namespace CartesAcces
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.Button btnCarteParClasse;
         private System.Windows.Forms.Button btnParametres;
+        private System.Windows.Forms.Button btnAcceuil;
     }
 }
 
