@@ -8,6 +8,8 @@ namespace CartesAcces
 {
     public static class Globale
     {
+        static public int classe = 6;
+    
         static public Form _connexion; 
         // connexion
         static public bool _estConnecter = false;
