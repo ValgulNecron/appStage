@@ -35,7 +35,7 @@ namespace CartesAcces
             if(cbbClasse.Text != "")
             {
                 string classe = cbbClasse.Text;
-                pbCarteArriere.Image = Image.FromFile("./data/FichierCartesFace/" + classe + ".png");
+                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
             }
         }
         

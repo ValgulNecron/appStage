@@ -134,7 +134,7 @@ namespace CartesAcces
         {
             foreach (Eleve eleve in Globale.listeEleve)
             {
-                string numClasse = eleve.ClasseEleve.Substring(2, 1);
+                string numClasse = eleve.ClasseEleve.Substring(0, 1);
 
                 if (numClasse == "6" && !(Globale.classes6eme.Contains(eleve.ClasseEleve)))
                     Globale.classes6eme.Add(eleve.ClasseEleve);

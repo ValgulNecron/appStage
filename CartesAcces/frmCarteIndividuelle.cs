@@ -64,6 +64,8 @@ namespace CartesAcces
         
         private void txtNom_TextChanged(object sender, EventArgs e)
         {
+            Edition.fondCarteSection(pbCarteFace, cbbSection);
+            Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
             if(txtNom.TextLength < 7)
             {
                 Font font = new Font("times new roman", 25, FontStyle.Bold);
@@ -82,10 +84,12 @@ namespace CartesAcces
 
         private void txtPrenom_TextChanged(object sender, EventArgs e)
         {
+            Edition.fondCarteSection(pbCarteFace, cbbSection);
+            Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
             if (txtPrenom.TextLength < 7)
             {
                 Font font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteArriere, cbbSection);
+                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
