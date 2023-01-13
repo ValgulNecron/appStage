@@ -62,6 +62,7 @@ namespace CartesAcces
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmCarteIndividuelle());
+            
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
@@ -74,19 +75,14 @@ namespace CartesAcces
             OpenChildForm(new frmParametres());
         }
 
-        private void btnAccueil_Click(object sender, EventArgs e)
-        {
-  
-        }
-
         private void pnlContent_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void btnAcceuil_Click(object sender, EventArgs e)
+        private void btnParamètreInterface_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmAccueil());
+            OpenChildForm(new frmParametresInterface());
         }
     }
 }

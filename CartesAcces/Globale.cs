@@ -51,5 +51,8 @@ namespace CartesAcces
         //
         static public int currentProgress = 0;
         static public int totalSteps = 0;
+
+        //
+        static public Form accueil;
     }
 }

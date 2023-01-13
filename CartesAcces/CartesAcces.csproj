@@ -171,6 +171,12 @@
     <Compile Include="frmMultiplesCartesEdition.Designer.cs">
       <DependentUpon>frmMultiplesCartesEdition.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmParametresInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParametresInterface.Designer.cs">
+      <DependentUpon>frmParametresInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmParamtres.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMultiplesCartesEdition.resx">
       <DependentUpon>frmMultiplesCartesEdition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParametresInterface.resx">
+      <DependentUpon>frmParametresInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmParamtres.resx">
       <DependentUpon>frmParamtres.cs</DependentUpon>

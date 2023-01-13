@@ -30,14 +30,25 @@ namespace CartesAcces
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccueil));
-            this.btnCreerCarte = new System.Windows.Forms.Button();
-            this.pnlMenu = new System.Windows.Forms.Panel();
-            this.btnParametres = new System.Windows.Forms.Button();
-            this.btnCarteParClasse = new System.Windows.Forms.Button();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.btnAcceuil = new System.Windows.Forms.Button();
+            this.btnCreerCarte = new System.Windows.Forms.Button();
+            this.btnCarteParClasse = new System.Windows.Forms.Button();
+            this.btnParametres = new System.Windows.Forms.Button();
+            this.btnParamètreInterface = new System.Windows.Forms.Button();
+            this.pnlMenu = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.AutoSize = true;
+            this.pnlContent.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(170, 0);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(1174, 701);
+            this.pnlContent.TabIndex = 3;
+            this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
             // btnCreerCarte
             // 
@@ -53,18 +64,19 @@ namespace CartesAcces
             this.btnCreerCarte.UseVisualStyleBackColor = false;
             this.btnCreerCarte.Click += new System.EventHandler(this.btnCreerCarte_Click);
             // 
-            // pnlMenu
+            // btnCarteParClasse
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
-            this.pnlMenu.Controls.Add(this.btnAcceuil);
-            this.pnlMenu.Controls.Add(this.btnParametres);
-            this.pnlMenu.Controls.Add(this.btnCarteParClasse);
-            this.pnlMenu.Controls.Add(this.btnCreerCarte);
-            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 0);
-            this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(170, 701);
-            this.pnlMenu.TabIndex = 2;
+            this.btnCarteParClasse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCarteParClasse.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnCarteParClasse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCarteParClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarteParClasse.Location = new System.Drawing.Point(0, 277);
+            this.btnCarteParClasse.Name = "btnCarteParClasse";
+            this.btnCarteParClasse.Size = new System.Drawing.Size(170, 42);
+            this.btnCarteParClasse.TabIndex = 2;
+            this.btnCarteParClasse.Text = "Multiples Cartes\r\n";
+            this.btnCarteParClasse.UseVisualStyleBackColor = false;
+            this.btnCarteParClasse.Click += new System.EventHandler(this.btnCarteParClasse_Click);
             // 
             // btnParametres
             // 
@@ -80,44 +92,32 @@ namespace CartesAcces
             this.btnParametres.UseVisualStyleBackColor = false;
             this.btnParametres.Click += new System.EventHandler(this.btnParametres_Click);
             // 
-            // btnCarteParClasse
+            // btnParamètreInterface
             // 
-            this.btnCarteParClasse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCarteParClasse.BackColor = System.Drawing.Color.AliceBlue;
-            this.btnCarteParClasse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCarteParClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCarteParClasse.Location = new System.Drawing.Point(0, 277);
-            this.btnCarteParClasse.Name = "btnCarteParClasse";
-            this.btnCarteParClasse.Size = new System.Drawing.Size(170, 42);
-            this.btnCarteParClasse.TabIndex = 2;
-            this.btnCarteParClasse.Text = "Multiples Cartes\r\n";
-            this.btnCarteParClasse.UseVisualStyleBackColor = false;
-            this.btnCarteParClasse.Click += new System.EventHandler(this.btnCarteParClasse_Click);
+            this.btnParamètreInterface.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnParamètreInterface.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnParamètreInterface.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnParamètreInterface.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnParamètreInterface.Location = new System.Drawing.Point(0, 403);
+            this.btnParamètreInterface.Name = "btnParamètreInterface";
+            this.btnParamètreInterface.Size = new System.Drawing.Size(170, 42);
+            this.btnParamètreInterface.TabIndex = 4;
+            this.btnParamètreInterface.Text = "Paramètres";
+            this.btnParamètreInterface.UseVisualStyleBackColor = false;
+            this.btnParamètreInterface.Click += new System.EventHandler(this.btnParamètreInterface_Click);
             // 
-            // pnlContent
+            // pnlMenu
             // 
-            this.pnlContent.AutoSize = true;
-            this.pnlContent.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(170, 0);
-            this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(1174, 701);
-            this.pnlContent.TabIndex = 3;
-            this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
-            // 
-            // btnAcceuil
-            // 
-            this.btnAcceuil.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAcceuil.BackColor = System.Drawing.Color.AliceBlue;
-            this.btnAcceuil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAcceuil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAcceuil.Location = new System.Drawing.Point(0, 403);
-            this.btnAcceuil.Name = "btnAcceuil";
-            this.btnAcceuil.Size = new System.Drawing.Size(170, 42);
-            this.btnAcceuil.TabIndex = 4;
-            this.btnAcceuil.Text = "Acceuil";
-            this.btnAcceuil.UseVisualStyleBackColor = false;
-            this.btnAcceuil.Click += new System.EventHandler(this.btnAcceuil_Click);
+            this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnlMenu.Controls.Add(this.btnParamètreInterface);
+            this.pnlMenu.Controls.Add(this.btnParametres);
+            this.pnlMenu.Controls.Add(this.btnCarteParClasse);
+            this.pnlMenu.Controls.Add(this.btnCreerCarte);
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlMenu.Location = new System.Drawing.Point(0, 0);
+            this.pnlMenu.Name = "pnlMenu";
+            this.pnlMenu.Size = new System.Drawing.Size(170, 701);
+            this.pnlMenu.TabIndex = 2;
             // 
             // frmAccueil
             // 
@@ -139,13 +139,12 @@ namespace CartesAcces
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnCreerCarte;
-        private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.Button btnCreerCarte;
         private System.Windows.Forms.Button btnCarteParClasse;
         private System.Windows.Forms.Button btnParametres;
-        private System.Windows.Forms.Button btnAcceuil;
+        private System.Windows.Forms.Button btnParamètreInterface;
+        private System.Windows.Forms.Panel pnlMenu;
     }
 }
 
