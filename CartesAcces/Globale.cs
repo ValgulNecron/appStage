@@ -8,6 +8,8 @@ namespace CartesAcces
 {
     public static class Globale
     {
+        static public int _classe = 6;
+    
         static public Form _connexion; 
         // connexion
         static public bool _estConnecter = false;
@@ -49,5 +51,8 @@ namespace CartesAcces
         //
         static public int currentProgress = 0;
         static public int totalSteps = 0;
+
+        //
+        static public Form accueil;
     }
 }

@@ -177,7 +177,7 @@ namespace CartesAcces
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
             //importEDT();
-            //PdfGs.getImageFromPdf(txtPathEDT.Text);
+            PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
         }
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
