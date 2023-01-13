@@ -33,7 +33,7 @@ namespace CartesAcces
             this.label2 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnEnregistrer = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnBascule = new System.Windows.Forms.Button();
@@ -73,14 +73,15 @@ namespace CartesAcces
             this.label1.TabIndex = 13;
             this.label1.Text = "Ancien mot de passe";
             // 
-            // button2
+            // btnEnregistrer
             // 
-            this.button2.Location = new System.Drawing.Point(567, 166);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Enregistrer";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Location = new System.Drawing.Point(567, 166);
+            this.btnEnregistrer.Name = "btnEnregistrer";
+            this.btnEnregistrer.Size = new System.Drawing.Size(75, 23);
+            this.btnEnregistrer.TabIndex = 12;
+            this.btnEnregistrer.Text = "Enregistrer";
+            this.btnEnregistrer.UseVisualStyleBackColor = true;
+            
             // 
             // textBox3
             // 
@@ -104,7 +105,6 @@ namespace CartesAcces
             this.btnBascule.TabIndex = 9;
             this.btnBascule.Text = "Basculer à un autre thème";
             this.btnBascule.UseVisualStyleBackColor = true;
-         
             // 
             // frmParametresInterface
             // 
@@ -115,7 +115,7 @@ namespace CartesAcces
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.btnBascule);
@@ -132,7 +132,7 @@ namespace CartesAcces
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnEnregistrer;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnBascule;
