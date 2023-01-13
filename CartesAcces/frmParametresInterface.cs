@@ -17,9 +17,10 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
+            btnBascule.Click += btnBascule_Click;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBascule_Click(object sender, EventArgs e)
         {
             Globale._estEnModeSombre = !(Globale._estEnModeSombre);
             Couleur.setCouleurFenetre(this);
@@ -41,5 +42,11 @@ namespace CartesAcces
                 }
             }
         }
+
+        private void btnEnregistrer_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

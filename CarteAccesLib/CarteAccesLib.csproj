@@ -42,6 +42,7 @@
           <HintPath>..\packages\MySql.Data.8.0.31\lib\net452\MySql.Data.dll</HintPath>
         </Reference>
         <Reference Include="System" />
+        <Reference Include="System.Configuration" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Drawing" />
@@ -51,7 +52,6 @@
     <ItemGroup>
         <Compile Include="Chemin.cs" />
         <Compile Include="ClassSql.cs" />
-        <Compile Include="Configuration.cs" />
         <Compile Include="ControlSize.cs" />
         <Compile Include="Couleur.cs" />
         <Compile Include="Edition.cs" />
@@ -77,6 +77,9 @@
         <Isolated>False</Isolated>
         <EmbedInteropTypes>True</EmbedInteropTypes>
       </COMReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="app.config" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
