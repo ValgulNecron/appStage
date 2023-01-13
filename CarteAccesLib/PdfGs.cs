@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -41,7 +42,10 @@ namespace CartesAcces
 
             if (Directory.Exists(outputPath))
             {
-                foreach (var file in Directory.GetFiles(outputPath)) File.Delete(file);
+                foreach (var file in Directory.GetFiles(outputPath))
+                {
+                    File.Delete(file);
+                }
                 Directory.Delete(outputPath);
             }
 
@@ -54,8 +58,8 @@ namespace CartesAcces
             process.StartInfo.RedirectStandardOutput = true;
             process.Start();
             var output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
             PdfGs.renameEdt(outputPath, path);
+            process.WaitForExit();
         }
 
         public static string getTextePdf(string path)
@@ -104,6 +108,10 @@ namespace CartesAcces
                 // -- Si la ligne contient la mention "Elève" .. -- 
                 if (line.Contains(" Elève "))
                 {
+                    line = line.Substring(line.IndexOf("Elève") + 6, line.IndexOf("-") - line.IndexOf("Elève"));
+                    line = line.Replace(" ", null);
+                    line = line.Replace("/", null);
+                    line = line.Replace("-", null);
                     // -- .. Alors on affecte cette ligne a la liste --
                     listeExtractPDF.Add(line);
                 }
@@ -128,20 +136,20 @@ namespace CartesAcces
             List<string> name = new List<string>();
             name = getNomPrenomPdf(getTextePdf(pdf));
             int nb = name.Count;
-            MessageBox.Show(nb.ToString());
-            MessageBox.Show(name[0]);
-            MessageBox.Show(name[name.Count - 1]);
-            DirectoryInfo d = new DirectoryInfo(@"d:\appStageV3\CartesAcces\bin\Debug\data\image\5eme");
-            FileInfo[] infos = d.GetFiles();
-            MessageBox.Show("J'AI LE DROIT ?");
-            int i = 0;
-            foreach(FileInfo f in infos)
+            DirectoryInfo d = new DirectoryInfo(path);
+            int i = 1;
+            foreach(var f in d.GetFiles())
             {
-                string oldName = "page" + (i + 1).ToString();
-                string newName = name[i];
-                File.Move(f.FullName, f.FullName.Replace(oldName,newName));
-                i++;
+                if (f.Name.Contains("page" + i + ".jpg"))
+                {
+                    string oldName = "page" + i + ".jpg";
+                    string newName = name[i - 1] + ".jpg";
+                    File.Move(f.FullName, f.FullName.Replace(oldName,newName));
+                    i++;
+                }
             }
+            MessageBox.Show("fini");
+            
         }
     }
 }
