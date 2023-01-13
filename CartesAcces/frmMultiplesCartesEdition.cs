@@ -42,10 +42,12 @@ namespace CartesAcces
         public frmMultiplesCartesEdition()
         {
             InitializeComponent();
-
+            ControlSize.SetSizeTextControl(this);
+            Couleur.setCouleurFenetre(this);
             //cache les deux éléments jusqu'à ce qu'on veut qu'ils soient visible
             progressBar1.Hide(); // animation de la barre
             label1.Hide(); // label de la barre de progression
+
         }
 
         public void affecterListeClee()
@@ -195,7 +197,7 @@ namespace CartesAcces
             string sFilePath = Path.GetFullPath(sFile);
 
             pbPhoto.Image = new Bitmap(sFilePath + "edition.jpg");
-            pbPhoto.Size = new Size(100, 130);
+            pbPhoto.Size = new Size(110, 165);
             pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPhoto.Visible = true;
         }
@@ -395,11 +397,6 @@ namespace CartesAcces
                     }
                 }
             }
-        }
-
-        public void gereEmploiDuTemps(Eleve eleve, int realLocX, int realLocY, int realWidth, int realHeight, Graphics ObjGraphics, Image img)
-        {
-
         }
 
         public void gereCarteFace(Eleve eleve)
@@ -853,7 +850,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-
+            Timer time = new Timer(this);
         }
     }
 }

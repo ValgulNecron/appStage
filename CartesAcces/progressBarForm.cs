@@ -15,6 +15,8 @@ namespace CartesAcces
         public progressBarForm()
         {
             InitializeComponent();
+            ControlSize.SetSizeTextControl(this);
+            Couleur.setCouleurFenetre(this);
         }
 
         private void progressBarForm_Load(object sender, EventArgs e)
@@ -24,9 +26,19 @@ namespace CartesAcces
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            frmParametres.setLesEleves();
-            frmParametres.setLesClasses();
+            Globale.currentProgress = 1;
+            Globale.totalSteps = 3;
+            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
 
+            ReadCSV.setLesEleves(Chemin.pathListeEleve);
+            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+            Globale.currentProgress = 2;
+
+            Eleve.setLesClasses();
+            Globale.currentProgress = 3;
+            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+
+            MessageBox.Show("Continuer");
 
         }
 
