@@ -26,9 +26,6 @@ namespace CartesAcces
         {
             if (rdbUlis.Checked == true)
             {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
-
                 Font font = new Font("comic sans ms", 30, FontStyle.Bold);
                 Edition.dessineTextCarteFace(font, 50, 230, "ULIS ", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
@@ -36,9 +33,6 @@ namespace CartesAcces
             }
             else if (rdbUPE2A.Checked == true)
             {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
-
                 Font font = new Font("comic sans ms", 30, FontStyle.Bold);
                 Edition.dessineTextCarteFace(font, 50, 230, "UPE2A", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
@@ -46,9 +40,6 @@ namespace CartesAcces
             }
             else if (rdbClRelais.Checked == true)
             {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
-
                 Font font = new Font("comic sans ms", 30, FontStyle.Bold);
                 Edition.dessineTextCarteFace(font, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
@@ -57,7 +48,8 @@ namespace CartesAcces
             else
             {
                 Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
+                Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
+                Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
                 btnEdtPerso.Enabled = false;
             }
         }
@@ -65,7 +57,9 @@ namespace CartesAcces
         private void txtNom_TextChanged(object sender, EventArgs e)
         {
             Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
+            Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
+            Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
+            
             if(txtNom.TextLength < 7)
             {
                 Font font = new Font("times new roman", 25, FontStyle.Bold);
@@ -74,9 +68,7 @@ namespace CartesAcces
             }
             else
             {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
                 Font font = new Font("times new roman", 20, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
                 Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteArriere, cbbSection);
                 pbCarteFace.Refresh();
             }
@@ -85,7 +77,9 @@ namespace CartesAcces
         private void txtPrenom_TextChanged(object sender, EventArgs e)
         {
             Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
+            Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
+            Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
+            
             if (txtPrenom.TextLength < 7)
             {
                 Font font = new Font("times new roman", 25, FontStyle.Bold);
@@ -94,10 +88,8 @@ namespace CartesAcces
             }
             else
             {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
                 Font font = new Font("times new roman", 20, FontStyle.Bold);
                 Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
-                Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbClasse);
                 pbCarteFace.Refresh();
             }
         }
@@ -106,6 +98,8 @@ namespace CartesAcces
         {
             Edition.fondCarteSection(pbCarteFace, cbbSection);
             Edition.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+            txtPrenom.Text = "";
+            txtNom.Text = "";
             groupBox2.Enabled = true;
             rdbUlis.Checked = false;
             rdbUPE2A.Checked = false;
@@ -172,7 +166,7 @@ namespace CartesAcces
 
             // -- On stock l'image original dans un bitmap --
             string classe = cbbClasse.Text;
-            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile("..\\..\\..\\FichiersEDT\\Classes\\" + classe + ".png"));
+            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile("./data/FichierEdtClasse/" + classe + ".png"));
 
             // -- Bitmap pour l'image rognée --
             Bitmap _img = new Bitmap(cropWidthReal, cropHeightReal);
