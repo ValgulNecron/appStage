@@ -81,7 +81,6 @@ namespace CartesAcces
             this.btnEnregistrer.TabIndex = 12;
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = true;
-            
             // 
             // textBox3
             // 
@@ -105,6 +104,7 @@ namespace CartesAcces
             this.btnBascule.TabIndex = 9;
             this.btnBascule.Text = "Basculer à un autre thème";
             this.btnBascule.UseVisualStyleBackColor = true;
+           
             // 
             // frmParametresInterface
             // 
