@@ -19,7 +19,7 @@ namespace CartesAcces
             ControlSize.SetSizeTextControl(this);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBascule_Click(object sender, EventArgs e)
         {
             Globale._estEnModeSombre = !(Globale._estEnModeSombre);
             Couleur.setCouleurFenetre(this);
