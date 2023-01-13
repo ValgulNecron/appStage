@@ -39,11 +39,12 @@ namespace CartesAcces
 
                 for (int i = 1; i <= rowCount; i++)
                 {
+                    string classe = rectifClasse(ReadCSV.getDataFromCSV(sFilePath, 6)[i]);
                     Eleve unEleve = new Eleve();
                     unEleve.NomEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
                     unEleve.PrenomEleve = ReadCSV.getDataFromCSV(sFilePath, 1)[i];
-                    unEleve.ClasseEleve = ReadCSV.getDataFromCSV(sFilePath, 6)[i];
-                    unEleve.RegimeEleve = ReadCSV.getDataFromCSV(sFilePath, 1)[i];
+                    unEleve.ClasseEleve = classe;
+                    unEleve.RegimeEleve = "failed";
                     unEleve.OptionUnEleve = ReadCSV.getDataFromCSV(sFilePath, 7)[i];
                     unEleve.OptionDeuxEleve = ReadCSV.getDataFromCSV(sFilePath, 8)[i];
                     unEleve.OptionTroisEleve = ReadCSV.getDataFromCSV(sFilePath, 9)[i];
@@ -61,6 +62,14 @@ namespace CartesAcces
                     "Pas de liste importée, afin de pouvoir créer des carte merci d'importer le fichier Excel");
             }
 
+        }
+
+        public static string rectifClasse(string classe)
+        {
+            int index = classe.IndexOf('"');
+            string classeRectif = classe.Substring(index + 1, classe.Length - 3);
+
+            return classeRectif;
         }
         
     }
