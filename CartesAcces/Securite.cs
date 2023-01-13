@@ -6,8 +6,6 @@ namespace CartesAcces
 {
     public static class Securite
     {
-        public static DateTime derniereUtilisation = DateTime.Now;
-
         public static string creationHash(string motDePasse)
         {
             //on crée le sel qui permettra au mot de passe d'avoir un hash unique et différent à chaque fois meme si le mot de passe est le meme
