@@ -36,9 +36,7 @@ namespace CartesAcces
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.btnValiderImpr = new System.Windows.Forms.Button();
-            this.tkbLargeurPhoto = new System.Windows.Forms.TrackBar();
-            this.tkbHauteurPhoto = new System.Windows.Forms.TrackBar();
-            this.label7 = new System.Windows.Forms.Label();
+            this.tkbTaillePhoto = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -50,8 +48,7 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarteArriere)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbLargeurPhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbHauteurPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,9 +90,7 @@ namespace CartesAcces
             this.groupBox3.Controls.Add(this.progressBar1);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.btnValiderImpr);
-            this.groupBox3.Controls.Add(this.tkbLargeurPhoto);
-            this.groupBox3.Controls.Add(this.tkbHauteurPhoto);
-            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.tkbTaillePhoto);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(12, 465);
@@ -133,47 +128,26 @@ namespace CartesAcces
             this.btnValiderImpr.UseVisualStyleBackColor = true;
             this.btnValiderImpr.Click += new System.EventHandler(this.btnValiderImpr_Click);
             // 
-            // tkbLargeurPhoto
+            // tkbTaillePhoto
             // 
-            this.tkbLargeurPhoto.Location = new System.Drawing.Point(105, 100);
-            this.tkbLargeurPhoto.Maximum = 300;
-            this.tkbLargeurPhoto.Minimum = 30;
-            this.tkbLargeurPhoto.Name = "tkbLargeurPhoto";
-            this.tkbLargeurPhoto.Size = new System.Drawing.Size(422, 45);
-            this.tkbLargeurPhoto.TabIndex = 8;
-            this.tkbLargeurPhoto.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tkbLargeurPhoto.Value = 100;
-            this.tkbLargeurPhoto.Scroll += new System.EventHandler(this.tkbLargeurPhoto_Scroll);
-            // 
-            // tkbHauteurPhoto
-            // 
-            this.tkbHauteurPhoto.Location = new System.Drawing.Point(105, 37);
-            this.tkbHauteurPhoto.Maximum = 300;
-            this.tkbHauteurPhoto.Minimum = 30;
-            this.tkbHauteurPhoto.Name = "tkbHauteurPhoto";
-            this.tkbHauteurPhoto.Size = new System.Drawing.Size(422, 45);
-            this.tkbHauteurPhoto.TabIndex = 7;
-            this.tkbHauteurPhoto.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tkbHauteurPhoto.Value = 130;
-            this.tkbHauteurPhoto.Scroll += new System.EventHandler(this.tkbHauteurPhoto_Scroll);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 109);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Largeur";
+            this.tkbTaillePhoto.Location = new System.Drawing.Point(112, 47);
+            this.tkbTaillePhoto.Maximum = 300;
+            this.tkbTaillePhoto.Minimum = 30;
+            this.tkbTaillePhoto.Name = "tkbTaillePhoto";
+            this.tkbTaillePhoto.Size = new System.Drawing.Size(422, 45);
+            this.tkbTaillePhoto.TabIndex = 7;
+            this.tkbTaillePhoto.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tkbTaillePhoto.Value = 130;
+            this.tkbTaillePhoto.Scroll += new System.EventHandler(this.tkbTaillePhoto_Scroll);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 47);
+            this.label6.Location = new System.Drawing.Point(21, 57);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Hauteur";
+            this.label6.Text = "Taille";
             // 
             // label5
             // 
@@ -249,11 +223,9 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.pbCarteArriere)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbLargeurPhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbHauteurPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -262,9 +234,7 @@ namespace CartesAcces
         private System.Windows.Forms.PictureBox pbPhoto;
         private System.Windows.Forms.PictureBox pbCarteArriere;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TrackBar tkbLargeurPhoto;
-        private System.Windows.Forms.TrackBar tkbHauteurPhoto;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TrackBar tkbTaillePhoto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;

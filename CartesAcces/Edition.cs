@@ -311,5 +311,52 @@ namespace CartesAcces
                 Globale.listeEleveSansPhoto.Add(eleve);
             }
         }
+
+        public static void cropEdt(PictureBox pbCarteArriere, string classe)
+        {
+            Edition.selectionClick = false;
+
+            // -- Si la largeur a rogner est trop faible, on sort --
+            if (Edition.cropWidth < 1)
+            {
+                return;
+            }
+
+            /* -- Rectangle pour stocker l'image rognée avec les points calculés --
+                Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
+                qui sont celles des vrai fichier EDT !
+                Cela permet d'éviter les problèmes de résolution d'image après le rognage */
+
+
+            int cropWidthReal = (Edition.cropWidth * pbCarteArriere.Image.Width) / 540;
+            int cropHeightReal = (Edition.cropHeight * pbCarteArriere.Image.Height) / 354;
+            int cropXReal = (Edition.cropX * pbCarteArriere.Image.Width) / 540;
+            int cropYReal = (Edition.cropY * pbCarteArriere.Image.Height) / 354;
+
+            Rectangle rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
+
+            // -- On stock l'image original dans un bitmap --
+            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile("./data/FichierEdtClasse/" + classe + ".png"));
+
+            // -- Bitmap pour l'image rognée --
+            Bitmap _img = new Bitmap(cropWidthReal, cropHeightReal);
+
+            // -- Création d'un graphique depuis l'image rognée
+            Graphics g = Graphics.FromImage(_img);
+
+            // -- Attributs de l'image --
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+             
+            // -- On dessine l'image original, avec les dimensions rognées dans le graphique 
+            g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
+
+            // -- Affichage dans la picturebox
+            pbCarteArriere.Image = _img;
+            pbCarteArriere.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbCarteArriere.Width = 540;
+            pbCarteArriere.Height = 354;
+        }
     }
 }
