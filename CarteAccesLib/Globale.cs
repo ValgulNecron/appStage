@@ -53,6 +53,6 @@ namespace CartesAcces
         static public int totalSteps = 0;
 
         //
-        static public frmAccueil accueil;
+        static public Form accueil;
     }
 }

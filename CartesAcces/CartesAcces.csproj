@@ -206,7 +206,7 @@
     <Compile Include="frmSelectSection.Designer.cs">
       <DependentUpon>frmSelectSection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Globale.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="progressBarForm.cs">
       <SubType>Form</SubType>
     </Compile>

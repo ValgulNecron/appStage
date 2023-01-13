@@ -32,9 +32,19 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="itext.kernel">
+          <HintPath>..\packages\itext7.7.2.4\lib\net461\itext.kernel.dll</HintPath>
+        </Reference>
+        <Reference Include="itext.layout">
+          <HintPath>..\packages\itext7.7.2.4\lib\net461\itext.layout.dll</HintPath>
+        </Reference>
+        <Reference Include="MySql.Data">
+          <HintPath>..\packages\MySql.Data.8.0.31\lib\net452\MySql.Data.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
+        <Reference Include="System.Drawing" />
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
     </ItemGroup>
@@ -46,8 +56,8 @@
         <Compile Include="Couleur.cs" />
         <Compile Include="Edition.cs" />
         <Compile Include="Eleve.cs" />
+        <Compile Include="Globale.cs" />
         <Compile Include="PdfGs.cs" />
-        <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="ReadCSV.cs" />
         <Compile Include="Securite.cs" />
@@ -56,6 +66,17 @@
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <COMReference Include="Word">
+        <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+        <VersionMajor>8</VersionMajor>
+        <VersionMinor>7</VersionMinor>
+        <Lcid>0</Lcid>
+        <WrapperTool>tlbimp</WrapperTool>
+        <Isolated>False</Isolated>
+        <EmbedInteropTypes>True</EmbedInteropTypes>
+      </COMReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
