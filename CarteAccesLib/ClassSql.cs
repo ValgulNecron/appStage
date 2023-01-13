@@ -1,6 +1,7 @@
 using System.Data;
 using System.Security.Policy;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace CartesAcces
 {
@@ -10,10 +11,10 @@ namespace CartesAcces
 
         public static void init()
         {
-            string ip = Configuration.getValue("IP");
-            string bdd = Configuration.getValue("BD");
-            string user = Configuration.getValue("USER");
-            string pass = Configuration.getValue("PASS");
+            string ip = ConfigurationManager.AppSettings["IP"];
+            string bdd = ConfigurationManager.AppSettings["BD"];
+            string user = ConfigurationManager.AppSettings["USER"];
+            string pass = ConfigurationManager.AppSettings["PASS"];
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
             builder.Server = ip;
             builder.Port = 3306;
