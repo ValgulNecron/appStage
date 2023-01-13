@@ -177,6 +177,8 @@ namespace CartesAcces
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
             //importEDT();
+            frmSelectSection frmSelectSection = new frmSelectSection();
+            frmSelectSection.Show();
             PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
         }
 

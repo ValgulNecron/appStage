@@ -15,25 +15,25 @@ namespace CartesAcces
         {
             if (rdb3eme.Checked)
             {
-                Globale.section = 3;
+                Globale._classe = 3;
                 this.Close();
             }
 
             if (rdb4eme.Checked)
             {
-                Globale.section = 4;
+                Globale._classe = 4;
                 this.Close();
             }
 
             if (rdb5eme.Checked)
             {
-                Globale.section = 5;
+                Globale._classe = 5;
                 this.Close();
             }
 
             if (rdb6eme.Checked)
             {
-                Globale.section = 6;
+                Globale._classe = 6;
                 this.Close();
             }
             else
