@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
@@ -75,6 +76,39 @@ namespace CartesAcces
             }
 
             return file;
+        }
+
+        public static List<string> getNomPrenomPdf(string pdftext)
+        {
+            List<string> listeExtractPDF = new List<string>();
+                        
+            // !! Recherche des lignes qui nous interesse !!
+            // -- La ligne s'arrete lorsqu'il y a un saut --
+            int posFin = pdftext.IndexOf("\r\n");
+
+            // -- On commence au premier caractère de la chaine --
+            int posDepart = 0;
+
+            // -- Tant qu'on a pas attein la fin de la variable --
+            while (posFin != -1)
+            {
+                // -- Toujours vrai sauf si erreur --
+                if (posDepart >= 0)
+                {
+                    // -- Si la ligne contient la mention "Elève" .. -- 
+                    if (pdftext.Substring(posDepart, 6).Contains("Elève"))
+                    {
+                        // -- .. Alors on affecte cette ligne a la liste --
+                        listeExtractPDF.Add(pdftext.Substring(posDepart + 1, posFin - posDepart - 1));
+                    }
+                    // -- La position de départ se place au début de la ligne suivante --
+                    posDepart = posFin + 1;
+                    // -- La position de fin se place au saut de ligne de la ligne suivante --
+                    posFin = pdftext.IndexOf("\r\n", posDepart + 1);
+                }
+            }
+
+            return listeExtractPDF;
         }
 
         public static int getNbPagePdf()

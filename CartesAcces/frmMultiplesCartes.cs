@@ -149,7 +149,7 @@ namespace CartesAcces
                     string msg = "Attention ! Les élèves suivant n'ont pas de photo : ";
                     foreach (Eleve eleve in Globale.listeEleveSansPhoto)
                     {
-                        msg = msg + Environment.NewLine + eleve.NomEleve + " " + eleve.PrenomEleve;
+                        //msg = msg + Environment.NewLine + eleve.NomEleve + " " + eleve.PrenomEleve;
                     }
 
                     msg += Environment.NewLine + "Voulez vous quand même continuer ?";
@@ -164,9 +164,7 @@ namespace CartesAcces
                         frm.imprListe = imprListe;
                         frm.imprSection = imprSection;
 
-                        frm.listeEleve = Globale.listeEleveImpr;
-
-                        frm.affecterListeClee();
+                        //frm.affecterListeClee("blabla");
 
                         int index = 0;
                         while (Globale.listeEleveImpr[index].SansEDT == true)
@@ -196,7 +194,7 @@ namespace CartesAcces
 
                     frm.listeEleve = Globale.listeEleveImpr;
 
-                    frm.affecterListeClee();
+                    //frm.affecterListeClee();
 
                     int index = 0;
                     while (Globale.listeEleveImpr[index].SansEDT == true)
