@@ -79,7 +79,7 @@
       </COMReference>
     </ItemGroup>
     <ItemGroup>
-      <Content Include="app.config" />
+      <Content Include="config.xml" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

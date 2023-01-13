@@ -2,6 +2,7 @@ using System.Data;
 using System.Security.Policy;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Xml;
 
 namespace CartesAcces
 {
@@ -11,14 +12,21 @@ namespace CartesAcces
 
         public static void init()
         {
-            string ip = ConfigurationManager.AppSettings["IP"];
-            string bdd = ConfigurationManager.AppSettings["BD"];
-            string user = ConfigurationManager.AppSettings["USER"];
-            string pass = ConfigurationManager.AppSettings["PASS"];
+            string configFile = "./config.xml";
+            XmlDocument doc = new XmlDocument();
+            doc.Load(configFile);
+            XmlNode nodeIp = doc.SelectSingleNode("/configuration/appSettings/add[@key='IP']");
+            string ip = nodeIp.Attributes["value"].Value;
+            XmlNode nodeBd = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
+            string bd = nodeBd.Attributes["value"].Value;
+            XmlNode nodeUser = doc.SelectSingleNode("/configuration/appSettings/add[@key='USER']");
+            string user = nodeUser.Attributes["value"].Value;
+            XmlNode nodePass = doc.SelectSingleNode("/configuration/appSettings/add[@key='PASS']");
+            string pass = nodePass.Attributes["value"].Value;
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
             builder.Server = ip;
             builder.Port = 3306;
-            builder.Database = bdd;
+            builder.Database = bd;
             builder.UserID = user;
             builder.Password = pass;
             string connectionString = builder.ConnectionString;
