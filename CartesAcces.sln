@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartesAcces", "CartesAcces\CartesAcces.csproj", "{53ED547D-462A-4A2E-B1FC-731C75A80DF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarteAccesLib", "CarteAccesLib\CarteAccesLib.csproj", "{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{53ED547D-462A-4A2E-B1FC-731C75A80DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53ED547D-462A-4A2E-B1FC-731C75A80DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53ED547D-462A-4A2E-B1FC-731C75A80DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

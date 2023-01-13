@@ -83,11 +83,7 @@ namespace CartesAcces
             // 
             this.cbbImprSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbImprSection.FormattingEnabled = true;
-            this.cbbImprSection.Items.AddRange(new object[] {
-            "6eme",
-            "5eme",
-            "4eme",
-            "3eme"});
+            this.cbbImprSection.Items.AddRange(new object[] { "6eme", "5eme", "4eme", "3eme" });
             this.cbbImprSection.Location = new System.Drawing.Point(551, 53);
             this.cbbImprSection.Name = "cbbImprSection";
             this.cbbImprSection.Size = new System.Drawing.Size(147, 21);
@@ -112,7 +108,6 @@ namespace CartesAcces
             this.lsbListeEleve.Name = "lsbListeEleve";
             this.lsbListeEleve.Size = new System.Drawing.Size(242, 238);
             this.lsbListeEleve.TabIndex = 7;
-            this.lsbListeEleve.SelectedIndexChanged += new System.EventHandler(this.lsbListeEleve_SelectedIndexChanged);
             // 
             // btnReset
             // 
@@ -235,7 +230,7 @@ namespace CartesAcces
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1109, 835);
+            this.ClientSize = new System.Drawing.Size(1109, 749);
             this.Controls.Add(this.NbComptageEleveLP);
             this.Controls.Add(this.NbComptageEleveCS);
             this.Controls.Add(this.groupBox1);
@@ -260,7 +255,6 @@ namespace CartesAcces
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
