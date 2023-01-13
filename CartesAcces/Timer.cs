@@ -10,7 +10,7 @@ namespace CartesAcces
         private DateTime start;
         private System.Timers.Timer timer;
         private int dureeMinute = 15;
-        private int frequenceDesVerifEnMinute = 2;
+        private int frequenceDesVerifEnMinute = 1;
         private Form form;
 
         public Timer(Form form)
