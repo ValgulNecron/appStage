@@ -185,6 +185,37 @@ namespace CartesAcces
                     }
                 }
             }
+        public static void checkMef(RadioButton rdbUlis, RadioButton rdbUPE2A, RadioButton rdbClRelais, PictureBox pbCarteFace, ComboBox cbbSection, Button btnEdtPerso, TextBox txtNom, TextBox txtPrenom)
+        {
+            if (rdbUlis.Checked == true)
+            {
+                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 50, 230, "ULIS ", pbCarteFace, cbbSection);
+                pbCarteFace.Refresh();
+                btnEdtPerso.Enabled = true;
+            }
+            else if (rdbUPE2A.Checked == true)
+            {
+                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 50, 230, "UPE2A", pbCarteFace, cbbSection);
+                pbCarteFace.Refresh();
+                btnEdtPerso.Enabled = true;
+            }
+            else if (rdbClRelais.Checked == true)
+            {
+                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
+                pbCarteFace.Refresh();
+                btnEdtPerso.Enabled = true;
+            }
+            else
+            {
+                Edition.fondCarteSection(pbCarteFace, cbbSection);
+                Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
+                Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
+                btnEdtPerso.Enabled = false;
+            }
+        }
 
         // -------------------------
         public static void setLaPhoto(string path, PictureBox pbPhoto)

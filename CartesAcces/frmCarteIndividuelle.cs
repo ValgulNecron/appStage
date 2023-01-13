@@ -21,39 +21,7 @@ namespace CartesAcces
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
         }
-        
-        private void checkMef()
-        {
-            if (rdbUlis.Checked == true)
-            {
-                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 50, 230, "ULIS ", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else if (rdbUPE2A.Checked == true)
-            {
-                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 50, 230, "UPE2A", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else if (rdbClRelais.Checked == true)
-            {
-                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else
-            {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
-                Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
-                btnEdtPerso.Enabled = false;
-            }
-        }
-        
+
         private void txtNom_TextChanged(object sender, EventArgs e)
         {
             Edition.fondCarteSection(pbCarteFace, cbbSection);
@@ -387,17 +355,17 @@ namespace CartesAcces
 
         private void rdbUlis_CheckedChanged(object sender, EventArgs e)
         {
-            checkMef();
+            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void rdbUPE2A_CheckedChanged(object sender, EventArgs e)
         {
-            checkMef();
+            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void rdbRas_CheckedChanged(object sender, EventArgs e)
         {
-            checkMef();
+            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void btnEdtPerso_Click(object sender, EventArgs e)
