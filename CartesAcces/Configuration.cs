@@ -28,8 +28,20 @@ namespace CartesAcces
             {
                 string value = "";
                 
-                
-                
+                string filePath = "./.config";
+                string[] lines = File.ReadAllLines(filePath);
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    foreach (string line in lines)
+                    {
+                        string pattern = "^" + key + "=";
+                        if (!(Regex.IsMatch(line, pattern)))
+                        {
+                            return line;
+                        }
+                    }
+                }
+
                 if (value == "")
                 {
                     throw new ArgumentException("Clé invalide");
@@ -51,6 +63,10 @@ namespace CartesAcces
                     if (!(Regex.IsMatch(line, pattern)))
                     {
                         writer.WriteLine(line);
+                    }
+                    else
+                    {
+                        writer.WriteLine(key+"="+value);
                     }
                 }
             }

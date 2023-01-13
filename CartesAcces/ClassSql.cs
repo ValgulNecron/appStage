@@ -8,7 +8,10 @@ namespace CartesAcces
 
         public static void init()
         {
-            string ip = "";
+            string ip = Configuration.getValue("IP");
+            string bdd = Configuration.getValue("BD");
+            string user = Configuration.getValue("USER");
+            string pass = Configuration.getValue("PASS");
         }
     }
 }
