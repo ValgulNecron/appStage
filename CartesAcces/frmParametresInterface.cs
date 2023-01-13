@@ -17,6 +17,7 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
+            btnBascule.Click += btnBascule_Click;
         }
 
         private void btnBascule_Click(object sender, EventArgs e)
