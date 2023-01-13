@@ -78,7 +78,11 @@ namespace CartesAcces
         }
         private void btnCrop_Click(object sender, EventArgs e)
         {
-            
+            Cursor = Cursors.Default;
+            string pathEdt = "./data/image/5eme/page_" + 1 + ".jpg";
+            Edition.selectionClick = false;
+            Edition.cropEdt(pbCarteArriere, pathEdt);
+            btnCrop.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -88,12 +92,42 @@ namespace CartesAcces
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
         {
-
+            // -- Si le bouton selectionné est cliqué --
+            if (Edition.selectionClick == true)
+            {
+                // -- Si il y a clic gauche --
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    // -- On prend les coordonnées de départ --
+                    Edition.cropX = e.X;
+                    Edition.cropY = e.Y;
+                    Edition.cropPen = new Pen(Color.Black, 1);
+                    Edition.cropPen.DashStyle = DashStyle.DashDotDot;
+                }
+                // -- Refresh constant pour avoir un apperçu pendant la selection --
+                pbCarteArriere.Refresh();
+            }
         }
 
         private void pbCarteArriere_MouseMove(object sender, MouseEventArgs e)
         {
+            // -- Si le bouton selection est cliqué --
+            if (Edition.selectionClick == true)
+            {
+                // -- Si pas d'image, on sort --
+                if (pbCarteArriere.Image == null)
+                    return;
 
+                // -- Glissement à la fin du premier clic gauche --
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    // -- On prend les dimensions a la fin du déplacement de la souris
+                    pbCarteArriere.Refresh();
+                    Edition.cropWidth = e.X - Edition.cropX;
+                    Edition.cropHeight = e.Y - Edition.cropY;
+                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY, Edition.cropWidth, Edition.cropHeight);
+                }
+            }
         }
 
         private void btnValiderImpr_Click(object sender, EventArgs e)
@@ -113,7 +147,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-
+            pbCarteArriere.Image = Image.FromFile("./data/image/5eme/page_" + 1 + ".jpg");
         }
     }
 }

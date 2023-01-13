@@ -41,6 +41,7 @@ namespace CartesAcces
                 {
                     string classe = rectifClasse(ReadCSV.getDataFromCSV(sFilePath, 6)[i]);
                     Eleve unEleve = new Eleve();
+                    unEleve.NumEleve = i;
                     unEleve.NomEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
                     unEleve.PrenomEleve = ReadCSV.getDataFromCSV(sFilePath, 1)[i];
                     unEleve.ClasseEleve = classe;

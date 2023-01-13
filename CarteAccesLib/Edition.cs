@@ -312,10 +312,8 @@ namespace CartesAcces
             }
         }
 
-        public static void cropEdt(PictureBox pbCarteArriere, string classe)
+        public static void cropEdt(PictureBox pbCarteArriere, string pathEdt)
         {
-            Edition.selectionClick = false;
-
             // -- Si la largeur a rogner est trop faible, on sort --
             if (Edition.cropWidth < 1)
             {
@@ -326,8 +324,7 @@ namespace CartesAcces
                 Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
                 qui sont celles des vrai fichier EDT !
                 Cela permet d'éviter les problèmes de résolution d'image après le rognage */
-
-
+            
             int cropWidthReal = (Edition.cropWidth * pbCarteArriere.Image.Width) / 540;
             int cropHeightReal = (Edition.cropHeight * pbCarteArriere.Image.Height) / 354;
             int cropXReal = (Edition.cropX * pbCarteArriere.Image.Width) / 540;
@@ -336,7 +333,7 @@ namespace CartesAcces
             Rectangle rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
 
             // -- On stock l'image original dans un bitmap --
-            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile("./data/FichierEdtClasse/" + classe + ".png"));
+            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile(pathEdt));
 
             // -- Bitmap pour l'image rognée --
             Bitmap _img = new Bitmap(cropWidthReal, cropHeightReal);

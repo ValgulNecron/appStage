@@ -53,10 +53,12 @@ namespace CartesAcces
                     listeEleveParClasse.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
                 }
             }
-
+            listeEleveParClasse.Sort();
+            
             cbbImprSection.SelectedItem = null;
             lsbListeEleve.DataSource = null;
             lsbListeEleve.DataSource = listeEleveParClasse;
+            btnValiderImpr.Enabled = true;
         }
 
         private void cbbImprSection_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,6 +75,7 @@ namespace CartesAcces
             cbbImprClasse.SelectedItem = null;
             lsbListeEleve.DataSource = null;
             lsbListeEleve.DataSource = listeEleveParSection;
+            btnValiderImpr.Enabled = true;
         }
 
         private void btnCopierDataGrid_Click(object sender, EventArgs e)

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace CartesAcces
 {
@@ -51,6 +53,7 @@ namespace CartesAcces
             process.Start();
             var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
+            PdfGs.renameEdt(outputPath, path);
         }
 
         public static string getTextePdf(string path)
@@ -80,6 +83,7 @@ namespace CartesAcces
 
         public static List<string> getNomPrenomPdf(string pdftext)
         {
+            MessageBox.Show(pdftext);
             List<string> listeExtractPDF = new List<string>();
                         
             // !! Recherche des lignes qui nous interesse !!
@@ -116,6 +120,24 @@ namespace CartesAcces
             var folderPath = "./image/";
             var fileCount = Directory.GetFiles(folderPath).Length;
             return fileCount;
+        }
+
+        public static void renameEdt(string path, string pdf)
+        {
+            List<string> name = new List<string>();
+            name = getNomPrenomPdf(getTextePdf(pdf));
+            int nb = name.Count;
+            MessageBox.Show(nb.ToString());
+            DirectoryInfo d = new DirectoryInfo(path);
+            FileInfo[] infos = d.GetFiles();
+            int i = 0;
+            foreach(FileInfo f in infos)
+            {
+                string oldName = "page_" + (i + 1).ToString();
+                string newName = name[i];
+                File.Move(f.FullName, f.FullName.Replace(oldName, newName));
+                i++;
+            }
         }
     }
 }
