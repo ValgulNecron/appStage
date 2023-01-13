@@ -84,7 +84,6 @@ namespace CartesAcces
 
         public static List<string> getNomPrenomPdf(string pdftext)
         {
-            MessageBox.Show(pdftext);
             List<string> listeExtractPDF = new List<string>();
                         
             // !! Recherche des lignes qui nous interesse !!

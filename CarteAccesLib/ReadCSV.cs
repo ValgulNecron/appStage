@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -11,7 +12,7 @@ namespace CartesAcces
         {
             List<string> list = new List<string>();
 
-            using (var reader = new StreamReader(pathCSV))
+            using (var reader = new StreamReader(pathCSV, Encoding.GetEncoding("ISO-8859-1")))
             {
                 while (!reader.EndOfStream)
                 {

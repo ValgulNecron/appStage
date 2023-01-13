@@ -20,7 +20,6 @@ namespace CartesAcces
         private string optionQuatreEleve;
         private string mefEleve;
         private bool sansEDT;
-        private string numEdt;
 
         public Eleve()
         {
