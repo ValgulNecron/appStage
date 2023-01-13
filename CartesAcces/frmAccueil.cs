@@ -18,6 +18,7 @@ namespace CartesAcces
             InitializeComponent();
             ControlSize.SetSizeTextControl(this);
             Couleur.setCouleurFenetre(this);
+            string test;
             if (Globale._estEnModeSombre)
             {
                 pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
