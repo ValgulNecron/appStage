@@ -256,7 +256,6 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.DataGridParametres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
