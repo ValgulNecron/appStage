@@ -7,8 +7,9 @@ namespace CartesAcces
     {
         public static void getImageFromPdf(string path)
         {
-            string outputPattern = "./image/page_%d.jpg";
-
+            string outputPath = "./data/image";
+            string outputPattern = outputPath + "page_%d.jpg";
+    
             if (Directory.Exists("./image"))
             {
                 foreach (string file in Directory.GetFiles("./image"))
