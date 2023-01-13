@@ -9,6 +9,7 @@ namespace CartesAcces
 {
     public class Eleve
     {
+        private int numEleve;
         private string nomEleve;
         private string prenomEleve;
         private string classeEleve;
@@ -19,9 +20,11 @@ namespace CartesAcces
         private string optionQuatreEleve;
         private string mefEleve;
         private bool sansEDT;
+        private string numEdt;
 
         public Eleve()
         {
+            this.NumEleve = 0;
             this.NomEleve = "null";
             this.PrenomEleve = "null";
             this.ClasseEleve = "null";
@@ -34,6 +37,7 @@ namespace CartesAcces
             this.sansEDT = false;
         }
 
+        public int NumEleve { get => numEleve; set => numEleve = value; }
         public string NomEleve { get => nomEleve; set => nomEleve = value; }
         public string PrenomEleve { get => prenomEleve; set => prenomEleve = value; }
         public string ClasseEleve { get => classeEleve; set => classeEleve = value; }
@@ -44,7 +48,7 @@ namespace CartesAcces
         public string OptionQuatreEleve { get => optionQuatreEleve; set => optionQuatreEleve = value; }
         public string MefEleve { get => mefEleve; set => mefEleve = value; }
         public bool SansEDT { get => sansEDT; set => sansEDT = value; }
-        
+
         public static List<string> getEleveSection(string section)
         {
             // l'idée est de récupérer le premier caractère d'une propriété de l'objet, ici on veut le premier caractère de la classe de l'élève, on choisit
@@ -151,7 +155,6 @@ namespace CartesAcces
             Globale.classes4eme.Sort();
             Globale.classes5eme.Sort();
             Globale.classes6eme.Sort();
-
         }
     }
 }

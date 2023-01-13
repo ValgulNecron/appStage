@@ -112,7 +112,9 @@ namespace CartesAcces
         {
             Cursor = Cursors.Default;
             string classe = cbbClasse.Text;
-            Edition.cropEdt(pbCarteArriere, classe);
+            string pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+            Edition.selectionClick = false;
+            Edition.cropEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
         }
         private void btnCancel_Click(object sender, EventArgs e)
