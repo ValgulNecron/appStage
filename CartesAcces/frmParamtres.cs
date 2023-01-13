@@ -171,15 +171,18 @@ namespace CartesAcces
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
             txtPathEDT.Text = Chemin.setPathImportFilePDF();
+            frmSelectSection frmSelectSection = new frmSelectSection();
+            //frmSelectSection.Top = new frmParametres().Top;
+            frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
+            frmSelectSection.Show();
             btnValiderEDT.Enabled = true;
         }
 
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
             //importEDT();
-            frmSelectSection frmSelectSection = new frmSelectSection();
-            frmSelectSection.Show();
             PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
+
         }
 
         private void btnImportPhoto_Click(object sender, EventArgs e)

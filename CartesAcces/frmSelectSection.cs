@@ -19,19 +19,19 @@ namespace CartesAcces
                 this.Close();
             }
 
-            if (rdb4eme.Checked)
+            else if (rdb4eme.Checked)
             {
                 Globale._classe = 4;
                 this.Close();
             }
 
-            if (rdb5eme.Checked)
+            else if (rdb5eme.Checked)
             {
                 Globale._classe = 5;
                 this.Close();
             }
 
-            if (rdb6eme.Checked)
+            else if (rdb6eme.Checked)
             {
                 Globale._classe = 6;
                 this.Close();

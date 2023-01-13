@@ -12,22 +12,22 @@ namespace CartesAcces
             {
                 case 3:
                 {
-                    outputPath += "/3eme";
+                    outputPath += "/3eme/";
                     break;
                 }
                 case 4:
                 {
-                    outputPath += "/4eme";
+                    outputPath += "/4eme/";
                     break;
                 }
                 case 5:
                 {
-                    outputPath += "/5eme";
+                    outputPath += "/5eme/";
                     break;
                 }
                 case 6:
                 {
-                    outputPath += "/6eme";
+                    outputPath += "/6eme/";
                     break;
                 }
             }
