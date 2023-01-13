@@ -30,7 +30,10 @@ namespace CartesAcces
         // Liste des EDT
         public static List<PdfPage> listeEdt = new List<PdfPage>();
         public static List<Image> listeEdtImage = new List<Image>();
-
+        
+        // selection section
+        public static int section = 0;
+        
         // theme 
         static public bool _estEnModeSombre = false;
 

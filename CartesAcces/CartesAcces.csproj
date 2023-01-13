@@ -185,6 +185,12 @@
     <Compile Include="frmParamtres.Designer.cs">
       <DependentUpon>frmParamtres.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSelectSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectSection.Designer.cs">
+      <DependentUpon>frmSelectSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Globale.cs" />
     <Compile Include="PdfGs.cs" />
     <Compile Include="Program.cs" />
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmParamtres.resx">
       <DependentUpon>frmParamtres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectSection.resx">
+      <DependentUpon>frmSelectSection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="progressBarForm.resx">
       <DependentUpon>progressBarForm.cs</DependentUpon>
