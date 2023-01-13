@@ -27,6 +27,11 @@ namespace CartesAcces
         public static List<Eleve> listeEleveImpr = new List<Eleve>();
         public static List<Eleve> listeEleveSansPhoto = new List<Eleve>();
         
+        public static List<Eleve> listeEleve6 = new List<Eleve>();
+        public static List<Eleve> listeEleve5 = new List<Eleve>();
+        public static List<Eleve> listeEleve4 = new List<Eleve>();
+        public static List<Eleve> listeEleve3 = new List<Eleve>();
+        
         // Liste des EDT
         public static List<PdfPage> listeEdt = new List<PdfPage>();
         public static List<Image> listeEdtImage = new List<Image>();

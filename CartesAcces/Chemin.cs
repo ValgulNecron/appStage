@@ -8,10 +8,10 @@ namespace CartesAcces
     {
         public static string pathListeEleve = "./data/ImportListeEleve/ImportEleve.csv";
         
-        public static string pathEdtEleve6e = "./data/ElevesEdt/ImportEdt6e.pdf";
-        public static string pathEdtEleve5e = "./data/ElevesEdt/ImportEdt5e.pdf";
-        public static string pathEdtEleve4e = "./data/ElevesEdt/ImportEdt4e.pdf";
-        public static string pathEdtEleve3e = "./data/ElevesEdt/ImportEdt3e.pdf";
+        public static string pathEdtEleve6e = "./data/image/6eme/";
+        public static string pathEdtEleve5e = "./data/image/5eme/";
+        public static string pathEdtEleve4e = "./data/image/4eme/";
+        public static string pathEdtEleve3e = "./data/image/3eeme";
     
         // -- Obtention du chemin --
         public static string getFilePath(string file)

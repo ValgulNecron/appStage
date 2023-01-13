@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iText.IO.Font;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace CartesAcces
@@ -50,93 +51,20 @@ namespace CartesAcces
 
         }
 
-        public void affecterListeClee()
+        public void setListeClee(string pathedt)
         {
-            // -- Liste des noms de fichier --
-            List<string> listeNomFichier = new List<string>();
+            string pdftext = PdfGs.getTextePdf(pathedt);
+            listeCleeEleve = PdfGs.getNomPrenomPdf(pdftext);
+        }
 
-            string sFilePath = getFilePath("FichiersEDT");
-            sFilePath += "\\" + getNiveau(0);
-            DirectoryInfo directory = new DirectoryInfo(sFilePath);
-
-            // -- On remplit la liste avec les noms trouvés --
-            foreach (var file in directory.GetFiles())
+        public bool compareNbEleve(List<string> liste1, List<Eleve> liste2)
+        {
+            if (liste1.Count() == liste2.Count())
             {
-                listeNomFichier.Add(file.Name);
+                return true;
             }
 
-            // -- Création d'une clé pour chaques élèves de la liste --
-            foreach (Eleve eleve in listeEleve)
-            {
-                // Nom prenom classe
-                string clé = "Elève " + eleve.NomEleve + " " + eleve.PrenomEleve + " " + eleve.ClasseEleve;
-
-                // Correction sur le regime
-                if (eleve.RegimeEleve == "EXTERN")
-                {
-                    clé += " - Externe";
-                }
-                else if (eleve.RegimeEleve.Substring(0, 2) == "DP")
-                {
-                    clé += " - 12P";
-                }
-
-                // Option 1
-                clé += " - " + eleve.OptionUnEleve;
-
-                // Option 2
-                if (eleve.OptionDeuxEleve != "")
-                {
-                    clé += " - " + eleve.OptionDeuxEleve;
-                }
-
-                // Option 3
-                if (eleve.OptionTroisEleve != "")
-                {
-                    clé += " - " + eleve.OptionTroisEleve;
-                }
-
-                // Option 4
-                if (eleve.OptionQuatreEleve != "")
-                {
-                    clé += " - " + eleve.OptionQuatreEleve;
-                }
-
-                // -- On ajoute la clé a la liste --
-                listeCleeEleve.Add(clé);
-
-                // -- Recherche de si l'élève a bien un emploi du temps dans le dossier correspondant a sa clé --
-                bool bTrouve = false;
-
-                // -- Pour chaques fichier dans la liste faite précédemment .. --
-                foreach (string fichier in listeNomFichier)
-                {
-                    // -- Si la clé correspond a l'un d'entre eux --
-                    
-                    if (clé + ".png" == fichier)
-                    {
-                        bTrouve = true;
-                        // -- On passe directement a la suite --
-                        break;
-                    }
-
-                    // -- Sinon on continue .. --
-                    else
-                    {
-                        bTrouve = false;
-                    }
-
-                    // -- .. jusqu'a la fin de la liste de nom --
-                    
-                }
-
-                // -- Si on a pas trouvé .. --
-                if (bTrouve == false)
-                {
-                    // -- .. l'élève est noté comme sans edt --
-                    eleve.SansEDT = true;
-                }
-            }
+            return false;
         }
 
         public string getNiveau(int indexEleve)
@@ -146,16 +74,16 @@ namespace CartesAcces
             switch (listeEleve[indexEleve].ClasseEleve.Substring(0, 1))
             {
                 case "3":
-                    folder = "3EME";
+                    folder = "./data/image/3eme";
                     break;
                 case "4":
-                    folder = "4EME";
+                    folder = "./data/image/4eme";
                     break;
                 case "5":
-                    folder = "5EME";
+                    folder = "./data/image/5eme";
                     break;
                 case "6":
-                    folder = "6EME";
+                    folder = "./data/image/6eme";
                     break;
             }
 
@@ -168,12 +96,12 @@ namespace CartesAcces
 
             if(imprListe == true && listeEleve[indexEleve].SansEDT == false)
             {
-                pbCarteArriere.Image = Image.FromFile(@".\FichiersEDT\" + folder + "\\" + listeCleeEleve[indexEleve] + ".png");
+                pbCarteArriere.Image = Image.FromFile(folder + "/page_" + indexEleve + ".jpg");
             }
 
             else if (listeEleve[indexEleve].SansEDT == true)
             {
-                pbCarteArriere.Image = Image.FromFile(@".\FichiersEDT\Classes\" + listeEleve[indexEleve].ClasseEleve + ".png");
+                pbCarteArriere.Image = Image.FromFile("./FichierEdtClasse/" + listeEleve[indexEleve].ClasseEleve + ".png");
             }
 
             else
@@ -183,7 +111,7 @@ namespace CartesAcces
                     if (eleve.SansEDT == false)
                     {
                         int i = listeEleve.IndexOf(eleve);
-                        pbCarteArriere.Image = Image.FromFile(@".\FichiersEDT\" + folder + "\\" + listeCleeEleve[i] + ".png");
+                        pbCarteArriere.Image = Image.FromFile(folder + "/page_" + indexEleve + ".jpg");
                         break;
                     }
                 }
