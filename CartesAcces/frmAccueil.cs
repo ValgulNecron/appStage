@@ -13,28 +13,19 @@ namespace CartesAcces
 {
     public partial class frmAccueil : Form
     {
+        // ** VARIABLES : Listes des classes **
+        public static List<string> classes6eme = new List<string>();
+        public static List<string> classes5eme = new List<string>();
+        public static List<string> classes4eme = new List<string>();
+        public static List<string> classes3eme = new List<string>();
+        public static List<string> classesUnknown = new List<string>();
+
+        // ** VARIABLES : Liste d'élèves **
+        public static List<Eleve> listeEleve = new List<Eleve>();
+
         public frmAccueil()
         {
             InitializeComponent();
-            ControlSize.SetSizeTextControl(this);
-            Couleur.setCouleurFenetre(this);
-            string test;
-            if (Globale._estEnModeSombre)
-            {
-                pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
-                    Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
-                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0], 
-                    Globale._couleurDeFondSombre[1], Globale._couleurDeFondSombre[2]);
-            }
-            else
-            {
-                pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
-                    Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
-                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0], 
-                    Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
-            }
-
-          
         }
 
         private void OpenChildForm(Form childForm)
@@ -51,11 +42,9 @@ namespace CartesAcces
         private void frmAccueil_Load(object sender, EventArgs e)
         {
             progressBarForm frmWait = new progressBarForm();
-            frmWait.StartPosition = FormStartPosition.Manual;
-            frmWait.Location = new Point(800, 300);
             frmWait.Show();
             frmWait.TopMost = true;
-            Timer time = new Timer(this);
+
         }
 
         //Création de menu de navigation

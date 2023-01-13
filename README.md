@@ -1,23 +1,27 @@
-# appStage 
+# appStage \n
 
 Repos du l'application de création de cartes d'accès   
 
-- Les fichiers produis par l'application doivent se trouver au même endroit que l'exe (fait)
+-Les fichiers produis par l'application doivent se trouver au même endroit que l'exe
 
-- redimension perte de résolution => faire avec un rapport hauteur / largeur (fait)
+-redimension perte de résolution => faire avec un rapport hauteur / largeur
 
-- utilisation du CSV aulieu du XLS, recherche de colonne simplifié (fait)
+-barre de chargement, progression en % 
 
-- verification de compatibilité (a faire) 
+-utilisation du CSV aulieu du XLS, recherche de colonne simplifié
 
-- rendre l'interface légèrement plus instinctive au niveau de l'acccueil (a faire)
+-convaincre Troestler UTILISER LIBRAIRIE
 
-- thème sombre (fait) thème clair (fait)
+-version de l'application
 
-- sécuriser l'application (code (fait), stratégie de mot de passe (fait), deco apres 15min (fait)) (fait)
+-rendre l'interface légèrement plus instinctive au niveau de l'acccueil
 
-- base de données => SQL (en cours)
+-thème sombre / thème clair => enregistrer dans la base de données (paramètre utilisateur)
 
-- changement de methode pour screenshot les pdf (en cours)
+-les photos sont allongés
+
+-sécuriser l'application (code, stratégie de mot de passe, )
+
+-base de données => NoSQL
 
 ! pas d'application mobile

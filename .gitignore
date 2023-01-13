@@ -1,4 +1,4 @@
-### VisualStudioCode template
+﻿### VisualStudioCode template
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -22,7 +22,6 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-.idea/.idea.CartesAcces/
 
 # AWS User-specific
 .idea/**/aws.xml

@@ -38,7 +38,7 @@ namespace CartesAcces
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize) (this.pbPhotoUnique)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPhotoUnique)).BeginInit();
             this.SuspendLayout();
             // 
             // pbPhotoUnique
@@ -143,10 +143,10 @@ namespace CartesAcces
             this.Controls.Add(this.pbPhotoUnique);
             this.Name = "frmImportPhotoUnique";
             this.Text = "Import d\'une photo unique";
-            this.Load += new System.EventHandler(this.frmImportPhotoUnique_Load);
-            ((System.ComponentModel.ISupportInitialize) (this.pbPhotoUnique)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPhotoUnique)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
