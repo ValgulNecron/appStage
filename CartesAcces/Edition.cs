@@ -144,27 +144,10 @@ namespace CartesAcces
                 pbCarteArriere.Image = new Bitmap(opfPath);
             }
         }
-        
-        public static void reprendNomPrenom(TextBox txtNom, TextBox txtPrenom, PictureBox pbCarteFace, ComboBox cbbSection)
-        {
-            if (txtNom.Text != "")
-            {
-                if (txtNom.TextLength < 7)
-                {
-                    Font font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
-                    pbCarteFace.Refresh();
-                }
-                else
-                {
-                    fondCarteSection(pbCarteFace, cbbSection);
-                    Font font = new Font("times new roman", 20, FontStyle.Bold);
-                    dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
-                    dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
-                    pbCarteFace.Refresh();
-                }
-            }
 
+        public static void reprendPrenom(TextBox txtPrenom, PictureBox pbCarteFace,
+            ComboBox cbbSection)
+        {
             if (txtPrenom.Text != "")
             {
                 if (txtPrenom.TextLength < 7)
@@ -178,11 +161,30 @@ namespace CartesAcces
                     fondCarteSection(pbCarteFace, cbbSection);
                     Font font = new Font("times new roman", 20, FontStyle.Bold);
                     dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
-                    dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
         }
+
+        public static void reprendNom(TextBox txtNom, PictureBox pbCarteFace, ComboBox cbbSection)
+            {
+                if (txtNom.Text != "")
+                {
+                    if (txtNom.TextLength < 7)
+                    {
+                        Font font = new Font("times new roman", 25, FontStyle.Bold);
+                        dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
+                        pbCarteFace.Refresh();
+                    }
+                    else
+                    {
+                        fondCarteSection(pbCarteFace, cbbSection);
+                        Font font = new Font("times new roman", 20, FontStyle.Bold);
+                        dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
+                        pbCarteFace.Refresh();
+                    }
+                }
+            }
 
         // -------------------------
         public static void setLaPhoto(string path, PictureBox pbPhoto)
