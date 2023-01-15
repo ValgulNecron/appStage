@@ -135,19 +135,20 @@ namespace CartesAcces
         {
             List<string> name = new List<string>();
             name = getNomPrenomPdf(getTextePdf(pdf));
-            int nb = name.Count;
             DirectoryInfo d = new DirectoryInfo(path);
             FileInfo[] infos = d.GetFiles();
-            int i = 1;
-            foreach(var f in d.GetFiles())
+
+            for (int i = 1; i < infos.Length; i++)
             {
-                string oldName = "page" + i + ".jpg";
-                string newName = name[i - 1] + ".jpg";
-                File.Move(f.FullName, f.FullName.Replace(oldName,newName));
-                i++;
+                string nameWithoutExt = infos[i].Name.Substring(0, infos[i].Name.Length - 4);
+                string index = nameWithoutExt.Substring(4, nameWithoutExt.Length - 4);
+                //MessageBox.Show(index);
+                int indexInt = Convert.ToInt32(index);
+                
+                string oldName = infos[i].Name;
+                string newName = name[indexInt - 1] + ".jpg";
+                File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName,newName));
             }
-            MessageBox.Show("fini" + i);
-            
         }
     }
 }
