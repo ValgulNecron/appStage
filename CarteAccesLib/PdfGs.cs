@@ -108,10 +108,11 @@ namespace CartesAcces
                 // -- Si la ligne contient la mention "Elève" .. -- 
                 if (line.Contains(" Elève "))
                 {
-                    line = line.Substring(line.IndexOf("Elève") + 6, line.IndexOf("-") - line.IndexOf("Elève"));
                     line = line.Replace(" ", null);
                     line = line.Replace("/", null);
                     line = line.Replace("-", null);
+                    line = line.Replace(Environment.NewLine, null);
+                    line = line.Replace("Elève", null);
                     // -- .. Alors on affecte cette ligne a la liste --
                     listeExtractPDF.Add(line);
                 }
@@ -145,8 +146,9 @@ namespace CartesAcces
                 //MessageBox.Show(index);
                 int indexInt = Convert.ToInt32(index);
                 
-                string oldName = infos[i].Name;
-                string newName = name[indexInt - 1] + ".jpg";
+                string oldName = nameWithoutExt;
+                string newName = name[indexInt - 1].Trim();
+                //MessageBox.Show(newName);
                 File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName,newName));
             }
         }
