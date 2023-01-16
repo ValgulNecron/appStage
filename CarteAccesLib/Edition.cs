@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -340,13 +341,9 @@ namespace CartesAcces
             pbCarteArriere.Height = 354;
         }
         
-        public static void affichePhotoProvisoire(PictureBox pbPhoto)
+        public static void affichePhotoProvisoire(string path,PictureBox pbPhoto)
         {
-            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = System.IO.Path.Combine(sCurrentDirectory, @"./data/ElevesPhoto");
-            string sFilePath = Path.GetFullPath(sFile);
-
-            pbPhoto.Image = new Bitmap(sFilePath + "edition.jpg");
+            pbPhoto.Image = new Bitmap(path);
             pbPhoto.Size = new Size(110, 165);
             pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPhoto.Visible = true;
@@ -369,15 +366,17 @@ namespace CartesAcces
 
         public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
         {
-            
             foreach(Eleve eleve in listeEleve)
             {
-                string folder = "./data/image" + eleve.ClasseEleve.Substring(0, 1) + "eme";
-                if (eleve.SansEDT == false)
+                try
                 {
-                    int i = listeEleve.IndexOf(eleve);
-                    pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve));
+                    string folder = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
+                    pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve) + ".jpg");
                     break;
+                }
+                catch
+                {
+                    // Next ..
                 }
             }
         }

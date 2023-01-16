@@ -148,6 +148,7 @@ namespace CartesAcces
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
             Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
+            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg",pbPhoto);
         }
     }
 }

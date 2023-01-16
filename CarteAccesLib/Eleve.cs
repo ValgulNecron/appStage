@@ -160,37 +160,37 @@ namespace CartesAcces
 
         public static string creeCleeEleve(Eleve eleve)
         {
-            string clé = "Elève " + eleve.NomEleve + " " + eleve.PrenomEleve + " " + eleve.ClasseEleve;
+            string clé = eleve.NomEleve + eleve.PrenomEleve + eleve.ClasseEleve;
 
             // Correction sur le regime
             if (eleve.RegimeEleve == "EXTERN")
             {
-                clé += " - Externe";
+                clé += "Externe";
             }
             else if (eleve.RegimeEleve.Substring(0, 2) == "DP")
             {
-                clé += " - 12P";
+                clé += "12P";
             }
 
             // Option 1
-            clé += " - " + eleve.OptionUnEleve;
+            clé += eleve.OptionUnEleve;
 
             // Option 2
             if (eleve.OptionDeuxEleve != "")
             {
-                clé += " - " + eleve.OptionDeuxEleve;
+                clé += eleve.OptionDeuxEleve;
             }
 
             // Option 3
             if (eleve.OptionTroisEleve != "")
             {
-                clé += " - " + eleve.OptionTroisEleve;
+                clé += eleve.OptionTroisEleve;
             }
 
             // Option 4
             if (eleve.OptionQuatreEleve != "")
             {
-                clé += " - " + eleve.OptionQuatreEleve;
+                clé += eleve.OptionQuatreEleve;
             }
 
             return clé;
