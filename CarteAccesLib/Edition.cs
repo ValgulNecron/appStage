@@ -503,6 +503,7 @@ namespace CartesAcces
         public static void saveCardAsWord(string path, string nomFicher, List<Eleve> listeEleve, PictureBox pbPhoto, PictureBox pbCarteArriere)
         {
             int k = 0;
+            int pages = 0;
             Eleve.possedeEdt(listeEleve);
             Word.Application wordFile = WordFile.initWordFile(15,15,15,15);
 
@@ -572,16 +573,17 @@ namespace CartesAcces
                     string name = path + " page " + (k / 50).ToString();
                     WordFile.limite50Pages(wordFile, name);
                     k += 50;
+                    pages++;
                 }
             }
 
             if (k/50 == 1)
             {
-                wordFile.ActiveDocument.SaveAs(path + "Imprimer.doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                wordFile.ActiveDocument.SaveAs(path + "/Imprimer.doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             }
             else
             {
-                wordFile.ActiveDocument.SaveAs(path + "Imprimer Part " + (k/50) + ".doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                wordFile.ActiveDocument.SaveAs(path + "/Imprimer Part " + pages + ".doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             }
             
             // -- Ferme le document --
