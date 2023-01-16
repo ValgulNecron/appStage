@@ -5,6 +5,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace CartesAcces
 {
@@ -372,6 +373,7 @@ namespace CartesAcces
                 {
                     string folder = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
                     pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve) + ".jpg");
+                    Chemin.pathEdt = folder + Eleve.creeCleeEleve(eleve) + ".jpg";
                     break;
                 }
                 catch
@@ -381,7 +383,155 @@ namespace CartesAcces
             }
         }
         
+        public static void fondTextCarteFace(Graphics ObjGraphics, string text, Font font, Eleve eleve, int posX, int posY)
+        {
+            Brush brushJaune = new SolidBrush(Color.Yellow);
+            Brush brushVert = new SolidBrush(Color.LightGreen);
+            Brush brushRouge = new SolidBrush(Color.Red);
+            Brush brushBleu = new SolidBrush(Color.LightBlue);
+            int largeur = Convert.ToInt32(ObjGraphics.MeasureString(text, font).Width);
+            int hauteur = Convert.ToInt32(ObjGraphics.MeasureString(text, font).Height);
+            Rectangle rectangle = new Rectangle(posX, posY, largeur, hauteur);
+
+            // -- Couleur du rectangle en fonction de la section (donc de la couleur de la carte) --
+            switch (eleve.ClasseEleve.Substring(0, 1))
+            {
+                case "6":
+                    ObjGraphics.FillRectangle(brushJaune, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(brushJaune), rectangle);
+                    break;
+                case "5":
+                    ObjGraphics.FillRectangle(brushVert, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(brushVert), rectangle);
+                    break;
+                case "4":
+                    ObjGraphics.FillRectangle(brushRouge, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(brushRouge), rectangle);
+                    break;
+                case "3":
+                    ObjGraphics.FillRectangle(brushBleu, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(brushBleu), rectangle);
+                    break;
+                default:
+                    ObjGraphics.FillRectangle(brushJaune, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(brushJaune), rectangle);
+                    break;
+            }
+        }
+        
+        public static Image carteFace(Eleve eleve, Font font)
+        {
+            Image image = Image.FromFile("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0,1) + "eme");
+            Graphics ObjGraphics = Graphics.FromImage(image);
+            Brush brushNoir = new SolidBrush(Color.Black);
+
+            Font font2 = new Font("comic sans ms", 30, FontStyle.Bold);
+            Font font3 = new Font("comic sans ms", 15, FontStyle.Bold);
+
+            string date = DateTime.Today.ToShortDateString();
+
+            //Dessine et rempli le fond pour l'écriture
+            fondTextCarteFace(ObjGraphics, eleve.NomEleve, font, eleve, 250, 960);
+            fondTextCarteFace(ObjGraphics, eleve.PrenomEleve, font, eleve, 350, 1075);
+            fondTextCarteFace(ObjGraphics, eleve.MefEleve, font2, eleve, 50, 70);
+            fondTextCarteFace(ObjGraphics, "Date de création: " + date, font3, eleve, 870, 875);
+
+            //Dessine la saisie en textbox
+            ObjGraphics.DrawString(eleve.NomEleve, font, brushNoir, 250, 960);// Dessine le texte sur l'image à la position X et Y + couleur
+            ObjGraphics.DrawString(eleve.PrenomEleve, font, brushNoir, 350, 1075);
+            ObjGraphics.DrawString(eleve.MefEleve, font2, brushNoir, 50, 70);
+            ObjGraphics.DrawString("Date de création: " + date, font3, brushNoir, 870, 875);
+            ObjGraphics.Dispose();// Libère les ressources
+
+            return image;
+        }
+        
+        public static void gereCarteFace(Eleve eleve)
+        {
+            // -- Déclare l'image --
+            Image imageFace = null;
+
+            // -- Gestion de la taille de la police --
+            if (eleve.NomEleve.Length > 10 || eleve.PrenomEleve.Length > 10)
+            {
+                Font font = new Font("times new roman", 20, FontStyle.Bold);
+                imageFace = carteFace(eleve, font);
+            }
+            else
+            {
+                Font font = new Font("times new roman", 25, FontStyle.Bold);
+                imageFace = carteFace(eleve, font);
+            }
+
+            // -- Sauvegarde l'image --
+            imageFace.Save(cheminImpressionFinal + "\\" + eleve.NomEleve + eleve.PrenomEleve + "Carte.png", System.Drawing.Imaging.ImageFormat.Png);
+
+        }
         
         
+        public static void saveCardAsWord(string path, string nomFicher, List<Eleve> listeEleve, PictureBox pbPhoto)
+        {
+            // -- Ouverture de l'applucation Word -- 
+            Word.Application WordApp = new Word.Application();
+            
+            // -- Nouveau Document --
+            WordApp.Documents.Add();
+
+            // -- Marge à 0 pour éviter les espaces blancs entre la page et l'image sur le document --
+            WordApp.ActiveDocument.PageSetup.TopMargin = 15;    // 15 points = env à 0.5 cm
+            WordApp.ActiveDocument.PageSetup.RightMargin = 15;
+            WordApp.ActiveDocument.PageSetup.LeftMargin = 15;
+            WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
+
+            int posX = pbPhoto.Location.X;
+            int posY = pbPhoto.Location.Y;
+            int height = pbPhoto.Height;
+            int width = pbPhoto.Width;
+
+            int pages = 1;
+
+            int k = 0;
+            
+            // -- Boucle pour chaques élèves de la liste à imprimer --
+            for (int compt = 1; compt <= listeEleve.Count; compt += 2)
+            {
+                bool edtClassique = false;
+
+                // -- Carte Face : 1/2 Eleve --
+
+                gereCarteFace(listeEleve[compt]);
+                
+                // -- Carte Face : 2/2 Eleve --
+
+                gereCarteFace(listeEleve[compt - 1]);
+                
+                // -- Ajout des deux fichier PNG au nouveau document Word --
+                var shapeCarteFace1 = WordApp.ActiveDocument.Shapes.AddPicture(cheminImpressionFinal + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png", Type.Missing, Type.Missing, Type.Missing);
+                var shapeCarteFace2 = WordApp.ActiveDocument.Shapes.AddPicture(cheminImpressionFinal + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png", Type.Missing, Type.Missing, Type.Missing);
+                
+                // -- Gestion de la hauteur et de la position des images --
+                /*
+                 * Le but ici est d'avoir un espace blanc d'environ 1cm au milieu de la page, entre les deux image, pour la découpe.
+                 * On définit la position de la deuxieme image par rapport au haut de la page afin d'ancrer celle au bas de la page.
+                 * Et enfin on gère la hauteur des deux images pour que celles ci aient les mêmes dimensions.
+                */
+
+                shapeCarteFace1.Top = 0;
+                shapeCarteFace1.Left = 0;
+
+                shapeCarteFace1.Height = shapeCarteFace1.Height - 20;
+                shapeCarteFace2.Top = shapeCarteFace1.Height + 40;
+                shapeCarteFace2.Height = shapeCarteFace1.Height;
+
+                // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
+                File.Delete(cheminImpressionFinal + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png");
+                File.Delete(cheminImpressionFinal + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png");
+
+                //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
+                GC.Collect();
+            }
+
+        }
+            
     }
 }

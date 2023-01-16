@@ -16,7 +16,7 @@ namespace CartesAcces
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //ClassSql.init();
+            ClassSql.init();
             Globale._connexion = new frmConnexion();
             Application.Run(Globale._connexion);
         }
