@@ -66,6 +66,11 @@ namespace CartesAcces
         {
             var outputFile = "./output.txt";
 
+            if (File.Exists(outputFile))
+            {
+                File.Delete(outputFile);
+            }
+            
             var process = new Process();
             process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments =
