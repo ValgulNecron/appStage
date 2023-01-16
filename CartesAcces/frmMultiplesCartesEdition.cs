@@ -147,7 +147,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-            pbCarteArriere.Image = Image.FromFile("./data/image/5eme/page_" + 1 + ".jpg");
+            Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
         }
     }
 }

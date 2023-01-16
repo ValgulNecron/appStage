@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -283,32 +284,15 @@ namespace CartesAcces
             string sFilePath = Path.GetFullPath(sFile);
 
             DirectoryInfo directory = new DirectoryInfo(sFilePath);
-
+            
             foreach (var file in directory.GetFiles())
             {
                 int index = file.Name.IndexOf(".");
-                if (file.Name.Substring(index, 4) == ".png")
+                if (!(file.Name.Substring(index, 4) == ".png" || file.Name.Substring(index, 4) == ".jpg"))
                 {
-                    if (nomFichierPNG == file.Name)
-                    {
-                        trouveBool = true;
-                        break;
-                    }
+                    if (!(nomFichierJPG == file.Name || nomFichierPNG == file.Name))
+                        Globale.listeEleveSansPhoto.Add(eleve);
                 }
-
-                else if (file.Name.Substring(index, 4) == ".jpg")
-                {
-                    if (nomFichierJPG == file.Name)
-                    {
-                        trouveBool = true;
-                        break;
-                    }
-                }
-            }
-
-            if(trouveBool == false)
-            {
-                Globale.listeEleveSansPhoto.Add(eleve);
             }
         }
 
@@ -355,5 +339,50 @@ namespace CartesAcces
             pbCarteArriere.Width = 540;
             pbCarteArriere.Height = 354;
         }
+        
+        public static void affichePhotoProvisoire(PictureBox pbPhoto)
+        {
+            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string sFile = System.IO.Path.Combine(sCurrentDirectory, @"./data/ElevesPhoto");
+            string sFilePath = Path.GetFullPath(sFile);
+
+            pbPhoto.Image = new Bitmap(sFilePath + "edition.jpg");
+            pbPhoto.Size = new Size(110, 165);
+            pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbPhoto.Visible = true;
+        }
+
+        public static void afficheEmploiDuTempsEleve(Eleve eleve, PictureBox pbCarteArriere)
+        {
+            string folder = "./data/image" + eleve.ClasseEleve.Substring(0, 1) + "eme";
+
+            if(eleve.SansEDT == false)
+            {
+                pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve));
+            }
+
+            else
+            {
+                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + eleve.ClasseEleve + ".png");
+            }
+        }
+
+        public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
+        {
+            
+            foreach(Eleve eleve in listeEleve)
+            {
+                string folder = "./data/image" + eleve.ClasseEleve.Substring(0, 1) + "eme";
+                if (eleve.SansEDT == false)
+                {
+                    int i = listeEleve.IndexOf(eleve);
+                    pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve));
+                    break;
+                }
+            }
+        }
+        
+        
+        
     }
 }

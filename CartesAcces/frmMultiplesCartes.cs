@@ -116,7 +116,14 @@ namespace CartesAcces
 
         private void frmMultiplesCartes_Load(object sender, EventArgs e)
         {
-            cbbImprClasse.DataSource = Globale.classes3eme;
+            List<string> lesClasses = new List<string>();
+            
+            lesClasses.AddRange(Globale.classes3eme);
+            lesClasses.AddRange(Globale.classes4eme);
+            lesClasses.AddRange(Globale.classes5eme);
+            lesClasses.AddRange(Globale.classes6eme);
+            
+            cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;
         }
     }
