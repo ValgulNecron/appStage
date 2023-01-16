@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -196,26 +197,14 @@ namespace CartesAcces
             return clé;
         }
 
-        public static void possedeEdt(Eleve eleve, List<string> listeNomFichier)
+        public static void possedeEdt(List<Eleve> listeEleve)
         {
-            // -- Recherche de si l'élève a bien un emploi du temps dans le dossier correspondant a sa clé --
-            bool bTrouve = false;
-            // -- Pour chaques fichier dans la liste faite précédemment .. --
-            foreach (string fichier in listeNomFichier)
+            foreach (var eleve in listeEleve)
             {
-                // -- Si la clé correspond a l'un d'entre eux --
-                if (listeCleeEleve.Contains(fichier + ".jpg"))
+                if (!File.Exists("./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" + Eleve.creeCleeEleve(eleve) + ".jpg"))
                 {
-                    bTrouve = true;
-                    // -- On passe directement a la suite --
-                    break;
+                    eleve.sansEDT = true;
                 }
-            }
-            // -- Si on a pas trouvé .. --
-            if (bTrouve == false)
-            {
-                // -- .. l'élève est noté comme sans edt --
-                eleve.SansEDT = true;
             }
         }
     }

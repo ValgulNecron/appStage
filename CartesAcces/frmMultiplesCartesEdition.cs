@@ -148,6 +148,7 @@ namespace CartesAcces
             }
             
             string cheminImpressionFinal = Chemin.setPathImportFolder();
+            Edition.saveCardAsWord(cheminImpressionFinal, "test", Globale.listeEleveImpr, pbPhoto, pbCarteArriere);
             
             
         }

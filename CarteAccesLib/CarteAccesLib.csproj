@@ -63,7 +63,7 @@
         <Compile Include="Securite.cs" />
         <Compile Include="Settings.cs" />
         <Compile Include="Timer.cs" />
-        <Compile Include="Word.cs" />
+        <Compile Include="WordFile.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
