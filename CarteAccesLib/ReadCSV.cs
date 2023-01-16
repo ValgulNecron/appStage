@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -11,7 +12,7 @@ namespace CartesAcces
         {
             List<string> list = new List<string>();
 
-            using (var reader = new StreamReader(pathCSV))
+            using (var reader = new StreamReader(pathCSV, Encoding.GetEncoding("ISO-8859-1")))
             {
                 while (!reader.EndOfStream)
                 {
@@ -45,7 +46,7 @@ namespace CartesAcces
                     unEleve.NomEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
                     unEleve.PrenomEleve = ReadCSV.getDataFromCSV(sFilePath, 1)[i];
                     unEleve.ClasseEleve = classe;
-                    unEleve.RegimeEleve = "failed";
+                    unEleve.RegimeEleve = ReadCSV.getDataFromCSV(sFilePath, 14)[i];
                     unEleve.OptionUnEleve = ReadCSV.getDataFromCSV(sFilePath, 7)[i];
                     unEleve.OptionDeuxEleve = ReadCSV.getDataFromCSV(sFilePath, 8)[i];
                     unEleve.OptionTroisEleve = ReadCSV.getDataFromCSV(sFilePath, 9)[i];

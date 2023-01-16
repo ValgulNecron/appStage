@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,8 @@ namespace CartesAcces
         private string optionQuatreEleve;
         private string mefEleve;
         private bool sansEDT;
-        private string numEdt;
+
+        public static List<string> listeCleeEleve = new List<string>();
 
         public Eleve()
         {
@@ -155,6 +157,55 @@ namespace CartesAcces
             Globale.classes4eme.Sort();
             Globale.classes5eme.Sort();
             Globale.classes6eme.Sort();
+        }
+
+        public static string creeCleeEleve(Eleve eleve)
+        {
+            string clé = eleve.NomEleve + eleve.PrenomEleve + eleve.ClasseEleve;
+
+            // Correction sur le regime
+            if (eleve.RegimeEleve == "EXTERN")
+            {
+                clé += "Externe";
+            }
+            else if (eleve.RegimeEleve.Substring(0, 2) == "DP")
+            {
+                clé += "12P";
+            }
+
+            // Option 1
+            clé += eleve.OptionUnEleve;
+
+            // Option 2
+            if (eleve.OptionDeuxEleve != "")
+            {
+                clé += eleve.OptionDeuxEleve;
+            }
+
+            // Option 3
+            if (eleve.OptionTroisEleve != "")
+            {
+                clé += eleve.OptionTroisEleve;
+            }
+
+            // Option 4
+            if (eleve.OptionQuatreEleve != "")
+            {
+                clé += eleve.OptionQuatreEleve;
+            }
+
+            return clé;
+        }
+
+        public static void possedeEdt(List<Eleve> listeEleve)
+        {
+            foreach (var eleve in listeEleve)
+            {
+                if (!File.Exists("./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" + Eleve.creeCleeEleve(eleve) + ".jpg"))
+                {
+                    eleve.sansEDT = true;
+                }
+            }
         }
     }
 }

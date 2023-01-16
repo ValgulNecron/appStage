@@ -65,7 +65,7 @@ namespace CartesAcces
             // 
             this.pbPhoto.Location = new System.Drawing.Point(5, 5);
             this.pbPhoto.Name = "pbPhoto";
-            this.pbPhoto.Size = new System.Drawing.Size(100, 50);
+            this.pbPhoto.Size = new System.Drawing.Size(110, 165);
             this.pbPhoto.TabIndex = 10;
             this.pbPhoto.TabStop = false;
             this.pbPhoto.Visible = false;

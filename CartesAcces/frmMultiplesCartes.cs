@@ -46,12 +46,14 @@ namespace CartesAcces
 
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Globale.listeEleveImpr.Clear();
             List<string> listeEleveParClasse = new List<string>();
             foreach (Eleve eleve in Globale.listeEleve)
             {
                 if (eleve.ClasseEleve == cbbImprClasse.Text)
                 {
                     listeEleveParClasse.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
+                    Globale.listeEleveImpr.Add(eleve);
                 }
             }
             listeEleveParClasse.Sort();
@@ -64,12 +66,14 @@ namespace CartesAcces
 
         private void cbbImprSection_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Globale.listeEleveImpr.Clear();
             List<string> listeEleveParSection = new List<string>();
             foreach (Eleve eleve in Globale.listeEleve)
             {
                 if (eleve.ClasseEleve.Substring(0,1) == cbbImprSection.Text.Substring(0,1))
                 {
                     listeEleveParSection.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
+                    Globale.listeEleveImpr.Add(eleve);
                 }
             }
 
@@ -117,7 +121,14 @@ namespace CartesAcces
 
         private void frmMultiplesCartes_Load(object sender, EventArgs e)
         {
-            cbbImprClasse.DataSource = Globale.classes3eme;
+            List<string> lesClasses = new List<string>();
+            
+            lesClasses.AddRange(Globale.classes3eme);
+            lesClasses.AddRange(Globale.classes4eme);
+            lesClasses.AddRange(Globale.classes5eme);
+            lesClasses.AddRange(Globale.classes6eme);
+            
+            cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;
         }
     }

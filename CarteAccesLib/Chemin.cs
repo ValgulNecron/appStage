@@ -11,7 +11,9 @@ namespace CartesAcces
         public static string pathEdtEleve6e = "./data/image/6eme/";
         public static string pathEdtEleve5e = "./data/image/5eme/";
         public static string pathEdtEleve4e = "./data/image/4eme/";
-        public static string pathEdtEleve3e = "./data/image/3eeme";
+        public static string pathEdtEleve3e = "./data/image/3eme";
+
+        public static string pathEdt = "";
     
         // -- Obtention du chemin --
         public static string getFilePath(string file)

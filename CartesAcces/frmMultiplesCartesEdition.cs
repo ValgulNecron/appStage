@@ -80,7 +80,7 @@ namespace CartesAcces
         private void btnCrop_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            string pathEdt = "./data/image/5eme/page_" + 1 + ".jpg";
+            string pathEdt = Chemin.pathEdt;
             Edition.selectionClick = false;
             Edition.cropEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
@@ -88,7 +88,15 @@ namespace CartesAcces
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            // -- Le curseur revient à la normal --
+            Cursor = Cursors.Default;
 
+            // -- On est plus dans la selection --
+            Edition.selectionClick = false;
+
+            // -- On remet les paramètres et l'image de base --
+            Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
+            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg",pbPhoto);
         }
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
@@ -133,7 +141,17 @@ namespace CartesAcces
 
         private void btnValiderImpr_Click(object sender, EventArgs e)
         {
-
+            // -- Si la liste est impaire, on double le dernier élève
+            if (Globale.listeEleveImpr.Count % 2 == 1)
+            {
+                Eleve eleve = Globale.listeEleveImpr[Globale.listeEleveImpr.Count - 1];
+                Globale.listeEleveImpr.Add(eleve);
+            }
+            
+            string cheminImpressionFinal = Chemin.setPathImportFolder();
+            Edition.saveCardAsWord(cheminImpressionFinal, "test", Globale.listeEleveImpr, pbPhoto, pbCarteArriere);
+            
+            
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -148,7 +166,8 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-            pbCarteArriere.Image = Image.FromFile("./data/image/5eme/page_" + 1 + ".jpg");
+            Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
+            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg",pbPhoto);
         }
     }
 }

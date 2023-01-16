@@ -49,16 +49,17 @@ namespace CartesAcces
                 }
 
                 File.Copy(sourcePath, destinationPath);
-                MessageBox.Show("Import Réussi");
                 ReadCSV.setLesEleves(destinationPath);
                 Eleve.setLesClasses();
 
                 initDataGrid();
+                MessageBox.Show("Import Réussi");
             }
             catch
             {
                 MessageBox.Show("Import Echoué");
             }
+            
         }
 
         // -- Importation des photo des élèves --
@@ -182,7 +183,6 @@ namespace CartesAcces
         {
             //importEDT();
             PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
-
         }
 
         private void btnImportPhoto_Click(object sender, EventArgs e)

@@ -85,3 +85,8 @@ BEGIN
 	END IF;
 END $$
 DELIMITER ;
+
+
+DROP USER IF EXISTS 'admin2'@'%';
+CREATE USER 'admin2'@'%' Identified BY 'admin2';
+GRANT ALL PRIVILEGES ON *.* to 'admin2'@'%' WITH GRANT OPTION;
