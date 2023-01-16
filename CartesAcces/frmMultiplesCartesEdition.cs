@@ -19,6 +19,7 @@ namespace CartesAcces
         public frmMultiplesCartesEdition()
         {
             InitializeComponent();
+                        Couleur.setCouleurFenetre(this);
         }
 
         private void pbPhoto_MouseMove(object sender, MouseEventArgs e)

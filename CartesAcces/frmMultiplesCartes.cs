@@ -11,6 +11,7 @@ namespace CartesAcces
         public frmMultiplesCartes()
         {
             InitializeComponent();
+                        Couleur.setCouleurFenetre(this);
         }
         
         private void rdbClasseSection_CheckedChanged(object sender, EventArgs e)
