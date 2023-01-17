@@ -8,6 +8,12 @@ namespace CartesAcces
         public frmConnexion()
         {
             InitializeComponent();
+            Random rand = new Random();
+            int randInt = rand.Next(1, 1_000_000_000);
+            if (randInt == 666)
+            {
+                Edition.easterEgg();
+            }
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
             VisibleChanged += on_Visibility_Change;
