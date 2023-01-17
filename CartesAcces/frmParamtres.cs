@@ -16,10 +16,6 @@ namespace CartesAcces
 {
     public partial class frmParametres : Form
     {
-        // -- DLL et procédure nécéssaires pour le module d'importation du fichier PDF --
-        [DllImport("USER32.DLL")]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-
         public frmParametres()
         {
             InitializeComponent();
@@ -37,7 +33,7 @@ namespace CartesAcces
             DataGridParametres.DataSource = Globale.listeEleve;
         }
 
-        public void importElevesBis()
+        public void importEleves()
         {
             string sourcePath = txtPathEleve.Text;
             string destinationPath = Chemin.pathListeEleve;
@@ -47,6 +43,8 @@ namespace CartesAcces
                 {
                     File.Delete(destinationPath);
                 }
+                
+                Directory.CreateDirectory(Chemin.pathFolderListeEleve);
 
                 File.Copy(sourcePath, destinationPath);
                 ReadCSV.setLesEleves(destinationPath);
@@ -55,9 +53,9 @@ namespace CartesAcces
                 initDataGrid();
                 MessageBox.Show("Import Réussi");
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("Import Echoué");
+                MessageBox.Show(e.ToString());
             }
             
         }
@@ -65,23 +63,34 @@ namespace CartesAcces
         // -- Importation des photo des élèves --
         public void importPhoto()
         {
+            string sourcePath = txtPathPhoto.Text;
+            string destinationPath = Chemin.pathPhotoEleve;
 
-            DirectoryInfo directory = new DirectoryInfo(txtPathPhoto.Text);
-
-            foreach (var dir in directory.GetDirectories())
+            try
             {
-                foreach (var file in dir.GetFiles())
+                Directory.CreateDirectory(destinationPath);
+            
+                DirectoryInfo directory = new DirectoryInfo(sourcePath);
+
+                foreach (var dir in directory.GetDirectories())
                 {
-                    string sFilePath = Chemin.getFilePath("FichiersPHOTO");
+                    foreach (var file in dir.GetFiles())
+                    {
+                        System.Drawing.Image img = System.Drawing.Image.FromFile(file.FullName);
+                        string nom = file.Name;
 
-                    System.Drawing.Image img = System.Drawing.Image.FromFile(file.FullName);
-                    string nom = file.Name;
-
-                    img.Save(sFilePath + nom, System.Drawing.Imaging.ImageFormat.Png);
+                        img.Save(destinationPath + nom, System.Drawing.Imaging.ImageFormat.Png);
+                    }
                 }
+
+                MessageBox.Show("Import réussie !");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
             }
 
-            MessageBox.Show("Import réussie !");
+
         }
 
         // -- La liste des élève se met a jour a chaques saisies de l'utilisateur --
@@ -164,7 +173,7 @@ namespace CartesAcces
         private void btnValiderEleve_Click(object sender, EventArgs e)
         {
             labelV.Show();
-            importElevesBis();
+            importEleves();
             lblDateImport.Text = Properties.Settings.Default.DateImport;
             labelV.Hide();
         }

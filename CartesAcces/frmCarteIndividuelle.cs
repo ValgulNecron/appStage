@@ -300,7 +300,7 @@ namespace CartesAcces
                 File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png");
                 File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png");
 
-                WordApp.ActiveDocument.SaveAs(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "FINAL.doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                WordApp.ActiveDocument.SaveAs(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + " Carte.doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 WordApp.ActiveDocument.Close();
                 WordApp.Quit();
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(WordApp);

@@ -70,27 +70,26 @@ namespace CartesAcces
             {
                 File.Delete(outputFile);
             }
+
+            var fs = File.Create(outputFile);
+            fs.Close();
             
             var process = new Process();
             process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments =
-                $"-o \"{outputFile}\" -I\"./font/a.ttg\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dEncoding=ISO-8859-1 -dBATCH \"{path}\"";
+                $"-o \"{outputFile}\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.Start();
-
+            
             var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
 
             string file = "";
-            using (var sr = new StreamReader(outputFile, Encoding.GetEncoding("ISO-8859-1")))
+            using (var sr = new StreamReader(outputFile))
             {
-                // string line;
-                // while ((line = sr.ReadLine()) != null)
-                // {
-                //     file += line;
-                // }
-                file = File.ReadAllText(outputFile);
+                //file = File.ReadAllText(outputFile);
+                file = sr.ReadToEnd();
             }
             return file;
         }
@@ -141,6 +140,7 @@ namespace CartesAcces
         {
             List<string> name = new List<string>();
             name = getNomPrenomPdf(getTextePdf(pdf));
+            MessageBox.Show(name.Count.ToString());
             DirectoryInfo d = new DirectoryInfo(path);
             FileInfo[] infos = d.GetFiles();
 
@@ -148,12 +148,10 @@ namespace CartesAcces
             {
                 string nameWithoutExt = infos[i].Name.Substring(0, infos[i].Name.Length - 4);
                 string index = nameWithoutExt.Substring(4, nameWithoutExt.Length - 4);
-                //MessageBox.Show(index);
                 int indexInt = Convert.ToInt32(index);
                 
                 string oldName = nameWithoutExt;
                 string newName = name[indexInt - 1].Trim();
-                //MessageBox.Show(newName);
                 File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName,newName));
             }
         }
