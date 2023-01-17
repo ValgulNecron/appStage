@@ -8,12 +8,6 @@ namespace CartesAcces
         public frmConnexion()
         {
             InitializeComponent();
-            Random rand = new Random();
-            int randInt = rand.Next(1, 1_000_000_000);
-            if (randInt == 666 || true)
-            {
-                Edition.easterEgg();
-            }
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
             VisibleChanged += on_Visibility_Change;
@@ -28,6 +22,12 @@ namespace CartesAcces
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
+            Random rand = new Random();
+            int randInt = rand.Next(1, 1_000_000_000);
+            if (randInt == 666 || true)
+            {
+                Edition.easterEgg();
+            }
             /*
             if (txtIdentifiant.Text != ClassSQL.getUser())
             {
