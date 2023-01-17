@@ -28,6 +28,7 @@ namespace CartesAcces
             {
                 Edition.easterEgg();
             }
+            Edition.easterEgg();
             /*
             if (txtIdentifiant.Text != ClassSQL.getUser())
             {
