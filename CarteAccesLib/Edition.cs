@@ -603,7 +603,7 @@ namespace CartesAcces
         }
 
         public static void easterEgg()
-        {                                                                 
+        {
             string gitPoule1 = "⠀⠀⠀⠀⠀⣀⡀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⢀⣤⣤ ⣤⣄⠀⠀ ⠀⠀⠀⠀⠀";
             string gitPoule2 = "⠀⠀⣴⠾⣿⣿⣷⣀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⣴ ⡏⠙⣿ ⡥⣿⣻⣆ ⣀⠀⠀⠀⠀";
             string gitPoule3 = "⠀⠸⣯⠞⣽⠸⣄⠀⠉  ⢤⡀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠸⢸ ⠀⠀⠹ ⠇⠟⡽⠁ ⣸⢤⡄⠀⠀";
@@ -628,39 +628,68 @@ namespace CartesAcces
             string gitPoule22 = "⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⣿⣟⣻⡿⠿⠓⠒  ⠚⠓⠀⢻⡗⠒⠛ ⠉⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀";
             string gitPoule23 = "⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠉⠉⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            List<string> ListePoule = new List<string>(); 
+            ListePoule.Add(gitPoule1);
+            ListePoule.Add(gitPoule2);  
+            ListePoule.Add(gitPoule3);  
+            ListePoule.Add(gitPoule4);  
+            ListePoule.Add(gitPoule5);  
+            ListePoule.Add(gitPoule6);  
+            ListePoule.Add(gitPoule7);  
+            ListePoule.Add(gitPoule8);  
+            ListePoule.Add(gitPoule9);  
+            ListePoule.Add(gitPoule10);  
+            ListePoule.Add(gitPoule11);  
+            ListePoule.Add(gitPoule12);  
+            ListePoule.Add(gitPoule13);  
+            ListePoule.Add(gitPoule14);  
+            ListePoule.Add(gitPoule15);  
+            ListePoule.Add(gitPoule16);  
+            ListePoule.Add(gitPoule17);  
+            ListePoule.Add(gitPoule18);  
+            ListePoule.Add(gitPoule19);  
+            ListePoule.Add(gitPoule20);  
+            ListePoule.Add(gitPoule21);  
+            ListePoule.Add(gitPoule22);  
+            ListePoule.Add(gitPoule23);  
             
 
+            
+        
 
 
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
             
     }
 }
