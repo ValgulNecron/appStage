@@ -22,13 +22,6 @@ namespace CartesAcces
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            Random rand = new Random();
-            int randInt = rand.Next(1, 1_000_000_000);
-            if (randInt == 666 || true)
-            {
-                Edition.easterEgg();
-            }
-            Edition.easterEgg();
             /*
             if (txtIdentifiant.Text != ClassSQL.getUser())
             {
