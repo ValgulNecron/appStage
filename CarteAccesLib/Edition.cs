@@ -651,8 +651,11 @@ namespace CartesAcces
             ListePoule.Add(gitPoule20);  
             ListePoule.Add(gitPoule21);  
             ListePoule.Add(gitPoule22);  
-            ListePoule.Add(gitPoule23);  
-            
+            ListePoule.Add(gitPoule23);
+            foreach (string gitPoule in ListePoule)
+            {
+                Console.WriteLine(gitPoule);
+            }
 
             
             

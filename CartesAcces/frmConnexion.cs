@@ -10,7 +10,7 @@ namespace CartesAcces
             InitializeComponent();
             Random rand = new Random();
             int randInt = rand.Next(1, 1_000_000_000);
-            if (randInt == 666)
+            if (randInt == 666 || true)
             {
                 Edition.easterEgg();
             }
