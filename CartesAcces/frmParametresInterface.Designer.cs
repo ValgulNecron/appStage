@@ -104,7 +104,7 @@ namespace CartesAcces
             this.btnBascule.TabIndex = 9;
             this.btnBascule.Text = "Basculer à un autre thème";
             this.btnBascule.UseVisualStyleBackColor = true;
-           
+            this.btnBascule.Click += new System.EventHandler(this.btnBascule_Click_1);
             // 
             // frmParametresInterface
             // 
@@ -123,7 +123,6 @@ namespace CartesAcces
             this.Text = "frmParametresInterface";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
