@@ -8,6 +8,8 @@ using System.Net.Mime;
 using System.Windows.Forms;
 using CarteAccesLib;
 using Word = Microsoft.Office.Interop.Word;
+using System.Runtime.InteropServices;
+
 
 namespace CartesAcces
 {
@@ -629,10 +631,8 @@ namespace CartesAcces
             string gitPoule23 = "⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠉⠉⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
 
             List<string> ListePoule = new List<string>(); 
-            ListePoule.Add(gitPoule1);
-            ListePoule.Add(gitPoule2);  
-            ListePoule.Add(gitPoule3);  
-            ListePoule.Add(gitPoule4);  
+            ListePoule.Add(gitPoule1); ListePoule.Add(gitPoule2);  
+            ListePoule.Add(gitPoule3); ListePoule.Add(gitPoule4);  
             ListePoule.Add(gitPoule5);  
             ListePoule.Add(gitPoule6);  
             ListePoule.Add(gitPoule7);  
@@ -652,15 +652,16 @@ namespace CartesAcces
             ListePoule.Add(gitPoule21);  
             ListePoule.Add(gitPoule22);  
             ListePoule.Add(gitPoule23);
+            [DllImport("kernel32.dll", SetLastError = true)]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            private static extern bool AllocConsole();
+            AllocConsole();
             foreach (string gitPoule in ListePoule)
             {
                 Console.WriteLine(gitPoule);
             }
-            Console.ReadKey();
-
-
-
-        }
+            Console.ReadLine();
             
+        }
     }
 }
