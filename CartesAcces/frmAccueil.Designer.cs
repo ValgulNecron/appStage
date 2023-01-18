@@ -36,6 +36,7 @@ namespace CartesAcces
             this.btnParametres = new System.Windows.Forms.Button();
             this.btnParamètreInterface = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,6 +110,7 @@ namespace CartesAcces
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnlMenu.Controls.Add(this.lblVersion);
             this.pnlMenu.Controls.Add(this.btnParamètreInterface);
             this.pnlMenu.Controls.Add(this.btnParametres);
             this.pnlMenu.Controls.Add(this.btnCarteParClasse);
@@ -118,6 +120,14 @@ namespace CartesAcces
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(170, 701);
             this.pnlMenu.TabIndex = 2;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(3, 679);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(0, 13);
+            this.lblVersion.TabIndex = 0;
             // 
             // frmAccueil
             // 
@@ -133,6 +143,7 @@ namespace CartesAcces
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,6 +156,7 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnParametres;
         private System.Windows.Forms.Button btnParamètreInterface;
         private System.Windows.Forms.Panel pnlMenu;
+        private System.Windows.Forms.Label lblVersion;
     }
 }
 
