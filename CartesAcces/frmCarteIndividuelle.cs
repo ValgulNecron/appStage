@@ -1,80 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Word = Microsoft.Office.Interop.Word;
+using Application = Microsoft.Office.Interop.Word.Application;
 
 namespace CartesAcces
 {
     public partial class frmCarteIndividuelle : Form
     {
-        public frmCarteIndividuelle()       // -- Main, constructeur de l'application --
+        public frmCarteIndividuelle() // -- Main, constructeur de l'application --
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
         }
-        
-        private void checkMef()
-        {
-            if (rdbUlis.Checked == true)
-            {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
 
-                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 50, 230, "ULIS ", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else if (rdbUPE2A.Checked == true)
-            {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
-
-                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 50, 230, "UPE2A", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else if (rdbClRelais.Checked == true)
-            {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
-
-                Font font = new Font("comic sans ms", 30, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else
-            {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Edition.reprendNomPrenom(txtNom, txtPrenom, pbCarteFace, cbbSection);
-                btnEdtPerso.Enabled = false;
-            }
-        }
-        
         private void txtNom_TextChanged(object sender, EventArgs e)
         {
-            if(txtNom.TextLength < 7)
+            Edition.fondCarteSection(pbCarteFace, cbbSection);
+            Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
+            Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
+
+            if (txtNom.TextLength < 7)
             {
-                Font font = new Font("times new roman", 25, FontStyle.Bold);
+                var font = new Font("times new roman", 25, FontStyle.Bold);
                 Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Font font = new Font("times new roman", 20, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                var font = new Font("times new roman", 20, FontStyle.Bold);
                 Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteArriere, cbbSection);
                 pbCarteFace.Refresh();
             }
@@ -82,18 +40,20 @@ namespace CartesAcces
 
         private void txtPrenom_TextChanged(object sender, EventArgs e)
         {
+            Edition.fondCarteSection(pbCarteFace, cbbSection);
+            Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
+            Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
+
             if (txtPrenom.TextLength < 7)
             {
-                Font font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteArriere, cbbSection);
+                var font = new Font("times new roman", 25, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                Edition.fondCarteSection(pbCarteFace, cbbSection);
-                Font font = new Font("times new roman", 20, FontStyle.Bold);
+                var font = new Font("times new roman", 20, FontStyle.Bold);
                 Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
-                Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbClasse);
                 pbCarteFace.Refresh();
             }
         }
@@ -102,6 +62,8 @@ namespace CartesAcces
         {
             Edition.fondCarteSection(pbCarteFace, cbbSection);
             Edition.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+            txtPrenom.Text = "";
+            txtNom.Text = "";
             groupBox2.Enabled = true;
             rdbUlis.Checked = false;
             rdbUPE2A.Checked = false;
@@ -142,57 +104,17 @@ namespace CartesAcces
 
             btnCancel.Enabled = true;
         }
+
         private void btnCrop_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
+            var classe = cbbClasse.Text;
+            var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
             Edition.selectionClick = false;
-
-            // -- Si la largeur a rogner est trop faible, on sort --
-            if (Edition.cropWidth < 1)
-            {
-                return;
-            }
-
-            /* -- Rectangle pour stocker l'image rognée avec les points calculés --
-                Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
-                qui sont celles des vrai fichier EDT !
-                Cela permet d'éviter les problèmes de résolution d'image après le rognage */
-
-
-            int cropWidthReal = (Edition.cropWidth * pbCarteArriere.Image.Width) / 540;
-            int cropHeightReal = (Edition.cropHeight * pbCarteArriere.Image.Height) / 354;
-            int cropXReal = (Edition.cropX * pbCarteArriere.Image.Width) / 540;
-            int cropYReal = (Edition.cropY * pbCarteArriere.Image.Height) / 354;
-
-            Rectangle rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
-
-            // -- On stock l'image original dans un bitmap --
-            string classe = cbbClasse.Text;
-            Bitmap OriginalImage = new Bitmap(Bitmap.FromFile("..\\..\\..\\FichiersEDT\\Classes\\" + classe + ".png"));
-
-            // -- Bitmap pour l'image rognée --
-            Bitmap _img = new Bitmap(cropWidthReal, cropHeightReal);
-
-            // -- Création d'un graphique depuis l'image rognée
-            Graphics g = Graphics.FromImage(_img);
-
-            // -- Attributs de l'image --
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            g.CompositingQuality = CompositingQuality.HighQuality;
-             
-            // -- On dessine l'image original, avec les dimensions rognées dans le graphique 
-            g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
-
-            // -- Affichage dans la picturebox
-            pbCarteArriere.Image = _img;
-            pbCarteArriere.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbCarteArriere.Width = 540;
-            pbCarteArriere.Height = 354;
-
-            // -- Le bouton rogner est desactivé --
+            Edition.cropEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // -- Le curseur revient à la normal --
@@ -213,10 +135,10 @@ namespace CartesAcces
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selectionné est cliqué --
-            if (Edition.selectionClick == true)
+            if (Edition.selectionClick)
             {
                 // -- Si il y a clic gauche --
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les coordonnées de départ --
                     Edition.cropX = e.X;
@@ -224,6 +146,7 @@ namespace CartesAcces
                     Edition.cropPen = new Pen(Color.Black, 1);
                     Edition.cropPen.DashStyle = DashStyle.DashDotDot;
                 }
+
                 // -- Refresh constant pour avoir un apperçu pendant la selection --
                 pbCarteArriere.Refresh();
             }
@@ -232,20 +155,21 @@ namespace CartesAcces
         private void pbCarteArriere_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selection est cliqué --
-            if (Edition.selectionClick == true)
+            if (Edition.selectionClick)
             {
                 // -- Si pas d'image, on sort --
                 if (pbCarteArriere.Image == null)
                     return;
 
                 // -- Glissement à la fin du premier clic gauche --
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les dimensions a la fin du déplacement de la souris
                     pbCarteArriere.Refresh();
                     Edition.cropWidth = e.X - Edition.cropX;
                     Edition.cropHeight = e.Y - Edition.cropY;
-                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY, Edition.cropWidth, Edition.cropHeight);
+                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY,
+                        Edition.cropWidth, Edition.cropHeight);
                 }
             }
         }
@@ -255,9 +179,9 @@ namespace CartesAcces
         private void btnAjouterPhoto_Click(object sender, EventArgs e)
         {
             // -- Parcours des fichiers...
-            OpenFileDialog opf = new OpenFileDialog();
+            var opf = new OpenFileDialog();
 
-            string opfPath="";
+            var opfPath = "";
 
             opf.InitialDirectory = @"\..\..\..\CartesAcces\FichiersPHOTO";
             opf.Filter = "Images (*.png, *.jpg) | *.png; *.jpg";
@@ -303,8 +227,9 @@ namespace CartesAcces
                 Edition.posY = e.Y;
                 Edition.drag = true;
             }
+
             // -- Actualisation pour voir le déplacement en temps réel --
-            this.Refresh();
+            Refresh();
         }
 
         private void pbPhoto_MouseUp(object sender, MouseEventArgs e)
@@ -325,8 +250,7 @@ namespace CartesAcces
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            FolderBrowserDialog diag = new FolderBrowserDialog();
+            var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK)
             {
                 Edition.cheminImpressionFinal = diag.SelectedPath;
@@ -334,38 +258,45 @@ namespace CartesAcces
 
             else
             {
-                MessageBox.Show("Merci de choisir un dossier de destination pour les fichiers générés par l'application");
+                MessageBox.Show(
+                    "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
                 return;
             }
 
             if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
             {
-                int realLocX = (pbPhoto.Location.X * pbCarteArriere.Image.Width) / pbCarteArriere.Width;
-                int realLocY = (pbPhoto.Location.Y * pbCarteArriere.Image.Height) / pbCarteArriere.Height;
-                int realWidth = (pbPhoto.Width * pbCarteArriere.Image.Width) / pbCarteArriere.Width;
-                int realHeight = (pbPhoto.Height * pbCarteArriere.Image.Height) / pbCarteArriere.Height;
+                var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                var realLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                var realWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                var realHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
 
-                Graphics ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
+                var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
                 ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
 
                 Edition.cheminImpressionFinal = Edition.cheminImpressionFinal + "\\";
 
-                pbCarteArriere.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", System.Drawing.Imaging.ImageFormat.Png);
-                pbCarteFace.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", System.Drawing.Imaging.ImageFormat.Png);
+                pbCarteArriere.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png",
+                    ImageFormat.Png);
+                pbCarteFace.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png",
+                    ImageFormat.Png);
 
-                Word.Application WordApp = new Word.Application();
+                var WordApp = new Application();
                 WordApp.Documents.Add();
                 WordApp.ActiveDocument.PageSetup.TopMargin = 15;
                 WordApp.ActiveDocument.PageSetup.RightMargin = 15;
                 WordApp.ActiveDocument.PageSetup.LeftMargin = 15;
                 WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
 
-                var shapeCarte = WordApp.ActiveDocument.Shapes.AddPicture(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing, Type.Missing, Type.Missing);
+                var shapeCarte = WordApp.ActiveDocument.Shapes.AddPicture(
+                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,
+                    Type.Missing, Type.Missing);
 
                 WordApp.Selection.EndKey();
                 WordApp.Selection.InsertNewPage();
 
-                var shapeEDT = WordApp.ActiveDocument.Shapes.AddPicture(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", Type.Missing, Type.Missing, Type.Missing);
+                var shapeEDT = WordApp.ActiveDocument.Shapes.AddPicture(
+                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", Type.Missing,
+                    Type.Missing, Type.Missing);
 
                 shapeCarte.Top = 0;
                 shapeCarte.Left = 0;
@@ -376,10 +307,13 @@ namespace CartesAcces
                 File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png");
                 File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png");
 
-                WordApp.ActiveDocument.SaveAs(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "FINAL.doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                WordApp.ActiveDocument.SaveAs(
+                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + " Carte.doc", Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 WordApp.ActiveDocument.Close();
                 WordApp.Quit();
-                System.Runtime.InteropServices.Marshal.FinalReleaseComObject(WordApp);
+                Marshal.FinalReleaseComObject(WordApp);
 
                 GC.Collect();
 
@@ -389,17 +323,17 @@ namespace CartesAcces
 
         private void rdbUlis_CheckedChanged(object sender, EventArgs e)
         {
-            checkMef();
+            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void rdbUPE2A_CheckedChanged(object sender, EventArgs e)
         {
-            checkMef();
+            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void rdbRas_CheckedChanged(object sender, EventArgs e)
         {
-            checkMef();
+            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void btnEdtPerso_Click(object sender, EventArgs e)
@@ -410,12 +344,12 @@ namespace CartesAcces
 
         private void label6_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         private void frmCarteIndividuelle_Load(object sender, EventArgs e)
         {
-            Timer time = new Timer(this);
+            var time = new Timer(this);
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
-using Button = System.Windows.Forms.Button;
-using TextBox = System.Windows.Forms.TextBox;
 
 namespace CartesAcces
 {
@@ -14,7 +10,7 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
-            this.VisibleChanged += on_Visibility_Change;
+            VisibleChanged += on_Visibility_Change;
             txtMotDePasse.PasswordChar = '*';
         }
 
@@ -23,7 +19,7 @@ namespace CartesAcces
             txtMotDePasse.Text = "";
             txtIdentifiant.Text = "";
         }
-        
+
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             /*
@@ -38,11 +34,11 @@ namespace CartesAcces
                 if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
                 {
                     Globale._estConnecter = true;
-                    Form frmAccueil = new frmAccueil();
+                    Globale.accueil = new frmAccueil();
                     txtMotDePasse.Text = "";
                     txtIdentifiant.Text = "";
-                    this.Hide();
-                    frmAccueil.Show();
+                    Hide();
+                    Globale.accueil.Show();
                 }
             }
             catch (Exception ex)

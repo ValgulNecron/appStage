@@ -1,32 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using iText.Layout.Element;
-using iText.Kernel.Pdf.Xobject;
-using Rectangle = System.Drawing.Rectangle;
+using CartesAcces.Properties;
 
 namespace CartesAcces
 {
     public partial class frmParametres : Form
     {
-        // -- DLL et procédure nécéssaires pour le module d'importation du fichier PDF --
-        [DllImport("USER32.DLL")]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-
         public frmParametres()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
             initDataGrid();
-            lblDateImport.Text = Properties.Settings.Default.DateImport;
+            lblDateImport.Text = Settings.Default.DateImport;
         }
 
         // -- Initialisation de la grille contenant la liste des élèves
@@ -37,66 +28,70 @@ namespace CartesAcces
             DataGridParametres.DataSource = Globale.listeEleve;
         }
 
-        public void importElevesBis()
+        public void importEleves()
         {
-            string sourcePath = txtPathEleve.Text;
-            string destinationPath = Chemin.pathListeEleve;
+            var sourcePath = txtPathEleve.Text;
+            var destinationPath = Chemin.pathListeEleve;
             try
             {
-                if (File.Exists(destinationPath))
-                {
-                    File.Delete(destinationPath);
-                }
+                if (File.Exists(destinationPath)) File.Delete(destinationPath);
+
+                Directory.CreateDirectory(Chemin.pathFolderListeEleve);
 
                 File.Copy(sourcePath, destinationPath);
-                MessageBox.Show("Import Réussi");
                 ReadCSV.setLesEleves(destinationPath);
                 Eleve.setLesClasses();
 
                 initDataGrid();
+                MessageBox.Show("Import Réussi");
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("Import Echoué");
+                MessageBox.Show(e.ToString());
             }
         }
 
         // -- Importation des photo des élèves --
         public void importPhoto()
         {
+            var sourcePath = txtPathPhoto.Text;
+            var destinationPath = Chemin.pathPhotoEleve;
 
-            DirectoryInfo directory = new DirectoryInfo(txtPathPhoto.Text);
-
-            foreach (var dir in directory.GetDirectories())
+            try
             {
+                Directory.CreateDirectory(destinationPath);
+
+                var directory = new DirectoryInfo(sourcePath);
+
+                foreach (var dir in directory.GetDirectories())
                 foreach (var file in dir.GetFiles())
                 {
-                    string sFilePath = Chemin.getFilePath("FichiersPHOTO");
+                    var img = Image.FromFile(file.FullName);
+                    var nom = file.Name;
 
-                    System.Drawing.Image img = System.Drawing.Image.FromFile(file.FullName);
-                    string nom = file.Name;
-
-                    img.Save(sFilePath + nom, System.Drawing.Imaging.ImageFormat.Png);
+                    img.Save(destinationPath + nom, ImageFormat.Png);
                 }
-            }
 
-            MessageBox.Show("Import réussie !");
+                MessageBox.Show("Import réussie !");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
 
         // -- La liste des élève se met a jour a chaques saisies de l'utilisateur --
         public void rechercheDataGrid()
         {
-            List<Eleve> listeRecherche = new List<Eleve>();
+            var listeRecherche = new List<Eleve>();
 
             initDataGrid();
 
             foreach (DataGridViewRow row in DataGridParametres.Rows)
-            {
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
+                for (var i = 0; i < row.Cells.Count; i++)
                     if (row.Cells[i].Value.ToString().Contains(txtRechercheDataGrid.Text))
                     {
-                        Eleve eleve = new Eleve();
+                        var eleve = new Eleve();
 
                         eleve.NomEleve = row.Cells[0].Value.ToString();
                         eleve.PrenomEleve = row.Cells[1].Value.ToString();
@@ -110,15 +105,14 @@ namespace CartesAcces
 
                         listeRecherche.Add(eleve);
                     }
-                }
-            }
 
             if (listeRecherche.Count() == 0)
             {
                 MessageBox.Show("Unable to find " + txtRechercheDataGrid.Text, "Not Found");
                 return;
             }
-            else if (txtRechercheDataGrid.Text == "")
+
+            if (txtRechercheDataGrid.Text == "")
             {
                 initDataGrid();
                 listeRecherche.Clear();
@@ -134,18 +128,13 @@ namespace CartesAcces
         // -- Pour la photo uniques --
         public string getImportPath()
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            using (var ofd = new OpenFileDialog())
             {
                 ofd.Filter = "Jpeg Files Only | *.jpg";
                 ofd.Title = "Selectionner une photo";
                 if (ofd.ShowDialog() == DialogResult.OK)
-                {
                     return ofd.FileName;
-                }
-                else
-                {
-                    return "null";
-                }
+                return "null";
             }
         }
 
@@ -154,30 +143,31 @@ namespace CartesAcces
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
             txtPathEleve.Text = Chemin.setPathImportFileEXCEL();
-            if (txtPathEleve.Text.Length > 0)
-            {
-                btnValiderEleve.Enabled = true;
-            }
+            if (txtPathEleve.Text.Length > 0) btnValiderEleve.Enabled = true;
         }
 
         private void btnValiderEleve_Click(object sender, EventArgs e)
         {
             labelV.Show();
-            importElevesBis();
-            lblDateImport.Text = Properties.Settings.Default.DateImport;
+            importEleves();
+            lblDateImport.Text = Settings.Default.DateImport;
             labelV.Hide();
         }
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
             txtPathEDT.Text = Chemin.setPathImportFilePDF();
+            var frmSelectSection = new frmSelectSection();
+            //frmSelectSection.Top = new frmParametres().Top;
+            frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
+            frmSelectSection.Show();
             btnValiderEDT.Enabled = true;
         }
 
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
             //importEDT();
-            PdfGs.getImageFromPdf(txtPathEDT.Text);
+            PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
         }
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
@@ -192,17 +182,14 @@ namespace CartesAcces
 
         private void btnAjoutEleve_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnModifClasse_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnSupprEleve_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtRechercheDataGrid_TextChanged(object sender, EventArgs e)
@@ -212,22 +199,20 @@ namespace CartesAcces
 
         private void DataGridParametres_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void frmParametres_Load(object sender, EventArgs e)
         {
-            Timer time = new Timer(this);
+            var time = new Timer(this);
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnImportPhotoUnique_Click(object sender, EventArgs e)
         {
-            string path = getImportPath();
+            var path = getImportPath();
 
             if (path == "null")
             {
@@ -235,7 +220,7 @@ namespace CartesAcces
                 return;
             }
 
-            frmImportPhotoUnique frm = new frmImportPhotoUnique();
+            var frm = new frmImportPhotoUnique();
 
             //Photo.setLaPhoto(path, );
 

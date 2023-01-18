@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -59,6 +54,7 @@ namespace CartesAcces
                     Edition.cropPen = new Pen(Color.Black, 1);
                     Edition.cropPen.DashStyle = DashStyle.DashDotDot;
                 }
+
                 // -- Refresh constant pour avoir un apperçu pendant la selection --
                 pbPhotoUnique.Refresh();
             }
@@ -80,7 +76,8 @@ namespace CartesAcces
                     pbPhotoUnique.Refresh();
                     Edition.cropWidth = e.X - Edition.cropX;
                     Edition.cropHeight = e.Y - Edition.cropY;
-                    pbPhotoUnique.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY, Edition.cropWidth, Edition.cropHeight);
+                    pbPhotoUnique.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY,
+                        Edition.cropWidth, Edition.cropHeight);
                 }
             }
         }
@@ -101,48 +98,37 @@ namespace CartesAcces
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = Path.Combine(sCurrentDirectory, "..\\..\\..\\FichiersPhoto\\");
-            string sFilePath = Path.GetFullPath(sFile);
+            var sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var sFile = Path.Combine(sCurrentDirectory, "..\\..\\..\\FichiersPhoto\\");
+            var sFilePath = Path.GetFullPath(sFile);
 
             if (txtNom.Text == null || txtPrenom.Text == null)
-            {
                 MessageBox.Show("Veuillez bien saisir le nom et le prenom de l'élève");
-            }
 
             else
-            {
-                pbPhotoUnique.Image.Save(sFilePath + "\\" + txtNom.Text.ToUpper() + " " + txtPrenom.Text + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            }
+                pbPhotoUnique.Image.Save(sFilePath + "\\" + txtNom.Text.ToUpper() + " " + txtPrenom.Text + ".jpg",
+                    ImageFormat.Jpeg);
         }
 
         private void txtNom_TextChanged(object sender, EventArgs e)
         {
             if (txtNom.Text != "" && txtPrenom.Text != "")
-            {
                 btnSave.Enabled = true;
-            }
             else
-            {
                 btnSave.Enabled = false;
-            }
         }
 
         private void txtPrenom_TextChanged(object sender, EventArgs e)
         {
             if (txtNom.Text != "" && txtPrenom.Text != "")
-            {
                 btnSave.Enabled = true;
-            }
             else
-            {
                 btnSave.Enabled = false;
-            }
         }
 
         private void frmImportPhotoUnique_Load(object sender, EventArgs e)
         {
-            Timer time = new Timer(this);
+            var time = new Timer(this);
         }
     }
 }

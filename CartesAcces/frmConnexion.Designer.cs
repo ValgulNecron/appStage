@@ -89,6 +89,7 @@ namespace CartesAcces
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
             this.maskedTextBox1.TabIndex = 5;
+            this.maskedTextBox1.Visible = false;
             // 
             // button1
             // 
@@ -98,6 +99,7 @@ namespace CartesAcces
             this.button1.TabIndex = 6;
             this.button1.Text = "Connexion";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmConnexion

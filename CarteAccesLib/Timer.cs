@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Threading;
-using System.Windows.Forms;
 using System.Timers;
+using System.Windows.Forms;
 
 namespace CartesAcces
 {
     public class Timer
     {
+        private readonly int dureeMinute = 15;
+        private readonly Form form;
+        private readonly int frequenceDesVerifEnMinute = 1;
+        private readonly System.Timers.Timer timer;
         private DateTime start;
-        private System.Timers.Timer timer;
-        private int dureeMinute = 15;
-        private int frequenceDesVerifEnMinute = 2;
-        private Form form;
 
         public Timer(Form form)
         {
@@ -34,14 +33,12 @@ namespace CartesAcces
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
             if (start.Add(TimeSpan.FromMinutes(dureeMinute)) <= DateTime.Now)
-            {
                 if (Globale._estConnecter)
                 {
                     Globale._estConnecter = false;
-                    Globale._connexion.Invoke((MethodInvoker) delegate { Globale._connexion.Show(); });
-                    form.Invoke((MethodInvoker) delegate { form.Close(); });
+                    Globale._connexion.Invoke((MethodInvoker)delegate { Globale._connexion.Show(); });
+                    form.Invoke((MethodInvoker)delegate { form.Close(); });
                 }
-            }
         }
     }
 }

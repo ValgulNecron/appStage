@@ -18,6 +18,6 @@ Repos du l'application de création de cartes d'accès
 
 - base de données => SQL (en cours)
 
-- changement de methode pour screenshot les pdf (en cours)
+- changement de methode pour screenshot les pdf (fait)
 
 ! pas d'application mobile
