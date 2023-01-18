@@ -1,50 +1,45 @@
 using System.Data;
-using System.Security.Policy;
-using MySql.Data.MySqlClient;
-using System.Configuration;
 using System.Xml;
+using MySql.Data.MySqlClient;
 
 namespace CartesAcces
 {
     public static class ClassSql
     {
-        public static MySqlConnection  connexionBdd;
+        public static MySqlConnection connexionBdd;
 
         public static void init()
         {
-            string configFile = "./config.xml";
-            XmlDocument doc = new XmlDocument();
+            var configFile = "./config.xml";
+            var doc = new XmlDocument();
             doc.Load(configFile);
-            XmlNode nodeIp = doc.SelectSingleNode("/configuration/appSettings/add[@key='IP']");
-            string ip = nodeIp.Attributes["value"].Value;
-            XmlNode nodeBd = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
-            string bd = nodeBd.Attributes["value"].Value;
-            XmlNode nodeUser = doc.SelectSingleNode("/configuration/appSettings/add[@key='USER']");
-            string user = nodeUser.Attributes["value"].Value;
-            XmlNode nodePass = doc.SelectSingleNode("/configuration/appSettings/add[@key='PASS']");
-            string pass = nodePass.Attributes["value"].Value;
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            var nodeIp = doc.SelectSingleNode("/configuration/appSettings/add[@key='IP']");
+            var ip = nodeIp.Attributes["value"].Value;
+            var nodeBd = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
+            var bd = nodeBd.Attributes["value"].Value;
+            var nodeUser = doc.SelectSingleNode("/configuration/appSettings/add[@key='USER']");
+            var user = nodeUser.Attributes["value"].Value;
+            var nodePass = doc.SelectSingleNode("/configuration/appSettings/add[@key='PASS']");
+            var pass = nodePass.Attributes["value"].Value;
+            var builder = new MySqlConnectionStringBuilder();
             builder.Server = ip;
             builder.Port = 3306;
             builder.Database = bd;
             builder.UserID = user;
             builder.Password = pass;
-            string connectionString = builder.ConnectionString;
+            var connectionString = builder.ConnectionString;
             connexionBdd = new MySqlConnection(connectionString);
         }
 
         public static string getUser(string user)
         {
-            string password = "";
+            var password = "";
             connexionBdd.Open();
-            MySqlCommand command = new MySqlCommand("getUser", connexionBdd);
+            var command = new MySqlCommand("getUser", connexionBdd);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@user", user);
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                password = reader["hash"].ToString();
-            }
+            var reader = command.ExecuteReader();
+            while (reader.Read()) password = reader["hash"].ToString();
             connexionBdd.Close();
             Globale._nomUtilisateur = user;
             return password;
@@ -53,7 +48,7 @@ namespace CartesAcces
         public static void setUser(string user, string hash)
         {
             connexionBdd.Open();
-            MySqlCommand command = new MySqlCommand("setUser", connexionBdd);
+            var command = new MySqlCommand("setUser", connexionBdd);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@targetUser", user);
             command.Parameters.AddWithValue("@setHash", hash);

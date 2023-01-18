@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -42,10 +39,7 @@ namespace CartesAcces
 
             if (Directory.Exists(outputPath))
             {
-                foreach (var file in Directory.GetFiles(outputPath))
-                {
-                    File.Delete(file);
-                }
+                foreach (var file in Directory.GetFiles(outputPath)) File.Delete(file);
                 Directory.Delete(outputPath);
             }
 
@@ -58,7 +52,7 @@ namespace CartesAcces
             process.StartInfo.RedirectStandardOutput = true;
             process.Start();
             var output = process.StandardOutput.ReadToEnd();
-            PdfGs.renameEdt(outputPath, path);
+            renameEdt(outputPath, path);
             process.WaitForExit();
         }
 
@@ -66,14 +60,11 @@ namespace CartesAcces
         {
             var outputFile = "./output.txt";
 
-            if (File.Exists(outputFile))
-            {
-                File.Delete(outputFile);
-            }
+            if (File.Exists(outputFile)) File.Delete(outputFile);
 
             var fs = File.Create(outputFile);
             fs.Close();
-            
+
             var process = new Process();
             process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments =
@@ -81,34 +72,35 @@ namespace CartesAcces
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.Start();
-            
+
             var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
 
-            string file = "";
+            var file = "";
             using (var sr = new StreamReader(outputFile))
             {
                 //file = File.ReadAllText(outputFile);
                 file = sr.ReadToEnd();
             }
+
             return file;
         }
 
         public static List<string> getNomPrenomPdf(string pdftext)
         {
-            List<string> listeExtractPDF = new List<string>();
-            
+            var listeExtractPDF = new List<string>();
+
             // !! Recherche des lignes qui nous interesse !!
 
             // -- On commence au premier caractère de la chaine --
-            int posDepart = 0;
+            var posDepart = 0;
             // -- La ligne s'arrete lorsqu'il y a un saut --
-            int posFin = pdftext.IndexOf(Environment.NewLine);
+            var posFin = pdftext.IndexOf(Environment.NewLine);
             // -- Tant qu'on a pas attein la fin de la variable --
-            
+
             while (posFin != -1)
             {
-                string line = pdftext.Substring(posDepart, posFin - posDepart);
+                var line = pdftext.Substring(posDepart, posFin - posDepart);
                 // -- Si la ligne contient la mention "Elève" .. -- 
                 if (line.Contains(" Elève "))
                 {
@@ -120,12 +112,14 @@ namespace CartesAcces
                     // -- .. Alors on affecte cette ligne a la liste --
                     listeExtractPDF.Add(line);
                 }
+
                 // -- La position de départ se place au début de la ligne suivante --
                 posDepart = posFin + 1;
                 // -- La position de fin se place au saut de ligne de la ligne suivante --
                 posFin = pdftext.IndexOf("\r\n", posDepart + 1);
                 // -- Toujours vrai sauf si erreur --
             }
+
             return listeExtractPDF;
         }
 
@@ -135,24 +129,24 @@ namespace CartesAcces
             var fileCount = Directory.GetFiles(folderPath).Length;
             return fileCount;
         }
-        
+
         public static void renameEdt(string path, string pdf)
         {
-            List<string> name = new List<string>();
+            var name = new List<string>();
             name = getNomPrenomPdf(getTextePdf(pdf));
             MessageBox.Show(name.Count.ToString());
-            DirectoryInfo d = new DirectoryInfo(path);
-            FileInfo[] infos = d.GetFiles();
+            var d = new DirectoryInfo(path);
+            var infos = d.GetFiles();
 
-            for (int i = 1; i < infos.Length; i++)
+            for (var i = 1; i < infos.Length; i++)
             {
-                string nameWithoutExt = infos[i].Name.Substring(0, infos[i].Name.Length - 4);
-                string index = nameWithoutExt.Substring(4, nameWithoutExt.Length - 4);
-                int indexInt = Convert.ToInt32(index);
-                
-                string oldName = nameWithoutExt;
-                string newName = name[indexInt - 1].Trim();
-                File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName,newName));
+                var nameWithoutExt = infos[i].Name.Substring(0, infos[i].Name.Length - 4);
+                var index = nameWithoutExt.Substring(4, nameWithoutExt.Length - 4);
+                var indexInt = Convert.ToInt32(index);
+
+                var oldName = nameWithoutExt;
+                var newName = name[indexInt - 1].Trim();
+                File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName, newName));
             }
         }
     }

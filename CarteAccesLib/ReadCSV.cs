@@ -1,5 +1,5 @@
-﻿using System.IO;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -10,7 +10,7 @@ namespace CartesAcces
     {
         public static List<string> getDataFromCSV(string pathCSV, int numColonne)
         {
-            List<string> list = new List<string>();
+            var list = new List<string>();
 
             using (var reader = new StreamReader(pathCSV, Encoding.GetEncoding("ISO-8859-1")))
             {
@@ -22,6 +22,7 @@ namespace CartesAcces
                     list.Add(values[numColonne]);
                 }
             }
+
             return list;
         }
 
@@ -29,29 +30,29 @@ namespace CartesAcces
         {
             return File.ReadAllLines(pathCSV).Length - 1;
         }
-        
+
         public static void setLesEleves(string sFilePath)
         {
             //string sFilePath = ""; // chemin vers le fichier csv
             try
             {
-                List<Eleve> listeProvisoire = new List<Eleve>();
-                int rowCount = ReadCSV.getNumberOfLines(sFilePath);
+                var listeProvisoire = new List<Eleve>();
+                var rowCount = getNumberOfLines(sFilePath);
 
-                for (int i = 1; i <= rowCount; i++)
+                for (var i = 1; i <= rowCount; i++)
                 {
-                    string classe = rectifClasse(ReadCSV.getDataFromCSV(sFilePath, 6)[i]);
-                    Eleve unEleve = new Eleve();
+                    var classe = rectifClasse(getDataFromCSV(sFilePath, 6)[i]);
+                    var unEleve = new Eleve();
                     unEleve.NumEleve = i;
-                    unEleve.NomEleve = ReadCSV.getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.PrenomEleve = ReadCSV.getDataFromCSV(sFilePath, 1)[i];
+                    unEleve.NomEleve = getDataFromCSV(sFilePath, 0)[i];
+                    unEleve.PrenomEleve = getDataFromCSV(sFilePath, 1)[i];
                     unEleve.ClasseEleve = classe;
-                    unEleve.RegimeEleve = ReadCSV.getDataFromCSV(sFilePath, 14)[i];
-                    unEleve.OptionUnEleve = ReadCSV.getDataFromCSV(sFilePath, 7)[i];
-                    unEleve.OptionDeuxEleve = ReadCSV.getDataFromCSV(sFilePath, 8)[i];
-                    unEleve.OptionTroisEleve = ReadCSV.getDataFromCSV(sFilePath, 9)[i];
-                    unEleve.OptionQuatreEleve = ReadCSV.getDataFromCSV(sFilePath, 10)[i];
-                    unEleve.MefEleve = ReadCSV.getDataFromCSV(sFilePath, 5)[i];
+                    unEleve.RegimeEleve = getDataFromCSV(sFilePath, 14)[i];
+                    unEleve.OptionUnEleve = getDataFromCSV(sFilePath, 7)[i];
+                    unEleve.OptionDeuxEleve = getDataFromCSV(sFilePath, 8)[i];
+                    unEleve.OptionTroisEleve = getDataFromCSV(sFilePath, 9)[i];
+                    unEleve.OptionQuatreEleve = getDataFromCSV(sFilePath, 10)[i];
+                    unEleve.MefEleve = getDataFromCSV(sFilePath, 5)[i];
 
                     listeProvisoire.Add(unEleve);
                 }
@@ -63,16 +64,14 @@ namespace CartesAcces
                 MessageBox.Show(
                     "Pas de liste importée, afin de pouvoir créer des carte merci d'importer le fichier Excel");
             }
-
         }
 
         public static string rectifClasse(string classe)
         {
-            int index = classe.IndexOf('"');
-            string classeRectif = classe.Substring(index + 1, classe.Length - 3);
+            var index = classe.IndexOf('"');
+            var classeRectif = classe.Substring(index + 1, classe.Length - 3);
 
             return classeRectif;
         }
-        
     }
 }

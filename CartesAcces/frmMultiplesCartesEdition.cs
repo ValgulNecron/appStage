@@ -1,25 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using iText.IO.Font;
-using Word = Microsoft.Office.Interop.Word;
 
 namespace CartesAcces
 {
     public partial class frmMultiplesCartesEdition : Form
-    { 
+    {
         public frmMultiplesCartesEdition()
         {
             InitializeComponent();
-                        Couleur.setCouleurFenetre(this);
+            Couleur.setCouleurFenetre(this);
         }
 
         private void pbPhoto_MouseMove(object sender, MouseEventArgs e)
@@ -42,8 +34,9 @@ namespace CartesAcces
                 Edition.posY = e.Y;
                 Edition.drag = true;
             }
+
             // -- Actualisation pour voir le déplacement en temps réel --
-            this.Refresh();
+            Refresh();
         }
 
         private void pbPhoto_MouseUp(object sender, MouseEventArgs e)
@@ -61,7 +54,7 @@ namespace CartesAcces
                 pbPhoto.Height = Convert.ToInt32(tkbTaillePhoto.Value * 1.5);
             }
         }
-        
+
 
         // #### Rognage de l'emploi du temps ####
         private void btnSelect_Click(object sender, EventArgs e)
@@ -77,10 +70,11 @@ namespace CartesAcces
 
             btnCancel.Enabled = true;
         }
+
         private void btnCrop_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            string pathEdt = Chemin.pathEdt;
+            var pathEdt = Chemin.pathEdt;
             Edition.selectionClick = false;
             Edition.cropEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
@@ -96,16 +90,16 @@ namespace CartesAcces
 
             // -- On remet les paramètres et l'image de base --
             Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
-            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg",pbPhoto);
+            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selectionné est cliqué --
-            if (Edition.selectionClick == true)
+            if (Edition.selectionClick)
             {
                 // -- Si il y a clic gauche --
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les coordonnées de départ --
                     Edition.cropX = e.X;
@@ -113,6 +107,7 @@ namespace CartesAcces
                     Edition.cropPen = new Pen(Color.Black, 1);
                     Edition.cropPen.DashStyle = DashStyle.DashDotDot;
                 }
+
                 // -- Refresh constant pour avoir un apperçu pendant la selection --
                 pbCarteArriere.Refresh();
             }
@@ -121,20 +116,21 @@ namespace CartesAcces
         private void pbCarteArriere_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selection est cliqué --
-            if (Edition.selectionClick == true)
+            if (Edition.selectionClick)
             {
                 // -- Si pas d'image, on sort --
                 if (pbCarteArriere.Image == null)
                     return;
 
                 // -- Glissement à la fin du premier clic gauche --
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les dimensions a la fin du déplacement de la souris
                     pbCarteArriere.Refresh();
                     Edition.cropWidth = e.X - Edition.cropX;
                     Edition.cropHeight = e.Y - Edition.cropY;
-                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY, Edition.cropWidth, Edition.cropHeight);
+                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY,
+                        Edition.cropWidth, Edition.cropHeight);
                 }
             }
         }
@@ -144,30 +140,26 @@ namespace CartesAcces
             // -- Si la liste est impaire, on double le dernier élève
             if (Globale.listeEleveImpr.Count % 2 == 1)
             {
-                Eleve eleve = Globale.listeEleveImpr[Globale.listeEleveImpr.Count - 1];
+                var eleve = Globale.listeEleveImpr[Globale.listeEleveImpr.Count - 1];
                 Globale.listeEleveImpr.Add(eleve);
             }
-            
-            string cheminImpressionFinal = Chemin.setPathImportFolder();
+
+            var cheminImpressionFinal = Chemin.setPathImportFolder();
             Edition.saveCardAsWord(cheminImpressionFinal, "test", Globale.listeEleveImpr, pbPhoto, pbCarteArriere);
-            
-            
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
         }
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
             Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
-            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg",pbPhoto);
+            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
     }
 }

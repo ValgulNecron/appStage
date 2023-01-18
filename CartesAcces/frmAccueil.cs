@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace CartesAcces
 {
@@ -22,21 +15,21 @@ namespace CartesAcces
             {
                 pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
                     Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
-                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0], 
+                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0],
                     Globale._couleurDeFondSombre[1], Globale._couleurDeFondSombre[2]);
             }
             else
             {
                 pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
                     Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
-                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0], 
+                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0],
                     Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
             }
         }
 
         private void OpenChildForm(Form childForm)
         {
-            childForm.TopLevel = false; 
+            childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
             childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel
             pnlContent.Controls.Add(childForm); // reprend les éléments de l'ITF du windows forms
@@ -47,12 +40,12 @@ namespace CartesAcces
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
-            progressBarForm frmWait = new progressBarForm();
+            var frmWait = new progressBarForm();
             frmWait.StartPosition = FormStartPosition.Manual;
             frmWait.Location = new Point(800, 300);
             frmWait.Show();
             frmWait.TopMost = true;
-            Timer time = new Timer(this);
+            var time = new Timer(this);
         }
 
         //Création de menu de navigation
@@ -60,7 +53,6 @@ namespace CartesAcces
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmCarteIndividuelle());
-            
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
@@ -75,7 +67,6 @@ namespace CartesAcces
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void btnParamètreInterface_Click(object sender, EventArgs e)
