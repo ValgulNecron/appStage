@@ -46,7 +46,11 @@ namespace CartesAcces
         public static int currentProgress = 0;
         public static int totalSteps = 0;
 
-        //
+        //e
         public static Form accueil;
+        
+        // version
+        public static string _version = "0.2.1";
+        public static string _versionDate = "18/01/2023";
     }
 }
