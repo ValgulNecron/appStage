@@ -45,7 +45,7 @@ namespace CartesAcces
             frmWait.Location = new Point(800, 300);
             frmWait.Show();
             frmWait.TopMost = true;
-            
+            lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var time = new Timer(this);
         }
 
