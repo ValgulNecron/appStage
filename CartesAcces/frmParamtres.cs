@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using CartesAcces.Properties;
 
@@ -62,8 +63,7 @@ namespace CartesAcces
                 Directory.CreateDirectory(destinationPath);
 
                 var directory = new DirectoryInfo(sourcePath);
-
-
+                
                     foreach (var file in directory.GetFiles())
                     {
                         var img = Image.FromFile(file.FullName);
@@ -71,10 +71,8 @@ namespace CartesAcces
 
                         img.Save(destinationPath + nom, ImageFormat.Png);
                     }
-     
 
-
-                MessageBox.Show("Import réussie !");
+                    MessageBox.Show("Import réussie !");
             }
             catch (Exception e)
             {
@@ -169,16 +167,21 @@ namespace CartesAcces
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
             //importEDT();
-            PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
+            PdfGs.renameEdt(txtPathEDT.Text);
+            ThreadStart threadDelegate = new ThreadStart(getImage);
+            Thread thread = new Thread(threadDelegate);
+            thread.Start();
         }
 
+        private void getImage()
+        {
+            PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
+        }
+        
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-
-          txtPathPhoto.Text = Chemin.setPathImportFolder();
-          btnValiderPhoto.Enabled = true;
-         
-
+            txtPathPhoto.Text = Chemin.setPathImportFolder();
+            btnValiderPhoto.Enabled = true;
         }
 
         private void btnValiderPhoto_Click(object sender, EventArgs e)

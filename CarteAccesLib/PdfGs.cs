@@ -8,9 +8,10 @@ namespace CartesAcces
 {
     public static class PdfGs
     {
+        private static string outputPath = "./data/image";
+
         public static void getImageFromPdf(string path, int classe)
         {
-            var outputPath = "./data/image";
             switch (classe)
             {
                 case 3:
@@ -50,9 +51,9 @@ namespace CartesAcces
                 $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -r200 -dPDFFitPage -c \"<< /Orientation 3 >> setpagedevice\" -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = false; 
             process.Start();
             var output = process.StandardOutput.ReadToEnd();
-            renameEdt(outputPath, path);
             process.WaitForExit();
         }
 
@@ -71,6 +72,7 @@ namespace CartesAcces
                 $"-o \"{outputFile}\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = false; 
             process.Start();
 
             var output = process.StandardOutput.ReadToEnd();
@@ -130,12 +132,12 @@ namespace CartesAcces
             return fileCount;
         }
 
-        public static void renameEdt(string path, string pdf)
+        public static void renameEdt(string pdf)
         {
             var name = new List<string>();
             name = getNomPrenomPdf(getTextePdf(pdf));
             MessageBox.Show(name.Count.ToString());
-            var d = new DirectoryInfo(path);
+            var d = new DirectoryInfo(outputPath);
             var infos = d.GetFiles();
 
             for (var i = 1; i < infos.Length; i++)
