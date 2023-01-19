@@ -1,5 +1,7 @@
+using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 //using Org.BouncyCastle.Asn1.Crmf;
 
@@ -30,6 +32,7 @@ namespace CartesAcces
                         else
                             controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
                                 Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
+                        controle2.EnabledChanged += changement_state_btn;
                     }
 
                     if (controle is TextBox)
@@ -70,6 +73,7 @@ namespace CartesAcces
                         else
                             controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffClaire[0],
                                 Globale._couleurBoutonOffClaire[1], Globale._couleurBoutonOffClaire[2]);
+                        controle2.EnabledChanged += changement_state_btn;
                     }
 
                     if (controle is TextBox)
@@ -111,6 +115,7 @@ namespace CartesAcces
                         else
                             controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
                                 Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
+                        controle2.EnabledChanged += changement_state_btn;
                     }
 
                     if (controle is TextBox)
@@ -147,6 +152,7 @@ namespace CartesAcces
                         else
                             controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffClaire[0],
                                 Globale._couleurBoutonOffClaire[1], Globale._couleurBoutonOffClaire[2]);
+                        controle2.EnabledChanged += changement_state_btn;
                     }
 
                     if (controle is TextBox)
@@ -187,6 +193,7 @@ namespace CartesAcces
                         else
                             controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
                                 Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
+                        controle2.EnabledChanged += changement_state_btn;
                     }
 
                     if (controle is TextBox)
@@ -223,6 +230,7 @@ namespace CartesAcces
                         else
                             controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffClaire[0],
                                 Globale._couleurBoutonOffClaire[1], Globale._couleurBoutonOffClaire[2]);
+                        controle2.EnabledChanged += changement_state_btn;
                     }
 
                     if (controle is TextBox)
@@ -242,5 +250,44 @@ namespace CartesAcces
                     }
                 }
         }
+
+        public static void changement_state_btn(object sender, EventArgs e)
+        {
+            Button btn;
+            try
+            {
+                btn = sender as Button;
+            }
+            catch
+            {
+                return;
+            }
+            if (btn != null && btn.Enabled)
+            {
+                if (Globale._estEnModeSombre)
+                {
+                    btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
+                        Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                }
+                else
+                {
+                    btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonsClaire[0],
+                        Globale._couleurBoutonsClaire[1], Globale._couleurBoutonsClaire[2]);
+                }
+            }
+            else if (btn != null)
+            {
+                if (Globale._estEnModeSombre)
+                {
+                    btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
+                        Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
+                }
+                else
+                {
+                    btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffClaire[0],
+                        Globale._couleurBoutonOffClaire[1], Globale._couleurBoutonOffClaire[2]);
+                }
+            }
+        }
     }
-}
+} 
