@@ -51,7 +51,7 @@ namespace CartesAcces
                 $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -r200 -dPDFFitPage -c \"<< /Orientation 3 >> setpagedevice\" -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = false; 
+            process.StartInfo.CreateNoWindow = true; 
             process.Start();
             var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
@@ -72,7 +72,7 @@ namespace CartesAcces
                 $"-o \"{outputFile}\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = false; 
+            process.StartInfo.CreateNoWindow = true; 
             process.Start();
 
             var output = process.StandardOutput.ReadToEnd();
