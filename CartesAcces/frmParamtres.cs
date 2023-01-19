@@ -63,14 +63,16 @@ namespace CartesAcces
 
                 var directory = new DirectoryInfo(sourcePath);
 
-                foreach (var dir in directory.GetDirectories())
-                foreach (var file in dir.GetFiles())
-                {
-                    var img = Image.FromFile(file.FullName);
-                    var nom = file.Name;
 
-                    img.Save(destinationPath + nom, ImageFormat.Png);
-                }
+                    foreach (var file in directory.GetFiles())
+                    {
+                        var img = Image.FromFile(file.FullName);
+                        var nom = file.Name;
+
+                        img.Save(destinationPath + nom, ImageFormat.Png);
+                    }
+     
+
 
                 MessageBox.Show("Import réussie !");
             }
@@ -172,7 +174,11 @@ namespace CartesAcces
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            Chemin.setPathImportFolder();
+
+          txtPathPhoto.Text = Chemin.setPathImportFolder();
+          btnValiderPhoto.Enabled = true;
+         
+
         }
 
         private void btnValiderPhoto_Click(object sender, EventArgs e)

@@ -38,8 +38,9 @@ namespace CartesAcces
         private void btnBascule_Click_1(object sender, EventArgs e)
         {
             Globale._estEnModeSombre = !Globale._estEnModeSombre;
-            Couleur.setCouleurFenetre(this);
+            
             Couleur.setCouleurFenetre(Globale.accueil);
+            Couleur.setCouleurFenetre(this);
             foreach (Control control in Globale.accueil.Controls)
                 if (control is Panel && control.Name == "pnlMenu")
                 {
