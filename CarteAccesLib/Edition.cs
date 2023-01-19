@@ -298,7 +298,7 @@ namespace CartesAcces
             else if (File.Exists("./data/ElevesPhoto/" + nomFichierPNG))
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierPNG);
             else
-                affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+                pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/edition.jpg");
         }
 
         public static void cropEdt(PictureBox pbCarteArriere, string pathEdt)
