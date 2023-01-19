@@ -167,15 +167,15 @@ namespace CartesAcces
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
             //importEDT();
-            PdfGs.renameEdt(txtPathEDT.Text);
-            ThreadStart threadDelegate = new ThreadStart(getImage);
+            ThreadStart threadDelegate = new ThreadStart(getPdf);
             Thread thread = new Thread(threadDelegate);
             thread.Start();
         }
 
-        private void getImage()
+        private void getPdf()
         {
             PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
+            PdfGs.renameEdt(txtPathEDT.Text);
         }
         
         private void btnImportPhoto_Click(object sender, EventArgs e)
