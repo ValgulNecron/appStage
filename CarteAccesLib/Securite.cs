@@ -36,7 +36,7 @@ namespace CartesAcces
             var salt = new byte[16];
             Array.Copy(hashBytes, 0, salt, 0, 16);
 
-            //on recree le hash du mot de passe entré avec le sel du mot de passe enregistré
+            //on recree le hash du mot de passe entré avec le sel du mot dhashBytese passe enregistré
             var pbkdf2 = new Rfc2898DeriveBytes(motDePasse, salt, 100000);
             var hash = pbkdf2.GetBytes(20);
 
@@ -97,15 +97,16 @@ namespace CartesAcces
 
         public static void chiffrerFichier(string path)
         {
-            string key = "ceci est une clé de chiffrement magnifique est secu qui fait du sens bien evidement";
+            string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+            byte[] keyBytes = Convert.FromBase64String(key);
             using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 using (FileStream outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
                 {
                     using (RijndaelManaged aes = new RijndaelManaged())
                     {
-                        aes.Key = Encoding.UTF8.GetBytes(key);
+                        aes.Key = keyBytes;
                         aes.IV = iv;
 
                         ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
@@ -148,8 +149,9 @@ namespace CartesAcces
 
         private static void dechiffrerFichier(string path)
         {
-            string key = "ceci est une clé de chiffrement magnifique est secu qui fait du sens bien evidement";
+            string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+            byte[] keyBytes = Convert.FromBase64String(key);
             // Open the file in read mode
             using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
@@ -157,7 +159,7 @@ namespace CartesAcces
                 {
                     using (RijndaelManaged aes = new RijndaelManaged())
                     {
-                        aes.Key = Encoding.UTF8.GetBytes(key);
+                        aes.Key = keyBytes;
                         aes.IV = iv;
 
                         ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
