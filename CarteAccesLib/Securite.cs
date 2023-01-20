@@ -4,6 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CartesAcces
 {
@@ -100,6 +101,7 @@ namespace CartesAcces
             string key = "ZwBVpb+qYeql6q41b6dyURW0BHppqZUSmwubby+r97NWufLDmoZkCCRB/ucE9pSAtEtXXX55QTebr5OTPhFgIKHNrxOEox5cXZ7aVqpbukvqk3dQX8+uevtPFYvxr/WIgfRhuoL0vW6O1fSka9BZaQz/Pdjh7rSt/8M80rrYZNGzV6LkM7GXes/YCdo5rrt4+wLe+rssvqjhnGQayjROYeKEae5EpZEDT4UXU/HLW759nA5sHRhVXuQtDg0OYWWi";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             byte[] keyBytes = Convert.FromBase64String(key);
+            MessageBox.Show(keyBytes.Length.ToString());
             using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 using (FileStream outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
