@@ -9,6 +9,7 @@ namespace CartesAcces
         public frmAccueil()
         {
             InitializeComponent();
+            Globale.accueil = this;
             ControlSize.SetSizeTextControl(this);
             Couleur.setCouleurFenetre(this);
             if (Globale._estEnModeSombre)
@@ -40,6 +41,8 @@ namespace CartesAcces
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
+            Globale.actuelle = new frmParametres();
+            OpenChildForm(Globale.actuelle);
             var frmWait = new progressBarForm();
             frmWait.StartPosition = FormStartPosition.Manual;
             frmWait.Location = new Point(800, 300);
@@ -47,9 +50,6 @@ namespace CartesAcces
             frmWait.TopMost = true;
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var time = new Timer(this);
-            
-            Globale.actuelle = new frmParametres();
-            OpenChildForm(Globale.actuelle);
         }
 
         //Création de menu de navigation

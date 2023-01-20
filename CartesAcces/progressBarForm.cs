@@ -20,6 +20,8 @@ namespace CartesAcces
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            Globale.accueil.Enabled = false;
+            Globale.actuelle.Enabled = false;
             Globale.currentProgress = 1;
             Globale.totalSteps = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
@@ -31,6 +33,8 @@ namespace CartesAcces
             Eleve.setLesClasses();
             Globale.currentProgress = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+            Globale.actuelle.Enabled = true;
+            Globale.accueil.Enabled = true;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
