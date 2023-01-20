@@ -3,6 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CartesAcces
 {
@@ -85,6 +86,7 @@ namespace CartesAcces
                 foreach (var file in dir2.GetFiles())
                     Task.Run(() => { chiffrerFichier(file.FullName); });
             }
+            MessageBox.Show("Chiffrement terminé");
         }
 
         public static void chiffrerFichier(string path)
@@ -138,6 +140,7 @@ namespace CartesAcces
                 foreach (var file in dir2.GetFiles())
                     Task.Run(() => { dechiffrerFichier(file.FullName); });
             }
+            MessageBox.Show("Dossier déchiffré");
         }
 
         public static void dechiffrerFichier(string path)
@@ -146,7 +149,6 @@ namespace CartesAcces
             var iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             var keyBytes = Convert.FromBase64String(key);
             var extension = Path.GetExtension(path);
-            if (extension == "enc")
                 using (var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
                     using (var outputStream =new FileStream(path.Replace(".enc", ""), FileMode.Create, FileAccess.Write))
