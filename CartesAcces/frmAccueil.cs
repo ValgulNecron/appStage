@@ -99,5 +99,11 @@ namespace CartesAcces
             frmChangeMotDePasse frmPassword = new frmChangeMotDePasse();
             frmPassword.Show();
         }
+
+        private void btnAfficheListeEleve_Click(object sender, EventArgs e)
+        {
+            Globale.actuelle = new frmListeEleve();
+            OpenChildForm(Globale.actuelle);
+        }
     }
 }
