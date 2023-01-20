@@ -136,7 +136,7 @@ namespace CartesAcces
         public static void dechiffrerDossier()  
         {
             string path = "./data/";
-            var directory = new DirectoryInfo(path);DeriveKey(password)
+            var directory = new DirectoryInfo(path);
 
             foreach (var file in directory.GetFiles())
             {
