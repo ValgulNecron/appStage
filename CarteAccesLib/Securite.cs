@@ -111,7 +111,7 @@ namespace CartesAcces
                     // Create a new RijndaelManaged object
                     using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
                     {
-                        aes.KeySize = 256;
+                        aes.KeySize = 192;
                         aes.BlockSize = 128;
                         aes.Padding = PaddingMode.PKCS7;
                         // Set the key and IV
@@ -136,7 +136,7 @@ namespace CartesAcces
         public static void dechiffrerDossier()  
         {
             string path = "./data/";
-            var directory = new DirectoryInfo(path);
+            var directory = new DirectoryInfo(path);DeriveKey(password)
 
             foreach (var file in directory.GetFiles())
             {
