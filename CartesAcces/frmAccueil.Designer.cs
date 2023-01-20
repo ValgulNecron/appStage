@@ -137,6 +137,7 @@ namespace CartesAcces
             this.btnAfficheListeEleve.TabIndex = 6;
             this.btnAfficheListeEleve.Text = "Liste d\'élève";
             this.btnAfficheListeEleve.UseVisualStyleBackColor = false;
+            this.btnAfficheListeEleve.Click += new System.EventHandler(this.btnAfficheListeEleve_Click);
             // 
             // btnTheme
             // 
