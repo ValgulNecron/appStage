@@ -101,30 +101,23 @@ namespace CartesAcces
             string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             byte[] keyBytes = Convert.FromBase64String(key);
-            MessageBox.Show(keyBytes.Length.ToString());
             using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                // Open the file in write mode
                 using (FileStream outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
                 {           
-                    // Create a new RijndaelManaged object
                     using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
                     {
                         aes.KeySize = 256;
                         aes.BlockSize = 128;
                         aes.Padding = PaddingMode.PKCS7;
-                        // Set the key and IV            string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
 
                         aes.Key = keyBytes;
                         aes.IV = iv;
 
-                        // Create a new encryptor
                         ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
-                        // Create a new CryptoStream
                         using (CryptoStream cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
                         {
-                            // Encrypt the file
                             inputStream.CopyTo(cryptoStream);
                         }
                     }
@@ -164,7 +157,6 @@ namespace CartesAcces
             string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             byte[] keyBytes = Convert.FromBase64String(key);
-            // Open the file in read mode
             using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 using (FileStream outputStream = new FileStream(path.Replace(".enc", ""), FileMode.Create, FileAccess.Write))
