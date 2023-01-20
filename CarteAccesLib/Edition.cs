@@ -11,7 +11,7 @@ using CarteAccesLib;
 
 namespace CartesAcces
 {
-    public static class Edition
+    public class Edition
     {
         // ** VARIABLES : Pour l'édition de l'emploi du temps (rognage) **
         public static bool
@@ -33,9 +33,6 @@ namespace CartesAcces
         public static int
             posY; // -> Ordonnée initialie, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
 
-        // ** VARIABLES : Provisoires.. **
-        public static string affichageTest;
-
         // ** VARIABLES : Chemin de l'image **
         public static string FilePath;
 
@@ -50,10 +47,6 @@ namespace CartesAcces
                 pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
             }
         }
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool AllocConsole();
 
         // -- Dessine le rectangle de couleur derrière le text pour une meilleurs visibilité de celui ci --
         public static void fondTextCarteFace(Graphics ObjGraphics, string text, Font font, int posX, int posY,
@@ -592,6 +585,35 @@ namespace CartesAcces
             return dateFile;
         }
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         public static void easterEgg()
         {
             var gitPoule1 = "⠀⠀⠀⠀⠀⣀⡀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⢀⣤⣤ ⣤⣄⠀⠀ ⠀⠀⠀⠀⠀";
