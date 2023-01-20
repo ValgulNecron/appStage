@@ -8,6 +8,8 @@ namespace CartesAcces
 {
     public static class Securite
     {
+        public static string pathFolder = "./data/";
+        
         public static string creationHash(string motDePasse)
         {
             //on crée le sel qui permettra au mot de passe d'avoir un hash unique et différent à chaque fois meme si le mot de passe est le meme
@@ -69,8 +71,7 @@ namespace CartesAcces
 
         public static void chiffrerDossier()
         {
-            var path = "./data/";
-            var directory = new DirectoryInfo(path);
+            var directory = new DirectoryInfo(pathFolder);
 
             foreach (var file in directory.GetFiles())
                 Task.Run(() => { chiffrerFichier(file.FullName); });
@@ -123,8 +124,7 @@ namespace CartesAcces
 
         public static void dechiffrerDossier()
         {
-            var path = "./data/";
-            var directory = new DirectoryInfo(path);
+            var directory = new DirectoryInfo(pathFolder);
 
             foreach (var file in directory.GetFiles())
                 Task.Run(() => { dechiffrerFichier(file.FullName); });
