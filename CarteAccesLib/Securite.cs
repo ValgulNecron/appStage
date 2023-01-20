@@ -2,6 +2,7 @@
 using System.Drawing.Imaging;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace CartesAcces
@@ -96,7 +97,78 @@ namespace CartesAcces
 
         public static void chiffrerFichier(string path)
         {
+            string key = "ceci est une clé de chiffrement magnifique est secu qui fait du sens bien evidement";
+            byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+            using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                using (FileStream outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
+                {
+                    using (RijndaelManaged aes = new RijndaelManaged())
+                    {
+                        aes.Key = Encoding.UTF8.GetBytes(key);
+                        aes.IV = iv;
 
+                        ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+                        
+                        using (CryptoStream cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
+                        {
+                            inputStream.CopyTo(cryptoStream);
+                        }
+                    }
+                }
+            }
+        }
+        
+        public static void dechiffrerDossier()
+        {
+            string path = "./data/";
+            var directory = new DirectoryInfo(path);
+
+            foreach (var file in directory.GetFiles())
+            {
+                dechiffrerFichier(file.FullName);
+            }
+
+            foreach (var dir in directory.GetDirectories())
+            {
+                foreach (var file in dir.GetFiles())
+                {
+                    dechiffrerFichier(file.FullName);
+                }
+
+                foreach (var dir2 in directory.GetDirectories())
+                {
+                    foreach (var file in dir2.GetFiles())
+                    {
+                        dechiffrerFichier(file.FullName);
+                    }
+                }
+            }
+        }
+
+        private static void dechiffrerFichier(string path)
+        {
+            string key = "ceci est une clé de chiffrement magnifique est secu qui fait du sens bien evidement";
+            byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+            // Open the file in read mode
+            using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                using (FileStream outputStream = new FileStream(path.Replace(".enc", ""), FileMode.Create, FileAccess.Write))
+                {
+                    using (RijndaelManaged aes = new RijndaelManaged())
+                    {
+                        aes.Key = Encoding.UTF8.GetBytes(key);
+                        aes.IV = iv;
+
+                        ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+                        using (CryptoStream cryptoStream = new CryptoStream(inputStream, decryptor, CryptoStreamMode.Read))
+                        {
+                            cryptoStream.CopyTo(outputStream);
+                        }
+                    }
+                }
+            }
         }
     }
 }
