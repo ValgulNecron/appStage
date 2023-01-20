@@ -93,5 +93,11 @@ namespace CartesAcces
                             Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
                 }
         }
+
+        private void btnChangeMdp_Click(object sender, EventArgs e)
+        {
+            frmChangeMotDePasse frmPassword = new frmChangeMotDePasse();
+            frmPassword.Show();
+        }
     }
 }
