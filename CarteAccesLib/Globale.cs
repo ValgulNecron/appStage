@@ -48,6 +48,7 @@ namespace CartesAcces
 
         //e
         public static Form actuelle;
+        public static Form accueil;
 
         // version
         public static string _version = "0.2.1";
