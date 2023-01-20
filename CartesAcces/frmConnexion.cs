@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -55,6 +56,9 @@ namespace CartesAcces
 
         private void btnChiffre_Click(object sender, EventArgs e)
         {
+            var key = new byte[256];
+            new RNGCryptoServiceProvider().GetBytes(key);
+            txtIdentifiant.Text = Convert.ToBase64String(key);
             Securite.chiffrerDossier();
         }
 
