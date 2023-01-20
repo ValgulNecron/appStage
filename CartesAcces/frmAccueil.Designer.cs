@@ -35,10 +35,10 @@ namespace CartesAcces
             this.btnCarteParClasse = new System.Windows.Forms.Button();
             this.btnParametres = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnChangeMdp = new System.Windows.Forms.Button();
+            this.btnAfficheListeEleve = new System.Windows.Forms.Button();
             this.btnTheme = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.btnAfficheListeEleve = new System.Windows.Forms.Button();
-            this.btnChangeMdp = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +111,33 @@ namespace CartesAcces
             this.pnlMenu.Size = new System.Drawing.Size(170, 701);
             this.pnlMenu.TabIndex = 2;
             // 
+            // btnChangeMdp
+            // 
+            this.btnChangeMdp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnChangeMdp.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnChangeMdp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnChangeMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeMdp.Location = new System.Drawing.Point(0, 367);
+            this.btnChangeMdp.Name = "btnChangeMdp";
+            this.btnChangeMdp.Size = new System.Drawing.Size(170, 42);
+            this.btnChangeMdp.TabIndex = 7;
+            this.btnChangeMdp.Text = "Changer le mot de passe";
+            this.btnChangeMdp.UseVisualStyleBackColor = false;
+            this.btnChangeMdp.Click += new System.EventHandler(this.btnChangeMdp_Click);
+            // 
+            // btnAfficheListeEleve
+            // 
+            this.btnAfficheListeEleve.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAfficheListeEleve.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnAfficheListeEleve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAfficheListeEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficheListeEleve.Location = new System.Drawing.Point(0, 219);
+            this.btnAfficheListeEleve.Name = "btnAfficheListeEleve";
+            this.btnAfficheListeEleve.Size = new System.Drawing.Size(170, 42);
+            this.btnAfficheListeEleve.TabIndex = 6;
+            this.btnAfficheListeEleve.Text = "Liste d\'élève";
+            this.btnAfficheListeEleve.UseVisualStyleBackColor = false;
+            // 
             // btnTheme
             // 
             this.btnTheme.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -132,32 +159,6 @@ namespace CartesAcces
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(0, 13);
             this.lblVersion.TabIndex = 0;
-            // 
-            // btnAfficheListeEleve
-            // 
-            this.btnAfficheListeEleve.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAfficheListeEleve.BackColor = System.Drawing.Color.AliceBlue;
-            this.btnAfficheListeEleve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAfficheListeEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAfficheListeEleve.Location = new System.Drawing.Point(0, 219);
-            this.btnAfficheListeEleve.Name = "btnAfficheListeEleve";
-            this.btnAfficheListeEleve.Size = new System.Drawing.Size(170, 42);
-            this.btnAfficheListeEleve.TabIndex = 6;
-            this.btnAfficheListeEleve.Text = "Liste d\'élève";
-            this.btnAfficheListeEleve.UseVisualStyleBackColor = false;
-            // 
-            // btnChangeMdp
-            // 
-            this.btnChangeMdp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnChangeMdp.BackColor = System.Drawing.Color.AliceBlue;
-            this.btnChangeMdp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnChangeMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeMdp.Location = new System.Drawing.Point(0, 367);
-            this.btnChangeMdp.Name = "btnChangeMdp";
-            this.btnChangeMdp.Size = new System.Drawing.Size(170, 42);
-            this.btnChangeMdp.TabIndex = 7;
-            this.btnChangeMdp.Text = "Changer le mot de passe";
-            this.btnChangeMdp.UseVisualStyleBackColor = false;
             // 
             // frmAccueil
             // 
