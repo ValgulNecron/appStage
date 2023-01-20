@@ -97,7 +97,7 @@ namespace CartesAcces
 
         public static void chiffrerFichier(string path)
         {
-            string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
+            string key = "ZwBVpb+qYeql6q41b6dyURW0BHppqZUSmwubby+r97NWufLDmoZkCCRB/ucE9pSAtEtXXX55QTebr5OTPhFgIKHNrxOEox5cXZ7aVqpbukvqk3dQX8+uevtPFYvxr/WIgfRhuoL0vW6O1fSka9BZaQz/Pdjh7rSt/8M80rrYZNGzV6LkM7GXes/YCdo5rrt4+wLe+rssvqjhnGQayjROYeKEae5EpZEDT4UXU/HLW759nA5sHRhVXuQtDg0OYWWi";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             byte[] keyBytes = Convert.FromBase64String(key);
             using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
@@ -149,7 +149,7 @@ namespace CartesAcces
 
         private static void dechiffrerFichier(string path)
         {
-            string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
+            string key = "ZwBVpb+qYeql6q41b6dyURW0BHppqZUSmwubby+r97NWufLDmoZkCCRB/ucE9pSAtEtXXX55QTebr5OTPhFgIKHNrxOEox5cXZ7aVqpbukvqk3dQX8+uevtPFYvxr/WIgfRhuoL0vW6O1fSka9BZaQz/Pdjh7rSt/8M80rrYZNGzV6LkM7GXes/YCdo5rrt4+wLe+rssvqjhnGQayjROYeKEae5EpZEDT4UXU/HLW759nA5sHRhVXuQtDg0OYWWi";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             byte[] keyBytes = Convert.FromBase64String(key);
             // Open the file in read mode
