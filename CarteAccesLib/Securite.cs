@@ -98,31 +98,42 @@ namespace CartesAcces
 
         public static void chiffrerFichier(string path)
         {
-            string key = "ZwBVpb+qYeql6q41b6dyURW0BHppqZUSmwubby+r97NWufLDmoZkCCRB/ucE9pSAtEtXXX55QTebr5OTPhFgIKHNrxOEox5cXZ7aVqpbukvqk3dQX8+uevtPFYvxr/WIgfRhuoL0vW6O1fSka9BZaQz/Pdjh7rSt/8M80rrYZNGzV6LkM7GXes/YCdo5rrt4+wLe+rssvqjhnGQayjROYeKEae5EpZEDT4UXU/HLW759nA5sHRhVXuQtDg0OYWWi";
+            string key =
+                "ZwBVpb+qYeql6q41b6dyURW0BHppqZUSmwubby+r97NWufLDmoZkCCRB/ucE9pSAtEtXXX55QTebr5OTPhFgIKHNrxOEox5cXZ7aVqpbukvqk3dQX8+uevtPFYvxr/WIgfRhuoL0vW6O1fSka9BZaQz/Pdjh7rSt/8M80rrYZNGzV6LkM7GXes/YCdo5rrt4+wLe+rssvqjhnGQayjROYeKEae5EpZEDT4UXU/HLW759nA5sHRhVXuQtDg0OYWWi";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             byte[] keyBytes = Convert.FromBase64String(key);
             MessageBox.Show(keyBytes.Length.ToString());
             using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
+                // Open the file in write mode
                 using (FileStream outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
                 {
-                    using (RijndaelManaged aes = new RijndaelManaged())
+                    // Create a new RijndaelManaged object
+                    using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
                     {
+                        aes.KeySize = 256;
+                        aes.BlockSize = 128;
+                        aes.Padding = PaddingMode.PKCS7;
+                        // Set the key and IV
                         aes.Key = keyBytes;
                         aes.IV = iv;
 
+                        // Create a new encryptor
                         ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-                        
-                        using (CryptoStream cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
+
+                        // Create a new CryptoStream
+                        using (CryptoStream cryptoStream =
+                               new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
                         {
+                            // Encrypt the file
                             inputStream.CopyTo(cryptoStream);
                         }
                     }
                 }
             }
         }
-        
-        public static void dechiffrerDossier()
+
+        public static void dechiffrerDossier()  
         {
             string path = "./data/";
             var directory = new DirectoryInfo(path);
