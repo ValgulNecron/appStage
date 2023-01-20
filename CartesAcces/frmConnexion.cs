@@ -59,7 +59,7 @@ namespace CartesAcces
             var key = new byte[256];
             new RNGCryptoServiceProvider().GetBytes(key);
             txtIdentifiant.Text = Convert.ToBase64String(key);
-            Securite.chiffrerDossier();
+            // Securite.chiffrerDossier();
         }
 
         private void btnDechiffre_Click(object sender, EventArgs e)
