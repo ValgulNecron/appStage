@@ -91,37 +91,7 @@ namespace CartesAcces
 
         public static void chiffrerFichier(string path)
         {
-            var key = "y0xBpGcEUuu0GjCxUuTiin1BUZyd5Xge8QHofsKH59A=";
-            var iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-            var keyBytes = Convert.FromBase64String(key);
-            var extension = Path.GetExtension(path);
-            if (extension != "enc")
-                using (var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                {
-                    using (var outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
-                    {
-                        using (var aes = new AesCryptoServiceProvider())
-                        {
-                            aes.KeySize = 256;
-                            aes.BlockSize = 128;
-                            aes.Padding = PaddingMode.PKCS7;
-
-                            aes.Key = keyBytes;
-                            aes.IV = iv;
-
-                            var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                            using (var cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
-                            {
-                                inputStream.CopyTo(cryptoStream);
-                            }
-
-                            outputStream.Close();
-                        }
-
-                        inputStream.Close();
-                    }
-                }
+            File.Encrypt(path);
         }
 
         public static void dechiffrerDossier()
@@ -145,32 +115,7 @@ namespace CartesAcces
 
         public static void dechiffrerFichier(string path)
         {
-            var key = "y0xBpGcEUuu0GjCxUuTiin1BUZyd5Xge8QHofsKH59A=";
-            var iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-            var keyBytes = Convert.FromBase64String(key);
-            var extension = Path.GetExtension(path);
-                using (var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                {
-                    using (var outputStream =new FileStream(path.Replace(".enc", ""), FileMode.Create, FileAccess.Write))
-                    {
-                        using (var aes = new RijndaelManaged())
-                        {
-                            aes.Key = keyBytes;
-                            aes.IV = iv;
-
-                            var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-
-                            using (var cryptoStream = new CryptoStream(inputStream, decryptor, CryptoStreamMode.Read))
-                            {
-                                cryptoStream.CopyTo(outputStream);
-                            }
-                        }
-
-                        outputStream.Close();
-                    }
-
-                    inputStream.Close();
-                }
+            File.Decrypt(path);
         }
     }
 }
