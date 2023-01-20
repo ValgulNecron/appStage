@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CartesAcces
 {
@@ -72,122 +69,106 @@ namespace CartesAcces
 
         public static void chiffrerDossier()
         {
-            string path = "./data/";
+            var path = "./data/";
             var directory = new DirectoryInfo(path);
 
             foreach (var file in directory.GetFiles())
-            {
-                Task.Run(() => {
-                chiffrerFichier(file.FullName);
-                });
-            }
+                Task.Run(() => { chiffrerFichier(file.FullName); });
 
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
-                {
-                    Task.Run(() => {
-                        chiffrerFichier(file.FullName);
-                    });
-                }
+                    Task.Run(() => { chiffrerFichier(file.FullName); });
 
                 foreach (var dir2 in directory.GetDirectories())
-                {
-                    foreach (var file in dir2.GetFiles())
-                    {
-                        Task.Run(() => {
-                            chiffrerFichier(file.FullName);
-                        });
-                    }
-                }
+                foreach (var file in dir2.GetFiles())
+                    Task.Run(() => { chiffrerFichier(file.FullName); });
             }
         }
 
         public static void chiffrerFichier(string path)
         {
-            string key = "y0xBpGcEUuu0GjCxUuTiin1BUZyd5Xge8QHofsKH59A=";
-            byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-            byte[] keyBytes = Convert.FromBase64String(key);
-            using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                using (FileStream outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
-                {           
-                    using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+            var key = "y0xBpGcEUuu0GjCxUuTiin1BUZyd5Xge8QHofsKH59A=";
+            var iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+            var keyBytes = Convert.FromBase64String(key);
+            var extension = Path.GetExtension(path);
+            if (extension != "enc")
+                using (var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+                {
+                    using (var outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
                     {
-                        aes.KeySize = 256;
-                        aes.BlockSize = 128;
-                        aes.Padding = PaddingMode.PKCS7;
-
-                        aes.Key = keyBytes;
-                        aes.IV = iv;
-
-                        ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                        using (CryptoStream cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
+                        using (var aes = new AesCryptoServiceProvider())
                         {
-                            inputStream.CopyTo(cryptoStream);
+                            aes.KeySize = 256;
+                            aes.BlockSize = 128;
+                            aes.Padding = PaddingMode.PKCS7;
+
+                            aes.Key = keyBytes;
+                            aes.IV = iv;
+
+                            var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+
+                            using (var cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
+                            {
+                                inputStream.CopyTo(cryptoStream);
+                            }
+
+                            outputStream.Close();
                         }
+
+                        inputStream.Close();
                     }
                 }
-            }
         }
 
-        public static void dechiffrerDossier()  
+        public static void dechiffrerDossier()
         {
-            string path = "./data/";
+            var path = "./data/";
             var directory = new DirectoryInfo(path);
 
             foreach (var file in directory.GetFiles())
-            {
-                Task.Run(() => {
-                dechiffrerFichier(file.FullName);
-                });
-            }
+                Task.Run(() => { dechiffrerFichier(file.FullName); });
 
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
-                {
-                    Task.Run(() => {
-                        dechiffrerFichier(file.FullName);
-                    });
-                }
+                    Task.Run(() => { dechiffrerFichier(file.FullName); });
 
                 foreach (var dir2 in directory.GetDirectories())
-                {
-                    foreach (var file in dir2.GetFiles())
-                    {
-                        Task.Run(() => {
-                            dechiffrerFichier(file.FullName);
-                        });
-                    }
-                }
+                foreach (var file in dir2.GetFiles())
+                    Task.Run(() => { dechiffrerFichier(file.FullName); });
             }
         }
 
         public static void dechiffrerFichier(string path)
         {
-            string key = "y0xBpGcEUuu0GjCxUuTiin1BUZyd5Xge8QHofsKH59A=";
-            byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-            byte[] keyBytes = Convert.FromBase64String(key);
-            using (FileStream inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                using (FileStream outputStream = new FileStream(path.Replace(".enc", ""), FileMode.Create, FileAccess.Write))
+            var key = "y0xBpGcEUuu0GjCxUuTiin1BUZyd5Xge8QHofsKH59A=";
+            var iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+            var keyBytes = Convert.FromBase64String(key);
+            var extension = Path.GetExtension(path);
+            if (extension == "enc")
+                using (var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
-                    using (RijndaelManaged aes = new RijndaelManaged())
+                    using (var outputStream =new FileStream(path.Replace(".enc", ""), FileMode.Create, FileAccess.Write))
                     {
-                        aes.Key = keyBytes;
-                        aes.IV = iv;
-
-                        ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-
-                        using (CryptoStream cryptoStream = new CryptoStream(inputStream, decryptor, CryptoStreamMode.Read))
+                        using (var aes = new RijndaelManaged())
                         {
-                            cryptoStream.CopyTo(outputStream);
+                            aes.Key = keyBytes;
+                            aes.IV = iv;
+
+                            var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+                            using (var cryptoStream = new CryptoStream(inputStream, decryptor, CryptoStreamMode.Read))
+                            {
+                                cryptoStream.CopyTo(outputStream);
+                            }
                         }
+
+                        outputStream.Close();
                     }
+
+                    inputStream.Close();
                 }
-            }
         }
     }
 }
