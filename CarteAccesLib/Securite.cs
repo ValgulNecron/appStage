@@ -98,8 +98,7 @@ namespace CartesAcces
 
         public static void chiffrerFichier(string path)
         {
-            string key =
-                "ZwBVpb+qYeql6q41b6dyURW0BHppqZUSmwubby+r97NWufLDmoZkCCRB/ucE9pSAtEtXXX55QTebr5OTPhFgIKHNrxOEox5cXZ7aVqpbukvqk3dQX8+uevtPFYvxr/WIgfRhuoL0vW6O1fSka9BZaQz/Pdjh7rSt/8M80rrYZNGzV6LkM7GXes/YCdo5rrt4+wLe+rssvqjhnGQayjROYeKEae5EpZEDT4UXU/HLW759nA5sHRhVXuQtDg0OYWWi";
+            string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             byte[] keyBytes = Convert.FromBase64String(key);
             MessageBox.Show(keyBytes.Length.ToString());
@@ -107,14 +106,15 @@ namespace CartesAcces
             {
                 // Open the file in write mode
                 using (FileStream outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
-                {
+                {           
                     // Create a new RijndaelManaged object
                     using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
                     {
                         aes.KeySize = 256;
                         aes.BlockSize = 128;
                         aes.Padding = PaddingMode.PKCS7;
-                        // Set the key and IV
+                        // Set the key and IV            string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
+
                         aes.Key = keyBytes;
                         aes.IV = iv;
 
@@ -122,8 +122,7 @@ namespace CartesAcces
                         ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
                         // Create a new CryptoStream
-                        using (CryptoStream cryptoStream =
-                               new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
+                        using (CryptoStream cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
                         {
                             // Encrypt the file
                             inputStream.CopyTo(cryptoStream);
@@ -162,7 +161,7 @@ namespace CartesAcces
 
         private static void dechiffrerFichier(string path)
         {
-            string key = "ZwBVpb+qYeql6q41b6dyURW0BHppqZUSmwubby+r97NWufLDmoZkCCRB/ucE9pSAtEtXXX55QTebr5OTPhFgIKHNrxOEox5cXZ7aVqpbukvqk3dQX8+uevtPFYvxr/WIgfRhuoL0vW6O1fSka9BZaQz/Pdjh7rSt/8M80rrYZNGzV6LkM7GXes/YCdo5rrt4+wLe+rssvqjhnGQayjROYeKEae5EpZEDT4UXU/HLW759nA5sHRhVXuQtDg0OYWWi";
+            string key = "vlcCjLC9kLvGF92zKgurc0jRRULRUEMelFjrs6XgTFZ0PwJUKKey8SaSTKHcwbAat4uHItDBNcccSHQTmMPXAbxQUc+GcVz8X44MAwQsMN4QOqFDpsqC5Dy3XIlKMZ2Yrpr9wOJKCHRJZ1Byo7BOYginIwwz8y3xeQEekT0BdD8qK8t2Fk1FC9w5kANqcJqLp5iihYGxGohc8CJPZmccnFTwW0kgVde3nuib8h3ovZLbLPMfAlfiCEZBHzm6ozhvnUB3CJ+BmiTjyKM9MuyFZ4KVID4gdW2K78jb8eZF5+teFovq1O1j/6zvEKJ6XsTNCcTwX1mwiZQp0ZZQlMRMnQ==";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
             byte[] keyBytes = Convert.FromBase64String(key);
             // Open the file in read mode
