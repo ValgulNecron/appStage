@@ -52,5 +52,15 @@ namespace CartesAcces
         {
             maskedTextBox1.Text = Securite.creationHash(maskedTextBox1.Text);
         }
+
+        private void btnChiffre_Click(object sender, EventArgs e)
+        {
+            Securite.chiffrerDossier();
+        }
+
+        private void btnDechiffre_Click(object sender, EventArgs e)
+        {
+            Securite.dechiffrerDossier();
+        }
     }
 }

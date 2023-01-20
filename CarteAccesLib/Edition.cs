@@ -236,11 +236,6 @@ namespace CartesAcces
         }
 
         // -------------------------
-        public static void setLaPhoto(string path, PictureBox pbPhoto)
-        {
-            pbPhoto.Image = Image.FromFile(path);
-            FilePath = path;
-        }
 
         public static void cropLaPhoto(PictureBox pbPhotoUnique)
         {
@@ -254,8 +249,7 @@ namespace CartesAcces
 
             var widthSave = pbPhotoUnique.Width;
             var heightSave = pbPhotoUnique.Height;
-
-
+            
             var cropWidthReal = cropWidth * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
             var cropHeightReal = cropHeight * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
             var cropXReal = cropX * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
@@ -348,17 +342,6 @@ namespace CartesAcces
             pbPhoto.Size = new Size(110, 165);
             pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPhoto.Visible = true;
-        }
-
-        public static void afficheEmploiDuTempsEleve(Eleve eleve, PictureBox pbCarteArriere)
-        {
-            var folder = "./data/image" + eleve.ClasseEleve.Substring(0, 1) + "eme";
-
-            if (eleve.SansEDT == false)
-                pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve));
-
-            else
-                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + eleve.ClasseEleve + ".png");
         }
 
         public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)

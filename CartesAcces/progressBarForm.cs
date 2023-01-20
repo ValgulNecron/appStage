@@ -31,8 +31,6 @@ namespace CartesAcces
             Eleve.setLesClasses();
             Globale.currentProgress = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-
-            MessageBox.Show("Continuer");
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
