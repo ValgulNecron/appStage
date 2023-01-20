@@ -4,6 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -76,21 +77,27 @@ namespace CartesAcces
 
             foreach (var file in directory.GetFiles())
             {
+                Task.Run(() => {
                 chiffrerFichier(file.FullName);
+                });
             }
 
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
                 {
-                    chiffrerFichier(file.FullName);
+                    Task.Run(() => {
+                        chiffrerFichier(file.FullName);
+                    });
                 }
 
                 foreach (var dir2 in directory.GetDirectories())
                 {
                     foreach (var file in dir2.GetFiles())
                     {
-                        chiffrerFichier(file.FullName);
+                        Task.Run(() => {
+                            chiffrerFichier(file.FullName);
+                        });
                     }
                 }
             }
@@ -132,27 +139,33 @@ namespace CartesAcces
 
             foreach (var file in directory.GetFiles())
             {
+                Task.Run(() => {
                 dechiffrerFichier(file.FullName);
+                });
             }
 
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
                 {
-                    dechiffrerFichier(file.FullName);
+                    Task.Run(() => {
+                        dechiffrerFichier(file.FullName);
+                    });
                 }
 
                 foreach (var dir2 in directory.GetDirectories())
                 {
                     foreach (var file in dir2.GetFiles())
                     {
-                        dechiffrerFichier(file.FullName);
+                        Task.Run(() => {
+                            dechiffrerFichier(file.FullName);
+                        });
                     }
                 }
             }
         }
 
-        private static void dechiffrerFichier(string path)
+        public static void dechiffrerFichier(string path)
         {
             string key = "y0xBpGcEUuu0GjCxUuTiin1BUZyd5Xge8QHofsKH59A=";
             byte[] iv = new byte[16] {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
