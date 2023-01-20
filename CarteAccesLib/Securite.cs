@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
@@ -63,6 +65,38 @@ namespace CartesAcces
                 return false;
 
             return true;
+        }
+
+        public static void chiffrerDossier()
+        {
+            string path = "./data/";
+            var directory = new DirectoryInfo(path);
+
+            foreach (var file in directory.GetFiles())
+            {
+                chiffrerFichier(file.FullName);
+            }
+
+            foreach (var dir in directory.GetDirectories())
+            {
+                foreach (var file in dir.GetFiles())
+                {
+                    chiffrerFichier(file.FullName);
+                }
+
+                foreach (var dir2 in directory.GetDirectories())
+                {
+                    foreach (var file in dir2.GetFiles())
+                    {
+                        chiffrerFichier(file.FullName);
+                    }
+                }
+            }
+        }
+
+        public static void chiffrerFichier(string path)
+        {
+
         }
     }
 }
