@@ -75,16 +75,24 @@ namespace CartesAcces
             var directory = new DirectoryInfo(pathFolder);
 
             foreach (var file in directory.GetFiles())
+            {
                 Task.Run(() => { chiffrerFichier(file.FullName); });
-
+            }
+            
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
+                {
                     Task.Run(() => { chiffrerFichier(file.FullName); });
-
-                foreach (var dir2 in directory.GetDirectories())
-                foreach (var file in dir2.GetFiles())
-                    Task.Run(() => { chiffrerFichier(file.FullName); });
+                }
+                foreach (var dir2 in dir.GetDirectories())
+                {
+                    foreach (var file in dir2.GetFiles())
+                    {
+                        Task.Run(() => { chiffrerFichier(file.FullName); });
+                    }
+                }
+                
             }
             MessageBox.Show("Chiffrement terminé");
         }
@@ -130,16 +138,24 @@ namespace CartesAcces
             var directory = new DirectoryInfo(pathFolder);
 
             foreach (var file in directory.GetFiles())
+            {
                 Task.Run(() => { dechiffrerFichier(file.FullName); });
-
+            }
+            
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
+                {
                     Task.Run(() => { dechiffrerFichier(file.FullName); });
-
-                foreach (var dir2 in directory.GetDirectories())
-                foreach (var file in dir2.GetFiles())
-                    Task.Run(() => { dechiffrerFichier(file.FullName); });
+                }
+                foreach (var dir2 in dir.GetDirectories())
+                {
+                    foreach (var file in dir2.GetFiles())
+                    {
+                        Task.Run(() => { dechiffrerFichier(file.FullName); });
+                    }
+                }
+                
             }
             MessageBox.Show("Dossier déchiffré");
         }
