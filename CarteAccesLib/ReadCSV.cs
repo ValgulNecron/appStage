@@ -73,5 +73,14 @@ namespace CartesAcces
 
             return classeRectif;
         }
+
+        public static string getDateFile()
+        {
+            string dateFile = "Aucune Importation";
+
+            if (File.Exists(Chemin.pathListeEleve)) dateFile = File.GetCreationTime(Chemin.pathListeEleve).ToString();
+
+            return dateFile;
+        }
     }
 }

@@ -151,5 +151,14 @@ namespace CartesAcces
                 File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName, newName));
             }
         }
+
+        public static string getDateFile()
+        {
+            string dateFile = "Aucune Importation";
+            DirectoryInfo dir = new DirectoryInfo("./data/image");
+            if (dir.Exists) dateFile = dir.CreationTime.ToString();
+
+            return dateFile;
+        }
     }
 }

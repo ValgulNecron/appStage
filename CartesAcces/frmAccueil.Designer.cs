@@ -24,8 +24,8 @@ namespace CartesAcces
         #region Code généré par le Concepteur Windows Form
 
         /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-        /// le contenu de cette méthode avec l'éditeur de code.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -34,8 +34,8 @@ namespace CartesAcces
             this.btnCreerCarte = new System.Windows.Forms.Button();
             this.btnCarteParClasse = new System.Windows.Forms.Button();
             this.btnParametres = new System.Windows.Forms.Button();
-            this.btnParamètreInterface = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnTheme = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +57,7 @@ namespace CartesAcces
             this.btnCreerCarte.BackColor = System.Drawing.Color.AliceBlue;
             this.btnCreerCarte.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreerCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreerCarte.Location = new System.Drawing.Point(0, 339);
+            this.btnCreerCarte.Location = new System.Drawing.Point(0, 176);
             this.btnCreerCarte.Name = "btnCreerCarte";
             this.btnCreerCarte.Size = new System.Drawing.Size(170, 42);
             this.btnCreerCarte.TabIndex = 0;
@@ -71,7 +71,7 @@ namespace CartesAcces
             this.btnCarteParClasse.BackColor = System.Drawing.Color.AliceBlue;
             this.btnCarteParClasse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCarteParClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCarteParClasse.Location = new System.Drawing.Point(0, 277);
+            this.btnCarteParClasse.Location = new System.Drawing.Point(0, 133);
             this.btnCarteParClasse.Name = "btnCarteParClasse";
             this.btnCarteParClasse.Size = new System.Drawing.Size(170, 42);
             this.btnCarteParClasse.TabIndex = 2;
@@ -85,33 +85,19 @@ namespace CartesAcces
             this.btnParametres.BackColor = System.Drawing.Color.AliceBlue;
             this.btnParametres.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnParametres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParametres.Location = new System.Drawing.Point(0, 216);
+            this.btnParametres.Location = new System.Drawing.Point(0, 244);
             this.btnParametres.Name = "btnParametres";
             this.btnParametres.Size = new System.Drawing.Size(170, 42);
             this.btnParametres.TabIndex = 3;
-            this.btnParametres.Text = "Gestion des données";
+            this.btnParametres.Text = "Paramètres";
             this.btnParametres.UseVisualStyleBackColor = false;
             this.btnParametres.Click += new System.EventHandler(this.btnParametres_Click);
-            // 
-            // btnParamètreInterface
-            // 
-            this.btnParamètreInterface.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnParamètreInterface.BackColor = System.Drawing.Color.AliceBlue;
-            this.btnParamètreInterface.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnParamètreInterface.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParamètreInterface.Location = new System.Drawing.Point(0, 403);
-            this.btnParamètreInterface.Name = "btnParamètreInterface";
-            this.btnParamètreInterface.Size = new System.Drawing.Size(170, 42);
-            this.btnParamètreInterface.TabIndex = 4;
-            this.btnParamètreInterface.Text = "Paramètres";
-            this.btnParamètreInterface.UseVisualStyleBackColor = false;
-            this.btnParamètreInterface.Click += new System.EventHandler(this.btnParamètreInterface_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnlMenu.Controls.Add(this.btnTheme);
             this.pnlMenu.Controls.Add(this.lblVersion);
-            this.pnlMenu.Controls.Add(this.btnParamètreInterface);
             this.pnlMenu.Controls.Add(this.btnParametres);
             this.pnlMenu.Controls.Add(this.btnCarteParClasse);
             this.pnlMenu.Controls.Add(this.btnCreerCarte);
@@ -120,6 +106,20 @@ namespace CartesAcces
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(170, 701);
             this.pnlMenu.TabIndex = 2;
+            // 
+            // btnTheme
+            // 
+            this.btnTheme.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnTheme.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnTheme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTheme.Location = new System.Drawing.Point(0, 287);
+            this.btnTheme.Name = "btnTheme";
+            this.btnTheme.Size = new System.Drawing.Size(170, 42);
+            this.btnTheme.TabIndex = 5;
+            this.btnTheme.Text = "Changer le thème";
+            this.btnTheme.UseVisualStyleBackColor = false;
+            this.btnTheme.Click += new System.EventHandler(this.btnTheme_Click);
             // 
             // lblVersion
             // 
@@ -146,15 +146,15 @@ namespace CartesAcces
             this.pnlMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Button btnTheme;
 
         #endregion
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.Button btnCreerCarte;
         private System.Windows.Forms.Button btnCarteParClasse;
         private System.Windows.Forms.Button btnParametres;
-        private System.Windows.Forms.Button btnParamètreInterface;
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Label lblVersion;
     }

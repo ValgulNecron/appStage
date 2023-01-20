@@ -17,16 +17,9 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
             ControlSize.SetSizeTextControl(this);
-            initDataGrid();
-            lblDateImport.Text = Settings.Default.DateImport;
-        }
-
-        // -- Initialisation de la grille contenant la liste des élèves
-        public void initDataGrid()
-        {
-            DataGridParametres.Columns.Clear();
-            DataGridParametres.DataSource = null;
-            DataGridParametres.DataSource = Globale.listeEleve;
+            lblDateListeEleve.Text = ReadCSV.getDateFile();
+            lblEdtEleve.Text = PdfGs.getDateFile();
+            lblPhotoEleve.Text = Edition.getDatePhotos();
         }
 
         public void importEleves()
@@ -42,8 +35,7 @@ namespace CartesAcces
                 File.Copy(sourcePath, destinationPath);
                 ReadCSV.setLesEleves(destinationPath);
                 Eleve.setLesClasses();
-
-                initDataGrid();
+                
                 MessageBox.Show("Import Réussi");
             }
             catch (Exception e)
@@ -77,64 +69,6 @@ namespace CartesAcces
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
-            }
-        }
-
-        // -- La liste des élève se met a jour a chaques saisies de l'utilisateur --
-        public void rechercheDataGrid()
-        {
-            var listeRecherche = new List<Eleve>();
-
-            initDataGrid();
-
-            foreach (DataGridViewRow row in DataGridParametres.Rows)
-                for (var i = 0; i < row.Cells.Count; i++)
-                    if (row.Cells[i].Value.ToString().Contains(txtRechercheDataGrid.Text))
-                    {
-                        var eleve = new Eleve();
-
-                        eleve.NomEleve = row.Cells[0].Value.ToString();
-                        eleve.PrenomEleve = row.Cells[1].Value.ToString();
-                        eleve.ClasseEleve = row.Cells[2].Value.ToString();
-                        eleve.RegimeEleve = row.Cells[3].Value.ToString();
-                        eleve.OptionUnEleve = row.Cells[4].Value.ToString();
-                        eleve.OptionDeuxEleve = row.Cells[5].Value.ToString();
-                        eleve.OptionTroisEleve = row.Cells[6].Value.ToString();
-                        eleve.OptionQuatreEleve = row.Cells[7].Value.ToString();
-                        eleve.MefEleve = row.Cells[8].Value.ToString();
-
-                        listeRecherche.Add(eleve);
-                    }
-
-            if (listeRecherche.Count() == 0)
-            {
-                MessageBox.Show("Unable to find " + txtRechercheDataGrid.Text, "Not Found");
-                return;
-            }
-
-            if (txtRechercheDataGrid.Text == "")
-            {
-                initDataGrid();
-                listeRecherche.Clear();
-            }
-            else
-            {
-                DataGridParametres.Columns.Clear();
-                DataGridParametres.DataSource = null;
-                DataGridParametres.DataSource = listeRecherche;
-            }
-        }
-
-        // -- Pour la photo uniques --
-        public string getImportPath()
-        {
-            using (var ofd = new OpenFileDialog())
-            {
-                ofd.Filter = "Jpeg Files Only | *.jpg";
-                ofd.Title = "Selectionner une photo";
-                if (ofd.ShowDialog() == DialogResult.OK)
-                    return ofd.FileName;
-                return "null";
             }
         }
 
@@ -189,51 +123,9 @@ namespace CartesAcces
             importPhoto();
         }
 
-        private void btnAjoutEleve_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnModifClasse_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnSupprEleve_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtRechercheDataGrid_TextChanged(object sender, EventArgs e)
-        {
-            rechercheDataGrid();
-        }
-
-        private void DataGridParametres_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         private void frmParametres_Load(object sender, EventArgs e)
         {
             var time = new Timer(this);
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnImportPhotoUnique_Click(object sender, EventArgs e)
-        {
-            var path = getImportPath();
-
-            if (path == "null")
-            {
-                MessageBox.Show("Fichier invalide !");
-                return;
-            }
-
-            var frm = new frmImportPhotoUnique();
-
-            //Photo.setLaPhoto(path, );
-
-            frm.Show();
         }
     }
 }

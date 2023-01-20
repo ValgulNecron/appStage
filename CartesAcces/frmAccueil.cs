@@ -47,32 +47,51 @@ namespace CartesAcces
             frmWait.TopMost = true;
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var time = new Timer(this);
+            
+            Globale.actuelle = new frmParametres();
+            OpenChildForm(Globale.actuelle);
         }
 
         //Création de menu de navigation
 
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmCarteIndividuelle());
+            Globale.actuelle = new frmCarteIndividuelle();
+            OpenChildForm(Globale.actuelle);
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmMultiplesCartes());
+            Globale.actuelle = new frmMultiplesCartes();
+            OpenChildForm(Globale.actuelle);
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmParametres());
+            Globale.actuelle = new frmParametres();
+            OpenChildForm(Globale.actuelle);
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
         {
         }
 
-        private void btnParamètreInterface_Click(object sender, EventArgs e)
+        private void btnTheme_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmParametresInterface());
+            Globale._estEnModeSombre = !Globale._estEnModeSombre;
+            
+            Couleur.setCouleurFenetre(this);
+            Couleur.setCouleurFenetre(Globale.actuelle);
+            foreach (Control control in Globale.actuelle.Controls)
+                if (control is Panel && control.Name == "pnlMenu")
+                {
+                    if (Globale._estEnModeSombre)
+                        control.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
+                            Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
+                    else
+                        control.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
+                            Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
+                }
         }
     }
 }

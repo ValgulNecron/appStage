@@ -18,8 +18,8 @@ namespace CartesAcces
         {
             Globale._estEnModeSombre = !Globale._estEnModeSombre;
             Couleur.setCouleurFenetre(this);
-            Couleur.setCouleurFenetre(Globale.accueil);
-            foreach (Control control in Globale.accueil.Controls)
+            Couleur.setCouleurFenetre(Globale.actuelle);
+            foreach (Control control in Globale.actuelle.Controls)
                 if (control is Panel && control.Name == "pnlMenu")
                 {
                     if (Globale._estEnModeSombre)
@@ -39,9 +39,9 @@ namespace CartesAcces
         {
             Globale._estEnModeSombre = !Globale._estEnModeSombre;
             
-            Couleur.setCouleurFenetre(Globale.accueil);
             Couleur.setCouleurFenetre(this);
-            foreach (Control control in Globale.accueil.Controls)
+            Couleur.setCouleurFenetre(Globale.actuelle);
+            foreach (Control control in Globale.actuelle.Controls)
                 if (control is Panel && control.Name == "pnlMenu")
                 {
                     if (Globale._estEnModeSombre)

@@ -583,6 +583,15 @@ namespace CartesAcces
             MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
         }
 
+        public static string getDatePhotos()
+        {
+            string dateFile = "Aucune Importation";
+            DirectoryInfo dir = new DirectoryInfo(Chemin.pathPhotoEleve);
+            if (dir.Exists) dateFile = dir.CreationTime.ToString();
+
+            return dateFile;
+        }
+
         public static void easterEgg()
         {
             var gitPoule1 = "⠀⠀⠀⠀⠀⣀⡀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⢀⣤⣤ ⣤⣄⠀⠀ ⠀⠀⠀⠀⠀";
