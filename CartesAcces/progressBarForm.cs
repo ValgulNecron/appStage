@@ -20,6 +20,21 @@ namespace CartesAcces
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            switch (Globale._cas)
+            {
+                case 1:
+                    cas_1();
+                    break;
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Close();
+        }
+
+        private void cas_1()
+        {
             Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
             Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
             Globale.currentProgress = 1;
@@ -35,11 +50,6 @@ namespace CartesAcces
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
             Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
             Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
-        }
-
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Close();
         }
     }
 }

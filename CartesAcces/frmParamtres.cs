@@ -46,7 +46,6 @@ namespace CartesAcces
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            txtPathEDT.Text = ;
             var frmSelectSection = new frmSelectSection();
             //frmSelectSection.Top = new frmParametres().Top;
             frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
