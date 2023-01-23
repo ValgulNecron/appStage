@@ -29,19 +29,19 @@ namespace CartesAcces
         // theme 
         public static bool _estEnModeSombre = false;
 
-        public static List<int> _couleurDeFondClaire = new List<int> { 220, 224, 232 };
-        public static List<int> _couleurDuTexteclaire = new List<int> { 76, 79, 105 };
-        public static List<int> _couleurBandeauxClaire = new List<int> { 32, 159, 181 };
-        public static List<int> _couleurBoutonsClaire = new List<int> { 204, 208, 218 };
-        public static List<int> _couleurTextBoxClaire = new List<int> { 239, 241, 245 };
-        public static List<int> _couleurBoutonOffClaire = new List<int> { 140, 143, 161 };
+        public static List<int> _couleurDeFondClaire = new List<int> {220, 224, 232};
+        public static List<int> _couleurDuTexteclaire = new List<int> {76, 79, 105};
+        public static List<int> _couleurBandeauxClaire = new List<int> {32, 159, 181};
+        public static List<int> _couleurBoutonsClaire = new List<int> {204, 208, 218};
+        public static List<int> _couleurTextBoxClaire = new List<int> {239, 241, 245};
+        public static List<int> _couleurBoutonOffClaire = new List<int> {140, 143, 161};
 
-        public static List<int> _couleurDeFondSombre = new List<int> { 30, 30, 46 };
-        public static List<int> _couleurDuTexteSombre = new List<int> { 148, 226, 213 };
-        public static List<int> _couleurBandeauxSombre = new List<int> { 116, 199, 236 };
-        public static List<int> _couleurBoutonsSombre = new List<int> { 88, 91, 112 };
-        public static List<int> _couleurTextBoxSombre = new List<int> { 127, 132, 156 };
-        public static List<int> _couleurBoutonOffSombre = new List<int> { 49, 50, 68 };
+        public static List<int> _couleurDeFondSombre = new List<int> {30, 30, 46};
+        public static List<int> _couleurDuTexteSombre = new List<int> {148, 226, 213};
+        public static List<int> _couleurBandeauxSombre = new List<int> {116, 199, 236};
+        public static List<int> _couleurBoutonsSombre = new List<int> {88, 91, 112};
+        public static List<int> _couleurTextBoxSombre = new List<int> {127, 132, 156};
+        public static List<int> _couleurBoutonOffSombre = new List<int> {49, 50, 68};
 
         //
         public static int currentProgress = 0;

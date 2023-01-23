@@ -51,7 +51,7 @@ namespace CartesAcces
                 $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -r150 -dPDFFitPage -c \"<< /Orientation 3 >> setpagedevice\" -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true; 
+            process.StartInfo.CreateNoWindow = true;
             process.Start();
             var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
@@ -72,7 +72,7 @@ namespace CartesAcces
                 $"-o \"{outputFile}\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true; 
+            process.StartInfo.CreateNoWindow = true;
             process.Start();
 
             var output = process.StandardOutput.ReadToEnd();
@@ -154,8 +154,8 @@ namespace CartesAcces
 
         public static string getDateFile()
         {
-            string dateFile = "Aucune Importation";
-            DirectoryInfo dir = new DirectoryInfo("./data/image");
+            var dateFile = "Aucune Importation";
+            var dir = new DirectoryInfo("./data/image");
             if (dir.Exists) dateFile = dir.CreationTime.ToString();
 
             return dateFile;

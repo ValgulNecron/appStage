@@ -10,7 +10,7 @@ namespace CartesAcces
     public static class Securite
     {
         public static string pathFolder = "./data/";
-        
+
         public static string creationHash(string motDePasse)
         {
             //on crée le sel qui permettra au mot de passe d'avoir un hash unique et différent à chaque fois meme si le mot de passe est le meme
@@ -74,26 +74,16 @@ namespace CartesAcces
         {
             var directory = new DirectoryInfo(pathFolder);
 
-            foreach (var file in directory.GetFiles())
-            {
-                Task.Run(() => { chiffrerFichier(file.FullName); });
-            }
-            
+            foreach (var file in directory.GetFiles()) Task.Run(() => { chiffrerFichier(file.FullName); });
+
             foreach (var dir in directory.GetDirectories())
             {
-                foreach (var file in dir.GetFiles())
-                {
-                    Task.Run(() => { chiffrerFichier(file.FullName); });
-                }
+                foreach (var file in dir.GetFiles()) Task.Run(() => { chiffrerFichier(file.FullName); });
                 foreach (var dir2 in dir.GetDirectories())
-                {
-                    foreach (var file in dir2.GetFiles())
-                    {
-                        Task.Run(() => { chiffrerFichier(file.FullName); });
-                    }
-                }
-                
+                foreach (var file in dir2.GetFiles())
+                    Task.Run(() => { chiffrerFichier(file.FullName); });
             }
+
             MessageBox.Show("Chiffrement terminé");
         }
 
@@ -104,59 +94,50 @@ namespace CartesAcces
             var keyBytes = Convert.FromBase64String(key);
             var extension = Path.GetExtension(path);
             if (extension != "enc")
-            using (var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                using (var outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
+                using (var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
-                    using (var aes = new AesCryptoServiceProvider())
+                    using (var outputStream = new FileStream(path + ".enc", FileMode.Create, FileAccess.Write))
                     {
-                        aes.KeySize = 256;
-                        aes.BlockSize = 128;
-                        aes.Padding = PaddingMode.PKCS7;
-
-                        aes.Key = keyBytes;
-                        aes.IV = iv;
-
-                        var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                        using (var cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
+                        using (var aes = new AesCryptoServiceProvider())
                         {
-                            inputStream.CopyTo(cryptoStream);
-                        }
+                            aes.KeySize = 256;
+                            aes.BlockSize = 128;
+                            aes.Padding = PaddingMode.PKCS7;
 
-                        outputStream.Close();
+                            aes.Key = keyBytes;
+                            aes.IV = iv;
+
+                            var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+
+                            using (var cryptoStream = new CryptoStream(outputStream, encryptor, CryptoStreamMode.Write))
+                            {
+                                inputStream.CopyTo(cryptoStream);
+                            }
+
+                            outputStream.Close();
+                        }
                     }
+
+                    inputStream.Close();
+                    if (File.Exists(path))
+                        File.Delete(path);
                 }
-                inputStream.Close();
-                if(File.Exists(path))
-                    File.Delete(path);
-            }
         }
 
         public static void dechiffrerDossier()
         {
             var directory = new DirectoryInfo(pathFolder);
 
-            foreach (var file in directory.GetFiles())
-            {
-                Task.Run(() => { dechiffrerFichier(file.FullName); });
-            }
-            
+            foreach (var file in directory.GetFiles()) Task.Run(() => { dechiffrerFichier(file.FullName); });
+
             foreach (var dir in directory.GetDirectories())
             {
-                foreach (var file in dir.GetFiles())
-                {
-                    Task.Run(() => { dechiffrerFichier(file.FullName); });
-                }
+                foreach (var file in dir.GetFiles()) Task.Run(() => { dechiffrerFichier(file.FullName); });
                 foreach (var dir2 in dir.GetDirectories())
-                {
-                    foreach (var file in dir2.GetFiles())
-                    {
-                        Task.Run(() => { dechiffrerFichier(file.FullName); });
-                    }
-                }
-                
+                foreach (var file in dir2.GetFiles())
+                    Task.Run(() => { dechiffrerFichier(file.FullName); });
             }
+
             MessageBox.Show("Dossier déchiffré");
         }
 
@@ -168,7 +149,7 @@ namespace CartesAcces
             var extension = Path.GetExtension(path);
             using (var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                using (var outputStream =new FileStream(path.Replace(".enc", ""), FileMode.Create, FileAccess.Write))
+                using (var outputStream = new FileStream(path.Replace(".enc", ""), FileMode.Create, FileAccess.Write))
                 {
                     using (var aes = new RijndaelManaged())
                     {
@@ -183,10 +164,12 @@ namespace CartesAcces
                         }
                     }
 
-                    outputStream.Close();if(File.Exists(path))
+                    outputStream.Close();
+                    if (File.Exists(path))
                         File.Delete(path);
                 }
-                if(File.Exists(path))
+
+                if (File.Exists(path))
                     File.Delete(path);
                 inputStream.Close();
             }

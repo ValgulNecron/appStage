@@ -20,15 +20,12 @@ namespace CartesAcces
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            Globale.accueil.Invoke(new MethodInvoker(delegate
-                {
-                    Globale.accueil.Enabled = false;
-                }));
+            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
             Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
             Globale.currentProgress = 1;
             Globale.totalSteps = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-            
+
             ReadCSV.setLesEleves(Chemin.pathListeEleve);
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
             Globale.currentProgress = 2;
