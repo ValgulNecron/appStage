@@ -91,7 +91,7 @@ namespace CartesAcces
             this.btnParametres.Name = "btnParametres";
             this.btnParametres.Size = new System.Drawing.Size(170, 42);
             this.btnParametres.TabIndex = 3;
-            this.btnParametres.Text = "Paramètres";
+            this.btnParametres.Text = "Importation";
             this.btnParametres.UseVisualStyleBackColor = false;
             this.btnParametres.Click += new System.EventHandler(this.btnParametres_Click);
             // 
