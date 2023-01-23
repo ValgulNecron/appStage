@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Office.Interop.Word;
 
 namespace CarteAccesLib
 {
