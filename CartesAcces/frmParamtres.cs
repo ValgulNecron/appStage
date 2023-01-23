@@ -29,7 +29,7 @@ namespace CartesAcces
             {
                 labelV.Show();
                 Globale._cas = 2;
-                var frmWait = new progressBarForm2();
+                var frmWait = new progressBarForm();
                 frmWait.StartPosition = FormStartPosition.Manual;
                 frmWait.Location = new Point(0, 0);
                 frmWait.Show();
