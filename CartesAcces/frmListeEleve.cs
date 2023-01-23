@@ -12,7 +12,12 @@ namespace CartesAcces
 
         private void frmListeEleve_Load(object sender, EventArgs e)
         {
-            
+            Liste.DataSource = Globale.listeElevesString;
+            lblNombre.Text = Globale.listeElevesString.Count.ToString();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
         }
     }
 }
