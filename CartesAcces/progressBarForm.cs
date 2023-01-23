@@ -33,8 +33,8 @@ namespace CartesAcces
             Eleve.setLesClasses();
             Globale.currentProgress = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-            Globale.actuelle.Enabled = true;
-            Globale.accueil.Enabled = true;
+            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
+            Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
