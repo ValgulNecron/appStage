@@ -24,16 +24,17 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-            Globale._textPath  = Chemin.setPathImportFileEXCEL();
-            if (txtPathEleve.Text.Length > 0)
+            Globale._textPath = Chemin.setPathImportFileEXCEL();
+            if (Globale._textPath.Length > 0)
             {
                 labelV.Show();
+                Globale._cas = 2;
                 var frmWait = new progressBarForm2();
                 frmWait.StartPosition = FormStartPosition.Manual;
                 frmWait.Location = new Point(0, 0);
                 frmWait.Show();
                 frmWait.TopMost = true;
-                //Edition.importEleves(txtPathEleve.Text);
+                Edition.importEleves(Globale._textPath);
                 lblDateImport.Text = Settings.Default.DateImport;
                 labelV.Hide();
             }

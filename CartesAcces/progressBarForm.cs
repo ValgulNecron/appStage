@@ -25,6 +25,9 @@ namespace CartesAcces
                 case 1:
                     cas_1();
                     break;
+                case 2:
+                    cas_2();
+                    break;
             }
         }
 
@@ -50,6 +53,17 @@ namespace CartesAcces
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
             Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
             Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
+        }
+
+        private void cas_2()
+        {
+            //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
+            //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
+
+            Edition.importEleves(Globale._textPath);
+            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
+            //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
+            //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
         }
     }
 }
