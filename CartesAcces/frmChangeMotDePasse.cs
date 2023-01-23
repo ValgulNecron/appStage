@@ -12,7 +12,6 @@ namespace CartesAcces
 
         private void frmChangeMotDePasse_Load(object sender, EventArgs e)
         {
-            
         }
     }
 }

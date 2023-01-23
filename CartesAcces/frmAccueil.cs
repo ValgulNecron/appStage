@@ -79,10 +79,10 @@ namespace CartesAcces
         private void btnTheme_Click(object sender, EventArgs e)
         {
             Globale._estEnModeSombre = !Globale._estEnModeSombre;
-            
+
             Couleur.setCouleurFenetre(this);
             Couleur.setCouleurFenetre(Globale.actuelle);
-            foreach (Control control in this.Controls)
+            foreach (Control control in Controls)
                 if (control is Panel && control.Name == "pnlMenu")
                 {
                     if (Globale._estEnModeSombre)
@@ -96,7 +96,7 @@ namespace CartesAcces
 
         private void btnChangeMdp_Click(object sender, EventArgs e)
         {
-            frmChangeMotDePasse frmPassword = new frmChangeMotDePasse();
+            var frmPassword = new frmChangeMotDePasse();
             frmPassword.Show();
         }
 

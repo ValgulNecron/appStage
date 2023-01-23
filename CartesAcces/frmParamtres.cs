@@ -33,7 +33,7 @@ namespace CartesAcces
                 File.Copy(sourcePath, destinationPath);
                 ReadCSV.setLesEleves(destinationPath);
                 Eleve.setLesClasses();
-                
+
                 MessageBox.Show("Import Réussi");
             }
             catch (Exception e)
@@ -53,16 +53,16 @@ namespace CartesAcces
                 Directory.CreateDirectory(destinationPath);
 
                 var directory = new DirectoryInfo(sourcePath);
-                
-                    foreach (var file in directory.GetFiles())
-                    {
-                        var img = Image.FromFile(file.FullName);
-                        var nom = file.Name;
 
-                        img.Save(destinationPath + nom, ImageFormat.Png);
-                    }
+                foreach (var file in directory.GetFiles())
+                {
+                    var img = Image.FromFile(file.FullName);
+                    var nom = file.Name;
 
-                    MessageBox.Show("Import réussie !");
+                    img.Save(destinationPath + nom, ImageFormat.Png);
+                }
+
+                MessageBox.Show("Import réussie !");
             }
             catch (Exception e)
             {
@@ -99,8 +99,8 @@ namespace CartesAcces
         private void btnValiderEDT_Click(object sender, EventArgs e)
         {
             //importEDT();
-            ThreadStart threadDelegate = new ThreadStart(getPdf);
-            Thread thread = new Thread(threadDelegate);
+            ThreadStart threadDelegate = getPdf;
+            var thread = new Thread(threadDelegate);
             thread.Start();
         }
 
@@ -109,7 +109,7 @@ namespace CartesAcces
             PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
             PdfGs.renameEdt(txtPathEDT.Text);
         }
-        
+
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
             txtPathPhoto.Text = Chemin.setPathImportFolder();

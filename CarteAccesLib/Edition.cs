@@ -242,7 +242,7 @@ namespace CartesAcces
 
             var widthSave = pbPhotoUnique.Width;
             var heightSave = pbPhotoUnique.Height;
-            
+
             var cropWidthReal = cropWidth * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
             var cropHeightReal = cropHeight * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
             var cropXReal = cropX * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
@@ -578,42 +578,14 @@ namespace CartesAcces
 
         public static string getDatePhotos()
         {
-            string dateFile = "Aucune Importation";
-            DirectoryInfo dir = new DirectoryInfo(Chemin.pathPhotoEleve);
+            var dateFile = "Aucune Importation";
+            var dir = new DirectoryInfo(Chemin.pathPhotoEleve);
             if (dir.Exists) dateFile = dir.CreationTime.ToString();
 
             return dateFile;
         }
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         public static void easterEgg()
         {
             var gitPoule1 = "⠀⠀⠀⠀⠀⣀⡀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⢀⣤⣤ ⣤⣄⠀⠀ ⠀⠀⠀⠀⠀";

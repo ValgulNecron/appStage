@@ -261,32 +261,25 @@ namespace CartesAcces
             {
                 return;
             }
+
             if (btn != null && btn.Enabled)
             {
                 if (Globale._estEnModeSombre)
-                {
                     btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
                         Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
-                }
                 else
-                {
                     btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonsClaire[0],
                         Globale._couleurBoutonsClaire[1], Globale._couleurBoutonsClaire[2]);
-                }
             }
             else if (btn != null)
             {
                 if (Globale._estEnModeSombre)
-                {
                     btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
                         Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
-                }
                 else
-                {
                     btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffClaire[0],
                         Globale._couleurBoutonOffClaire[1], Globale._couleurBoutonOffClaire[2]);
-                }
             }
         }
     }
-} 
+}
