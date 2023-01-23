@@ -20,56 +20,6 @@ namespace CartesAcces
             lblPhotoEleve.Text = Edition.getDatePhotos();
         }
 
-        public void importEleves()
-        {
-            var sourcePath = txtPathEleve.Text;
-            var destinationPath = Chemin.pathListeEleve;
-            try
-            {
-                if (File.Exists(destinationPath)) File.Delete(destinationPath);
-
-                Directory.CreateDirectory(Chemin.pathFolderListeEleve);
-
-                File.Copy(sourcePath, destinationPath);
-                ReadCSV.setLesEleves(destinationPath);
-                Eleve.setLesClasses();
-
-                MessageBox.Show("Import Réussi");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-        }
-
-        // -- Importation des photo des élèves --
-        public void importPhoto()
-        {
-            var sourcePath = txtPathPhoto.Text;
-            var destinationPath = Chemin.pathPhotoEleve;
-
-            try
-            {
-                Directory.CreateDirectory(destinationPath);
-
-                var directory = new DirectoryInfo(sourcePath);
-
-                foreach (var file in directory.GetFiles())
-                {
-                    var img = Image.FromFile(file.FullName);
-                    var nom = file.Name;
-
-                    img.Save(destinationPath + nom, ImageFormat.Png);
-                }
-
-                MessageBox.Show("Import réussie !");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-        }
-
         // ### Controls ###
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
@@ -81,7 +31,7 @@ namespace CartesAcces
         private void btnValiderEleve_Click(object sender, EventArgs e)
         {
             labelV.Show();
-            importEleves();
+            Edition.importEleves(txtPathEleve.Text);
             lblDateImport.Text = Settings.Default.DateImport;
             labelV.Hide();
         }
@@ -118,7 +68,7 @@ namespace CartesAcces
 
         private void btnValiderPhoto_Click(object sender, EventArgs e)
         {
-            importPhoto();
+            Edition.importPhoto(txtPathPhoto.Text);
         }
 
         private void frmParametres_Load(object sender, EventArgs e)
