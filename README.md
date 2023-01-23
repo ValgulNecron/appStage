@@ -44,8 +44,6 @@ Repos du l'application de création de cartes d'accès
 
 -ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd
 
--bouton valide selection supprimer
-
 -thread
 
 -rognage emploi de temps classique
