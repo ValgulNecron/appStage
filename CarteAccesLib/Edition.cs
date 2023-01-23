@@ -584,7 +584,56 @@ namespace CartesAcces
 
             return dateFile;
         }
+        
+        public static void importEleves(string path)
+        {
+            var sourcePath = path;
+            var destinationPath = Chemin.pathListeEleve;
+            try
+            {
+                if (File.Exists(destinationPath)) File.Delete(destinationPath);
 
+                Directory.CreateDirectory(Chemin.pathFolderListeEleve);
+
+                File.Copy(sourcePath, destinationPath);
+                ReadCSV.setLesEleves(destinationPath);
+                Eleve.setLesClasses();
+
+                MessageBox.Show("Import Réussi");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        // -- Importation des photo des élèves --
+        public static void importPhoto(string path)
+        {
+            var sourcePath = path;
+            var destinationPath = Chemin.pathPhotoEleve;
+
+            try
+            {
+                Directory.CreateDirectory(destinationPath);
+
+                var directory = new DirectoryInfo(sourcePath);
+
+                foreach (var file in directory.GetFiles())
+                {
+                    var img = Image.FromFile(file.FullName);
+                    var nom = file.Name;
+
+                    img.Save(destinationPath + nom, ImageFormat.Png);
+                }
+
+                MessageBox.Show("Import réussie !");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
 
         public static void easterEgg()
         {
