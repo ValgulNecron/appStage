@@ -28,6 +28,9 @@ namespace CartesAcces
                 case 2:
                     cas_2();
                     break;
+                case 3 :
+                    cas_3();
+                    break;
             }
         }
 
@@ -54,7 +57,7 @@ namespace CartesAcces
             Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
             Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
         }
-
+    
         private void cas_2()
         {
             //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
@@ -64,6 +67,12 @@ namespace CartesAcces
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
             //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
             //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
+        }
+
+        private void cas_3()
+        {
+            PdfGs.getImageFromPdf(Globale._cheminPdf, Globale._classe);
+            PdfGs.renameEdt(Globale._cheminPdf);
         }
     }
 }

@@ -59,5 +59,6 @@ namespace CartesAcces
 
         // progressBarForm2_DoWork
         public static string _textPath;
+        public static string _cheminPdf;
     }
 }

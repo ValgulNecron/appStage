@@ -51,17 +51,16 @@ namespace CartesAcces
             frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
             frmSelectSection.Show();
             //importEDT();
-            ThreadStart threadDelegate = getPdf;
-            var thread = new Thread(threadDelegate);
-            thread.Start();
+            Globale._cheminPdf = Chemin.setPathImportFilePDF();
+            Globale._cas = 3;
+            var frmWait = new progressBarForm();
+            frmWait.StartPosition = FormStartPosition.Manual;
+            frmWait.Location = new Point(0, 0);
+            frmWait.Show();
+            frmWait.TopMost = true;
         }
 
-        private void getPdf()
-        {
-            string chemin = Chemin.setPathImportFilePDF();
-            PdfGs.getImageFromPdf(chemin, Globale._classe);
-            PdfGs.renameEdt(chemin);
-        }
+
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
