@@ -25,13 +25,20 @@ namespace CartesAcces
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
             txtPathEleve.Text = Chemin.setPathImportFileEXCEL();
+            Globale._textPath = txtPathEleve.Text;
             if (txtPathEleve.Text.Length > 0) btnValiderEleve.Enabled = true;
-        }
+        }   
 
         private void btnValiderEleve_Click(object sender, EventArgs e)
         {
             labelV.Show();
-            Edition.importEleves(txtPathEleve.Text);
+            Globale._textPath = txtPathEleve.Text;
+            var frmWait = new progressBarForm2();
+            frmWait.StartPosition = FormStartPosition.Manual;
+            frmWait.Location = new Point(0, 0);
+            frmWait.Show();
+            frmWait.TopMost = true;
+            //Edition.importEleves(txtPathEleve.Text);
             lblDateImport.Text = Settings.Default.DateImport;
             labelV.Hide();
         }

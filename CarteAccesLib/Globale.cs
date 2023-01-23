@@ -54,5 +54,8 @@ namespace CartesAcces
         // version
         public static string _version = "0.2.1";
         public static string _versionDate = "18/01/2023";
+
+        // progressBarForm2_DoWork
+        public static string _textPath;
     }
 }
