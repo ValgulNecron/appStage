@@ -24,6 +24,7 @@ namespace CartesAcces
         public static List<Eleve> listeEleve = new List<Eleve>();
         public static List<Eleve> listeEleveImpr = new List<Eleve>();
         public static List<Eleve> listeEleveSansPhoto = new List<Eleve>();
+        public static List<string> listeElevesString = new List<string>();
 
         // theme 
         public static bool _estEnModeSombre = false;
