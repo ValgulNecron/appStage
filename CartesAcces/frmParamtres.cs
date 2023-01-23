@@ -34,7 +34,6 @@ namespace CartesAcces
                 frmWait.Location = new Point(0, 0);
                 frmWait.Show();
                 frmWait.TopMost = true;
-                Edition.importEleves(Globale._textPath);
                 lblDateImport.Text = Settings.Default.DateImport;
                 labelV.Hide();
             }
