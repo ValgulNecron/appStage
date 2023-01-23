@@ -24,37 +24,33 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-            txtPathEleve.Text = Chemin.setPathImportFileEXCEL();
-            Globale._textPath = txtPathEleve.Text;
-            if (txtPathEleve.Text.Length > 0) btnValiderEleve.Enabled = true;
+            Globale._textPath  = Chemin.setPathImportFileEXCEL();
+            if (txtPathEleve.Text.Length > 0)
+            {
+                labelV.Show();
+                var frmWait = new progressBarForm2();
+                frmWait.StartPosition = FormStartPosition.Manual;
+                frmWait.Location = new Point(0, 0);
+                frmWait.Show();
+                frmWait.TopMost = true;
+                //Edition.importEleves(txtPathEleve.Text);
+                lblDateImport.Text = Settings.Default.DateImport;
+                labelV.Hide();
+            }
         }   
 
         private void btnValiderEleve_Click(object sender, EventArgs e)
         {
-            labelV.Show();
-            Globale._textPath = txtPathEleve.Text;
-            var frmWait = new progressBarForm2();
-            frmWait.StartPosition = FormStartPosition.Manual;
-            frmWait.Location = new Point(0, 0);
-            frmWait.Show();
-            frmWait.TopMost = true;
-            //Edition.importEleves(txtPathEleve.Text);
-            lblDateImport.Text = Settings.Default.DateImport;
-            labelV.Hide();
+            
         }
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            txtPathEDT.Text = Chemin.setPathImportFilePDF();
+            txtPathEDT.Text = ;
             var frmSelectSection = new frmSelectSection();
             //frmSelectSection.Top = new frmParametres().Top;
             frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
             frmSelectSection.Show();
-            btnValiderEDT.Enabled = true;
-        }
-
-        private void btnValiderEDT_Click(object sender, EventArgs e)
-        {
             //importEDT();
             ThreadStart threadDelegate = getPdf;
             var thread = new Thread(threadDelegate);
@@ -63,19 +59,14 @@ namespace CartesAcces
 
         private void getPdf()
         {
-            PdfGs.getImageFromPdf(txtPathEDT.Text, Globale._classe);
-            PdfGs.renameEdt(txtPathEDT.Text);
+            string chemin = Chemin.setPathImportFilePDF();
+            PdfGs.getImageFromPdf(chemin, Globale._classe);
+            PdfGs.renameEdt(chemin);
         }
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            txtPathPhoto.Text = Chemin.setPathImportFolder();
-            btnValiderPhoto.Enabled = true;
-        }
-
-        private void btnValiderPhoto_Click(object sender, EventArgs e)
-        {
-            Edition.importPhoto(txtPathPhoto.Text);
+            Edition.importPhoto(Chemin.setPathImportFolder());
         }
 
         private void frmParametres_Load(object sender, EventArgs e)
