@@ -23,6 +23,7 @@ namespace CartesAcces
         {
             Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = true; }));
             Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = true; }));
+            MessageBox.Show("operation annulée");
         }
         
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
