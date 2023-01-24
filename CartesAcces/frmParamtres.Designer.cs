@@ -33,11 +33,8 @@ namespace CartesAcces
             this.btnImportEDT = new System.Windows.Forms.Button();
             this.btnImportPhoto = new System.Windows.Forms.Button();
             this.txtPathEleve = new System.Windows.Forms.TextBox();
-            this.btnValiderEleve = new System.Windows.Forms.Button();
             this.txtPathEDT = new System.Windows.Forms.TextBox();
-            this.btnValiderEDT = new System.Windows.Forms.Button();
             this.txtPathPhoto = new System.Windows.Forms.TextBox();
-            this.btnValiderPhoto = new System.Windows.Forms.Button();
             this.labelV = new System.Windows.Forms.Label();
             this.lblDateImport = new System.Windows.Forms.Label();
             this.lblDateListeEleve = new System.Windows.Forms.Label();
@@ -86,17 +83,6 @@ namespace CartesAcces
             this.txtPathEleve.Size = new System.Drawing.Size(313, 20);
             this.txtPathEleve.TabIndex = 5;
             // 
-            // btnValiderEleve
-            // 
-            this.btnValiderEleve.Enabled = false;
-            this.btnValiderEleve.Location = new System.Drawing.Point(573, 20);
-            this.btnValiderEleve.Name = "btnValiderEleve";
-            this.btnValiderEleve.Size = new System.Drawing.Size(76, 23);
-            this.btnValiderEleve.TabIndex = 6;
-            this.btnValiderEleve.Text = "&Valider";
-            this.btnValiderEleve.UseVisualStyleBackColor = true;
-            this.btnValiderEleve.Click += new System.EventHandler(this.btnValiderEleve_Click);
-            // 
             // txtPathEDT
             // 
             this.txtPathEDT.Enabled = false;
@@ -105,17 +91,6 @@ namespace CartesAcces
             this.txtPathEDT.Size = new System.Drawing.Size(313, 20);
             this.txtPathEDT.TabIndex = 7;
             // 
-            // btnValiderEDT
-            // 
-            this.btnValiderEDT.Enabled = false;
-            this.btnValiderEDT.Location = new System.Drawing.Point(574, 60);
-            this.btnValiderEDT.Name = "btnValiderEDT";
-            this.btnValiderEDT.Size = new System.Drawing.Size(75, 23);
-            this.btnValiderEDT.TabIndex = 8;
-            this.btnValiderEDT.Text = "&Valider";
-            this.btnValiderEDT.UseVisualStyleBackColor = true;
-            this.btnValiderEDT.Click += new System.EventHandler(this.btnValiderEDT_Click);
-            // 
             // txtPathPhoto
             // 
             this.txtPathPhoto.Enabled = false;
@@ -123,17 +98,6 @@ namespace CartesAcces
             this.txtPathPhoto.Name = "txtPathPhoto";
             this.txtPathPhoto.Size = new System.Drawing.Size(313, 20);
             this.txtPathPhoto.TabIndex = 9;
-            // 
-            // btnValiderPhoto
-            // 
-            this.btnValiderPhoto.Enabled = false;
-            this.btnValiderPhoto.Location = new System.Drawing.Point(574, 102);
-            this.btnValiderPhoto.Name = "btnValiderPhoto";
-            this.btnValiderPhoto.Size = new System.Drawing.Size(75, 23);
-            this.btnValiderPhoto.TabIndex = 10;
-            this.btnValiderPhoto.Text = "&Valider";
-            this.btnValiderPhoto.UseVisualStyleBackColor = true;
-            this.btnValiderPhoto.Click += new System.EventHandler(this.btnValiderPhoto_Click);
             // 
             // labelV
             // 
@@ -220,11 +184,8 @@ namespace CartesAcces
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblDateImport);
             this.Controls.Add(this.labelV);
-            this.Controls.Add(this.btnValiderPhoto);
             this.Controls.Add(this.txtPathPhoto);
-            this.Controls.Add(this.btnValiderEDT);
             this.Controls.Add(this.txtPathEDT);
-            this.Controls.Add(this.btnValiderEleve);
             this.Controls.Add(this.txtPathEleve);
             this.Controls.Add(this.btnImportPhoto);
             this.Controls.Add(this.btnImportEDT);
@@ -249,11 +210,8 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnImportEDT;
         private System.Windows.Forms.Button btnImportPhoto;
         private System.Windows.Forms.TextBox txtPathEleve;
-        private System.Windows.Forms.Button btnValiderEleve;
         private System.Windows.Forms.TextBox txtPathEDT;
-        private System.Windows.Forms.Button btnValiderEDT;
         private System.Windows.Forms.TextBox txtPathPhoto;
-        private System.Windows.Forms.Button btnValiderPhoto;
         private System.Windows.Forms.Label labelV;
         private System.Windows.Forms.Label lblDateImport;
     }

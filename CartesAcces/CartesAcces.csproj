@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCartesParListe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCartesParListe.Designer.cs">
+      <DependentUpon>frmCartesParListe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmChangeMotDePasse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,12 +76,6 @@
     </Compile>
     <Compile Include="frmImportPhotoUnique.Designer.cs">
       <DependentUpon>frmImportPhotoUnique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmListeEleve.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmListeEleve.Designer.cs">
-      <DependentUpon>frmListeEleve.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMultiplesCartes.cs">
       <SubType>Form</SubType>
@@ -133,6 +133,9 @@
     <EmbeddedResource Include="frmCarteProvisoire.resx">
       <DependentUpon>frmCarteProvisoire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCartesParListe.resx">
+      <DependentUpon>frmCartesParListe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmChangeMotDePasse.resx">
       <DependentUpon>frmChangeMotDePasse.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,9 +144,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportPhotoUnique.resx">
       <DependentUpon>frmImportPhotoUnique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmListeEleve.resx">
-      <DependentUpon>frmListeEleve.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMultiplesCartes.resx">
       <DependentUpon>frmMultiplesCartes.cs</DependentUpon>

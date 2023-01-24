@@ -35,6 +35,8 @@ namespace CartesAcces
             this.btnCarteParClasse = new System.Windows.Forms.Button();
             this.btnParametres = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnChangeMdp = new System.Windows.Forms.Button();
             this.btnAfficheListeEleve = new System.Windows.Forms.Button();
             this.btnTheme = new System.Windows.Forms.Button();
@@ -59,7 +61,7 @@ namespace CartesAcces
             this.btnCreerCarte.BackColor = System.Drawing.Color.AliceBlue;
             this.btnCreerCarte.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreerCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreerCarte.Location = new System.Drawing.Point(0, 176);
+            this.btnCreerCarte.Location = new System.Drawing.Point(0, 133);
             this.btnCreerCarte.Name = "btnCreerCarte";
             this.btnCreerCarte.Size = new System.Drawing.Size(170, 42);
             this.btnCreerCarte.TabIndex = 0;
@@ -73,11 +75,11 @@ namespace CartesAcces
             this.btnCarteParClasse.BackColor = System.Drawing.Color.AliceBlue;
             this.btnCarteParClasse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCarteParClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCarteParClasse.Location = new System.Drawing.Point(0, 133);
+            this.btnCarteParClasse.Location = new System.Drawing.Point(0, 176);
             this.btnCarteParClasse.Name = "btnCarteParClasse";
             this.btnCarteParClasse.Size = new System.Drawing.Size(170, 42);
             this.btnCarteParClasse.TabIndex = 2;
-            this.btnCarteParClasse.Text = "Multiples Cartes\r\n";
+            this.btnCarteParClasse.Text = "Cartes par Classes / Niveaux";
             this.btnCarteParClasse.UseVisualStyleBackColor = false;
             this.btnCarteParClasse.Click += new System.EventHandler(this.btnCarteParClasse_Click);
             // 
@@ -87,7 +89,7 @@ namespace CartesAcces
             this.btnParametres.BackColor = System.Drawing.Color.AliceBlue;
             this.btnParametres.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnParametres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParametres.Location = new System.Drawing.Point(0, 324);
+            this.btnParametres.Location = new System.Drawing.Point(0, 404);
             this.btnParametres.Name = "btnParametres";
             this.btnParametres.Size = new System.Drawing.Size(170, 42);
             this.btnParametres.TabIndex = 3;
@@ -98,6 +100,8 @@ namespace CartesAcces
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnlMenu.Controls.Add(this.label2);
+            this.pnlMenu.Controls.Add(this.label1);
             this.pnlMenu.Controls.Add(this.btnChangeMdp);
             this.pnlMenu.Controls.Add(this.btnAfficheListeEleve);
             this.pnlMenu.Controls.Add(this.btnTheme);
@@ -111,13 +115,31 @@ namespace CartesAcces
             this.pnlMenu.Size = new System.Drawing.Size(170, 701);
             this.pnlMenu.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(0, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 23);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Création de cartes";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 378);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 23);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Paramètrages";
+            // 
             // btnChangeMdp
             // 
             this.btnChangeMdp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnChangeMdp.BackColor = System.Drawing.Color.AliceBlue;
             this.btnChangeMdp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnChangeMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeMdp.Location = new System.Drawing.Point(0, 367);
+            this.btnChangeMdp.Location = new System.Drawing.Point(0, 447);
             this.btnChangeMdp.Name = "btnChangeMdp";
             this.btnChangeMdp.Size = new System.Drawing.Size(170, 42);
             this.btnChangeMdp.TabIndex = 7;
@@ -135,7 +157,7 @@ namespace CartesAcces
             this.btnAfficheListeEleve.Name = "btnAfficheListeEleve";
             this.btnAfficheListeEleve.Size = new System.Drawing.Size(170, 42);
             this.btnAfficheListeEleve.TabIndex = 6;
-            this.btnAfficheListeEleve.Text = "Liste d\'élève";
+            this.btnAfficheListeEleve.Text = "Cartes par liste personnalisée";
             this.btnAfficheListeEleve.UseVisualStyleBackColor = false;
             this.btnAfficheListeEleve.Click += new System.EventHandler(this.btnAfficheListeEleve_Click);
             // 
@@ -145,7 +167,7 @@ namespace CartesAcces
             this.btnTheme.BackColor = System.Drawing.Color.AliceBlue;
             this.btnTheme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTheme.Location = new System.Drawing.Point(0, 410);
+            this.btnTheme.Location = new System.Drawing.Point(0, 490);
             this.btnTheme.Name = "btnTheme";
             this.btnTheme.Size = new System.Drawing.Size(170, 42);
             this.btnTheme.TabIndex = 5;
@@ -179,6 +201,9 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Button btnChangeMdp;
 

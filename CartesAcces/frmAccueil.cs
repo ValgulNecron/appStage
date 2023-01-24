@@ -103,7 +103,7 @@ namespace CartesAcces
 
         private void btnAfficheListeEleve_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmListeEleve();
+            Globale.actuelle = new frmCartesParListe();
             OpenChildForm(Globale.actuelle);
         }
     }
