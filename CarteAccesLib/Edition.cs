@@ -350,8 +350,12 @@ namespace CartesAcces
 
             try
             {
-                Directory.Delete(cheminDestination);
-                
+                if (Directory.Exists(cheminDestination))
+                {
+                    foreach (var file in Directory.GetFiles(cheminDestination)) File.Delete(file);
+                    Directory.Delete(cheminDestination);
+                }
+
                 Directory.CreateDirectory(cheminDestination);
 
                 var directory = new DirectoryInfo(cheminSource);
