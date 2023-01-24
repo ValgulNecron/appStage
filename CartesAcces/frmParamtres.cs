@@ -27,7 +27,7 @@ namespace CartesAcces
             Globale._textPath = Chemin.setPathImportFileEXCEL();
             if (Globale._textPath.Length > 0)
             {
-                labelV.Show();
+ 
                 Globale._cas = 2;
                 var frmWait = new progressBarForm();
                 frmWait.StartPosition = FormStartPosition.Manual;
@@ -35,7 +35,7 @@ namespace CartesAcces
                 frmWait.Show();
                 frmWait.TopMost = true;
                 lblDateImport.Text = Settings.Default.DateImport;
-                labelV.Hide();
+ 
             }
         }   
 
@@ -47,10 +47,8 @@ namespace CartesAcces
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
             var frmSelectSection = new frmSelectSection();
-            //frmSelectSection.Top = new frmParametres().Top;
             frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
             frmSelectSection.Show();
-            //importEDT();
             Globale._cheminPdf = Chemin.setPathImportFilePDF();
             Globale._cas = 3;
             var frmWait = new progressBarForm();
@@ -64,7 +62,13 @@ namespace CartesAcces
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            Edition.importPhoto(Chemin.setPathImportFolder());
+            Globale._cas = 4;
+            var frmWait = new progressBarForm();
+            frmWait.StartPosition = FormStartPosition.Manual;
+            frmWait.Location = new Point(0, 0);
+            frmWait.Show();
+            frmWait.TopMost = true;
+
         }
 
         private void frmParametres_Load(object sender, EventArgs e)
