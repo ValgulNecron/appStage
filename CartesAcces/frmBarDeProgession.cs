@@ -16,13 +16,7 @@ namespace CartesAcces
         private void progressBarForm_Load(object sender, EventArgs e)
         {
             backgroundWorker1.RunWorkerAsync();
-            this.Closed += new EventHandler(fermeture);
-        }
-
-        private void fermeture(object sender, EventArgs e)
-        {
-            Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = true; }));
-            Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = true; }));
+            this.ControlBox = false;
         }
         
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
