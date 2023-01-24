@@ -80,7 +80,7 @@ namespace CartesAcces
         {
             var dateFile = "Aucune Importation";
 
-            if (File.Exists(Chemin.pathListeEleve)) dateFile = File.GetCreationTime(Chemin.pathListeEleve).ToString();
+            if (File.Exists(Chemin.cheminListeEleve)) dateFile = File.GetCreationTime(Chemin.cheminListeEleve).ToString();
 
             return dateFile;
         }

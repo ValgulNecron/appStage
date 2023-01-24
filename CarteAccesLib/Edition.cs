@@ -323,12 +323,12 @@ namespace CartesAcces
         public static void importEleves(string path)
         {
             var sourcePath = path;
-            var destinationPath = Chemin.pathListeEleve;
+            var destinationPath = Chemin.cheminListeEleve;
             try
             {
                 if (File.Exists(destinationPath)) File.Delete(destinationPath);
 
-                Directory.CreateDirectory(Chemin.pathFolderListeEleve);
+                Directory.CreateDirectory(Chemin.cheminDossierListeEleve);
 
                 File.Copy(sourcePath, destinationPath);
                 ReadCSV.setLesEleves(destinationPath);
@@ -346,7 +346,7 @@ namespace CartesAcces
         public static void importPhoto(string path)
         {
             var sourcePath = path;
-            var destinationPath = Chemin.pathPhotoEleve;
+            var destinationPath = Chemin.cheminPhotoEleve;
 
             try
             {

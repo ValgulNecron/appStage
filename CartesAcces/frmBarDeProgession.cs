@@ -49,7 +49,7 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            ReadCSV.setLesEleves(Chemin.pathListeEleve);
+            ReadCSV.setLesEleves(Chemin.cheminListeEleve);
             Eleve.setLesClasses();
         }
     
