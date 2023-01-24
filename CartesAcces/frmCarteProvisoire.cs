@@ -24,38 +24,38 @@ namespace CartesAcces
             string prenom = txtPrenom.Text;
             string nom = txtNom.Text;
                 
-            Edition.fondCarteSection(pbCarteFace, cbbSection);
+            Edition.fondCarteNiveau(pbCarteFace, cbbSection);
 
             if (nom.Length < 15)
             {
                 var font = new Font("times new roman", 28, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
+                Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
                 var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
+                Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
 
             if (prenom.Length < 15)
             {
                 var font = new Font("times new roman", 28, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
+                Edition.dessineTexteCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
                 var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
+                Edition.dessineTexteCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            Edition.fondCarteSection(pbCarteFace, cbbSection);
+            Edition.fondCarteNiveau(pbCarteFace, cbbSection);
             Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
             txtPrenom.Text = "";
             txtNom.Text = "";
@@ -68,8 +68,8 @@ namespace CartesAcces
         // -- Lors du changement de la liste déroulante "Section" --
         private void cbbSection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Edition.classePourSection(cbbSection, cbbClasse);
-            Edition.fondCarteSection(pbCarteFace, cbbSection);
+            Edition.classePourNiveau(cbbSection, cbbClasse);
+            Edition.fondCarteNiveau(pbCarteFace, cbbSection);
             btnReset.Enabled = true;
             txtNom.Enabled = true;
             txtPrenom.Enabled = true;
