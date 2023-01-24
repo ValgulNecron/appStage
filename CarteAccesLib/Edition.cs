@@ -210,7 +210,7 @@ namespace CartesAcces
                 {
                     var dossier = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
                     pbCarteArriere.Image = Image.FromFile(dossier + Eleve.creeCleeEleve(eleve) + ".jpg");
-                    Chemin.pathEdt = dossier + Eleve.creeCleeEleve(eleve) + ".jpg";
+                    Chemin.cheminEdt = dossier + Eleve.creeCleeEleve(eleve) + ".jpg";
                     break;
                 }
                 catch

@@ -76,7 +76,7 @@ namespace CartesAcces
         private void btnCrop_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            var pathEdt = Chemin.pathEdt;
+            var pathEdt = Chemin.cheminEdt;
             Edition.selectionClique = false;
             Edt.rognageEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;

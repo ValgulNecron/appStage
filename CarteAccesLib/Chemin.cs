@@ -10,7 +10,7 @@ namespace CartesAcces
         public static string cheminDossierListeEleve = "./data/ImportListeEleve/";
         public static string cheminPhotoEleve = "./data/ElevesPhoto/";
 
-        public static string pathEdt = "";
+        public static string cheminEdt = "";
 
         // -- Permet a l'utilisateur de donner le chemin du fichier excel a importer --
         public static string setCheminImportationFichierExcel()
