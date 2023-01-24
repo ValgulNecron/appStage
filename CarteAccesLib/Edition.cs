@@ -91,9 +91,9 @@ namespace CartesAcces
         {
             pbCarteFace.Image = Image.FromFile("./data/FichierCartesFace/" + cbbSection.Text + ".png");
             var date = DateTime.Today.ToShortDateString();
-            var font = new Font("comic sans ms", 45, FontStyle.Bold);
+            var font = new Font("times new roman", 45, FontStyle.Bold);
             dessineTextCarteFace(font, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
-            var font2 = new Font("comic sans ms", 15, FontStyle.Bold);
+            var font2 = new Font("times new roman", 15, FontStyle.Bold);
             dessineTextCarteFace(font2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
             pbCarteFace.Refresh();
         }
@@ -121,42 +121,42 @@ namespace CartesAcces
             }
         }
 
-        public static void reprendPrenom(TextBox txtPrenom, PictureBox pbCarteFace,
+        public static void reprendPrenom(string txtPrenom, PictureBox pbCarteFace,
             ComboBox cbbSection)
         {
-            if (txtPrenom.Text != "")
+            if (txtPrenom != "")
             {
-                if (txtPrenom.TextLength < 7)
+                if (txtPrenom.Length < 15)
                 {
-                    var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 28, FontStyle.Bold);
+                    dessineTextCarteFace(font, 350, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
                     fondCarteSection(pbCarteFace, cbbSection);
-                    var font = new Font("times new roman", 20, FontStyle.Bold);
-                    dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 25, FontStyle.Bold);
+                    dessineTextCarteFace(font, 350, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
         }
 
-        public static void reprendNom(TextBox txtNom, PictureBox pbCarteFace, ComboBox cbbSection)
+        public static void reprendNom(string txtNom, PictureBox pbCarteFace, ComboBox cbbSection)
         {
-            if (txtNom.Text != "")
+            if (txtNom != "")
             {
-                if (txtNom.TextLength < 7)
+                if (txtNom.Length < 15)
                 {
-                    var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 28, FontStyle.Bold);
+                    dessineTextCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
                     fondCarteSection(pbCarteFace, cbbSection);
-                    var font = new Font("times new roman", 20, FontStyle.Bold);
-                    dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 25, FontStyle.Bold);
+                    dessineTextCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
@@ -167,21 +167,21 @@ namespace CartesAcces
         {
             if (rdbUlis.Checked)
             {
-                var font = new Font("comic sans ms", 30, FontStyle.Bold);
+                var font = new Font("times new roman", 30, FontStyle.Bold);
                 dessineTextCarteFace(font, 50, 230, "ULIS ", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
             }
             else if (rdbUPE2A.Checked)
             {
-                var font = new Font("comic sans ms", 30, FontStyle.Bold);
+                var font = new Font("times new roman", 30, FontStyle.Bold);
                 dessineTextCarteFace(font, 50, 230, "UPE2A", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
             }
             else if (rdbClRelais.Checked)
             {
-                var font = new Font("comic sans ms", 30, FontStyle.Bold);
+                var font = new Font("times new roman", 30, FontStyle.Bold);
                 dessineTextCarteFace(font, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
@@ -189,8 +189,8 @@ namespace CartesAcces
             else
             {
                 fondCarteSection(pbCarteFace, cbbSection);
-                reprendNom(txtNom, pbCarteFace, cbbSection);
-                reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
                 btnEdtPerso.Enabled = false;
             }
         }
@@ -262,8 +262,8 @@ namespace CartesAcces
             var ObjGraphics = Graphics.FromImage(image);
             Brush brushNoir = new SolidBrush(Color.Black);
 
-            var font2 = new Font("comic sans ms", 30, FontStyle.Bold);
-            var font3 = new Font("comic sans ms", 15, FontStyle.Bold);
+            var font2 = new Font("times new roman", 30, FontStyle.Bold);
+            var font3 = new Font("times new roman", 15, FontStyle.Bold);
 
             var date = DateTime.Today.ToShortDateString();
 
@@ -370,6 +370,77 @@ namespace CartesAcces
             }
         }
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         public static void easterEgg()
         {
             var gitPoule1 = "⠀⠀⠀⠀⠀⣀⡀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⢀⣤⣤ ⣤⣄⠀⠀ ⠀⠀⠀⠀⠀";
