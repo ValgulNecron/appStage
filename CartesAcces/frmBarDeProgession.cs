@@ -49,17 +49,8 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            //Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = false; }));
-            //Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = false; }));
-            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-
             ReadCSV.setLesEleves(Chemin.pathListeEleve);
-            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-
             Eleve.setLesClasses();
-            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-            Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = true; }));
-            Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = true; }));
         }
     
         private void cas_2()
