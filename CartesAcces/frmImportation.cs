@@ -55,7 +55,8 @@ namespace CartesAcces
                 frmWait.Show();
                 frmWait.TopMost = true;
             }
-            lblDateImport.Text = ReadCSV.getDateFile();
+
+            lblDateListeEleve.Text = ReadCSV.getDateFile();
         }   
 
         private void btnImportEDT_Click(object sender, EventArgs e)
