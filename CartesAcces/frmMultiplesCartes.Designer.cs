@@ -46,6 +46,7 @@ namespace CartesAcces
             this.rdbClasseSection = new System.Windows.Forms.RadioButton();
             this.NbComptageEleveCS = new System.Windows.Forms.Label();
             this.NbComptageEleveLP = new System.Windows.Forms.Label();
+            this.lblCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridResultats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridParametres)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -226,11 +227,20 @@ namespace CartesAcces
             this.NbComptageEleveLP.TabIndex = 26;
             this.NbComptageEleveLP.Text = "Nombre d\'élève de la liste personnalisée";
             // 
+            // lblCount
+            // 
+            this.lblCount.Location = new System.Drawing.Point(682, 91);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(47, 23);
+            this.lblCount.TabIndex = 27;
+            this.lblCount.Text = "None";
+            // 
             // frmMultiplesCartes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 749);
+            this.Controls.Add(this.lblCount);
             this.Controls.Add(this.NbComptageEleveLP);
             this.Controls.Add(this.NbComptageEleveCS);
             this.Controls.Add(this.groupBox1);
@@ -256,6 +266,8 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label lblCount;
 
         #endregion
 

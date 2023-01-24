@@ -54,6 +54,7 @@ namespace CartesAcces
                 }
 
             listeEleveParClasse.Sort();
+            lblCount.Text = listeEleveParClasse.Count.ToString();
 
             cbbImprSection.SelectedItem = null;
             lsbListeEleve.DataSource = null;
@@ -71,6 +72,8 @@ namespace CartesAcces
                     listeEleveParSection.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
                     Globale.listeEleveImpr.Add(eleve);
                 }
+            listeEleveParSection.Sort();
+            lblCount.Text = listeEleveParSection.Count.ToString();
 
             cbbImprClasse.SelectedItem = null;
             lsbListeEleve.DataSource = null;
@@ -119,6 +122,7 @@ namespace CartesAcces
 
             cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;
+            lblCount.Text = "";
         }
     }
 }
