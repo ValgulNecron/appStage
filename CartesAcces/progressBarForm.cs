@@ -20,8 +20,11 @@ namespace CartesAcces
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
+            Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
             switch (Globale._cas)
             {
+
                 case 1:
                     cas_1();
                     break;
@@ -31,7 +34,12 @@ namespace CartesAcces
                 case 3 :
                     cas_3();
                     break;
+                case 4:
+                    cas_4();
+                    break;
             }
+            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
+            Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -41,8 +49,8 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
-            Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
+            //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
+            //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
             Globale.currentProgress = 1;
             Globale.totalSteps = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
@@ -60,19 +68,21 @@ namespace CartesAcces
     
         private void cas_2()
         {
-            //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
-            //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
+          
 
             Edition.importEleves(Globale._textPath);
-            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-            //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
-            //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
+    
         }
 
         private void cas_3()
         {
             PdfGs.getImageFromPdf(Globale._cheminPdf, Globale._classe);
             PdfGs.renameEdt(Globale._cheminPdf);
+        }
+
+        private void cas_4()
+        {
+            Globale.actuelle.Invoke(new MethodInvoker(delegate { Edition.importPhoto(Chemin.setPathImportFolder()); }));
         }
     }
 }

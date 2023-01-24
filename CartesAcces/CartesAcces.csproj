@@ -101,11 +101,11 @@
     <Compile Include="frmMultiplesCartesEdition.Designer.cs">
       <DependentUpon>frmMultiplesCartesEdition.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmParamtres.cs">
+    <Compile Include="frmImportation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmParamtres.Designer.cs">
-      <DependentUpon>frmParamtres.cs</DependentUpon>
+    <Compile Include="frmImportation.Designer.cs">
+      <DependentUpon>frmImportation.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSelectSection.cs">
       <SubType>Form</SubType>
@@ -151,8 +151,8 @@
     <EmbeddedResource Include="frmMultiplesCartesEdition.resx">
       <DependentUpon>frmMultiplesCartesEdition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmParamtres.resx">
-      <DependentUpon>frmParamtres.cs</DependentUpon>
+    <EmbeddedResource Include="frmImportation.resx">
+      <DependentUpon>frmImportation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelectSection.resx">
       <DependentUpon>frmSelectSection.cs</DependentUpon>

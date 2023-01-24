@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmParametres
+    partial class frmImportation
     {
         /// <summary>
         /// Required designer variable.
@@ -32,10 +32,6 @@ namespace CartesAcces
             this.btnImporterEleves = new System.Windows.Forms.Button();
             this.btnImportEDT = new System.Windows.Forms.Button();
             this.btnImportPhoto = new System.Windows.Forms.Button();
-            this.txtPathEleve = new System.Windows.Forms.TextBox();
-            this.txtPathEDT = new System.Windows.Forms.TextBox();
-            this.txtPathPhoto = new System.Windows.Forms.TextBox();
-            this.labelV = new System.Windows.Forms.Label();
             this.lblDateImport = new System.Windows.Forms.Label();
             this.lblDateListeEleve = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,42 +71,6 @@ namespace CartesAcces
             this.btnImportPhoto.UseVisualStyleBackColor = true;
             this.btnImportPhoto.Click += new System.EventHandler(this.btnImportPhoto_Click);
             // 
-            // txtPathEleve
-            // 
-            this.txtPathEleve.Enabled = false;
-            this.txtPathEleve.Location = new System.Drawing.Point(255, 22);
-            this.txtPathEleve.Name = "txtPathEleve";
-            this.txtPathEleve.Size = new System.Drawing.Size(313, 20);
-            this.txtPathEleve.TabIndex = 5;
-            // 
-            // txtPathEDT
-            // 
-            this.txtPathEDT.Enabled = false;
-            this.txtPathEDT.Location = new System.Drawing.Point(255, 63);
-            this.txtPathEDT.Name = "txtPathEDT";
-            this.txtPathEDT.Size = new System.Drawing.Size(313, 20);
-            this.txtPathEDT.TabIndex = 7;
-            // 
-            // txtPathPhoto
-            // 
-            this.txtPathPhoto.Enabled = false;
-            this.txtPathPhoto.Location = new System.Drawing.Point(255, 102);
-            this.txtPathPhoto.Name = "txtPathPhoto";
-            this.txtPathPhoto.Size = new System.Drawing.Size(313, 20);
-            this.txtPathPhoto.TabIndex = 9;
-            // 
-            // labelV
-            // 
-            this.labelV.AutoSize = true;
-            this.labelV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelV.Location = new System.Drawing.Point(103, 175);
-            this.labelV.Name = "labelV";
-            this.labelV.Size = new System.Drawing.Size(345, 20);
-            this.labelV.TabIndex = 20;
-            this.labelV.Text = "Importation en cours, merci de patienter...";
-            this.labelV.Visible = false;
-            // 
             // lblDateImport
             // 
             this.lblDateImport.AutoSize = true;
@@ -121,7 +81,7 @@ namespace CartesAcces
             // 
             // lblDateListeEleve
             // 
-            this.lblDateListeEleve.Location = new System.Drawing.Point(762, 25);
+            this.lblDateListeEleve.Location = new System.Drawing.Point(374, 26);
             this.lblDateListeEleve.Name = "lblDateListeEleve";
             this.lblDateListeEleve.Size = new System.Drawing.Size(199, 23);
             this.lblDateListeEleve.TabIndex = 26;
@@ -130,7 +90,7 @@ namespace CartesAcces
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(658, 25);
+            this.label2.Location = new System.Drawing.Point(270, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 25;
@@ -138,7 +98,7 @@ namespace CartesAcces
             // 
             // lblEdtEleve
             // 
-            this.lblEdtEleve.Location = new System.Drawing.Point(762, 67);
+            this.lblEdtEleve.Location = new System.Drawing.Point(374, 68);
             this.lblEdtEleve.Name = "lblEdtEleve";
             this.lblEdtEleve.Size = new System.Drawing.Size(199, 23);
             this.lblEdtEleve.TabIndex = 28;
@@ -147,7 +107,7 @@ namespace CartesAcces
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(658, 67);
+            this.label5.Location = new System.Drawing.Point(270, 68);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 27;
@@ -155,7 +115,7 @@ namespace CartesAcces
             // 
             // lblPhotoEleve
             // 
-            this.lblPhotoEleve.Location = new System.Drawing.Point(762, 107);
+            this.lblPhotoEleve.Location = new System.Drawing.Point(374, 108);
             this.lblPhotoEleve.Name = "lblPhotoEleve";
             this.lblPhotoEleve.Size = new System.Drawing.Size(199, 23);
             this.lblPhotoEleve.TabIndex = 30;
@@ -164,13 +124,13 @@ namespace CartesAcces
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(658, 107);
+            this.label7.Location = new System.Drawing.Point(270, 108);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 13);
             this.label7.TabIndex = 29;
             this.label7.Text = "Dernière importation :";
             // 
-            // frmParametres
+            // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -183,18 +143,15 @@ namespace CartesAcces
             this.Controls.Add(this.lblDateListeEleve);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblDateImport);
-            this.Controls.Add(this.labelV);
-            this.Controls.Add(this.txtPathPhoto);
-            this.Controls.Add(this.txtPathEDT);
-            this.Controls.Add(this.txtPathEleve);
             this.Controls.Add(this.btnImportPhoto);
             this.Controls.Add(this.btnImportEDT);
             this.Controls.Add(this.btnImporterEleves);
-            this.Name = "frmParametres";
-            this.Text = "frmParametres";
+            this.Name = "frmImportation";
+            this.Text = "frmImportation";
             this.Load += new System.EventHandler(this.frmParametres_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Label lblDateListeEleve;
@@ -209,10 +166,6 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnImporterEleves;
         private System.Windows.Forms.Button btnImportEDT;
         private System.Windows.Forms.Button btnImportPhoto;
-        private System.Windows.Forms.TextBox txtPathEleve;
-        private System.Windows.Forms.TextBox txtPathEDT;
-        private System.Windows.Forms.TextBox txtPathPhoto;
-        private System.Windows.Forms.Label labelV;
         private System.Windows.Forms.Label lblDateImport;
     }
 }
