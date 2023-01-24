@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class frmSelectSection : Form
+    public partial class frmSelectNiveau : Form
     {
-        public frmSelectSection()
+        public frmSelectNiveau()
         {
             InitializeComponent();
         }

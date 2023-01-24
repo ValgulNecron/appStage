@@ -12,24 +12,24 @@ namespace CarteAccesLib
 {
     public static class WordFile
     {
-        public static Application initWordFile(int topMargin, int rightMargin, int leftMargin, int bottomMargin)
+        public static Application initWordFile(int margeHaute, int margeDroite, int margeGauche, int margeBasse)
         {
             // -- Ouverture de l'applucation Word -- 
-            var WordApp = new Application();
+            var applicationWord = new Application();
 
             // -- Nouveau Document --
-            WordApp.Documents.Add();
+            applicationWord.Documents.Add();
 
             // -- Marge à 0 pour éviter les espaces blancs entre la page et l'image sur le document --
-            WordApp.ActiveDocument.PageSetup.TopMargin = topMargin; // 15 points = env à 0.5 cm
-            WordApp.ActiveDocument.PageSetup.RightMargin = rightMargin;
-            WordApp.ActiveDocument.PageSetup.LeftMargin = leftMargin;
-            WordApp.ActiveDocument.PageSetup.BottomMargin = bottomMargin;
+            applicationWord.ActiveDocument.PageSetup.TopMargin = margeHaute; // 15 points = env à 0.5 cm
+            applicationWord.ActiveDocument.PageSetup.RightMargin = margeDroite;
+            applicationWord.ActiveDocument.PageSetup.LeftMargin = margeGauche;
+            applicationWord.ActiveDocument.PageSetup.BottomMargin = margeBasse;
 
-            return WordApp;
+            return applicationWord;
         }
 
-        public static void rectifPositionImages(Shape shapeCarteFace1, Shape shapeCarteFace2)
+        public static void rectifPositionImages(Shape carteFace1, Shape carteFace2)
         {
             // -- Gestion de la hauteur et de la position des images --
             /*
@@ -38,132 +38,132 @@ namespace CarteAccesLib
              * Et enfin on gère la hauteur des deux images pour que celles ci aient les mêmes dimensions.
             */
 
-            shapeCarteFace1.Top = 0;
-            shapeCarteFace1.Left = 0;
+            carteFace1.Top = 0;
+            carteFace1.Left = 0;
 
-            shapeCarteFace1.Height = shapeCarteFace1.Height - 20;
-            shapeCarteFace2.Top = shapeCarteFace1.Height + 40;
-            shapeCarteFace2.Height = shapeCarteFace1.Height;
+            carteFace1.Height = carteFace1.Height - 20;
+            carteFace2.Top = carteFace1.Height + 40;
+            carteFace2.Height = carteFace1.Height;
         }
 
-        public static void limite50Pages(Application WordApp, string path)
+        public static void limite50Pages(Application applicationWord, string chemin)
         {
             // -- Sauvegarde du document --
-            WordApp.ActiveDocument.SaveAs(path + "test.doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            applicationWord.ActiveDocument.SaveAs(chemin + "test.doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
             // -- Ferme le document --
-            WordApp.ActiveDocument.Close();
+            applicationWord.ActiveDocument.Close();
 
             //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
             GC.Collect();
 
             // -- Nouveau Document --
-            WordApp.Documents.Add();
+            applicationWord.Documents.Add();
 
             // -- Marge à 0 pour éviter les espaces blancs entre la page et l'image sur le document --
-            WordApp.ActiveDocument.PageSetup.TopMargin = 15; // 15 points = env à 0.5 cm
-            WordApp.ActiveDocument.PageSetup.RightMargin = 15;
-            WordApp.ActiveDocument.PageSetup.LeftMargin = 15;
-            WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
+            applicationWord.ActiveDocument.PageSetup.TopMargin = 15; // 15 points = env à 0.5 cm
+            applicationWord.ActiveDocument.PageSetup.RightMargin = 15;
+            applicationWord.ActiveDocument.PageSetup.LeftMargin = 15;
+            applicationWord.ActiveDocument.PageSetup.BottomMargin = 15;
         }
         
-        public static void saveCardAsWord(string path, string nomFicher, List<Eleve> listeEleve, PictureBox pbPhoto,
+        public static void sauvegardeCarteEnWord(string chemin, string nomFicher, List<Eleve> listeEleve, PictureBox pbPhoto,
             PictureBox pbCarteArriere)
         {
             var k = 0;
             var pages = 0;
             Eleve.possedeEdt(listeEleve);
-            var wordFile = WordFile.initWordFile(15, 15, 15, 15);
+            var fichierWord = WordFile.initWordFile(15, 15, 15, 15);
 
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
                 // -- Les élèves sont gérés deux par deux --
 
                 // -- Carte Face : 1/2 Eleve --
-                Edition.carteFace(listeEleve[compt], path);
+                Edition.carteFace(listeEleve[compt], chemin);
                 // -- Carte Face : 2/2 Eleve --
-                Edition.carteFace(listeEleve[compt - 1], path);
+                Edition.carteFace(listeEleve[compt - 1], chemin);
 
                 // -- Ajout des deux fichier PNG au nouveau document Word --
-                var shapeCarteFace1 = wordFile.ActiveDocument.Shapes.AddPicture(
-                    path + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png",
+                var shapeCarteFace1 = fichierWord.ActiveDocument.Shapes.AddPicture(
+                    chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png",
                     Type.Missing, Type.Missing, Type.Missing);
-                var shapeCarteFace2 = wordFile.ActiveDocument.Shapes.AddPicture(
-                    path + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png",
+                var shapeCarteFace2 = fichierWord.ActiveDocument.Shapes.AddPicture(
+                    chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png",
                     Type.Missing, Type.Missing, Type.Missing);
                 WordFile.rectifPositionImages(shapeCarteFace1, shapeCarteFace2);
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
-                File.Delete(path + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png");
-                File.Delete(path + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve +
+                File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png");
+                File.Delete(chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve +
                             "Carte.png");
                 //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
                 GC.Collect();
                 // -- Nouvelle page --
-                wordFile.Selection.EndKey();
-                wordFile.Selection.InsertNewPage();
+                fichierWord.Selection.EndKey();
+                fichierWord.Selection.InsertNewPage();
 
                 // ------------------------------------------------------------------
 
                 // -- Carte arriere : 1/2 Eleve --
                 Edition.carteArriere(listeEleve[compt], pbCarteArriere);
                 Photo.verifPhotoEleve(listeEleve[compt], pbPhoto);
-                Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt], path);
+                Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt], chemin);
                 // -- Carte arriere : 2/2 Eleve --
                 Edition.carteArriere(listeEleve[compt - 1], pbCarteArriere);
                 Photo.verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
-                Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], path);
+                Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
                 // -- Ajout des deux fichier PNG au nouveau document Word --
-                var shapeCarteArriere1 = wordFile.ActiveDocument.Shapes.AddPicture(
-                    path + "/" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png", Type.Missing,
+                var shapeCarteArriere1 = fichierWord.ActiveDocument.Shapes.AddPicture(
+                    chemin + "/" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png", Type.Missing,
                     Type.Missing, Type.Missing);
-                var shapeCarteArriere2 = wordFile.ActiveDocument.Shapes.AddPicture(
-                    path + "/" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png",
+                var shapeCarteArriere2 = fichierWord.ActiveDocument.Shapes.AddPicture(
+                    chemin + "/" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png",
                     Type.Missing, Type.Missing, Type.Missing);
 
                 WordFile.rectifPositionImages(shapeCarteArriere1, shapeCarteArriere2);
 
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
-                File.Delete(path + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png");
+                File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png");
                 File.Delete(
-                    path + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png");
+                    chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png");
 
                 //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
                 GC.Collect();
 
                 // -- Nouvelle page --
 
-                wordFile.Selection.EndKey();
-                wordFile.Selection.InsertNewPage();
+                fichierWord.Selection.EndKey();
+                fichierWord.Selection.InsertNewPage();
 
                 if (compt > k + 50)
                 {
-                    var name = path + " page " + k / 50;
-                    WordFile.limite50Pages(wordFile, name);
+                    var name = chemin + " page " + k / 50;
+                    WordFile.limite50Pages(fichierWord, name);
                     k += 50;
                     pages++;
                 }
             }
 
             if (k / 50 == 1)
-                wordFile.ActiveDocument.SaveAs(path + "/Imprimer.doc", Type.Missing, Type.Missing, Type.Missing,
+                fichierWord.ActiveDocument.SaveAs(chemin + "/Imprimer.doc", Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             else
-                wordFile.ActiveDocument.SaveAs(path + "/Imprimer Part " + pages + ".doc", Type.Missing, Type.Missing,
+                fichierWord.ActiveDocument.SaveAs(chemin + "/Imprimer Part " + pages + ".doc", Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
             // -- Ferme le document --
-            wordFile.ActiveDocument.Close();
+            fichierWord.ActiveDocument.Close();
 
             // -- Quitte l'application -- 
-            wordFile.Quit();
+            fichierWord.Quit();
 
             // -- TaskKill --
-            Marshal.FinalReleaseComObject(wordFile);
+            Marshal.FinalReleaseComObject(fichierWord);
 
             //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
             GC.Collect();

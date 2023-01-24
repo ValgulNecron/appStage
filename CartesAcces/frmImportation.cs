@@ -15,7 +15,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            ControlSize.SetSizeTextControl(this);
+            TailleCotrole.setTailleControleTexte(this);
             lblDateListeEleve.Text = ReadCSV.getDateFile();
             lblEdtEleve.Text = PdfGs.getDateFile();
             lblPhotoEleve.Text = Photo.getDatePhotos();
@@ -45,9 +45,7 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-
-
-            Globale._cheminTexte = Chemin.setPathImportFileEXCEL();
+            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
             if (Globale._cheminTexte.Length > 0)
             {
                 Globale._cas = 2;
@@ -62,10 +60,10 @@ namespace CartesAcces
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            var frmSelectSection = new frmSelectSection();
+            var frmSelectSection = new frmSelectNiveau();
             frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
             frmSelectSection.Show();
-            Globale._cheminPdf = Chemin.setPathImportFilePDF();
+            Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
             Globale._cas = 3;
             var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;
@@ -79,7 +77,7 @@ namespace CartesAcces
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            Globale._cheminPhoto = Chemin.setPathImportFolder();
+            Globale._cheminPhoto = Chemin.setCheminImportationDossier();
             Globale._cas = 4;
             var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;

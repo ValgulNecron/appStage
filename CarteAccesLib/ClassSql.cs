@@ -17,32 +17,32 @@ namespace CartesAcces
             var ip = nodeIp.Attributes["value"].Value;
             var nodeBd = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
             var bd = nodeBd.Attributes["value"].Value;
-            var nodeUser = doc.SelectSingleNode("/configuration/appSettings/add[@key='USER']");
-            var user = nodeUser.Attributes["value"].Value;
-            var nodePass = doc.SelectSingleNode("/configuration/appSettings/add[@key='PASS']");
-            var pass = nodePass.Attributes["value"].Value;
-            var builder = new MySqlConnectionStringBuilder();
-            builder.Server = ip;
-            builder.Port = 3306;
-            builder.Database = bd;
-            builder.UserID = user;
-            builder.Password = pass;
-            var connectionString = builder.ConnectionString;
-            connexionBdd = new MySqlConnection(connectionString);
+            var nodeUtilisateur = doc.SelectSingleNode("/configuration/appSettings/add[@key='UTILISATEUR']");
+            var utilisateur = nodeUtilisateur.Attributes["value"].Value;
+            var nodeMotDePasse = doc.SelectSingleNode("/configuration/appSettings/add[@key='MOTDEPASSE']");
+            var motDePasse = nodeMotDePasse.Attributes["value"].Value;
+            var sqlCreateur = new MySqlConnectionStringBuilder();
+            sqlCreateur.Server = ip;
+            sqlCreateur.Port = 3306;
+            sqlCreateur.Database = bd;
+            sqlCreateur.UserID = utilisateur;
+            sqlCreateur.Password = motDePasse;
+            var texteConnexion = sqlCreateur.ConnectionString;
+            connexionBdd = new MySqlConnection(texteConnexion);
         }
 
         public static string getUser(string user)
         {
-            var password = "";
+            var motDePasse = "";
             connexionBdd.Open();
-            var command = new MySqlCommand("getUser", connexionBdd);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@user", user);
-            var reader = command.ExecuteReader();
-            while (reader.Read()) password = reader["hash"].ToString();
+            var commande = new MySqlCommand("getUser", connexionBdd);
+            commande.CommandType = CommandType.StoredProcedure;
+            commande.Parameters.AddWithValue("@user", user);
+            var lecteur = commande.ExecuteReader();
+            while (lecteur.Read()) motDePasse = lecteur["hash"].ToString();
             connexionBdd.Close();
             Globale._nomUtilisateur = user;
-            return password;
+            return motDePasse;
         }
 
         public static void setUser(string user, string hash)

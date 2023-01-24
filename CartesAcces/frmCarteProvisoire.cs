@@ -16,45 +16,39 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            ControlSize.SetSizeTextControl(this);
+            TailleCotrole.setTailleControleTexte(this);
         }
 
-        private void txtNom_TextChanged(object sender, EventArgs e)
+        private void changementTexte(object sender, EventArgs e)
         {
+            string prenom = txtPrenom.Text;
+            string nom = txtNom.Text;
+                
             Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
-            Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
 
-            if (txtNom.TextLength < 7)
+            if (nom.Length < 15)
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
+                var font = new Font("times new roman", 28, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                var font = new Font("times new roman", 20, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteArriere, cbbSection);
+                var font = new Font("times new roman", 25, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
-        }
 
-        private void txtPrenom_TextChanged(object sender, EventArgs e)
-        {
-            Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
-            Edition.reprendNom(txtNom, pbCarteFace, cbbSection);
-
-            if (txtPrenom.TextLength < 7)
+            if (prenom.Length < 15)
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                var font = new Font("times new roman", 28, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                var font = new Font("times new roman", 20, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                var font = new Font("times new roman", 25, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
         }
@@ -348,9 +342,10 @@ namespace CartesAcces
             throw new NotImplementedException();
         }
 
-        private void frmCarteIndividuelle_Load(object sender, EventArgs e)
+        private void frmCarteProvisoire_Load(object sender, EventArgs e)
         {
-            var time = new Timer(this);
+            txtNom.TextChanged += changementTexte;
+            txtPrenom.TextChanged += changementTexte;
         }
     }
 }

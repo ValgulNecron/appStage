@@ -16,11 +16,11 @@ namespace CartesAcces
         public static string _nomUtilisateur = "";
 
         // Listes des classes 
-        public static List<string> classes6eme = new List<string>();
-        public static List<string> classes5eme = new List<string>();
-        public static List<string> classes4eme = new List<string>();
-        public static List<string> classes3eme = new List<string>();
-        public static List<string> classesInconnue = new List<string>();
+        public static List<string> _classes6eme = new List<string>();
+        public static List<string> _classes5eme = new List<string>();
+        public static List<string> _classes4eme = new List<string>();
+        public static List<string> _classes3eme = new List<string>();
+        public static List<string> _classesInconnue = new List<string>();
 
         // Liste d'élèves
         public static List<Eleve> _listeEleve = new List<Eleve>();
@@ -33,7 +33,7 @@ namespace CartesAcces
 
         public static List<int> _couleurDeFondClaire = new List<int> {220, 224, 232};
         public static List<int> _couleurDuTexteclaire = new List<int> {76, 79, 105};
-        public static List<int> _couleurBandeauxClaire = new List<int> {32, 159, 181};
+        public static List<int> _couleurBandeauxClaire = new List<int> {70, 130, 180};
         public static List<int> _couleurBoutonsClaire = new List<int> {204, 208, 218};
         public static List<int> _couleurTextBoxClaire = new List<int> {239, 241, 245};
         public static List<int> _couleurBoutonOffClaire = new List<int> {140, 143, 161};
@@ -47,8 +47,8 @@ namespace CartesAcces
         
 
         // variable lier au forme utiliser pour garder une reference 
-        public static Form actuelle;
-        public static Form accueil;
+        public static Form _actuelle;
+        public static Form _accueil;
 
         // version
         public static string _version = "0.2.1";

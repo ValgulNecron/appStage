@@ -146,8 +146,8 @@ namespace CartesAcces
                 Globale._listeEleveImpr.Add(eleve);
             }
 
-            var cheminImpressionFinal = Chemin.setPathImportFolder();
-            WordFile.saveCardAsWord(cheminImpressionFinal, "test", Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
+            var cheminImpressionFinal = Chemin.setCheminImportationDossier();
+            WordFile.sauvegardeCarteEnWord(cheminImpressionFinal, "test", Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

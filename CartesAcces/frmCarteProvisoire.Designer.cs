@@ -212,7 +212,6 @@ namespace CartesAcces
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(121, 20);
             this.txtPrenom.TabIndex = 3;
-            this.txtPrenom.TextChanged += new System.EventHandler(this.txtPrenom_TextChanged);
             // 
             // txtNom
             // 
@@ -221,7 +220,6 @@ namespace CartesAcces
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(121, 20);
             this.txtNom.TabIndex = 2;
-            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             // 
             // label2
             // 
@@ -430,6 +428,7 @@ namespace CartesAcces
             this.MinimumSize = new System.Drawing.Size(1125, 726);
             this.Name = "frmCarteProvisoire";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmCarteProvisoire_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarteFace)).EndInit();

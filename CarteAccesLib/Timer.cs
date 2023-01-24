@@ -32,7 +32,7 @@ namespace CartesAcces
 
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
-            if (Globale.accueil == null)
+            if (Globale._accueil == null)
                 Application.Exit();
             if (start.Add(TimeSpan.FromMinutes(dureeMinute)) <= DateTime.Now)
                 if (Globale._estConnecter)

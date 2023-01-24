@@ -8,13 +8,13 @@ namespace CartesAcces
 {
     public class Couleur
     {
-        public static void setCouleurFenetre(Form form)
+        public static void setCouleurFenetre(Form fenetre)
         {
             if (Globale._estEnModeSombre)
             {
-                form.BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0],
+                fenetre.BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0],
                     Globale._couleurDeFondSombre[1], Globale._couleurDeFondSombre[2]);
-                foreach (Control controle in form.Controls)
+                foreach (Control controle in fenetre.Controls)
                 {
                     if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
@@ -40,9 +40,9 @@ namespace CartesAcces
                         controle2.BorderStyle = BorderStyle.None;
                     }
 
-                    if (controle is Panel) setCouleurFenetre(controle as Panel);
+                    if (controle is Panel) setCouleurPanel(controle as Panel);
 
-                    if (controle is GroupBox) setCouleurFenetre(controle as GroupBox);
+                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
 
                     if (controle is ListBox)
                     {
@@ -53,9 +53,9 @@ namespace CartesAcces
             }
             else
             {
-                form.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0],
+                fenetre.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0],
                     Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
-                foreach (Control controle in form.Controls)
+                foreach (Control controle in fenetre.Controls)
                 {
                     if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxClaire[0],
@@ -81,9 +81,9 @@ namespace CartesAcces
                         controle2.BorderStyle = BorderStyle.None;
                     }
 
-                    if (controle is Panel) setCouleurFenetre(controle as Panel);
+                    if (controle is Panel) setCouleurPanel(controle as Panel);
 
-                    if (controle is GroupBox) setCouleurFenetre(controle as GroupBox);
+                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
 
                     if (controle is ListBox)
                     {
@@ -94,7 +94,7 @@ namespace CartesAcces
             }
         }
 
-        public static void setCouleurFenetre(Panel panel)
+        public static void setCouleurPanel(Panel panel)
         {
             if (Globale._estEnModeSombre)
                 foreach (Control controle in panel.Controls)
@@ -123,9 +123,9 @@ namespace CartesAcces
                         controle2.BorderStyle = BorderStyle.None;
                     }
 
-                    if (controle is Panel) setCouleurFenetre(controle as Panel);
+                    if (controle is Panel) setCouleurPanel(controle as Panel);
 
-                    if (controle is GroupBox) setCouleurFenetre(controle as GroupBox);
+                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
 
                     if (controle is ListBox)
                     {
@@ -160,9 +160,9 @@ namespace CartesAcces
                         controle2.BorderStyle = BorderStyle.None;
                     }
 
-                    if (controle is Panel) setCouleurFenetre(controle as Panel);
+                    if (controle is Panel) setCouleurPanel(controle as Panel);
 
-                    if (controle is GroupBox) setCouleurFenetre(controle as GroupBox);
+                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
 
                     if (controle is ListBox)
                     {
@@ -172,10 +172,10 @@ namespace CartesAcces
                 }
         }
 
-        public static void setCouleurFenetre(GroupBox groupbox)
+        public static void setCouleurGroupeBox(GroupBox groupeBox)
         {
             if (Globale._estEnModeSombre)
-                foreach (Control controle in groupbox.Controls)
+                foreach (Control controle in groupeBox.Controls)
                 {
                     if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
@@ -201,9 +201,9 @@ namespace CartesAcces
                         controle2.BorderStyle = BorderStyle.None;
                     }
 
-                    if (controle is Panel) setCouleurFenetre(controle as Panel);
+                    if (controle is Panel) setCouleurPanel(controle as Panel);
 
-                    if (controle is GroupBox) setCouleurFenetre(controle as GroupBox);
+                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
 
                     if (controle is ListBox)
                     {
@@ -212,7 +212,7 @@ namespace CartesAcces
                     }
                 }
             else
-                foreach (Control controle in groupbox.Controls)
+                foreach (Control controle in groupeBox.Controls)
                 {
                     if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxClaire[0],
@@ -238,9 +238,9 @@ namespace CartesAcces
                         controle2.BorderStyle = BorderStyle.None;
                     }
 
-                    if (controle is Panel) setCouleurFenetre(controle as Panel);
+                    if (controle is Panel) setCouleurPanel(controle as Panel);
 
-                    if (controle is GroupBox) setCouleurFenetre(controle as GroupBox);
+                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
 
                     if (controle is ListBox)
                     {
