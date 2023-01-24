@@ -8,9 +8,9 @@ using CartesAcces.Properties;
 
 namespace CartesAcces
 {
-    public partial class frmParametres : Form
+    public partial class frmImportation : Form
     {
-        public frmParametres()
+        public frmImportation()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
@@ -47,7 +47,7 @@ namespace CartesAcces
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
             var frmSelectSection = new frmSelectSection();
-            //frmSelectSection.Top = new frmParametres().Top;
+            //frmSelectSection.Top = new frmImportation().Top;
             frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
             frmSelectSection.Show();
             //importEDT();

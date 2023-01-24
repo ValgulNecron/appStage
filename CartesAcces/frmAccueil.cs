@@ -41,7 +41,7 @@ namespace CartesAcces
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmParametres();
+            Globale.actuelle = new frmImportation();
             OpenChildForm(Globale.actuelle);
             Globale._cas = 1;
             var frmWait = new progressBarForm();
@@ -69,7 +69,7 @@ namespace CartesAcces
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmParametres();
+            Globale.actuelle = new frmImportation();
             OpenChildForm(Globale.actuelle);
         }
 

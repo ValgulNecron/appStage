@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmParametres
+    partial class frmImportation
     {
         /// <summary>
         /// Required designer variable.
@@ -170,7 +170,7 @@ namespace CartesAcces
             this.label7.TabIndex = 29;
             this.label7.Text = "Dernière importation :";
             // 
-            // frmParametres
+            // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -190,8 +190,8 @@ namespace CartesAcces
             this.Controls.Add(this.btnImportPhoto);
             this.Controls.Add(this.btnImportEDT);
             this.Controls.Add(this.btnImporterEleves);
-            this.Name = "frmParametres";
-            this.Text = "frmParametres";
+            this.Name = "frmImportation";
+            this.Text = "frmImportation";
             this.Load += new System.EventHandler(this.frmParametres_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
