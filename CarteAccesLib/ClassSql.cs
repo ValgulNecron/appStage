@@ -17,15 +17,15 @@ namespace CartesAcces
             var ip = nodeIp.Attributes["value"].Value;
             var nodeBd = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
             var bd = nodeBd.Attributes["value"].Value;
-            var nodeUser = doc.SelectSingleNode("/configuration/appSettings/add[@key='USER']");
-            var user = nodeUser.Attributes["value"].Value;
+            var nodeUtilisateur = doc.SelectSingleNode("/configuration/appSettings/add[@key='USER']");
+            var utilisateur = nodeUtilisateur.Attributes["value"].Value;
             var nodePass = doc.SelectSingleNode("/configuration/appSettings/add[@key='PASS']");
             var pass = nodePass.Attributes["value"].Value;
             var builder = new MySqlConnectionStringBuilder();
             builder.Server = ip;
             builder.Port = 3306;
             builder.Database = bd;
-            builder.UserID = user;
+            builder.UserID = utilisateur;
             builder.Password = pass;
             var connectionString = builder.ConnectionString;
             connexionBdd = new MySqlConnection(connectionString);
