@@ -4,7 +4,7 @@
     <appSettings>
         <add key="IP" value=""/>
         <add key="BD" value=""/>
-        <add key="USER" value=""/>
-        <add key="PASS" value=""/>
+        <add key="UTILISATEUR" value=""/>
+        <add key="MOTDEPASSE" value=""/>
     </appSettings>
 </configuration>
