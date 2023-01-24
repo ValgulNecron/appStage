@@ -51,8 +51,6 @@ namespace CartesAcces
                 frmWait.Show();
                 frmWait.TopMost = true;
             }
-
-            lblDateListeEleve.Text = ReadCSV.getDateFile();
         }   
 
         private void btnImportEDT_Click(object sender, EventArgs e)
@@ -69,8 +67,6 @@ namespace CartesAcces
             frmWait.TopMost = true;
             lblEdtEleve.Text = PdfGs.getDateFile();
         }
-
-
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
