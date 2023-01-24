@@ -13,7 +13,7 @@ namespace CarteAcces
         public static void cropLaPhoto(PictureBox pbPhotoUnique)
         {
             // -- Si la largeur a rogner est trop faible, on sort --
-            if (Edition.cropWidth < 1) return;
+            if (Edition.rognageLargeur < 1) return;
 
             /* -- Rectangle pour stocker l'image rognée avec les points calculés --
                 Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
@@ -23,15 +23,15 @@ namespace CarteAcces
             var widthSave = pbPhotoUnique.Width;
             var heightSave = pbPhotoUnique.Height;
 
-            var cropWidthReal = Edition.cropWidth * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
-            var cropHeightReal = Edition.cropHeight * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
-            var cropXReal = Edition.cropX * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
-            var cropYReal = Edition.cropY * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
+            var cropWidthReal = Edition.rognageLargeur * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
+            var cropHeightReal = Edition.rogagneHauteur * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
+            var cropXReal = Edition.rognageX * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
+            var cropYReal = Edition.rognageY * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
 
             var rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
 
             // -- On stock l'image original dans un bitmap --
-            var OriginalImage = new Bitmap(Image.FromFile(Edition.FilePath));
+            var OriginalImage = new Bitmap(Image.FromFile(Edition.cheminFichier));
 
             // -- Bitmap pour l'image rognée --
             var _img = new Bitmap(cropWidthReal, cropHeightReal);

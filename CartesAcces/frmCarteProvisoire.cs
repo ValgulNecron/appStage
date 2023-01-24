@@ -92,7 +92,7 @@ namespace CartesAcces
             Cursor = Cursors.Cross;
 
             // -- On est dans le mode selection
-            Edition.selectionClick = true;
+            Edition.selectionClique = true;
 
             // -- On peut cliquer sur rogner
             btnCrop.Enabled = true;
@@ -105,7 +105,7 @@ namespace CartesAcces
             Cursor = Cursors.Default;
             var classe = cbbClasse.Text;
             var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
-            Edition.selectionClick = false;
+            Edition.selectionClique = false;
             Edt.cropEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
         }
@@ -116,7 +116,7 @@ namespace CartesAcces
             Cursor = Cursors.Default;
 
             // -- On est plus dans la selection --
-            Edition.selectionClick = false;
+            Edition.selectionClique = false;
 
             // -- On remet les paramètres et l'image de base --
             pbCarteArriere.Width = 540;
@@ -130,16 +130,16 @@ namespace CartesAcces
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selectionné est cliqué --
-            if (Edition.selectionClick)
+            if (Edition.selectionClique)
             {
                 // -- Si il y a clic gauche --
                 if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les coordonnées de départ --
-                    Edition.cropX = e.X;
-                    Edition.cropY = e.Y;
-                    Edition.cropPen = new Pen(Color.Black, 1);
-                    Edition.cropPen.DashStyle = DashStyle.DashDotDot;
+                    Edition.rognageX = e.X;
+                    Edition.rognageY = e.Y;
+                    Edition.rognagePen = new Pen(Color.Black, 1);
+                    Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
                 }
 
                 // -- Refresh constant pour avoir un apperçu pendant la selection --
@@ -150,7 +150,7 @@ namespace CartesAcces
         private void pbCarteArriere_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selection est cliqué --
-            if (Edition.selectionClick)
+            if (Edition.selectionClique)
             {
                 // -- Si pas d'image, on sort --
                 if (pbCarteArriere.Image == null)
@@ -161,10 +161,10 @@ namespace CartesAcces
                 {
                     // -- On prend les dimensions a la fin du déplacement de la souris
                     pbCarteArriere.Refresh();
-                    Edition.cropWidth = e.X - Edition.cropX;
-                    Edition.cropHeight = e.Y - Edition.cropY;
-                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY,
-                        Edition.cropWidth, Edition.cropHeight);
+                    Edition.rognageLargeur = e.X - Edition.rognageX;
+                    Edition.rogagneHauteur = e.Y - Edition.rognageY;
+                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen, Edition.rognageX, Edition.rognageY,
+                        Edition.rognageLargeur, Edition.rogagneHauteur);
                 }
             }
         }

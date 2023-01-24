@@ -12,13 +12,13 @@ namespace CartesAcces
     {
         // ** VARIABLES : Pour l'édition de l'emploi du temps (rognage) **
         public static bool
-            selectionClick = false; // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
+            selectionClique = false; // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
         
-        public static int cropX; // -> Abscisse de départ du rognage
-        public static int cropY; // -> Ordonnée de départ du rognage
-        public static int cropWidth; // -> Largeur du rognage
-        public static int cropHeight; // -> Hauteur du rognage
-        public static Pen cropPen; // -> Stylo qui dessine le rectangle correspondant au rognage
+        public static int rognageX; // -> Abscisse de départ du rognage
+        public static int rognageY; // -> Ordonnée de départ du rognage
+        public static int rognageLargeur; // -> Largeur du rognage
+        public static int rogagneHauteur; // -> Hauteur du rognage
+        public static Pen rognagePen; // -> Stylo qui dessine le rectangle correspondant au rognage
         
         // ** VARIABLES  : Déplacement de la photo
         public static bool
@@ -31,18 +31,18 @@ namespace CartesAcces
             posY; // -> Ordonnée initialie, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
         
         // ** VARIABLES : Chemin de l'image **
-        public static string FilePath;
+        public static string cheminFichier;
         
         public static string cheminImpressionFinal;
         
         // -- Dessine le rectangle de couleur derrière le text pour une meilleurs visibilité de celui ci --
-        public static void fondTextCarteFace(Graphics ObjGraphics, string text, Font font, int posX, int posY,
+        public static void fondTexteCarteFace(Graphics ObjGraphics, string text, Font font, int posX, int posY,
             ComboBox cbbSection)
         {
-            Brush brushJaune = new SolidBrush(Color.Yellow);
-            Brush brushVert = new SolidBrush(Color.LightGreen);
-            Brush brushRouge = new SolidBrush(Color.Red);
-            Brush brushBleu = new SolidBrush(Color.LightBlue);
+            Brush pinceauJaune = new SolidBrush(Color.Yellow);
+            Brush pinceauVert = new SolidBrush(Color.LightGreen);
+            Brush pinceauRouge = new SolidBrush(Color.Red);
+            Brush pinceauBleu = new SolidBrush(Color.LightBlue);
             var largeur = Convert.ToInt32(ObjGraphics.MeasureString(text, font).Width);
             var hauteur = Convert.ToInt32(ObjGraphics.MeasureString(text, font).Height);
             var rectangle = new Rectangle(posX, posY, largeur, hauteur);
@@ -51,20 +51,20 @@ namespace CartesAcces
             switch (cbbSection.Text)
             {
                 case "6eme":
-                    ObjGraphics.FillRectangle(brushJaune, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushJaune), rectangle);
+                    ObjGraphics.FillRectangle(pinceauJaune, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(pinceauJaune), rectangle);
                     break;
                 case "5eme":
-                    ObjGraphics.FillRectangle(brushVert, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushVert), rectangle);
+                    ObjGraphics.FillRectangle(pinceauVert, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(pinceauVert), rectangle);
                     break;
                 case "4eme":
-                    ObjGraphics.FillRectangle(brushRouge, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushRouge), rectangle);
+                    ObjGraphics.FillRectangle(pinceauRouge, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(pinceauRouge), rectangle);
                     break;
                 case "3eme":
-                    ObjGraphics.FillRectangle(brushBleu, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushBleu), rectangle);
+                    ObjGraphics.FillRectangle(pinceauBleu, rectangle);
+                    ObjGraphics.DrawRectangle(new Pen(pinceauBleu), rectangle);
                     break;
             }
         }
@@ -78,7 +78,7 @@ namespace CartesAcces
             Brush brushNoir = new SolidBrush(Color.Black);
 
             //Dessine et rempli le fond pour l'écriture
-            fondTextCarteFace(ObjGraphics, text, font, posX, posY, cbbSection);
+            fondTexteCarteFace(ObjGraphics, text, font, posX, posY, cbbSection);
 
             //Dessine la saisie en textbox
             ObjGraphics.DrawString(text, font, brushNoir, posX,
@@ -219,7 +219,7 @@ namespace CartesAcces
                 }
         }
 
-        public static void fondTextCarteFace(Graphics ObjGraphics, string text, Font font, Eleve eleve, int posX,
+        public static void fondTexteCarteFace(Graphics ObjGraphics, string text, Font font, Eleve eleve, int posX,
             int posY)
         {
             Brush brushJaune = new SolidBrush(Color.Yellow);
@@ -268,10 +268,10 @@ namespace CartesAcces
             var date = DateTime.Today.ToShortDateString();
 
             //Dessine et rempli le fond pour l'écriture
-            fondTextCarteFace(ObjGraphics, eleve.NomEleve, font, eleve, 250, 960);
-            fondTextCarteFace(ObjGraphics, eleve.PrenomEleve, font, eleve, 350, 1075);
-            fondTextCarteFace(ObjGraphics, eleve.MefEleve, font2, eleve, 50, 70);
-            fondTextCarteFace(ObjGraphics, "Date de création: " + date, font3, eleve, 870, 875);
+            fondTexteCarteFace(ObjGraphics, eleve.NomEleve, font, eleve, 250, 960);
+            fondTexteCarteFace(ObjGraphics, eleve.PrenomEleve, font, eleve, 350, 1075);
+            fondTexteCarteFace(ObjGraphics, eleve.MefEleve, font2, eleve, 50, 70);
+            fondTexteCarteFace(ObjGraphics, "Date de création: " + date, font3, eleve, 870, 875);
 
             //Dessine la saisie en textbox
             ObjGraphics.DrawString(eleve.NomEleve, font, brushNoir, 250,
