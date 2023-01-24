@@ -57,7 +57,7 @@ namespace CartesAcces
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            Globale._cheminPhoto = Chemin.setPathImportFolder();
+            Globale._cheminPhoto = Chemin.setCheminImportationDossier();
             Globale._cas = 4;
             var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;
