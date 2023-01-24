@@ -25,8 +25,6 @@ namespace CartesAcces
             string prenom = txtNom.Text;
                 
             Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.reprendNom(txtNom.Text, pbCarteFace, cbbSection);
-            Edition.reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
 
             if (nom.Length < 15)
             {
