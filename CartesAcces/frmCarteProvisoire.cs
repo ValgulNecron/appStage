@@ -21,40 +21,43 @@ namespace CartesAcces
 
         private void txtNom_TextChanged(object sender, EventArgs e)
         {
+            string stringNom = txtNom.Text;
+            
             Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+            Edition.reprendNom(stringNom, pbCarteFace, cbbSection);
             Edition.reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
 
-            if (txtNom.TextLength < 15)
+            if (stringNom.Length < 15)
             {
                 var font = new Font("times new roman", 28, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
+                Edition.dessineTextCarteFace(font, 250, 960, stringNom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
                 var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteArriere, cbbSection);
+                Edition.dessineTextCarteFace(font, 250, 960, stringNom, pbCarteArriere, cbbSection);
                 pbCarteFace.Refresh();
             }
         }
 
         private void txtPrenom_TextChanged(object sender, EventArgs e)
         {
+            string stringPrenom = txtPrenom.Text;
             Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
             Edition.reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+            Edition.reprendPrenom(stringPrenom, pbCarteFace, cbbSection);
 
-            if (txtPrenom.TextLength < 15)
+            if (stringPrenom.Length < 15)
             {
                 var font = new Font("times new roman", 28, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                Edition.dessineTextCarteFace(font, 350, 1075, stringPrenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
                 var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                Edition.dessineTextCarteFace(font, 350, 1075, stringPrenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
         }
