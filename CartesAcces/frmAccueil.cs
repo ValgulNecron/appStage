@@ -9,7 +9,7 @@ namespace CartesAcces
         public frmAccueil()
         {
             InitializeComponent();
-            Globale.accueil = this;
+            Globale._accueil = this;
             ControlSize.SetSizeTextControl(this);
             Couleur.setCouleurFenetre(this);
             if (Globale._estEnModeSombre)
@@ -41,8 +41,8 @@ namespace CartesAcces
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmImportation();
-            OpenChildForm(Globale.actuelle);
+            Globale._actuelle = new frmImportation();
+            OpenChildForm(Globale._actuelle);
             Globale._cas = 1;
             var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;
@@ -57,20 +57,20 @@ namespace CartesAcces
 
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmCarteProvisoire();
-            OpenChildForm(Globale.actuelle);
+            Globale._actuelle = new frmCarteProvisoire();
+            OpenChildForm(Globale._actuelle);
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmCarteParClasseNiveau();
-            OpenChildForm(Globale.actuelle);
+            Globale._actuelle = new frmCarteParClasseNiveau();
+            OpenChildForm(Globale._actuelle);
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmImportation();
-            OpenChildForm(Globale.actuelle);
+            Globale._actuelle = new frmImportation();
+            OpenChildForm(Globale._actuelle);
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
@@ -82,7 +82,7 @@ namespace CartesAcces
             Globale._estEnModeSombre = !Globale._estEnModeSombre;
 
             Couleur.setCouleurFenetre(this);
-            Couleur.setCouleurFenetre(Globale.actuelle);
+            Couleur.setCouleurFenetre(Globale._actuelle);
             foreach (Control control in Controls)
                 if (control is Panel && control.Name == "pnlMenu")
                 {
@@ -103,8 +103,8 @@ namespace CartesAcces
 
         private void btnAfficheListeEleve_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmCartesParListe();
-            OpenChildForm(Globale.actuelle);
+            Globale._actuelle = new frmCartesParListe();
+            OpenChildForm(Globale._actuelle);
         }
     }
 }

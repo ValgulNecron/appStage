@@ -20,8 +20,8 @@ namespace CartesAcces
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
-            Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
+            Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = false; }));
+            Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = false; }));
             switch (Globale._cas)
             {
 
@@ -38,8 +38,8 @@ namespace CartesAcces
                     cas_4();
                     break;
             }
-            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
-            Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
+            Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = true; }));
+            Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = true; }));
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -49,8 +49,8 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
-            //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
+            //Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = false; }));
+            //Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = false; }));
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
 
             ReadCSV.setLesEleves(Chemin.pathListeEleve);
@@ -58,8 +58,8 @@ namespace CartesAcces
 
             Eleve.setLesClasses();
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
-            Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
+            Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = true; }));
+            Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = true; }));
         }
     
         private void cas_2()

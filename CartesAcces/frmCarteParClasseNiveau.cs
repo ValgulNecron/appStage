@@ -115,10 +115,10 @@ namespace CartesAcces
         {
             var lesClasses = new List<string>();
 
-            lesClasses.AddRange(Globale.classes3eme);
-            lesClasses.AddRange(Globale.classes4eme);
-            lesClasses.AddRange(Globale.classes5eme);
-            lesClasses.AddRange(Globale.classes6eme);
+            lesClasses.AddRange(Globale._classes3eme);
+            lesClasses.AddRange(Globale._classes4eme);
+            lesClasses.AddRange(Globale._classes5eme);
+            lesClasses.AddRange(Globale._classes6eme);
 
             cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;

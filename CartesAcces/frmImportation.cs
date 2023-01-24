@@ -45,7 +45,7 @@ namespace CartesAcces
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            var frmSelectSection = new frmSelectSection();
+            var frmSelectSection = new frmSelectNiveau();
             frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
             frmSelectSection.Show();
             Globale._cheminPdf = Chemin.setPathImportFilePDF();

@@ -34,11 +34,11 @@ namespace CartesAcces
                 if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
                 {
                     Globale._estConnecter = true;
-                    Globale.accueil = new frmAccueil();
+                    Globale._accueil = new frmAccueil();
                     txtMotDePasse.Text = "";
                     txtIdentifiant.Text = "";
                     Hide();
-                    Globale.accueil.Show();
+                    Globale._accueil.Show();
                 }
             }
             catch (Exception ex)
