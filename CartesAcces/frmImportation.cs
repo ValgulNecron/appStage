@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 using CarteAcces;
-using CartesAcces.Properties;
 
 namespace CartesAcces
 {
@@ -57,8 +53,6 @@ namespace CartesAcces
                 frmWait.Show();
                 frmWait.TopMost = true;
             }
-
-            lblDateListeEleve.Text = ReadCSV.getDateFile();
         }   
 
         private void btnImportEDT_Click(object sender, EventArgs e)
@@ -75,8 +69,6 @@ namespace CartesAcces
             frmWait.TopMost = true;
             lblEdtEleve.Text = PdfGs.getDateFile();
         }
-
-
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {

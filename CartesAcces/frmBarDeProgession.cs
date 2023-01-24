@@ -56,7 +56,17 @@ namespace CartesAcces
         private void cas_2()
         {
             Edition.importEleves(Globale._cheminTexte);
-    
+            Globale._actuelle.Invoke(new MethodInvoker(delegate
+            {
+                foreach (Control controle in Globale._actuelle.Controls)
+                {
+                    if (controle is Label && controle.Name == "lblDateListeEleve")
+                    {
+                        controle.Text = ReadCSV.getDateFile();
+                    }
+                }
+            }));
+
         }
 
         private void cas_3()
