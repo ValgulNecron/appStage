@@ -45,16 +45,16 @@ namespace CartesAcces
 
         public bool SansEDT { get; set; }
 
-        public static List<string> getEleveNiveau(string section)
+        public static List<string> getEleveNiveau(string niveau)
         {
             // l'idée est de récupérer le premier caractère d'une propriété de l'objet, ici on veut le premier caractère de la classe de l'élève, on choisit
-            //section "3ème" par exemple, on veut prendre que le caractère "3" puis on le compare au premier caractère de la classe de chaque élève de la liste
+            //niveau "3ème" par exemple, on veut prendre que le caractère "3" puis on le compare au premier caractère de la classe de chaque élève de la liste
             //si "3" est le premier caractère alors cette élève est ajouté à la liste des élèves à imprimer
             var LesEleves = new List<string>();
 
-            section = section.Substring(0, 1);
+            niveau = niveau.Substring(0, 1);
             foreach (var eleve in Globale._listeEleve)
-                if (eleve.ClasseEleve.Substring(0, 1) == section)
+                if (eleve.ClasseEleve.Substring(0, 1) == niveau)
                     LesEleves.Add(eleve.NomEleve);
 
             return LesEleves;
@@ -96,13 +96,13 @@ namespace CartesAcces
                     Globale._listeEleveImpr.Add(eleve);
         }
 
-        // -- Idem pour la section -- 
-        public static void affecterElevesSections(string uneSection)
+        // -- Idem pour la niveau -- 
+        public static void affecterElevesNiveaux(string unNiveau)
         {
             foreach (var eleve in Globale._listeEleve)
             {
                 var numSection = eleve.ClasseEleve.Substring(0, 1); //solution?
-                if (numSection == uneSection.Substring(0, 1)) Globale._listeEleveImpr.Add(eleve);
+                if (numSection == unNiveau.Substring(0, 1)) Globale._listeEleveImpr.Add(eleve);
             }
         }
 
@@ -130,34 +130,34 @@ namespace CartesAcces
             Globale._classes6eme.Sort();
         }
 
-        public static string creeCleeEleve(Eleve eleve)
+        public static string creeCleEleve(Eleve eleve)
         {
-            var clé = eleve.NomEleve + eleve.PrenomEleve + eleve.ClasseEleve;
+            var cle = eleve.NomEleve + eleve.PrenomEleve + eleve.ClasseEleve;
 
             // Correction sur le regime
             if (eleve.RegimeEleve == "EXTERN")
-                clé += "Externe";
-            else if (eleve.RegimeEleve.Substring(0, 2) == "DP") clé += "12P";
+                cle += "Externe";
+            else if (eleve.RegimeEleve.Substring(0, 2) == "DP") cle += "12P";
 
             // Option 1
-            clé += eleve.OptionUnEleve;
+            cle += eleve.OptionUnEleve;
 
             // Option 2
-            if (eleve.OptionDeuxEleve != "") clé += eleve.OptionDeuxEleve;
+            if (eleve.OptionDeuxEleve != "") cle += eleve.OptionDeuxEleve;
 
             // Option 3
-            if (eleve.OptionTroisEleve != "") clé += eleve.OptionTroisEleve;
+            if (eleve.OptionTroisEleve != "") cle += eleve.OptionTroisEleve;
 
             // Option 4
-            if (eleve.OptionQuatreEleve != "") clé += eleve.OptionQuatreEleve;
+            if (eleve.OptionQuatreEleve != "") cle += eleve.OptionQuatreEleve;
 
-            return clé;
+            return cle;
         }
 
         public static void possedeEdt(List<Eleve> listeEleve)
         {
             foreach (var eleve in listeEleve)
-                if (!File.Exists("./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" + creeCleeEleve(eleve) +
+                if (!File.Exists("./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" + creeCleEleve(eleve) +
                                  ".jpg"))
                     eleve.SansEDT = true;
         }
