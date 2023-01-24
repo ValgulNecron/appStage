@@ -78,7 +78,7 @@ namespace CartesAcces
             Cursor = Cursors.Default;
             var pathEdt = Chemin.pathEdt;
             Edition.selectionClique = false;
-            Edt.cropEdt(pbCarteArriere, pathEdt);
+            Edt.rognageEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
         }
 

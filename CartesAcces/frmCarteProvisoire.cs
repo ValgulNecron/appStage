@@ -106,7 +106,7 @@ namespace CartesAcces
             var classe = cbbClasse.Text;
             var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
             Edition.selectionClique = false;
-            Edt.cropEdt(pbCarteArriere, pathEdt);
+            Edt.rognageEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
         }
 

@@ -312,7 +312,7 @@ namespace CartesAcces
                 var cheminEdt = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" +
                               Eleve.creeCleeEleve(eleve) + ".jpg";
                 pbCarteArriere.Image = Image.FromFile(cheminEdt);
-                Edt.cropEdt(pbCarteArriere, cheminEdt);
+                Edt.rognageEdt(pbCarteArriere, cheminEdt);
             }
             else
             {

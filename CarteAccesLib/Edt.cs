@@ -38,7 +38,7 @@ namespace CarteAcces
             }
         }
         
-        public static void cropEdt(PictureBox pbCarteArriere, string pathEdt)
+        public static void rognageEdt(PictureBox pbCarteArriere, string cheminEdt)
         {
             // -- Si la largeur a rogner est trop faible, on sort --
             if (Edition.rognageLargeur < 1) return;
@@ -48,32 +48,32 @@ namespace CarteAcces
                 qui sont celles des vrai fichier EDT !
                 Cela permet d'éviter les problèmes de résolution d'image après le rognage */
 
-            var cropWidthReal = Edition.rognageLargeur * pbCarteArriere.Image.Width / 540;
-            var cropHeightReal = Edition.rogagneHauteur * pbCarteArriere.Image.Height / 354;
-            var cropXReal = Edition.rognageX * pbCarteArriere.Image.Width / 540;
-            var cropYReal = Edition.rognageY * pbCarteArriere.Image.Height / 354;
+            var rogagneLargeurReel = Edition.rognageLargeur * pbCarteArriere.Image.Width / 540;
+            var rogagneHauteurReel = Edition.rogagneHauteur * pbCarteArriere.Image.Height / 354;
+            var rognageXReel = Edition.rognageX * pbCarteArriere.Image.Width / 540;
+            var rogangeYReel = Edition.rognageY * pbCarteArriere.Image.Height / 354;
 
-            var rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
+            var rectangle = new Rectangle(rognageXReel, rogangeYReel, rogagneLargeurReel, rogagneHauteurReel);
 
             // -- On stock l'image original dans un bitmap --
-            var OriginalImage = new Bitmap(Image.FromFile(pathEdt));
+            var imageOriginel = new Bitmap(Image.FromFile(cheminEdt));
 
             // -- Bitmap pour l'image rognée --
-            var _img = new Bitmap(cropWidthReal, cropHeightReal);
+            var image = new Bitmap(rogagneLargeurReel, rogagneHauteurReel);
 
             // -- Création d'un graphique depuis l'image rognée
-            var g = Graphics.FromImage(_img);
+            var graphique = Graphics.FromImage(image);
 
             // -- Attributs de l'image --
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            g.CompositingQuality = CompositingQuality.HighQuality;
+            graphique.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphique.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            graphique.CompositingQuality = CompositingQuality.HighQuality;
 
             // -- On dessine l'image original, avec les dimensions rognées dans le graphique 
-            g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
+            graphique.DrawImage(imageOriginel, 0, 0, rectangle, GraphicsUnit.Pixel);
 
             // -- Affichage dans la picturebox
-            pbCarteArriere.Image = _img;
+            pbCarteArriere.Image = image;
             pbCarteArriere.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCarteArriere.Width = 540;
             pbCarteArriere.Height = 354;
@@ -84,9 +84,9 @@ namespace CarteAcces
             foreach (var eleve in listeEleve)
                 try
                 {
-                    var folder = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
-                    pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve) + ".jpg");
-                    Chemin.pathEdt = folder + Eleve.creeCleeEleve(eleve) + ".jpg";
+                    var dossier = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
+                    pbCarteArriere.Image = Image.FromFile(dossier + Eleve.creeCleeEleve(eleve) + ".jpg");
+                    Chemin.pathEdt = dossier + Eleve.creeCleeEleve(eleve) + ".jpg";
                     break;
                 }
                 catch
