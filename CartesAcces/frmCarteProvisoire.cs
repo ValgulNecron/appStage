@@ -19,45 +19,38 @@ namespace CartesAcces
             ControlSize.SetSizeTextControl(this);
         }
 
-        private void txtNom_TextChanged(object sender, EventArgs e)
+        private void changementTexte(object sender, EventArgs e)
         {
-            string stringNom = txtNom.Text;
-            
-            Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.reprendNom(stringNom, pbCarteFace, cbbSection);
-            Edition.reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
-
-            if (stringNom.Length < 15)
-            {
-                var font = new Font("times new roman", 28, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, stringNom, pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-            }
-            else
-            {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, stringNom, pbCarteArriere, cbbSection);
-                pbCarteFace.Refresh();
-            }
-        }
-
-        private void txtPrenom_TextChanged(object sender, EventArgs e)
-        {
-            string stringPrenom = txtPrenom.Text;
+            string nom = txtPrenom.Text;
+            string prenom = txtNom.Text;
+                
             Edition.fondCarteSection(pbCarteFace, cbbSection);
             Edition.reprendNom(txtNom.Text, pbCarteFace, cbbSection);
-            Edition.reprendPrenom(stringPrenom, pbCarteFace, cbbSection);
+            Edition.reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
 
-            if (stringPrenom.Length < 15)
+            if (nom.Length < 15)
             {
                 var font = new Font("times new roman", 28, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, stringPrenom, pbCarteFace, cbbSection);
+                Edition.dessineTextCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
                 var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 350, 1075, stringPrenom, pbCarteFace, cbbSection);
+                Edition.dessineTextCarteFace(font, 250, 960, nom, pbCarteArriere, cbbSection);
+                pbCarteFace.Refresh();
+            }
+
+            if (prenom.Length < 15)
+            {
+                var font = new Font("times new roman", 28, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 250, 1020, prenom, pbCarteFace, cbbSection);
+                pbCarteFace.Refresh();
+            }
+            else
+            {
+                var font = new Font("times new roman", 25, FontStyle.Bold);
+                Edition.dessineTextCarteFace(font, 250, 1020, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
         }
@@ -353,7 +346,8 @@ namespace CartesAcces
 
         private void frmCarteIndividuelle_Load(object sender, EventArgs e)
         {
-            var time = new Timer(this);
+            txtNom.TextChanged += changementTexte;
+            txtPrenom.TextChanged += changementTexte;
         }
     }
 }
