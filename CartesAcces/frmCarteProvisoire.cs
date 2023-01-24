@@ -21,8 +21,8 @@ namespace CartesAcces
 
         private void changementTexte(object sender, EventArgs e)
         {
-            string nom = txtPrenom.Text;
-            string prenom = txtNom.Text;
+            string prenom = txtPrenom.Text;
+            string nom = txtNom.Text;
                 
             Edition.fondCarteSection(pbCarteFace, cbbSection);
 
@@ -35,20 +35,20 @@ namespace CartesAcces
             else
             {
                 var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 960, nom, pbCarteArriere, cbbSection);
+                Edition.dessineTextCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
 
             if (prenom.Length < 15)
             {
                 var font = new Font("times new roman", 28, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 1020, prenom, pbCarteFace, cbbSection);
+                Edition.dessineTextCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
                 var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTextCarteFace(font, 250, 1020, prenom, pbCarteFace, cbbSection);
+                Edition.dessineTextCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
         }
@@ -342,7 +342,7 @@ namespace CartesAcces
             throw new NotImplementedException();
         }
 
-        private void frmCarteIndividuelle_Load(object sender, EventArgs e)
+        private void frmCarteProvisoire_Load(object sender, EventArgs e)
         {
             txtNom.TextChanged += changementTexte;
             txtPrenom.TextChanged += changementTexte;
