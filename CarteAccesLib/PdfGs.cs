@@ -150,6 +150,8 @@ namespace CartesAcces
                 var newName = name[indexInt - 1].Trim();
                 File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName, newName));
             }
+
+            valeurParDefault();
         }
 
         public static string getDateFile()
@@ -159,6 +161,11 @@ namespace CartesAcces
             if (dir.Exists) dateFile = dir.CreationTime.ToString();
 
             return dateFile;
+        }
+
+        private static void valeurParDefault()
+        {
+            outputPath = "./data/image";
         }
     }
 }

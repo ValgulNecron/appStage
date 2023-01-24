@@ -350,8 +350,12 @@ namespace CartesAcces
 
             try
             {
-                Directory.Delete(cheminDestination);
-                
+                if (Directory.Exists(cheminDestination))
+                {
+                    foreach (var file in Directory.GetFiles(cheminDestination)) File.Delete(file);
+                    Directory.Delete(cheminDestination);
+                }
+
                 Directory.CreateDirectory(cheminDestination);
 
                 var directory = new DirectoryInfo(cheminSource);
@@ -365,6 +369,18 @@ namespace CartesAcces
                 }
 
                 MessageBox.Show("Import réussie !");
+
+                Globale._actuelle.Invoke(new MethodInvoker(delegate {
+                    foreach (Control controle in Globale._actuelle.Controls)
+                    {
+                        if (controle is Label && controle.Name == "lblDateListeEleve")
+                        {
+                            controle.Text = ReadCSV.getDateFile();
+                        }
+                    }
+
+
+                }));
             }
             catch (Exception e)
             {
