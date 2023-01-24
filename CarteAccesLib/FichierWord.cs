@@ -75,7 +75,7 @@ namespace CarteAccesLib
             var k = 0;
             var pages = 0;
             Eleve.possedeEdt(listeEleve);
-            var wordFile = WordFile.initWordFile(15, 15, 15, 15);
+            var fichierWord = WordFile.initWordFile(15, 15, 15, 15);
 
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
@@ -87,10 +87,10 @@ namespace CarteAccesLib
                 Edition.carteFace(listeEleve[compt - 1], chemin);
 
                 // -- Ajout des deux fichier PNG au nouveau document Word --
-                var shapeCarteFace1 = wordFile.ActiveDocument.Shapes.AddPicture(
+                var shapeCarteFace1 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png",
                     Type.Missing, Type.Missing, Type.Missing);
-                var shapeCarteFace2 = wordFile.ActiveDocument.Shapes.AddPicture(
+                var shapeCarteFace2 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png",
                     Type.Missing, Type.Missing, Type.Missing);
                 WordFile.rectifPositionImages(shapeCarteFace1, shapeCarteFace2);
@@ -101,8 +101,8 @@ namespace CarteAccesLib
                 //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
                 GC.Collect();
                 // -- Nouvelle page --
-                wordFile.Selection.EndKey();
-                wordFile.Selection.InsertNewPage();
+                fichierWord.Selection.EndKey();
+                fichierWord.Selection.InsertNewPage();
 
                 // ------------------------------------------------------------------
 
@@ -116,10 +116,10 @@ namespace CarteAccesLib
                 Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
                 // -- Ajout des deux fichier PNG au nouveau document Word --
-                var shapeCarteArriere1 = wordFile.ActiveDocument.Shapes.AddPicture(
+                var shapeCarteArriere1 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "/" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png", Type.Missing,
                     Type.Missing, Type.Missing);
-                var shapeCarteArriere2 = wordFile.ActiveDocument.Shapes.AddPicture(
+                var shapeCarteArriere2 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "/" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png",
                     Type.Missing, Type.Missing, Type.Missing);
 
@@ -135,35 +135,35 @@ namespace CarteAccesLib
 
                 // -- Nouvelle page --
 
-                wordFile.Selection.EndKey();
-                wordFile.Selection.InsertNewPage();
+                fichierWord.Selection.EndKey();
+                fichierWord.Selection.InsertNewPage();
 
                 if (compt > k + 50)
                 {
                     var name = chemin + " page " + k / 50;
-                    WordFile.limite50Pages(wordFile, name);
+                    WordFile.limite50Pages(fichierWord, name);
                     k += 50;
                     pages++;
                 }
             }
 
             if (k / 50 == 1)
-                wordFile.ActiveDocument.SaveAs(chemin + "/Imprimer.doc", Type.Missing, Type.Missing, Type.Missing,
+                fichierWord.ActiveDocument.SaveAs(chemin + "/Imprimer.doc", Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             else
-                wordFile.ActiveDocument.SaveAs(chemin + "/Imprimer Part " + pages + ".doc", Type.Missing, Type.Missing,
+                fichierWord.ActiveDocument.SaveAs(chemin + "/Imprimer Part " + pages + ".doc", Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
             // -- Ferme le document --
-            wordFile.ActiveDocument.Close();
+            fichierWord.ActiveDocument.Close();
 
             // -- Quitte l'application -- 
-            wordFile.Quit();
+            fichierWord.Quit();
 
             // -- TaskKill --
-            Marshal.FinalReleaseComObject(wordFile);
+            Marshal.FinalReleaseComObject(fichierWord);
 
             //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
             GC.Collect();
