@@ -42,7 +42,7 @@ namespace CartesAcces
         }
 
         // -- Permet a l'utilisateur de donner le chemin du dossier de photo a importer
-        public static string setPathImportFolder()
+        public static string setCheminImportationDossier()
         {
             var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK) return diag.SelectedPath;

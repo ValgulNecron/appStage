@@ -146,7 +146,7 @@ namespace CartesAcces
                 Globale._listeEleveImpr.Add(eleve);
             }
 
-            var cheminImpressionFinal = Chemin.setPathImportFolder();
+            var cheminImpressionFinal = Chemin.setCheminImportationDossier();
             WordFile.saveCardAsWord(cheminImpressionFinal, "test", Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
         }
 
