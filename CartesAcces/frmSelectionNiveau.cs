@@ -10,7 +10,6 @@ namespace CartesAcces
             InitializeComponent();
         }
 
-
         private void btnValider_Click(object sender, EventArgs e)
         {
             if (rdb3eme.Checked)
