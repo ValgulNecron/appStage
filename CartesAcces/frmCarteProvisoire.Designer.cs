@@ -428,6 +428,7 @@ namespace CartesAcces
             this.MinimumSize = new System.Drawing.Size(1125, 726);
             this.Name = "frmCarteProvisoire";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmCarteProvisoire_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarteFace)).EndInit();
