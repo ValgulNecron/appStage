@@ -22,7 +22,13 @@ TO DO :
 - rognage edt classique
 - liste élève à redéplacer ? Est elle nécéssaire en vrai ?
 - Liste d'élèves perso pour l'impression à faire
-- Rognage dans tout les sens
+-----------------------
+- Rognage dans tout les sens, direction
+- Annulation d'une liste à impriver => message d'erreur
+- Liste personnalisée (indisponible)
+- bouton valider carte multiple
+- barre de chargement qui tourne avant que la méthode se lance lors de la liste à imprimer (pendant le rognage à faire pour l'ensemble des élèves)
+- design sombre/clair
 
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David)
