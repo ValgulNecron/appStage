@@ -89,11 +89,11 @@
     <Compile Include="frmAccueil.Designer.cs">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCarteIndividuelle.cs">
+    <Compile Include="frmCarteProvisoire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCarteIndividuelle.Designer.cs">
-      <DependentUpon>frmCarteIndividuelle.cs</DependentUpon>
+    <Compile Include="frmCarteProvisoire.Designer.cs">
+      <DependentUpon>frmCarteProvisoire.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMultiplesCartesEdition.cs">
       <SubType>Form</SubType>
@@ -130,8 +130,8 @@
     <EmbeddedResource Include="frmAccueil.resx">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCarteIndividuelle.resx">
-      <DependentUpon>frmCarteIndividuelle.cs</DependentUpon>
+    <EmbeddedResource Include="frmCarteProvisoire.resx">
+      <DependentUpon>frmCarteProvisoire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmChangeMotDePasse.resx">
       <DependentUpon>frmChangeMotDePasse.cs</DependentUpon>
