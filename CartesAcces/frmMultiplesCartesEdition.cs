@@ -91,7 +91,7 @@ namespace CartesAcces
             Edition.selectionClick = false;
 
             // -- On remet les paramètres et l'image de base --
-            Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
+            Edition.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
 
@@ -140,14 +140,14 @@ namespace CartesAcces
         private void btnValiderImpr_Click(object sender, EventArgs e)
         {
             // -- Si la liste est impaire, on double le dernier élève
-            if (Globale.listeEleveImpr.Count % 2 == 1)
+            if (Globale._listeEleveImpr.Count % 2 == 1)
             {
-                var eleve = Globale.listeEleveImpr[Globale.listeEleveImpr.Count - 1];
-                Globale.listeEleveImpr.Add(eleve);
+                var eleve = Globale._listeEleveImpr[Globale._listeEleveImpr.Count - 1];
+                Globale._listeEleveImpr.Add(eleve);
             }
 
             var cheminImpressionFinal = Chemin.setPathImportFolder();
-            WordFile.saveCardAsWord(cheminImpressionFinal, "test", Globale.listeEleveImpr, pbPhoto, pbCarteArriere);
+            WordFile.saveCardAsWord(cheminImpressionFinal, "test", Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -160,7 +160,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-            Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
+            Edition.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
     }

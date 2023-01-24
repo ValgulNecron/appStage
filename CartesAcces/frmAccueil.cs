@@ -44,7 +44,7 @@ namespace CartesAcces
             Globale.actuelle = new frmImportation();
             OpenChildForm(Globale.actuelle);
             Globale._cas = 1;
-            var frmWait = new progressBarForm();
+            var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;
             frmWait.Location = new Point(800, 300);
             frmWait.Show();

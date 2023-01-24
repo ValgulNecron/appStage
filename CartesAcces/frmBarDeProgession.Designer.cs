@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class progressBarForm
+    partial class barDeProgression
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace CartesAcces
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(progressBarForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(barDeProgression));
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -57,7 +57,7 @@ namespace CartesAcces
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // progressBarForm
+            // barDeProgression
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -65,7 +65,7 @@ namespace CartesAcces
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "progressBarForm";
+            this.Name = "barDeProgression";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chargement";
             this.Load += new System.EventHandler(this.progressBarForm_Load);

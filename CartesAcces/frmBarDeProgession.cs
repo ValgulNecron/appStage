@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class progressBarForm : Form
+    public partial class barDeProgression : Form
     {
-        public progressBarForm()
+        public barDeProgression()
         {
             InitializeComponent();
             ControlSize.SetSizeTextControl(this);
@@ -51,16 +51,12 @@ namespace CartesAcces
         {
             //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
             //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
-            Globale.currentProgress = 1;
-            Globale.totalSteps = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
 
             ReadCSV.setLesEleves(Chemin.pathListeEleve);
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-            Globale.currentProgress = 2;
 
             Eleve.setLesClasses();
-            Globale.currentProgress = 3;
             // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
             Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
             Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
@@ -68,9 +64,7 @@ namespace CartesAcces
     
         private void cas_2()
         {
-          
-
-            Edition.importEleves(Globale._textPath);
+            Edition.importEleves(Globale._cheminTexte);
     
         }
 
@@ -82,7 +76,7 @@ namespace CartesAcces
 
         private void cas_4()
         {
-            Edition.importPhoto(Globale._pathPhoto);
+            Edition.importPhoto(Globale._cheminPhoto);
         }
     }
 }

@@ -108,11 +108,11 @@
       <DependentUpon>frmSelectionSection.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="progressBarForm.cs">
+    <Compile Include="frmBarDeProgession.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="progressBarForm.Designer.cs">
-      <DependentUpon>progressBarForm.cs</DependentUpon>
+    <Compile Include="frmBarDeProgession.Designer.cs">
+      <DependentUpon>frmBarDeProgession.cs</DependentUpon>
     </Compile>
     <Compile Include="progressBarForm2.cs">
       <SubType>Form</SubType>
@@ -148,8 +148,8 @@
     <EmbeddedResource Include="frmSelectionSection.resx">
       <DependentUpon>frmSelectionSection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="progressBarForm.resx">
-      <DependentUpon>progressBarForm.cs</DependentUpon>
+    <EmbeddedResource Include="frmBarDeProgession.resx">
+      <DependentUpon>frmBarDeProgession.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="progressBarForm2.resx">
       <DependentUpon>progressBarForm2.cs</DependentUpon>
