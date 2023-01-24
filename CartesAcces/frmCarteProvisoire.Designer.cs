@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmCarteIndividuelle
+    partial class frmCarteProvisoire
     {
         /// <summary>
         /// Required designer variable.
@@ -414,7 +414,7 @@ namespace CartesAcces
             this.pnlEdtPhoto.Size = new System.Drawing.Size(540, 356);
             this.pnlEdtPhoto.TabIndex = 11;
             // 
-            // frmCarteIndividuelle
+            // frmCarteProvisoire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -428,7 +428,7 @@ namespace CartesAcces
             this.Controls.Add(this.pbCarteFace);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimumSize = new System.Drawing.Size(1125, 726);
-            this.Name = "frmCarteIndividuelle";
+            this.Name = "frmCarteProvisoire";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

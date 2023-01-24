@@ -57,13 +57,13 @@ namespace CartesAcces
 
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmCarteIndividuelle();
+            Globale.actuelle = new frmCarteProvisoire();
             OpenChildForm(Globale.actuelle);
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmMultiplesCartes();
+            Globale.actuelle = new frmCarteParClasseNiveau();
             OpenChildForm(Globale.actuelle);
         }
 

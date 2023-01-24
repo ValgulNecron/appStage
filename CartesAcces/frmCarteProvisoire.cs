@@ -9,9 +9,9 @@ using Application = Microsoft.Office.Interop.Word.Application;
 
 namespace CartesAcces
 {
-    public partial class frmCarteIndividuelle : Form
+    public partial class frmCarteProvisoire : Form
     {
-        public frmCarteIndividuelle() // -- Main, constructeur de l'application --
+        public frmCarteProvisoire() // -- Main, constructeur de l'application --
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
