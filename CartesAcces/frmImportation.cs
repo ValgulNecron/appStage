@@ -25,11 +25,11 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-            Globale._textPath = Chemin.setPathImportFileEXCEL();
-            if (Globale._textPath.Length > 0)
+            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
+            if (Globale._cheminTexte.Length > 0)
             {
                 Globale._cas = 2;
-                var frmWait = new progressBarForm();
+                var frmWait = new barDeProgression();
                 frmWait.StartPosition = FormStartPosition.Manual;
                 frmWait.Location = new Point(0, 0);
                 frmWait.Show();
@@ -38,36 +38,33 @@ namespace CartesAcces
             }
         }   
 
-        private void btnValiderEleve_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            var frmSelectSection = new frmSelectSection();
+            var frmSelectSection = new frmSelectNiveau();
             frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
             frmSelectSection.Show();
-            Globale._cheminPdf = Chemin.setPathImportFilePDF();
+            Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
             Globale._cas = 3;
-            var frmWait = new progressBarForm();
+            var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;
             frmWait.Location = new Point(0, 0);
             frmWait.Show();
             frmWait.TopMost = true;
+            lblEdtEleve.Text = Settings.Default.DateImport;
         }
 
 
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            Globale._pathPhoto = Chemin.setPathImportFolder();
+            Globale._cheminPhoto = Chemin.setPathImportFolder();
             Globale._cas = 4;
-            var frmWait = new progressBarForm();
+            var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;
             frmWait.Location = new Point(0, 0);
             frmWait.Show();
             frmWait.TopMost = true;
+            lblPhotoEleve.Text = Settings.Default.DateImport;
 
         }
 
@@ -75,5 +72,7 @@ namespace CartesAcces
         {
             var time = new Timer(this);
         }
+
+
     }
 }

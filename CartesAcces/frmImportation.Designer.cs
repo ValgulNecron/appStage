@@ -86,6 +86,7 @@ namespace CartesAcces
             this.lblDateListeEleve.Size = new System.Drawing.Size(199, 23);
             this.lblDateListeEleve.TabIndex = 26;
             this.lblDateListeEleve.Text = "Aucune Importation";
+          
             // 
             // label2
             // 

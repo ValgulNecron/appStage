@@ -39,18 +39,18 @@ namespace CartesAcces
             btnReset.Enabled = true;
             DataGridParametres.Enabled = true;
             DataGridResultats.Enabled = true;
-            DataGridParametres.DataSource = Globale.listeEleve;
+            DataGridParametres.DataSource = Globale._listeEleve;
         }
 
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Globale.listeEleveImpr.Clear();
+            Globale._listeEleveImpr.Clear();
             var listeEleveParClasse = new List<string>();
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
                 if (eleve.ClasseEleve == cbbImprClasse.Text)
                 {
                     listeEleveParClasse.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
-                    Globale.listeEleveImpr.Add(eleve);
+                    Globale._listeEleveImpr.Add(eleve);
                 }
 
             listeEleveParClasse.Sort();
@@ -64,13 +64,13 @@ namespace CartesAcces
 
         private void cbbImprSection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Globale.listeEleveImpr.Clear();
+            Globale._listeEleveImpr.Clear();
             var listeEleveParSection = new List<string>();
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
                 if (eleve.ClasseEleve.Substring(0, 1) == cbbImprSection.Text.Substring(0, 1))
                 {
                     listeEleveParSection.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
-                    Globale.listeEleveImpr.Add(eleve);
+                    Globale._listeEleveImpr.Add(eleve);
                 }
             listeEleveParSection.Sort();
             lblCount.Text = listeEleveParSection.Count.ToString();
@@ -115,10 +115,10 @@ namespace CartesAcces
         {
             var lesClasses = new List<string>();
 
-            lesClasses.AddRange(Globale.classes3eme);
-            lesClasses.AddRange(Globale.classes4eme);
-            lesClasses.AddRange(Globale.classes5eme);
-            lesClasses.AddRange(Globale.classes6eme);
+            lesClasses.AddRange(Globale._classes3eme);
+            lesClasses.AddRange(Globale._classes4eme);
+            lesClasses.AddRange(Globale._classes5eme);
+            lesClasses.AddRange(Globale._classes6eme);
 
             cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;

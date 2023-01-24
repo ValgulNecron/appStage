@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace CartesAcces
 {
-    partial class frmSelectSection
+    partial class frmSelectNiveau
     {
         /// <summary>
         /// Required designer variable.
@@ -112,7 +112,7 @@ namespace CartesAcces
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
-            // frmSelectSection
+            // frmSelectNiveau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,8 +120,8 @@ namespace CartesAcces
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.gpbSelectSection);
             this.Controls.Add(this.label1);
-            this.Name = "frmSelectSection";
-            this.Text = "frmSelectSection";
+            this.Name = "frmSelectNiveau";
+            this.Text = "frmSelectNiveau";
             this.gpbSelectSection.ResumeLayout(false);
             this.ResumeLayout(false);
         }
