@@ -38,11 +38,6 @@ namespace CartesAcces
             }
         }   
 
-        private void btnValiderEleve_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
             var frmSelectSection = new frmSelectSection();
@@ -55,6 +50,7 @@ namespace CartesAcces
             frmWait.Location = new Point(0, 0);
             frmWait.Show();
             frmWait.TopMost = true;
+            lblEdtEleve.Text = Settings.Default.DateImport;
         }
 
 
@@ -68,6 +64,7 @@ namespace CartesAcces
             frmWait.Location = new Point(0, 0);
             frmWait.Show();
             frmWait.TopMost = true;
+            lblPhotoEleve.Text = Settings.Default.DateImport;
 
         }
 
@@ -75,5 +72,7 @@ namespace CartesAcces
         {
             var time = new Timer(this);
         }
+
+
     }
 }

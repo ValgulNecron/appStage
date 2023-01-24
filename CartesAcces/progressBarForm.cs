@@ -49,29 +49,14 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            //Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = false; }));
-            //Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = false; }));
-            Globale.currentProgress = 1;
-            Globale.totalSteps = 3;
-            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-
             ReadCSV.setLesEleves(Chemin.pathListeEleve);
-            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-            Globale.currentProgress = 2;
-
             Eleve.setLesClasses();
-            Globale.currentProgress = 3;
-            // backgroundWorker1.ReportProgress((int)((float)Globale.currentProgress / Globale.totalSteps * 100));
-            Globale.accueil.Invoke(new MethodInvoker(delegate { Globale.accueil.Enabled = true; }));
-            Globale.actuelle.Invoke(new MethodInvoker(delegate { Globale.actuelle.Enabled = true; }));
         }
     
         private void cas_2()
         {
-          
-
             Edition.importEleves(Globale._textPath);
-    
+            // Globale.lblEdtEleve.Text = Settings.Default.DateImport;
         }
 
         private void cas_3()
