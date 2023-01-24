@@ -12,7 +12,6 @@ namespace CartesAcces
 {
     public partial class frmCarteProvisoire : Form
     {
-        public static Rectangle rect;
         public frmCarteProvisoire() // -- Main, constructeur de l'application --
         {
             InitializeComponent();
@@ -157,26 +156,19 @@ namespace CartesAcces
                 if (pbCarteArriere.Image == null)
                     return;
 
-                // -- Glissement à la fin du premier clic gareuche --
+                // -- Glissement à la fin du premier clic gauche --
                 if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les dimensions a la fin du déplacement de la souris
-                    Point mouseUpPoint = e.Location;
-                    Edition.rognageHauteur = mouseUpPoint.Y;
-                    Edition.rognageLargeur = mouseUpPoint.X;
-                    rect = new Rectangle(
-                        Math.Min(Edition.rognageX, Edition.rognageLargeur),
-                        Math.Min(Edition.rognageY, Edition.rognageHauteur),
-                        Math.Abs(Edition.rognageX - Edition.rognageLargeur),
-                        Math.Abs(Edition.rognageY  - Edition.rognageHauteur));
-                    this.Invalidate();
+                    pbCarteArriere.Refresh();
+                    Edition.rognageLargeur = e.X - Edition.rognageX;
+                    Edition.rognageHauteur = e.Y - Edition.rognageY;
+                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,Math.Min(Edition.rognageX, Edition.rognageLargeur),
+                        Math.Min(Edition.rognageY , Edition.rognageHauteur),
+                        Math.Abs(Edition.rognageLargeur  - Edition.rognageX),
+                        Math.Abs(Edition.rognageHauteur - Edition.rognageY ));
                 }
             }
-        }
-
-        private void pentureReset(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawRectangle(Pens.Black, rect);
         }
 
         // #### Ajout & Edition de la photo ####
@@ -356,7 +348,6 @@ namespace CartesAcces
         {
             txtNom.TextChanged += changementTexte;
             txtPrenom.TextChanged += changementTexte;
-            this.Paint += new PaintEventHandler(pentureReset);
         }
     }
 }
