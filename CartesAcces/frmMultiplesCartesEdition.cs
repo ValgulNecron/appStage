@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using CarteAcces;
+using CarteAccesLib;
 
 namespace CartesAcces
 {
@@ -76,7 +78,7 @@ namespace CartesAcces
             Cursor = Cursors.Default;
             var pathEdt = Chemin.pathEdt;
             Edition.selectionClick = false;
-            Edition.cropEdt(pbCarteArriere, pathEdt);
+            Edt.cropEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
         }
 
@@ -145,7 +147,7 @@ namespace CartesAcces
             }
 
             var cheminImpressionFinal = Chemin.setPathImportFolder();
-            Edition.saveCardAsWord(cheminImpressionFinal, "test", Globale.listeEleveImpr, pbPhoto, pbCarteArriere);
+            WordFile.saveCardAsWord(cheminImpressionFinal, "test", Globale.listeEleveImpr, pbPhoto, pbCarteArriere);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

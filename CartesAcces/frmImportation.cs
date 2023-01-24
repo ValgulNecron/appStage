@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using CarteAcces;
 using CartesAcces.Properties;
 
 namespace CartesAcces
@@ -17,7 +18,7 @@ namespace CartesAcces
             ControlSize.SetSizeTextControl(this);
             lblDateListeEleve.Text = ReadCSV.getDateFile();
             lblEdtEleve.Text = PdfGs.getDateFile();
-            lblPhotoEleve.Text = Edition.getDatePhotos();
+            lblPhotoEleve.Text = Photo.getDatePhotos();
         }
 
         // ### Controls ###

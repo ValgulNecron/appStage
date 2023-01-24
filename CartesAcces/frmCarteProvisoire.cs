@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CarteAcces;
 using Application = Microsoft.Office.Interop.Word.Application;
 
 namespace CartesAcces
@@ -61,7 +62,7 @@ namespace CartesAcces
         private void btnReset_Click(object sender, EventArgs e)
         {
             Edition.fondCarteSection(pbCarteFace, cbbSection);
-            Edition.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+            Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
             txtPrenom.Text = "";
             txtNom.Text = "";
             groupBox2.Enabled = true;
@@ -86,7 +87,7 @@ namespace CartesAcces
 
         private void cbbClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Edition.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+            Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
             btnSelect.Enabled = true;
         }
 
@@ -111,7 +112,7 @@ namespace CartesAcces
             var classe = cbbClasse.Text;
             var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
             Edition.selectionClick = false;
-            Edition.cropEdt(pbCarteArriere, pathEdt);
+            Edt.cropEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
         }
 
@@ -126,7 +127,7 @@ namespace CartesAcces
             // -- On remet les paramètres et l'image de base --
             pbCarteArriere.Width = 540;
             pbCarteArriere.Height = 354;
-            Edition.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+            Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
             pbCarteArriere.Refresh();
             btnCrop.Enabled = false;
             btnCancel.Enabled = false;
@@ -338,7 +339,7 @@ namespace CartesAcces
 
         private void btnEdtPerso_Click(object sender, EventArgs e)
         {
-            Edition.ajouterEdtPerso(pbCarteArriere);
+            Edt.ajouterEdtPerso(pbCarteArriere);
             groupBox2.Enabled = false;
         }
 
