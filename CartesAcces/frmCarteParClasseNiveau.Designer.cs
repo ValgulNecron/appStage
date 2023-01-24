@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmMultiplesCartes
+    partial class frmCarteParClasseNiveau
     {
         /// <summary>
         /// Required designer variable.
@@ -235,7 +235,7 @@ namespace CartesAcces
             this.lblCount.TabIndex = 27;
             this.lblCount.Text = "None";
             // 
-            // frmMultiplesCartes
+            // frmCarteParClasseNiveau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -256,7 +256,7 @@ namespace CartesAcces
             this.Controls.Add(this.cbbImprClasse);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "frmMultiplesCartes";
+            this.Name = "frmCarteParClasseNiveau";
             this.Text = "frmCreationCarteParClasse";
             this.Load += new System.EventHandler(this.frmMultiplesCartes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridResultats)).EndInit();

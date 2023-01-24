@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCartesParListe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCartesParListe.Designer.cs">
+      <DependentUpon>frmCartesParListe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmChangeMotDePasse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,17 +77,11 @@
     <Compile Include="frmImportPhotoUnique.Designer.cs">
       <DependentUpon>frmImportPhotoUnique.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCarteParListe.cs">
+    <Compile Include="frmCarteParClasseNiveau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCarteParListe.Designer.cs">
-      <DependentUpon>frmCarteParListe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMultiplesCartes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMultiplesCartes.Designer.cs">
-      <DependentUpon>frmMultiplesCartes.cs</DependentUpon>
+    <Compile Include="frmCarteParClasseNiveau.Designer.cs">
+      <DependentUpon>frmCarteParClasseNiveau.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAccueil.cs">
       <SubType>Form</SubType>
@@ -89,11 +89,11 @@
     <Compile Include="frmAccueil.Designer.cs">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCarteIndividuelle.cs">
+    <Compile Include="frmCarteProvisoire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCarteIndividuelle.Designer.cs">
-      <DependentUpon>frmCarteIndividuelle.cs</DependentUpon>
+    <Compile Include="frmCarteProvisoire.Designer.cs">
+      <DependentUpon>frmCarteProvisoire.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMultiplesCartesEdition.cs">
       <SubType>Form</SubType>
@@ -130,8 +130,11 @@
     <EmbeddedResource Include="frmAccueil.resx">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCarteIndividuelle.resx">
-      <DependentUpon>frmCarteIndividuelle.cs</DependentUpon>
+    <EmbeddedResource Include="frmCarteProvisoire.resx">
+      <DependentUpon>frmCarteProvisoire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCartesParListe.resx">
+      <DependentUpon>frmCartesParListe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmChangeMotDePasse.resx">
       <DependentUpon>frmChangeMotDePasse.cs</DependentUpon>
@@ -142,11 +145,8 @@
     <EmbeddedResource Include="frmImportPhotoUnique.resx">
       <DependentUpon>frmImportPhotoUnique.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCarteParListe.resx">
-      <DependentUpon>frmCarteParListe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMultiplesCartes.resx">
-      <DependentUpon>frmMultiplesCartes.cs</DependentUpon>
+    <EmbeddedResource Include="frmCarteParClasseNiveau.resx">
+      <DependentUpon>frmCarteParClasseNiveau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMultiplesCartesEdition.resx">
       <DependentUpon>frmMultiplesCartesEdition.cs</DependentUpon>
