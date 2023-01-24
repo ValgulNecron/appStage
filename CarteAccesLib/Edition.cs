@@ -350,6 +350,8 @@ namespace CartesAcces
 
             try
             {
+                Directory.Delete(destinationPath);
+                
                 Directory.CreateDirectory(destinationPath);
 
                 var directory = new DirectoryInfo(sourcePath);
