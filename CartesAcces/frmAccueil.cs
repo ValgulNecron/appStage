@@ -63,7 +63,7 @@ namespace CartesAcces
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
-            Globale.actuelle = new frmMultiplesCartes();
+            Globale.actuelle = new frmCarteParClasseNiveau();
             OpenChildForm(Globale.actuelle);
         }
 

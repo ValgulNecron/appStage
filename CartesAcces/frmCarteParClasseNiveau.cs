@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class frmMultiplesCartes : Form
+    public partial class frmCarteParClasseNiveau : Form
     {
-        public frmMultiplesCartes()
+        public frmCarteParClasseNiveau()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
