@@ -41,17 +41,17 @@ namespace CarteAcces
         public static void cropEdt(PictureBox pbCarteArriere, string pathEdt)
         {
             // -- Si la largeur a rogner est trop faible, on sort --
-            if (Edition.cropWidth < 1) return;
+            if (Edition.rognageLargeur < 1) return;
 
             /* -- Rectangle pour stocker l'image rognée avec les points calculés --
                 Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
                 qui sont celles des vrai fichier EDT !
                 Cela permet d'éviter les problèmes de résolution d'image après le rognage */
 
-            var cropWidthReal = Edition.cropWidth * pbCarteArriere.Image.Width / 540;
-            var cropHeightReal = Edition.cropHeight * pbCarteArriere.Image.Height / 354;
-            var cropXReal = Edition.cropX * pbCarteArriere.Image.Width / 540;
-            var cropYReal = Edition.cropY * pbCarteArriere.Image.Height / 354;
+            var cropWidthReal = Edition.rognageLargeur * pbCarteArriere.Image.Width / 540;
+            var cropHeightReal = Edition.rogagneHauteur * pbCarteArriere.Image.Height / 354;
+            var cropXReal = Edition.rognageX * pbCarteArriere.Image.Width / 540;
+            var cropYReal = Edition.rognageY * pbCarteArriere.Image.Height / 354;
 
             var rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
 
