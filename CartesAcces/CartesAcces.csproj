@@ -133,6 +133,9 @@
     <EmbeddedResource Include="frmCarteIndividuelle.resx">
       <DependentUpon>frmCarteIndividuelle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCartesParListe.resx">
+      <DependentUpon>frmCartesParListe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmChangeMotDePasse.resx">
       <DependentUpon>frmChangeMotDePasse.cs</DependentUpon>
     </EmbeddedResource>
