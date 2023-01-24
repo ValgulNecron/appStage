@@ -24,7 +24,7 @@ namespace CarteAcces
             var heightSave = pbPhotoUnique.Height;
 
             var cropWidthReal = Edition.rognageLargeur * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
-            var cropHeightReal = Edition.rogagneHauteur * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
+            var cropHeightReal = Edition.rognageHauteur * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
             var cropXReal = Edition.rognageX * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
             var cropYReal = Edition.rognageY * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
 

@@ -45,7 +45,7 @@ namespace CartesAcces
 
         public bool SansEDT { get; set; }
 
-        public static List<string> getEleveSection(string section)
+        public static List<string> getEleveNiveau(string section)
         {
             // l'idée est de récupérer le premier caractère d'une propriété de l'objet, ici on veut le premier caractère de la classe de l'élève, on choisit
             //section "3ème" par exemple, on veut prendre que le caractère "3" puis on le compare au premier caractère de la classe de chaque élève de la liste

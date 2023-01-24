@@ -49,7 +49,7 @@ namespace CarteAcces
                 Cela permet d'éviter les problèmes de résolution d'image après le rognage */
 
             var rogagneLargeurReel = Edition.rognageLargeur * pbCarteArriere.Image.Width / 540;
-            var rogagneHauteurReel = Edition.rogagneHauteur * pbCarteArriere.Image.Height / 354;
+            var rogagneHauteurReel = Edition.rognageHauteur * pbCarteArriere.Image.Height / 354;
             var rognageXReel = Edition.rognageX * pbCarteArriere.Image.Width / 540;
             var rogangeYReel = Edition.rognageY * pbCarteArriere.Image.Height / 354;
 

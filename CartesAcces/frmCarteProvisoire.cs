@@ -162,9 +162,9 @@ namespace CartesAcces
                     // -- On prend les dimensions a la fin du déplacement de la souris
                     pbCarteArriere.Refresh();
                     Edition.rognageLargeur = e.X - Edition.rognageX;
-                    Edition.rogagneHauteur = e.Y - Edition.rognageY;
+                    Edition.rognageHauteur = e.Y - Edition.rognageY;
                     pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen, Edition.rognageX, Edition.rognageY,
-                        Edition.rognageLargeur, Edition.rogagneHauteur);
+                        Edition.rognageLargeur, Edition.rognageHauteur);
                 }
             }
         }

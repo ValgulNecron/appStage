@@ -17,7 +17,7 @@ namespace CartesAcces
         public static int rognageX; // -> Abscisse de départ du rognage
         public static int rognageY; // -> Ordonnée de départ du rognage
         public static int rognageLargeur; // -> Largeur du rognage
-        public static int rogagneHauteur; // -> Hauteur du rognage
+        public static int rognageHauteur; // -> Hauteur du rognage
         public static Pen rognagePen; // -> Stylo qui dessine le rectangle correspondant au rognage
         
         // ** VARIABLES  : Déplacement de la photo
