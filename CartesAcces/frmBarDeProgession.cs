@@ -9,7 +9,7 @@ namespace CartesAcces
         public barDeProgression()
         {
             InitializeComponent();
-            ControlSize.SetSizeTextControl(this);
+            TailleCotrole.setTailleControleTexte(this);
             Couleur.setCouleurFenetre(this);
         }
 

@@ -9,7 +9,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            ControlSize.SetSizeTextControl(this);
+            TailleCotrole.setTailleControleTexte(this);
             VisibleChanged += on_Visibility_Change;
             txtMotDePasse.PasswordChar = '*';
         }

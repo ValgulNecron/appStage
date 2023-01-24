@@ -15,7 +15,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            ControlSize.SetSizeTextControl(this);
+            TailleCotrole.setTailleControleTexte(this);
             lblDateListeEleve.Text = ReadCSV.getDateFile();
             lblEdtEleve.Text = PdfGs.getDateFile();
             lblPhotoEleve.Text = Photo.getDatePhotos();
