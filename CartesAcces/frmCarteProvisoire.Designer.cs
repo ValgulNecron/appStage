@@ -212,7 +212,6 @@ namespace CartesAcces
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(121, 20);
             this.txtPrenom.TabIndex = 3;
-            this.txtPrenom.TextChanged += new System.EventHandler(this.txtPrenom_TextChanged);
             // 
             // txtNom
             // 
@@ -221,7 +220,6 @@ namespace CartesAcces
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(121, 20);
             this.txtNom.TabIndex = 2;
-            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             // 
             // label2
             // 
