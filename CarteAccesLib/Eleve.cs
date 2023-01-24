@@ -53,7 +53,7 @@ namespace CartesAcces
             var LesEleves = new List<string>();
 
             section = section.Substring(0, 1);
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
                 if (eleve.ClasseEleve.Substring(0, 1) == section)
                     LesEleves.Add(eleve.NomEleve);
 
@@ -80,7 +80,7 @@ namespace CartesAcces
         {
             var LesEleves = new List<string>();
 
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
                 if (eleve.ClasseEleve == classe)
                     LesEleves.Add(eleve.NomEleve);
 
@@ -91,24 +91,24 @@ namespace CartesAcces
         // correspond à la selection seront collectés --
         public static void affecterElevesClasses(string uneClasse)
         {
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
                 if (eleve.ClasseEleve == uneClasse)
-                    Globale.listeEleveImpr.Add(eleve);
+                    Globale._listeEleveImpr.Add(eleve);
         }
 
         // -- Idem pour la section -- 
         public static void affecterElevesSections(string uneSection)
         {
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
             {
                 var numSection = eleve.ClasseEleve.Substring(0, 1); //solution?
-                if (numSection == uneSection.Substring(0, 1)) Globale.listeEleveImpr.Add(eleve);
+                if (numSection == uneSection.Substring(0, 1)) Globale._listeEleveImpr.Add(eleve);
             }
         }
 
         public static void setLesClasses()
         {
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
             {
                 var numClasse = eleve.ClasseEleve.Substring(0, 1);
 
@@ -121,7 +121,7 @@ namespace CartesAcces
                 else if (numClasse == "3" && !Globale.classes3eme.Contains(eleve.ClasseEleve))
                     Globale.classes3eme.Add(eleve.ClasseEleve);
                 else
-                    Globale.classesUnknown.Add(eleve.ClasseEleve);
+                    Globale.classesInconnue.Add(eleve.ClasseEleve);
             }
 
             Globale.classes3eme.Sort();

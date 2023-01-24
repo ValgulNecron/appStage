@@ -25,11 +25,11 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-            Globale._textPath = Chemin.setPathImportFileEXCEL();
-            if (Globale._textPath.Length > 0)
+            Globale._cheminTexte = Chemin.setPathImportFileEXCEL();
+            if (Globale._cheminTexte.Length > 0)
             {
                 Globale._cas = 2;
-                var frmWait = new progressBarForm();
+                var frmWait = new barDeProgression();
                 frmWait.StartPosition = FormStartPosition.Manual;
                 frmWait.Location = new Point(0, 0);
                 frmWait.Show();
@@ -45,7 +45,7 @@ namespace CartesAcces
             frmSelectSection.Show();
             Globale._cheminPdf = Chemin.setPathImportFilePDF();
             Globale._cas = 3;
-            var frmWait = new progressBarForm();
+            var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;
             frmWait.Location = new Point(0, 0);
             frmWait.Show();
@@ -57,9 +57,9 @@ namespace CartesAcces
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            Globale._pathPhoto = Chemin.setPathImportFolder();
+            Globale._cheminPhoto = Chemin.setPathImportFolder();
             Globale._cas = 4;
-            var frmWait = new progressBarForm();
+            var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.Manual;
             frmWait.Location = new Point(0, 0);
             frmWait.Show();

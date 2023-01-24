@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class progressBarForm : Form
+    public partial class barDeProgression : Form
     {
-        public progressBarForm()
+        public barDeProgression()
         {
             InitializeComponent();
             ControlSize.SetSizeTextControl(this);
@@ -55,8 +55,8 @@ namespace CartesAcces
     
         private void cas_2()
         {
-            Edition.importEleves(Globale._textPath);
-            // Globale.lblEdtEleve.Text = Settings.Default.DateImport;
+            Edition.importEleves(Globale._cheminTexte);
+    
         }
 
         private void cas_3()
@@ -67,7 +67,7 @@ namespace CartesAcces
 
         private void cas_4()
         {
-            Edition.importPhoto(Globale._pathPhoto);
+            Edition.importPhoto(Globale._cheminPhoto);
         }
     }
 }
