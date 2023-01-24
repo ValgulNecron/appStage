@@ -61,6 +61,7 @@ namespace CartesAcces
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
+            Globale._pathPhoto = Chemin.setPathImportFolder();
             Globale._cas = 4;
             var frmWait = new progressBarForm();
             frmWait.StartPosition = FormStartPosition.Manual;
