@@ -82,7 +82,7 @@ namespace CartesAcces
 
         private void cas_4()
         {
-            Globale.actuelle.Invoke(new MethodInvoker(delegate { Edition.importPhoto(Chemin.setPathImportFolder()); }));
+            Edition.importPhoto(Globale._pathPhoto);
         }
     }
 }
