@@ -101,11 +101,11 @@
     <Compile Include="frmImportation.Designer.cs">
       <DependentUpon>frmImportation.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSelectSection.cs">
+    <Compile Include="frmSelectionSection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSelectSection.Designer.cs">
-      <DependentUpon>frmSelectSection.cs</DependentUpon>
+    <Compile Include="frmSelectionSection.Designer.cs">
+      <DependentUpon>frmSelectionSection.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="progressBarForm.cs">
@@ -145,8 +145,8 @@
     <EmbeddedResource Include="frmImportation.resx">
       <DependentUpon>frmImportation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSelectSection.resx">
-      <DependentUpon>frmSelectSection.cs</DependentUpon>
+    <EmbeddedResource Include="frmSelectionSection.resx">
+      <DependentUpon>frmSelectionSection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="progressBarForm.resx">
       <DependentUpon>progressBarForm.cs</DependentUpon>
