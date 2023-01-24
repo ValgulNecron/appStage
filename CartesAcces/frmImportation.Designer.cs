@@ -32,7 +32,6 @@ namespace CartesAcces
             this.btnImporterEleves = new System.Windows.Forms.Button();
             this.btnImportEDT = new System.Windows.Forms.Button();
             this.btnImportPhoto = new System.Windows.Forms.Button();
-            this.lblDateImport = new System.Windows.Forms.Label();
             this.lblDateListeEleve = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblEdtEleve = new System.Windows.Forms.Label();
@@ -71,14 +70,6 @@ namespace CartesAcces
             this.btnImportPhoto.UseVisualStyleBackColor = true;
             this.btnImportPhoto.Click += new System.EventHandler(this.btnImportPhoto_Click);
             // 
-            // lblDateImport
-            // 
-            this.lblDateImport.AutoSize = true;
-            this.lblDateImport.Location = new System.Drawing.Point(559, 651);
-            this.lblDateImport.Name = "lblDateImport";
-            this.lblDateImport.Size = new System.Drawing.Size(0, 13);
-            this.lblDateImport.TabIndex = 23;
-            // 
             // lblDateListeEleve
             // 
             this.lblDateListeEleve.Location = new System.Drawing.Point(374, 26);
@@ -86,7 +77,6 @@ namespace CartesAcces
             this.lblDateListeEleve.Size = new System.Drawing.Size(199, 23);
             this.lblDateListeEleve.TabIndex = 26;
             this.lblDateListeEleve.Text = "Aucune Importation";
-          
             // 
             // label2
             // 
@@ -143,7 +133,6 @@ namespace CartesAcces
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblDateListeEleve);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblDateImport);
             this.Controls.Add(this.btnImportPhoto);
             this.Controls.Add(this.btnImportEDT);
             this.Controls.Add(this.btnImporterEleves);
@@ -152,7 +141,6 @@ namespace CartesAcces
             this.Load += new System.EventHandler(this.frmParametres_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Label lblDateListeEleve;
@@ -167,6 +155,5 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnImporterEleves;
         private System.Windows.Forms.Button btnImportEDT;
         private System.Windows.Forms.Button btnImportPhoto;
-        private System.Windows.Forms.Label lblDateImport;
     }
 }

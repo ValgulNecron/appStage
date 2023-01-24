@@ -68,6 +68,7 @@ namespace CartesAcces
         private void cas_4()
         {
             Edition.importPhoto(Globale._cheminPhoto);
+
         }
     }
 }
