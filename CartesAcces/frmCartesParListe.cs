@@ -102,5 +102,29 @@ namespace CartesAcces
             {
             }
         }
+
+        public static List<Eleve> convertionListeStringEleveEnEleve(List<String> convertir)
+        {
+            List<Eleve> e = new List<Eleve>();
+            foreach (String ee in convertir)
+            {
+                foreach (Eleve eee in Globale._listeEleve)
+                {
+                    string eeee = eee.NomEleve + " " + eee.PrenomEleve + " " + eee.ClasseEleve;
+                    if (ee == eeee)
+                    {
+                        e.Add(eee);
+                    }
+                }
+            }
+            return e;
+        }
+
+        private void valider(object sender, EventArgs e)
+        {
+            Globale._listeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
+            Form frmMultipleCarteEdi = new frmMultiplesCartesEdition();
+            frmMultipleCarteEdi.Show();
+        }
     }
 }
