@@ -73,7 +73,10 @@ namespace CartesAcces
             try
             {
                 eleveSelectionner.Remove(Impression.SelectedItem.ToString());
-                Eleves.DataSource = nomPrenomEleve;
+                Impression.SelectedItem = null;
+                Eleves.SelectedItem = null;
+                Impression.DataSource = null;
+                Impression.DataSource = eleveSelectionner;
                 Eleves.Refresh();
                 Impression.Refresh();
                 Impression.ClearSelected();
