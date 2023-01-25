@@ -55,8 +55,6 @@ namespace CartesAcces
                 if (verifDoublon(eleve))
                 {
                     eleveSelectionner.Add(eleve);
-                    Impression.SelectedItem = null;
-                    Eleves.SelectedItem = null;
                     Impression.DataSource = null;
                     Impression.DataSource = eleveSelectionner;
                     Impression.Refresh();
@@ -72,8 +70,6 @@ namespace CartesAcces
             try
             {
                 eleveSelectionner.Remove(Impression.SelectedItem.ToString());
-                Impression.SelectedItem = null;
-                Eleves.SelectedItem = null;
                 Impression.DataSource = null;
                 Impression.DataSource = eleveSelectionner;
                 Eleves.Refresh();
