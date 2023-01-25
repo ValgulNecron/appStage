@@ -66,10 +66,16 @@ namespace CartesAcces
 
         private void retirerEleve(object sender, EventArgs e)
         {
-            eleveSelectionner.Remove(Impression.SelectedItem.ToString());
-            Eleves.DataSource = nomPrenomEleve;
-            Eleves.Refresh();
-            Impression.ClearSelected();
+            try
+            {
+                eleveSelectionner.Remove(Impression.SelectedItem.ToString());
+                Eleves.DataSource = nomPrenomEleve;
+                Eleves.Refresh();
+                Impression.ClearSelected();
+            }
+            catch
+            {
+            }
         }
 
         private void recheche(object sender, EventArgs e)
