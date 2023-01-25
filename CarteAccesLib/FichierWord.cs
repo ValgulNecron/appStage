@@ -69,7 +69,7 @@ namespace CarteAccesLib
             applicationWord.ActiveDocument.PageSetup.BottomMargin = 15;
         }
         
-        public static void sauvegardeCarteEnWord(string chemin, string nomFicher, List<Eleve> listeEleve, PictureBox pbPhoto,
+        public static void sauvegardeCarteEnWord(string chemin, List<Eleve> listeEleve, PictureBox pbPhoto,
             PictureBox pbCarteArriere)
         {
             var k = 0;
