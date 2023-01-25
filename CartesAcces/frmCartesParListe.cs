@@ -48,7 +48,7 @@ namespace CartesAcces
             if (verifDoublon(Eleves.SelectedItem.ToString()))
             {
                 eleveSelectionner.Add(Eleves.SelectedItem.ToString());
-                            Impression.DataSource = eleveSelectionner;
+                Impression.DataSource = eleveSelectionner;
             }
         }
 
