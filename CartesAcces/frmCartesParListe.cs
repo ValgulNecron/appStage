@@ -113,7 +113,7 @@ namespace CartesAcces
                 {
                     string eeee = eee.NomEleve + " " + eee.PrenomEleve + " " + eee.ClasseEleve;
                     if (ee == eeee)
-                    {
+                    {   
                         e.Add(eee);
                     }
                 }
