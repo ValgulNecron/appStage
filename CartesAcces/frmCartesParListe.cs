@@ -28,12 +28,36 @@ namespace CartesAcces
             eleveEnString();
             Eleves.DataSource = nomPrenomEleve;
             btnAjout.Click += ajoutEleve;
+            btnRetirer.Click += retirerEleve;
+            
         }
 
+        private bool verifDoublon(string ajout)
+        {
+            foreach (string selectioner in Impression.Items)
+            {
+                if (selectioner == ajout)
+                    return false;
+            }
+            
+            return true;
+        }
+        
         private void ajoutEleve(object sender, EventArgs e)
         {
-            eleveSelectionner.Add(Eleves.SelectedItem.ToString());
-            Impression.DataSource = eleveSelectionner;
+            if (verifDoublon(Eleves.SelectedItem.ToString()))
+            {
+                eleveSelectionner.Add(Eleves.SelectedItem.ToString());
+                            Impression.DataSource = eleveSelectionner;
+            }
+        }
+
+        private void retirerEleve(object sender, EventArgs e)
+        {
+            eleveSelectionner.Remove(Impression.SelectedItem.ToString());
+            Eleves.DataSource = nomPrenomEleve;
+            Eleves.Refresh();
+            Impression.ClearSelected();
         }
     }
 }
