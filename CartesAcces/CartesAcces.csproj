@@ -101,6 +101,12 @@
     <Compile Include="frmImportation.Designer.cs">
       <DependentUpon>frmImportation.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRognageEdtClassique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRognageEdtClassique.Designer.cs">
+      <DependentUpon>frmRognageEdtClassique.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSelectionNiveau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmImportation.resx">
       <DependentUpon>frmImportation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRognageEdtClassique.resx">
+      <DependentUpon>frmRognageEdtClassique.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelectionNiveau.resx">
       <DependentUpon>frmSelectionNiveau.cs</DependentUpon>
