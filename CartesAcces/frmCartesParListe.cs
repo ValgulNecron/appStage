@@ -32,6 +32,7 @@ namespace CartesAcces
                 btnAjout.Click += ajoutEleve;
                 btnRetirer.Click += retirerEleve;
                 txtRecherche.TextChanged += recheche;
+                btnValider.Click += valider;
             }
             catch
             {
