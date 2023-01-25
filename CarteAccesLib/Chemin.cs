@@ -9,6 +9,7 @@ namespace CartesAcces
         public static string cheminListeEleve = "./data/ImportListeEleve/ImportEleve.csv";
         public static string cheminDossierListeEleve = "./data/ImportListeEleve/";
         public static string cheminPhotoEleve = "./data/ElevesPhoto/";
+        public static string cheminEdtClassique = "./data/FichierEdtClasse";
 
         public static string cheminEdt = "";
 

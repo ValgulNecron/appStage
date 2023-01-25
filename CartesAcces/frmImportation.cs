@@ -86,6 +86,7 @@ namespace CartesAcces
         private void btnImportEdtClassique_Click(object sender, EventArgs e)
         {
             Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
+            Edition.importEdtClassique(Globale._cheminEdtClassique);
         }
         
         private void frmParametres_Load(object sender, EventArgs e)
