@@ -56,6 +56,7 @@ namespace CartesAcces
                 {
                     eleveSelectionner.Add(eleve);
                     Impression.DataSource = eleveSelectionner;
+                    Impression.Refresh();
                 }
             }
             catch
