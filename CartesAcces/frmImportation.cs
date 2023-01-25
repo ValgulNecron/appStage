@@ -87,6 +87,9 @@ namespace CartesAcces
         {
             Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
             Edition.importEdtClassique(Globale._cheminEdtClassique);
+            
+            frmRognageEdtClassique frmRognageEdtClassique = new frmRognageEdtClassique();
+            frmRognageEdtClassique.Show();
         }
         
         private void frmParametres_Load(object sender, EventArgs e)
