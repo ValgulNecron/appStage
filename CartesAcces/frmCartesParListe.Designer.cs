@@ -39,7 +39,7 @@ namespace CartesAcces
             this.label1 = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRecherche = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Eleves
@@ -109,19 +109,19 @@ namespace CartesAcces
             this.label3.TabIndex = 7;
             this.label3.Text = "Rechercher : ";
             // 
-            // textBox1
+            // txtRecherche
             // 
-            this.textBox1.Location = new System.Drawing.Point(85, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(220, 20);
-            this.textBox1.TabIndex = 8;
+            this.txtRecherche.Location = new System.Drawing.Point(85, 48);
+            this.txtRecherche.Name = "txtRecherche";
+            this.txtRecherche.Size = new System.Drawing.Size(220, 20);
+            this.txtRecherche.TabIndex = 8;
             // 
             // frmCartesParListe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtRecherche);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.label1);
@@ -145,7 +145,7 @@ namespace CartesAcces
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRecherche;
 
         #endregion
     }
