@@ -63,6 +63,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="FichierWord.cs" />
+    <Compile Include="Trie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
