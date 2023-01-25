@@ -12,6 +12,13 @@ namespace CartesAcces
 
         public static string cheminEdt = "";
 
+        public static string setCheminImportationEdtClassique()
+        {
+            var diag = new FolderBrowserDialog();
+            if (diag.ShowDialog() == DialogResult.OK) return diag.SelectedPath;
+            return "failed";
+        }
+
         // -- Permet a l'utilisateur de donner le chemin du fichier excel a importer --
         public static string setCheminImportationFichierExcel()
         {
