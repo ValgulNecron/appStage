@@ -75,6 +75,7 @@ namespace CartesAcces
                 eleveSelectionner.Remove(Impression.SelectedItem.ToString());
                 Eleves.DataSource = nomPrenomEleve;
                 Eleves.Refresh();
+                Impression.Refresh();
                 Impression.ClearSelected();
             }
             catch
