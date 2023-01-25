@@ -57,6 +57,7 @@ namespace CartesAcces
                     eleveSelectionner.Add(eleve);
                     Impression.DataSource = eleveSelectionner;
                     Impression.Refresh();
+                    MessageBox.Show(eleveSelectionner.Count.ToString());
                 }
             }
             catch
