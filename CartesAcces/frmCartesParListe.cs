@@ -70,7 +70,11 @@ namespace CartesAcces
                 Eleves.DataSource = el;
                 Eleves.Refresh();
             }
-            
+            else
+            {
+                Eleves.DataSource = nomPrenomEleve;
+                Eleves.Refresh();
+            }
         }
     }
 }
