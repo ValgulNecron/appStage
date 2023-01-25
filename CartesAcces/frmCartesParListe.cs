@@ -24,13 +24,21 @@ namespace CartesAcces
 
         private void frmCartesParListe_Load(object sender, EventArgs e)
         {
-            eleveSelectionner = new List<String>();
-            nomPrenomEleve = new List<String>();
-            eleveEnString();
-            Eleves.DataSource = nomPrenomEleve;
-            btnAjout.Click += ajoutEleve;
-            btnRetirer.Click += retirerEleve;
-            txtRecherche.TextChanged += recheche;
+            try
+            {
+                eleveSelectionner = new List<String>();
+                nomPrenomEleve = new List<String>();
+                eleveEnString();
+                Eleves.DataSource = nomPrenomEleve;
+                btnAjout.Click += ajoutEleve;
+                btnRetirer.Click += retirerEleve;
+                txtRecherche.TextChanged += recheche;
+            }
+            catch
+            {
+                
+            }
+            
         }
 
         private bool verifDoublon(string ajout)
@@ -46,12 +54,20 @@ namespace CartesAcces
         
         private void ajoutEleve(object sender, EventArgs e)
         {
-            string eleve = Eleves.SelectedItem.ToString();
-            if (verifDoublon(eleve))
+            try
             {
-                eleveSelectionner.Add(eleve);
-                Impression.DataSource = eleveSelectionner;
+                string eleve = Eleves.SelectedItem.ToString();
+                if (verifDoublon(eleve))
+                {
+                    eleveSelectionner.Add(eleve);
+                    Impression.DataSource = eleveSelectionner;
+                }
             }
+            catch
+            {
+
+            }
+            
         }
 
         private void retirerEleve(object sender, EventArgs e)

@@ -10,10 +10,11 @@ namespace CarteAccesLib
         public static List<String> recherche(string filtre)
         {
             var listeEleveResultat = new List<String>();
-            Regex regex = new Regex(filtre);
+            Regex regex = new Regex(filtre.ToLower());
             foreach (Eleve eleve in Globale._listeEleve)
             {
                 string nomPrenom = eleve.NomEleve + " " + eleve.PrenomEleve;
+                nomPrenom = nomPrenom.ToLower();
                 Match match = regex.Match(nomPrenom);
                 if (match.Success)
                 {
