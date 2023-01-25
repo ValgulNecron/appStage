@@ -80,7 +80,7 @@ namespace CartesAcces
 
         private void recheche(object sender, EventArgs e)
         {
-            string pattern = "*"+txtRecherche.Text+"*"
+            string pattern = "*" + txtRecherche.Text + "*";
             List<String> el = Trie.recherche(pattern);
             if (el != null)
             {
