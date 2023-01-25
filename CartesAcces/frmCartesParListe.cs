@@ -54,6 +54,9 @@ namespace CartesAcces
                 var eleve = Eleves.SelectedItem.ToString();
                 if (verifDoublon(eleve))
                 {
+                    Impression.SelectedItem = null;
+                    Eleves.SelectedItem = null;
+                    Impression.DataSource = null;
                     eleveSelectionner.Add(eleve);
                     Impression.DataSource = eleveSelectionner;
                     MessageBox.Show(eleveSelectionner.Count.ToString());
