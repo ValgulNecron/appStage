@@ -358,9 +358,6 @@ namespace CartesAcces
                 Directory.CreateDirectory(cheminDestination);
                 var dossier = new DirectoryInfo(cheminSource);
 
-                Form frmRognageEdtClassique = new Form();
-                frmRognageEdtClassique.Show();
-                
                 //MessageBox.Show("Import réussie !");
             }
             catch
