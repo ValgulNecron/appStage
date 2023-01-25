@@ -145,6 +145,9 @@
     <EmbeddedResource Include="frmImportation.resx">
       <DependentUpon>frmImportation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRognageEdtClassique.resx">
+      <DependentUpon>frmRognageEdtClassique.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSelectionNiveau.resx">
       <DependentUpon>frmSelectionNiveau.cs</DependentUpon>
     </EmbeddedResource>

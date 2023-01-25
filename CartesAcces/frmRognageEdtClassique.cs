@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -7,6 +8,11 @@ namespace CartesAcces
         public frmRognageEdtClassique()
         {
             InitializeComponent();
+        }
+
+        private void frmRognageEdtClassique_Load(object sender, EventArgs e)
+        {
+            pbEdtClassique.Image = null;
         }
     }
 }
