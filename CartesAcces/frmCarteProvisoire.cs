@@ -163,8 +163,10 @@ namespace CartesAcces
                     pbCarteArriere.Refresh();
                     Edition.rognageLargeur = e.X - Edition.rognageX;
                     Edition.rognageHauteur = e.Y - Edition.rognageY;
-                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen, Edition.rognageX, Edition.rognageY,
-                        Edition.rognageLargeur, Edition.rognageHauteur);
+                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,Math.Min(Edition.rognageX, e.X),
+                        Math.Min(Edition.rognageY , e.Y),
+                        Math.Abs(Edition.rognageLargeur),
+                        Math.Abs(Edition.rognageHauteur));
                 }
             }
         }

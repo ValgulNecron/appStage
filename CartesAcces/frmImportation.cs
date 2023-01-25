@@ -83,6 +83,11 @@ namespace CartesAcces
 
         }
 
+        private void btnImportEdtClassique_Click(object sender, EventArgs e)
+        {
+            Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
+        }
+        
         private void frmParametres_Load(object sender, EventArgs e)
         {
             var time = new Timer(this);

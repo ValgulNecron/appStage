@@ -141,18 +141,24 @@ namespace CartesAcces
 
         private void btnValiderImpr_Click(object sender, EventArgs e)
         {
-            // -- Si la liste est impaire, on double le dernier élève
-            if (Globale._listeEleveImpr.Count % 2 == 1)
+            try
             {
-                var eleve = Globale._listeEleveImpr[Globale._listeEleveImpr.Count - 1];
-                Globale._listeEleveImpr.Add(eleve);
-            }
+                // -- Si la liste est impaire, on double le dernier élève
+                if (Globale._listeEleveImpr.Count % 2 == 1)
+                {
+                    var eleve = Globale._listeEleveImpr[Globale._listeEleveImpr.Count - 1];
+                    Globale._listeEleveImpr.Add(eleve);
+                }
 
-            var cheminImpressionFinal = Chemin.setCheminImportationDossier();
-            labelEnCoursValidation.Visible = true;
-            WordFile.sauvegardeCarteEnWord(cheminImpressionFinal, "test", Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
-            labelEnCoursValidation.Visible = false;
+                var cheminImpressionFinal = Chemin.setCheminImportationDossier();
+                WordFile.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
+            }
+            catch
+            {
+                
+            }
         }
+
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
