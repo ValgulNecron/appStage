@@ -51,7 +51,7 @@ namespace CartesAcces
         {
             try
             {
-                var eleve = Eleves.SelectedItem.ToString();
+                String eleve = Eleves.SelectedItem.ToString();
                 if (verifDoublon(eleve))
                 {
                     eleveSelectionner.Add(eleve);
