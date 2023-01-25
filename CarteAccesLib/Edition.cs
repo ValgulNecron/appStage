@@ -357,16 +357,11 @@ namespace CartesAcces
 
                 Directory.CreateDirectory(cheminDestination);
                 var dossier = new DirectoryInfo(cheminSource);
-                
-                foreach (var fichier in dossier.GetFiles())
-                {
-                    var img = Image.FromFile(fichier.FullName);
-                    var nom = fichier.Name;
 
-                    img.Save(cheminDestination + nom, ImageFormat.Png);
-                }
+                Form frmRognageEdtClassique = new Form();
+                frmRognageEdtClassique.Show();
                 
-                MessageBox.Show("Import réussie !");
+                //MessageBox.Show("Import réussie !");
             }
             catch
             {
