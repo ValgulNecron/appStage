@@ -60,6 +60,7 @@ namespace CartesAcces
                     eleveSelectionner.Add(eleve);
                     Impression.DataSource = eleveSelectionner;
                     MessageBox.Show(eleveSelectionner.Count.ToString());
+                    Impression.Refresh();
                 }
             }
             catch
