@@ -80,7 +80,8 @@ namespace CartesAcces
 
         private void recheche(object sender, EventArgs e)
         {
-            List<String> el = Trie.recherche(txtRecherche.Text);
+            string pattern = "*"+txtRecherche.Text+"*"
+            List<String> el = Trie.recherche(pattern);
             if (el != null)
             {
                 Eleves.DataSource = el;
