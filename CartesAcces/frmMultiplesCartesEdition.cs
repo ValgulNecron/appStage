@@ -14,6 +14,8 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
+            labelEnCoursValidation.Visible = false;
+            labelEnCoursValidation.ForeColor = Color.Red;
         }
 
         private void pbPhoto_MouseMove(object sender, MouseEventArgs e)
@@ -147,15 +149,9 @@ namespace CartesAcces
             }
 
             var cheminImpressionFinal = Chemin.setCheminImportationDossier();
+            labelEnCoursValidation.Visible = true;
             WordFile.sauvegardeCarteEnWord(cheminImpressionFinal, "test", Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-        }
-
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+            labelEnCoursValidation.Visible = false;
         }
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)

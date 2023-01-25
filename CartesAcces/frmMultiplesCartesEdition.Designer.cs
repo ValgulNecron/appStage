@@ -33,8 +33,7 @@ namespace CartesAcces
             this.pbPhoto = new System.Windows.Forms.PictureBox();
             this.pbCarteArriere = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelEnCoursValidation = new System.Windows.Forms.Label();
             this.btnValiderImpr = new System.Windows.Forms.Button();
             this.tkbTaillePhoto = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
@@ -87,8 +86,7 @@ namespace CartesAcces
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.progressBar1);
-            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.labelEnCoursValidation);
             this.groupBox3.Controls.Add(this.btnValiderImpr);
             this.groupBox3.Controls.Add(this.tkbTaillePhoto);
             this.groupBox3.Controls.Add(this.label6);
@@ -100,23 +98,16 @@ namespace CartesAcces
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajout et Edition Photo";
             // 
-            // progressBar1
+            // labelEnCoursValidation
             // 
-            this.progressBar1.Location = new System.Drawing.Point(24, 149);
-            this.progressBar1.MarqueeAnimationSpeed = 50;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(248, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 132);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "En cours, veuillez attendre le message de validation";
+            this.labelEnCoursValidation.AutoSize = true;
+            this.labelEnCoursValidation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEnCoursValidation.ForeColor = System.Drawing.Color.Red;
+            this.labelEnCoursValidation.Location = new System.Drawing.Point(-5, 148);
+            this.labelEnCoursValidation.Name = "labelEnCoursValidation";
+            this.labelEnCoursValidation.Size = new System.Drawing.Size(424, 20);
+            this.labelEnCoursValidation.TabIndex = 17;
+            this.labelEnCoursValidation.Text = "En cours, veuillez attendre le message de validation";
             // 
             // btnValiderImpr
             // 
@@ -201,11 +192,6 @@ namespace CartesAcces
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
             // frmMultiplesCartesEdition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +212,7 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -242,8 +229,7 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnCrop;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnValiderImpr;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelEnCoursValidation;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
