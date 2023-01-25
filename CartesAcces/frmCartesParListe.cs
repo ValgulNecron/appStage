@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CarteAccesLib;
 
 namespace CartesAcces
 {
@@ -29,7 +30,7 @@ namespace CartesAcces
             Eleves.DataSource = nomPrenomEleve;
             btnAjout.Click += ajoutEleve;
             btnRetirer.Click += retirerEleve;
-            
+            txtRecherche.TextChanged += recheche;
         }
 
         private bool verifDoublon(string ajout)
@@ -45,9 +46,10 @@ namespace CartesAcces
         
         private void ajoutEleve(object sender, EventArgs e)
         {
-            if (verifDoublon(Eleves.SelectedItem.ToString()))
+            string eleve = Eleves.SelectedItem.ToString();
+            if (verifDoublon(eleve))
             {
-                eleveSelectionner.Add(Eleves.SelectedItem.ToString());
+                eleveSelectionner.Add(eleve);
                 Impression.DataSource = eleveSelectionner;
             }
         }
@@ -58,6 +60,17 @@ namespace CartesAcces
             Eleves.DataSource = nomPrenomEleve;
             Eleves.Refresh();
             Impression.ClearSelected();
+        }
+
+        private void recheche(object sender, EventArgs e)
+        {
+            List<String> el = Trie.recherche(txtRecherche.Text);
+            if (el != null)
+            {
+                Eleves.DataSource = el;
+                Eleves.Refresh();
+            }
+            
         }
     }
 }
