@@ -7,8 +7,9 @@ namespace CartesAcces
 {
     public partial class frmCartesParListe : Form
     {
-        public static List<String> eleveSelectionner;
-        public static List<String> nomPrenomEleve;
+        public static List<string> eleveSelectionner;
+        public static List<string> nomPrenomEleve;
+
         public frmCartesParListe()
         {
             InitializeComponent();
@@ -16,18 +17,16 @@ namespace CartesAcces
 
         public static void eleveEnString()
         {
-            foreach (Eleve eleve in Globale._listeEleve)
-            {
+            foreach (var eleve in Globale._listeEleve)
                 nomPrenomEleve.Add(eleve.NomEleve + " " + eleve.PrenomEleve + " " + eleve.ClasseEleve);
-            }
         }
 
         private void frmCartesParListe_Load(object sender, EventArgs e)
         {
             try
             {
-                eleveSelectionner = new List<String>();
-                nomPrenomEleve = new List<String>();
+                eleveSelectionner = new List<string>();
+                nomPrenomEleve = new List<string>();
                 eleveEnString();
                 Eleves.DataSource = nomPrenomEleve;
                 btnAjout.Click += ajoutEleve;
@@ -36,27 +35,23 @@ namespace CartesAcces
             }
             catch
             {
-                
             }
-            
         }
 
         private bool verifDoublon(string ajout)
         {
             foreach (string selectioner in Impression.Items)
-            {
                 if (selectioner == ajout)
                     return false;
-            }
-            
+
             return true;
         }
-        
+
         private void ajoutEleve(object sender, EventArgs e)
         {
             try
             {
-                string eleve = Eleves.SelectedItem.ToString();
+                var eleve = Eleves.SelectedItem.ToString();
                 if (verifDoublon(eleve))
                 {
                     eleveSelectionner.Add(eleve);
@@ -65,9 +60,7 @@ namespace CartesAcces
             }
             catch
             {
-
             }
-            
         }
 
         private void retirerEleve(object sender, EventArgs e)
@@ -80,17 +73,23 @@ namespace CartesAcces
 
         private void recheche(object sender, EventArgs e)
         {
-            string pattern = "*" + txtRecherche.Text + "*";
-            List<String> el = Trie.recherche(pattern);
-            if (el != null)
+            try
             {
-                Eleves.DataSource = el;
-                Eleves.Refresh();
+                var pattern = ".*" + txtRecherche.Text + ".*";
+                var el = Trie.recherche(pattern);
+                if (el != null)
+                {
+                    Eleves.DataSource = el;
+                    Eleves.Refresh();
+                }
+                else
+                {
+                    Eleves.DataSource = nomPrenomEleve;
+                    Eleves.Refresh();
+                }
             }
-            else
+            catch
             {
-                Eleves.DataSource = nomPrenomEleve;
-                Eleves.Refresh();
             }
         }
     }
