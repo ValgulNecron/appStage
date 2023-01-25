@@ -342,6 +342,38 @@ namespace CartesAcces
             }
         }
 
+        public static void importEdtClassique(string chemin)
+        {
+            var cheminSource = chemin;
+            var cheminDestination = Chemin.cheminEdtClassique;
+
+            try
+            {
+                if (Directory.Exists(cheminDestination))
+                {
+                    foreach (var fichier in Directory.GetFiles(cheminDestination)) File.Delete(fichier);
+                    Directory.Delete(cheminDestination);
+                }
+
+                Directory.CreateDirectory(cheminDestination);
+                var dossier = new DirectoryInfo(cheminSource);
+                
+                foreach (var fichier in dossier.GetFiles())
+                {
+                    var img = Image.FromFile(fichier.FullName);
+                    var nom = fichier.Name;
+
+                    img.Save(cheminDestination + nom, ImageFormat.Png);
+                }
+                
+                MessageBox.Show("Import réussie !");
+            }
+            catch
+            {
+                
+            }
+        }
+        
         // -- Importation des photo des élèves --
         public static void importPhoto(string chemin)
         {

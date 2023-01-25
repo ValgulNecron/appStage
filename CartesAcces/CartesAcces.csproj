@@ -101,6 +101,12 @@
     <Compile Include="frmImportation.Designer.cs">
       <DependentUpon>frmImportation.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRognageEdtClassique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRognageEdtClassique.Designer.cs">
+      <DependentUpon>frmRognageEdtClassique.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSelectionNiveau.cs">
       <SubType>Form</SubType>
     </Compile>
