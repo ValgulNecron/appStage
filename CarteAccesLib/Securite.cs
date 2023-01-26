@@ -81,7 +81,7 @@ namespace CartesAcces
                 foreach (var file in dir.GetFiles()) Task.Run(() => { chiffrerFichier(file.FullName); });
                 foreach (var dir2 in dir.GetDirectories())
                 foreach (var file in dir2.GetFiles())
-                    Task.Run(() => { chiffrerFichier(file.FullName); });
+                    chiffrerFichier(file.FullName);
             }
 
             MessageBox.Show("Chiffrement terminé");
@@ -135,7 +135,7 @@ namespace CartesAcces
                 foreach (var file in dir.GetFiles()) Task.Run(() => { dechiffrerFichier(file.FullName); });
                 foreach (var dir2 in dir.GetDirectories())
                 foreach (var file in dir2.GetFiles())
-                    Task.Run(() => { dechiffrerFichier(file.FullName); });
+                    dechiffrerFichier(file.FullName);
             }
 
             MessageBox.Show("Dossier déchiffré");
