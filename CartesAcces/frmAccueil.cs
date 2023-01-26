@@ -50,6 +50,13 @@ namespace CartesAcces
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
+            foreach (Control controle in Controls)
+            {
+                if (controle is Button && controle.Name != "btnTheme")
+                {
+                    controle.Enabled = false;
+                }
+            }
             Globale._actuelle = new frmConnexion();
             OpenChildForm(Globale._actuelle);
             Globale._cas = 1;
