@@ -52,9 +52,15 @@ namespace CartesAcces
         {
             foreach (Control controle in Controls)
             {
-                if (controle is Button && controle.Name != "btnTheme")
+                if(Control is Panel && controle.Name == "pnlMenu")
                 {
-                    controle.Enabled = false;
+                    foreach (Control controle2 in controle.Controls)
+                    {
+                        if (controle2 is Button && controle2.Name != "btnTheme")
+                        {
+                            controle2.Enabled = false;
+                        }
+                    }
                 }
             }
             Globale._actuelle = new frmConnexion();
