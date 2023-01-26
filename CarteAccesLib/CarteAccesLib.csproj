@@ -62,9 +62,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="mscorlib" />
-    <Reference Include="MySql.Data">
-      <HintPath>..\packages\MySql.Data.8.0.31\lib\net452\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="MySqlConnector, Version=0.69.10.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>..\packages\MySqlConnector.0.69.10\lib\net461\MySqlConnector.dll</HintPath>
     </Reference>

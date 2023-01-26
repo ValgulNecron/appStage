@@ -7,7 +7,6 @@ namespace CartesAcces
 {
     public static class ClassSql
     {
-        public static MySqlConnection connexionBdd;
 
         public static void init()
         {
@@ -29,7 +28,6 @@ namespace CartesAcces
             sqlCreateur.UserID = utilisateur;
             sqlCreateur.Password = motDePasse;
             var texteConnexion = sqlCreateur.ConnectionString;
-            connexionBdd = new MySqlConnection(texteConnexion);
         }
     }
 }
