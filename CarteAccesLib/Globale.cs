@@ -61,6 +61,6 @@ namespace CartesAcces
         public static string _cheminEdtClassique;
         
         // bdd
-        public static ClassSql _bdd = new ClassSql();
+        public static ClassSql _bdd;
     }
 }
