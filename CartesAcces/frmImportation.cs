@@ -42,6 +42,7 @@ namespace CartesAcces
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
             //lblDateListeEleve = Globale._lblDate;
+            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
             Globale._actuelle = new frmImportation(); //
             OpenChildForm(Globale._actuelle); //
             if (Globale._cheminTexte.Length > 0)
@@ -57,7 +58,6 @@ namespace CartesAcces
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
             Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
             Globale._cas = 3;
             var frmWait = new barDeProgression();
