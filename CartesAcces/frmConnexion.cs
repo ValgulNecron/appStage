@@ -53,9 +53,11 @@ namespace CartesAcces
                     Globale._cas = 1;
                     var frmWait = new barDeProgression();
                     frmWait.StartPosition = FormStartPosition.Manual;
-                    frmWait.Location = new Point(800, 300);
+                    frmWait.Location = new Point(800, 300);;
                     frmWait.Show();
                     frmWait.TopMost = true;
+                    Globale._actuelle = new frmImportation();
+                    frmAccueil.OpenChildForm(Globale._accueil);
                 }
             }
             catch (Exception ex)
