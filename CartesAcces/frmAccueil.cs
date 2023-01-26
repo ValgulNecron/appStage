@@ -29,13 +29,21 @@ namespace CartesAcces
             }
         }
 
-        private void OpenChildForm(Form childForm)
+        public static void OpenChildForm(Form childForm)
         {
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
             childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel  
-            pnlContent.Controls.Add(childForm); // reprend les éléments de l'ITF du windows forms
-            pnlContent.Tag = childForm; // reprend les propriétés de chaque éléments de l'ITF de la classe(WF)
+            foreach (Control controle in Globale._accueil.Controls)
+            {
+                if (controle is Panel && controle.Name == "pnlContent")
+                {
+                    var pnlContent = (Panel) controle;
+                    pnlContent.Controls.Clear();
+                    pnlContent.Controls.Add(childForm);
+                    pnlContent.Tag = childForm;
+                } 
+            }
             childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
             childForm.Show(); // lorsque la WF est appelé pour la première fois
         }
