@@ -94,9 +94,6 @@ namespace CartesAcces
             // -- On est dans le mode selection
             Edition.selectionClique = true;
 
-            // -- On peut cliquer sur rogner
-            btnCrop.Enabled = true;
-
             btnCancel.Enabled = true;
         }
 
@@ -107,7 +104,6 @@ namespace CartesAcces
             var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
             Edition.selectionClique = false;
             Edt.rognageEdt(pbCarteArriere, pathEdt);
-            btnCrop.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -123,7 +119,6 @@ namespace CartesAcces
             pbCarteArriere.Height = 354;
             Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
             pbCarteArriere.Refresh();
-            btnCrop.Enabled = false;
             btnCancel.Enabled = false;
         }
 
@@ -163,12 +158,27 @@ namespace CartesAcces
                     pbCarteArriere.Refresh();
                     Edition.rognageLargeur = e.X - Edition.rognageX;
                     Edition.rognageHauteur = e.Y - Edition.rognageY;
+                    
+                    Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
+                    Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
+
                     pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,Math.Min(Edition.rognageX, e.X),
-                        Math.Min(Edition.rognageY , e.Y),
+                        Math.Min(Edition.rognageY, e.Y),
                         Math.Abs(Edition.rognageLargeur),
                         Math.Abs(Edition.rognageHauteur));
                 }
             }
+        }
+        
+        private void pbCarteArriere_MouseUp(object sender, MouseEventArgs e)
+        {
+            Edition.rognageX = Math.Min(Edition.rognageX, e.X);
+            Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
+            Cursor = Cursors.Default;
+            var classe = cbbClasse.Text;
+            var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+            Edition.selectionClique = false;
+            Edt.rognageEdt(pbCarteArriere, pathEdt);
         }
 
         // #### Ajout & Edition de la photo ####
