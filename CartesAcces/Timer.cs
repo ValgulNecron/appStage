@@ -38,6 +38,8 @@ namespace CartesAcces
                 if (Globale._estConnecter)
                 {
                     Globale._estConnecter = false;
+                    Globale._actuelle = new frmImportation();
+                    frmAccueil.OpenChildForm(Globale._actuelle);
                 }
         }
     }
