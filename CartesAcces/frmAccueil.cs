@@ -29,20 +29,28 @@ namespace CartesAcces
             }
         }
 
-        private void OpenChildForm(Form childForm)
+        public static void OpenChildForm(Form childForm)
         {
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
-            childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel
-            pnlContent.Controls.Add(childForm); // reprend les éléments de l'ITF du windows forms
-            pnlContent.Tag = childForm; // reprend les propriétés de chaque éléments de l'ITF de la classe(WF)
+            childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel  
+            foreach (Control controle in Globale._accueil.Controls)
+            {
+                if (controle is Panel || controle.Name == "pnlContent")
+                {
+                    var pnlContent = (Panel) controle;
+                    pnlContent.Controls.Clear();
+                    pnlContent.Controls.Add(childForm);
+                    pnlContent.Tag = childForm;
+                } 
+            }
             childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
             childForm.Show(); // lorsque la WF est appelé pour la première fois
         }
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
-            Globale._actuelle = new frmImportation();
+            Globale._actuelle = new frmConnexion();
             OpenChildForm(Globale._actuelle);
             Globale._cas = 1;
             var frmWait = new barDeProgression();
@@ -53,19 +61,19 @@ namespace CartesAcces
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var time = new Timer(this);
             var dir = new DirectoryInfo("./data/image");
-            if (dir.LastWriteTime.Add(TimeSpan.FromSeconds(7)) <= DateTime.Now)
+            if (dir.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
                 MessageBox.Show("7j depuis le denier import des edt");
             }
             
             var dir2 = new DirectoryInfo(Chemin.cheminPhotoEleve);
-            if (dir2.LastWriteTime.Add(TimeSpan.FromSeconds(7)) <= DateTime.Now)
+            if (dir2.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
                 MessageBox.Show("7j depuis le dernier import de photo");
             }
 
             var dir3 = new DirectoryInfo(Chemin.cheminListeEleve);
-            if (dir3.LastWriteTime.Add(TimeSpan.FromSeconds(7)) <= DateTime.Now)
+            if (dir3.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
                 MessageBox.Show("7j depuis le dernier import des photo");
             }
