@@ -11,10 +11,19 @@ namespace CartesAcces
         [STAThread]
         private static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Globale._accueil = new frmAccueil();
-            Application.Run(Globale._accueil);
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Globale._accueil = new frmAccueil();
+                Application.Run(Globale._accueil);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("y a une erreur pas prevue note la.");
+                MessageBox.Show(e.Message);
+                Main();
+            }
         }
     }
 }
