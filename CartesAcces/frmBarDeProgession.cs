@@ -82,11 +82,33 @@ namespace CartesAcces
         {
             PdfGs.getImageFromPdf(Globale._cheminPdf, Globale._classe);
             PdfGs.renameEdt(Globale._cheminPdf);
+            
+            Globale._actuelle.Invoke(new MethodInvoker(delegate
+            {
+                foreach (Control controle in Globale._actuelle.Controls)
+                {
+                    if (controle is Label && controle.Name == "lblEdtEleve")
+                    {
+                        controle.Text = ReadCSV.getDateFile();
+                    }
+                }
+            }));
         }
 
         private void cas_4()
         {
             Edition.importPhoto(Globale._cheminPhoto);
+            
+            Globale._actuelle.Invoke(new MethodInvoker(delegate
+            {
+                foreach (Control controle in Globale._actuelle.Controls)
+                {
+                    if (controle is Label && controle.Name == "lblPhotoEleve")
+                    {
+                        controle.Text = ReadCSV.getDateFile();
+                    }
+                }
+            }));
 
         }
     }

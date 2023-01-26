@@ -334,13 +334,13 @@ namespace CartesAcces
                 File.Copy(cheminSource, cheminDestination);
                 ReadCSV.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
-                Globale._lblDate.Text = ReadCSV.getDateFile();
 
                 MessageBox.Show("Import Réussi");
+                //Globale._lblDate.Text = ReadCSV.getDateFile();
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show("eeeee + " + e.ToString());
             }
         }
 
