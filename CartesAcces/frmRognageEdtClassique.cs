@@ -58,6 +58,8 @@ namespace CartesAcces
 
         private void pbEdtClassique_MouseUp(object sender, MouseEventArgs e)
         {
+            Edition.rognageX = Math.Min(Edition.rognageX, e.X);
+            Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
             Cursor = Cursors.Default;
             Edition.selectionClique = false;
             Edt.rognageEdt(pbEdtClassique, listeFichiers[0]);
@@ -80,6 +82,10 @@ namespace CartesAcces
                     pbEdtClassique.Refresh();
                     Edition.rognageLargeur = e.X - Edition.rognageX;
                     Edition.rognageHauteur = e.Y - Edition.rognageY;
+                    
+                    Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
+                    Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
+                    
                     pbEdtClassique.CreateGraphics().DrawRectangle(Edition.rognagePen,Math.Min(Edition.rognageX, e.X),
                         Math.Min(Edition.rognageY , e.Y),
                         Math.Abs(Edition.rognageLargeur),
@@ -95,10 +101,35 @@ namespace CartesAcces
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(listeFichiers[0]);
-            string nom = listeFichiers[0].Substring(listeFichiers[0].LastIndexOf("\\"),
-                listeFichiers[0].Length - listeFichiers[0].LastIndexOf("\\"));
-            pbEdtClassique.Image.Save(Chemin.cheminEdtClassique + "//" + nom , ImageFormat.Png);
+            try
+            {
+                if (Directory.Exists(Chemin.cheminEdtClassique))
+                {
+                    foreach (var file in Directory.GetFiles(Chemin.cheminEdtClassique)) File.Delete(file);
+                    Directory.Delete(Chemin.cheminEdtClassique);
+                }
+
+                Directory.CreateDirectory(Chemin.cheminEdtClassique);
+
+                var directory = new DirectoryInfo(Globale._cheminEdtClassique);
+                foreach (var fichier in listeFichiers)
+                {
+                    pbEdtClassique.Image = Image.FromFile(fichier);
+                    Edt.rognageEdt(pbEdtClassique, fichier);
+                    string nom = fichier.Substring(fichier.LastIndexOf("\\"),
+                        fichier.Length - fichier.LastIndexOf("\\"));
+                    pbEdtClassique.Image.Save(Chemin.cheminEdtClassique + "//" + nom, ImageFormat.Png);
+                }
+
+                MessageBox.Show("Import Réussi");
+                this.Close();
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+
         }
     }
 }
