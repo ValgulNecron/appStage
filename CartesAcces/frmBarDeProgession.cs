@@ -78,10 +78,6 @@ namespace CartesAcces
 
         private void cas_3()
         {
-            var frmSelectSection = new frmSelectNiveau();
-            frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
-            frmSelectSection.Show();
-
             PdfGs.getImageFromPdf(Globale._cheminPdf, Globale._classe);
             PdfGs.renameEdt(Globale._cheminPdf);
 

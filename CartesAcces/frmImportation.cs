@@ -59,12 +59,9 @@ namespace CartesAcces
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
             Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
-            Globale._cas = 3;
-            var frmWait = new barDeProgression();
-            frmWait.StartPosition = FormStartPosition.Manual;
-            frmWait.Location = new Point(0, 0);
-            frmWait.Show();
-            frmWait.TopMost = true;
+            var frmSelectSection = new frmSelectNiveau();
+            frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
+            frmSelectSection.Show();
             //lblEdtEleve.Text = PdfGs.getDateFile();
         }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -39,6 +40,13 @@ namespace CartesAcces
             {
                 MessageBox.Show("Veuillez selectionner une section...");
             }
+
+            Globale._cas = 3;
+            var frmWait = new barDeProgression();
+            frmWait.StartPosition = FormStartPosition.Manual;
+            frmWait.Location = new Point(0, 0);
+            frmWait.Show();
+            frmWait.TopMost = true;
         }
     }
 }
