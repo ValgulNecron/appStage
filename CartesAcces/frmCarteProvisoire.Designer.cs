@@ -48,7 +48,6 @@ namespace CartesAcces
             this.pbCarteArriere = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnCrop = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -262,11 +261,11 @@ namespace CartesAcces
             this.pbCarteArriere.TabStop = false;
             this.pbCarteArriere.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseDown);
             this.pbCarteArriere.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseMove);
+            this.pbCarteArriere.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseUp);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnCancel);
-            this.groupBox2.Controls.Add(this.btnCrop);
             this.groupBox2.Controls.Add(this.btnSelect);
             this.groupBox2.Location = new System.Drawing.Point(556, 389);
             this.groupBox2.Name = "groupBox2";
@@ -288,19 +287,6 @@ namespace CartesAcces
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnCrop
-            // 
-            this.btnCrop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCrop.Enabled = false;
-            this.btnCrop.Location = new System.Drawing.Point(207, 33);
-            this.btnCrop.MaximumSize = new System.Drawing.Size(127, 23);
-            this.btnCrop.Name = "btnCrop";
-            this.btnCrop.Size = new System.Drawing.Size(127, 23);
-            this.btnCrop.TabIndex = 1;
-            this.btnCrop.Text = "&Rogner";
-            this.btnCrop.UseVisualStyleBackColor = true;
-            this.btnCrop.Click += new System.EventHandler(this.btnCrop_Click);
-            // 
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
@@ -310,7 +296,7 @@ namespace CartesAcces
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(140, 44);
             this.btnSelect.TabIndex = 0;
-            this.btnSelect.Text = "&Sélectionner la zone à rogner";
+            this.btnSelect.Text = "&Selectionner et Rogner";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
@@ -456,7 +442,6 @@ namespace CartesAcces
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbCarteArriere;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnCrop;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox3;
