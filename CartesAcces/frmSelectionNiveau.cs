@@ -3,13 +3,12 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class frmSelectSection : Form
+    public partial class frmSelectNiveau : Form
     {
-        public frmSelectSection()
+        public frmSelectNiveau()
         {
             InitializeComponent();
         }
-
 
         private void btnValider_Click(object sender, EventArgs e)
         {

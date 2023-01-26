@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -9,7 +10,8 @@ namespace CartesAcces
         public frmAccueil()
         {
             InitializeComponent();
-            ControlSize.SetSizeTextControl(this);
+            Globale._accueil = this;
+            TailleCotrole.setTailleControleTexte(this);
             Couleur.setCouleurFenetre(this);
             if (Globale._estEnModeSombre)
             {
@@ -27,52 +29,115 @@ namespace CartesAcces
             }
         }
 
-        private void OpenChildForm(Form childForm)
+        public static void OpenChildForm(Form childForm)
         {
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
-            childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel
-            pnlContent.Controls.Add(childForm); // reprend les éléments de l'ITF du windows forms
-            pnlContent.Tag = childForm; // reprend les propriétés de chaque éléments de l'ITF de la classe(WF)
+            childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel  
+            foreach (Control controle in Globale._accueil.Controls)
+            {
+                if (controle is Panel && controle.Name == "pnlContent")
+                {
+                    var pnlContent = (Panel) controle;
+                    pnlContent.Controls.Clear();
+                    pnlContent.Controls.Add(childForm);
+                    pnlContent.Tag = childForm;
+                } 
+            }
             childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
             childForm.Show(); // lorsque la WF est appelé pour la première fois
         }
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
-            var frmWait = new progressBarForm();
-            frmWait.StartPosition = FormStartPosition.Manual;
-            frmWait.Location = new Point(800, 300);
-            frmWait.Show();
-            frmWait.TopMost = true;
+            foreach (Control controle in Controls)
+            {
+                if(controle is Panel && controle.Name == "pnlMenu")
+                {
+                    foreach (Control controle2 in controle.Controls)
+                    {
+                        if (controle2 is Button && controle2.Name != "btnTheme")
+                        {
+                            controle2.Enabled = false;
+                        }
+                    }
+                }
+            }
+            Globale._actuelle = new frmConnexion();
+            OpenChildForm(Globale._actuelle);
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var time = new Timer(this);
+            var dir = new DirectoryInfo("./data/image");
+            if (dir.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
+            {
+                MessageBox.Show("7j depuis le denier import des edt");
+            }
+            
+            var dir2 = new DirectoryInfo(Chemin.cheminPhotoEleve);
+            if (dir2.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
+            {
+                MessageBox.Show("7j depuis le dernier import de photo");
+            }
+
+            var dir3 = new DirectoryInfo(Chemin.cheminListeEleve);
+            if (dir3.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
+            {
+                MessageBox.Show("7j depuis le dernier import des photo");
+            }
         }
 
         //Création de menu de navigation
 
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmCarteIndividuelle());
+            Globale._actuelle = new frmCarteProvisoire();
+            OpenChildForm(Globale._actuelle);
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmMultiplesCartes());
+            Globale._actuelle = new frmCarteParClasseNiveau();
+            OpenChildForm(Globale._actuelle);
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmParametres());
+            Globale._actuelle = new frmImportation();
+            OpenChildForm(Globale._actuelle);
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
         {
         }
 
-        private void btnParamètreInterface_Click(object sender, EventArgs e)
+        private void btnTheme_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmParametresInterface());
+            Globale._estEnModeSombre = !Globale._estEnModeSombre;
+
+            Couleur.setCouleurFenetre(this);
+            Couleur.setCouleurFenetre(Globale._actuelle);
+            foreach (Control control in Controls)
+                if (control is Panel && control.Name == "pnlMenu")
+                {
+                    if (Globale._estEnModeSombre)
+                        control.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
+                            Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
+                    else
+                        control.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
+                            Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
+                }
+        }
+
+        private void btnChangeMdp_Click(object sender, EventArgs e)
+        {
+            var frmPassword = new frmChangeMotDePasse();
+            frmPassword.Show();
+        }
+
+        private void btnAfficheListeEleve_Click(object sender, EventArgs e)
+        {
+            Globale._actuelle = new frmCartesParListe();
+            OpenChildForm(Globale._actuelle);
         }
     }
 }

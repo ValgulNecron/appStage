@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -9,7 +10,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            ControlSize.SetSizeTextControl(this);
+            TailleCotrole.setTailleControleTexte(this);
             VisibleChanged += on_Visibility_Change;
             txtMotDePasse.PasswordChar = '*';
         }
@@ -34,11 +35,29 @@ namespace CartesAcces
                 if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
                 {
                     Globale._estConnecter = true;
-                    Globale.accueil = new frmAccueil();
                     txtMotDePasse.Text = "";
                     txtIdentifiant.Text = "";
-                    Hide();
-                    Globale.accueil.Show();
+                    foreach (Control controle in Globale._accueil.Controls)
+                    {
+                        if(controle is Panel && controle.Name == "pnlMenu")
+                        {
+                            foreach (Control controle2 in controle.Controls)
+                            {
+                                if (controle2 is Button)
+                                {
+                                    controle2.Enabled = true;
+                                }
+                            }
+                        }
+                    }
+                    Globale._cas = 1;
+                    var frmWait = new barDeProgression();
+                    frmWait.StartPosition = FormStartPosition.Manual;
+                    frmWait.Location = new Point(800, 300);;
+                    frmWait.Show();
+                    frmWait.TopMost = true;
+                    Globale._actuelle = new frmImportation();
+                    frmAccueil.OpenChildForm(Globale._actuelle);
                 }
             }
             catch (Exception ex)
@@ -51,6 +70,16 @@ namespace CartesAcces
         private void button1_Click(object sender, EventArgs e)
         {
             maskedTextBox1.Text = Securite.creationHash(maskedTextBox1.Text);
+        }
+
+        private void btnChiffre_Click(object sender, EventArgs e)
+        {
+            Securite.chiffrerDossier();
+        }
+
+        private void btnDechiffre_Click(object sender, EventArgs e)
+        {
+            Securite.dechiffrerDossier();
         }
     }
 }

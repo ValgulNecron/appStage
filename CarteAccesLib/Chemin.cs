@@ -6,29 +6,22 @@ namespace CartesAcces
 {
     public static class Chemin
     {
-        public static string pathListeEleve = "./data/ImportListeEleve/ImportEleve.csv";
-        public static string pathFolderListeEleve = "./data/ImportListeEleve/";
-        public static string pathPhotoEleve = "./data/ElevesPhoto";
+        public static string cheminListeEleve = "./data/ImportListeEleve/ImportEleve.csv";
+        public static string cheminDossierListeEleve = "./data/ImportListeEleve/";
+        public static string cheminPhotoEleve = "./data/ElevesPhoto/";
+        public static string cheminEdtClassique = "./data/FichierEdtClasse";
 
-        public static string pathEdtEleve6e = "./data/image/6eme/";
-        public static string pathEdtEleve5e = "./data/image/5eme/";
-        public static string pathEdtEleve4e = "./data/image/4eme/";
-        public static string pathEdtEleve3e = "./data/image/3eme";
+        public static string cheminEdt = "";
 
-        public static string pathEdt = "";
-
-        // -- Obtention du chemin --
-        public static string getFilePath(string file)
+        public static string setCheminImportationEdtClassique()
         {
-            var sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            var sFile = Path.Combine(sCurrentDirectory, ".\\" + file + "\\");
-            var sFilePath = Path.GetFullPath(sFile);
-
-            return sFilePath;
+            var diag = new FolderBrowserDialog();
+            if (diag.ShowDialog() == DialogResult.OK) return diag.SelectedPath;
+            return "failed";
         }
 
         // -- Permet a l'utilisateur de donner le chemin du fichier excel a importer --
-        public static string setPathImportFileEXCEL()
+        public static string setCheminImportationFichierExcel()
         {
             using (var ofd = new OpenFileDialog())
             {
@@ -40,7 +33,7 @@ namespace CartesAcces
         }
 
         // -- Permet a l'utilisateur de donner le chemin du fichier PDF a importer --
-        public static string setPathImportFilePDF()
+        public static string setCheminImportationFichierPdf()
         {
             using (var ofd = new OpenFileDialog())
             {
@@ -52,7 +45,7 @@ namespace CartesAcces
         }
 
         // -- Permet a l'utilisateur de donner le chemin du dossier de photo a importer
-        public static string setPathImportFolder()
+        public static string setCheminImportationDossier()
         {
             var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK) return diag.SelectedPath;

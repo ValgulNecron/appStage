@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using CarteAcces;
+using CarteAccesLib;
 
 namespace CartesAcces
 {
@@ -12,6 +14,8 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
+            labelEnCoursValidation.Visible = false;
+            labelEnCoursValidation.ForeColor = Color.Red;
         }
 
         private void pbPhoto_MouseMove(object sender, MouseEventArgs e)
@@ -63,7 +67,7 @@ namespace CartesAcces
             Cursor = Cursors.Cross;
 
             // -- On est dans le mode selection
-            Edition.selectionClick = true;
+            Edition.selectionClique = true;
 
             // -- On peut cliquer sur rogner
             btnCrop.Enabled = true;
@@ -74,9 +78,9 @@ namespace CartesAcces
         private void btnCrop_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            var pathEdt = Chemin.pathEdt;
-            Edition.selectionClick = false;
-            Edition.cropEdt(pbCarteArriere, pathEdt);
+            var pathEdt = Chemin.cheminEdt;
+            Edition.selectionClique = false;
+            Edt.rognageEdt(pbCarteArriere, pathEdt);
             btnCrop.Enabled = false;
         }
 
@@ -86,26 +90,26 @@ namespace CartesAcces
             Cursor = Cursors.Default;
 
             // -- On est plus dans la selection --
-            Edition.selectionClick = false;
+            Edition.selectionClique = false;
 
             // -- On remet les paramètres et l'image de base --
-            Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
+            Edition.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selectionné est cliqué --
-            if (Edition.selectionClick)
+            if (Edition.selectionClique)
             {
                 // -- Si il y a clic gauche --
                 if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les coordonnées de départ --
-                    Edition.cropX = e.X;
-                    Edition.cropY = e.Y;
-                    Edition.cropPen = new Pen(Color.Black, 1);
-                    Edition.cropPen.DashStyle = DashStyle.DashDotDot;
+                    Edition.rognageX = e.X;
+                    Edition.rognageY = e.Y;
+                    Edition.rognagePen = new Pen(Color.Black, 1);
+                    Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
                 }
 
                 // -- Refresh constant pour avoir un apperçu pendant la selection --
@@ -116,7 +120,7 @@ namespace CartesAcces
         private void pbCarteArriere_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selection est cliqué --
-            if (Edition.selectionClick)
+            if (Edition.selectionClique)
             {
                 // -- Si pas d'image, on sort --
                 if (pbCarteArriere.Image == null)
@@ -127,38 +131,41 @@ namespace CartesAcces
                 {
                     // -- On prend les dimensions a la fin du déplacement de la souris
                     pbCarteArriere.Refresh();
-                    Edition.cropWidth = e.X - Edition.cropX;
-                    Edition.cropHeight = e.Y - Edition.cropY;
-                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.cropPen, Edition.cropX, Edition.cropY,
-                        Edition.cropWidth, Edition.cropHeight);
+                    Edition.rognageLargeur = e.X - Edition.rognageX;
+                    Edition.rognageHauteur = e.Y - Edition.rognageY;
+                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen, Edition.rognageX, Edition.rognageY,
+                        Edition.rognageLargeur, Edition.rognageHauteur);
                 }
             }
         }
 
         private void btnValiderImpr_Click(object sender, EventArgs e)
         {
-            // -- Si la liste est impaire, on double le dernier élève
-            if (Globale.listeEleveImpr.Count % 2 == 1)
+            try
             {
-                var eleve = Globale.listeEleveImpr[Globale.listeEleveImpr.Count - 1];
-                Globale.listeEleveImpr.Add(eleve);
+                // -- Si la liste est impaire, on double le dernier élève
+                if (Globale._listeEleveImpr.Count % 2 == 1)
+                {
+                    var eleve = Globale._listeEleveImpr[Globale._listeEleveImpr.Count - 1];
+                    Globale._listeEleveImpr.Add(eleve);
+                }
+
+                var cheminImpressionFinal = Chemin.setCheminImportationDossier();
+                if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
+                // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
+                WordFile.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
+                labelEnCoursValidation.Visible = false; 
             }
-
-            var cheminImpressionFinal = Chemin.setPathImportFolder();
-            Edition.saveCardAsWord(cheminImpressionFinal, "test", Globale.listeEleveImpr, pbPhoto, pbCarteArriere);
+            catch
+            {
+                
+            }
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-        }
-
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-        }
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-            Edition.chercheEdtPerso(Globale.listeEleveImpr, pbCarteArriere);
+            Edition.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
     }

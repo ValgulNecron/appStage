@@ -8,9 +8,10 @@ namespace CartesAcces
 {
     public static class PdfGs
     {
+        private static string outputPath = "./data/image";
+
         public static void getImageFromPdf(string path, int classe)
         {
-            var outputPath = "./data/image";
             switch (classe)
             {
                 case 3:
@@ -47,12 +48,12 @@ namespace CartesAcces
             var process = new Process();
             process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments =
-                $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -r200 -dPDFFitPage -c \"<< /Orientation 3 >> setpagedevice\" -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
+                $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -r150 -dPDFFitPage -c \"<< /Orientation 3 >> setpagedevice\" -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
             process.Start();
             var output = process.StandardOutput.ReadToEnd();
-            renameEdt(outputPath, path);
             process.WaitForExit();
         }
 
@@ -71,6 +72,7 @@ namespace CartesAcces
                 $"-o \"{outputFile}\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
             process.Start();
 
             var output = process.StandardOutput.ReadToEnd();
@@ -130,12 +132,12 @@ namespace CartesAcces
             return fileCount;
         }
 
-        public static void renameEdt(string path, string pdf)
+        public static void renameEdt(string pdf)
         {
             var name = new List<string>();
             name = getNomPrenomPdf(getTextePdf(pdf));
             MessageBox.Show(name.Count.ToString());
-            var d = new DirectoryInfo(path);
+            var d = new DirectoryInfo(outputPath);
             var infos = d.GetFiles();
 
             for (var i = 1; i < infos.Length; i++)
@@ -148,6 +150,22 @@ namespace CartesAcces
                 var newName = name[indexInt - 1].Trim();
                 File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName, newName));
             }
+
+            valeurParDefault();
+        }
+
+        public static string getDateFile()
+        {
+            var dateFile = "Aucune Importation";
+            var dir = new DirectoryInfo("./data/image");
+            if (dir.Exists) dateFile = dir.CreationTime.ToString();
+
+            return dateFile;
+        }
+
+        private static void valeurParDefault()
+        {
+            outputPath = "./data/image";
         }
     }
 }

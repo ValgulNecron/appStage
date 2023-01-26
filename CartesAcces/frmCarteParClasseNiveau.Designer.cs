@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmMultiplesCartes
+    partial class frmCarteParClasseNiveau
     {
         /// <summary>
         /// Required designer variable.
@@ -36,18 +36,11 @@ namespace CartesAcces
             this.btnValiderImpr = new System.Windows.Forms.Button();
             this.lsbListeEleve = new System.Windows.Forms.ListBox();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnCopierDataGrid = new System.Windows.Forms.Button();
-            this.btnRechercheDataGrid = new System.Windows.Forms.Button();
-            this.DataGridResultats = new System.Windows.Forms.DataGridView();
-            this.txtRechercheDataGrid = new System.Windows.Forms.TextBox();
-            this.DataGridParametres = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbListePerso = new System.Windows.Forms.RadioButton();
             this.rdbClasseSection = new System.Windows.Forms.RadioButton();
             this.NbComptageEleveCS = new System.Windows.Forms.Label();
-            this.NbComptageEleveLP = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridResultats)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridParametres)).BeginInit();
+            this.lblCount = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,7 +86,7 @@ namespace CartesAcces
             // btnValiderImpr
             // 
             this.btnValiderImpr.Enabled = false;
-            this.btnValiderImpr.Location = new System.Drawing.Point(12, 81);
+            this.btnValiderImpr.Location = new System.Drawing.Point(745, 353);
             this.btnValiderImpr.Name = "btnValiderImpr";
             this.btnValiderImpr.Size = new System.Drawing.Size(254, 45);
             this.btnValiderImpr.TabIndex = 6;
@@ -118,60 +111,6 @@ namespace CartesAcces
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnCopierDataGrid
-            // 
-            this.btnCopierDataGrid.Location = new System.Drawing.Point(485, 462);
-            this.btnCopierDataGrid.Name = "btnCopierDataGrid";
-            this.btnCopierDataGrid.Size = new System.Drawing.Size(55, 33);
-            this.btnCopierDataGrid.TabIndex = 22;
-            this.btnCopierDataGrid.Text = "-->";
-            this.btnCopierDataGrid.UseVisualStyleBackColor = true;
-            this.btnCopierDataGrid.Click += new System.EventHandler(this.btnCopierDataGrid_Click);
-            // 
-            // btnRechercheDataGrid
-            // 
-            this.btnRechercheDataGrid.Location = new System.Drawing.Point(322, 284);
-            this.btnRechercheDataGrid.Name = "btnRechercheDataGrid";
-            this.btnRechercheDataGrid.Size = new System.Drawing.Size(91, 23);
-            this.btnRechercheDataGrid.TabIndex = 21;
-            this.btnRechercheDataGrid.Text = "Rechercher..";
-            this.btnRechercheDataGrid.UseVisualStyleBackColor = true;
-            this.btnRechercheDataGrid.Click += new System.EventHandler(this.btnRechercheDataGrid_Click);
-            // 
-            // DataGridResultats
-            // 
-            this.DataGridResultats.AllowUserToAddRows = false;
-            this.DataGridResultats.AllowUserToDeleteRows = false;
-            this.DataGridResultats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridResultats.Location = new System.Drawing.Point(546, 310);
-            this.DataGridResultats.Name = "DataGridResultats";
-            this.DataGridResultats.ReadOnly = true;
-            this.DataGridResultats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridResultats.Size = new System.Drawing.Size(458, 513);
-            this.DataGridResultats.TabIndex = 20;
-            this.DataGridResultats.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DataGridResultats_RowsAdded);
-            this.DataGridResultats.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DataGridResultats_RowsRemoved);
-            // 
-            // txtRechercheDataGrid
-            // 
-            this.txtRechercheDataGrid.Location = new System.Drawing.Point(12, 284);
-            this.txtRechercheDataGrid.Name = "txtRechercheDataGrid";
-            this.txtRechercheDataGrid.Size = new System.Drawing.Size(280, 20);
-            this.txtRechercheDataGrid.TabIndex = 19;
-            this.txtRechercheDataGrid.TextChanged += new System.EventHandler(this.txtRechercheDataGrid_TextChanged);
-            // 
-            // DataGridParametres
-            // 
-            this.DataGridParametres.AllowUserToAddRows = false;
-            this.DataGridParametres.AllowUserToDeleteRows = false;
-            this.DataGridParametres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridParametres.Location = new System.Drawing.Point(12, 313);
-            this.DataGridParametres.Name = "DataGridParametres";
-            this.DataGridParametres.ReadOnly = true;
-            this.DataGridParametres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridParametres.Size = new System.Drawing.Size(467, 510);
-            this.DataGridParametres.TabIndex = 18;
             // 
             // groupBox1
             // 
@@ -217,45 +156,39 @@ namespace CartesAcces
             this.NbComptageEleveCS.TabIndex = 25;
             this.NbComptageEleveCS.Text = "Nombre d\'élève de la liste de la classe ou section :";
             // 
-            // NbComptageEleveLP
+            // lblCount
             // 
-            this.NbComptageEleveLP.AutoSize = true;
-            this.NbComptageEleveLP.Location = new System.Drawing.Point(543, 294);
-            this.NbComptageEleveLP.Name = "NbComptageEleveLP";
-            this.NbComptageEleveLP.Size = new System.Drawing.Size(196, 13);
-            this.NbComptageEleveLP.TabIndex = 26;
-            this.NbComptageEleveLP.Text = "Nombre d\'élève de la liste personnalisée";
+            this.lblCount.Location = new System.Drawing.Point(682, 91);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(47, 23);
+            this.lblCount.TabIndex = 27;
+            this.lblCount.Text = "None";
             // 
-            // frmMultiplesCartes
+            // frmCarteParClasseNiveau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 749);
-            this.Controls.Add(this.NbComptageEleveLP);
+            this.Controls.Add(this.lblCount);
             this.Controls.Add(this.NbComptageEleveCS);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnCopierDataGrid);
-            this.Controls.Add(this.btnRechercheDataGrid);
-            this.Controls.Add(this.DataGridResultats);
-            this.Controls.Add(this.txtRechercheDataGrid);
-            this.Controls.Add(this.DataGridParametres);
             this.Controls.Add(this.lsbListeEleve);
             this.Controls.Add(this.btnValiderImpr);
             this.Controls.Add(this.cbbImprSection);
             this.Controls.Add(this.cbbImprClasse);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "frmMultiplesCartes";
+            this.Name = "frmCarteParClasseNiveau";
             this.Text = "frmCreationCarteParClasse";
             this.Load += new System.EventHandler(this.frmMultiplesCartes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridResultats)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridParametres)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label lblCount;
 
         #endregion
 
@@ -266,15 +199,9 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnValiderImpr;
         private System.Windows.Forms.ListBox lsbListeEleve;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnCopierDataGrid;
-        private System.Windows.Forms.Button btnRechercheDataGrid;
-        private System.Windows.Forms.DataGridView DataGridResultats;
-        private System.Windows.Forms.TextBox txtRechercheDataGrid;
-        private System.Windows.Forms.DataGridView DataGridParametres;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdbListePerso;
         private System.Windows.Forms.RadioButton rdbClasseSection;
         private System.Windows.Forms.Label NbComptageEleveCS;
-        private System.Windows.Forms.Label NbComptageEleveLP;
     }
 }

@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class frmMultiplesCartes : Form
+    public partial class frmCarteParClasseNiveau : Form
     {
-        public frmMultiplesCartes()
+        public frmCarteParClasseNiveau()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
@@ -18,13 +18,7 @@ namespace CartesAcces
             cbbImprSection.Enabled = true;
             lsbListeEleve.DataSource = null;
 
-            txtRechercheDataGrid.Enabled = false;
-            btnRechercheDataGrid.Enabled = false;
-            btnCopierDataGrid.Enabled = false;
             btnReset.Enabled = false;
-            DataGridParametres.Enabled = false;
-            DataGridResultats.Enabled = false;
-            DataGridParametres.DataSource = null;
         }
 
         private void rdbListePerso_CheckedChanged(object sender, EventArgs e)
@@ -32,28 +26,23 @@ namespace CartesAcces
             cbbImprClasse.Enabled = false;
             cbbImprSection.Enabled = false;
             lsbListeEleve.DataSource = null;
-
-            txtRechercheDataGrid.Enabled = true;
-            btnRechercheDataGrid.Enabled = true;
-            btnCopierDataGrid.Enabled = true;
+            
             btnReset.Enabled = true;
-            DataGridParametres.Enabled = true;
-            DataGridResultats.Enabled = true;
-            DataGridParametres.DataSource = Globale.listeEleve;
         }
 
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Globale.listeEleveImpr.Clear();
+            Globale._listeEleveImpr.Clear();
             var listeEleveParClasse = new List<string>();
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
                 if (eleve.ClasseEleve == cbbImprClasse.Text)
                 {
                     listeEleveParClasse.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
-                    Globale.listeEleveImpr.Add(eleve);
+                    Globale._listeEleveImpr.Add(eleve);
                 }
 
             listeEleveParClasse.Sort();
+            lblCount.Text = listeEleveParClasse.Count.ToString();
 
             cbbImprSection.SelectedItem = null;
             lsbListeEleve.DataSource = null;
@@ -63,14 +52,16 @@ namespace CartesAcces
 
         private void cbbImprSection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Globale.listeEleveImpr.Clear();
+            Globale._listeEleveImpr.Clear();
             var listeEleveParSection = new List<string>();
-            foreach (var eleve in Globale.listeEleve)
+            foreach (var eleve in Globale._listeEleve)
                 if (eleve.ClasseEleve.Substring(0, 1) == cbbImprSection.Text.Substring(0, 1))
                 {
                     listeEleveParSection.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
-                    Globale.listeEleveImpr.Add(eleve);
+                    Globale._listeEleveImpr.Add(eleve);
                 }
+            listeEleveParSection.Sort();
+            lblCount.Text = listeEleveParSection.Count.ToString();
 
             cbbImprClasse.SelectedItem = null;
             lsbListeEleve.DataSource = null;
@@ -112,13 +103,14 @@ namespace CartesAcces
         {
             var lesClasses = new List<string>();
 
-            lesClasses.AddRange(Globale.classes3eme);
-            lesClasses.AddRange(Globale.classes4eme);
-            lesClasses.AddRange(Globale.classes5eme);
-            lesClasses.AddRange(Globale.classes6eme);
+            lesClasses.AddRange(Globale._classes3eme);
+            lesClasses.AddRange(Globale._classes4eme);
+            lesClasses.AddRange(Globale._classes5eme);
+            lesClasses.AddRange(Globale._classes6eme);
 
             cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;
+            lblCount.Text = "";
         }
     }
 }

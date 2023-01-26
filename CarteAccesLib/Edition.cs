@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
-using CarteAccesLib;
+using CarteAcces;
 
 namespace CartesAcces
 {
@@ -15,188 +12,152 @@ namespace CartesAcces
     {
         // ** VARIABLES : Pour l'édition de l'emploi du temps (rognage) **
         public static bool
-            selectionClick = false; // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
+            selectionClique = false; // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
+        
+        public static int rognageX; // -> Abscisse de départ du rognage
+        public static int rognageY; // -> Ordonnée de départ du rognage
 
-        public static int cropX; // -> Abscisse de départ du rognage
-        public static int cropY; // -> Ordonnée de départ du rognage
-        public static int cropWidth; // -> Largeur du rognage
-        public static int cropHeight; // -> Hauteur du rognage
-        public static Pen cropPen; // -> Stylo qui dessine le rectangle correspondant au rognage
-
+        public static int rognageLargeur; // -> Largeur du rognage
+        public static int rognageHauteur; // -> Hauteur du rognage
+        public static Pen rognagePen; // -> Stylo qui dessine le rectangle correspondant au rognage
+        
         // ** VARIABLES  : Déplacement de la photo
         public static bool
             drag = false; // -> Est ce que l'utilisateur a cliqué sur la photo ? (clique maintenue : drag passera a true)
-
+        
         public static int
             posX; // -> Abscisse initiale, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
-
+        
         public static int
             posY; // -> Ordonnée initialie, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
-
-        // ** VARIABLES : Provisoires.. **
-        public static string affichageTest;
-
+        
         // ** VARIABLES : Chemin de l'image **
-        public static string FilePath;
-
+        public static string cheminFichier;
+        
         public static string cheminImpressionFinal;
-
-        // -- Selection du bon emploi du temps en fonction de la classe selectionnée
-        public static void afficheEmploiDuTemps(ComboBox cbbClasse, PictureBox pbCarteArriere)
-        {
-            if (cbbClasse.Text != "")
-            {
-                var classe = cbbClasse.Text;
-                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
-            }
-        }
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool AllocConsole();
-
-        // -- Dessine le rectangle de couleur derrière le text pour une meilleurs visibilité de celui ci --
-        public static void fondTextCarteFace(Graphics ObjGraphics, string text, Font font, int posX, int posY,
+        
+        // -- Dessine le rectangle de couleur derrière le texte pour une meilleurs visibilité de celui ci --
+        public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, int posX, int posY,
             ComboBox cbbSection)
         {
-            Brush brushJaune = new SolidBrush(Color.Yellow);
-            Brush brushVert = new SolidBrush(Color.LightGreen);
-            Brush brushRouge = new SolidBrush(Color.Red);
-            Brush brushBleu = new SolidBrush(Color.LightBlue);
-            var largeur = Convert.ToInt32(ObjGraphics.MeasureString(text, font).Width);
-            var hauteur = Convert.ToInt32(ObjGraphics.MeasureString(text, font).Height);
+            Brush pinceauJaune = new SolidBrush(Color.Yellow);
+            Brush pinceauVert = new SolidBrush(Color.LightGreen);
+            Brush pinceauRouge = new SolidBrush(Color.Red);
+            Brush pinceauBleu = new SolidBrush(Color.LightBlue);
+            var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
+            var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
             var rectangle = new Rectangle(posX, posY, largeur, hauteur);
 
             // -- Couleur du rectangle en fonction de la section (donc de la couleur de la carte) --
             switch (cbbSection.Text)
             {
                 case "6eme":
-                    ObjGraphics.FillRectangle(brushJaune, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushJaune), rectangle);
+                    objGraphique.FillRectangle(pinceauJaune, rectangle);
+                    objGraphique.DrawRectangle(new Pen(pinceauJaune), rectangle);
                     break;
                 case "5eme":
-                    ObjGraphics.FillRectangle(brushVert, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushVert), rectangle);
+                    objGraphique.FillRectangle(pinceauVert, rectangle);
+                    objGraphique.DrawRectangle(new Pen(pinceauVert), rectangle);
                     break;
                 case "4eme":
-                    ObjGraphics.FillRectangle(brushRouge, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushRouge), rectangle);
+                    objGraphique.FillRectangle(pinceauRouge, rectangle);
+                    objGraphique.DrawRectangle(new Pen(pinceauRouge), rectangle);
                     break;
                 case "3eme":
-                    ObjGraphics.FillRectangle(brushBleu, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushBleu), rectangle);
+                    objGraphique.FillRectangle(pinceauBleu, rectangle);
+                    objGraphique.DrawRectangle(new Pen(pinceauBleu), rectangle);
                     break;
             }
         }
 
-        // -- Dessine le text des cases sur la carte --
-        public static void dessineTextCarteFace(Font font, int posX, int posY, string text, PictureBox pbCarteFace,
+        // -- Dessine le texte des cases sur la carte --
+        public static void dessineTexteCarteFace(Font police, int posX, int posY, string text, PictureBox pbCarteFace,
             ComboBox cbbSection)
         {
             //Pinceaux et graphique
-            var ObjGraphics = Graphics.FromImage(pbCarteFace.Image);
-            Brush brushNoir = new SolidBrush(Color.Black);
+            var objetGraphique = Graphics.FromImage(pbCarteFace.Image);
+            Brush pinceauNoir = new SolidBrush(Color.Black);
 
             //Dessine et rempli le fond pour l'écriture
-            fondTextCarteFace(ObjGraphics, text, font, posX, posY, cbbSection);
+            fondTexteCarteFace(objetGraphique, text, police, posX, posY, cbbSection);
 
             //Dessine la saisie en textbox
-            ObjGraphics.DrawString(text, font, brushNoir, posX,
+            objetGraphique.DrawString(text, police, pinceauNoir, posX,
                 posY); // Dessine le texte sur l'image à la position X et Y + couleur
-            ObjGraphics.Dispose(); // Libère les ressources
+            objetGraphique.Dispose(); // Libère les ressources
         }
 
         // -- Change le fond de la carte en fonction de la section choisie
-        public static void fondCarteSection(PictureBox pbCarteFace, ComboBox cbbSection)
+        public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
         {
             pbCarteFace.Image = Image.FromFile("./data/FichierCartesFace/" + cbbSection.Text + ".png");
             var date = DateTime.Today.ToShortDateString();
-            var font = new Font("comic sans ms", 45, FontStyle.Bold);
-            dessineTextCarteFace(font, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
-            var font2 = new Font("comic sans ms", 15, FontStyle.Bold);
-            dessineTextCarteFace(font2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
+            var police = new Font("times new roman", 45, FontStyle.Bold);
+            dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
+            var police2 = new Font("times new roman", 15, FontStyle.Bold);
+            dessineTexteCarteFace(police2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
             pbCarteFace.Refresh();
         }
 
         // -- N'affiche que les classes correspondantes a la section selectionnées --
-        public static void classePourSection(ComboBox cbbSection, ComboBox cbbClasse)
+        public static void classePourNiveau(ComboBox cbbSection, ComboBox cbbClasse)
         {
             switch (cbbSection.Text)
             {
                 case "6eme":
-                    cbbClasse.DataSource = Globale.classes6eme;
+                    cbbClasse.DataSource = Globale._classes6eme;
                     break;
 
                 case "5eme":
-                    cbbClasse.DataSource = Globale.classes5eme;
+                    cbbClasse.DataSource = Globale._classes5eme;
                     break;
 
                 case "4eme":
-                    cbbClasse.DataSource = Globale.classes4eme;
+                    cbbClasse.DataSource = Globale._classes4eme;
                     break;
 
                 case "3eme":
-                    cbbClasse.DataSource = Globale.classes3eme;
+                    cbbClasse.DataSource = Globale._classes3eme;
                     break;
             }
         }
 
-        public static void ajouterEdtPerso(PictureBox pbCarteArriere)
-        {
-            // -- Parcours des fichiers...
-            var opf = new OpenFileDialog();
-
-            var opfPath = "";
-
-            opf.InitialDirectory = "./data/ElevesEdt/";
-            opf.Filter = "Images (*.png, *.jpg) | *.png; *.jpg";
-            opf.FilterIndex = 1;
-            opf.RestoreDirectory = true;
-
-            if (opf.ShowDialog() == DialogResult.OK)
-            {
-                opfPath = opf.FileName;
-                // -- Ajout de l'image dans la picturebox, celle ci devient visible
-                pbCarteArriere.Image = new Bitmap(opfPath);
-            }
-        }
-
-        public static void reprendPrenom(TextBox txtPrenom, PictureBox pbCarteFace,
+        public static void reprendPrenom(string txtPrenom, PictureBox pbCarteFace,
             ComboBox cbbSection)
         {
-            if (txtPrenom.Text != "")
+            if (txtPrenom != "")
             {
-                if (txtPrenom.TextLength < 7)
+                if (txtPrenom.Length < 15)
                 {
-                    var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 28, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 350, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
-                    fondCarteSection(pbCarteFace, cbbSection);
-                    var font = new Font("times new roman", 20, FontStyle.Bold);
-                    dessineTextCarteFace(font, 350, 1075, txtPrenom.Text, pbCarteFace, cbbSection);
+                    fondCarteNiveau(pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 25, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 350, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
         }
 
-        public static void reprendNom(TextBox txtNom, PictureBox pbCarteFace, ComboBox cbbSection)
+        public static void reprendNom(string txtNom, PictureBox pbCarteFace, ComboBox cbbSection)
         {
-            if (txtNom.Text != "")
+            if (txtNom != "")
             {
-                if (txtNom.TextLength < 7)
+                if (txtNom.Length < 15)
                 {
-                    var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 28, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
-                    fondCarteSection(pbCarteFace, cbbSection);
-                    var font = new Font("times new roman", 20, FontStyle.Bold);
-                    dessineTextCarteFace(font, 250, 960, txtNom.Text, pbCarteFace, cbbSection);
+                    fondCarteNiveau(pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 25, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
@@ -207,158 +168,40 @@ namespace CartesAcces
         {
             if (rdbUlis.Checked)
             {
-                var font = new Font("comic sans ms", 30, FontStyle.Bold);
-                dessineTextCarteFace(font, 50, 230, "ULIS ", pbCarteFace, cbbSection);
+                var police = new Font("times new roman", 30, FontStyle.Bold);
+                dessineTexteCarteFace(police, 50, 230, "ULIS ", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
             }
             else if (rdbUPE2A.Checked)
             {
-                var font = new Font("comic sans ms", 30, FontStyle.Bold);
-                dessineTextCarteFace(font, 50, 230, "UPE2A", pbCarteFace, cbbSection);
+                var police = new Font("times new roman", 30, FontStyle.Bold);
+                dessineTexteCarteFace(police, 50, 230, "UPE2A", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
             }
             else if (rdbClRelais.Checked)
             {
-                var font = new Font("comic sans ms", 30, FontStyle.Bold);
-                dessineTextCarteFace(font, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
+                var police = new Font("times new roman", 30, FontStyle.Bold);
+                dessineTexteCarteFace(police, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
             }
             else
             {
-                fondCarteSection(pbCarteFace, cbbSection);
-                reprendNom(txtNom, pbCarteFace, cbbSection);
-                reprendPrenom(txtPrenom, pbCarteFace, cbbSection);
+                fondCarteNiveau(pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
                 btnEdtPerso.Enabled = false;
             }
         }
-
-        // -------------------------
-        public static void setLaPhoto(string path, PictureBox pbPhoto)
+        
+        public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
         {
-            pbPhoto.Image = Image.FromFile(path);
-            FilePath = path;
-        }
-
-        public static void cropLaPhoto(PictureBox pbPhotoUnique)
-        {
-            // -- Si la largeur a rogner est trop faible, on sort --
-            if (cropWidth < 1) return;
-
-            /* -- Rectangle pour stocker l'image rognée avec les points calculés --
-                Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
-                qui sont celles des vrai fichier EDT !
-                Cela permet d'éviter les problèmes de résolution d'image après le rognage */
-
-            var widthSave = pbPhotoUnique.Width;
-            var heightSave = pbPhotoUnique.Height;
-
-
-            var cropWidthReal = cropWidth * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
-            var cropHeightReal = cropHeight * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
-            var cropXReal = cropX * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
-            var cropYReal = cropY * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
-
-            var rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
-
-            // -- On stock l'image original dans un bitmap --
-            var OriginalImage = new Bitmap(Image.FromFile(FilePath));
-
-            // -- Bitmap pour l'image rognée --
-            var _img = new Bitmap(cropWidthReal, cropHeightReal);
-
-            // -- Création d'un graphique depuis l'image rognée
-            var g = Graphics.FromImage(_img);
-
-            // -- Attributs de l'image --
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            g.CompositingQuality = CompositingQuality.HighQuality;
-
-            // -- On dessine l'image original, avec les dimensions rognées dans le graphique 
-            g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
-
-            // -- Affichage dans la picturebox
-            pbPhotoUnique.Image = _img;
-            pbPhotoUnique.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbPhotoUnique.Width = widthSave;
-            pbPhotoUnique.Height = heightSave;
-        }
-
-        public static void verifPhotoEleve(Eleve eleve, PictureBox pbPhoto)
-        {
-            var nomFichierJPG = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
-            var nomFichierPNG = eleve.NomEleve + " " + eleve.PrenomEleve + ".png";
-            var trouveBool = false;
-
-            if (File.Exists("./data/ElevesPhoto/" + nomFichierJPG))
-                pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierJPG);
-            else if (File.Exists("./data/ElevesPhoto/" + nomFichierPNG))
-                pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierPNG);
-            else
-                affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
-        }
-
-        public static void cropEdt(PictureBox pbCarteArriere, string pathEdt)
-        {
-            // -- Si la largeur a rogner est trop faible, on sort --
-            if (cropWidth < 1) return;
-
-            /* -- Rectangle pour stocker l'image rognée avec les points calculés --
-                Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
-                qui sont celles des vrai fichier EDT !
-                Cela permet d'éviter les problèmes de résolution d'image après le rognage */
-
-            var cropWidthReal = cropWidth * pbCarteArriere.Image.Width / 540;
-            var cropHeightReal = cropHeight * pbCarteArriere.Image.Height / 354;
-            var cropXReal = cropX * pbCarteArriere.Image.Width / 540;
-            var cropYReal = cropY * pbCarteArriere.Image.Height / 354;
-
-            var rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
-
-            // -- On stock l'image original dans un bitmap --
-            var OriginalImage = new Bitmap(Image.FromFile(pathEdt));
-
-            // -- Bitmap pour l'image rognée --
-            var _img = new Bitmap(cropWidthReal, cropHeightReal);
-
-            // -- Création d'un graphique depuis l'image rognée
-            var g = Graphics.FromImage(_img);
-
-            // -- Attributs de l'image --
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            g.CompositingQuality = CompositingQuality.HighQuality;
-
-            // -- On dessine l'image original, avec les dimensions rognées dans le graphique 
-            g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
-
-            // -- Affichage dans la picturebox
-            pbCarteArriere.Image = _img;
-            pbCarteArriere.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbCarteArriere.Width = 540;
-            pbCarteArriere.Height = 354;
-        }
-
-        public static void affichePhotoProvisoire(string path, PictureBox pbPhoto)
-        {
-            pbPhoto.Image = new Bitmap(path);
+            pbPhoto.Image = new Bitmap(chemin);
             pbPhoto.Size = new Size(110, 165);
             pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPhoto.Visible = true;
-        }
-
-        public static void afficheEmploiDuTempsEleve(Eleve eleve, PictureBox pbCarteArriere)
-        {
-            var folder = "./data/image" + eleve.ClasseEleve.Substring(0, 1) + "eme";
-
-            if (eleve.SansEDT == false)
-                pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve));
-
-            else
-                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + eleve.ClasseEleve + ".png");
         }
 
         public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
@@ -366,9 +209,9 @@ namespace CartesAcces
             foreach (var eleve in listeEleve)
                 try
                 {
-                    var folder = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
-                    pbCarteArriere.Image = Image.FromFile(folder + Eleve.creeCleeEleve(eleve) + ".jpg");
-                    Chemin.pathEdt = folder + Eleve.creeCleeEleve(eleve) + ".jpg";
+                    var dossier = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
+                    pbCarteArriere.Image = Image.FromFile(dossier + Eleve.creeCleEleve(eleve) + ".jpg");
+                    Chemin.cheminEdt = dossier + Eleve.creeCleEleve(eleve) + ".jpg";
                     break;
                 }
                 catch
@@ -377,72 +220,72 @@ namespace CartesAcces
                 }
         }
 
-        public static void fondTextCarteFace(Graphics ObjGraphics, string text, Font font, Eleve eleve, int posX,
+        public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
             int posY)
         {
             Brush brushJaune = new SolidBrush(Color.Yellow);
             Brush brushVert = new SolidBrush(Color.LightGreen);
             Brush brushRouge = new SolidBrush(Color.Red);
             Brush brushBleu = new SolidBrush(Color.LightBlue);
-            var largeur = Convert.ToInt32(ObjGraphics.MeasureString(text, font).Width);
-            var hauteur = Convert.ToInt32(ObjGraphics.MeasureString(text, font).Height);
+            var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
+            var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
             var rectangle = new Rectangle(posX, posY, largeur, hauteur);
 
             // -- Couleur du rectangle en fonction de la section (donc de la couleur de la carte) --
             switch (eleve.ClasseEleve.Substring(0, 1))
             {
                 case "6":
-                    ObjGraphics.FillRectangle(brushJaune, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushJaune), rectangle);
+                    objGraphique.FillRectangle(brushJaune, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
                     break;
                 case "5":
-                    ObjGraphics.FillRectangle(brushVert, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushVert), rectangle);
+                    objGraphique.FillRectangle(brushVert, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushVert), rectangle);
                     break;
                 case "4":
-                    ObjGraphics.FillRectangle(brushRouge, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushRouge), rectangle);
+                    objGraphique.FillRectangle(brushRouge, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushRouge), rectangle);
                     break;
                 case "3":
-                    ObjGraphics.FillRectangle(brushBleu, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushBleu), rectangle);
+                    objGraphique.FillRectangle(brushBleu, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushBleu), rectangle);
                     break;
                 default:
-                    ObjGraphics.FillRectangle(brushJaune, rectangle);
-                    ObjGraphics.DrawRectangle(new Pen(brushJaune), rectangle);
+                    objGraphique.FillRectangle(brushJaune, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
                     break;
             }
         }
 
-        public static Image imageCarteFace(Eleve eleve, Font font)
+        public static Image imageCarteFace(Eleve eleve, Font police)
         {
             var image = Image.FromFile("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0, 1) + "eme.png");
-            var ObjGraphics = Graphics.FromImage(image);
-            Brush brushNoir = new SolidBrush(Color.Black);
+            var objGraphique = Graphics.FromImage(image);
+            Brush pinceauNoir = new SolidBrush(Color.Black);
 
-            var font2 = new Font("comic sans ms", 30, FontStyle.Bold);
-            var font3 = new Font("comic sans ms", 15, FontStyle.Bold);
+            var police2 = new Font("times new roman", 30, FontStyle.Bold);
+            var police3 = new Font("times new roman", 15, FontStyle.Bold);
 
             var date = DateTime.Today.ToShortDateString();
 
             //Dessine et rempli le fond pour l'écriture
-            fondTextCarteFace(ObjGraphics, eleve.NomEleve, font, eleve, 250, 960);
-            fondTextCarteFace(ObjGraphics, eleve.PrenomEleve, font, eleve, 350, 1075);
-            fondTextCarteFace(ObjGraphics, eleve.MefEleve, font2, eleve, 50, 70);
-            fondTextCarteFace(ObjGraphics, "Date de création: " + date, font3, eleve, 870, 875);
+            fondTexteCarteFace(objGraphique, eleve.NomEleve, police, eleve, 250, 960);
+            fondTexteCarteFace(objGraphique, eleve.PrenomEleve, police, eleve, 350, 1075);
+            fondTexteCarteFace(objGraphique, eleve.MefEleve, police2, eleve, 50, 70);
+            fondTexteCarteFace(objGraphique, "Date de création: " + date, police3, eleve, 870, 875);
 
             //Dessine la saisie en textbox
-            ObjGraphics.DrawString(eleve.NomEleve, font, brushNoir, 250,
+            objGraphique.DrawString(eleve.NomEleve, police, pinceauNoir, 250,
                 960); // Dessine le texte sur l'image à la position X et Y + couleur
-            ObjGraphics.DrawString(eleve.PrenomEleve, font, brushNoir, 350, 1075);
-            ObjGraphics.DrawString(eleve.MefEleve, font2, brushNoir, 50, 70);
-            ObjGraphics.DrawString("Date de création: " + date, font3, brushNoir, 870, 875);
-            ObjGraphics.Dispose(); // Libère les ressources
+            objGraphique.DrawString(eleve.PrenomEleve, police, pinceauNoir, 350, 1075);
+            objGraphique.DrawString(eleve.MefEleve, police2, pinceauNoir, 50, 70);
+            objGraphique.DrawString("Date de création: " + date, police3, pinceauNoir, 870, 875);
+            objGraphique.Dispose(); // Libère les ressources
 
             return image;
         }
 
-        public static void carteFace(Eleve eleve, string path)
+        public static void carteFace(Eleve eleve, string chemin)
         {
             // -- Déclare l'image --
             Image imageFace = null;
@@ -450,27 +293,27 @@ namespace CartesAcces
             // -- Gestion de la taille de la police --
             if (eleve.NomEleve.Length > 10 || eleve.PrenomEleve.Length > 10)
             {
-                var font = new Font("times new roman", 20, FontStyle.Bold);
-                imageFace = imageCarteFace(eleve, font);
+                var police = new Font("times new roman", 20, FontStyle.Bold);
+                imageFace = imageCarteFace(eleve, police);
             }
             else
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
-                imageFace = imageCarteFace(eleve, font);
+                var police = new Font("times new roman", 25, FontStyle.Bold);
+                imageFace = imageCarteFace(eleve, police);
             }
 
             // -- Sauvegarde l'image --
-            imageFace.Save(path + "/" + eleve.NomEleve + eleve.PrenomEleve + "Carte.png", ImageFormat.Png);
+            imageFace.Save(chemin + "/" + eleve.NomEleve + eleve.PrenomEleve + "Carte.png", ImageFormat.Png);
         }
 
         public static void carteArriere(Eleve eleve, PictureBox pbCarteArriere)
         {
             if (eleve.SansEDT == false)
             {
-                var pathEdt = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" +
-                              Eleve.creeCleeEleve(eleve) + ".jpg";
-                pbCarteArriere.Image = Image.FromFile(pathEdt);
-                cropEdt(pbCarteArriere, pathEdt);
+                var cheminEdt = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" +
+                              Eleve.creeCleEleve(eleve) + ".jpg";
+                pbCarteArriere.Image = Image.FromFile(cheminEdt);
+                Edt.rognageEdt(pbCarteArriere, cheminEdt);
             }
             else
             {
@@ -478,128 +321,169 @@ namespace CartesAcces
             }
         }
 
-        public static void proportionPhoto(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve, string path)
+        public static void importEleves(string path)
         {
-            // -- Calcul par proportionnalité de la position et des dimensions de la photo sur le cadre de l'application par rapport a l'image réelle --
-            // -- Cela permet de répercuter les déplacements effectués par l'utilisateur sur l'image originelle afin de pouvoir réutiliser celle ci --
-            // -- Et ainsi ne pas perdre en qualité de l'image --
-            var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-            var realLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-            var realWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-            var realHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-
-            // -- Superposition des deux image dans un objet "Graphics" --
-            var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
-            ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
-
-            pbCarteArriere.Image.Save(path + "/" + eleve.NomEleve + eleve.PrenomEleve + "EDT.png", ImageFormat.Png);
-
-            Thread.Sleep(1000);
-        }
-
-        public static void saveCardAsWord(string path, string nomFicher, List<Eleve> listeEleve, PictureBox pbPhoto,
-            PictureBox pbCarteArriere)
-        {
-            var k = 0;
-            var pages = 0;
-            Eleve.possedeEdt(listeEleve);
-            var wordFile = WordFile.initWordFile(15, 15, 15, 15);
-
-            for (var compt = 1; compt <= listeEleve.Count; compt += 2)
+            var cheminSource = path;
+            var cheminDestination = Chemin.cheminListeEleve;
+            try
             {
-                // -- Les élèves sont gérés deux par deux --
+                if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
 
-                // -- Carte Face : 1/2 Eleve --
-                carteFace(listeEleve[compt], path);
-                // -- Carte Face : 2/2 Eleve --
-                carteFace(listeEleve[compt - 1], path);
+                Directory.CreateDirectory(Chemin.cheminDossierListeEleve);
 
-                // -- Ajout des deux fichier PNG au nouveau document Word --
-                var shapeCarteFace1 = wordFile.ActiveDocument.Shapes.AddPicture(
-                    path + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png",
-                    Type.Missing, Type.Missing, Type.Missing);
-                var shapeCarteFace2 = wordFile.ActiveDocument.Shapes.AddPicture(
-                    path + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png",
-                    Type.Missing, Type.Missing, Type.Missing);
-                WordFile.rectifPositionImages(shapeCarteFace1, shapeCarteFace2);
-                // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
-                File.Delete(path + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png");
-                File.Delete(path + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve +
-                            "Carte.png");
-                //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
-                GC.Collect();
-                // -- Nouvelle page --
-                wordFile.Selection.EndKey();
-                wordFile.Selection.InsertNewPage();
+                File.Copy(cheminSource, cheminDestination);
+                ReadCSV.setLesEleves(cheminDestination);
+                Eleve.setLesClasses();
 
-                // ------------------------------------------------------------------
-
-                // -- Carte arriere : 1/2 Eleve --
-                carteArriere(listeEleve[compt], pbCarteArriere);
-                verifPhotoEleve(listeEleve[compt], pbPhoto);
-                proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt], path);
-                // -- Carte arriere : 2/2 Eleve --
-                carteArriere(listeEleve[compt - 1], pbCarteArriere);
-                verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
-                proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], path);
-
-                // -- Ajout des deux fichier PNG au nouveau document Word --
-                var shapeCarteArriere1 = wordFile.ActiveDocument.Shapes.AddPicture(
-                    path + "/" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png", Type.Missing,
-                    Type.Missing, Type.Missing);
-                var shapeCarteArriere2 = wordFile.ActiveDocument.Shapes.AddPicture(
-                    path + "/" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png",
-                    Type.Missing, Type.Missing, Type.Missing);
-
-                WordFile.rectifPositionImages(shapeCarteArriere1, shapeCarteArriere2);
-
-                // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
-                File.Delete(path + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png");
-                File.Delete(
-                    path + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png");
-
-                //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
-                GC.Collect();
-
-                // -- Nouvelle page --
-
-                wordFile.Selection.EndKey();
-                wordFile.Selection.InsertNewPage();
-
-                if (compt > k + 50)
-                {
-                    var name = path + " page " + k / 50;
-                    WordFile.limite50Pages(wordFile, name);
-                    k += 50;
-                    pages++;
-                }
+                MessageBox.Show("Import Réussi");
             }
-
-            if (k / 50 == 1)
-                wordFile.ActiveDocument.SaveAs(path + "/Imprimer.doc", Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            else
-                wordFile.ActiveDocument.SaveAs(path + "/Imprimer Part " + pages + ".doc", Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-
-            // -- Ferme le document --
-            wordFile.ActiveDocument.Close();
-
-            // -- Quitte l'application -- 
-            wordFile.Quit();
-
-            // -- TaskKill --
-            Marshal.FinalReleaseComObject(wordFile);
-
-            //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
-            GC.Collect();
-
-            // -- Message qui indique que nous sommes arrivé au bout --
-            MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
 
+        public static void importEdtClassique(string chemin)
+        {
+            var cheminSource = chemin;
+            var cheminDestination = Chemin.cheminEdtClassique;
+
+            try
+            {
+                if (Directory.Exists(cheminDestination))
+                {
+                    foreach (var fichier in Directory.GetFiles(cheminDestination)) File.Delete(fichier);
+                    Directory.Delete(cheminDestination);
+                }
+
+                Directory.CreateDirectory(cheminDestination);
+                var dossier = new DirectoryInfo(cheminSource);
+
+                //MessageBox.Show("Import réussie !");
+            }
+            catch
+            {
+                
+            }
+        }
+        
+        // -- Importation des photo des élèves --
+        public static void importPhoto(string chemin)
+        {
+            var cheminSource = chemin;
+            var cheminDestination = Chemin.cheminPhotoEleve;
+
+            try
+            {
+                if (Directory.Exists(cheminDestination))
+                {
+                    foreach (var file in Directory.GetFiles(cheminDestination)) File.Delete(file);
+                    Directory.Delete(cheminDestination);
+                }
+
+                Directory.CreateDirectory(cheminDestination);
+
+                var directory = new DirectoryInfo(cheminSource);
+
+                foreach (var file in directory.GetFiles())
+                {
+                    var img = Image.FromFile(file.FullName);
+                    var nom = file.Name;
+
+                    img.Save(cheminDestination + nom, ImageFormat.Png);
+                }
+
+                MessageBox.Show("Import réussie !");
+
+                Globale._actuelle.Invoke(new MethodInvoker(delegate {
+                    foreach (Control controle in Globale._actuelle.Controls)
+                    {
+                        if (controle is Label && controle.Name == "lblDateListeEleve")
+                        {
+                            controle.Text = ReadCSV.getDateFile();
+                        }
+                    }
+
+
+                }));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         public static void easterEgg()
         {
             var gitPoule1 = "⠀⠀⠀⠀⠀⣀⡀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⢀⣤⣤ ⣤⣄⠀⠀ ⠀⠀⠀⠀⠀";
@@ -624,7 +508,7 @@ namespace CartesAcces
             var gitPoule20 = "⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⣬  ⡞⠁⠀⠀⠀⠀⢻ ⣇⠀⣠⡴ ⠆⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀";
             var gitPoule21 = "⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⢀⣀⣀⣀⣀⣴⢿  ⡁⠀⠀⢠⣤⠤⠼ ⣯⡿⠋⠀ ⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀";
             var gitPoule22 = "⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⣿⣟⣻⡿⠿⠓⠒  ⠚⠓⠀⢻⡗⠒⠛ ⠉⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀";
-            var gitPoule23 = "⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠉⠉⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
+            var gitPoule23 = "⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠉⠉⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀ ⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀";
 
             var ListePoule = new List<string>();
             ListePoule.Add(gitPoule1);

@@ -1,0 +1,93 @@
+﻿using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace CartesAcces
+{
+    public partial class barDeProgression : Form
+    {
+        public barDeProgression()
+        {
+            InitializeComponent();
+            TailleCotrole.setTailleControleTexte(this);
+            Couleur.setCouleurFenetre(this);
+        }
+
+        private void progressBarForm_Load(object sender, EventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
+            this.ControlBox = false;
+        }
+        
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = false; }));
+                Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = false; }));
+                switch (Globale._cas)
+                {
+
+                    case 1:
+                        cas_1();
+                        break;
+                    case 2:
+                        cas_2();
+                        break;
+                    case 3:
+                        cas_3();
+                        break;
+                    case 4:
+                        cas_4();
+                        break;
+                }
+
+                Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = true; }));
+                Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = true; }));
+            }
+            catch
+            {
+                MessageBox.Show("operation annulée");
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Close();
+        }
+
+        private void cas_1()
+        {
+            ReadCSV.setLesEleves(Chemin.cheminListeEleve);
+            Eleve.setLesClasses();
+        }
+    
+        private void cas_2()
+        {
+            Edition.importEleves(Globale._cheminTexte);
+            Globale._actuelle.Invoke(new MethodInvoker(delegate
+            {
+                foreach (Control controle in Globale._actuelle.Controls)
+                {
+                    if (controle is Label && controle.Name == "lblDateListeEleve")
+                    {
+                        controle.Text = ReadCSV.getDateFile();
+                    }
+                }
+            }));
+
+        }
+
+        private void cas_3()
+        {
+            PdfGs.getImageFromPdf(Globale._cheminPdf, Globale._classe);
+            PdfGs.renameEdt(Globale._cheminPdf);
+        }
+
+        private void cas_4()
+        {
+            Edition.importPhoto(Globale._cheminPhoto);
+
+        }
+    }
+}

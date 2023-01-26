@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmCarteIndividuelle
+    partial class frmCarteProvisoire
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +48,6 @@ namespace CartesAcces
             this.pbCarteArriere = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnCrop = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -60,12 +59,12 @@ namespace CartesAcces
             this.pbPhoto = new System.Windows.Forms.PictureBox();
             this.pnlEdtPhoto = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pbCarteFace)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.pbCarteArriere)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCarteFace)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCarteArriere)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.tkbTaillePhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize) (this.pbPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
             this.pnlEdtPhoto.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,10 +121,10 @@ namespace CartesAcces
             this.rdbRas.Enabled = false;
             this.rdbRas.Location = new System.Drawing.Point(343, 62);
             this.rdbRas.Name = "rdbRas";
-            this.rdbRas.Size = new System.Drawing.Size(53, 17);
+            this.rdbRas.Size = new System.Drawing.Size(74, 17);
             this.rdbRas.TabIndex = 16;
             this.rdbRas.TabStop = true;
-            this.rdbRas.Text = "R.A.S";
+            this.rdbRas.Text = "Par défaut";
             this.rdbRas.UseVisualStyleBackColor = true;
             this.rdbRas.CheckedChanged += new System.EventHandler(this.rdbRas_CheckedChanged);
             // 
@@ -180,7 +179,7 @@ namespace CartesAcces
             // 
             this.cbbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSection.FormattingEnabled = true;
-            this.cbbSection.Items.AddRange(new object[] {"6eme", "5eme", "4eme", "3eme"});
+            this.cbbSection.Items.AddRange(new object[] { "6eme", "5eme", "4eme", "3eme" });
             this.cbbSection.Location = new System.Drawing.Point(120, 30);
             this.cbbSection.Name = "cbbSection";
             this.cbbSection.Size = new System.Drawing.Size(121, 21);
@@ -212,7 +211,6 @@ namespace CartesAcces
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(121, 20);
             this.txtPrenom.TabIndex = 3;
-            this.txtPrenom.TextChanged += new System.EventHandler(this.txtPrenom_TextChanged);
             // 
             // txtNom
             // 
@@ -221,7 +219,6 @@ namespace CartesAcces
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(121, 20);
             this.txtNom.TabIndex = 2;
-            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             // 
             // label2
             // 
@@ -254,7 +251,7 @@ namespace CartesAcces
             // 
             // pbCarteArriere
             // 
-            this.pbCarteArriere.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbCarteArriere.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbCarteArriere.Location = new System.Drawing.Point(0, 0);
             this.pbCarteArriere.Margin = new System.Windows.Forms.Padding(2);
             this.pbCarteArriere.Name = "pbCarteArriere";
@@ -264,11 +261,11 @@ namespace CartesAcces
             this.pbCarteArriere.TabStop = false;
             this.pbCarteArriere.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseDown);
             this.pbCarteArriere.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseMove);
+            this.pbCarteArriere.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseUp);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnCancel);
-            this.groupBox2.Controls.Add(this.btnCrop);
             this.groupBox2.Controls.Add(this.btnSelect);
             this.groupBox2.Location = new System.Drawing.Point(556, 389);
             this.groupBox2.Name = "groupBox2";
@@ -279,7 +276,7 @@ namespace CartesAcces
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Enabled = false;
             this.btnCancel.Location = new System.Drawing.Point(391, 33);
             this.btnCancel.MaximumSize = new System.Drawing.Size(127, 23);
@@ -290,29 +287,16 @@ namespace CartesAcces
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnCrop
-            // 
-            this.btnCrop.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCrop.Enabled = false;
-            this.btnCrop.Location = new System.Drawing.Point(207, 33);
-            this.btnCrop.MaximumSize = new System.Drawing.Size(127, 23);
-            this.btnCrop.Name = "btnCrop";
-            this.btnCrop.Size = new System.Drawing.Size(127, 23);
-            this.btnCrop.TabIndex = 1;
-            this.btnCrop.Text = "&Rogner";
-            this.btnCrop.UseVisualStyleBackColor = true;
-            this.btnCrop.Click += new System.EventHandler(this.btnCrop_Click);
-            // 
             // btnSelect
             // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelect.Enabled = false;
             this.btnSelect.Location = new System.Drawing.Point(21, 22);
             this.btnSelect.MaximumSize = new System.Drawing.Size(140, 50);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(140, 44);
             this.btnSelect.TabIndex = 0;
-            this.btnSelect.Text = "&Sélectionner la zone à rogner";
+            this.btnSelect.Text = "&Selectionner et Rogner";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
@@ -343,7 +327,7 @@ namespace CartesAcces
             // 
             // tkbTaillePhoto
             // 
-            this.tkbTaillePhoto.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tkbTaillePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.tkbTaillePhoto.Location = new System.Drawing.Point(267, 37);
             this.tkbTaillePhoto.Maximum = 300;
             this.tkbTaillePhoto.Minimum = 30;
@@ -414,7 +398,7 @@ namespace CartesAcces
             this.pnlEdtPhoto.Size = new System.Drawing.Size(540, 356);
             this.pnlEdtPhoto.TabIndex = 11;
             // 
-            // frmCarteIndividuelle
+            // frmCarteProvisoire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -428,17 +412,18 @@ namespace CartesAcces
             this.Controls.Add(this.pbCarteFace);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimumSize = new System.Drawing.Size(1125, 726);
-            this.Name = "frmCarteIndividuelle";
+            this.Name = "frmCarteProvisoire";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmCarteProvisoire_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pbCarteFace)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.pbCarteArriere)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCarteFace)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCarteArriere)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.tkbTaillePhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize) (this.pbPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
             this.pnlEdtPhoto.ResumeLayout(false);
             this.ResumeLayout(false);
         }
@@ -457,7 +442,6 @@ namespace CartesAcces
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbCarteArriere;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnCrop;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox3;

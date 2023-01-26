@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.Entity;
 using System.Xml;
 using MySql.Data.MySqlClient;
 
@@ -17,44 +18,18 @@ namespace CartesAcces
             var ip = nodeIp.Attributes["value"].Value;
             var nodeBd = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
             var bd = nodeBd.Attributes["value"].Value;
-            var nodeUser = doc.SelectSingleNode("/configuration/appSettings/add[@key='USER']");
-            var user = nodeUser.Attributes["value"].Value;
-            var nodePass = doc.SelectSingleNode("/configuration/appSettings/add[@key='PASS']");
-            var pass = nodePass.Attributes["value"].Value;
-            var builder = new MySqlConnectionStringBuilder();
-            builder.Server = ip;
-            builder.Port = 3306;
-            builder.Database = bd;
-            builder.UserID = user;
-            builder.Password = pass;
-            var connectionString = builder.ConnectionString;
-            connexionBdd = new MySqlConnection(connectionString);
-        }
-
-        public static string getUser(string user)
-        {
-            var password = "";
-            connexionBdd.Open();
-            var command = new MySqlCommand("getUser", connexionBdd);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@user", user);
-            var reader = command.ExecuteReader();
-            while (reader.Read()) password = reader["hash"].ToString();
-            connexionBdd.Close();
-            Globale._nomUtilisateur = user;
-            return password;
-        }
-
-        public static void setUser(string user, string hash)
-        {
-            connexionBdd.Open();
-            var command = new MySqlCommand("setUser", connexionBdd);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@targetUser", user);
-            command.Parameters.AddWithValue("@setHash", hash);
-            command.Parameters.AddWithValue("@setThemeBool", Globale._estEnModeSombre);
-            command.ExecuteNonQuery();
-            connexionBdd.Close();
+            var nodeUtilisateur = doc.SelectSingleNode("/configuration/appSettings/add[@key='UTILISATEUR']");
+            var utilisateur = nodeUtilisateur.Attributes["value"].Value;
+            var nodeMotDePasse = doc.SelectSingleNode("/configuration/appSettings/add[@key='MOTDEPASSE']");
+            var motDePasse = nodeMotDePasse.Attributes["value"].Value;
+            var sqlCreateur = new MySqlConnectionStringBuilder();
+            sqlCreateur.Server = ip;
+            sqlCreateur.Port = 3306;
+            sqlCreateur.Database = bd;
+            sqlCreateur.UserID = utilisateur;
+            sqlCreateur.Password = motDePasse;
+            var texteConnexion = sqlCreateur.ConnectionString;
+            connexionBdd = new MySqlConnection(texteConnexion);
         }
     }
 }

@@ -38,6 +38,8 @@ namespace CartesAcces
             this.txtMotDePasse = new System.Windows.Forms.TextBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnChiffre = new System.Windows.Forms.Button();
+            this.btnDechiffre = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConnexion
@@ -102,11 +104,33 @@ namespace CartesAcces
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnChiffre
+            // 
+            this.btnChiffre.Location = new System.Drawing.Point(106, 339);
+            this.btnChiffre.Name = "btnChiffre";
+            this.btnChiffre.Size = new System.Drawing.Size(75, 23);
+            this.btnChiffre.TabIndex = 7;
+            this.btnChiffre.Text = "Chiffrer";
+            this.btnChiffre.UseVisualStyleBackColor = true;
+            this.btnChiffre.Click += new System.EventHandler(this.btnChiffre_Click);
+            // 
+            // btnDechiffre
+            // 
+            this.btnDechiffre.Location = new System.Drawing.Point(106, 300);
+            this.btnDechiffre.Name = "btnDechiffre";
+            this.btnDechiffre.Size = new System.Drawing.Size(75, 23);
+            this.btnDechiffre.TabIndex = 8;
+            this.btnDechiffre.Text = "Dechiffrer";
+            this.btnDechiffre.UseVisualStyleBackColor = true;
+            this.btnDechiffre.Click += new System.EventHandler(this.btnDechiffre_Click);
+            // 
             // frmConnexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 458);
+            this.Controls.Add(this.btnDechiffre);
+            this.Controls.Add(this.btnChiffre);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.txtMotDePasse);
@@ -118,8 +142,10 @@ namespace CartesAcces
             this.Text = "frmConnexion";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Button btnChiffre;
+        private System.Windows.Forms.Button btnDechiffre;
 
         private System.Windows.Forms.Button btnConnexion;
         private System.Windows.Forms.Label lblIdent;

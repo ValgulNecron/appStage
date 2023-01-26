@@ -55,9 +55,11 @@ namespace CartesAcces
                     unEleve.MefEleve = getDataFromCSV(sFilePath, 5)[i];
 
                     listeProvisoire.Add(unEleve);
+                    Globale._listeElevesString.Add(unEleve.NomEleve + " " + unEleve.PrenomEleve + " " +
+                                                  unEleve.ClasseEleve);
                 }
 
-                Globale.listeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
+                Globale._listeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
             }
             catch
             {
@@ -72,6 +74,15 @@ namespace CartesAcces
             var classeRectif = classe.Substring(index + 1, classe.Length - 3);
 
             return classeRectif;
+        }
+
+        public static string getDateFile()
+        {
+            var dateFile = "Aucune Importation";
+
+            if (File.Exists(Chemin.cheminListeEleve)) dateFile = File.GetCreationTime(Chemin.cheminListeEleve).ToString();
+
+            return dateFile;
         }
     }
 }
