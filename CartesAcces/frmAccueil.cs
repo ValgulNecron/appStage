@@ -53,19 +53,19 @@ namespace CartesAcces
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var time = new Timer(this);
             var dir = new DirectoryInfo("./data/image");
-            if (dir.LastWriteTime.Add(TimeSpan.FromSeconds(7)) <= DateTime.Now)
+            if (dir.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
                 MessageBox.Show("7j depuis le denier import des edt");
             }
             
             var dir2 = new DirectoryInfo(Chemin.cheminPhotoEleve);
-            if (dir2.LastWriteTime.Add(TimeSpan.FromSeconds(7)) <= DateTime.Now)
+            if (dir2.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
                 MessageBox.Show("7j depuis le dernier import de photo");
             }
 
             var dir3 = new DirectoryInfo(Chemin.cheminListeEleve);
-            if (dir3.LastWriteTime.Add(TimeSpan.FromSeconds(7)) <= DateTime.Now)
+            if (dir3.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
                 MessageBox.Show("7j depuis le dernier import des photo");
             }
