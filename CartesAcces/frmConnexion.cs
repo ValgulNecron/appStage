@@ -38,7 +38,7 @@ namespace CartesAcces
                     txtIdentifiant.Text = "";
                     foreach (Control controle in Globale._accueil.Controls)
                     {
-                        if(controle is Panel || controle.Name == "pnlMenu")
+                        if(controle is Panel && controle.Name == "pnlMenu")
                         {
                             foreach (Control controle2 in controle.Controls)
                             {
