@@ -334,6 +334,7 @@ namespace CartesAcces
                 File.Copy(cheminSource, cheminDestination);
                 ReadCSV.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
+                Globale._lblDate.Text = ReadCSV.getDateFile();
 
                 MessageBox.Show("Import Réussi");
             }
