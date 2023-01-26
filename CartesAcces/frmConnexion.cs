@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -49,6 +50,12 @@ namespace CartesAcces
                             }
                         }
                     }
+                    Globale._cas = 1;
+                    var frmWait = new barDeProgression();
+                    frmWait.StartPosition = FormStartPosition.Manual;
+                    frmWait.Location = new Point(800, 300);
+                    frmWait.Show();
+                    frmWait.TopMost = true;
                 }
             }
             catch (Exception ex)

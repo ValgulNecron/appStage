@@ -65,12 +65,6 @@ namespace CartesAcces
             }
             Globale._actuelle = new frmConnexion();
             OpenChildForm(Globale._actuelle);
-            Globale._cas = 1;
-            var frmWait = new barDeProgression();
-            frmWait.StartPosition = FormStartPosition.Manual;
-            frmWait.Location = new Point(800, 300);
-            frmWait.Show();
-            frmWait.TopMost = true;
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var time = new Timer(this);
             var dir = new DirectoryInfo("./data/image");
