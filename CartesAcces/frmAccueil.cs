@@ -36,7 +36,7 @@ namespace CartesAcces
             childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel  
             foreach (Control controle in Globale._accueil.Controls)
             {
-                if (controle is Panel)
+                if (controle is Panel || controle.Name == "pnlContent")
                 {
                     var pnlContent = (Panel) controle;
                     pnlContent.Controls.Clear();
