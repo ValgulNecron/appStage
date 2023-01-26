@@ -41,10 +41,9 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-            lblDateListeEleve = Globale._lblDate;
+            //lblDateListeEleve = Globale._lblDate;
             Globale._actuelle = new frmImportation(); //
             OpenChildForm(Globale._actuelle); //
-            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
             if (Globale._cheminTexte.Length > 0)
             {
                 Globale._cas = 2;

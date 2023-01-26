@@ -332,6 +332,7 @@ namespace CartesAcces
                 Directory.CreateDirectory(Chemin.cheminDossierListeEleve);
 
                 File.Copy(cheminSource, cheminDestination);
+                File.SetCreationTime(cheminDestination, DateTime.Now);
                 ReadCSV.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
 

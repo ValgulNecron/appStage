@@ -80,6 +80,8 @@ namespace CartesAcces
 
         private void cas_3()
         {
+            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
+
             PdfGs.getImageFromPdf(Globale._cheminPdf, Globale._classe);
             PdfGs.renameEdt(Globale._cheminPdf);
             
