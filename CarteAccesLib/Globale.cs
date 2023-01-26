@@ -5,6 +5,8 @@ namespace CartesAcces
 {
     public static class Globale
     {
+        public static Label _lblDate;
+        
         public static int _cas = 0; 
         
         public static int _classe = 6;

@@ -19,9 +19,17 @@ namespace CartesAcces
 
         private void frmRognageEdtClassique_Load(object sender, EventArgs e)
         {
-            listeFichiers.AddRange(Directory.GetFiles(Globale._cheminEdtClassique));
-            pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
-            Edt.rognageEdt(pbEdtClassique, Globale._cheminEdtClassique);
+            try
+            {
+                listeFichiers.AddRange(Directory.GetFiles(Globale._cheminEdtClassique));
+                pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
+                Edt.rognageEdt(pbEdtClassique, Globale._cheminEdtClassique);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+
         }
 
         private void btnRogner_Click(object sender, EventArgs e)

@@ -72,6 +72,7 @@ namespace CartesAcces
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
+            lblPhotoEleve = Globale._lblDate;
             Globale._cheminPhoto = Chemin.setCheminImportationDossier();
             Globale._cas = 4;
             var frmWait = new barDeProgression();
@@ -79,8 +80,6 @@ namespace CartesAcces
             frmWait.Location = new Point(0, 0);
             frmWait.Show();
             frmWait.TopMost = true;
-            lblPhotoEleve.Text = Photo.getDatePhotos();
-
         }
 
         private void btnImportEdtClassique_Click(object sender, EventArgs e)
