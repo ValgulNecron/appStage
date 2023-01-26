@@ -53,13 +53,11 @@ namespace CartesAcces
                 frmWait.Show();
                 frmWait.TopMost = true;
             }
-        }   
+        }
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            var frmSelectSection = new frmSelectNiveau();
-            frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
-            frmSelectSection.Show();
+            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
             Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
             Globale._cas = 3;
             var frmWait = new barDeProgression();
@@ -85,11 +83,11 @@ namespace CartesAcces
         {
             Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
             Edition.importEdtClassique(Globale._cheminEdtClassique);
-            
+
             frmRognageEdtClassique frmRognageEdtClassique = new frmRognageEdtClassique();
             frmRognageEdtClassique.Show();
         }
-        
+
         private void frmParametres_Load(object sender, EventArgs e)
         {
             var time = new Timer(this);

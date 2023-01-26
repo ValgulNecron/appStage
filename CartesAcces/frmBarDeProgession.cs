@@ -18,7 +18,7 @@ namespace CartesAcces
             backgroundWorker1.RunWorkerAsync();
             this.ControlBox = false;
         }
-        
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -27,7 +27,6 @@ namespace CartesAcces
                 Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = false; }));
                 switch (Globale._cas)
                 {
-
                     case 1:
                         cas_1();
                         break;
@@ -61,7 +60,7 @@ namespace CartesAcces
             ReadCSV.setLesEleves(Chemin.cheminListeEleve);
             Eleve.setLesClasses();
         }
-    
+
         private void cas_2()
         {
             Edition.importEleves(Globale._cheminTexte);
@@ -75,16 +74,17 @@ namespace CartesAcces
                     }
                 }
             }));
-
         }
 
         private void cas_3()
         {
-            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
+            var frmSelectSection = new frmSelectNiveau();
+            frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
+            frmSelectSection.Show();
 
             PdfGs.getImageFromPdf(Globale._cheminPdf, Globale._classe);
             PdfGs.renameEdt(Globale._cheminPdf);
-            
+
             Globale._actuelle.Invoke(new MethodInvoker(delegate
             {
                 foreach (Control controle in Globale._actuelle.Controls)
@@ -100,7 +100,7 @@ namespace CartesAcces
         private void cas_4()
         {
             Edition.importPhoto(Globale._cheminPhoto);
-            
+
             Globale._actuelle.Invoke(new MethodInvoker(delegate
             {
                 foreach (Control controle in Globale._actuelle.Controls)
@@ -111,7 +111,6 @@ namespace CartesAcces
                     }
                 }
             }));
-
         }
     }
 }
