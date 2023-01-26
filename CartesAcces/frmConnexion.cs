@@ -34,11 +34,21 @@ namespace CartesAcces
                 if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
                 {
                     Globale._estConnecter = true;
-                    Globale._accueil = new frmAccueil();
                     txtMotDePasse.Text = "";
                     txtIdentifiant.Text = "";
-                    Hide();
-                    Globale._accueil.Show();
+                    foreach (Control controle in Globale._accueil.Controls)
+                    {
+                        if(controle is Panel || controle.Name == "pnlMenu")
+                        {
+                            foreach (Control controle2 in controle.Controls)
+                            {
+                                if (controle2 is Button)
+                                {
+                                    controle2.Enabled = true;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
