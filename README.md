@@ -5,7 +5,6 @@ Repos du l'application de création de cartes d'accès
 TO DO :
 
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
-- barres de chargements pour créations 
 - design, couleur, blablablablablablablablablablablablablablablablablablablablablablablabla
 - logo du collège (barre de chargement, .exe,...) 
 - bouton valider selection supprimer 
