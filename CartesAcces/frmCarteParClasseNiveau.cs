@@ -18,13 +18,7 @@ namespace CartesAcces
             cbbImprSection.Enabled = true;
             lsbListeEleve.DataSource = null;
 
-            txtRechercheDataGrid.Enabled = false;
-            btnRechercheDataGrid.Enabled = false;
-            btnCopierDataGrid.Enabled = false;
             btnReset.Enabled = false;
-            DataGridParametres.Enabled = false;
-            DataGridResultats.Enabled = false;
-            DataGridParametres.DataSource = null;
         }
 
         private void rdbListePerso_CheckedChanged(object sender, EventArgs e)
@@ -32,14 +26,8 @@ namespace CartesAcces
             cbbImprClasse.Enabled = false;
             cbbImprSection.Enabled = false;
             lsbListeEleve.DataSource = null;
-
-            txtRechercheDataGrid.Enabled = true;
-            btnRechercheDataGrid.Enabled = true;
-            btnCopierDataGrid.Enabled = true;
+            
             btnReset.Enabled = true;
-            DataGridParametres.Enabled = true;
-            DataGridResultats.Enabled = true;
-            DataGridParametres.DataSource = Globale._listeEleve;
         }
 
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
