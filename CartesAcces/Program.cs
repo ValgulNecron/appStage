@@ -13,7 +13,6 @@ namespace CartesAcces
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Globale._bdd = new ClassSql();
             Globale._accueil = new frmAccueil();
             Application.Run(Globale._accueil);
         }
