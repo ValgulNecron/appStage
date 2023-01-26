@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.Entity;
 using System.Xml;
 using MySql.Data.MySqlClient;
 
@@ -29,32 +30,6 @@ namespace CartesAcces
             sqlCreateur.Password = motDePasse;
             var texteConnexion = sqlCreateur.ConnectionString;
             connexionBdd = new MySqlConnection(texteConnexion);
-        }
-
-        public static string getUser(string user)
-        {
-            var motDePasse = "";
-            connexionBdd.Open();
-            var commande = new MySqlCommand("getUser", connexionBdd);
-            commande.CommandType = CommandType.StoredProcedure;
-            commande.Parameters.AddWithValue("@user", user);
-            var lecteur = commande.ExecuteReader();
-            while (lecteur.Read()) motDePasse = lecteur["hash"].ToString();
-            connexionBdd.Close();
-            Globale._nomUtilisateur = user;
-            return motDePasse;
-        }
-
-        public static void setUser(string user, string hash)
-        {
-            connexionBdd.Open();
-            var command = new MySqlCommand("setUser", connexionBdd);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@targetUser", user);
-            command.Parameters.AddWithValue("@setHash", hash);
-            command.Parameters.AddWithValue("@setThemeBool", Globale._estEnModeSombre);
-            command.ExecuteNonQuery();
-            connexionBdd.Close();
         }
     }
 }
