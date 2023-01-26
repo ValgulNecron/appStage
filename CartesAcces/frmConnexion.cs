@@ -57,7 +57,7 @@ namespace CartesAcces
                     frmWait.Show();
                     frmWait.TopMost = true;
                     Globale._actuelle = new frmImportation();
-                    frmAccueil.OpenChildForm(Globale._accueil);
+                    frmAccueil.OpenChildForm(Globale._actuelle);
                 }
             }
             catch (Exception ex)
