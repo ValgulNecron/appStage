@@ -52,7 +52,7 @@ namespace CartesAcces
         {
             foreach (Control controle in Controls)
             {
-                if(Control is Panel && controle.Name == "pnlMenu")
+                if(controle is Panel && controle.Name == "pnlMenu")
                 {
                     foreach (Control controle2 in controle.Controls)
                     {
