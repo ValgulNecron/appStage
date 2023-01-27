@@ -67,8 +67,13 @@ namespace CartesAcces
 
         public void btnValiderImpr_Click(object sender, EventArgs e)
         {
-            var frmMultiplesCartesEdition = new frmMultiplesCartesEdition();
-            frmMultiplesCartesEdition.Show();
+            try
+            {
+                var frmMultiplesCartesEdition = new frmMultiplesCartesEdition();
+                frmMultiplesCartesEdition.Show();
+            }
+            catch {}
+
         }
 
         private void frmMultiplesCartes_Load(object sender, EventArgs e)

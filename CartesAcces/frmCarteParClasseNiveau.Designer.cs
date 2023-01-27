@@ -36,7 +36,6 @@ namespace CartesAcces
             this.btnValiderImpr = new System.Windows.Forms.Button();
             this.lsbListeEleve = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdbListePerso = new System.Windows.Forms.RadioButton();
             this.rdbClasseSection = new System.Windows.Forms.RadioButton();
             this.NbComptageEleveCS = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.Label();
@@ -103,25 +102,12 @@ namespace CartesAcces
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rdbListePerso);
             this.groupBox1.Controls.Add(this.rdbClasseSection);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(254, 46);
+            this.groupBox1.Size = new System.Drawing.Size(127, 46);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
-            // 
-            // rdbListePerso
-            // 
-            this.rdbListePerso.AutoSize = true;
-            this.rdbListePerso.Location = new System.Drawing.Point(133, 19);
-            this.rdbListePerso.Name = "rdbListePerso";
-            this.rdbListePerso.Size = new System.Drawing.Size(115, 17);
-            this.rdbListePerso.TabIndex = 1;
-            this.rdbListePerso.TabStop = true;
-            this.rdbListePerso.Text = "Liste personnalisée";
-            this.rdbListePerso.UseVisualStyleBackColor = true;
-            this.rdbListePerso.CheckedChanged += new System.EventHandler(this.rdbListePerso_CheckedChanged);
             // 
             // rdbClasseSection
             // 
@@ -187,7 +173,6 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnValiderImpr;
         private System.Windows.Forms.ListBox lsbListeEleve;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rdbListePerso;
         private System.Windows.Forms.RadioButton rdbClasseSection;
         private System.Windows.Forms.Label NbComptageEleveCS;
     }
