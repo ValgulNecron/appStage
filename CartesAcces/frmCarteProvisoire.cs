@@ -38,7 +38,7 @@ namespace CartesAcces
 
             if (prenom.Length < 15)
             {
-                var font = noutew ((Control) this).Font("times new roman", 28, FontStyle.Bold);
+                var font = new Font("times new roman", 28, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
