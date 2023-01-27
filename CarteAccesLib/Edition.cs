@@ -204,22 +204,6 @@ namespace CartesAcces
             pbPhoto.Visible = true;
         }
 
-        public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
-        {
-            foreach (var eleve in listeEleve)
-                try
-                {
-                    var dossier = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
-                    pbCarteArriere.Image = Image.FromFile(dossier + Eleve.creeCleEleve(eleve) + ".jpg");
-                    Chemin.cheminEdt = dossier + Eleve.creeCleEleve(eleve) + ".jpg";
-                    break;
-                }
-                catch
-                {
-                    // Next ..
-                }
-        }
-
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
             int posY)
         {

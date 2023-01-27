@@ -93,7 +93,7 @@ namespace CartesAcces
             Edition.selectionClique = false;
 
             // -- On remet les paramètres et l'image de base --
-            Edition.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
+            Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
 
@@ -165,7 +165,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-            Edition.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
+            Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
     }

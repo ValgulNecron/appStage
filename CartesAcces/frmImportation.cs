@@ -78,6 +78,7 @@ namespace CartesAcces
 
         private void btnImportEdtClassique_Click(object sender, EventArgs e)
         {
+            lblImportEdtClassique = Globale._lblDate;
             Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
             Edition.importEdtClassique(Globale._cheminEdtClassique);
 

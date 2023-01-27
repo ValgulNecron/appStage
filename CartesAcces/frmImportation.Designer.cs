@@ -40,6 +40,7 @@ namespace CartesAcces
             this.label7 = new System.Windows.Forms.Label();
             this.btnImportEdtClassique = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblImportEdtClassique = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnImporterEleves
@@ -142,12 +143,21 @@ namespace CartesAcces
             this.label1.TabIndex = 32;
             this.label1.Text = "Dernière importation :";
             // 
+            // lblImportEdtClassique
+            // 
+            this.lblImportEdtClassique.Location = new System.Drawing.Point(374, 254);
+            this.lblImportEdtClassique.Name = "lblImportEdtClassique";
+            this.lblImportEdtClassique.Size = new System.Drawing.Size(199, 23);
+            this.lblImportEdtClassique.TabIndex = 33;
+            this.lblImportEdtClassique.Text = "Aucune Importation";
+            // 
             // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1109, 722);
+            this.Controls.Add(this.lblImportEdtClassique);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnImportEdtClassique);
             this.Controls.Add(this.lblPhotoEleve);
@@ -165,6 +175,8 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label lblImportEdtClassique;
 
         private System.Windows.Forms.Button btnImportEdtClassique;
         private System.Windows.Forms.Label label1;
