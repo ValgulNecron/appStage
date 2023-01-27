@@ -42,7 +42,8 @@ namespace CartesAcces
 
         public static List<int> _couleurDeFondSombre = new List<int> {30, 30, 46};
         public static List<int> _couleurDuTexteSombre = new List<int> {148, 226, 213};
-        public static List<int> _couleurBandeauxSombre = new List<int> {116, 199, 236};
+        //public static List<int> _couleurBandeauxSombre = new List<int> {116, 199, 236};
+        public static List<int> _couleurBandeauxSombre = new List<int> { 70, 130, 180 };
         public static List<int> _couleurBoutonsSombre = new List<int> {88, 91, 112};
         public static List<int> _couleurTextBoxSombre = new List<int> {127, 132, 156};
         public static List<int> _couleurBoutonOffSombre = new List<int> {49, 50, 68};
