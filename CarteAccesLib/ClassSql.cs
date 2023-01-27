@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 using System.Xml;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,47 +25,38 @@ namespace CartesAcces
             if (node.Attributes != null) mariaDb += "Uid" + node.Attributes["value"].Value + ";";
             node = doc.SelectSingleNode("/appSettings/add[@key='MOTDEPASSE']");
             if (node.Attributes != null) mariaDb += "Pwd" + node.Attributes["value"].Value + ";";
-            optionsBuilder.UseMySql(mariaDb);
+            optionsBuilder.UseMySQL(mariaDb);
         }
     }
-    
+
     public class Utilisateur
     {
-        [Key]
-        public string NomUtilisateur { get; set; }
+        [Key] public string NomUtilisateur { get; set; }
+
         public string Hash { get; set; }
         public bool ThemeBool { get; set; }
     }
-    
+
     public class LogAction
     {
-        [Key]
-        [Column(Order = 0)]
-        public DateTime DateAction { get; set; }
+        [Key] [Column(Order = 0)] public DateTime DateAction { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        public string NomUtilisateur { get; set; }
+        [Key] [Column(Order = 1)] public string NomUtilisateur { get; set; }
+
         public string Action { get; set; }
         public string AdMac { get; set; }
 
-        [ForeignKey("NomUtilisateur")]
-        public Utilisateur Utilisateur { get; set; }
+        [ForeignKey("NomUtilisateur")] public Utilisateur Utilisateur { get; set; }
     }
-    
+
     public class LogMotDePasse
     {
-        [Key]
-        [Column(Order = 0)]
-        public DateTime DateLogMotDePasse { get; set; }
-        [Key]
-        [Column(Order = 1)]
-        public string NomUtilisateur { get; set; }
+        [Key] [Column(Order = 0)] public DateTime DateLogMotDePasse { get; set; }
+
+        [Key] [Column(Order = 1)] public string NomUtilisateur { get; set; }
+
         public string Hash { get; set; }
 
-        [ForeignKey("Hash")]
-        public Utilisateur Utilisateur { get; set; }
+        [ForeignKey("Hash")] public Utilisateur Utilisateur { get; set; }
     }
-    
-    
 }
