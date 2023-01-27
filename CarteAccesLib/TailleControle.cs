@@ -36,7 +36,7 @@ namespace CartesAcces
                 {
                     var controle2 = controle as Button; // indique que ce contrôle est de type
                     controle2.Font = policeParDefault; // application des modification sur le type choisi
-                    controle2.Size = new Size(290, 29);
+                    controle2.Size = new Size(330, 29);
                     controle2.AutoSize = false;
 
                 }
