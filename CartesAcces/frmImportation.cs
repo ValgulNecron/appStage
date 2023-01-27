@@ -43,49 +43,69 @@ namespace CartesAcces
 
         private void btnImporterEleves_Click(object sender, EventArgs e)
         {
-            //lblDateListeEleve = Globale._lblDate;
-            Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
-            Globale._actuelle = new frmImportation(); //
-            OpenChildForm(Globale._actuelle); //
-            if (Globale._cheminTexte.Length > 0)
+            try
             {
-                Globale._cas = 2;
-                var frmWait = new barDeProgression();
-                frmWait.StartPosition = FormStartPosition.Manual;
-                frmWait.Location = new Point(0, 0);
-                frmWait.Show();
-                frmWait.TopMost = true;
+                //lblDateListeEleve = Globale._lblDate;
+                Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
+                Globale._actuelle = new frmImportation(); //
+                OpenChildForm(Globale._actuelle); //
+                if (Globale._cheminTexte.Length > 0)
+                {
+                    Globale._cas = 2;
+                    var frmWait = new barDeProgression();
+                    frmWait.StartPosition = FormStartPosition.Manual;
+                    frmWait.Location = new Point(0, 0);
+                    frmWait.Show();
+                    frmWait.TopMost = true;
+                }
             }
+            catch { }
+
         }
 
         private void btnImportEDT_Click(object sender, EventArgs e)
         {
-            Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
-            var frmSelectSection = new frmSelectNiveau();
-            frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
-            frmSelectSection.Show();
-            //lblEdtEleve.Text = PdfGs.getDateFile();
+            try
+            {
+                Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
+                var frmSelectSection = new frmSelectNiveau();
+                frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
+                frmSelectSection.Show();
+                //lblEdtEleve.Text = PdfGs.getDateFile();
+            }
+            catch { }
+
         }
 
         private void btnImportPhoto_Click(object sender, EventArgs e)
         {
-            Globale._cheminPhoto = Chemin.setCheminImportationDossier();
-            Globale._cas = 4;
-            var frmWait = new barDeProgression();
-            frmWait.StartPosition = FormStartPosition.Manual;
-            frmWait.Location = new Point(0, 0);
-            frmWait.Show();
-            frmWait.TopMost = true;
+            try
+            {
+                 Globale._cheminPhoto = Chemin.setCheminImportationDossier();
+                 Globale._cas = 4;
+                 var frmWait = new barDeProgression();
+                 frmWait.StartPosition = FormStartPosition.Manual;
+                 frmWait.Location = new Point(0, 0);
+                 frmWait.Show();
+                 frmWait.TopMost = true;   
+            }
+            catch { }
+
         }
 
         private void btnImportEdtClassique_Click(object sender, EventArgs e)
         {
-            lblImportEdtClassique = Globale._lblDate;
-            Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
-            Edition.importEdtClassique(Globale._cheminEdtClassique);
+            try
+            {
+               lblImportEdtClassique = Globale._lblDate;
+               Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
+               Edition.importEdtClassique(Globale._cheminEdtClassique);
+   
+               frmRognageEdtClassique frmRognageEdtClassique = new frmRognageEdtClassique();
+               frmRognageEdtClassique.Show(); 
+            }
+            catch { }
 
-            frmRognageEdtClassique frmRognageEdtClassique = new frmRognageEdtClassique();
-            frmRognageEdtClassique.Show();
         }
 
         private void frmParametres_Load(object sender, EventArgs e)
