@@ -37,9 +37,9 @@ CREATE TABLE etablissement (
 
 ---------
 INSERT INTO utilisateur(nomUtilisateur, hash, themeBool) VALUES
-()
+("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", 0);
 
-
+-- xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz -- keyuser
 
 ----------
 
