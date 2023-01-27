@@ -6,9 +6,9 @@ namespace CartesAcces
     public static class Globale
     {
         public static Label _lblDate;
-        
-        public static int _cas = 0; 
-        
+
+        public static int _cas = 0;
+
         public static int _classe = 6;
 
         public static Form _connexion;
@@ -46,7 +46,7 @@ namespace CartesAcces
         public static List<int> _couleurBoutonsSombre = new List<int> {88, 91, 112};
         public static List<int> _couleurTextBoxSombre = new List<int> {127, 132, 156};
         public static List<int> _couleurBoutonOffSombre = new List<int> {49, 50, 68};
-        
+
 
         // variable lier au forme utiliser pour garder une reference 
         public static Form _actuelle;
@@ -61,8 +61,5 @@ namespace CartesAcces
         public static string _cheminPdf;
         public static string _cheminPhoto;
         public static string _cheminEdtClassique;
-
-        // bdd
-        public static ClassSql _bdd;
     }
 }
