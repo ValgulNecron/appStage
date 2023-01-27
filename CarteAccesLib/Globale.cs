@@ -46,7 +46,7 @@ namespace CartesAcces
         public static List<int> _couleurBandeauxSombre = new List<int> { 70, 130, 180 };
         public static List<int> _couleurBoutonsSombre = new List<int> {88, 91, 112};
         public static List<int> _couleurTextBoxSombre = new List<int> {127, 132, 156};
-        public static List<int> _couleurBoutonOffSombre = new List<int> {49, 50, 68};
+        public static List<int> _couleurBoutonOffSombre = new List<int> {69, 71, 90};
 
 
         // variable lier au forme utiliser pour garder une reference 
