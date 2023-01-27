@@ -35,7 +35,6 @@ namespace CartesAcces
             this.cbbImprSection = new System.Windows.Forms.ComboBox();
             this.btnValiderImpr = new System.Windows.Forms.Button();
             this.lsbListeEleve = new System.Windows.Forms.ListBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbListePerso = new System.Windows.Forms.RadioButton();
             this.rdbClasseSection = new System.Windows.Forms.RadioButton();
@@ -86,7 +85,7 @@ namespace CartesAcces
             // btnValiderImpr
             // 
             this.btnValiderImpr.Enabled = false;
-            this.btnValiderImpr.Location = new System.Drawing.Point(745, 353);
+            this.btnValiderImpr.Location = new System.Drawing.Point(745, 301);
             this.btnValiderImpr.Name = "btnValiderImpr";
             this.btnValiderImpr.Size = new System.Drawing.Size(254, 45);
             this.btnValiderImpr.TabIndex = 6;
@@ -101,16 +100,6 @@ namespace CartesAcces
             this.lsbListeEleve.Name = "lsbListeEleve";
             this.lsbListeEleve.Size = new System.Drawing.Size(242, 238);
             this.lsbListeEleve.TabIndex = 7;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(929, 281);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 23;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // groupBox1
             // 
@@ -172,7 +161,6 @@ namespace CartesAcces
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.NbComptageEleveCS);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lsbListeEleve);
             this.Controls.Add(this.btnValiderImpr);
             this.Controls.Add(this.cbbImprSection);
@@ -198,7 +186,6 @@ namespace CartesAcces
         private System.Windows.Forms.ComboBox cbbImprSection;
         private System.Windows.Forms.Button btnValiderImpr;
         private System.Windows.Forms.ListBox lsbListeEleve;
-        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdbListePerso;
         private System.Windows.Forms.RadioButton rdbClasseSection;
