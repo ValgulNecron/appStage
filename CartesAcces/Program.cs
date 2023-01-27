@@ -15,7 +15,7 @@ namespace CartesAcces
             Application.SetCompatibleTextRenderingDefault(false);
             using (var db = new ClassSql())
             {
-                var utilisateur = db.Utilisateurs.Find("JohnDoe");
+                var utilisateur = db.Utilisateurs.Find("keyuser");
                 MessageBox.Show(utilisateur.NomUtilisateur + " " + utilisateur.Hash);
             }
 
