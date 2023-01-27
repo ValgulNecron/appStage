@@ -92,6 +92,7 @@ namespace CartesAcces
                     }
                 }
             }));
+            PdfGs.valeurParDefault();
         }
 
         private void cas_4()
