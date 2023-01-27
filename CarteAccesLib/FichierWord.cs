@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using Microsoft.Office.Interop.Word;
 using System.Runtime.InteropServices;
@@ -49,7 +51,8 @@ namespace CarteAccesLib
         public static void limite50Pages(Application applicationWord, string chemin)
         {
             // -- Sauvegarde du document --
-            applicationWord.ActiveDocument.SaveAs(chemin + "test.doc", Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            applicationWord.ActiveDocument.SaveAs(chemin + "test.doc", Type.Missing, Type.Missing, Type.Missing,
+                Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
@@ -68,7 +71,7 @@ namespace CarteAccesLib
             applicationWord.ActiveDocument.PageSetup.LeftMargin = 15;
             applicationWord.ActiveDocument.PageSetup.BottomMargin = 15;
         }
-        
+
         public static void sauvegardeCarteEnWord(string chemin, List<Eleve> listeEleve, PictureBox pbPhoto,
             PictureBox pbCarteArriere)
         {
@@ -152,7 +155,8 @@ namespace CarteAccesLib
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             else
-                fichierWord.ActiveDocument.SaveAs(chemin + "/Imprimer Part " + pages + ".doc", Type.Missing, Type.Missing,
+                fichierWord.ActiveDocument.SaveAs(chemin + "/Imprimer Part " + pages + ".doc", Type.Missing,
+                    Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
@@ -170,6 +174,80 @@ namespace CarteAccesLib
 
             // -- Message qui indique que nous sommes arrivé au bout --
             MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
+        }
+
+        public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
+            PictureBox pbCarteFace, TextBox txtNom, TextBox txtPrenom)
+        {
+            var diag = new FolderBrowserDialog();
+            if (diag.ShowDialog() == DialogResult.OK)
+            {
+                Edition.cheminImpressionFinal = diag.SelectedPath;
+            }
+
+            else
+            {
+                MessageBox.Show(
+                    "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
+                return;
+            }
+
+            if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
+            {
+                var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                var realLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                var realWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                var realHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+
+                var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
+                ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
+
+                Edition.cheminImpressionFinal = Edition.cheminImpressionFinal + "\\";
+
+                pbCarteArriere.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png",
+                    ImageFormat.Png);
+                pbCarteFace.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png",
+                    ImageFormat.Png);
+
+                var WordApp = new Application();
+                WordApp.Documents.Add();
+                WordApp.ActiveDocument.PageSetup.TopMargin = 15;
+                WordApp.ActiveDocument.PageSetup.RightMargin = 15;
+                WordApp.ActiveDocument.PageSetup.LeftMargin = 15;
+                WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
+
+                var shapeCarte = WordApp.ActiveDocument.Shapes.AddPicture(
+                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,
+                    Type.Missing, Type.Missing);
+
+                WordApp.Selection.EndKey();
+                WordApp.Selection.InsertNewPage();
+
+                var shapeEDT = WordApp.ActiveDocument.Shapes.AddPicture(
+                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", Type.Missing,
+                    Type.Missing, Type.Missing);
+
+                shapeCarte.Top = 0;
+                shapeCarte.Left = 0;
+
+                shapeEDT.Top = 0;
+                shapeEDT.Height = shapeCarte.Height;
+
+                File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png");
+                File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png");
+
+                WordApp.ActiveDocument.SaveAs(
+                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + " Carte.doc", Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                WordApp.ActiveDocument.Close();
+                WordApp.Quit();
+                Marshal.FinalReleaseComObject(WordApp);
+
+                GC.Collect();
+
+                MessageBox.Show("Saved !");
+            }
         }
     }
 }
