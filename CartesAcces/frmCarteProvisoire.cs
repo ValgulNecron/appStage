@@ -346,6 +346,11 @@ namespace CartesAcces
         {
             txtNom.TextChanged += changementTexte;
             txtPrenom.TextChanged += changementTexte;
+            pbCarteArriere.MouseWheel += pictureBox1_MouseWheel;
+        }
+
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
         }
     }
 }
