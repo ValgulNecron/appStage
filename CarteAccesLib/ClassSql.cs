@@ -8,9 +8,9 @@ namespace CartesAcces
 {
     public class ClassSql : DbContext
     {
-        public System.Data.Entity.DbSet<Utilisateur> Utilisateurs { get; set; }
-        public System.Data.Entity.DbSet<LogAction> LogActions { get; set; }
-        public System.Data.Entity.DbSet<LogMotDePasse> LogMotDePasses { get; set; }
+        public DbSet<Utilisateur> Utilisateurs { get; set; }
+        public DbSet<LogAction> LogActions { get; set; }
+        public DbSet<LogMotDePasse> LogMotDePasses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
