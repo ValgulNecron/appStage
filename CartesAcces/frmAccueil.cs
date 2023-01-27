@@ -11,7 +11,8 @@ namespace CartesAcces
         {
             InitializeComponent();
             Globale._accueil = this;
-            TailleCotrole.setTailleControleTexte(this);
+            TailleControle.setTailleControleTexte(this);
+            TailleControle.setTailleControleLabel(this);
             Couleur.setCouleurFenetre(this);
             if (Globale._estEnModeSombre)
             {

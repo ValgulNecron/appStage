@@ -25,6 +25,37 @@ CREATE TABLE logMotDePasse (
 	PRIMARY KEY (dateLogMotDePasse, nomUtilisateur)
 );
 
-DROP USER IF EXISTS 'admin2'@'%';
-CREATE USER 'admin2'@'%' Identified BY 'admin2';
-GRANT ALL PRIVILEGES ON *.* to 'admin2'@'%' WITH GRANT OPTION;
+CREATE TABLE etablissement (
+	nomEtablissement varchar(35) PRIMARY KEY,
+	nomRueEtablissement varchar(35),
+	numeroRueEtablissement int,
+	codePostaleEtablissement varchar(15),
+	villeEtablissement varchar(30),
+	numeroTelephoneEtablissement varchar(15),
+	emailEtablissement varchar(60)
+);
+
+---------
+INSERT INTO utilisateur(nomUtilisateur, hash, themeBool) VALUES
+()
+
+
+
+----------
+
+DROP TRIGGER IF EXISTS updateMotDePasse;
+DELIMITER $$
+CREATE TRIGGER updateMotDePasse AFTER UPDATE ON utilisateur FOR EACH ROW
+BEGIN
+	IF (OLD.hash != NEW.hash) THEN
+		INSERT INTO logMotDePasse(dateLogMotDePasse, hash, nomUtilisateur) VALUES
+		(dateNow(), OLD.hash, OLD.nomUtilisateur);
+	END IF;
+END $$
+DELIMITER ;
+
+-- local que depuis localhost et le % c'est partout, oui partout
+DROP USER IF EXISTS 'admin_user'@'%';
+CREATE USER 'admin_user'@'%' Identified BY 'kreyderslam2';
+GRANT ALL PRIVILEGES ON *.* to 'admin_user'@'%' WITH GRANT OPTION;
+Flush PRIVILEGES;

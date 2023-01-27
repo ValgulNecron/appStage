@@ -16,7 +16,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            TailleCotrole.setTailleControleTexte(this);
+            TailleControle.setTailleControleTexte(this);
         }
 
         private void changementTexte(object sender, EventArgs e)
