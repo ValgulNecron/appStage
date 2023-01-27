@@ -20,7 +20,7 @@ namespace CartesAcces
         {
             string prenom = txtPrenom.Text;
             string nom = txtNom.Text;
-                
+
             Edition.fondCarteNiveau(pbCarteFace, cbbSection);
 
             if (nom.Length < 15)
@@ -38,7 +38,7 @@ namespace CartesAcces
 
             if (prenom.Length < 15)
             {
-                var font = new Font("times new roman", 28, FontStyle.Bold);
+                var font = noutew ((Control) this).Font("times new roman", 28, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
@@ -48,6 +48,8 @@ namespace CartesAcces
                 Edition.dessineTexteCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
+
+            GC.Collect();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -63,7 +65,9 @@ namespace CartesAcces
                 rdbUPE2A.Checked = false;
                 rdbRas.Checked = true;
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         // -- Lors du changement de la liste déroulante "Section" --
@@ -81,7 +85,9 @@ namespace CartesAcces
                 rdbClRelais.Enabled = true;
                 rdbRas.Enabled = true;
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         private void cbbClasse_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,7 +97,9 @@ namespace CartesAcces
                 Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
                 btnSelect.Enabled = true;
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         // #### Rognage de l'emploi du temps ####
@@ -107,7 +115,9 @@ namespace CartesAcces
 
                 btnCancel.Enabled = true;
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -127,7 +137,9 @@ namespace CartesAcces
                 pbCarteArriere.Refresh();
                 btnCancel.Enabled = false;
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
@@ -151,7 +163,9 @@ namespace CartesAcces
                     pbCarteArriere.Refresh();
                 }
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         private void pbCarteArriere_MouseMove(object sender, MouseEventArgs e)
@@ -172,20 +186,23 @@ namespace CartesAcces
                         pbCarteArriere.Refresh();
                         Edition.rognageLargeur = e.X - Edition.rognageX;
                         Edition.rognageHauteur = e.Y - Edition.rognageY;
-                    
+
                         Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
                         Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
 
-                        pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,Math.Min(Edition.rognageX, e.X),
+                        pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,
+                            Math.Min(Edition.rognageX, e.X),
                             Math.Min(Edition.rognageY, e.Y),
                             Math.Abs(Edition.rognageLargeur),
                             Math.Abs(Edition.rognageHauteur));
                     }
                 }
             }
-            catch {}
+            catch
+            {
+            }
         }
-        
+
         private void pbCarteArriere_MouseUp(object sender, MouseEventArgs e)
         {
             try
@@ -198,7 +215,9 @@ namespace CartesAcces
                 Edition.selectionClique = false;
                 Edt.rognageEdt(pbCarteArriere, pathEdt);
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         // #### Ajout & Edition de la photo ####
@@ -209,14 +228,14 @@ namespace CartesAcces
             {
                 // -- Parcours des fichiers...
                 var opf = new OpenFileDialog();
-    
+
                 var opfPath = "";
-    
+
                 opf.InitialDirectory = @"\..\..\..\CartesAcces\FichiersPHOTO";
                 opf.Filter = "Images (*.png, *.jpg) | *.png; *.jpg";
                 opf.FilterIndex = 1;
                 opf.RestoreDirectory = true;
-    
+
                 if (opf.ShowDialog() == DialogResult.OK)
                 {
                     opfPath = opf.FileName;
@@ -227,19 +246,23 @@ namespace CartesAcces
                     pbPhoto.Visible = true;
                 }
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         private void btnAnnulerPhoto_Click(object sender, EventArgs e)
         {
             try
             {
-               // -- La picturebox redevient invisible et l'image est effacée, le cadre reviendra a la position 5,5
-               pbPhoto.Visible = false;
-               pbPhoto.Image = null;
-               pbPhoto.Location = new Point(5, 5); 
+                // -- La picturebox redevient invisible et l'image est effacée, le cadre reviendra a la position 5,5
+                pbPhoto.Visible = false;
+                pbPhoto.Image = null;
+                pbPhoto.Location = new Point(5, 5);
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         private void pbPhoto_MouseMove(object sender, MouseEventArgs e)
@@ -289,8 +312,9 @@ namespace CartesAcces
             {
                 FichierWord.sauvegardeCarteProvisoireWord(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
             }
-            catch {}
-
+            catch
+            {
+            }
         }
 
         private void rdbUlis_CheckedChanged(object sender, EventArgs e)
@@ -316,7 +340,6 @@ namespace CartesAcces
 
         private void label6_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void frmCarteProvisoire_Load(object sender, EventArgs e)
