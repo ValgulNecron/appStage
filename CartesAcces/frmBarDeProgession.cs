@@ -88,7 +88,7 @@ namespace CartesAcces
                 {
                     if (controle is Label && controle.Name == "lblEdtEleve")
                     {
-                        controle.Text = ReadCSV.getDateFile();
+                        controle.Text = PdfGs.getDateFile();
                     }
                 }
             }));
