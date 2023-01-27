@@ -259,7 +259,7 @@ namespace CartesAcces
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            WordFile.sauvegardeCarteProvisoireWord(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
+            FichierWord.sauvegardeCarteProvisoireWord(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
         }
 
         private void rdbUlis_CheckedChanged(object sender, EventArgs e)

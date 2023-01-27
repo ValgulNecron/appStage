@@ -12,7 +12,7 @@ using Application = Microsoft.Office.Interop.Word.Application;
 
 namespace CarteAccesLib
 {
-    public static class WordFile
+    public static class FichierWord
     {
         public static Application initWordFile(int margeHaute, int margeDroite, int margeGauche, int margeBasse)
         {
@@ -78,7 +78,7 @@ namespace CarteAccesLib
             var k = 0;
             var pages = 0;
             Eleve.possedeEdt(listeEleve);
-            var fichierWord = WordFile.initWordFile(15, 15, 15, 15);
+            var fichierWord = FichierWord.initWordFile(15, 15, 15, 15);
 
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
@@ -96,7 +96,7 @@ namespace CarteAccesLib
                 var shapeCarteFace2 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png",
                     Type.Missing, Type.Missing, Type.Missing);
-                WordFile.rectifPositionImages(shapeCarteFace1, shapeCarteFace2);
+                FichierWord.rectifPositionImages(shapeCarteFace1, shapeCarteFace2);
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
                 File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png");
                 File.Delete(chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve +
@@ -126,7 +126,7 @@ namespace CarteAccesLib
                     chemin + "/" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png",
                     Type.Missing, Type.Missing, Type.Missing);
 
-                WordFile.rectifPositionImages(shapeCarteArriere1, shapeCarteArriere2);
+                FichierWord.rectifPositionImages(shapeCarteArriere1, shapeCarteArriere2);
 
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
                 File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png");
@@ -144,7 +144,7 @@ namespace CarteAccesLib
                 if (compt > k + 50)
                 {
                     var name = chemin + " page " + k / 50;
-                    WordFile.limite50Pages(fichierWord, name);
+                    FichierWord.limite50Pages(fichierWord, name);
                     k += 50;
                     pages++;
                 }

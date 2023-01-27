@@ -153,7 +153,7 @@ namespace CartesAcces
                 var cheminImpressionFinal = Chemin.setCheminImportationDossier();
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
-                WordFile.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
+                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
                 labelEnCoursValidation.Visible = false; 
             }
             catch
