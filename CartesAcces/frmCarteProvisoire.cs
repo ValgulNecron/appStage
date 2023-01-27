@@ -286,6 +286,11 @@ namespace CartesAcces
                 Edition.drag = true;
             }
 
+            if (e.Button == MouseButtons.Right)
+            {
+                return;
+            }
+
             // -- Actualisation pour voir le déplacement en temps réel --
             Refresh();
         }
@@ -346,6 +351,11 @@ namespace CartesAcces
         {
             txtNom.TextChanged += changementTexte;
             txtPrenom.TextChanged += changementTexte;
+            pbCarteArriere.MouseWheel += pictureBox1_MouseWheel;
+        }
+
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
         }
     }
 }
