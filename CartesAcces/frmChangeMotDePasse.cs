@@ -8,6 +8,7 @@ namespace CartesAcces
         public frmChangeMotDePasse()
         {
             InitializeComponent();
+            Couleur.setCouleurFenetre(this);
         }
 
         private void frmChangeMotDePasse_Load(object sender, EventArgs e)
