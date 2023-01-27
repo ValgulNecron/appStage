@@ -148,7 +148,7 @@ namespace CartesAcces
         public static string getDateFile()
         {
             var dateFile = "Aucune Importation";
-            var dir = new DirectoryInfo("./data/image");
+            var dir = new DirectoryInfo(outputPath);
             if (dir.Exists) dateFile = dir.CreationTime.ToString();
 
             return dateFile;
