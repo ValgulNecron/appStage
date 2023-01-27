@@ -286,6 +286,11 @@ namespace CartesAcces
                 Edition.drag = true;
             }
 
+            if (e.Button == MouseButtons.Right)
+            {
+                return;
+            }
+
             // -- Actualisation pour voir le déplacement en temps réel --
             Refresh();
         }
