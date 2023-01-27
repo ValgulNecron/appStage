@@ -17,8 +17,6 @@ namespace CartesAcces
             cbbImprClasse.Enabled = true;
             cbbImprSection.Enabled = true;
             lsbListeEleve.DataSource = null;
-
-            btnReset.Enabled = false;
         }
 
         private void rdbListePerso_CheckedChanged(object sender, EventArgs e)
@@ -26,8 +24,6 @@ namespace CartesAcces
             cbbImprClasse.Enabled = false;
             cbbImprSection.Enabled = false;
             lsbListeEleve.DataSource = null;
-            
-            btnReset.Enabled = true;
         }
 
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,30 +63,6 @@ namespace CartesAcces
             lsbListeEleve.DataSource = null;
             lsbListeEleve.DataSource = listeEleveParSection;
             btnValiderImpr.Enabled = true;
-        }
-
-        private void btnCopierDataGrid_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnRechercheDataGrid_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtRechercheDataGrid_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void DataGridResultats_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-        }
-
-        private void DataGridResultats_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
         }
 
         public void btnValiderImpr_Click(object sender, EventArgs e)

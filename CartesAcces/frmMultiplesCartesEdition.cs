@@ -93,8 +93,8 @@ namespace CartesAcces
             Edition.selectionClique = false;
 
             // -- On remet les paramètres et l'image de base --
-            Edition.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
-            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+            Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
+            Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
@@ -153,7 +153,7 @@ namespace CartesAcces
                 var cheminImpressionFinal = Chemin.setCheminImportationDossier();
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
-                WordFile.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
+                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
                 labelEnCoursValidation.Visible = false; 
             }
             catch
@@ -165,8 +165,8 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
-            Edition.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
-            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+            Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
+            Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
     }
 }

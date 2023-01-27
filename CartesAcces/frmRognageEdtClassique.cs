@@ -129,9 +129,9 @@ namespace CartesAcces
                     pbEdtClassique.Image.Save(Chemin.cheminEdtClassique + "//" + nom, ImageFormat.Png);
                 }
 
+                
                 MessageBox.Show("Import Réussi");
                 this.Close();
-
             }
             catch (Exception err)
             {
