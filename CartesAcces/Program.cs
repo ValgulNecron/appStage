@@ -13,6 +13,12 @@ namespace CartesAcces
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            using (var db = new ClassSql())
+            {
+                var utilisateur = db.Utilisateurs.Find("JohnDoe");
+                MessageBox.Show(utilisateur.NomUtilisateur + " " + utilisateur.Hash);
+            }
+
             Globale._accueil = new frmAccueil();
             Application.Run(Globale._accueil);
         }
