@@ -11,7 +11,9 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            TailleCotrole.setTailleControleTexte(this);
+            TailleControle.setTailleControleTexte(this);
+            TailleControle.setTailleControleLabel(this);
+            TailleControle.setTailleBouton(this);
             lblDateListeEleve.Text = ReadCSV.getDateFile();
             lblEdtEleve.Text = PdfGs.getDateFile();
             lblPhotoEleve.Text = Photo.getDatePhotos();
@@ -78,6 +80,7 @@ namespace CartesAcces
 
         private void btnImportEdtClassique_Click(object sender, EventArgs e)
         {
+            lblImportEdtClassique = Globale._lblDate;
             Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
             Edition.importEdtClassique(Globale._cheminEdtClassique);
 

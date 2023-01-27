@@ -10,7 +10,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            TailleCotrole.setTailleControleTexte(this);
+            TailleControle.setTailleControleTexte(this);
             VisibleChanged += on_Visibility_Change;
             txtMotDePasse.PasswordChar = '*';
         }
@@ -32,7 +32,7 @@ namespace CartesAcces
             */
             try
             {
-                if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
+                if (Securite.verificationHash(txtMotDePasse.Text, "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz"))
                 {
                     Globale._estConnecter = true;
                     txtMotDePasse.Text = "";

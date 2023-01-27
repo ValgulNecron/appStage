@@ -125,13 +125,6 @@ namespace CartesAcces
             return listeExtractPDF;
         }
 
-        public static int getNbPagePdf()
-        {
-            var folderPath = "./image/";
-            var fileCount = Directory.GetFiles(folderPath).Length;
-            return fileCount;
-        }
-
         public static void renameEdt(string pdf)
         {
             var name = new List<string>();
