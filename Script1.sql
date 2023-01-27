@@ -56,6 +56,6 @@ DELIMITER ;
 
 -- local que depuis localhost et le % c'est partout, oui partout
 DROP USER IF EXISTS 'admin_user'@'%';
-CREATE USER 'admin_user'@'%' Identified BY 'kreyderslam2';
+CREATE USER 'admin_user'@'%' Identified BY 'kreyderslam2!';
 GRANT ALL PRIVILEGES ON *.* to 'admin_user'@'%' WITH GRANT OPTION;
 Flush PRIVILEGES;
