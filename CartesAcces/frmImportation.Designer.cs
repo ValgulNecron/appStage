@@ -137,18 +137,19 @@ namespace CartesAcces
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(310, 190);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(347, 190);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 13);
-            this.label1.TabIndex = 32;
+            this.label1.TabIndex = 34;
             this.label1.Text = "Dernière importation :";
             // 
             // lblImportEdtClassique
             // 
-            this.lblImportEdtClassique.Location = new System.Drawing.Point(374, 254);
+            this.lblImportEdtClassique.Location = new System.Drawing.Point(488, 190);
             this.lblImportEdtClassique.Name = "lblImportEdtClassique";
             this.lblImportEdtClassique.Size = new System.Drawing.Size(199, 23);
-            this.lblImportEdtClassique.TabIndex = 33;
+            this.lblImportEdtClassique.TabIndex = 35;
             this.lblImportEdtClassique.Text = "Aucune Importation";
             // 
             // frmImportation
@@ -177,10 +178,7 @@ namespace CartesAcces
 
         }
 
-        private System.Windows.Forms.Label lblImportEdtClassique;
-
         private System.Windows.Forms.Button btnImportEdtClassique;
-        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Label lblDateListeEleve;
         private System.Windows.Forms.Label label2;
@@ -194,5 +192,7 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnImporterEleves;
         private System.Windows.Forms.Button btnImportEDT;
         private System.Windows.Forms.Button btnImportPhoto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblImportEdtClassique;
     }
 }

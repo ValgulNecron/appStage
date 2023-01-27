@@ -41,7 +41,7 @@ INSERT INTO utilisateur(nomUtilisateur, hash, themeBool) VALUES
 
 -- xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz -- keyuser
 
-----------
+---------- 
 
 DROP TRIGGER IF EXISTS updateMotDePasse;
 DELIMITER $$
