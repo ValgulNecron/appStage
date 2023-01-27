@@ -196,14 +196,6 @@ namespace CartesAcces
             }
         }
         
-        public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
-        {
-            pbPhoto.Image = new Bitmap(chemin);
-            pbPhoto.Size = new Size(110, 165);
-            pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbPhoto.Visible = true;
-        }
-
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
             int posY)
         {

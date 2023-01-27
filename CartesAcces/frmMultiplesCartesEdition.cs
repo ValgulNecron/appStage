@@ -94,7 +94,7 @@ namespace CartesAcces
 
             // -- On remet les paramètres et l'image de base --
             Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
-            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+            Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
@@ -166,7 +166,7 @@ namespace CartesAcces
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
             Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
-            Edition.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+            Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
     }
 }

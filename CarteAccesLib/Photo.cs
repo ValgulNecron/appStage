@@ -10,50 +10,6 @@ namespace CarteAcces
 {
     public static class Photo
     {
-        public static void cropLaPhoto(PictureBox pbPhotoUnique)
-        {
-            // -- Si la largeur a rogner est trop faible, on sort --
-            if (Edition.rognageLargeur < 1) return;
-
-            /* -- Rectangle pour stocker l'image rognée avec les points calculés --
-                Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
-                qui sont celles des vrai fichier EDT !
-                Cela permet d'éviter les problèmes de résolution d'image après le rognage */
-
-            var widthSave = pbPhotoUnique.Width;
-            var heightSave = pbPhotoUnique.Height;
-
-            var cropWidthReal = Edition.rognageLargeur * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
-            var cropHeightReal = Edition.rognageHauteur * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
-            var cropXReal = Edition.rognageX * pbPhotoUnique.Image.Width / pbPhotoUnique.Width;
-            var cropYReal = Edition.rognageY * pbPhotoUnique.Image.Height / pbPhotoUnique.Height;
-
-            var rect = new Rectangle(cropXReal, cropYReal, cropWidthReal, cropHeightReal);
-
-            // -- On stock l'image original dans un bitmap --
-            var OriginalImage = new Bitmap(Image.FromFile(Edition.cheminFichier));
-
-            // -- Bitmap pour l'image rognée --
-            var _img = new Bitmap(cropWidthReal, cropHeightReal);
-
-            // -- Création d'un graphique depuis l'image rognée
-            var g = Graphics.FromImage(_img);
-
-            // -- Attributs de l'image --
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            g.CompositingQuality = CompositingQuality.HighQuality;
-
-            // -- On dessine l'image original, avec les dimensions rognées dans le graphique 
-            g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
-
-            // -- Affichage dans la picturebox
-            pbPhotoUnique.Image = _img;
-            pbPhotoUnique.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbPhotoUnique.Width = widthSave;
-            pbPhotoUnique.Height = heightSave;
-        }
-        
         public static void verifPhotoEleve(Eleve eleve, PictureBox pbPhoto)
         {
             var nomFichierJPG = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
@@ -68,9 +24,9 @@ namespace CarteAcces
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/edition.jpg");
         }
         
-        public static void affichePhotoProvisoire(string path, PictureBox pbPhoto)
+        public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
         {
-            pbPhoto.Image = new Bitmap(path);
+            pbPhoto.Image = new Bitmap(chemin);
             pbPhoto.Size = new Size(110, 165);
             pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPhoto.Visible = true;
