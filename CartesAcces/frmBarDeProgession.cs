@@ -87,7 +87,7 @@ namespace CartesAcces
                 {
                     if (controle is Label && controle.Name == "lblEdtEleve")
                     {
-                        controle.Text = ReadCSV.getDateFile();
+                        controle.Text = PdfGs.getDateFile();
                     }
                 }
             }));
@@ -103,7 +103,7 @@ namespace CartesAcces
                 {
                     if (controle is Label && controle.Name == "lblPhotoEleve")
                     {
-                        controle.Text = ReadCSV.getDateFile();
+                        controle.Text = 
                     }
                 }
             }));
