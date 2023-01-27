@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using CarteAcces;
 
 namespace CartesAcces
 {
@@ -103,7 +104,7 @@ namespace CartesAcces
                 {
                     if (controle is Label && controle.Name == "lblPhotoEleve")
                     {
-                        controle.Text = 
+                        controle.Text = Photo.getDatePhotos();
                     }
                 }
             }));
