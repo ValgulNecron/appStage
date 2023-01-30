@@ -26,13 +26,13 @@ namespace CartesAcces
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            /*
-            if (txtIdentifiant.Text != ClassSQL.getUser())
+            
+            if (txtIdentifiant.Text != "cassin")
             {
                 MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
                 return;
             }
-            */
+            
             try
             {
                 if (Securite.verificationHash(txtMotDePasse.Text, "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz"))
