@@ -31,7 +31,7 @@ namespace CarteAccesLib
             return applicationWord;
         }
 
-        public static void rectifPositionImages(Shape carteFace1, Shape carteFace2)
+        public static void rectifPositionImages(Application applicationWord, Shape carteFace1, Shape carteFace2)
         {
             // -- Gestion de la hauteur et de la position des images --
             /*
@@ -44,7 +44,8 @@ namespace CarteAccesLib
             carteFace1.Left = 0;
 
             carteFace1.Height = carteFace1.Height - 20;
-            carteFace2.Top = carteFace1.Height + 40;
+            carteFace2.RelativeVerticalPosition = WdRelativeVerticalPosition.wdRelativeVerticalPositionPage;
+            carteFace2.Top = applicationWord.InchesToPoints(11 - (carteFace1.Height / 72));
             carteFace2.Height = carteFace1.Height;
         }
 
@@ -96,7 +97,7 @@ namespace CarteAccesLib
                 var shapeCarteFace2 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png",
                     Type.Missing, Type.Missing, Type.Missing);
-                FichierWord.rectifPositionImages(shapeCarteFace1, shapeCarteFace2);
+                FichierWord.rectifPositionImages(fichierWord, shapeCarteFace1, shapeCarteFace2);
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
                 File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png");
                 File.Delete(chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve +
@@ -126,7 +127,7 @@ namespace CarteAccesLib
                     chemin + "/" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png",
                     Type.Missing, Type.Missing, Type.Missing);
 
-                FichierWord.rectifPositionImages(shapeCarteArriere1, shapeCarteArriere2);
+                FichierWord.rectifPositionImages(fichierWord, shapeCarteArriere1, shapeCarteArriere2);
 
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
                 File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png");
