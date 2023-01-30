@@ -41,7 +41,6 @@ namespace CartesAcces
             this.btnImportEdtClassique = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblImportEdtClassique = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnImporterEleves
@@ -52,7 +51,6 @@ namespace CartesAcces
             this.btnImporterEleves.TabIndex = 0;
             this.btnImporterEleves.Text = "Importer une nouvelle liste d\'élève";
             this.btnImporterEleves.UseVisualStyleBackColor = true;
-
             this.btnImporterEleves.Click += new System.EventHandler(this.btnImporterEleves_Click);
             // 
             // btnImportEDT
@@ -154,23 +152,12 @@ namespace CartesAcces
             this.lblImportEdtClassique.TabIndex = 35;
             this.lblImportEdtClassique.Text = "Aucune Importation";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(95, 295);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            
-            // 
             // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1109, 722);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblImportEdtClassique);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnImportEdtClassique);
@@ -207,6 +194,5 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnImportPhoto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblImportEdtClassique;
-        private System.Windows.Forms.Button button1;
     }
 }
