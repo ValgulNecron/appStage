@@ -62,5 +62,6 @@ namespace CartesAcces
         public static string _cheminPdf;
         public static string _cheminPhoto;
         public static string _cheminEdtClassique;
+        
     }
 }
