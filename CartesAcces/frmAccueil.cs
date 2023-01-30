@@ -41,22 +41,12 @@ namespace CartesAcces
             {
                 if (controle is Panel && controle.Name == "pnlContent")
                 {
-                    try
-                    {
-                        Globale._accueil.Invoke(new MethodInvoker(delegate {
-                        var pnlContent = (Panel) controle;
-                        pnlContent.Controls.Clear();
-                        pnlContent.Controls.Add(childForm);
-                        pnlContent.Tag = childForm;
-                        childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
-                        childForm.Show(); // lorsque la WF est appelé pour la première fois
-                        }));
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show(e.Message);
-                    }
-                    
+                    var pnlContent = (Panel) controle;
+                    pnlContent.Controls.Clear();
+                    pnlContent.Controls.Add(childForm);
+                    pnlContent.Tag = childForm;
+                    childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
+                    childForm.Show(); // lorsque la WF est appelé pour la première fois
                 } 
             }
         }
@@ -77,8 +67,8 @@ namespace CartesAcces
                 }
             }
             Globale._actuelle = new frmConnexion();
-            OpenChildForm(Globale._actuelle);
-            
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
+
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var dir = new DirectoryInfo("./data/image");
             if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
@@ -107,21 +97,21 @@ namespace CartesAcces
         {
             Globale._actuelle = new frmCarteProvisoire();
             timer.ajoutEvenement();
-            OpenChildForm(Globale._actuelle);
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCarteParClasseNiveau();
             timer.ajoutEvenement();
-            OpenChildForm(Globale._actuelle);
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmImportation();
             timer.ajoutEvenement();
-            OpenChildForm(Globale._actuelle);
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
@@ -156,7 +146,7 @@ namespace CartesAcces
         {
             Globale._actuelle = new frmCartesParListe();
             timer.ajoutEvenement();
-            OpenChildForm(Globale._actuelle);
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
     }
 }
