@@ -69,19 +69,19 @@ namespace CartesAcces
             var dir = new DirectoryInfo("./data/image");
             if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
-                MessageBox.Show("15j depuis le denier import des edt");
+                MessageBox.Show("15j ou plus depuis le denier import des edt");
             }
             
             var dir2 = new DirectoryInfo(Chemin.cheminPhotoEleve);
             if (dir2.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
-                MessageBox.Show("15j depuis le dernier import de photo");
+                MessageBox.Show("15j ou plus depuis le dernier import de photo");
             }
 
             var dir3 = new DirectoryInfo(Chemin.cheminListeEleve);
             if (dir3.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
-                MessageBox.Show("15j depuis le dernier import des listes eleves");
+                MessageBox.Show("15j ou plus depuis le dernier import des listes eleves");
             }
         }
 
