@@ -6,7 +6,7 @@ namespace CartesAcces
 {
     public class Timer
     {
-        private readonly int dureeMinute = 1;
+        private readonly int dureeMinute = 15;
         private readonly Form form;
         private readonly int frequenceDesVerifEnMinute = 1;
         private readonly System.Timers.Timer timer;
