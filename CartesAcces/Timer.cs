@@ -23,6 +23,14 @@ namespace CartesAcces
             timer.AutoReset = true;
             timer.Start();
             this.form.MouseMove += Form_MouseMove;
+            Globale._accueil.MouseMove += Form_MouseMove;
+        }
+        
+        public void ajoutEvenement()
+        {
+            this.form.MouseMove += Form_MouseMove;
+            Globale._accueil.MouseMove += Form_MouseMove;
+            Globale._actuelle.MouseMove += Form_MouseMove;
         }
 
         private void Form_MouseMove(object sender, MouseEventArgs e)

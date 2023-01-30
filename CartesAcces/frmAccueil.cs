@@ -7,6 +7,7 @@ namespace CartesAcces
 {
     public partial class frmAccueil : Form
     {
+        public static Timer timer;
         public frmAccueil()
         {
             InitializeComponent();
@@ -41,10 +42,10 @@ namespace CartesAcces
                     pnlContent.Controls.Clear();
                     pnlContent.Controls.Add(childForm);
                     pnlContent.Tag = childForm;
+                    childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
+                    childForm.Show(); // lorsque la WF est appelé pour la première fois
                 } 
             }
-            childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
-            childForm.Show(); // lorsque la WF est appelé pour la première fois
         }
 
         private void frmAccueil_Load(object sender, EventArgs e)
@@ -66,7 +67,6 @@ namespace CartesAcces
             OpenChildForm(Globale._actuelle);
             
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
-            var time = new Timer(this);
             var dir = new DirectoryInfo("./data/image");
             if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
@@ -84,6 +84,8 @@ namespace CartesAcces
             {
                 MessageBox.Show("15j ou plus depuis le dernier import des listes eleves");
             }
+            
+            timer = new Timer(this);
         }
 
         //Création de menu de navigation
@@ -91,18 +93,21 @@ namespace CartesAcces
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCarteProvisoire();
+            timer.ajoutEvenement();
             OpenChildForm(Globale._actuelle);
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCarteParClasseNiveau();
+            timer.ajoutEvenement();
             OpenChildForm(Globale._actuelle);
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmImportation();
+            timer.ajoutEvenement();
             OpenChildForm(Globale._actuelle);
         }
 
@@ -137,6 +142,7 @@ namespace CartesAcces
         private void btnAfficheListeEleve_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCartesParListe();
+            timer.ajoutEvenement();
             OpenChildForm(Globale._actuelle);
         }
     }
