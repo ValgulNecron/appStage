@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -13,11 +15,9 @@ namespace CartesAcces
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            /*using (var db = new ClassSql())
-            {
-                var utilisateur = db.Utilisateurs.Find("keyuser");
-                MessageBox.Show(utilisateur.NomUtilisateur + " " + utilisateur.Hash);
-            }*/
+            ClassSql.init();
+            var user = ClassSql.db.GetTable<Utilisateur>().FirstOrDefault(u => u.NomUtilisateur == "keyuser");
+            MessageBox.Show(user.NomUtilisateur + " " + user.Hash);
             Globale._accueil = new frmAccueil();
             Application.Run(Globale._accueil);
         }
