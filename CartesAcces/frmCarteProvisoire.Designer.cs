@@ -86,7 +86,7 @@ namespace CartesAcces
             this.groupBox1.Controls.Add(this.txtNom);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 389);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(539, 286);
@@ -98,7 +98,7 @@ namespace CartesAcces
             // 
             this.btnEdtPerso.Enabled = false;
             this.btnEdtPerso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnEdtPerso.Location = new System.Drawing.Point(303, 203);
+            this.btnEdtPerso.Location = new System.Drawing.Point(303, 213);
             this.btnEdtPerso.MinimumSize = new System.Drawing.Size(180, 45);
             this.btnEdtPerso.Name = "btnEdtPerso";
             this.btnEdtPerso.Size = new System.Drawing.Size(180, 45);
@@ -111,10 +111,10 @@ namespace CartesAcces
             // 
             this.rdbClRelais.AutoSize = true;
             this.rdbClRelais.Enabled = false;
-            this.rdbClRelais.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.rdbClRelais.Location = new System.Drawing.Point(95, 206);
+            this.rdbClRelais.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.rdbClRelais.Location = new System.Drawing.Point(110, 207);
             this.rdbClRelais.Name = "rdbClRelais";
-            this.rdbClRelais.Size = new System.Drawing.Size(85, 20);
+            this.rdbClRelais.Size = new System.Drawing.Size(91, 22);
             this.rdbClRelais.TabIndex = 17;
             this.rdbClRelais.TabStop = true;
             this.rdbClRelais.Text = "CL-Relais";
@@ -126,10 +126,10 @@ namespace CartesAcces
             this.rdbRas.AutoSize = true;
             this.rdbRas.Checked = true;
             this.rdbRas.Enabled = false;
-            this.rdbRas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbRas.Location = new System.Drawing.Point(93, 176);
+            this.rdbRas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbRas.Location = new System.Drawing.Point(108, 177);
             this.rdbRas.Name = "rdbRas";
-            this.rdbRas.Size = new System.Drawing.Size(87, 20);
+            this.rdbRas.Size = new System.Drawing.Size(93, 22);
             this.rdbRas.TabIndex = 16;
             this.rdbRas.TabStop = true;
             this.rdbRas.Text = "Par défaut";
@@ -140,10 +140,10 @@ namespace CartesAcces
             // 
             this.rdbUPE2A.AutoSize = true;
             this.rdbUPE2A.Enabled = false;
-            this.rdbUPE2A.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.rdbUPE2A.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.rdbUPE2A.Location = new System.Drawing.Point(12, 206);
             this.rdbUPE2A.Name = "rdbUPE2A";
-            this.rdbUPE2A.Size = new System.Drawing.Size(70, 20);
+            this.rdbUPE2A.Size = new System.Drawing.Size(74, 22);
             this.rdbUPE2A.TabIndex = 15;
             this.rdbUPE2A.TabStop = true;
             this.rdbUPE2A.Text = "UPE2A";
@@ -154,10 +154,10 @@ namespace CartesAcces
             // 
             this.rdbUlis.AutoSize = true;
             this.rdbUlis.Enabled = false;
-            this.rdbUlis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbUlis.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.rdbUlis.Location = new System.Drawing.Point(12, 176);
             this.rdbUlis.Name = "rdbUlis";
-            this.rdbUlis.Size = new System.Drawing.Size(55, 20);
+            this.rdbUlis.Size = new System.Drawing.Size(58, 22);
             this.rdbUlis.TabIndex = 14;
             this.rdbUlis.TabStop = true;
             this.rdbUlis.Text = "ULIS";
@@ -276,10 +276,10 @@ namespace CartesAcces
             // pbCarteArriere
             // 
             this.pbCarteArriere.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbCarteArriere.Location = new System.Drawing.Point(620, 11);
+            this.pbCarteArriere.Location = new System.Drawing.Point(625, 11);
             this.pbCarteArriere.Margin = new System.Windows.Forms.Padding(2);
             this.pbCarteArriere.Name = "pbCarteArriere";
-            this.pbCarteArriere.Size = new System.Drawing.Size(540, 354);
+            this.pbCarteArriere.Size = new System.Drawing.Size(535, 354);
             this.pbCarteArriere.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCarteArriere.TabIndex = 7;
             this.pbCarteArriere.TabStop = false;
@@ -291,10 +291,10 @@ namespace CartesAcces
             // 
             this.groupBox2.Controls.Add(this.btnCancel);
             this.groupBox2.Controls.Add(this.btnSelect);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.groupBox2.Location = new System.Drawing.Point(620, 389);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.Location = new System.Drawing.Point(591, 389);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(546, 80);
+            this.groupBox2.Size = new System.Drawing.Size(575, 80);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Edition Emploi du Temps";
@@ -339,10 +339,10 @@ namespace CartesAcces
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.btnAnnulerPhoto);
             this.groupBox3.Controls.Add(this.btnAjouterPhoto);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.groupBox3.Location = new System.Drawing.Point(620, 476);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.Location = new System.Drawing.Point(591, 476);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(546, 200);
+            this.groupBox3.Size = new System.Drawing.Size(575, 200);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajout et Edition Photo";
@@ -368,7 +368,7 @@ namespace CartesAcces
             this.tkbTaillePhoto.Location = new System.Drawing.Point(267, 37);
             this.tkbTaillePhoto.Maximum = 300;
             this.tkbTaillePhoto.Name = "tkbTaillePhoto";
-            this.tkbTaillePhoto.Size = new System.Drawing.Size(266, 47);
+            this.tkbTaillePhoto.Size = new System.Drawing.Size(295, 47);
             this.tkbTaillePhoto.TabIndex = 7;
             this.tkbTaillePhoto.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tkbTaillePhoto.Value = 130;
@@ -436,18 +436,18 @@ namespace CartesAcces
             // pnlEdtPhoto
             // 
             this.pnlEdtPhoto.Controls.Add(this.pbPhoto);
-            this.pnlEdtPhoto.Location = new System.Drawing.Point(620, 12);
+            this.pnlEdtPhoto.Location = new System.Drawing.Point(625, 12);
             this.pnlEdtPhoto.Name = "pnlEdtPhoto";
-            this.pnlEdtPhoto.Size = new System.Drawing.Size(540, 356);
+            this.pnlEdtPhoto.Size = new System.Drawing.Size(535, 353);
             this.pnlEdtPhoto.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.label7.Location = new System.Drawing.Point(6, 152);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(245, 16);
+            this.label7.Size = new System.Drawing.Size(288, 16);
             this.label7.TabIndex = 19;
             this.label7.Text = "Veuillez sélectionner l\'option de l\'élève :";
             // 
@@ -458,12 +458,12 @@ namespace CartesAcces
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1205, 760);
-            this.Controls.Add(this.pnlEdtPhoto);
             this.Controls.Add(this.pbCarteArriere);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pbCarteFace);
+            this.Controls.Add(this.pnlEdtPhoto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimumSize = new System.Drawing.Size(1125, 726);
             this.Name = "frmCarteProvisoire";
