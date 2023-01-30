@@ -123,7 +123,6 @@ namespace CartesAcces
                 pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                 pictureBox1.BringToFront();
                 pictureBox1.Location = new Point(0, 0);
-                Globale._gitPoule = false;
                 Globale._accueil.Text = "Cartes d'accès - Git Poule";
                 foreach (Control controle in Globale._accueil.Controls)
                 {
@@ -149,6 +148,7 @@ namespace CartesAcces
                 Process.Start("microsoft-edge:", url);
                 Application.Exit();
             }
+            Globale._gitPoule = false;
         }
 
     }
