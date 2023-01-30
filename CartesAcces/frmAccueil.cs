@@ -26,6 +26,9 @@ namespace CartesAcces
                 pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0],
                     Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
             }
+            TailleControle.setTailleBouton(this);
+            TailleControle.setTailleControleTexte(this);
+        
         }
 
         public static void OpenChildForm(Form childForm)

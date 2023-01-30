@@ -276,10 +276,10 @@ namespace CartesAcces
             // pbCarteArriere
             // 
             this.pbCarteArriere.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbCarteArriere.Location = new System.Drawing.Point(625, 11);
+            this.pbCarteArriere.Location = new System.Drawing.Point(2, -3);
             this.pbCarteArriere.Margin = new System.Windows.Forms.Padding(2);
             this.pbCarteArriere.Name = "pbCarteArriere";
-            this.pbCarteArriere.Size = new System.Drawing.Size(535, 354);
+            this.pbCarteArriere.Size = new System.Drawing.Size(531, 354);
             this.pbCarteArriere.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCarteArriere.TabIndex = 7;
             this.pbCarteArriere.TabStop = false;
@@ -292,9 +292,9 @@ namespace CartesAcces
             this.groupBox2.Controls.Add(this.btnCancel);
             this.groupBox2.Controls.Add(this.btnSelect);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(591, 389);
+            this.groupBox2.Location = new System.Drawing.Point(621, 389);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(575, 80);
+            this.groupBox2.Size = new System.Drawing.Size(535, 80);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Edition Emploi du Temps";
@@ -340,9 +340,9 @@ namespace CartesAcces
             this.groupBox3.Controls.Add(this.btnAnnulerPhoto);
             this.groupBox3.Controls.Add(this.btnAjouterPhoto);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(591, 476);
+            this.groupBox3.Location = new System.Drawing.Point(621, 476);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(575, 200);
+            this.groupBox3.Size = new System.Drawing.Size(535, 200);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajout et Edition Photo";
@@ -368,7 +368,7 @@ namespace CartesAcces
             this.tkbTaillePhoto.Location = new System.Drawing.Point(267, 37);
             this.tkbTaillePhoto.Maximum = 300;
             this.tkbTaillePhoto.Name = "tkbTaillePhoto";
-            this.tkbTaillePhoto.Size = new System.Drawing.Size(295, 47);
+            this.tkbTaillePhoto.Size = new System.Drawing.Size(255, 47);
             this.tkbTaillePhoto.TabIndex = 7;
             this.tkbTaillePhoto.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tkbTaillePhoto.Value = 130;
@@ -423,7 +423,7 @@ namespace CartesAcces
             // 
             // pbPhoto
             // 
-            this.pbPhoto.Location = new System.Drawing.Point(5, 5);
+            this.pbPhoto.Location = new System.Drawing.Point(3, 3);
             this.pbPhoto.Name = "pbPhoto";
             this.pbPhoto.Size = new System.Drawing.Size(100, 50);
             this.pbPhoto.TabIndex = 10;
@@ -436,7 +436,8 @@ namespace CartesAcces
             // pnlEdtPhoto
             // 
             this.pnlEdtPhoto.Controls.Add(this.pbPhoto);
-            this.pnlEdtPhoto.Location = new System.Drawing.Point(625, 12);
+            this.pnlEdtPhoto.Controls.Add(this.pbCarteArriere);
+            this.pnlEdtPhoto.Location = new System.Drawing.Point(618, 12);
             this.pnlEdtPhoto.Name = "pnlEdtPhoto";
             this.pnlEdtPhoto.Size = new System.Drawing.Size(535, 353);
             this.pnlEdtPhoto.TabIndex = 11;
@@ -458,7 +459,6 @@ namespace CartesAcces
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1205, 760);
-            this.Controls.Add(this.pbCarteArriere);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
