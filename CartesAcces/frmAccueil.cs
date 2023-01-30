@@ -64,6 +64,7 @@ namespace CartesAcces
             }
             Globale._actuelle = new frmConnexion();
             OpenChildForm(Globale._actuelle);
+            
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
             var time = new Timer(this);
             var dir = new DirectoryInfo("./data/image");

@@ -32,14 +32,12 @@ namespace CartesAcces
 
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
-            if (Globale._accueil == null)
-                Application.Exit();
             if (start.Add(TimeSpan.FromMinutes(dureeMinute)) <= DateTime.Now)
                 if (Globale._estConnecter)
                 {
                     Globale._estConnecter = false;
                     Globale._actuelle = new frmConnexion();
-                    frmAccueil.OpenChildForm(Globale._actuelle);
+                    frmAccueil.OpenChildForm(new frmConnexion());
                 }
         }
     }
