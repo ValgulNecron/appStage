@@ -31,7 +31,9 @@ namespace CartesAcces
         public static void setTailleBouton(Form form)
         {
             var policeParDefault = new Font("Microsoft Sans Serif", 10);
+
             foreach (Control controle in form.Controls)
+            {
                 if (controle is Button) // indique que je prend uniquement les boutons du type
                 {
                     var controle2 = controle as Button; // indique que ce contrôle est de type
@@ -40,8 +42,9 @@ namespace CartesAcces
                     controle2.AutoSize = false;
 
                 }
+            }
         }
 
-
-        }
+      
+    }
 }

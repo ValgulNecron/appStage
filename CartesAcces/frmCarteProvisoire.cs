@@ -13,7 +13,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            TailleControle.setTailleControleTexte(this);
+
         }
 
         private void changementTexte(object sender, EventArgs e)
@@ -356,6 +356,11 @@ namespace CartesAcces
 
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
         {
+        }
+
+        private void rdbClRelais_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
