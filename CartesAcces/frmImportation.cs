@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Windows.Forms;
 using CarteAcces;
 
@@ -118,19 +120,21 @@ namespace CartesAcces
             {
                 pictureBox1.Visible = true;
                 pictureBox1.Image = Image.FromFile("./git-poule.jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+                pictureBox1.BringToFront();
+                pictureBox1.Location = new Point(0, 0);
                 Globale._gitPoule = false;
                 Globale._accueil.Text = "Cartes d'accès - Git Poule";
                 foreach (Control controle in Globale._accueil.Controls)
                 {
                     if (controle is Panel && controle.Name == "pnlMenu")
                     {
-                        controle.BackColor = Color.Red;
+                        controle.BackColor = Color.DeepPink;
                         foreach (Control controle2 in controle.Controls)
                         {
                             if (controle2 is Button)
                             {
                                 controle2.Text = "Créer un poulet";
-                                controle2.BackColor = Color.Yellow;
                             }
 
                             if (controle2 is Label)
@@ -140,6 +144,10 @@ namespace CartesAcces
                         }
                     }
                 }
+                string url = $"https://www.youtube.com/watch?v=msSc7Mv0QHY";
+                Thread.Sleep(4000);
+                Process.Start("microsoft-edge:", url);
+                Application.Exit();
             }
         }
 

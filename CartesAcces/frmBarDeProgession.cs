@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 using CarteAcces;
 
@@ -60,7 +61,6 @@ namespace CartesAcces
         {
             ReadCSV.setLesEleves(Chemin.cheminListeEleve);
             Eleve.setLesClasses();
-            Application.Exit();
         }
 
         private void cas_2()
