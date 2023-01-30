@@ -41,12 +41,22 @@ namespace CartesAcces
             {
                 if (controle is Panel && controle.Name == "pnlContent")
                 {
-                    var pnlContent = (Panel) controle;
-                    pnlContent.Controls.Clear();
-                    pnlContent.Controls.Add(childForm);
-                    pnlContent.Tag = childForm;
-                    childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
-                    childForm.Show(); // lorsque la WF est appelé pour la première fois
+                    try
+                    {
+                        Globale._accueil.Invoke(new MethodInvoker(delegate {
+                        var pnlContent = (Panel) controle;
+                        pnlContent.Controls.Clear();
+                        pnlContent.Controls.Add(childForm);
+                        pnlContent.Tag = childForm;
+                        childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
+                        childForm.Show(); // lorsque la WF est appelé pour la première fois
+                        }));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
+                    
                 } 
             }
         }
