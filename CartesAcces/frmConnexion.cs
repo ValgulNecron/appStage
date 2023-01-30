@@ -30,6 +30,8 @@ namespace CartesAcces
             if (txtIdentifiant.Text != "cassin")
             {
                 MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                txtIdentifiant.Text = "";
+                txtMotDePasse.Text = "";
                 return;
             }
             
