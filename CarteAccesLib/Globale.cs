@@ -63,5 +63,6 @@ namespace CartesAcces
         public static string _cheminPhoto;
         public static string _cheminEdtClassique;
         
+        public static bool _gitPoule = true;
     }
 }

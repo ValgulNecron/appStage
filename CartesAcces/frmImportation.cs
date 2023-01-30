@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using CarteAcces;
 
@@ -110,6 +111,36 @@ namespace CartesAcces
 
         private void frmParametres_Load(object sender, EventArgs e)
         {
+            int x = 0;
+            Random random = new Random();
+            x = random.Next(0, 1_000_000_000);
+            if ((x == 666 || true) && Globale._gitPoule)
+            {
+                pictureBox1.Visible = true;
+                pictureBox1.Image = Image.FromFile("./git-poule.jpg");
+                Globale._gitPoule = false;
+                Globale._accueil.Text = "Cartes d'accès - Git Poule";
+                foreach (Control controle in Globale._accueil.Controls)
+                {
+                    if (controle is Panel && controle.Name == "pnlMenu")
+                    {
+                        controle.BackColor = Color.Red;
+                        foreach (Control controle2 in controle.Controls)
+                        {
+                            if (controle2 is Button)
+                            {
+                                controle2.Text = "Créer un poulet";
+                                controle2.BackColor = Color.Yellow;
+                            }
+
+                            if (controle2 is Label)
+                            {
+                                controle2.ForeColor = Color.White;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
     }

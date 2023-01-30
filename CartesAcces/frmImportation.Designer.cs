@@ -41,6 +41,8 @@ namespace CartesAcces
             this.btnImportEdtClassique = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblImportEdtClassique = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImporterEleves
@@ -152,12 +154,23 @@ namespace CartesAcces
             this.lblImportEdtClassique.TabIndex = 35;
             this.lblImportEdtClassique.Text = "Aucune Importation";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(10, 235);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(360, 360);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
             // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1109, 722);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblImportEdtClassique);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnImportEdtClassique);
@@ -173,10 +186,12 @@ namespace CartesAcces
             this.Name = "frmImportation";
             this.Text = "frmImportation";
             this.Load += new System.EventHandler(this.frmParametres_Load);
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.PictureBox pictureBox1;
 
         private System.Windows.Forms.Button btnImportEdtClassique;
 

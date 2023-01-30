@@ -60,6 +60,7 @@ namespace CartesAcces
         {
             ReadCSV.setLesEleves(Chemin.cheminListeEleve);
             Eleve.setLesClasses();
+            Application.Exit();
         }
 
         private void cas_2()
