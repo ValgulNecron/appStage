@@ -11,11 +11,16 @@ namespace CarteAcces
         // -- Selection du bon emploi du temps en fonction de la classe selectionnée
         public static void afficheEmploiDuTemps(ComboBox cbbClasse, PictureBox pbCarteArriere)
         {
-            if (cbbClasse.Text != "")
+            try
             {
-                var classe = cbbClasse.Text;
-                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
+                if (cbbClasse.Text != "")
+                {
+                    var classe = cbbClasse.Text;
+                    pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
+                }
             }
+            catch { }
+
         }
         
         public static void ajouterEdtPerso(PictureBox pbCarteArriere)
