@@ -37,7 +37,7 @@ namespace CartesAcces
                 {
                     Globale._estConnecter = false;
                     Globale._actuelle = new frmConnexion();
-                    Globale._actuelle.Invoke(new MethodInvoker(delegate {frmAccueil.OpenChildForm(Globale._actuelle);}));
+                    frmAccueil.OpenChildForm(Globale._actuelle);
                 }
         }
     }
