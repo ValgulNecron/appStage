@@ -110,7 +110,6 @@ namespace CartesAcces
 
         private void frmParametres_Load(object sender, EventArgs e)
         {
-            var time = new Timer(this);
         }
 
     }
