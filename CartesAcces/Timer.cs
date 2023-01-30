@@ -6,7 +6,7 @@ namespace CartesAcces
 {
     public class Timer
     {
-        private readonly int dureeMinute = 15;
+        private readonly int dureeMinute = 1;
         private readonly Form form;
         private readonly int frequenceDesVerifEnMinute = 1;
         private readonly System.Timers.Timer timer;
@@ -38,7 +38,7 @@ namespace CartesAcces
                 if (Globale._estConnecter)
                 {
                     Globale._estConnecter = false;
-                    Globale._actuelle = new frmImportation();
+                    Globale._actuelle = new frmConnexion();
                     frmAccueil.OpenChildForm(Globale._actuelle);
                 }
         }

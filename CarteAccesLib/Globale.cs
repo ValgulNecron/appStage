@@ -40,10 +40,8 @@ namespace CartesAcces
         public static List<int> _couleurTextBoxClaire = new List<int> {239, 241, 245};
         public static List<int> _couleurBoutonOffClaire = new List<int> {140, 143, 161};
 
-        public static List<int> _couleurDeFondSombre = new List<int> {49, 50, 68};
-
+        public static List<int> _couleurDeFondSombre = new List<int> {69, 71, 90};
         public static List<int> _couleurDuTexteSombre = new List<int> {148, 226, 213};
-
         //public static List<int> _couleurBandeauxSombre = new List<int> {116, 199, 236};
         public static List<int> _couleurBandeauxSombre = new List<int> {70, 130, 180};
         public static List<int> _couleurBoutonsSombre = new List<int> {88, 91, 112};
@@ -64,5 +62,6 @@ namespace CartesAcces
         public static string _cheminPdf;
         public static string _cheminPhoto;
         public static string _cheminEdtClassique;
+        
     }
 }
