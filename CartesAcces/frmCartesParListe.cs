@@ -33,7 +33,6 @@ namespace CartesAcces
                 btnAjout.Click += ajoutEleve;
                 btnRetirer.Click += retirerEleve;
                 txtRecherche.TextChanged += recheche;
-                btnValider.Click += valider;
             }
             catch
             {
@@ -123,11 +122,15 @@ namespace CartesAcces
             return e;
         }
 
-        private void valider(object sender, EventArgs e)
+        private void btnValider_Click(object sender, EventArgs e)
         {
-            Globale._listeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
-            Form frmMultipleCarteEdi = new frmMultiplesCartesEdition();
-            frmMultipleCarteEdi.Show();
+            try
+            {
+                Globale._listeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
+                Form frmMultipleCarteEdi = new frmMultiplesCartesEdition();
+                frmMultipleCarteEdi.Show();
+            }
+            catch { }
         }
     }
 }
