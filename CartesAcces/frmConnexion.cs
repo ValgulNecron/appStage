@@ -86,5 +86,22 @@ namespace CartesAcces
         {
             Securite.dechiffrerDossier();
         }
+
+        private void frmConnexion_Load(object sender, EventArgs e)
+        {
+            foreach (Control controle in Globale._accueil.Controls)
+            {
+                if(controle is Panel && controle.Name == "pnlMenu")
+                {
+                    foreach (Control controle2 in controle.Controls)
+                    {
+                        if (controle2 is Button && controle2.Name != "btnTheme")
+                        {
+                            controle2.Enabled = false;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

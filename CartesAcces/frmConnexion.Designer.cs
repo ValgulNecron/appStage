@@ -109,7 +109,7 @@ namespace CartesAcces
             // 
             // txtIdentifiant
             // 
-            this.txtIdentifiant.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdentifiant.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtIdentifiant.Location = new System.Drawing.Point(534, 217);
             this.txtIdentifiant.MinimumSize = new System.Drawing.Size(100, 10);
             this.txtIdentifiant.Name = "txtIdentifiant";
@@ -140,9 +140,9 @@ namespace CartesAcces
             this.Controls.Add(this.maskedTextBox1);
             this.Name = "frmConnexion";
             this.Text = "frmConnexion";
+            this.Load += new System.EventHandler(this.frmConnexion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Button btnChiffre;
