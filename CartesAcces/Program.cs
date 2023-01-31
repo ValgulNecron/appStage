@@ -9,14 +9,21 @@ namespace CartesAcces
     {
         /// <summary>
         ///     Point d'entrée principal de l'application.
-        /// </summary>
+        /// </summary> 
         [STAThread]
         private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
+            // ClassSql.init();
+            // var user = ClassSql.db.GetTable<Utilisateur>().FirstOrDefault(u => u.NomUtilisateur == "keyuser");
+            // MessageBox.Show(user.NomUtilisateur + " " + user.Hash);
+            Globale._accueil = new frmAccueil();
+=======
             ClassSql.init();
             Globale._accueil = new frmAccueil();    
+>>>>>>> e5fdd6746aeddff95a067df7c3091acce55e6cee
             Application.Run(Globale._accueil);
         }
     }

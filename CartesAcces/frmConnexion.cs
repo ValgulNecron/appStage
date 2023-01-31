@@ -12,9 +12,6 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            TailleControle.setTailleControleTexte(this);
-            TailleControle.setTailleControleLabel(this);
-            btnConnexion.Size = new Size(150,30);
 
             VisibleChanged += on_Visibility_Change;
             txtMotDePasse.PasswordChar = '*';

@@ -40,6 +40,7 @@ namespace CartesAcces
                     controle2.Font = policeParDefault; // application des modification sur le type choisi
                     controle2.Size = new Size(330, 29);
                     controle2.AutoSize = false;
+                    
 
                 }
             }
