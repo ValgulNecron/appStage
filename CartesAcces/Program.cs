@@ -18,7 +18,7 @@ namespace CartesAcces
             ClassSql.init();
             var user = ClassSql.db.GetTable<Utilisateur>().FirstOrDefault(u => u.NomUtilisateur == "keyuser");
             MessageBox.Show(user.NomUtilisateur + " " + user.Hash);
-            Globale._accueil = new frmAccueil();
+            Globale._accueil = new frmAccueil();    
             Application.Run(Globale._accueil);
         }
     }

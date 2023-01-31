@@ -13,19 +13,18 @@ namespace CartesAcces
 
         public static void init()
         {
-            var doc = new XmlDocument();
+            var doc = new XmlDocument();    
             doc.Load("./config.xml");
             string mariaDb = "";
-            var node = doc.SelectSingleNode("/appSettings/add[@key='IP']");
-            if (node.Attributes != null) mariaDb += "Server" + node.Attributes["value"].Value + ";";
-            node = doc.SelectSingleNode("/appSettings/add[@key='DB']");
+            var node = doc.SelectSingleNode("/configuration/appSettings/add[@key='IP']");
+            if (node.Attributes != null) mariaDb += "Server=" + node.Attributes["value"].Value + ";";
             mariaDb += "Port=3306;";
-            if (node.Attributes != null) mariaDb += "Database" + node.Attributes["value"].Value + ";";
-            node = doc.SelectSingleNode("/appSettings/add[@key='UTILISATEUR']");
-            if (node.Attributes != null) mariaDb += "Uid" + node.Attributes["value"].Value + ";";
-            node = doc.SelectSingleNode("/appSettings/add[@key='MOTDEPASSE']");
-            if (node.Attributes != null) mariaDb += "Pwd" + node.Attributes["value"].Value + ";";
-            mariaDb += "Trusted_Connection=True;";
+            node = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
+            if (node.Attributes != null) mariaDb += "Database=" + node.Attributes["value"].Value + ";";
+            node = doc.SelectSingleNode("/configuration/appSettings/add[@key='UTILISATEUR']");
+            if (node.Attributes != null) mariaDb += "Uid=" + node.Attributes["value"].Value + ";";
+            node = doc.SelectSingleNode("/configuration/appSettings/add[@key='MOTDEPASSE']");
+            if (node.Attributes != null) mariaDb += "Pwd=" + node.Attributes["value"].Value + ";";
             db = new LinqToDB.Data.DataConnection(
                 LinqToDB.ProviderName.MySql,
                 mariaDb);
