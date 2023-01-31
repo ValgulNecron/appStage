@@ -42,7 +42,21 @@ namespace CartesAcces
             this.label1 = new System.Windows.Forms.Label();
             this.lblImportEdtClassique = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            this.txtNomEtablissement = new System.Windows.Forms.TextBox();
+            this.txtRueEtablissement = new System.Windows.Forms.TextBox();
+            this.txtCodePostalEtablissement = new System.Windows.Forms.TextBox();
+            this.txtNumRueEtablissement = new System.Windows.Forms.TextBox();
+            this.txtMailEtablissement = new System.Windows.Forms.TextBox();
+            this.txtTelEtablissement = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtVilleEtablissement = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImporterEleves
@@ -164,12 +178,131 @@ namespace CartesAcces
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
+            // txtNomEtablissement
+            // 
+            this.txtNomEtablissement.Location = new System.Drawing.Point(828, 29);
+            this.txtNomEtablissement.Name = "txtNomEtablissement";
+            this.txtNomEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtNomEtablissement.TabIndex = 37;
+            // 
+            // txtRueEtablissement
+            // 
+            this.txtRueEtablissement.Location = new System.Drawing.Point(828, 59);
+            this.txtRueEtablissement.Name = "txtRueEtablissement";
+            this.txtRueEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtRueEtablissement.TabIndex = 38;
+            // 
+            // txtCodePostalEtablissement
+            // 
+            this.txtCodePostalEtablissement.Location = new System.Drawing.Point(828, 115);
+            this.txtCodePostalEtablissement.Name = "txtCodePostalEtablissement";
+            this.txtCodePostalEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtCodePostalEtablissement.TabIndex = 40;
+            // 
+            // txtNumRueEtablissement
+            // 
+            this.txtNumRueEtablissement.Location = new System.Drawing.Point(874, 85);
+            this.txtNumRueEtablissement.Name = "txtNumRueEtablissement";
+            this.txtNumRueEtablissement.Size = new System.Drawing.Size(130, 20);
+            this.txtNumRueEtablissement.TabIndex = 39;
+            // 
+            // txtMailEtablissement
+            // 
+            this.txtMailEtablissement.Location = new System.Drawing.Point(828, 197);
+            this.txtMailEtablissement.Name = "txtMailEtablissement";
+            this.txtMailEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtMailEtablissement.TabIndex = 42;
+            // 
+            // txtTelEtablissement
+            // 
+            this.txtTelEtablissement.Location = new System.Drawing.Point(828, 167);
+            this.txtTelEtablissement.Name = "txtTelEtablissement";
+            this.txtTelEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtTelEtablissement.TabIndex = 41;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(722, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Nom Etablissement";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(722, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 23);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "Rue Etablissement";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(722, 88);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(146, 23);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "Num Rue Etablissement";
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(722, 118);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 23);
+            this.label8.TabIndex = 46;
+            this.label8.Text = "Code Postal";
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(722, 170);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 23);
+            this.label9.TabIndex = 47;
+            this.label9.Text = "Tel Etablissement";
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(722, 200);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 23);
+            this.label10.TabIndex = 48;
+            this.label10.Text = "Mail Etablissement";
+            // 
+            // txtVilleEtablissement
+            // 
+            this.txtVilleEtablissement.Location = new System.Drawing.Point(828, 141);
+            this.txtVilleEtablissement.Name = "txtVilleEtablissement";
+            this.txtVilleEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtVilleEtablissement.TabIndex = 49;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(722, 144);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 23);
+            this.label11.TabIndex = 50;
+            this.label11.Text = "Ville Etablissement";
+            // 
             // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1109, 722);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtVilleEtablissement);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtMailEtablissement);
+            this.Controls.Add(this.txtTelEtablissement);
+            this.Controls.Add(this.txtCodePostalEtablissement);
+            this.Controls.Add(this.txtNumRueEtablissement);
+            this.Controls.Add(this.txtRueEtablissement);
+            this.Controls.Add(this.txtNomEtablissement);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblImportEdtClassique);
             this.Controls.Add(this.label1);
@@ -186,10 +319,27 @@ namespace CartesAcces
             this.Name = "frmImportation";
             this.Text = "frmImportation";
             this.Load += new System.EventHandler(this.frmParametres_Load);
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.TextBox txtVilleEtablissement;
+        private System.Windows.Forms.Label label11;
+
+        private System.Windows.Forms.TextBox txtCodePostalEtablissement;
+        private System.Windows.Forms.TextBox txtNumRueEtablissement;
+        private System.Windows.Forms.TextBox txtMailEtablissement;
+        private System.Windows.Forms.TextBox txtTelEtablissement;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+
+        private System.Windows.Forms.TextBox txtNomEtablissement;
+        private System.Windows.Forms.TextBox txtRueEtablissement;
 
         private System.Windows.Forms.PictureBox pictureBox1;
 
