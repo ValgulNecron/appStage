@@ -32,7 +32,7 @@ namespace CartesAcces
     }
 
     [LinqToDB.Mapping.Table(Name = "utilisateur")]
-    public class Utilisateur
+    public class Utilisateurs
     {
         [PrimaryKey, LinqToDB.Mapping.Column(Name = "nomUtilisateur")]
         public string NomUtilisateur { get; set; }
@@ -46,7 +46,7 @@ namespace CartesAcces
     
     
     [LinqToDB.Mapping.Table(Name = "logAction")]
-    public class LogAction
+    public class LogActions
     {
         [LinqToDB.Mapping.Column(Name = "dateAction"), PrimaryKey]
         public DateTime DateAction { get; set; }
@@ -59,27 +59,11 @@ namespace CartesAcces
 
         [LinqToDB.Mapping.Column(Name = "adMac")]
         public string AdMac { get; set; }
-
-        [LinqToDB.Mapping.Association(ThisKey = "NomUtilisateur", OtherKey = "NomUtilisateur")]
-        public Utilisateur Utilisateur { get; set; }
+        
+        [LinqToDB.Mapping.Association(ThisKey = nameof(NomUtilisateur), OtherKey = nameof(Utilisateurs.NomUtilisateur))]
+        public Utilisateurs Utilisateur { get; set; }
     }
 
-    [LinqToDB.Mapping.Table("logMotDePasse")]
-    public class LogMotDePasse
-    {
-        [LinqToDB.Mapping.Column("dateLogMotDePasse"), PrimaryKey]
-        public DateTime Date { get; set; }
-
-        [LinqToDB.Mapping.Column("hash")]
-        public string Hash { get; set; }
-
-        [LinqToDB.Mapping.Column("nomUtilisateur")]
-        public string NomUtilisateur { get; set; }
-
-        [LinqToDB.Mapping.Association(ThisKey = "Hash", OtherKey = "Hash", CanBeNull = false)]
-        public Utilisateur Utilisateur { get; set; }
-    }
-    
     [LinqToDB.Mapping.Table(Name = "etablissement")]
     public class Etablissement
     {

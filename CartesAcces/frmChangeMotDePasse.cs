@@ -34,7 +34,7 @@ namespace CartesAcces
                 if (Securite.validationPrerequisMdp(nouveauMdp.Text))
                 {
 
-                    var user = ClassSql.db.GetTable<Utilisateur>()
+                    var user = ClassSql.db.GetTable<Utilisateurs>()
                         .FirstOrDefault(u => u.NomUtilisateur == Globale._nomUtilisateur);
                     if (Securite.verificationHash(ancienMdp.Text, user.Hash))
                     {
@@ -43,7 +43,6 @@ namespace CartesAcces
                             string macAddress = string.Empty;
                             foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
                             {
-                                // Only consider Ethernet network interfaces, thereby ignoring any loopback network interfaces
                                 if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
                                     nic.OperationalStatus == OperationalStatus.Up)
                                 {
@@ -51,11 +50,12 @@ namespace CartesAcces
                                     break;
                                 }
                             }
-                            var log = new LogAction();
+                            var log = new LogActions();
                             log.DateAction = DateTime.Now;
-                            log.Utilisateur = user;
+                            log.NomUtilisateur = Globale._nomUtilisateur;
                             log.Action = "Changement de mot de passe";
                             log.AdMac = macAddress;
+                            ClassSql.db.Insert(log);
                             user.Hash = Securite.creationHash(nouveauMdp.Text);
                             ClassSql.db.Update(user);
                             MessageBox.Show("mot de passe changé");
