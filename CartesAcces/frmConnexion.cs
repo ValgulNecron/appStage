@@ -28,7 +28,8 @@ namespace CartesAcces
             try
             {
                 var user = ClassSql.db.GetTable<Utilisateur>().FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
-                if (txtIdentifiant.Text != user.NomUtilisateur || txtIdentifiant.Text != "cassin")
+                MessageBox.Show(user.NomUtilisateur + " " + txtIdentifiant.Text + " " + user.Hash);
+                if (txtIdentifiant.Text != user.NomUtilisateur && txtIdentifiant.Text != "cassin")
                 {
                     MessageBox.Show("nom d'utilisateur invalide");
                     txtIdentifiant.Text = "";
