@@ -42,18 +42,20 @@ namespace CartesAcces
             this.label1 = new System.Windows.Forms.Label();
             this.lblImportEdtClassique = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtNomEtablissement = new System.Windows.Forms.TextBox();
+            this.txtRueEtablissement = new System.Windows.Forms.TextBox();
+            this.txtCodePostalEtablissement = new System.Windows.Forms.TextBox();
+            this.txtNumRueEtablissement = new System.Windows.Forms.TextBox();
+            this.txtMailEtablissement = new System.Windows.Forms.TextBox();
+            this.txtTelEtablissement = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtVilleEtablissement = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,51 +178,51 @@ namespace CartesAcces
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
-            // textBox1
+            // txtNomEtablissement
             // 
-            this.textBox1.Location = new System.Drawing.Point(904, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 37;
+            this.txtNomEtablissement.Location = new System.Drawing.Point(828, 29);
+            this.txtNomEtablissement.Name = "txtNomEtablissement";
+            this.txtNomEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtNomEtablissement.TabIndex = 37;
             // 
-            // textBox2
+            // txtRueEtablissement
             // 
-            this.textBox2.Location = new System.Drawing.Point(904, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 38;
+            this.txtRueEtablissement.Location = new System.Drawing.Point(828, 59);
+            this.txtRueEtablissement.Name = "txtRueEtablissement";
+            this.txtRueEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtRueEtablissement.TabIndex = 38;
             // 
-            // textBox3
+            // txtCodePostalEtablissement
             // 
-            this.textBox3.Location = new System.Drawing.Point(904, 115);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 40;
+            this.txtCodePostalEtablissement.Location = new System.Drawing.Point(828, 115);
+            this.txtCodePostalEtablissement.Name = "txtCodePostalEtablissement";
+            this.txtCodePostalEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtCodePostalEtablissement.TabIndex = 40;
             // 
-            // textBox4
+            // txtNumRueEtablissement
             // 
-            this.textBox4.Location = new System.Drawing.Point(938, 85);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(66, 20);
-            this.textBox4.TabIndex = 39;
+            this.txtNumRueEtablissement.Location = new System.Drawing.Point(874, 85);
+            this.txtNumRueEtablissement.Name = "txtNumRueEtablissement";
+            this.txtNumRueEtablissement.Size = new System.Drawing.Size(130, 20);
+            this.txtNumRueEtablissement.TabIndex = 39;
             // 
-            // textBox5
+            // txtMailEtablissement
             // 
-            this.textBox5.Location = new System.Drawing.Point(904, 171);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 42;
+            this.txtMailEtablissement.Location = new System.Drawing.Point(828, 197);
+            this.txtMailEtablissement.Name = "txtMailEtablissement";
+            this.txtMailEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtMailEtablissement.TabIndex = 42;
             // 
-            // textBox6
+            // txtTelEtablissement
             // 
-            this.textBox6.Location = new System.Drawing.Point(904, 141);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 41;
+            this.txtTelEtablissement.Location = new System.Drawing.Point(828, 167);
+            this.txtTelEtablissement.Name = "txtTelEtablissement";
+            this.txtTelEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtTelEtablissement.TabIndex = 41;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(786, 32);
+            this.label3.Location = new System.Drawing.Point(722, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 43;
@@ -228,7 +230,7 @@ namespace CartesAcces
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(786, 62);
+            this.label4.Location = new System.Drawing.Point(722, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 23);
             this.label4.TabIndex = 44;
@@ -236,7 +238,7 @@ namespace CartesAcces
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(786, 88);
+            this.label6.Location = new System.Drawing.Point(722, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(146, 23);
             this.label6.TabIndex = 45;
@@ -244,7 +246,7 @@ namespace CartesAcces
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(786, 118);
+            this.label8.Location = new System.Drawing.Point(722, 118);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 23);
             this.label8.TabIndex = 46;
@@ -252,19 +254,34 @@ namespace CartesAcces
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(786, 144);
+            this.label9.Location = new System.Drawing.Point(722, 170);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 23);
             this.label9.TabIndex = 47;
-            this.label9.Text = "label9";
+            this.label9.Text = "Tel Etablissement";
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(786, 174);
+            this.label10.Location = new System.Drawing.Point(722, 200);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 23);
             this.label10.TabIndex = 48;
-            this.label10.Text = "label10";
+            this.label10.Text = "Mail Etablissement";
+            // 
+            // txtVilleEtablissement
+            // 
+            this.txtVilleEtablissement.Location = new System.Drawing.Point(828, 141);
+            this.txtVilleEtablissement.Name = "txtVilleEtablissement";
+            this.txtVilleEtablissement.Size = new System.Drawing.Size(176, 20);
+            this.txtVilleEtablissement.TabIndex = 49;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(722, 144);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 23);
+            this.label11.TabIndex = 50;
+            this.label11.Text = "Ville Etablissement";
             // 
             // frmImportation
             // 
@@ -272,18 +289,20 @@ namespace CartesAcces
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1109, 722);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtVilleEtablissement);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtMailEtablissement);
+            this.Controls.Add(this.txtTelEtablissement);
+            this.Controls.Add(this.txtCodePostalEtablissement);
+            this.Controls.Add(this.txtNumRueEtablissement);
+            this.Controls.Add(this.txtRueEtablissement);
+            this.Controls.Add(this.txtNomEtablissement);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblImportEdtClassique);
             this.Controls.Add(this.label1);
@@ -305,10 +324,13 @@ namespace CartesAcces
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtVilleEtablissement;
+        private System.Windows.Forms.Label label11;
+
+        private System.Windows.Forms.TextBox txtCodePostalEtablissement;
+        private System.Windows.Forms.TextBox txtNumRueEtablissement;
+        private System.Windows.Forms.TextBox txtMailEtablissement;
+        private System.Windows.Forms.TextBox txtTelEtablissement;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
@@ -316,8 +338,8 @@ namespace CartesAcces
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNomEtablissement;
+        private System.Windows.Forms.TextBox txtRueEtablissement;
 
         private System.Windows.Forms.PictureBox pictureBox1;
 
