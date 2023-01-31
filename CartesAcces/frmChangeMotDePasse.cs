@@ -26,6 +26,11 @@ namespace CartesAcces
         {
             try
             {
+                if (nouveauMdp.Text == ancienMdp.Text)
+                {
+                    MessageBox.Show("Le nouveau mot de passe doit être différent de l'ancien");
+                    return;
+                }
                 if (Securite.validationPrerequisMdp(nouveauMdp.Text))
                 {
 
