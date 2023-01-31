@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -23,49 +25,55 @@ namespace CartesAcces
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            
-            if (txtIdentifiant.Text != "cassin")
-            {
-                MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
-                txtIdentifiant.Text = "";
-                txtMotDePasse.Text = "";
-                return;
-            }
-            
             try
             {
-                if (Securite.verificationHash(txtMotDePasse.Text, "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz"))
+                var user = ClassSql.db.GetTable<Utilisateur>().FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
+                if (txtIdentifiant.Text != user.NomUtilisateur || txtIdentifiant.Text != "cassin")
                 {
-                    Globale._estConnecter = true;
-                    txtMotDePasse.Text = "";
+                    MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
                     txtIdentifiant.Text = "";
-                    foreach (Control controle in Globale._accueil.Controls)
+                    txtMotDePasse.Text = "";
+                    return;
+                }
+                try
+                {
+                    if (Securite.verificationHash(txtMotDePasse.Text, user.Hash) || Securite.verificationHash(txtMotDePasse.Text, "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz"))
                     {
-                        if(controle is Panel && controle.Name == "pnlMenu")
+                        Globale._estConnecter = true;
+                        txtMotDePasse.Text = "";
+                        txtIdentifiant.Text = "";
+                        foreach (Control controle in Globale._accueil.Controls)
                         {
-                            foreach (Control controle2 in controle.Controls)
+                            if(controle is Panel && controle.Name == "pnlMenu")
                             {
-                                if (controle2 is Button)
+                                foreach (Control controle2 in controle.Controls)
                                 {
-                                    controle2.Enabled = true;
+                                    if (controle2 is Button)
+                                    {
+                                        controle2.Enabled = true;
+                                    }
                                 }
                             }
                         }
+                        Globale._cas = 1;
+                        var frmWait = new barDeProgression();
+                        frmWait.StartPosition = FormStartPosition.Manual;
+                        frmWait.Location = new Point(800, 300);;
+                        frmWait.Show();
+                        frmWait.TopMost = true;
+                        Globale._actuelle = new frmImportation();
+                        frmAccueil.OpenChildForm(Globale._actuelle);
                     }
-                    Globale._cas = 1;
-                    var frmWait = new barDeProgression();
-                    frmWait.StartPosition = FormStartPosition.Manual;
-                    frmWait.Location = new Point(800, 300);;
-                    frmWait.Show();
-                    frmWait.TopMost = true;
-                    Globale._actuelle = new frmImportation();
-                    frmAccueil.OpenChildForm(Globale._actuelle);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                    txtMotDePasse.Text = "";
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
-                txtMotDePasse.Text = "";
+                Console.WriteLine(exception);
             }
         }
 

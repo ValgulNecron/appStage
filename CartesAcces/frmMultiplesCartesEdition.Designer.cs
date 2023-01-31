@@ -40,7 +40,6 @@ namespace CartesAcces
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnCrop = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlEdtPhoto.SuspendLayout();
@@ -83,6 +82,7 @@ namespace CartesAcces
             this.pbCarteArriere.TabStop = false;
             this.pbCarteArriere.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseDown);
             this.pbCarteArriere.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseMove);
+            this.pbCarteArriere.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbCarteArriere_MouseUp);
             // 
             // groupBox3
             // 
@@ -152,7 +152,6 @@ namespace CartesAcces
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnCancel);
-            this.groupBox2.Controls.Add(this.btnCrop);
             this.groupBox2.Controls.Add(this.btnSelect);
             this.groupBox2.Location = new System.Drawing.Point(12, 379);
             this.groupBox2.Name = "groupBox2";
@@ -170,17 +169,6 @@ namespace CartesAcces
             this.btnCancel.Text = "&Annuler le rognagne";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnCrop
-            // 
-            this.btnCrop.Enabled = false;
-            this.btnCrop.Location = new System.Drawing.Point(207, 33);
-            this.btnCrop.Name = "btnCrop";
-            this.btnCrop.Size = new System.Drawing.Size(127, 23);
-            this.btnCrop.TabIndex = 1;
-            this.btnCrop.Text = "&Valider le rognage";
-            this.btnCrop.UseVisualStyleBackColor = true;
-            this.btnCrop.Click += new System.EventHandler(this.btnCrop_Click);
             // 
             // btnSelect
             // 
@@ -212,7 +200,6 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -226,7 +213,6 @@ namespace CartesAcces
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnCrop;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnValiderImpr;
         private System.Windows.Forms.Label labelEnCoursValidation;

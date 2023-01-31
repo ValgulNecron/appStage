@@ -30,6 +30,7 @@ namespace CartesAcces
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnEdtPerso = new System.Windows.Forms.Button();
             this.rdbClRelais = new System.Windows.Forms.RadioButton();
             this.rdbRas = new System.Windows.Forms.RadioButton();
@@ -58,7 +59,6 @@ namespace CartesAcces
             this.btnAjouterPhoto = new System.Windows.Forms.Button();
             this.pbPhoto = new System.Windows.Forms.PictureBox();
             this.pnlEdtPhoto = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarteFace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarteArriere)).BeginInit();
@@ -93,6 +93,16 @@ namespace CartesAcces
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Renseignements Élève";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(6, 152);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(288, 16);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Veuillez sélectionner l\'option de l\'élève :";
             // 
             // btnEdtPerso
             // 
@@ -193,11 +203,7 @@ namespace CartesAcces
             this.cbbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cbbSection.FormattingEnabled = true;
-            this.cbbSection.Items.AddRange(new object[] {
-            "6eme",
-            "5eme",
-            "4eme",
-            "3eme"});
+            this.cbbSection.Items.AddRange(new object[] { "6eme", "5eme", "4eme", "3eme" });
             this.cbbSection.Location = new System.Drawing.Point(108, 19);
             this.cbbSection.Name = "cbbSection";
             this.cbbSection.Size = new System.Drawing.Size(121, 24);
@@ -301,8 +307,7 @@ namespace CartesAcces
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Enabled = false;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnCancel.Location = new System.Drawing.Point(354, 19);
@@ -317,8 +322,7 @@ namespace CartesAcces
             // 
             // btnSelect
             // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelect.Enabled = false;
             this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnSelect.Location = new System.Drawing.Point(5, 22);
@@ -362,13 +366,11 @@ namespace CartesAcces
             // 
             // tkbTaillePhoto
             // 
-            this.tkbTaillePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tkbTaillePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.tkbTaillePhoto.Location = new System.Drawing.Point(267, 37);
             this.tkbTaillePhoto.Maximum = 300;
             this.tkbTaillePhoto.Name = "tkbTaillePhoto";
-            this.tkbTaillePhoto.Size = new System.Drawing.Size(255, 47);
+            this.tkbTaillePhoto.Size = new System.Drawing.Size(255, 45);
             this.tkbTaillePhoto.TabIndex = 7;
             this.tkbTaillePhoto.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tkbTaillePhoto.Value = 130;
@@ -442,23 +444,13 @@ namespace CartesAcces
             this.pnlEdtPhoto.Size = new System.Drawing.Size(535, 353);
             this.pnlEdtPhoto.TabIndex = 11;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(6, 152);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(288, 16);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Veuillez sélectionner l\'option de l\'élève :";
-            // 
             // frmCarteProvisoire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1205, 760);
+            this.ClientSize = new System.Drawing.Size(1205, 759);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -480,7 +472,6 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
             this.pnlEdtPhoto.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
