@@ -25,11 +25,7 @@ namespace CartesAcces
                 pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
                 Edt.rognageEdt(pbEdtClassique, Globale._cheminEdtClassique);
             }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.ToString());
-            }
-
+            catch { }
         }
 
         private void btnRogner_Click(object sender, EventArgs e)

@@ -123,7 +123,7 @@ namespace CartesAcces
                 pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                 pictureBox1.BringToFront();
                 pictureBox1.Location = new Point(0, 0);
-                Globale._accueil.Text = "Cartes d'accès - Git Poule";
+                Globale._accueil.Text = "KFC - Git Poule";
                 foreach (Control controle in Globale._accueil.Controls)
                 {
                     if (controle is Panel && controle.Name == "pnlMenu")

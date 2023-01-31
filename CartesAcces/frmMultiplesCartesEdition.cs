@@ -63,25 +63,20 @@ namespace CartesAcces
         // #### Rognage de l'emploi du temps ####
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            // -- Curseur en croix pour symboliser le mode selection
-            Cursor = Cursors.Cross;
+            try
+            {
+                // -- Curseur en croix pour symboliser le mode selection
+                Cursor = Cursors.Cross;
 
-            // -- On est dans le mode selection
-            Edition.selectionClique = true;
+                // -- On est dans le mode selection
+                Edition.selectionClique = true;
 
-            // -- On peut cliquer sur rogner
-            btnCrop.Enabled = true;
-
-            btnCancel.Enabled = true;
-        }
-
-        private void btnCrop_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-            var pathEdt = Chemin.cheminEdt;
-            Edition.selectionClique = false;
-            Edt.rognageEdt(pbCarteArriere, pathEdt);
-            btnCrop.Enabled = false;
+                btnCancel.Enabled = true;
+                btnSelect.Enabled = false;
+            }
+            catch
+            {
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -95,47 +90,69 @@ namespace CartesAcces
             // -- On remet les paramètres et l'image de base --
             Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+
+            btnSelect.Enabled = true;
+            btnCancel.Enabled = false;
         }
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
         {
-            // -- Si le bouton selectionné est cliqué --
-            if (Edition.selectionClique)
+            try
             {
-                // -- Si il y a clic gauche --
-                if (e.Button == MouseButtons.Left)
+                // -- Si le bouton selectionné est cliqué --
+                if (Edition.selectionClique)
                 {
-                    // -- On prend les coordonnées de départ --
-                    Edition.rognageX = e.X;
-                    Edition.rognageY = e.Y;
-                    Edition.rognagePen = new Pen(Color.Black, 1);
-                    Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
-                }
+                    // -- Si il y a clic gauche --
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        // -- On prend les coordonnées de départ --
+                        Edition.rognageX = e.X;
+                        Edition.rognageY = e.Y;
+                        Edition.rognagePen = new Pen(Color.Black, 1);
+                        Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
+                    }
 
-                // -- Refresh constant pour avoir un apperçu pendant la selection --
-                pbCarteArriere.Refresh();
+                    // -- Refresh constant pour avoir un apperçu pendant la selection --
+                    pbCarteArriere.Refresh();
+                }
+            }
+            catch
+            {
             }
         }
 
         private void pbCarteArriere_MouseMove(object sender, MouseEventArgs e)
         {
-            // -- Si le bouton selection est cliqué --
-            if (Edition.selectionClique)
+            try
             {
-                // -- Si pas d'image, on sort --
-                if (pbCarteArriere.Image == null)
-                    return;
-
-                // -- Glissement à la fin du premier clic gauche --
-                if (e.Button == MouseButtons.Left)
+                // -- Si le bouton selection est cliqué --
+                if (Edition.selectionClique)
                 {
-                    // -- On prend les dimensions a la fin du déplacement de la souris
-                    pbCarteArriere.Refresh();
-                    Edition.rognageLargeur = e.X - Edition.rognageX;
-                    Edition.rognageHauteur = e.Y - Edition.rognageY;
-                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen, Edition.rognageX, Edition.rognageY,
-                        Edition.rognageLargeur, Edition.rognageHauteur);
+                    // -- Si pas d'image, on sort --
+                    if (pbCarteArriere.Image == null)
+                        return;
+
+                    // -- Glissement à la fin du premier clic gauche --
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        // -- On prend les dimensions a la fin du déplacement de la souris
+                        pbCarteArriere.Refresh();
+                        Edition.rognageLargeur = e.X - Edition.rognageX;
+                        Edition.rognageHauteur = e.Y - Edition.rognageY;
+
+                        Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
+                        Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
+
+                        pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,
+                            Math.Min(Edition.rognageX, e.X),
+                            Math.Min(Edition.rognageY, e.Y),
+                            Math.Abs(Edition.rognageLargeur),
+                            Math.Abs(Edition.rognageHauteur));
+                    }
                 }
+            }
+            catch
+            {
             }
         }
 
@@ -167,6 +184,20 @@ namespace CartesAcces
         {
             Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+        }
+
+        private void pbCarteArriere_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.Default;
+                var pathEdt = Chemin.cheminEdt;
+                Edition.selectionClique = false;
+                Edt.rognageEdt(pbCarteArriere, pathEdt);
+            }
+            catch
+            {
+            }
         }
     }
 }
