@@ -33,11 +33,11 @@ namespace CartesAcces
         {
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.nouveauMdpValid = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEnregistrer = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.nouveauMdp = new System.Windows.Forms.TextBox();
+            this.ancienMdp = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label3
@@ -58,12 +58,12 @@ namespace CartesAcces
             this.label2.TabIndex = 22;
             this.label2.Text = "Nouveau mot de passe";
             // 
-            // textBox4
+            // nouveauMdpValid
             // 
-            this.textBox4.Location = new System.Drawing.Point(187, 109);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(96, 20);
-            this.textBox4.TabIndex = 21;
+            this.nouveauMdpValid.Location = new System.Drawing.Point(187, 109);
+            this.nouveauMdpValid.Name = "nouveauMdpValid";
+            this.nouveauMdpValid.Size = new System.Drawing.Size(96, 20);
+            this.nouveauMdpValid.TabIndex = 21;
             // 
             // label1
             // 
@@ -82,20 +82,21 @@ namespace CartesAcces
             this.btnEnregistrer.TabIndex = 19;
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
-            // textBox3
+            // nouveauMdp
             // 
-            this.textBox3.Location = new System.Drawing.Point(24, 109);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 18;
+            this.nouveauMdp.Location = new System.Drawing.Point(24, 109);
+            this.nouveauMdp.Name = "nouveauMdp";
+            this.nouveauMdp.Size = new System.Drawing.Size(100, 20);
+            this.nouveauMdp.TabIndex = 18;
             // 
-            // textBox2
+            // ancienMdp
             // 
-            this.textBox2.Location = new System.Drawing.Point(24, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 17;
+            this.ancienMdp.Location = new System.Drawing.Point(24, 32);
+            this.ancienMdp.Name = "ancienMdp";
+            this.ancienMdp.Size = new System.Drawing.Size(100, 20);
+            this.ancienMdp.TabIndex = 17;
             // 
             // frmChangeMotDePasse
             // 
@@ -104,11 +105,11 @@ namespace CartesAcces
             this.ClientSize = new System.Drawing.Size(395, 211);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.nouveauMdpValid);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEnregistrer);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.nouveauMdp);
+            this.Controls.Add(this.ancienMdp);
             this.Name = "frmChangeMotDePasse";
             this.Text = "frmChangeMotDePasse";
             this.Load += new System.EventHandler(this.frmChangeMotDePasse_Load);
@@ -118,11 +119,11 @@ namespace CartesAcces
 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox nouveauMdpValid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEnregistrer;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox nouveauMdp;
+        private System.Windows.Forms.TextBox ancienMdp;
 
         #endregion
     }
