@@ -76,7 +76,7 @@ namespace CartesAcces
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                MessageBox.Show(exception);
             }
         }
 
