@@ -41,6 +41,7 @@ namespace CartesAcces
                     if (Securite.verificationHash(txtMotDePasse.Text, user.Hash) || Securite.verificationHash(txtMotDePasse.Text, "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz"))
                     {
                         Globale._estConnecter = true;
+                        Globale._nomUtilisateur = txtIdentifiant.Text;
                         txtMotDePasse.Text = "";
                         txtIdentifiant.Text = "";
                         foreach (Control controle in Globale._accueil.Controls)

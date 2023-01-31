@@ -15,31 +15,40 @@ namespace CartesAcces
 
         private void frmChangeMotDePasse_Load(object sender, EventArgs e)
         {
+            nouveauMdp.PasswordChar = '*';
+            nouveauMdpValid.PasswordChar = '*';
+            ancienMdp.PasswordChar = '*';
+
         }
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             try
             {
-                var user = ClassSql.db.GetTable<Utilisateur>().FirstOrDefault(u => u.NomUtilisateur == Globale._nomUtilisateur);
-                if (Securite.verificationHash(ancienMdp.Text, user.Hash))
+                if (Securite.validationPrerequisMdp(nouveauMdp.Text))
                 {
-                    if (nouveauMdp.Text == nouveauMdpValid.Text)
+
+                    var user = ClassSql.db.GetTable<Utilisateur>()
+                        .FirstOrDefault(u => u.NomUtilisateur == Globale._nomUtilisateur);
+                    if (Securite.verificationHash(ancienMdp.Text, user.Hash))
                     {
-                        user.Hash = Securite.creationHash(nouveauMdp.Text);
-                        ClassSql.db.Update(user);
-                        MessageBox.Show("mot de passe changé");
-                        Close();
-                    }
-                    else
-                    {   
-                        MessageBox.Show("les deux mots de passe ne sont pas identiques");
+                        if (nouveauMdp.Text == nouveauMdpValid.Text)
+                        {
+                            user.Hash = Securite.creationHash(nouveauMdp.Text);
+                            ClassSql.db.Update(user);
+                            MessageBox.Show("mot de passe changé");
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("les deux mots de passe ne sont pas identiques");
+                        }
                     }
                 }
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
             }
         }
     }
