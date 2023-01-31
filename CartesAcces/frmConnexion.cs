@@ -30,7 +30,7 @@ namespace CartesAcces
                 var user = ClassSql.db.GetTable<Utilisateur>().FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
                 if (txtIdentifiant.Text != user.NomUtilisateur || txtIdentifiant.Text != "cassin")
                 {
-                    MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                    MessageBox.Show("nom d'utilisateur invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
