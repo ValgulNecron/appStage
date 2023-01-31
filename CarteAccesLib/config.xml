@@ -2,9 +2,9 @@
 
 <configuration>
     <appSettings>
-        <add key="IP" value=""/>
-        <add key="BD" value=""/>
-        <add key="UTILISATEUR" value=""/>
-        <add key="MOTDEPASSE" value=""/>
+        <add key="IP" value="192.168.227.217"/>
+        <add key="BD" value="stage2"/>
+        <add key="UTILISATEUR" value="admin_user"/>
+        <add key="MOTDEPASSE" value="kreyderslam2!"/>
     </appSettings>
 </configuration>
