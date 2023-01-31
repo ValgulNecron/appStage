@@ -2,9 +2,11 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -171,6 +173,21 @@ namespace CartesAcces
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
                 FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
+                string macAddress = string.Empty;
+                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                    {
+                        macAddress += nic.GetPhysicalAddress().ToString();
+                        break;
+                    }
+                }
+                var log = new LogActions();
+                log.DateAction = DateTime.Now;
+                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.Action = "Création de cartes d'accès multiples ou personnalisées";
+                log.AdMac = macAddress;
+                ClassSql.db.Insert(log);
                 labelEnCoursValidation.Visible = false; 
             }
             catch
