@@ -197,7 +197,7 @@ namespace CartesAcces
             {
                 var x = 0;
                 var random = new Random();
-                x = random.Next(0, 2_000_000_000);
+                x = random.Next(0, 666);
                 if ((x == 666) && Globale._gitPoule)
                 {
                     pictureBox1.Visible = true;
