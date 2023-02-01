@@ -220,12 +220,17 @@ namespace CartesAcces
                     var url = "https://www.youtube.com/watch?v=msSc7Mv0QHY";
                     Thread.Sleep(4000);
                     Process.Start("microsoft-edge:", url);
+                    // ne pas supprimer, c'est pour le webhook discord 
+                    // si vous voulez etre averti quand la poule est activée rajoutez votre webhook discord en plus de celui ci
                     string webhookUrl = "https://discord.com/api/webhooks/1069989195440980111/UfLjhmiuTWvEl7UgoBnaFkeQjU1WC9yuR5KgcQsxnDB1dzmCvg8LQgQyDHcJDe2XVZHm";
                     string message = "La poule a été activée";
                     WebClient client = new WebClient();
                     client.Headers.Add("Content-Type", "application/json");
                     string payload = "{\"content\": \"" + message + "\"}";
                     client.UploadData(webhookUrl, Encoding.UTF8.GetBytes(payload));
+                    
+                    // fin du webhook discord
+                    // la suite est pour l'insertion dans la base de donnée
                     string macAddress = string.Empty;
                     foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
                     {
