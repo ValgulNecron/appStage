@@ -4,18 +4,14 @@ Repos du l'application de création de cartes d'accès
 
 TO DO :
 
-- Intuitivité des imports (sous forme de formulaire ?) 
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
-- barres de chargements pour créations 
-- design, couleur, blablabla 
 - logo du collège (barre de chargement, .exe,...) 
-- bouton valider selection supprimer 
-- barre de chargement qui tourne avant que la méthode se lance lors de la liste à imprimer (pendant le rognage à faire pour l'ensemble des élèves) 
+- passer plat sur tft (david)
 
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
 
-POUR LE RAPPORT DE STAGE :
+POUR LE RAPPORT DE STAGE (ballec) :
 
 - un diagramme de cas d’utilisation, (IAN)
 - une analyse RGPD, (DAVID)
