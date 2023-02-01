@@ -48,19 +48,21 @@ namespace CartesAcces
             // 
             this.gbTypeUser.Controls.Add(this.rdUser);
             this.gbTypeUser.Controls.Add(this.rdAdmin);
-            this.gbTypeUser.Location = new System.Drawing.Point(20, 17);
+            this.gbTypeUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbTypeUser.Location = new System.Drawing.Point(236, 23);
             this.gbTypeUser.Name = "gbTypeUser";
-            this.gbTypeUser.Size = new System.Drawing.Size(262, 187);
+            this.gbTypeUser.Size = new System.Drawing.Size(303, 58);
             this.gbTypeUser.TabIndex = 0;
             this.gbTypeUser.TabStop = false;
-            this.gbTypeUser.Text = "Type utilisateur";
+            this.gbTypeUser.Text = "TYPE D\'UTILISATEUR";
             // 
             // rdUser
             // 
             this.rdUser.Checked = true;
-            this.rdUser.Location = new System.Drawing.Point(32, 120);
+            this.rdUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdUser.Location = new System.Drawing.Point(193, 25);
             this.rdUser.Name = "rdUser";
-            this.rdUser.Size = new System.Drawing.Size(180, 18);
+            this.rdUser.Size = new System.Drawing.Size(88, 18);
             this.rdUser.TabIndex = 1;
             this.rdUser.TabStop = true;
             this.rdUser.Text = "utilisateur";
@@ -68,65 +70,81 @@ namespace CartesAcces
             // 
             // rdAdmin
             // 
-            this.rdAdmin.Location = new System.Drawing.Point(4, 19);
+            this.rdAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdAdmin.Location = new System.Drawing.Point(20, 19);
             this.rdAdmin.Name = "rdAdmin";
-            this.rdAdmin.Size = new System.Drawing.Size(208, 63);
+            this.rdAdmin.Size = new System.Drawing.Size(97, 30);
             this.rdAdmin.TabIndex = 0;
             this.rdAdmin.Text = "admin";
             this.rdAdmin.UseVisualStyleBackColor = true;
             // 
             // tbUser
             // 
-            this.tbUser.Location = new System.Drawing.Point(35, 283);
+            this.tbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUser.Location = new System.Drawing.Point(236, 124);
+            this.tbUser.MaximumSize = new System.Drawing.Size(180, 22);
+            this.tbUser.MinimumSize = new System.Drawing.Size(180, 22);
             this.tbUser.Name = "tbUser";
-            this.tbUser.Size = new System.Drawing.Size(173, 20);
+            this.tbUser.Size = new System.Drawing.Size(180, 22);
             this.tbUser.TabIndex = 1;
             // 
             // tbMdp
             // 
-            this.tbMdp.Location = new System.Drawing.Point(299, 265);
+            this.tbMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMdp.Location = new System.Drawing.Point(236, 188);
+            this.tbMdp.MaximumSize = new System.Drawing.Size(180, 22);
+            this.tbMdp.MinimumSize = new System.Drawing.Size(180, 22);
             this.tbMdp.Name = "tbMdp";
-            this.tbMdp.Size = new System.Drawing.Size(131, 20);
+            this.tbMdp.Size = new System.Drawing.Size(180, 22);
             this.tbMdp.TabIndex = 2;
             // 
             // tbValidMdp
             // 
-            this.tbValidMdp.Location = new System.Drawing.Point(485, 259);
+            this.tbValidMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbValidMdp.Location = new System.Drawing.Point(236, 256);
+            this.tbValidMdp.MaximumSize = new System.Drawing.Size(180, 22);
+            this.tbValidMdp.MinimumSize = new System.Drawing.Size(180, 22);
             this.tbValidMdp.Name = "tbValidMdp";
-            this.tbValidMdp.Size = new System.Drawing.Size(175, 20);
+            this.tbValidMdp.Size = new System.Drawing.Size(180, 22);
             this.tbValidMdp.TabIndex = 3;
             // 
             // lbNomUtilisateur
             // 
-            this.lbNomUtilisateur.Location = new System.Drawing.Point(52, 238);
+            this.lbNomUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNomUtilisateur.Location = new System.Drawing.Point(233, 101);
             this.lbNomUtilisateur.Name = "lbNomUtilisateur";
-            this.lbNomUtilisateur.Size = new System.Drawing.Size(138, 11);
+            this.lbNomUtilisateur.Size = new System.Drawing.Size(138, 20);
             this.lbNomUtilisateur.TabIndex = 4;
             this.lbNomUtilisateur.Text = "Nom utilisateur";
             // 
             // lblMdpValide
             // 
-            this.lblMdpValide.Location = new System.Drawing.Point(494, 228);
+            this.lblMdpValide.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMdpValide.Location = new System.Drawing.Point(233, 233);
             this.lblMdpValide.Name = "lblMdpValide";
-            this.lblMdpValide.Size = new System.Drawing.Size(138, 11);
+            this.lblMdpValide.Size = new System.Drawing.Size(138, 20);
             this.lblMdpValide.TabIndex = 5;
             this.lblMdpValide.Text = "Valider mot de passe";
             // 
             // lblMdp
             // 
-            this.lblMdp.Location = new System.Drawing.Point(292, 251);
+            this.lblMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMdp.Location = new System.Drawing.Point(233, 165);
             this.lblMdp.Name = "lblMdp";
-            this.lblMdp.Size = new System.Drawing.Size(138, 11);
+            this.lblMdp.Size = new System.Drawing.Size(138, 20);
             this.lblMdp.TabIndex = 6;
             this.lblMdp.Text = "Mot de passe";
             // 
             // btValid
             // 
-            this.btValid.Location = new System.Drawing.Point(242, 318);
+            this.btValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btValid.Location = new System.Drawing.Point(236, 300);
+            this.btValid.MaximumSize = new System.Drawing.Size(303, 45);
+            this.btValid.MinimumSize = new System.Drawing.Size(303, 45);
             this.btValid.Name = "btValid";
-            this.btValid.Size = new System.Drawing.Size(279, 94);
+            this.btValid.Size = new System.Drawing.Size(303, 45);
             this.btValid.TabIndex = 7;
-            this.btValid.Text = "valider";
+            this.btValid.Text = "Valider";
             this.btValid.UseVisualStyleBackColor = true;
             this.btValid.Click += new System.EventHandler(this.btValid_Click);
             // 
@@ -134,7 +152,7 @@ namespace CartesAcces
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 362);
             this.Controls.Add(this.btValid);
             this.Controls.Add(this.lblMdp);
             this.Controls.Add(this.lblMdpValide);
@@ -148,6 +166,7 @@ namespace CartesAcces
             this.gbTypeUser.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Button btValid;
