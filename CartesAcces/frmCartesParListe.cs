@@ -5,6 +5,10 @@ using CarteAccesLib;
 
 namespace CartesAcces
 {
+    /*
+     * Permet de créer des cartes d'accès pour une liste d'élèves personnalisée
+     * 
+     */
     public partial class frmCartesParListe : Form
     {
         public static List<string> eleveSelectionner;
