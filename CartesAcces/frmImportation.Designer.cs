@@ -48,7 +48,8 @@ namespace CartesAcces
             // 
             // btnImporterEleves
             // 
-            this.btnImporterEleves.Location = new System.Drawing.Point(12, 21);
+            this.btnImporterEleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImporterEleves.Location = new System.Drawing.Point(292, 44);
             this.btnImporterEleves.Name = "btnImporterEleves";
             this.btnImporterEleves.Size = new System.Drawing.Size(237, 23);
             this.btnImporterEleves.TabIndex = 0;
@@ -58,7 +59,7 @@ namespace CartesAcces
             // 
             // btnImportEDT
             // 
-            this.btnImportEDT.Location = new System.Drawing.Point(12, 68);
+            this.btnImportEDT.Location = new System.Drawing.Point(292, 91);
             this.btnImportEDT.Name = "btnImportEDT";
             this.btnImportEDT.Size = new System.Drawing.Size(237, 23);
             this.btnImportEDT.TabIndex = 1;
@@ -69,7 +70,7 @@ namespace CartesAcces
             // btnImportPhoto
             // 
             this.btnImportPhoto.AutoSize = true;
-            this.btnImportPhoto.Location = new System.Drawing.Point(12, 116);
+            this.btnImportPhoto.Location = new System.Drawing.Point(292, 139);
             this.btnImportPhoto.Name = "btnImportPhoto";
             this.btnImportPhoto.Size = new System.Drawing.Size(237, 23);
             this.btnImportPhoto.TabIndex = 2;
@@ -79,7 +80,7 @@ namespace CartesAcces
             // 
             // lblDateListeEleve
             // 
-            this.lblDateListeEleve.Location = new System.Drawing.Point(488, 26);
+            this.lblDateListeEleve.Location = new System.Drawing.Point(768, 49);
             this.lblDateListeEleve.Name = "lblDateListeEleve";
             this.lblDateListeEleve.Size = new System.Drawing.Size(199, 23);
             this.lblDateListeEleve.TabIndex = 26;
@@ -88,7 +89,7 @@ namespace CartesAcces
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(347, 26);
+            this.label2.Location = new System.Drawing.Point(627, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 25;
@@ -96,7 +97,7 @@ namespace CartesAcces
             // 
             // lblEdtEleve
             // 
-            this.lblEdtEleve.Location = new System.Drawing.Point(488, 73);
+            this.lblEdtEleve.Location = new System.Drawing.Point(768, 96);
             this.lblEdtEleve.Name = "lblEdtEleve";
             this.lblEdtEleve.Size = new System.Drawing.Size(199, 23);
             this.lblEdtEleve.TabIndex = 28;
@@ -105,7 +106,7 @@ namespace CartesAcces
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(347, 74);
+            this.label5.Location = new System.Drawing.Point(627, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 27;
@@ -113,7 +114,7 @@ namespace CartesAcces
             // 
             // lblPhotoEleve
             // 
-            this.lblPhotoEleve.Location = new System.Drawing.Point(488, 123);
+            this.lblPhotoEleve.Location = new System.Drawing.Point(768, 146);
             this.lblPhotoEleve.Name = "lblPhotoEleve";
             this.lblPhotoEleve.Size = new System.Drawing.Size(199, 23);
             this.lblPhotoEleve.TabIndex = 30;
@@ -122,7 +123,7 @@ namespace CartesAcces
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(347, 123);
+            this.label7.Location = new System.Drawing.Point(627, 146);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 13);
             this.label7.TabIndex = 29;
@@ -130,7 +131,7 @@ namespace CartesAcces
             // 
             // btnImportEdtClassique
             // 
-            this.btnImportEdtClassique.Location = new System.Drawing.Point(12, 180);
+            this.btnImportEdtClassique.Location = new System.Drawing.Point(292, 192);
             this.btnImportEdtClassique.Name = "btnImportEdtClassique";
             this.btnImportEdtClassique.Size = new System.Drawing.Size(237, 23);
             this.btnImportEdtClassique.TabIndex = 31;
@@ -141,7 +142,7 @@ namespace CartesAcces
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(347, 190);
+            this.label1.Location = new System.Drawing.Point(627, 202);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 13);
             this.label1.TabIndex = 34;
@@ -149,7 +150,7 @@ namespace CartesAcces
             // 
             // lblImportEdtClassique
             // 
-            this.lblImportEdtClassique.Location = new System.Drawing.Point(488, 190);
+            this.lblImportEdtClassique.Location = new System.Drawing.Point(768, 202);
             this.lblImportEdtClassique.Name = "lblImportEdtClassique";
             this.lblImportEdtClassique.Size = new System.Drawing.Size(199, 23);
             this.lblImportEdtClassique.TabIndex = 35;
@@ -157,7 +158,7 @@ namespace CartesAcces
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(10, 235);
+            this.pictureBox1.Location = new System.Drawing.Point(292, 288);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(360, 360);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -167,7 +168,7 @@ namespace CartesAcces
             // 
             // btnImporterUnEtablissement
             // 
-            this.btnImporterUnEtablissement.Location = new System.Drawing.Point(744, 89);
+            this.btnImporterUnEtablissement.Location = new System.Drawing.Point(292, 244);
             this.btnImporterUnEtablissement.Name = "btnImporterUnEtablissement";
             this.btnImporterUnEtablissement.Size = new System.Drawing.Size(237, 23);
             this.btnImporterUnEtablissement.TabIndex = 37;
@@ -201,6 +202,7 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Button btnImporterUnEtablissement;
