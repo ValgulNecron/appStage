@@ -66,7 +66,8 @@ namespace CartesAcces
             this.btnImportEDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImportEDT.Location = new System.Drawing.Point(210, 313);
             this.btnImportEDT.MaximumSize = new System.Drawing.Size(320, 35);
-            this.btnImportEDT.MinimumSize = new System.Drawing.Size(320, 35);            this.btnImportEDT.Name = "btnImportEDT";
+            this.btnImportEDT.MinimumSize = new System.Drawing.Size(320, 35);            
+            this.btnImportEDT.Name = "btnImportEDT"; 
             this.btnImportEDT.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnImportEDT.Size = new System.Drawing.Size(320, 35);
             this.btnImportEDT.TabIndex = 1;
@@ -77,9 +78,13 @@ namespace CartesAcces
             // btnImportPhoto
             // 
             this.btnImportPhoto.AutoSize = true;
-            this.btnImportPhoto.Location = new System.Drawing.Point(292, 139);
+            this.btnImportPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportPhoto.Location = new System.Drawing.Point(210, 379);
+            this.btnImportPhoto.MaximumSize = new System.Drawing.Size(320, 35);
+            this.btnImportPhoto.MinimumSize = new System.Drawing.Size(320, 35);
             this.btnImportPhoto.Name = "btnImportPhoto";
-            this.btnImportPhoto.Size = new System.Drawing.Size(237, 23);
+            this.btnImportPhoto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnImportPhoto.Size = new System.Drawing.Size(320, 35);
             this.btnImportPhoto.TabIndex = 2;
             this.btnImportPhoto.Text = "Choisir le dossier qui comporte les photos";
             this.btnImportPhoto.UseVisualStyleBackColor = true;
@@ -87,35 +92,38 @@ namespace CartesAcces
             // 
             // lblDateListeEleve
             // 
-            this.lblDateListeEleve.Location = new System.Drawing.Point(768, 49);
+            this.lblDateListeEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateListeEleve.Location = new System.Drawing.Point(686, 255);
             this.lblDateListeEleve.Name = "lblDateListeEleve";
-            this.lblDateListeEleve.Size = new System.Drawing.Size(199, 23);
+            this.lblDateListeEleve.Size = new System.Drawing.Size(258, 23);
             this.lblDateListeEleve.TabIndex = 26;
             this.lblDateListeEleve.Text = "Aucune Importation";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(627, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(545, 257);            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 16);
             this.label2.TabIndex = 25;
             this.label2.Text = "Dernière importation :";
             // 
             // lblEdtEleve
             // 
-            this.lblEdtEleve.Location = new System.Drawing.Point(768, 96);
+            this.lblEdtEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdtEleve.Location = new System.Drawing.Point(686, 322);
             this.lblEdtEleve.Name = "lblEdtEleve";
-            this.lblEdtEleve.Size = new System.Drawing.Size(199, 23);
+            this.lblEdtEleve.Size = new System.Drawing.Size(258, 23);
             this.lblEdtEleve.TabIndex = 28;
             this.lblEdtEleve.Text = "Aucune Importation";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(627, 97);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(545, 322);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 13);
+            this.label5.Size = new System.Drawing.Size(135, 16);
             this.label5.TabIndex = 27;
             this.label5.Text = "Dernière importation :";
             // 
