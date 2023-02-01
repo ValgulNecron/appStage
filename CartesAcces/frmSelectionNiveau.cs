@@ -4,6 +4,11 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
+    /*
+     * Cette classe permet de selectionner le niveau de la classe
+     * elle stocke le niveau dans la variable globale _classe
+     * et lance la barre de progression avec le cas 3
+     */
     public partial class frmSelectNiveau : Form
     {   
         public frmSelectNiveau()
