@@ -237,5 +237,11 @@ namespace CartesAcces
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnImporterUnEtablissement_Click(object sender, EventArgs e)
+        {
+            Form frmImportEtab = new frmImportEtablissement();
+            frmImportEtab.Show();
+        }
     }
 }

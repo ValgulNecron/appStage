@@ -2,9 +2,9 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class ImportEtablissement : Form
+    public partial class frmImportEtablissement : Form
     {
-        public ImportEtablissement()
+        public frmImportEtablissement()
         {
             InitializeComponent();
         }

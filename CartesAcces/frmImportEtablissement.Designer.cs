@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace CartesAcces
 {
-    partial class ImportEtablissement
+    partial class frmImportEtablissement
     {
         /// <summary>
         /// Required designer variable.
@@ -204,7 +204,7 @@ namespace CartesAcces
             this.Controls.Add(this.txtNumRueEtablissement);
             this.Controls.Add(this.txtRueEtablissement);
             this.Controls.Add(this.txtNomEtablissement);
-            this.Name = "ImportEtablissement";
+            this.Name = "frmImportEtablissement";
             this.Text = "Importer un établissement";
             this.ResumeLayout(false);
             this.PerformLayout();
