@@ -90,12 +90,17 @@ namespace CartesAcces
         // -- Change le fond de la carte en fonction de la section choisie
         public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
         {
-            pbCarteFace.Image = Image.FromFile("./data/FichierCartesFace/" + cbbSection.Text + ".png");
+            Bitmap bmp = new Bitmap("./data/FichierCartesFace/" + cbbSection.Text + ".png");
+            bmp.SetResolution(150,150);
+            pbCarteFace.Image = bmp;
+
             var date = DateTime.Today.ToShortDateString();
             var police = new Font("times new roman", 45, FontStyle.Bold);
             dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
+            
             var police2 = new Font("times new roman", 15, FontStyle.Bold);
             dessineTexteCarteFace(police2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
+            
             pbCarteFace.Refresh();
         }
 
