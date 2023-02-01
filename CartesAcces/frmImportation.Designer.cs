@@ -204,11 +204,14 @@ namespace CartesAcces
             // 
             // btCreationUtilisateur
             // 
-            this.btCreationUtilisateur.Location = new System.Drawing.Point(96, 292);
+            this.btCreationUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCreationUtilisateur.Location = new System.Drawing.Point(581, 125);
+            this.btCreationUtilisateur.MaximumSize = new System.Drawing.Size(320, 45);
+            this.btCreationUtilisateur.MinimumSize = new System.Drawing.Size(320, 45);
             this.btCreationUtilisateur.Name = "btCreationUtilisateur";
-            this.btCreationUtilisateur.Size = new System.Drawing.Size(136, 64);
+            this.btCreationUtilisateur.Size = new System.Drawing.Size(320, 45);
             this.btCreationUtilisateur.TabIndex = 38;
-            this.btCreationUtilisateur.Text = "creer un utilsateir ";
+            this.btCreationUtilisateur.Text = "Créer un utilisateur ";
             this.btCreationUtilisateur.UseVisualStyleBackColor = true;
             this.btCreationUtilisateur.Click += new System.EventHandler(this.btCreationUtilisateur_Click);
             // 
@@ -217,7 +220,7 @@ namespace CartesAcces
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1109, 722);
+            this.ClientSize = new System.Drawing.Size(1196, 776);
             this.Controls.Add(this.btCreationUtilisateur);
             this.Controls.Add(this.btnImporterUnEtablissement);
             this.Controls.Add(this.pictureBox1);
@@ -236,7 +239,7 @@ namespace CartesAcces
             this.Name = "frmImportation";
             this.Text = "frmImportation";
             this.Load += new System.EventHandler(this.frmParametres_Load);
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
