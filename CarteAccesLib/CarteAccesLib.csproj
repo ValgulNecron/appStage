@@ -107,6 +107,7 @@
   <ItemGroup>
     <Compile Include="Chemin.cs" />
     <Compile Include="ClassSql.cs" />
+    <Compile Include="QRCode.cs" />
     <Compile Include="TailleControle.cs" />
     <Compile Include="Couleur.cs" />
     <Compile Include="Edition.cs" />
