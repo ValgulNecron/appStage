@@ -23,6 +23,7 @@ namespace CartesAcces
             etablissement.CodePostaleEtablissement = txtCodePostalEtablissement.Text;
             etablissement.NumeroTelephoneEtablissement = txtTelEtablissement.Text;
             etablissement.NumeroRueEtablissement = Convert.ToInt32(txtNumRueEtablissement.Text);
+            etablissement.UrlEtablissement = textBox1.Text;
             ClassSql.db.InsertOrReplace(etablissement);
             string macAddress = string.Empty;
             foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())

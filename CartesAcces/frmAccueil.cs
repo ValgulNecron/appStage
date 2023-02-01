@@ -66,7 +66,9 @@ namespace CartesAcces
                     }
                 }
             }
+
             Globale._actuelle = new frmConnexion();
+            this.Text = "CARTE D'ACCES - CONNEXION";
             Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
 
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
@@ -96,6 +98,7 @@ namespace CartesAcces
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCarteProvisoire();
+            this.Text = "CARTE D'ACCES - CARTE PROVISOIRE";
             timer.ajoutEvenement();
             Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
@@ -103,6 +106,7 @@ namespace CartesAcces
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCarteParClasseNiveau();
+            this.Text = "CARTE D'ACCES - CARTE PAR CLASSE";
             timer.ajoutEvenement();
             Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
@@ -110,6 +114,7 @@ namespace CartesAcces
         private void btnParametres_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmImportation();
+            this.Text = "CARTE D'ACCES - IMPORTATION";
             timer.ajoutEvenement();
             Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
@@ -141,12 +146,14 @@ namespace CartesAcces
         private void btnChangeMdp_Click(object sender, EventArgs e)
         {
             var frmPassword = new frmChangeMotDePasse();
+            this.Text = "CARTE D'ACCES - CHANGEMENT MOT DE PASSE";
             frmPassword.Show();
         }
 
         private void btnAfficheListeEleve_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCartesParListe();
+            this.Text = "CARTE D'ACCES - CARTE PAR LISTE";
             timer.ajoutEvenement();
             Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }

@@ -52,6 +52,15 @@ BEGIN
 END $$
 DELIMITER ;
 
+drop trigger if exists verifTypeUtilisateur;
+DELIMITER $$
+create trigger verifTypeUtilisateur before insert on utilisateur for each row
+begin
+    if (new.typeUtilisateur != "admin" and new.typeUtilisateur != "utilisateur") then
+        signal sqlstate '45000' set message_text = "Le type d'utilisateur doit être 'admin' ou 'user'";
+    end if;
+end $$
+
 DROP USER IF EXISTS 'admin_user'@'%';
 CREATE USER 'admin_user'@'%' Identified BY 'kreyderslam2!';
 GRANT ALL PRIVILEGES ON *.* to 'admin_user'@'%' WITH GRANT OPTION;

@@ -43,12 +43,13 @@ namespace CartesAcces
             this.lblImportEdtClassique = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnImporterUnEtablissement = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btCreationUtilisateur = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImporterEleves
             // 
-            this.btnImporterEleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImporterEleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.btnImporterEleves.Location = new System.Drawing.Point(292, 44);
             this.btnImporterEleves.Name = "btnImporterEleves";
             this.btnImporterEleves.Size = new System.Drawing.Size(237, 23);
@@ -176,12 +177,23 @@ namespace CartesAcces
             this.btnImporterUnEtablissement.UseVisualStyleBackColor = true;
             this.btnImporterUnEtablissement.Click += new System.EventHandler(this.btnImporterUnEtablissement_Click);
             // 
+            // btCreationUtilisateur
+            // 
+            this.btCreationUtilisateur.Location = new System.Drawing.Point(96, 292);
+            this.btCreationUtilisateur.Name = "btCreationUtilisateur";
+            this.btCreationUtilisateur.Size = new System.Drawing.Size(136, 64);
+            this.btCreationUtilisateur.TabIndex = 38;
+            this.btCreationUtilisateur.Text = "creer un utilsateir ";
+            this.btCreationUtilisateur.UseVisualStyleBackColor = true;
+            this.btCreationUtilisateur.Click += new System.EventHandler(this.btCreationUtilisateur_Click);
+            // 
             // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1109, 722);
+            this.Controls.Add(this.btCreationUtilisateur);
             this.Controls.Add(this.btnImporterUnEtablissement);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblImportEdtClassique);
@@ -199,7 +211,7 @@ namespace CartesAcces
             this.Name = "frmImportation";
             this.Text = "frmImportation";
             this.Load += new System.EventHandler(this.frmParametres_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
