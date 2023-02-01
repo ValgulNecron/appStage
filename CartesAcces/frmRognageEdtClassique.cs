@@ -9,6 +9,11 @@ using CarteAcces;
 
 namespace CartesAcces
 {
+    /*
+     * Permet de rogner l'edt classique
+     * l'edt classique est un edt de classe non personnalisé
+     * il est enregistré dans le dossier data/FichierEdtClasse
+     */
     public partial class frmRognageEdtClassique : Form
     {
         private List<string> listeFichiers = new List<string>();
@@ -19,9 +24,13 @@ namespace CartesAcces
 
         private void frmRognageEdtClassique_Load(object sender, EventArgs e)
         {
-            listeFichiers.AddRange(Directory.GetFiles(Globale._cheminEdtClassique));
-            pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
-            Edt.rognageEdt(pbEdtClassique, Globale._cheminEdtClassique);
+            try
+            {
+                listeFichiers.AddRange(Directory.GetFiles(Globale._cheminEdtClassique));
+                pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
+                Edt.rognageEdt(pbEdtClassique, Globale._cheminEdtClassique);
+            }
+            catch { }
         }
 
         private void btnRogner_Click(object sender, EventArgs e)
@@ -121,9 +130,9 @@ namespace CartesAcces
                     pbEdtClassique.Image.Save(Chemin.cheminEdtClassique + "//" + nom, ImageFormat.Png);
                 }
 
+                
                 MessageBox.Show("Import Réussi");
                 this.Close();
-
             }
             catch (Exception err)
             {

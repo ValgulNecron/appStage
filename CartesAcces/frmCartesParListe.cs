@@ -5,6 +5,10 @@ using CarteAccesLib;
 
 namespace CartesAcces
 {
+    /*
+     * Permet de créer des cartes d'accès pour une liste d'élèves personnalisée
+     * 
+     */
     public partial class frmCartesParListe : Form
     {
         public static List<string> eleveSelectionner;
@@ -13,6 +17,7 @@ namespace CartesAcces
         public frmCartesParListe()
         {
             InitializeComponent();
+            Couleur.setCouleurFenetre(this);
         }
 
         public static void eleveEnString()
@@ -32,7 +37,6 @@ namespace CartesAcces
                 btnAjout.Click += ajoutEleve;
                 btnRetirer.Click += retirerEleve;
                 txtRecherche.TextChanged += recheche;
-                btnValider.Click += valider;
             }
             catch
             {
@@ -113,19 +117,24 @@ namespace CartesAcces
                 {
                     string eeee = eee.NomEleve + " " + eee.PrenomEleve + " " + eee.ClasseEleve;
                     if (ee == eeee)
-                    {   
+                    {
                         e.Add(eee);
                     }
                 }
             }
+
             return e;
         }
 
-        private void valider(object sender, EventArgs e)
+        private void btnValider_Click(object sender, EventArgs e)
         {
-            Globale._listeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
-            Form frmMultipleCarteEdi = new frmMultiplesCartesEdition();
-            frmMultipleCarteEdi.Show();
+            try
+            {
+                Globale._listeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
+                Form frmMultipleCarteEdi = new frmMultiplesCartesEdition();
+                frmMultipleCarteEdi.Show();
+            }
+            catch { }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -78,11 +79,21 @@ namespace CartesAcces
 
         public static string getDateFile()
         {
-            var dateFile = "Aucune Importation";
+            try
+            {
+                var dateFile = "Aucune Importation";
 
-            if (File.Exists(Chemin.cheminListeEleve)) dateFile = File.GetCreationTime(Chemin.cheminListeEleve).ToString();
+                if (File.Exists(Chemin.cheminListeEleve))
+                    dateFile = File.GetCreationTime(Chemin.cheminListeEleve).ToString();
 
-            return dateFile;
+                return dateFile;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("aaa + " + err.Message);
+            }
+
+            return null;
         }
     }
 }

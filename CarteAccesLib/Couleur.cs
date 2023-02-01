@@ -16,7 +16,7 @@ namespace CartesAcces
                     Globale._couleurDeFondSombre[1], Globale._couleurDeFondSombre[2]);
                 foreach (Control controle in fenetre.Controls)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
+                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox || controle is TrackBar))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
                             Globale._couleurTextBoxSombre[1], Globale._couleurTextBoxSombre[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteSombre[0],
@@ -57,7 +57,7 @@ namespace CartesAcces
                     Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
                 foreach (Control controle in fenetre.Controls)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
+                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox || controle is TrackBar))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxClaire[0],
                             Globale._couleurTextBoxClaire[1], Globale._couleurTextBoxClaire[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteclaire[0],
@@ -99,7 +99,7 @@ namespace CartesAcces
             if (Globale._estEnModeSombre)
                 foreach (Control controle in panel.Controls)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
+                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox || controle is TrackBar))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
                             Globale._couleurTextBoxSombre[1], Globale._couleurTextBoxSombre[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteSombre[0],
@@ -136,7 +136,7 @@ namespace CartesAcces
             else
                 foreach (Control controle in panel.Controls)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
+                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox || controle is TrackBar))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxClaire[0],
                             Globale._couleurTextBoxClaire[1], Globale._couleurTextBoxClaire[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteclaire[0],
@@ -177,7 +177,7 @@ namespace CartesAcces
             if (Globale._estEnModeSombre)
                 foreach (Control controle in groupeBox.Controls)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
+                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox || controle is TrackBar))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
                             Globale._couleurTextBoxSombre[1], Globale._couleurTextBoxSombre[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteSombre[0],
@@ -214,7 +214,7 @@ namespace CartesAcces
             else
                 foreach (Control controle in groupeBox.Controls)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox))
+                    if (!(controle is Label || controle is GroupBox || controle is RadioButton || controle is CheckBox || controle is TrackBar))
                         controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxClaire[0],
                             Globale._couleurTextBoxClaire[1], Globale._couleurTextBoxClaire[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale._couleurDuTexteclaire[0],

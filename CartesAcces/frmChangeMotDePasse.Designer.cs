@@ -33,96 +33,107 @@ namespace CartesAcces
         {
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.nouveauMdpValid = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEnregistrer = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.nouveauMdp = new System.Windows.Forms.TextBox();
+            this.ancienMdp = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(184, 93);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 13);
+            this.label3.Size = new System.Drawing.Size(225, 16);
             this.label3.TabIndex = 23;
-            this.label3.Text = "Confirmer le nouveau mot de passe";
+            this.label3.Text = "Confirmer le nouveau mot de passe :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 93);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(24, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.Size = new System.Drawing.Size(154, 16);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Nouveau mot de passe";
+            this.label2.Text = "Nouveau mot de passe :";
             // 
-            // textBox4
+            // nouveauMdpValid
             // 
-            this.textBox4.Location = new System.Drawing.Point(187, 109);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(96, 20);
-            this.textBox4.TabIndex = 21;
+            this.nouveauMdpValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nouveauMdpValid.Location = new System.Drawing.Point(260, 103);
+            this.nouveauMdpValid.Name = "nouveauMdpValid";
+            this.nouveauMdpValid.Size = new System.Drawing.Size(180, 22);
+            this.nouveauMdpValid.TabIndex = 21;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(24, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.Size = new System.Drawing.Size(140, 16);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Ancien mot de passe";
+            this.label1.Text = "Ancien mot de passe :";
             // 
             // btnEnregistrer
             // 
-            this.btnEnregistrer.Location = new System.Drawing.Point(208, 150);
+            this.btnEnregistrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnregistrer.Location = new System.Drawing.Point(260, 160);
+            this.btnEnregistrer.MaximumSize = new System.Drawing.Size(180, 45);
+            this.btnEnregistrer.MinimumSize = new System.Drawing.Size(180, 45);
             this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(75, 23);
+            this.btnEnregistrer.Size = new System.Drawing.Size(180, 45);
             this.btnEnregistrer.TabIndex = 19;
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
-            // textBox3
+            // nouveauMdp
             // 
-            this.textBox3.Location = new System.Drawing.Point(24, 109);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 18;
+            this.nouveauMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nouveauMdp.Location = new System.Drawing.Point(260, 55);
+            this.nouveauMdp.Name = "nouveauMdp";
+            this.nouveauMdp.Size = new System.Drawing.Size(180, 22);
+            this.nouveauMdp.TabIndex = 18;
             // 
-            // textBox2
+            // ancienMdp
             // 
-            this.textBox2.Location = new System.Drawing.Point(24, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 17;
+            this.ancienMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ancienMdp.Location = new System.Drawing.Point(260, 12);
+            this.ancienMdp.Name = "ancienMdp";
+            this.ancienMdp.Size = new System.Drawing.Size(180, 22);
+            this.ancienMdp.TabIndex = 17;
             // 
             // frmChangeMotDePasse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 211);
+            this.ClientSize = new System.Drawing.Size(560, 271);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.nouveauMdpValid);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEnregistrer);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.nouveauMdp);
+            this.Controls.Add(this.ancienMdp);
             this.Name = "frmChangeMotDePasse";
-            this.Text = "frmChangeMotDePasse";
+            this.Text = "Changer le mot de passe";
             this.Load += new System.EventHandler(this.frmChangeMotDePasse_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox nouveauMdpValid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEnregistrer;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox nouveauMdp;
+        private System.Windows.Forms.TextBox ancienMdp;
 
         #endregion
     }

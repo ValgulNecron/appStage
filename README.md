@@ -14,3 +14,14 @@ TO DO :
 
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
+
+POUR LE RAPPORT DE STAGE :
+
+- un diagramme de cas d’utilisation, (IAN)
+- une analyse RGPD, (DAVID)
+- présentez la mise en œuvre de la sécurité (B3/CEJMA) pour votre solution, (YANN)
+- une analyse de l’impact environnemental / informatique verte 
+- une analyse des coûts, des délais, des calculs. (YANN)
+- une analyse du contenu du site web réalisé ou en place, (IAN)
+- Lister et documenter les référentiels utilisés dans votre entreprise. 
+- (utilisable pour l’épreuve B1/E4 en lien avec le portefeuille)

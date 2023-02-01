@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Runtime.InteropServices;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CarteAcces;
-using Application = Microsoft.Office.Interop.Word.Application;
+using CarteAccesLib;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -16,14 +15,14 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            TailleCotrole.setTailleControleTexte(this);
+
         }
 
         private void changementTexte(object sender, EventArgs e)
         {
             string prenom = txtPrenom.Text;
             string nom = txtNom.Text;
-                
+
             Edition.fondCarteNiveau(pbCarteFace, cbbSection);
 
             if (nom.Length < 15)
@@ -51,167 +50,221 @@ namespace CartesAcces
                 Edition.dessineTexteCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
+
+            GC.Collect();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            Edition.fondCarteNiveau(pbCarteFace, cbbSection);
-            Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
-            txtPrenom.Text = "";
-            txtNom.Text = "";
-            groupBox2.Enabled = true;
-            rdbUlis.Checked = false;
-            rdbUPE2A.Checked = false;
-            rdbRas.Checked = true;
+            try
+            {
+                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
+                Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+                txtPrenom.Text = "";
+                txtNom.Text = "";
+                groupBox2.Enabled = true;
+                rdbUlis.Checked = false;
+                rdbUPE2A.Checked = false;
+                rdbRas.Checked = true;
+            }
+            catch
+            {
+            }
         }
 
         // -- Lors du changement de la liste déroulante "Section" --
         private void cbbSection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Edition.classePourNiveau(cbbSection, cbbClasse);
-            Edition.fondCarteNiveau(pbCarteFace, cbbSection);
-            btnReset.Enabled = true;
-            txtNom.Enabled = true;
-            txtPrenom.Enabled = true;
-            rdbUlis.Enabled = true;
-            rdbUPE2A.Enabled = true;
-            rdbClRelais.Enabled = true;
-            rdbRas.Enabled = true;
+            try
+            {
+                Edition.classePourNiveau(cbbSection, cbbClasse);
+                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
+                btnReset.Enabled = true;
+                txtNom.Enabled = true;
+                txtPrenom.Enabled = true;
+                rdbUlis.Enabled = true;
+                rdbUPE2A.Enabled = true;
+                rdbClRelais.Enabled = true;
+                rdbRas.Enabled = true;
+            }
+            catch
+            {
+            }
         }
 
         private void cbbClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
-            btnSelect.Enabled = true;
+            try
+            {
+                Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+                btnSelect.Enabled = true;
+            }
+            catch
+            {
+            }
         }
 
         // #### Rognage de l'emploi du temps ####
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            // -- Curseur en croix pour symboliser le mode selection
-            Cursor = Cursors.Cross;
+            try
+            {
+                // -- Curseur en croix pour symboliser le mode selection
+                Cursor = Cursors.Cross;
 
-            // -- On est dans le mode selection
-            Edition.selectionClique = true;
+                // -- On est dans le mode selection
+                Edition.selectionClique = true;
 
-            btnCancel.Enabled = true;
-        }
-
-        private void btnCrop_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-            var classe = cbbClasse.Text;
-            var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
-            Edition.selectionClique = false;
-            Edt.rognageEdt(pbCarteArriere, pathEdt);
+                btnCancel.Enabled = true;
+            }
+            catch
+            {
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            // -- Le curseur revient à la normal --
-            Cursor = Cursors.Default;
+            try
+            {
+                // -- Le curseur revient à la normal --
+                Cursor = Cursors.Default;
 
-            // -- On est plus dans la selection --
-            Edition.selectionClique = false;
+                // -- On est plus dans la selection --
+                Edition.selectionClique = false;
 
-            // -- On remet les paramètres et l'image de base --
-            pbCarteArriere.Width = 540;
-            pbCarteArriere.Height = 354;
-            Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
-            pbCarteArriere.Refresh();
-            btnCancel.Enabled = false;
+                // -- On remet les paramètres et l'image de base --
+                pbCarteArriere.Width = 540;
+                pbCarteArriere.Height = 354;
+                Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+                pbCarteArriere.Refresh();
+                btnCancel.Enabled = false;
+            }
+            catch
+            {
+            }
         }
 
         private void pbCarteArriere_MouseDown(object sender, MouseEventArgs e)
         {
-            // -- Si le bouton selectionné est cliqué --
-            if (Edition.selectionClique)
+            try
             {
-                // -- Si il y a clic gauche --
-                if (e.Button == MouseButtons.Left)
+                // -- Si le bouton selectionné est cliqué --
+                if (Edition.selectionClique)
                 {
-                    // -- On prend les coordonnées de départ --
-                    Edition.rognageX = e.X;
-                    Edition.rognageY = e.Y;
-                    Edition.rognagePen = new Pen(Color.Black, 1);
-                    Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
-                }
+                    // -- Si il y a clic gauche --
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        // -- On prend les coordonnées de départ --
+                        Edition.rognageX = e.X;
+                        Edition.rognageY = e.Y;
+                        Edition.rognagePen = new Pen(Color.Black, 1);
+                        Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
+                    }
 
-                // -- Refresh constant pour avoir un apperçu pendant la selection --
-                pbCarteArriere.Refresh();
+                    // -- Refresh constant pour avoir un apperçu pendant la selection --
+                    pbCarteArriere.Refresh();
+                }
+            }
+            catch
+            {
             }
         }
 
         private void pbCarteArriere_MouseMove(object sender, MouseEventArgs e)
         {
-            // -- Si le bouton selection est cliqué --
-            if (Edition.selectionClique)
+            try
             {
-                // -- Si pas d'image, on sort --
-                if (pbCarteArriere.Image == null)
-                    return;
-
-                // -- Glissement à la fin du premier clic gauche --
-                if (e.Button == MouseButtons.Left)
+                // -- Si le bouton selection est cliqué --
+                if (Edition.selectionClique)
                 {
-                    // -- On prend les dimensions a la fin du déplacement de la souris
-                    pbCarteArriere.Refresh();
-                    Edition.rognageLargeur = e.X - Edition.rognageX;
-                    Edition.rognageHauteur = e.Y - Edition.rognageY;
-                    
-                    Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
-                    Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
+                    // -- Si pas d'image, on sort --
+                    if (pbCarteArriere.Image == null)
+                        return;
 
-                    pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,Math.Min(Edition.rognageX, e.X),
-                        Math.Min(Edition.rognageY, e.Y),
-                        Math.Abs(Edition.rognageLargeur),
-                        Math.Abs(Edition.rognageHauteur));
+                    // -- Glissement à la fin du premier clic gauche --
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        // -- On prend les dimensions a la fin du déplacement de la souris
+                        pbCarteArriere.Refresh();
+                        Edition.rognageLargeur = e.X - Edition.rognageX;
+                        Edition.rognageHauteur = e.Y - Edition.rognageY;
+
+                        Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
+                        Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
+
+                        pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,
+                            Math.Min(Edition.rognageX, e.X),
+                            Math.Min(Edition.rognageY, e.Y),
+                            Math.Abs(Edition.rognageLargeur),
+                            Math.Abs(Edition.rognageHauteur));
+                    }
                 }
             }
+            catch
+            {
+            }
         }
-        
+
         private void pbCarteArriere_MouseUp(object sender, MouseEventArgs e)
         {
-            Edition.rognageX = Math.Min(Edition.rognageX, e.X);
-            Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
-            Cursor = Cursors.Default;
-            var classe = cbbClasse.Text;
-            var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
-            Edition.selectionClique = false;
-            Edt.rognageEdt(pbCarteArriere, pathEdt);
+            try
+            {
+                Edition.rognageX = Math.Min(Edition.rognageX, e.X);
+                Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
+                Cursor = Cursors.Default;
+                var classe = cbbClasse.Text;
+                var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                Edition.selectionClique = false;
+                Edt.rognageEdt(pbCarteArriere, pathEdt);
+            }
+            catch
+            {
+            }
         }
 
         // #### Ajout & Edition de la photo ####
 
         private void btnAjouterPhoto_Click(object sender, EventArgs e)
         {
-            // -- Parcours des fichiers...
-            var opf = new OpenFileDialog();
-
-            var opfPath = "";
-
-            opf.InitialDirectory = @"\..\..\..\CartesAcces\FichiersPHOTO";
-            opf.Filter = "Images (*.png, *.jpg) | *.png; *.jpg";
-            opf.FilterIndex = 1;
-            opf.RestoreDirectory = true;
-
-            if (opf.ShowDialog() == DialogResult.OK)
+            try
             {
-                opfPath = opf.FileName;
-                // -- Ajout de l'image dans la picturebox, celle ci devient visible
-                pbPhoto.Image = new Bitmap(opfPath);
-                pbPhoto.Size = new Size(110, 165);
-                pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
-                pbPhoto.Visible = true;
+                // -- Parcours des fichiers...
+                var opf = new OpenFileDialog();
+
+                var opfPath = "";
+
+                opf.InitialDirectory = @"\..\..\..\CartesAcces\FichiersPHOTO";
+                opf.Filter = "Images (*.png, *.jpg) | *.png; *.jpg";
+                opf.FilterIndex = 1;
+                opf.RestoreDirectory = true;
+
+                if (opf.ShowDialog() == DialogResult.OK)
+                {
+                    opfPath = opf.FileName;
+                    // -- Ajout de l'image dans la picturebox, celle ci devient visible
+                    pbPhoto.Image = new Bitmap(opfPath);
+                    pbPhoto.Size = new Size(110, 165);
+                    pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pbPhoto.Visible = true;
+                }
+            }
+            catch
+            {
             }
         }
 
         private void btnAnnulerPhoto_Click(object sender, EventArgs e)
         {
-            // -- La picturebox redevient invisible et l'image est effacée, le cadre reviendra a la position 5,5
-            pbPhoto.Visible = false;
-            pbPhoto.Image = null;
-            pbPhoto.Location = new Point(5, 5);
+            try
+            {
+                // -- La picturebox redevient invisible et l'image est effacée, le cadre reviendra a la position 5,5
+                pbPhoto.Visible = false;
+                pbPhoto.Image = null;
+                pbPhoto.Location = new Point(5, 5);
+            }
+            catch
+            {
+            }
         }
 
         private void pbPhoto_MouseMove(object sender, MouseEventArgs e)
@@ -233,6 +286,11 @@ namespace CartesAcces
                 Edition.posX = e.X;
                 Edition.posY = e.Y;
                 Edition.drag = true;
+            }
+
+            if (e.Button == MouseButtons.Right)
+            {
+                return;
             }
 
             // -- Actualisation pour voir le déplacement en temps réel --
@@ -257,74 +315,27 @@ namespace CartesAcces
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var diag = new FolderBrowserDialog();
-            if (diag.ShowDialog() == DialogResult.OK)
+            try
             {
-                Edition.cheminImpressionFinal = diag.SelectedPath;
+                FichierWord.sauvegardeCarteProvisoireWord(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
+                string macAddress = string.Empty;
+                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                    {
+                        macAddress += nic.GetPhysicalAddress().ToString();
+                        break;
+                    }
+                }
+                var log = new LogActions();
+                log.DateAction = DateTime.Now;
+                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.Action = "à fait une carte provisoire";
+                log.AdMac = macAddress;
+                ClassSql.db.Insert(log);
             }
-
-            else
+            catch
             {
-                MessageBox.Show(
-                    "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
-                return;
-            }
-
-            if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
-            {
-                var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                var realLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-                var realWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                var realHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-
-                var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
-                ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
-
-                Edition.cheminImpressionFinal = Edition.cheminImpressionFinal + "\\";
-
-                pbCarteArriere.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png",
-                    ImageFormat.Png);
-                pbCarteFace.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png",
-                    ImageFormat.Png);
-
-                var WordApp = new Application();
-                WordApp.Documents.Add();
-                WordApp.ActiveDocument.PageSetup.TopMargin = 15;
-                WordApp.ActiveDocument.PageSetup.RightMargin = 15;
-                WordApp.ActiveDocument.PageSetup.LeftMargin = 15;
-                WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
-
-                var shapeCarte = WordApp.ActiveDocument.Shapes.AddPicture(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,
-                    Type.Missing, Type.Missing);
-
-                WordApp.Selection.EndKey();
-                WordApp.Selection.InsertNewPage();
-
-                var shapeEDT = WordApp.ActiveDocument.Shapes.AddPicture(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", Type.Missing,
-                    Type.Missing, Type.Missing);
-
-                shapeCarte.Top = 0;
-                shapeCarte.Left = 0;
-
-                shapeEDT.Top = 0;
-                shapeEDT.Height = shapeCarte.Height;
-
-                File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png");
-                File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png");
-
-                WordApp.ActiveDocument.SaveAs(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + " Carte.doc", Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                WordApp.ActiveDocument.Close();
-                WordApp.Quit();
-                Marshal.FinalReleaseComObject(WordApp);
-
-                GC.Collect();
-
-                MessageBox.Show("Saved !");
             }
         }
 
@@ -351,13 +362,22 @@ namespace CartesAcces
 
         private void label6_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         private void frmCarteProvisoire_Load(object sender, EventArgs e)
         {
             txtNom.TextChanged += changementTexte;
             txtPrenom.TextChanged += changementTexte;
+            pbCarteArriere.MouseWheel += pictureBox1_MouseWheel;
+        }
+
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void rdbClRelais_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

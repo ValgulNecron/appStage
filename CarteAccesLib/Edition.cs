@@ -90,12 +90,17 @@ namespace CartesAcces
         // -- Change le fond de la carte en fonction de la section choisie
         public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
         {
-            pbCarteFace.Image = Image.FromFile("./data/FichierCartesFace/" + cbbSection.Text + ".png");
+            Bitmap bmp = new Bitmap("./data/FichierCartesFace/" + cbbSection.Text + ".png");
+            bmp.SetResolution(150,150);
+            pbCarteFace.Image = bmp;
+
             var date = DateTime.Today.ToShortDateString();
             var police = new Font("times new roman", 45, FontStyle.Bold);
             dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
+            
             var police2 = new Font("times new roman", 15, FontStyle.Bold);
             dessineTexteCarteFace(police2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
+            
             pbCarteFace.Refresh();
         }
 
@@ -168,6 +173,9 @@ namespace CartesAcces
         {
             if (rdbUlis.Checked)
             {
+                fondCarteNiveau(pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
                 var police = new Font("times new roman", 30, FontStyle.Bold);
                 dessineTexteCarteFace(police, 50, 230, "ULIS ", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
@@ -175,6 +183,9 @@ namespace CartesAcces
             }
             else if (rdbUPE2A.Checked)
             {
+                fondCarteNiveau(pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
                 var police = new Font("times new roman", 30, FontStyle.Bold);
                 dessineTexteCarteFace(police, 50, 230, "UPE2A", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
@@ -182,6 +193,9 @@ namespace CartesAcces
             }
             else if (rdbClRelais.Checked)
             {
+                fondCarteNiveau(pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
                 var police = new Font("times new roman", 30, FontStyle.Bold);
                 dessineTexteCarteFace(police, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
@@ -196,30 +210,6 @@ namespace CartesAcces
             }
         }
         
-        public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
-        {
-            pbPhoto.Image = new Bitmap(chemin);
-            pbPhoto.Size = new Size(110, 165);
-            pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbPhoto.Visible = true;
-        }
-
-        public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
-        {
-            foreach (var eleve in listeEleve)
-                try
-                {
-                    var dossier = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
-                    pbCarteArriere.Image = Image.FromFile(dossier + Eleve.creeCleEleve(eleve) + ".jpg");
-                    Chemin.cheminEdt = dossier + Eleve.creeCleEleve(eleve) + ".jpg";
-                    break;
-                }
-                catch
-                {
-                    // Next ..
-                }
-        }
-
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
             int posY)
         {
@@ -332,14 +322,16 @@ namespace CartesAcces
                 Directory.CreateDirectory(Chemin.cheminDossierListeEleve);
 
                 File.Copy(cheminSource, cheminDestination);
+                File.SetCreationTime(cheminDestination, DateTime.Now);
                 ReadCSV.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
 
                 MessageBox.Show("Import Réussi");
+                //Globale._lblDate.Text = ReadCSV.getDateFile();
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show("eeeee + " + e.ToString());
             }
         }
 

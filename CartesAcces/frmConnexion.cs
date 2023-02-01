@@ -1,16 +1,26 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
+using LinqToDB;
 
 namespace CartesAcces
 {
+    
+    /*
+     * fenetre de connexion
+     * elle permet de se connecter a l'application
+     * elle stocke le nom d'utilisateur dans la variable globale _nomUtilisateur
+     * et lance la barre de progression avec le cas 1
+     */
     public partial class frmConnexion : Form
     {
         public frmConnexion()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-            TailleCotrole.setTailleControleTexte(this);
+
             VisibleChanged += on_Visibility_Change;
             txtMotDePasse.PasswordChar = '*';
         }
@@ -21,51 +31,103 @@ namespace CartesAcces
             txtIdentifiant.Text = "";
         }
 
-        private void btnConnexion_Click(object sender, EventArgs e)
+        
+        /*
+         * cette fonction permet de se connecter
+         * elle verifie si le nom d'utilisateur existe dans la base de donnee
+         * si oui elle verifie si le mot de passe est correct
+         * si oui elle lance la barre de progression avec le cas 1
+         * et elle stocke le nom d'utilisateur dans la variable globale _nomUtilisateur
+         * et elle active les boutons du menu
+         * et elle enregistre l'action dans la base de donnee
+         * si non elle affiche un message d'erreur
+         * et elle vide les champs
+         * si le nom d'utilisateur n'existe pas elle affiche un message d'erreur
+         * et elle vide les champs
+         */
+        private void Connexion()
         {
-            /*
-            if (txtIdentifiant.Text != ClassSQL.getUser())
-            {
-                MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
-                return;
-            }
-            */
             try
             {
-                if (Securite.verificationHash(txtMotDePasse.Text, "FnSloktSNJKrygDP+NG84m6gJ3pz/zmI1Edbyb5wG/b66T/e"))
+                var user = ClassSql.db.GetTable<Utilisateurs>().FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
+                if (txtIdentifiant.Text != user.NomUtilisateur)
                 {
-                    Globale._estConnecter = true;
-                    txtMotDePasse.Text = "";
+                    MessageBox.Show("nom d'utilisateur invalide");
                     txtIdentifiant.Text = "";
-                    foreach (Control controle in Globale._accueil.Controls)
+                    txtMotDePasse.Text = "";
+                    return;
+                }
+                try
+                {
+                    if (Securite.verificationHash(txtMotDePasse.Text, user.Hash))
                     {
-                        if(controle is Panel && controle.Name == "pnlMenu")
+                        Globale._estConnecter = true;
+                        Globale._nomUtilisateur = txtIdentifiant.Text;
+                        txtMotDePasse.Text = "";
+                        txtIdentifiant.Text = "";
+                        foreach (Control controle in Globale._accueil.Controls)
                         {
-                            foreach (Control controle2 in controle.Controls)
+                            if(controle is Panel && controle.Name == "pnlMenu")
                             {
-                                if (controle2 is Button)
+                                foreach (Control controle2 in controle.Controls)
                                 {
-                                    controle2.Enabled = true;
+                                    if (controle2 is Button)
+                                    {
+                                        controle2.Enabled = true;
+                                    }
                                 }
                             }
                         }
+                        Globale._cas = 1;
+                        var frmWait = new barDeProgression();
+                        frmWait.StartPosition = FormStartPosition.Manual;
+                        frmWait.Location = new Point(800, 300);;
+                        frmWait.Show();
+                        frmWait.TopMost = true;
+                        Globale._actuelle = new frmImportation();
+                        frmAccueil.OpenChildForm(Globale._actuelle);
+                        string macAddress = string.Empty;
+                        foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                        {
+                            if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                            {
+                                macAddress += nic.GetPhysicalAddress().ToString();
+                                break;
+                            }
+                        }
+                        var log = new LogActions();
+                        log.DateAction = DateTime.Now;
+                        log.NomUtilisateur = Globale._nomUtilisateur;
+                        log.Action = "C'est connecter au logiciel";
+                        log.AdMac = macAddress;
+                        ClassSql.db.Insert(log);
                     }
-                    Globale._cas = 1;
-                    var frmWait = new barDeProgression();
-                    frmWait.StartPosition = FormStartPosition.Manual;
-                    frmWait.Location = new Point(800, 300);;
-                    frmWait.Show();
-                    frmWait.TopMost = true;
-                    Globale._actuelle = new frmImportation();
-                    frmAccueil.OpenChildForm(Globale._actuelle);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                    txtMotDePasse.Text = "";
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
-                txtMotDePasse.Text = "";
+                MessageBox.Show(exception.Message);
             }
         }
+        private void btnConnexion_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtMotDePasse.Text))
+            {
+                MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                txtMotDePasse.Focus();
+            }
+            else
+            {
+                    Connexion();
+            }
+        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -80,6 +142,42 @@ namespace CartesAcces
         private void btnDechiffre_Click(object sender, EventArgs e)
         {
             Securite.dechiffrerDossier();
+        }
+
+        private void frmConnexion_Load(object sender, EventArgs e)
+        {
+            ActiveControl = txtIdentifiant;
+            foreach (Control controle in Globale._accueil.Controls)
+            {
+                if(controle is Panel && controle.Name == "pnlMenu")
+                {
+                    foreach (Control controle2 in controle.Controls)
+                    {
+                        if (controle2 is Button && controle2.Name != "btnTheme")
+                        {
+                            controle2.Enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void txtMotDePasse_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (String.IsNullOrEmpty(txtMotDePasse.Text))
+                {
+                    MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    txtMotDePasse.Focus();
+                }
+                else
+                {
+                    Connexion();
+                }
+            }
         }
     }
 }

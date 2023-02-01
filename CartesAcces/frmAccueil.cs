@@ -7,11 +7,11 @@ namespace CartesAcces
 {
     public partial class frmAccueil : Form
     {
+        public static Timer timer;
         public frmAccueil()
         {
             InitializeComponent();
             Globale._accueil = this;
-            TailleCotrole.setTailleControleTexte(this);
             Couleur.setCouleurFenetre(this);
             if (Globale._estEnModeSombre)
             {
@@ -27,6 +27,9 @@ namespace CartesAcces
                 pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0],
                     Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
             }
+            TailleControle.setTailleBouton(this);
+            TailleControle.setTailleControleTexte(this);
+        
         }
 
         public static void OpenChildForm(Form childForm)
@@ -42,10 +45,10 @@ namespace CartesAcces
                     pnlContent.Controls.Clear();
                     pnlContent.Controls.Add(childForm);
                     pnlContent.Tag = childForm;
+                    childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
+                    childForm.Show(); // lorsque la WF est appelé pour la première fois
                 } 
             }
-            childForm.BringToFront(); // ramène la WF appélé en avant-plan pour une WF déjà appelé
-            childForm.Show(); // lorsque la WF est appelé pour la première fois
         }
 
         private void frmAccueil_Load(object sender, EventArgs e)
@@ -63,27 +66,31 @@ namespace CartesAcces
                     }
                 }
             }
+
             Globale._actuelle = new frmConnexion();
-            OpenChildForm(Globale._actuelle);
+            this.Text = "CARTE D'ACCES - CONNEXION";
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
+
             lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
-            var time = new Timer(this);
             var dir = new DirectoryInfo("./data/image");
-            if (dir.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
+            if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
-                MessageBox.Show("7j depuis le denier import des edt");
+                MessageBox.Show("15j ou plus depuis le denier import des edt");
             }
             
             var dir2 = new DirectoryInfo(Chemin.cheminPhotoEleve);
-            if (dir2.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
+            if (dir2.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
-                MessageBox.Show("7j depuis le dernier import de photo");
+                MessageBox.Show("15j ou plus depuis le dernier import de photo");
             }
 
             var dir3 = new DirectoryInfo(Chemin.cheminListeEleve);
-            if (dir3.LastWriteTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
+            if (dir3.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
             {
-                MessageBox.Show("7j depuis le dernier import des photo");
+                MessageBox.Show("15j ou plus depuis le dernier import des listes eleves");
             }
+            
+            timer = new Timer(this);
         }
 
         //Création de menu de navigation
@@ -91,19 +98,25 @@ namespace CartesAcces
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCarteProvisoire();
-            OpenChildForm(Globale._actuelle);
+            this.Text = "CARTE D'ACCES - CARTE PROVISOIRE";
+            timer.ajoutEvenement();
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCarteParClasseNiveau();
-            OpenChildForm(Globale._actuelle);
+            this.Text = "CARTE D'ACCES - CARTE PAR CLASSE";
+            timer.ajoutEvenement();
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmImportation();
-            OpenChildForm(Globale._actuelle);
+            this.Text = "CARTE D'ACCES - IMPORTATION";
+            timer.ajoutEvenement();
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
@@ -126,18 +139,23 @@ namespace CartesAcces
                         control.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
                             Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
                 }
+            var user = new Utilisateurs();
+            user.ThemeBool = Globale._estEnModeSombre;
         }
 
         private void btnChangeMdp_Click(object sender, EventArgs e)
         {
             var frmPassword = new frmChangeMotDePasse();
+            this.Text = "CARTE D'ACCES - CHANGEMENT MOT DE PASSE";
             frmPassword.Show();
         }
 
         private void btnAfficheListeEleve_Click(object sender, EventArgs e)
         {
             Globale._actuelle = new frmCartesParListe();
-            OpenChildForm(Globale._actuelle);
+            this.Text = "CARTE D'ACCES - CARTE PAR LISTE";
+            timer.ajoutEvenement();
+            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
         }
     }
 }

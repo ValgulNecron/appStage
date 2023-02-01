@@ -44,49 +44,68 @@ namespace CartesAcces
             // 
             // Eleves
             // 
+            this.Eleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Eleves.FormattingEnabled = true;
-            this.Eleves.Location = new System.Drawing.Point(12, 77);
+            this.Eleves.ItemHeight = 16;
+            this.Eleves.Location = new System.Drawing.Point(15, 104);
+            this.Eleves.MaximumSize = new System.Drawing.Size(350, 500);
+            this.Eleves.MinimumSize = new System.Drawing.Size(350, 500);
             this.Eleves.Name = "Eleves";
-            this.Eleves.Size = new System.Drawing.Size(293, 329);
+            this.Eleves.Size = new System.Drawing.Size(350, 500);
             this.Eleves.TabIndex = 0;
             // 
             // Impression
             // 
+            this.Impression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Impression.FormattingEnabled = true;
-            this.Impression.Location = new System.Drawing.Point(502, 77);
+            this.Impression.ItemHeight = 16;
+            this.Impression.Location = new System.Drawing.Point(607, 104);
+            this.Impression.MaximumSize = new System.Drawing.Size(350, 500);
+            this.Impression.MinimumSize = new System.Drawing.Size(350, 500);
             this.Impression.Name = "Impression";
-            this.Impression.Size = new System.Drawing.Size(286, 329);
+            this.Impression.Size = new System.Drawing.Size(350, 500);
             this.Impression.TabIndex = 1;
             // 
             // btnAjout
             // 
-            this.btnAjout.Location = new System.Drawing.Point(363, 191);
+            this.btnAjout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjout.Location = new System.Drawing.Point(389, 288);
+            this.btnAjout.MaximumSize = new System.Drawing.Size(180, 45);
+            this.btnAjout.MinimumSize = new System.Drawing.Size(180, 45);
             this.btnAjout.Name = "btnAjout";
-            this.btnAjout.Size = new System.Drawing.Size(75, 23);
+            this.btnAjout.Size = new System.Drawing.Size(180, 45);
             this.btnAjout.TabIndex = 2;
-            this.btnAjout.Text = "Ajouter";
+            this.btnAjout.Text = "Ajouter =>";
             this.btnAjout.UseVisualStyleBackColor = true;
             // 
             // btnRetirer
             // 
-            this.btnRetirer.Location = new System.Drawing.Point(363, 269);
+            this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetirer.Location = new System.Drawing.Point(389, 366);
+            this.btnRetirer.MaximumSize = new System.Drawing.Size(180, 45);
+            this.btnRetirer.MinimumSize = new System.Drawing.Size(180, 45);
             this.btnRetirer.Name = "btnRetirer";
-            this.btnRetirer.Size = new System.Drawing.Size(75, 23);
+            this.btnRetirer.Size = new System.Drawing.Size(180, 45);
             this.btnRetirer.TabIndex = 3;
-            this.btnRetirer.Text = "Retirer";
+            this.btnRetirer.Text = "<= Retirer";
             this.btnRetirer.UseVisualStyleBackColor = true;
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(713, 415);
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValider.Location = new System.Drawing.Point(777, 622);
+            this.btnValider.MaximumSize = new System.Drawing.Size(180, 45);
+            this.btnValider.MinimumSize = new System.Drawing.Size(180, 45);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(75, 23);
+            this.btnValider.Size = new System.Drawing.Size(180, 45);
             this.btnValider.TabIndex = 4;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // label1
             // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
@@ -95,6 +114,7 @@ namespace CartesAcces
             // 
             // lblCount
             // 
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCount.Location = new System.Drawing.Point(103, 9);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(100, 23);
@@ -103,6 +123,7 @@ namespace CartesAcces
             // 
             // label3
             // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 23);
@@ -111,16 +132,17 @@ namespace CartesAcces
             // 
             // txtRecherche
             // 
-            this.txtRecherche.Location = new System.Drawing.Point(85, 48);
+            this.txtRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRecherche.Location = new System.Drawing.Point(106, 51);
             this.txtRecherche.Name = "txtRecherche";
-            this.txtRecherche.Size = new System.Drawing.Size(220, 20);
+            this.txtRecherche.Size = new System.Drawing.Size(259, 22);
             this.txtRecherche.TabIndex = 8;
             // 
             // frmCartesParListe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1018, 694);
             this.Controls.Add(this.txtRecherche);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblCount);
@@ -135,6 +157,7 @@ namespace CartesAcces
             this.Load += new System.EventHandler(this.frmCartesParListe_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.ListBox Eleves;

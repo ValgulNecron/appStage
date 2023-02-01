@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -7,7 +9,7 @@ namespace CartesAcces
     {
         /// <summary>
         ///     Point d'entrée principal de l'application.
-        /// </summary>
+        /// </summary> 
         [STAThread]
         private static void Main()
         {

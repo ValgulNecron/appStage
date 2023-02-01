@@ -125,13 +125,6 @@ namespace CartesAcces
             return listeExtractPDF;
         }
 
-        public static int getNbPagePdf()
-        {
-            var folderPath = "./image/";
-            var fileCount = Directory.GetFiles(folderPath).Length;
-            return fileCount;
-        }
-
         public static void renameEdt(string pdf)
         {
             var name = new List<string>();
@@ -150,20 +143,18 @@ namespace CartesAcces
                 var newName = name[indexInt - 1].Trim();
                 File.Move(infos[i].FullName, infos[i].FullName.Replace(oldName, newName));
             }
-
-            valeurParDefault();
         }
 
         public static string getDateFile()
         {
             var dateFile = "Aucune Importation";
-            var dir = new DirectoryInfo("./data/image");
+            var dir = new DirectoryInfo(outputPath);
             if (dir.Exists) dateFile = dir.CreationTime.ToString();
 
             return dateFile;
         }
 
-        private static void valeurParDefault()
+        public static void valeurParDefault()
         {
             outputPath = "./data/image";
         }

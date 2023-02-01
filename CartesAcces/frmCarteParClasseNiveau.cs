@@ -12,24 +12,6 @@ namespace CartesAcces
             Couleur.setCouleurFenetre(this);
         }
 
-        private void rdbClasseSection_CheckedChanged(object sender, EventArgs e)
-        {
-            cbbImprClasse.Enabled = true;
-            cbbImprSection.Enabled = true;
-            lsbListeEleve.DataSource = null;
-
-            btnReset.Enabled = false;
-        }
-
-        private void rdbListePerso_CheckedChanged(object sender, EventArgs e)
-        {
-            cbbImprClasse.Enabled = false;
-            cbbImprSection.Enabled = false;
-            lsbListeEleve.DataSource = null;
-            
-            btnReset.Enabled = true;
-        }
-
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
             Globale._listeEleveImpr.Clear();
@@ -69,34 +51,15 @@ namespace CartesAcces
             btnValiderImpr.Enabled = true;
         }
 
-        private void btnCopierDataGrid_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnRechercheDataGrid_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtRechercheDataGrid_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void DataGridResultats_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-        }
-
-        private void DataGridResultats_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-        }
-
         public void btnValiderImpr_Click(object sender, EventArgs e)
         {
-            var frmMultiplesCartesEdition = new frmMultiplesCartesEdition();
-            frmMultiplesCartesEdition.Show();
+            try
+            {
+                var frmMultiplesCartesEdition = new frmMultiplesCartesEdition();
+                frmMultiplesCartesEdition.Show();
+            }
+            catch {}
+
         }
 
         private void frmMultiplesCartes_Load(object sender, EventArgs e)
@@ -111,6 +74,11 @@ namespace CartesAcces
             cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;
             lblCount.Text = "";
+        }
+
+        private void cbbImprClasse_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
