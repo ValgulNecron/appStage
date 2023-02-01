@@ -75,5 +75,10 @@ namespace CartesAcces
             cbbImprClasse.SelectedItem = null;
             lblCount.Text = "";
         }
+
+        private void cbbImprClasse_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
