@@ -203,7 +203,11 @@ namespace CartesAcces
             this.cbbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cbbSection.FormattingEnabled = true;
-            this.cbbSection.Items.AddRange(new object[] { "6eme", "5eme", "4eme", "3eme" });
+            this.cbbSection.Items.AddRange(new object[] {
+            "6eme",
+            "5eme",
+            "4eme",
+            "3eme"});
             this.cbbSection.Location = new System.Drawing.Point(108, 19);
             this.cbbSection.Name = "cbbSection";
             this.cbbSection.Size = new System.Drawing.Size(121, 24);
@@ -307,7 +311,8 @@ namespace CartesAcces
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Enabled = false;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnCancel.Location = new System.Drawing.Point(354, 19);
@@ -322,11 +327,12 @@ namespace CartesAcces
             // 
             // btnSelect
             // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelect.Enabled = false;
             this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnSelect.Location = new System.Drawing.Point(5, 22);
-            this.btnSelect.MaximumSize = new System.Drawing.Size(160, 40);
+            this.btnSelect.MaximumSize = new System.Drawing.Size(180, 40);
             this.btnSelect.MinimumSize = new System.Drawing.Size(180, 40);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(180, 40);
@@ -366,7 +372,9 @@ namespace CartesAcces
             // 
             // tkbTaillePhoto
             // 
-            this.tkbTaillePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tkbTaillePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tkbTaillePhoto.Location = new System.Drawing.Point(267, 37);
             this.tkbTaillePhoto.Maximum = 300;
             this.tkbTaillePhoto.Name = "tkbTaillePhoto";
@@ -414,7 +422,7 @@ namespace CartesAcces
             // 
             this.btnAjouterPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnAjouterPhoto.Location = new System.Drawing.Point(5, 29);
-            this.btnAjouterPhoto.MaximumSize = new System.Drawing.Size(160, 40);
+            this.btnAjouterPhoto.MaximumSize = new System.Drawing.Size(180, 45);
             this.btnAjouterPhoto.MinimumSize = new System.Drawing.Size(180, 45);
             this.btnAjouterPhoto.Name = "btnAjouterPhoto";
             this.btnAjouterPhoto.Size = new System.Drawing.Size(180, 45);
@@ -472,6 +480,7 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
             this.pnlEdtPhoto.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         #endregion
