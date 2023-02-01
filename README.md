@@ -13,9 +13,9 @@ TO DO :
 
 POUR LE RAPPORT DE STAGE (ballec) :
 
-- un diagramme de cas d’utilisation, (IAN)
+- un diagramme de cas d’utilisation, (IAN FAIT)
 - une analyse RGPD, (DAVID)
-- présentez la mise en œuvre de la sécurité (B3/CEJMA) pour votre solution, (YANN)
+- présentez la mise en œuvre de la sécurité (B3/CEJMA) pour votre solution, (YANN FAIT)
 - une analyse de l’impact environnemental / informatique verte 
 - une analyse des coûts, des délais, des calculs. (YANN)
 - une analyse du contenu du site web réalisé ou en place, (IAN)
