@@ -7,6 +7,13 @@ using LinqToDB;
 
 namespace CartesAcces
 {
+    
+    /*
+     * fenetre de connexion
+     * elle permet de se connecter a l'application
+     * elle stocke le nom d'utilisateur dans la variable globale _nomUtilisateur
+     * et lance la barre de progression avec le cas 1
+     */
     public partial class frmConnexion : Form
     {
         public frmConnexion()
@@ -24,12 +31,26 @@ namespace CartesAcces
             txtIdentifiant.Text = "";
         }
 
+        
+        /*
+         * cette fonction permet de se connecter
+         * elle verifie si le nom d'utilisateur existe dans la base de donnee
+         * si oui elle verifie si le mot de passe est correct
+         * si oui elle lance la barre de progression avec le cas 1
+         * et elle stocke le nom d'utilisateur dans la variable globale _nomUtilisateur
+         * et elle active les boutons du menu
+         * et elle enregistre l'action dans la base de donnee
+         * si non elle affiche un message d'erreur
+         * et elle vide les champs
+         * si le nom d'utilisateur n'existe pas elle affiche un message d'erreur
+         * et elle vide les champs
+         */
         private void Connexion()
         {
             try
             {
                 var user = ClassSql.db.GetTable<Utilisateurs>().FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
-                if (txtIdentifiant.Text != user.NomUtilisateur && txtIdentifiant.Text != "cassin")
+                if (txtIdentifiant.Text != user.NomUtilisateur)
                 {
                     MessageBox.Show("nom d'utilisateur invalide");
                     txtIdentifiant.Text = "";
@@ -38,7 +59,7 @@ namespace CartesAcces
                 }
                 try
                 {
-                    if (Securite.verificationHash(txtMotDePasse.Text, user.Hash) || Securite.verificationHash(txtMotDePasse.Text, "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz"))
+                    if (Securite.verificationHash(txtMotDePasse.Text, user.Hash))
                     {
                         Globale._estConnecter = true;
                         Globale._nomUtilisateur = txtIdentifiant.Text;
