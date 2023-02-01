@@ -42,5 +42,10 @@ namespace CartesAcces
             MessageBox.Show("Les informations de l'établissement ont été modifiées");
             this.Close();
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
