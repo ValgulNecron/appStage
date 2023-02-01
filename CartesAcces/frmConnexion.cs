@@ -24,7 +24,7 @@ namespace CartesAcces
             txtIdentifiant.Text = "";
         }
 
-        private void btnConnexion_Click(object sender, EventArgs e)
+        private void Connexion()
         {
             try
             {
@@ -95,6 +95,20 @@ namespace CartesAcces
                 MessageBox.Show(exception.Message);
             }
         }
+        private void btnConnexion_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtMotDePasse.Text))
+            {
+                MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                txtMotDePasse.Focus();
+            }
+            else
+            {
+                    Connexion();
+            }
+        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -113,6 +127,7 @@ namespace CartesAcces
 
         private void frmConnexion_Load(object sender, EventArgs e)
         {
+            ActiveControl = txtIdentifiant;
             foreach (Control controle in Globale._accueil.Controls)
             {
                 if(controle is Panel && controle.Name == "pnlMenu")
@@ -124,6 +139,24 @@ namespace CartesAcces
                             controle2.Enabled = false;
                         }
                     }
+                }
+            }
+        }
+
+
+        private void txtMotDePasse_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (String.IsNullOrEmpty(txtMotDePasse.Text))
+                {
+                    MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    txtMotDePasse.Focus();
+                }
+                else
+                {
+                    Connexion();
                 }
             }
         }

@@ -47,7 +47,7 @@ namespace CartesAcces
             this.maskedTextBox1.Location = new System.Drawing.Point(229, 488);
             this.maskedTextBox1.MinimumSize = new System.Drawing.Size(175, 30);
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(175, 30);
+            this.maskedTextBox1.Size = new System.Drawing.Size(175, 20);
             this.maskedTextBox1.TabIndex = 5;
             this.maskedTextBox1.Visible = false;
             // 
@@ -110,7 +110,7 @@ namespace CartesAcces
             this.btnConnexion.MinimumSize = new System.Drawing.Size(175, 28);
             this.btnConnexion.Name = "btnConnexion";
             this.btnConnexion.Size = new System.Drawing.Size(175, 30);
-            this.btnConnexion.TabIndex = 0;
+            this.btnConnexion.TabIndex = 3;
             this.btnConnexion.Text = "S\'IDENTIFIER";
             this.btnConnexion.UseVisualStyleBackColor = true;
             this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
@@ -122,8 +122,8 @@ namespace CartesAcces
             this.txtIdentifiant.MaximumSize = new System.Drawing.Size(175, 28);
             this.txtIdentifiant.MinimumSize = new System.Drawing.Size(175, 28);
             this.txtIdentifiant.Name = "txtIdentifiant";
-            this.txtIdentifiant.Size = new System.Drawing.Size(175, 28);
-            this.txtIdentifiant.TabIndex = 3;
+            this.txtIdentifiant.Size = new System.Drawing.Size(175, 24);
+            this.txtIdentifiant.TabIndex = 0;
             // 
             // txtMotDePasse
             // 
@@ -132,8 +132,9 @@ namespace CartesAcces
             this.txtMotDePasse.MaximumSize = new System.Drawing.Size(175, 28);
             this.txtMotDePasse.MinimumSize = new System.Drawing.Size(175, 28);
             this.txtMotDePasse.Name = "txtMotDePasse";
-            this.txtMotDePasse.Size = new System.Drawing.Size(175, 28);
-            this.txtMotDePasse.TabIndex = 9;
+            this.txtMotDePasse.Size = new System.Drawing.Size(175, 24);
+            this.txtMotDePasse.TabIndex = 1;
+            this.txtMotDePasse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMotDePasse_KeyDown);
             // 
             // frmConnexion
             // 
@@ -149,13 +150,12 @@ namespace CartesAcces
             this.Controls.Add(this.btnChiffre);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.maskedTextBox1);
-            this.MinimumSize = new System.Drawing.Size(175, 28);
+            this.MinimumSize = new System.Drawing.Size(175, 39);
             this.Name = "frmConnexion";
             this.Text = "frmConnexion";
             this.Load += new System.EventHandler(this.frmConnexion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Button btnChiffre;
