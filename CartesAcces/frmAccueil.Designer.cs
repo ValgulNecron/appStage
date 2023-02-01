@@ -193,6 +193,7 @@ namespace CartesAcces
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmAccueil";
             this.Text = "Application Cartes Acces";
             this.Load += new System.EventHandler(this.frmAccueil_Load);
@@ -200,7 +201,6 @@ namespace CartesAcces
             this.pnlMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Label label1;
