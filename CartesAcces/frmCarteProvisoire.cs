@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -316,6 +318,21 @@ namespace CartesAcces
             try
             {
                 FichierWord.sauvegardeCarteProvisoireWord(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
+                string macAddress = string.Empty;
+                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                    {
+                        macAddress += nic.GetPhysicalAddress().ToString();
+                        break;
+                    }
+                }
+                var log = new LogActions();
+                log.DateAction = DateTime.Now;
+                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.Action = "à fait une carte provisoire";
+                log.AdMac = macAddress;
+                ClassSql.db.Insert(log);
             }
             catch
             {
