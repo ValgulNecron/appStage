@@ -6,6 +6,17 @@ using LinqToDB;
 
 namespace CartesAcces
 {
+    /*
+     * fenetre de changement de mot de passe
+     * elle permet de changer le mot de passe de l'utilisateur
+     * elle verifie si le mot de passe est correct
+     * elle verifie si le nouveau mot de passe est different de l'ancien
+     * elle verifie si le nouveau mot de passe est conforme aux prerequis
+     * elle verifie si le nouveau mot de passe est identique a la confirmation
+     * si oui elle modifie le mot de passe dans la base de donnee
+     * et elle enregistre l'action dans la base de donnee
+     * si non elle affiche un message d'erreur
+     */
     public partial class frmChangeMotDePasse : Form
     {
         public frmChangeMotDePasse()
