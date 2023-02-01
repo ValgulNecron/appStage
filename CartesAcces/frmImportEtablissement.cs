@@ -5,6 +5,11 @@ using LinqToDB;
 
 namespace CartesAcces
 {
+    /*
+     * permet de créer l'etablissement dans la base de données
+     * si l'etablissement existe déjà, il est modifié
+     * si l'etablissement n'existe pas, il est créé
+     */
     public partial class frmImportEtablissement : Form
     {
         public frmImportEtablissement()
