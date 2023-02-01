@@ -22,6 +22,7 @@ namespace CartesAcces
             etablissement.CodePostaleEtablissement = txtCodePostalEtablissement.Text;
             etablissement.NumeroTelephoneEtablissement = txtTelEtablissement.Text;
             etablissement.NumeroRueEtablissement = Convert.ToInt32(txtNumRueEtablissement.Text);
+            ClassSql.db.InsertOrReplace(etablissement);
             string macAddress = string.Empty;
             foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
             {
@@ -37,6 +38,8 @@ namespace CartesAcces
             log.Action = "à modifier les informations de établissement";
             log.AdMac = macAddress;
             ClassSql.db.Insert(log);
+            MessageBox.Show("Les informations de l'établissement ont été modifiées");
+            this.Close();
         }
     }
 }
