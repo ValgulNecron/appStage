@@ -12,6 +12,13 @@ namespace CartesAcces
         private readonly System.Timers.Timer timer;
         private DateTime start;
 
+        /* cette classe permet de vérifier si l'utilisateur est inactif depuis un certain temps
+         * si c'est le cas, elle retourne sur la page de connexion
+         * les valeur de dureeMinute et frequenceDesVerifEnMinute sont en minutes et peuvent être modifiées
+         * la fréquence de vérification est de 1 minute par défaut elle indique que la vérification se fera toutes les minutes
+         * la durée est de 15 minutes par défaut elle indique que si l'utilisateur est inactif depuis 15 minutes, il sera déconnecté
+         * il suffit de creer un objet de cette classe dans la page qui doit être surveillée et de l'initialiser avec l'objet de la fenêtre
+         */
         public Timer(Form form)
         {
             this.form = form;
