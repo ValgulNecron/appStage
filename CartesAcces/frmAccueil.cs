@@ -134,6 +134,8 @@ namespace CartesAcces
                         control.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
                             Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
                 }
+            var user = new Utilisateurs();
+            user.ThemeBool = Globale._estEnModeSombre;
         }
 
         private void btnChangeMdp_Click(object sender, EventArgs e)

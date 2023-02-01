@@ -11,9 +11,29 @@ namespace CartesAcces
             Couleur.setCouleurFenetre(this);
         }
 
-        private void frmCreationUtilisateur_Load(object sender, EventArgs e)
+        private void btValid_Click(object sender, EventArgs e)
         {
-            
+            if (tbUser.Text == "")
+            {
+                return;
+            }
+
+            if (tbMdp.Text != tbValidMdp.Text)
+            {
+                return;
+            }
+
+            var user = new Utilisateurs();
+            user.NomUtilisateur = tbUser.Text;
+            user.Hash = Securite.creationHash(tbMdp.Text);
+            foreach (Control var in gbTypeUser.Controls)
+            {
+                RadioButton rb = var as RadioButton;
+                if (rb != null && rb.Checked)
+                {
+                    user.TypeUtilisateur = rb.Text;
+                }
+            }
         }
     }
 }

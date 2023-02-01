@@ -39,6 +39,9 @@ namespace CartesAcces
 
         [LinqToDB.Mapping.Column(Name = "hash")]
         public string Hash { get; set; }
+        
+        [LinqToDB.Mapping.Column(Name = "typeUtilisateur")]
+        public string TypeUtilisateur { get; set; }
 
         [LinqToDB.Mapping.Column(Name = "themeBool")]
         public bool ThemeBool { get; set; }
