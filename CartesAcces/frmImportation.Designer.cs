@@ -129,26 +129,32 @@ namespace CartesAcces
             // 
             // lblPhotoEleve
             // 
-            this.lblPhotoEleve.Location = new System.Drawing.Point(768, 146);
+            this.lblPhotoEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhotoEleve.Location = new System.Drawing.Point(686, 388);
             this.lblPhotoEleve.Name = "lblPhotoEleve";
-            this.lblPhotoEleve.Size = new System.Drawing.Size(199, 23);
+            this.lblPhotoEleve.Size = new System.Drawing.Size(258, 23);
             this.lblPhotoEleve.TabIndex = 30;
             this.lblPhotoEleve.Text = "Aucune Importation";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(627, 146);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(545, 388);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 13);
+            this.label7.Size = new System.Drawing.Size(135, 16);
             this.label7.TabIndex = 29;
             this.label7.Text = "Dernière importation :";
             // 
             // btnImportEdtClassique
             // 
-            this.btnImportEdtClassique.Location = new System.Drawing.Point(292, 192);
+            this.btnImportEdtClassique.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportEdtClassique.Location = new System.Drawing.Point(210, 443);
+            this.btnImportEdtClassique.MaximumSize = new System.Drawing.Size(320, 35);
+            this.btnImportEdtClassique.MinimumSize = new System.Drawing.Size(320, 35);
             this.btnImportEdtClassique.Name = "btnImportEdtClassique";
-            this.btnImportEdtClassique.Size = new System.Drawing.Size(237, 23);
+            this.btnImportEdtClassique.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnImportEdtClassique.Size = new System.Drawing.Size(320, 35);
             this.btnImportEdtClassique.TabIndex = 31;
             this.btnImportEdtClassique.Text = "Importer des emplois du temps pour les classes";
             this.btnImportEdtClassique.UseVisualStyleBackColor = true;
@@ -157,25 +163,27 @@ namespace CartesAcces
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(627, 202);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(545, 452);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.Size = new System.Drawing.Size(135, 16);
             this.label1.TabIndex = 34;
             this.label1.Text = "Dernière importation :";
             // 
             // lblImportEdtClassique
             // 
-            this.lblImportEdtClassique.Location = new System.Drawing.Point(768, 202);
+            this.lblImportEdtClassique.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImportEdtClassique.Location = new System.Drawing.Point(686, 452);
             this.lblImportEdtClassique.Name = "lblImportEdtClassique";
-            this.lblImportEdtClassique.Size = new System.Drawing.Size(199, 23);
+            this.lblImportEdtClassique.Size = new System.Drawing.Size(258, 23);
             this.lblImportEdtClassique.TabIndex = 35;
             this.lblImportEdtClassique.Text = "Aucune Importation";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(292, 288);
+            this.pictureBox1.Location = new System.Drawing.Point(907, 67);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(360, 360);
+            this.pictureBox1.Size = new System.Drawing.Size(336, 103);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
@@ -183,9 +191,12 @@ namespace CartesAcces
             // 
             // btnImporterUnEtablissement
             // 
-            this.btnImporterUnEtablissement.Location = new System.Drawing.Point(292, 244);
+            this.btnImporterUnEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImporterUnEtablissement.Location = new System.Drawing.Point(210, 125);
+            this.btnImporterUnEtablissement.MaximumSize = new System.Drawing.Size(320, 45);
+            this.btnImporterUnEtablissement.MinimumSize = new System.Drawing.Size(320, 45);
             this.btnImporterUnEtablissement.Name = "btnImporterUnEtablissement";
-            this.btnImporterUnEtablissement.Size = new System.Drawing.Size(237, 23);
+            this.btnImporterUnEtablissement.Size = new System.Drawing.Size(320, 45);
             this.btnImporterUnEtablissement.TabIndex = 37;
             this.btnImporterUnEtablissement.Text = "Importer un nouvel établissement";
             this.btnImporterUnEtablissement.UseVisualStyleBackColor = true;
