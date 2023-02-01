@@ -163,6 +163,12 @@
     <Compile Include="frmCarteProvisoire.Designer.cs">
       <DependentUpon>frmCarteProvisoire.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCreationUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreationUtilisateur.Designer.cs">
+      <DependentUpon>frmCreationUtilisateur.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMultiplesCartesEdition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCarteParClasseNiveau.resx">
       <DependentUpon>frmCarteParClasseNiveau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreationUtilisateur.resx">
+      <DependentUpon>frmCreationUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMultiplesCartesEdition.resx">
       <DependentUpon>frmMultiplesCartesEdition.cs</DependentUpon>

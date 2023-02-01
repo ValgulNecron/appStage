@@ -120,7 +120,7 @@ namespace CartesAcces
             this.Controls.Add(this.nouveauMdp);
             this.Controls.Add(this.ancienMdp);
             this.Name = "frmChangeMotDePasse";
-            this.Text = "frmChangeMotDePasse";
+            this.Text = "Changer le mot de passe";
             this.Load += new System.EventHandler(this.frmChangeMotDePasse_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
