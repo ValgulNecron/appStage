@@ -10,6 +10,7 @@ namespace CartesAcces
         public frmImportEtablissement()
         {
             InitializeComponent();
+            Couleur.setCouleurFenetre(this);
         }
 
         private void btnValider_Click(object sender, EventArgs e)
