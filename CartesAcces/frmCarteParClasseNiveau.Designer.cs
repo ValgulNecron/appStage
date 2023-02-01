@@ -35,17 +35,14 @@ namespace CartesAcces
             this.cbbImprSection = new System.Windows.Forms.ComboBox();
             this.btnValiderImpr = new System.Windows.Forms.Button();
             this.lsbListeEleve = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdbClasseSection = new System.Windows.Forms.RadioButton();
             this.NbComptageEleveCS = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(441, 12);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 0;
@@ -54,7 +51,7 @@ namespace CartesAcces
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(441, 56);
+            this.label2.Location = new System.Drawing.Point(12, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 13);
             this.label2.TabIndex = 1;
@@ -64,7 +61,7 @@ namespace CartesAcces
             // 
             this.cbbImprClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbImprClasse.FormattingEnabled = true;
-            this.cbbImprClasse.Location = new System.Drawing.Point(551, 12);
+            this.cbbImprClasse.Location = new System.Drawing.Point(122, 12);
             this.cbbImprClasse.Name = "cbbImprClasse";
             this.cbbImprClasse.Size = new System.Drawing.Size(147, 21);
             this.cbbImprClasse.TabIndex = 3;
@@ -75,7 +72,7 @@ namespace CartesAcces
             this.cbbImprSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbImprSection.FormattingEnabled = true;
             this.cbbImprSection.Items.AddRange(new object[] { "6eme", "5eme", "4eme", "3eme" });
-            this.cbbImprSection.Location = new System.Drawing.Point(551, 53);
+            this.cbbImprSection.Location = new System.Drawing.Point(122, 53);
             this.cbbImprSection.Name = "cbbImprSection";
             this.cbbImprSection.Size = new System.Drawing.Size(147, 21);
             this.cbbImprSection.TabIndex = 4;
@@ -84,7 +81,7 @@ namespace CartesAcces
             // btnValiderImpr
             // 
             this.btnValiderImpr.Enabled = false;
-            this.btnValiderImpr.Location = new System.Drawing.Point(745, 301);
+            this.btnValiderImpr.Location = new System.Drawing.Point(359, 301);
             this.btnValiderImpr.Name = "btnValiderImpr";
             this.btnValiderImpr.Size = new System.Drawing.Size(254, 45);
             this.btnValiderImpr.TabIndex = 6;
@@ -95,37 +92,15 @@ namespace CartesAcces
             // lsbListeEleve
             // 
             this.lsbListeEleve.FormattingEnabled = true;
-            this.lsbListeEleve.Location = new System.Drawing.Point(757, 12);
+            this.lsbListeEleve.Location = new System.Drawing.Point(371, 12);
             this.lsbListeEleve.Name = "lsbListeEleve";
             this.lsbListeEleve.Size = new System.Drawing.Size(242, 238);
             this.lsbListeEleve.TabIndex = 7;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rdbClasseSection);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(127, 46);
-            this.groupBox1.TabIndex = 24;
-            this.groupBox1.TabStop = false;
-            // 
-            // rdbClasseSection
-            // 
-            this.rdbClasseSection.AutoSize = true;
-            this.rdbClasseSection.Checked = true;
-            this.rdbClasseSection.Location = new System.Drawing.Point(6, 19);
-            this.rdbClasseSection.Name = "rdbClasseSection";
-            this.rdbClasseSection.Size = new System.Drawing.Size(110, 17);
-            this.rdbClasseSection.TabIndex = 0;
-            this.rdbClasseSection.TabStop = true;
-            this.rdbClasseSection.Text = "Classe ou Section";
-            this.rdbClasseSection.UseVisualStyleBackColor = true;
-            this.rdbClasseSection.CheckedChanged += new System.EventHandler(this.rdbClasseSection_CheckedChanged);
-            // 
             // NbComptageEleveCS
             // 
             this.NbComptageEleveCS.AutoSize = true;
-            this.NbComptageEleveCS.Location = new System.Drawing.Point(441, 91);
+            this.NbComptageEleveCS.Location = new System.Drawing.Point(12, 91);
             this.NbComptageEleveCS.Name = "NbComptageEleveCS";
             this.NbComptageEleveCS.Size = new System.Drawing.Size(245, 13);
             this.NbComptageEleveCS.TabIndex = 25;
@@ -133,7 +108,7 @@ namespace CartesAcces
             // 
             // lblCount
             // 
-            this.lblCount.Location = new System.Drawing.Point(682, 91);
+            this.lblCount.Location = new System.Drawing.Point(253, 91);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(47, 23);
             this.lblCount.TabIndex = 27;
@@ -146,7 +121,6 @@ namespace CartesAcces
             this.ClientSize = new System.Drawing.Size(1109, 749);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.NbComptageEleveCS);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lsbListeEleve);
             this.Controls.Add(this.btnValiderImpr);
             this.Controls.Add(this.cbbImprSection);
@@ -156,8 +130,6 @@ namespace CartesAcces
             this.Name = "frmCarteParClasseNiveau";
             this.Text = "frmCreationCarteParClasse";
             this.Load += new System.EventHandler(this.frmMultiplesCartes_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -172,8 +144,6 @@ namespace CartesAcces
         private System.Windows.Forms.ComboBox cbbImprSection;
         private System.Windows.Forms.Button btnValiderImpr;
         private System.Windows.Forms.ListBox lsbListeEleve;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rdbClasseSection;
         private System.Windows.Forms.Label NbComptageEleveCS;
     }
 }

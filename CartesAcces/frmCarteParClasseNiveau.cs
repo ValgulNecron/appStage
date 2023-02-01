@@ -12,20 +12,6 @@ namespace CartesAcces
             Couleur.setCouleurFenetre(this);
         }
 
-        private void rdbClasseSection_CheckedChanged(object sender, EventArgs e)
-        {
-            cbbImprClasse.Enabled = true;
-            cbbImprSection.Enabled = true;
-            lsbListeEleve.DataSource = null;
-        }
-
-        private void rdbListePerso_CheckedChanged(object sender, EventArgs e)
-        {
-            cbbImprClasse.Enabled = false;
-            cbbImprSection.Enabled = false;
-            lsbListeEleve.DataSource = null;
-        }
-
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
             Globale._listeEleveImpr.Clear();
