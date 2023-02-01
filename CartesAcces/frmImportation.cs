@@ -11,6 +11,12 @@ using LinqToDB;
 
 namespace CartesAcces
 {
+    /*
+     * fenêtre d'imporation des données
+     * elle permet de rediriger vers les fenêtres d'importation des données
+     * elle permet de vérifier si les données sont à jour
+     * elle permet de mettre à jour les données
+     */
     public partial class frmImportation : Form
     {
         public frmImportation()
@@ -179,6 +185,12 @@ namespace CartesAcces
             }
         }
 
+        
+        /*
+         * ceci est le load de la fenêtre importation
+         * elle contient un easteregg ayant 1 chance sur 2 000 000 000 de se déclencher
+         * si le nombre généré est 666 et que la variable globale _gitPoule est à true
+         */
         private void frmParametres_Load(object sender, EventArgs e)
         {
             try
@@ -186,7 +198,7 @@ namespace CartesAcces
                 var x = 0;
                 var random = new Random();
                 x = random.Next(0, 2_000_000_000);
-                if ((x == 666 && false) && Globale._gitPoule)
+                if ((x == 666) && Globale._gitPoule)
                 {
                     pictureBox1.Visible = true;
                     pictureBox1.Image = Image.FromFile("./git-poule.jpg");
