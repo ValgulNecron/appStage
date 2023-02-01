@@ -32,14 +32,15 @@ namespace CartesAcces
         private void InitializeComponent()
         {
             this.gbTypeUser = new System.Windows.Forms.GroupBox();
-            this.rdAdmin = new System.Windows.Forms.RadioButton();
             this.rdUser = new System.Windows.Forms.RadioButton();
+            this.rdAdmin = new System.Windows.Forms.RadioButton();
             this.tbUser = new System.Windows.Forms.TextBox();
             this.tbMdp = new System.Windows.Forms.TextBox();
             this.tbValidMdp = new System.Windows.Forms.TextBox();
             this.lbNomUtilisateur = new System.Windows.Forms.Label();
             this.lblMdpValide = new System.Windows.Forms.Label();
             this.lblMdp = new System.Windows.Forms.Label();
+            this.btValid = new System.Windows.Forms.Button();
             this.gbTypeUser.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,25 +55,25 @@ namespace CartesAcces
             this.gbTypeUser.TabStop = false;
             this.gbTypeUser.Text = "Type utilisateur";
             // 
-            // rdAdmin
-            // 
-            this.rdAdmin.Location = new System.Drawing.Point(26, 32);
-            this.rdAdmin.Name = "rdAdmin";
-            this.rdAdmin.Size = new System.Drawing.Size(208, 63);
-            this.rdAdmin.TabIndex = 0;
-            this.rdAdmin.TabStop = true;
-            this.rdAdmin.Text = "admin";
-            this.rdAdmin.UseVisualStyleBackColor = true;
-            // 
             // rdUser
             // 
-            this.rdUser.Location = new System.Drawing.Point(33, 129);
+            this.rdUser.Checked = true;
+            this.rdUser.Location = new System.Drawing.Point(32, 120);
             this.rdUser.Name = "rdUser";
             this.rdUser.Size = new System.Drawing.Size(180, 18);
             this.rdUser.TabIndex = 1;
             this.rdUser.TabStop = true;
             this.rdUser.Text = "utilisateur";
             this.rdUser.UseVisualStyleBackColor = true;
+            // 
+            // rdAdmin
+            // 
+            this.rdAdmin.Location = new System.Drawing.Point(4, 19);
+            this.rdAdmin.Name = "rdAdmin";
+            this.rdAdmin.Size = new System.Drawing.Size(208, 63);
+            this.rdAdmin.TabIndex = 0;
+            this.rdAdmin.Text = "admin";
+            this.rdAdmin.UseVisualStyleBackColor = true;
             // 
             // tbUser
             // 
@@ -119,11 +120,22 @@ namespace CartesAcces
             this.lblMdp.TabIndex = 6;
             this.lblMdp.Text = "Mot de passe";
             // 
+            // btValid
+            // 
+            this.btValid.Location = new System.Drawing.Point(227, 322);
+            this.btValid.Name = "btValid";
+            this.btValid.Size = new System.Drawing.Size(279, 94);
+            this.btValid.TabIndex = 7;
+            this.btValid.Text = "valider";
+            this.btValid.UseVisualStyleBackColor = true;
+            this.btValid.Click += new System.EventHandler(this.btValid_Click);
+            // 
             // frmCreationUtilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btValid);
             this.Controls.Add(this.lblMdp);
             this.Controls.Add(this.lblMdpValide);
             this.Controls.Add(this.lbNomUtilisateur);
@@ -133,11 +145,12 @@ namespace CartesAcces
             this.Controls.Add(this.gbTypeUser);
             this.Name = "frmCreationUtilisateur";
             this.Text = "frmCreationUtilisateur";
-            this.Load += new System.EventHandler(this.frmCreationUtilisateur_Load);
             this.gbTypeUser.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button btValid;
 
         private System.Windows.Forms.TextBox tbUser;
 

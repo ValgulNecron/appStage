@@ -57,14 +57,6 @@ namespace CartesAcces
                                 }
                             }
                         }
-                        Globale._cas = 1;
-                        var frmWait = new barDeProgression();
-                        frmWait.StartPosition = FormStartPosition.Manual;
-                        frmWait.Location = new Point(800, 300);;
-                        frmWait.Show();
-                        frmWait.TopMost = true;
-                        Globale._actuelle = new frmImportation();
-                        frmAccueil.OpenChildForm(Globale._actuelle);
                         string macAddress = string.Empty;
                         foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
                         {
@@ -80,6 +72,16 @@ namespace CartesAcces
                         log.Action = "C'est connecter au logiciel";
                         log.AdMac = macAddress;
                         ClassSql.db.Insert(log);
+                        
+
+                        Globale._cas = 1;
+                        var frmWait = new barDeProgression();
+                        frmWait.StartPosition = FormStartPosition.Manual;
+                        frmWait.Location = new Point(800, 300);;
+                        frmWait.Show();
+                        frmWait.TopMost = true;
+                        Globale._actuelle = new frmImportation();
+                        frmAccueil.OpenChildForm(Globale._actuelle);
                     }
                 }
                 catch (Exception ex)
