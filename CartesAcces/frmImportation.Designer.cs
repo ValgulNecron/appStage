@@ -44,15 +44,18 @@ namespace CartesAcces
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnImporterUnEtablissement = new System.Windows.Forms.Button();
             this.btCreationUtilisateur = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImporterEleves
             // 
-            this.btnImporterEleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.btnImporterEleves.Location = new System.Drawing.Point(292, 44);
+            this.btnImporterEleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImporterEleves.Location = new System.Drawing.Point(210, 248);
+            this.btnImporterEleves.MaximumSize = new System.Drawing.Size(320, 35);
+            this.btnImporterEleves.MinimumSize = new System.Drawing.Size(320, 35);
             this.btnImporterEleves.Name = "btnImporterEleves";
-            this.btnImporterEleves.Size = new System.Drawing.Size(237, 23);
+            this.btnImporterEleves.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnImporterEleves.Size = new System.Drawing.Size(320, 35);
             this.btnImporterEleves.TabIndex = 0;
             this.btnImporterEleves.Text = "Importer une nouvelle liste d\'élève";
             this.btnImporterEleves.UseVisualStyleBackColor = true;
@@ -60,9 +63,12 @@ namespace CartesAcces
             // 
             // btnImportEDT
             // 
-            this.btnImportEDT.Location = new System.Drawing.Point(292, 91);
-            this.btnImportEDT.Name = "btnImportEDT";
-            this.btnImportEDT.Size = new System.Drawing.Size(237, 23);
+            this.btnImportEDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportEDT.Location = new System.Drawing.Point(210, 313);
+            this.btnImportEDT.MaximumSize = new System.Drawing.Size(320, 35);
+            this.btnImportEDT.MinimumSize = new System.Drawing.Size(320, 35);            this.btnImportEDT.Name = "btnImportEDT";
+            this.btnImportEDT.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnImportEDT.Size = new System.Drawing.Size(320, 35);
             this.btnImportEDT.TabIndex = 1;
             this.btnImportEDT.Text = "Importer des emplois du temps";
             this.btnImportEDT.UseVisualStyleBackColor = true;
