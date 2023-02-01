@@ -155,7 +155,6 @@ namespace CartesAcces
                 else
                 {
                     Connexion();
-                    //uneligne
                 }
             }
         }
