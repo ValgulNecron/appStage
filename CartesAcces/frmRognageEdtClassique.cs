@@ -9,6 +9,11 @@ using CarteAcces;
 
 namespace CartesAcces
 {
+    /*
+     * Permet de rogner l'edt classique
+     * l'edt classique est un edt de classe non personnalisé
+     * il est enregistré dans le dossier data/FichierEdtClasse
+     */
     public partial class frmRognageEdtClassique : Form
     {
         private List<string> listeFichiers = new List<string>();
