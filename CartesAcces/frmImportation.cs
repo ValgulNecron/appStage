@@ -243,5 +243,11 @@ namespace CartesAcces
             Form frmImportEtab = new frmImportEtablissement();
             frmImportEtab.Show();
         }
+
+        private void btCreationUtilisateur_Click(object sender, EventArgs e)
+        {
+            Form frmCreationUtilisateur = new frmCreationUtilisateur();
+            frmCreationUtilisateur.Show();
+        }
     }
 }
