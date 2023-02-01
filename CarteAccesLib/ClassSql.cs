@@ -90,5 +90,8 @@ namespace CartesAcces
 
         [LinqToDB.Mapping.Column(Name = "emailEtablissement")]
         public string EmailEtablissement { get; set; }
+        
+        [LinqToDB.Mapping.Column(Name = "urlEtablissement")]
+        public string UrlEtablissement { get; set; }
     }
 }

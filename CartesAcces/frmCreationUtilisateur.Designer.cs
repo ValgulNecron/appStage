@@ -122,7 +122,7 @@ namespace CartesAcces
             // 
             // btValid
             // 
-            this.btValid.Location = new System.Drawing.Point(227, 322);
+            this.btValid.Location = new System.Drawing.Point(242, 318);
             this.btValid.Name = "btValid";
             this.btValid.Size = new System.Drawing.Size(279, 94);
             this.btValid.TabIndex = 7;
