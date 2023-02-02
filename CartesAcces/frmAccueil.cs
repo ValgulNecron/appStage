@@ -91,6 +91,16 @@ namespace CartesAcces
             }
             
             timer = new Timer(this);
+
+            try
+            {
+                var image = Image.FromFile("./data/carteface/logo.png");
+                pictureBox1.Image = image;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         //Création de menu de navigation
