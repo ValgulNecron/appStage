@@ -212,6 +212,8 @@ namespace CartesAcces
         {
             try
             {
+                Edition.rognageX = Math.Min(Edition.rognageX, e.X);
+                Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
                 Cursor = Cursors.Default;
                 var pathEdt = Chemin.cheminEdt;
                 Edition.selectionClique = false;

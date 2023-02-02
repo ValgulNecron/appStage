@@ -1,22 +1,14 @@
 # appStage 
 
-Repos du l'application de création de cartes d'accès   
+Repos de l'application de création de cartes d'accès   
 
 TO DO :
 
 - edt classique fichier mauvais (voir avec aublin) 
 
-- acheter un cerveau a David introuvable
-
-- arrondie au plus petit rognage 
-
-- ferme word si ouvert et bien fermer 
-
-- effacer modif en effacer photo 
+- acheter un cerveau a David introuvable (Attendre le black friday)
 
 - après enregistrement reset de la carte provisoire
-
-- rognage carte multiples sens pas fonctionelle 
 
 - limiter rognage a la taille de la picturebox 
 
