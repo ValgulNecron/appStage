@@ -8,8 +8,6 @@ TO DO :
 
 - acheter un cerveau a David introuvable
 
-- arrondie au plus petit rognage 
-
 - effacer modif en effacer photo 
 
 - après enregistrement reset de la carte provisoire
