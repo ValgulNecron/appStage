@@ -112,6 +112,7 @@ namespace CartesAcces
                 // -- On est dans le mode selection
                 Edition.selectionClique = true;
 
+                btnSelect.Enabled = false;
                 btnCancel.Enabled = true;
             }
             catch
@@ -134,6 +135,7 @@ namespace CartesAcces
                 pbCarteArriere.Height = 354;
                 Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
                 pbCarteArriere.Refresh();
+                btnSelect.Enabled = true;
                 btnCancel.Enabled = false;
             }
             catch
@@ -225,6 +227,14 @@ namespace CartesAcces
                         var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
                         Edition.selectionClique = false;
                         pbCarteArriere.Image = Image.FromFile(pathEdt);
+                        
+                        Edition.rognageX = 0;
+                        Edition.rognageY = 0;
+                        Edition.rognageHauteur = 0;
+                        Edition.rognageLargeur = 0;
+                        
+                        btnSelect.Enabled = true;
+                        btnCancel.Enabled = false;
                     }
                 }
             }
