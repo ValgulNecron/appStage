@@ -19,10 +19,11 @@ namespace CarteAcces
                     pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
                 }
             }
-            catch { }
-
+            catch
+            {
+            }
         }
-        
+
         public static void ajouterEdtPerso(PictureBox pbCarteArriere)
         {
             // -- Parcours des fichiers...
@@ -42,7 +43,7 @@ namespace CarteAcces
                 pbCarteArriere.Image = new Bitmap(opfPath);
             }
         }
-        
+
         public static void rognageEdt(PictureBox pbCarteArriere, string cheminEdt)
         {
             // -- Si la largeur a rogner est trop faible, on sort --
@@ -83,7 +84,7 @@ namespace CarteAcces
             pbCarteArriere.Width = 540;
             pbCarteArriere.Height = 354;
         }
-        
+
         public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
         {
             foreach (var eleve in listeEleve)

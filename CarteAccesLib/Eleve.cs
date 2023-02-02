@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 
 namespace CartesAcces
 {
@@ -76,19 +75,19 @@ namespace CartesAcces
             // Correction sur le regime
             if (eleve.RegimeEleve == "EXTERN")
                 cle += "Externe";
-            else if (eleve.RegimeEleve.Substring(0, 2) == "DP")  cle += "12P";
+            else if (eleve.RegimeEleve.Substring(0, 2) == "DP") cle += "12P";
 
             // Option 1
             cle += eleve.OptionUnEleve;
 
             // Option 2
-            if (eleve.OptionDeuxEleve != "")  cle += eleve.OptionDeuxEleve;
+            if (eleve.OptionDeuxEleve != "") cle += eleve.OptionDeuxEleve;
 
             // Option 3
-            if (eleve.OptionTroisEleve != "")  cle += eleve.OptionTroisEleve;
+            if (eleve.OptionTroisEleve != "") cle += eleve.OptionTroisEleve;
 
             // Option 4
-            if (eleve.OptionQuatreEleve != "")  cle += eleve.OptionQuatreEleve;
+            if (eleve.OptionQuatreEleve != "") cle += eleve.OptionQuatreEleve;
 
             return cle;
         }
