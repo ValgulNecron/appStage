@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -269,7 +270,35 @@ namespace CartesAcces
 
         private void btnImportFaceCarte_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                lblImportFaceCarte = Globale._lblDate;
+                Globale._cheminFaceCarte = Chemin.setCheminImportationFaceCarte();
+                
+                Globale._pasDeBar = true;
+                
+                Form frmSelectionNiveau = new frmSelectNiveau();
+                frmSelectionNiveau.Show();
+
+                string macAddress = string.Empty;
+                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                    {
+                        macAddress += nic.GetPhysicalAddress().ToString();
+                        break;
+                    }
+                }
+                var log = new LogActions();
+                log.DateAction = DateTime.Now;
+                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.Action = "à importer des EDT classiques";
+                log.AdMac = macAddress;
+                ClassSql.db.Insert(log);
+            }
+            catch
+            {
+            }
         }
     }
 }

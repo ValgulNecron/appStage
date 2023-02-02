@@ -13,7 +13,7 @@ namespace CartesAcces
 
         public static Form _connexion;
 
-        
+        public static bool _pasDeBar = false;
 
         // connexion
         public static bool _estConnecter = false;
@@ -63,6 +63,7 @@ namespace CartesAcces
         public static string _cheminPdf;
         public static string _cheminPhoto;
         public static string _cheminEdtClassique;
+        public static string _cheminFaceCarte;
         
         public static bool _gitPoule = true;
     }

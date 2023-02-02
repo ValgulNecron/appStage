@@ -335,6 +335,21 @@ namespace CartesAcces
             }
         }
 
+        public static void importCarteFace(string chemin)
+        {
+            var cheminSource = chemin;
+            var cheminDestination = Chemin.cheminCarteFace + Globale._classe + "eme.png";
+
+            try
+            {
+                File.Copy(chemin, cheminDestination, true);
+            }
+            catch
+            {
+                
+            }
+        }
+        
         public static void importEdtClassique(string chemin)
         {
             var cheminSource = chemin;
@@ -344,12 +359,14 @@ namespace CartesAcces
             {
                 if (Directory.Exists(cheminDestination))
                 {
-                    foreach (var fichier in Directory.GetFiles(cheminDestination)) File.Delete(fichier);
+                    foreach (var fichier in Directory.GetFiles(cheminDestination))
+                    {
+                        if (!fichier.Contains("Default")) File.Delete(fichier);
+                    }
                     Directory.Delete(cheminDestination);
                 }
 
                 Directory.CreateDirectory(cheminDestination);
-                var dossier = new DirectoryInfo(cheminSource);
 
                 //MessageBox.Show("Import réussie !");
             }
