@@ -1,6 +1,6 @@
 # appStage 
 
-Repos du l'application de création de cartes d'accès   
+Repos de l'application de création de cartes d'accès   
 
 TO DO :
 
