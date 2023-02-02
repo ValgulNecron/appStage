@@ -27,6 +27,9 @@ POUR LE RAPPORT DE STAGE (ballec) :
 - Lister et documenter les référentiels utilisés dans votre entreprise. 
 - (utilisable pour l’épreuve B1/E4 en lien avec le portefeuille)
 
+
+https://gist.github.com/cuonggt/9b7d08a597b167299f0d
+
 ---
  
 # Prérequis
