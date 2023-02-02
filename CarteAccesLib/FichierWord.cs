@@ -245,8 +245,6 @@ namespace CarteAccesLib
                 Marshal.FinalReleaseComObject(WordApp);
 
                 GC.Collect();
-
-               
             }
         }
     }

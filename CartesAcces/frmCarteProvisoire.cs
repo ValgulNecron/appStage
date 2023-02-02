@@ -311,16 +311,16 @@ namespace CartesAcces
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-          FichierWord.getDossierCarteProvisoire();
-          Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
+            FichierWord.getDossierCarteProvisoire();
+            Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
                 (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
-          Globale._cas = 5;
+            Globale._cas = 5;
 
-          // backgroundWorker
-          var frmWait = new barDeProgression();
-          frmWait.StartPosition = FormStartPosition.CenterScreen;
-          frmWait.Show();
-          frmWait.TopMost = true;
+            // backgroundWorker
+            var frmWait = new barDeProgression();
+            frmWait.StartPosition = FormStartPosition.CenterScreen;
+            frmWait.Show();
+            frmWait.TopMost = true;
         }
 
         private void rdbUlis_CheckedChanged(object sender, EventArgs e)
