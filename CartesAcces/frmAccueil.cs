@@ -79,7 +79,7 @@ namespace CartesAcces
 
             try
             {
-                var image = Image.FromFile("./data/carteface/logo.png");
+                var image = Image.FromFile("./data/FichierCartesFace/logo.png");
                 pictureBox1.Image = image;
             }
             catch (Exception exception)
