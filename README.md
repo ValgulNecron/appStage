@@ -10,8 +10,6 @@ TO DO :
 
 - arrondie au plus petit rognage 
 
-- ferme word si ouvert et bien fermer 
-
 - effacer modif en effacer photo 
 
 - après enregistrement reset de la carte provisoire
