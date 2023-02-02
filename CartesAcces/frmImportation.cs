@@ -63,8 +63,7 @@ namespace CartesAcces
                 {
                     Globale._cas = 2;
                     var frmWait = new barDeProgression();
-                    frmWait.StartPosition = FormStartPosition.Manual;
-                    frmWait.Location = new Point(0, 0);
+                    frmWait.StartPosition = FormStartPosition.CenterScreen;
                     frmWait.Show();
                     frmWait.TopMost = true;
                 }
@@ -129,9 +128,9 @@ namespace CartesAcces
                 Globale._cheminPhoto = Chemin.setCheminImportationDossier();
                 Globale._cas = 4;
                 var frmWait = new barDeProgression();
-                frmWait.StartPosition = FormStartPosition.Manual;
-                frmWait.Location = new Point(0, 0);
+                frmWait.StartPosition = FormStartPosition.CenterScreen;
                 frmWait.Show();
+                frmWait.TopMost = true;
                 frmWait.TopMost = true;
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())

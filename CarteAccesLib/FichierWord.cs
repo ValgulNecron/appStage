@@ -82,8 +82,11 @@ namespace CarteAccesLib
             Eleve.possedeEdt(listeEleve);
             var fichierWord = initWordFile(15, 15, 15, 15);
 
+            Globale._lblCount.Visible = true;
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
+                Globale._lblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString();
+                
                 // -- Les élèves sont gérés deux par deux --
 
                 // -- Carte Face : 1/2 Eleve --
@@ -120,6 +123,8 @@ namespace CarteAccesLib
                 Photo.verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
                 Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
+                Globale._lblCount.Text = (compt + 1).ToString() + "/" + listeEleve.Count.ToString();
+                
                 // -- Ajout des deux fichier PNG au nouveau document Word --
                 var shapeCarteArriere1 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "/" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png", Type.Missing,
