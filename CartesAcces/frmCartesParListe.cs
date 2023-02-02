@@ -133,5 +133,58 @@ namespace CartesAcces
             {
             }
         }
+        
+        private void rdChanged(object sender, EventArgs e)
+        {
+            if (sender is RadioButton)
+            {
+                if ((sender as RadioButton).Checked)
+                {
+                    switch ((sender as RadioButton).Name)
+                    {
+                        case "tout":
+                            toutF();
+                            break;
+                        case "Seme":
+                            SemeF();
+                            break;
+                        case "Ceme":
+                            CemeF();
+                            break;
+                        case "Qeme":
+                            QemeF();
+                            break;
+                        case "Teme":
+                            TemeF();
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void toutF()
+        {
+            
+        }
+
+        private void SemeF()
+        {
+            
+        }
+
+        private void CemeF()
+        {
+            
+        }
+
+        private void QemeF()
+        {
+            
+        }
+
+        private void TemeF()
+        {
+            
+        }
     }
 }
