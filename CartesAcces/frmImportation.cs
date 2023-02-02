@@ -290,6 +290,8 @@ namespace CartesAcces
 
         private void btnImportLogo_Click(object sender, EventArgs e)
         {
+            
+            
             string macAddress = string.Empty;
             foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
             {
