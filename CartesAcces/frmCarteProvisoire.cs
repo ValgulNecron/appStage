@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
 using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
@@ -14,7 +15,7 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
         }
-
+        
         private void changementTexte(object sender, EventArgs e)
         {
             var prenom = txtPrenom.Text;
@@ -339,7 +340,7 @@ namespace CartesAcces
             Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
                 (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
             Globale._cas = 5;
-
+            Globale._actuelle = this;
             // backgroundWorker
             var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.CenterScreen;

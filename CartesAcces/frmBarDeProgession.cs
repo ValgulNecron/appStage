@@ -119,6 +119,7 @@ namespace CartesAcces
                         Globale._listeSauvegardeProvisoire.Item2,
                         Globale._listeSauvegardeProvisoire.Item3, Globale._listeSauvegardeProvisoire.Item4,
                         Globale._listeSauvegardeProvisoire.Item5);
+
                     var macAddress = "";
 
                     foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
