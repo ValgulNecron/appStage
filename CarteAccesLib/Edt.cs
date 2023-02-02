@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -54,11 +55,17 @@ namespace CarteAcces
                 qui sont celles des vrai fichier EDT !
                 Cela permet d'éviter les problèmes de résolution d'image après le rognage */
 
-            var rogagneLargeurReel = Edition.rognageLargeur * pbCarteArriere.Image.Width / 540;
-            var rogagneHauteurReel = Edition.rognageHauteur * pbCarteArriere.Image.Height / 354;
-            var rognageXReel = Edition.rognageX * pbCarteArriere.Image.Width / 540;
-            var rogangeYReel = Edition.rognageY * pbCarteArriere.Image.Height / 354;
+            // -- Je sais c'est moche mais j'ai pas eu le choix... --
+            double rLargeurReel = Edition.rognageLargeur * pbCarteArriere.Image.Width / 540;
+            double rHauteurReel = Edition.rognageHauteur * pbCarteArriere.Image.Height / 354;
+            double rXReel = Edition.rognageX * pbCarteArriere.Image.Width / 540;
+            double rYReel = Edition.rognageY * pbCarteArriere.Image.Height / 354;
 
+            var rogagneLargeurReel = Convert.ToInt32(Math.Round(rLargeurReel));
+            var rogagneHauteurReel = Convert.ToInt32(Math.Round(rHauteurReel));
+            var rognageXReel = Convert.ToInt32(Math.Round(rXReel));
+            var rogangeYReel = Convert.ToInt32(Math.Round(rYReel));
+            
             var rectangle = new Rectangle(rognageXReel, rogangeYReel, rogagneLargeurReel, rogagneHauteurReel);
 
             // -- On stock l'image original dans un bitmap --
