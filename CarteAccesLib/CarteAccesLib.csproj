@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -32,9 +32,6 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
-            <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
-        </Reference>
         <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
             <HintPath>..\packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
         </Reference>
@@ -53,7 +50,7 @@
         <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
             <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.CSharp"/>
+        <Reference Include="Microsoft.CSharp" />
         <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
             <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.32\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
         </Reference>
@@ -63,68 +60,68 @@
         <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
             <EmbedInteropTypes>True</EmbedInteropTypes>
         </Reference>
-        <Reference Include="mscorlib"/>
+        <Reference Include="mscorlib" />
         <Reference Include="MySql.Data, Version=8.0.32.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
             <HintPath>..\packages\MySql.Data.8.0.32\lib\net452\MySql.Data.dll</HintPath>
         </Reference>
-        <Reference Include="PresentationCore"/>
-        <Reference Include="PresentationFramework"/>
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
         <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
             <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
         </Reference>
         <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
             <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
         </Reference>
-        <Reference Include="System"/>
+        <Reference Include="System" />
         <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
         </Reference>
-        <Reference Include="System.ComponentModel"/>
+        <Reference Include="System.ComponentModel" />
         <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
             <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
         </Reference>
-        <Reference Include="System.ComponentModel.DataAnnotations"/>
-        <Reference Include="System.Configuration"/>
-        <Reference Include="System.Configuration.Install"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Data"/>
-        <Reference Include="System.Drawing"/>
-        <Reference Include="System.Management"/>
-        <Reference Include="System.Transactions"/>
-        <Reference Include="System.Windows.Forms"/>
-        <Reference Include="System.Xml"/>
-        <Reference Include="WindowsBase"/>
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+        <Reference Include="System.Configuration" />
+        <Reference Include="System.Configuration.Install" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Management" />
+        <Reference Include="System.Transactions" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+        <Reference Include="WindowsBase" />
         <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
             <HintPath>..\packages\MySql.Data.8.0.32\lib\net452\ZstdNet.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Chemin.cs"/>
-        <Compile Include="ClassSql.cs"/>
-        <Compile Include="QRCode.cs"/>
-        <Compile Include="TailleControle.cs"/>
-        <Compile Include="Couleur.cs"/>
-        <Compile Include="Edition.cs"/>
-        <Compile Include="Edt.cs"/>
-        <Compile Include="Eleve.cs"/>
-        <Compile Include="Globale.cs"/>
-        <Compile Include="PdfGs.cs"/>
-        <Compile Include="Photo.cs"/>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
-        <Compile Include="ReadCSV.cs"/>
-        <Compile Include="Securite.cs"/>
-        <Compile Include="Settings.cs"/>
-        <Compile Include="FichierWord.cs"/>
-        <Compile Include="Trie.cs"/>
+        <Compile Include="Chemin.cs" />
+        <Compile Include="ClassSql.cs" />
+        <Compile Include="QRCode.cs" />
+        <Compile Include="TailleControle.cs" />
+        <Compile Include="Couleur.cs" />
+        <Compile Include="Edition.cs" />
+        <Compile Include="Edt.cs" />
+        <Compile Include="Eleve.cs" />
+        <Compile Include="Globale.cs" />
+        <Compile Include="PdfGs.cs" />
+        <Compile Include="Photo.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="ReadCSV.cs" />
+        <Compile Include="Securite.cs" />
+        <Compile Include="Settings.cs" />
+        <Compile Include="FichierWord.cs" />
+        <Compile Include="Trie.cs" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="App.config"/>
-        <None Include="packages.config"/>
+        <None Include="App.config" />
+        <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include="config.xml"/>
+        <Content Include="config.xml" />
     </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
            Other similar extension points exist, see Microsoft.Common.targets.
       <Target Name="BeforeBuild">
