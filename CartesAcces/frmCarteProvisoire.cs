@@ -318,13 +318,13 @@ namespace CartesAcces
         private void btnSave_Click(object sender, EventArgs e)
         {
           FichierWord.getDossierCarteProvisoire();
-          Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
+          Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
+                (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
           Globale._cas = 5;
 
           // backgroundWorker
           var frmWait = new barDeProgression();
-          frmWait.StartPosition = FormStartPosition.Manual;
-          frmWait.Location = new Point(0, 0);
+          frmWait.StartPosition = FormStartPosition.CenterScreen;
           frmWait.Show();
           frmWait.TopMost = true;
         }
