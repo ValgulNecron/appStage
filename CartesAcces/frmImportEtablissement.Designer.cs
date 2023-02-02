@@ -261,7 +261,6 @@ namespace CartesAcces
             this.Text = "Importer un établissement";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

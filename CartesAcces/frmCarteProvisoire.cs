@@ -317,22 +317,30 @@ namespace CartesAcces
         {
             try
             {
-                FichierWord.sauvegardeCarteProvisoireWord(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
-                string macAddress = string.Empty;
-                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                if (pbPhoto.Image == null)
                 {
-                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
-                    {
-                        macAddress += nic.GetPhysicalAddress().ToString();
-                        break;
-                    }
+                    MessageBox.Show("Veuillez ajouter une photo");
                 }
-                var log = new LogActions();
-                log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
-                log.Action = "à fait une carte provisoire";
-                log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                else
+                {
+                    FichierWord.sauvegardeCarteProvisoireWord(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
+                    string macAddress = string.Empty;
+                    foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                    {
+                        if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                        {
+                            macAddress += nic.GetPhysicalAddress().ToString();
+                            break;
+                        }
+                    }
+                    var log = new LogActions();
+                    log.DateAction = DateTime.Now;
+                    log.NomUtilisateur = Globale._nomUtilisateur;
+                    log.Action = "à fait une carte provisoire";
+                    log.AdMac = macAddress;
+                    ClassSql.db.Insert(log);
+                }
+
             }
             catch
             {
