@@ -84,6 +84,9 @@ namespace CartesAcces
                 rdbUPE2A.Enabled = true;
                 rdbClRelais.Enabled = true;
                 rdbRas.Enabled = true;
+                pbPhoto.Visible = false;
+                pbPhoto.Image = null;
+                pbPhoto.Location = new Point(5, 5);
             }
             catch
             {
@@ -346,23 +349,6 @@ namespace CartesAcces
             frmWait.StartPosition = FormStartPosition.CenterScreen;
             frmWait.Show();
             frmWait.TopMost = true;
-
-
-
-            try
-            {
-                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
-                Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
-                txtPrenom.Text = "";
-                txtNom.Text = "";
-                groupBox2.Enabled = true;
-                rdbUlis.Checked = false;
-                rdbUPE2A.Checked = false;
-                rdbRas.Checked = true;
-            }
-            catch
-            {
-            }
         }
 
         private void rdbUlis_CheckedChanged(object sender, EventArgs e)
