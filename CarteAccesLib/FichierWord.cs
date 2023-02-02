@@ -177,8 +177,8 @@ namespace CarteAccesLib
             MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
         }
 
-        public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
-            PictureBox pbCarteFace, TextBox txtNom, TextBox txtPrenom)
+
+        public static void getDossierCarteProvisoire()
         {
             var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK)
@@ -190,9 +190,13 @@ namespace CarteAccesLib
             {
                 MessageBox.Show(
                     "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
-                return;
+                return ;
             }
+        }
 
+        public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
+            PictureBox pbCarteFace, TextBox txtNom, TextBox txtPrenom)
+        {
             if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
             {
                 var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;

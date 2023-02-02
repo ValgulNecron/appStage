@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -65,5 +66,9 @@ namespace CartesAcces
         public static string _cheminEdtClassique;
         
         public static bool _gitPoule = true;
+
+        // carte provisoire 
+        public static PictureBox _pbPhoto;
+        public static Tuple <PictureBox, PictureBox, PictureBox, TextBox, TextBox> _listeSauvegardeProvisoire;
     }
 }
