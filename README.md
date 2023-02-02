@@ -8,9 +8,7 @@ TO DO :
 
 - acheter un cerveau a David introuvable (Attendre le black friday)
 
-- après enregistrement reset de la carte provisoire
-
-- limiter rognage a la taille de la picturebox 
+- après enregistrement reset de la carte provisoire (chiant à cause de la barre de chargement)
 
 - rajouter compteur sur l'impression pour savoir l'avancement
 
