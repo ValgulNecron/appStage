@@ -4,6 +4,23 @@ Repos du l'application de création de cartes d'accès
 
 TO DO :
 
+user de test pas admin
+est classique fichier mauvais 
+acheter un cerveau a David
+logo changement dossier + dimension 
+arrondie au plus petit rognage 
+ferme word si ouvert et bien fermer 
+effacer modif en effacer photo 
+après enregistrement reset de la carte provisoire
+rognage carte multiples sens pas fonctionelle 
+limiter rognage a la taille de la picturebox 
+retirer le maximise 
+rajouter compteur sur l'impression pour savoir l'avancement
+fix compteur pour nombre impair
+trie liste perso classe radio button 
+changement de mot de passe design 
+bouton changement de MDP ouverture infinie David est débile a spam 
+
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
