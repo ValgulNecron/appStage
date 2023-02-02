@@ -6,13 +6,9 @@ TO DO :
 
 - edt classique fichier mauvais (voir avec aublin) 
 
-- acheter un cerveau a David introuvable
-
-- effacer modif en effacer photo 
+- acheter un cerveau a David introuvable (Attendre le black friday)
 
 - après enregistrement reset de la carte provisoire
-
-- rognage carte multiples sens pas fonctionelle 
 
 - limiter rognage a la taille de la picturebox 
 
