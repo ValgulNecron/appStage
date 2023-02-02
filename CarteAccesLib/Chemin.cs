@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace CartesAcces
 {
@@ -10,8 +8,20 @@ namespace CartesAcces
         public static string cheminDossierListeEleve = "./data/ImportListeEleve/";
         public static string cheminPhotoEleve = "./data/ElevesPhoto/";
         public static string cheminEdtClassique = "./data/FichierEdtClasse";
+        public static string cheminFaceCarte = "./data/FichierCartesFace/";
 
         public static string cheminEdt = "";
+
+        public static string setCheminImportationFaceCarte()
+        {
+            using (var ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files Only | *.png; *.jpg";
+                ofd.Title = "Choose the File";
+                if (ofd.ShowDialog() == DialogResult.OK) return ofd.FileName;
+                return "failed";
+            }
+        }
 
         public static string setCheminImportationEdtClassique()
         {

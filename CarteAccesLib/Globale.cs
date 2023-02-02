@@ -14,7 +14,7 @@ namespace CartesAcces
 
         public static Form _connexion;
 
-        
+        public static bool _pasDeBar = false;
 
         // connexion
         public static bool _estConnecter = false;
@@ -36,17 +36,17 @@ namespace CartesAcces
         // theme 
         public static bool _estEnModeSombre = false;
 
-        public static List<int> _couleurDeFondClaire = new List<int> { 245, 252, 255}; 
+        public static List<int> _couleurDeFondClaire = new List<int> {245, 252, 255};
         public static List<int> _couleurDuTexteclaire = new List<int> {31, 33, 48};
-        public static List<int> _couleurBandeauxClaire = new List<int> { 138, 138, 236 };
+        public static List<int> _couleurBandeauxClaire = new List<int> {138, 138, 236};
         public static List<int> _couleurBoutonsClaire = new List<int> {197, 210, 243};
-        public static List<int> _couleurTextBoxClaire = new List<int> { 230, 232, 245};
+        public static List<int> _couleurTextBoxClaire = new List<int> {230, 232, 245};
         public static List<int> _couleurBoutonOffClaire = new List<int> {140, 143, 161};
 
-        public static List<int> _couleurDeFondSombre = new List<int> { 108, 112, 134 };
-        public static List<int> _couleurDuTexteSombre = new List<int> { 205, 214, 244 };
-        public static List<int> _couleurBandeauxSombre = new List<int> { 53, 54, 58 };
-        public static List<int> _couleurBoutonsSombre = new List<int> { 88, 91, 112 };
+        public static List<int> _couleurDeFondSombre = new List<int> {108, 112, 134};
+        public static List<int> _couleurDuTexteSombre = new List<int> {205, 214, 244};
+        public static List<int> _couleurBandeauxSombre = new List<int> {53, 54, 58};
+        public static List<int> _couleurBoutonsSombre = new List<int> {88, 91, 112};
         public static List<int> _couleurTextBoxSombre = new List<int> {127, 132, 156};
         public static List<int> _couleurBoutonOffSombre = new List<int> {69, 71, 90};
 
@@ -64,11 +64,12 @@ namespace CartesAcces
         public static string _cheminPdf;
         public static string _cheminPhoto;
         public static string _cheminEdtClassique;
-        
+        public static string _cheminFaceCarte;
+
         public static bool _gitPoule = true;
 
         // carte provisoire 
         public static PictureBox _pbPhoto;
-        public static Tuple <PictureBox, PictureBox, PictureBox, TextBox, TextBox> _listeSauvegardeProvisoire;
+        public static Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox> _listeSauvegardeProvisoire;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using LinqToDB;
@@ -20,7 +21,7 @@ namespace CartesAcces
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            Etablissement etablissement = new Etablissement();
+            var etablissement = new Etablissement();
             etablissement.NomEtablissement = txtNomEtablissement.Text;
             etablissement.NomRueEtablissement = txtRueEtablissement.Text;
             etablissement.EmailEtablissement = txtMailEtablissement.Text;
@@ -30,15 +31,16 @@ namespace CartesAcces
             etablissement.NumeroRueEtablissement = Convert.ToInt32(txtNumRueEtablissement.Text);
             etablissement.UrlEtablissement = textBox1.Text;
             ClassSql.db.InsertOrReplace(etablissement);
-            string macAddress = string.Empty;
-            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-            {
-                if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+            var macAddress = string.Empty;
+            foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                     nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                    nic.OperationalStatus == OperationalStatus.Up)
                 {
                     macAddress += nic.GetPhysicalAddress().ToString();
                     break;
                 }
-            }
+
             var log = new LogActions();
             log.DateAction = DateTime.Now;
             log.NomUtilisateur = Globale._nomUtilisateur;
@@ -46,12 +48,30 @@ namespace CartesAcces
             log.AdMac = macAddress;
             ClassSql.db.Insert(log);
             MessageBox.Show("Les informations de l'établissement ont été modifiées");
-            this.Close();
+            Close();
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
+        }
 
+        private void frmImportEtablissement_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var eta = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
+                txtNomEtablissement.Text = eta.NomEtablissement;
+                txtMailEtablissement.Text = eta.EmailEtablissement;
+                txtRueEtablissement.Text = eta.NomRueEtablissement;
+                txtTelEtablissement.Text = eta.NumeroTelephoneEtablissement;
+                txtVilleEtablissement.Text = eta.VilleEtablissement;
+                txtCodePostalEtablissement.Text = eta.CodePostaleEtablissement;
+                txtNumRueEtablissement.Text = eta.NumeroRueEtablissement.ToString();
+                textBox1.Text = eta.UrlEtablissement;
+            }
+            catch
+            {
+            }
         }
     }
 }

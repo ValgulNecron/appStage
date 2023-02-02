@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
-using LinqToDB;
 
 namespace CartesAcces
 {
@@ -15,13 +13,12 @@ namespace CartesAcces
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
-
         }
 
         private void changementTexte(object sender, EventArgs e)
         {
-            string prenom = txtPrenom.Text;
-            string nom = txtNom.Text;
+            var prenom = txtPrenom.Text;
+            var nom = txtNom.Text;
 
             Edition.fondCarteNiveau(pbCarteFace, cbbSection);
 
@@ -247,7 +244,7 @@ namespace CartesAcces
                     pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
                     pbPhoto.Visible = true;
                     // changement
-                    Globale._pbPhoto = pbPhoto; 
+                    Globale._pbPhoto = pbPhoto;
                 }
             }
             catch
@@ -290,10 +287,7 @@ namespace CartesAcces
                 Edition.drag = true;
             }
 
-            if (e.Button == MouseButtons.Right)
-            {
-                return;
-            }
+            if (e.Button == MouseButtons.Right) return;
 
             // -- Actualisation pour voir le déplacement en temps réel --
             Refresh();
@@ -367,7 +361,6 @@ namespace CartesAcces
 
         private void rdbClRelais_CheckedChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

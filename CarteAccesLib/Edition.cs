@@ -13,29 +13,29 @@ namespace CartesAcces
         // ** VARIABLES : Pour l'édition de l'emploi du temps (rognage) **
         public static bool
             selectionClique = false; // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
-        
+
         public static int rognageX; // -> Abscisse de départ du rognage
         public static int rognageY; // -> Ordonnée de départ du rognage
 
         public static int rognageLargeur; // -> Largeur du rognage
         public static int rognageHauteur; // -> Hauteur du rognage
         public static Pen rognagePen; // -> Stylo qui dessine le rectangle correspondant au rognage
-        
+
         // ** VARIABLES  : Déplacement de la photo
         public static bool
             drag = false; // -> Est ce que l'utilisateur a cliqué sur la photo ? (clique maintenue : drag passera a true)
-        
+
         public static int
             posX; // -> Abscisse initiale, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
-        
+
         public static int
             posY; // -> Ordonnée initialie, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
-        
+
         // ** VARIABLES : Chemin de l'image **
         public static string cheminFichier;
-        
+
         public static string cheminImpressionFinal;
-        
+
         // -- Dessine le rectangle de couleur derrière le texte pour une meilleurs visibilité de celui ci --
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, int posX, int posY,
             ComboBox cbbSection)
@@ -90,17 +90,17 @@ namespace CartesAcces
         // -- Change le fond de la carte en fonction de la section choisie
         public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
         {
-            Bitmap bmp = new Bitmap("./data/FichierCartesFace/" + cbbSection.Text + ".png");
-            bmp.SetResolution(150,150);
+            var bmp = new Bitmap("./data/FichierCartesFace/" + cbbSection.Text + ".png");
+            bmp.SetResolution(150, 150);
             pbCarteFace.Image = bmp;
 
             var date = DateTime.Today.ToShortDateString();
             var police = new Font("times new roman", 45, FontStyle.Bold);
             dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
-            
+
             var police2 = new Font("times new roman", 15, FontStyle.Bold);
             dessineTexteCarteFace(police2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
-            
+
             pbCarteFace.Refresh();
         }
 
@@ -209,7 +209,7 @@ namespace CartesAcces
                 btnEdtPerso.Enabled = false;
             }
         }
-        
+
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
             int posY)
         {
@@ -301,7 +301,7 @@ namespace CartesAcces
             if (eleve.SansEDT == false)
             {
                 var cheminEdt = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" +
-                              Eleve.creeCleEleve(eleve) + ".jpg";
+                                Eleve.creeCleEleve(eleve) + ".jpg";
                 pbCarteArriere.Image = Image.FromFile(cheminEdt);
                 Edt.rognageEdt(pbCarteArriere, cheminEdt);
             }
@@ -331,7 +331,21 @@ namespace CartesAcces
             }
             catch (Exception e)
             {
-                MessageBox.Show("eeeee + " + e.ToString());
+                MessageBox.Show("eeeee + " + e);
+            }
+        }
+
+        public static void importCarteFace(string chemin)
+        {
+            var cheminSource = chemin;
+            var cheminDestination = Chemin.cheminFaceCarte + Globale._classe + "eme.png";
+
+            try
+            {
+                File.Copy(chemin, cheminDestination, true);
+            }
+            catch
+            {
             }
         }
 
@@ -344,21 +358,21 @@ namespace CartesAcces
             {
                 if (Directory.Exists(cheminDestination))
                 {
-                    foreach (var fichier in Directory.GetFiles(cheminDestination)) File.Delete(fichier);
+                    foreach (var fichier in Directory.GetFiles(cheminDestination))
+                        if (!fichier.Contains("Default"))
+                            File.Delete(fichier);
                     Directory.Delete(cheminDestination);
                 }
 
                 Directory.CreateDirectory(cheminDestination);
-                var dossier = new DirectoryInfo(cheminSource);
 
                 //MessageBox.Show("Import réussie !");
             }
             catch
             {
-                
             }
         }
-        
+
         // -- Importation des photo des élèves --
         public static void importPhoto(string chemin)
         {
@@ -387,16 +401,11 @@ namespace CartesAcces
 
                 MessageBox.Show("Import réussie !");
 
-                Globale._actuelle.Invoke(new MethodInvoker(delegate {
+                Globale._actuelle.Invoke(new MethodInvoker(delegate
+                {
                     foreach (Control controle in Globale._actuelle.Controls)
-                    {
                         if (controle is Label && controle.Name == "lblDateListeEleve")
-                        {
                             controle.Text = ReadCSV.getDateFile();
-                        }
-                    }
-
-
                 }));
             }
             catch (Exception e)
@@ -405,77 +414,7 @@ namespace CartesAcces
             }
         }
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         public static void gitPoule()
         {
             var gitPoule1 = "⠀⠀⠀⠀⠀⣀⡀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀ ⢀⣤⣤ ⣤⣄⠀⠀ ⠀⠀⠀⠀⠀";

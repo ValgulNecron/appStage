@@ -19,7 +19,7 @@ namespace CartesAcces
         private readonly int frequenceDesVerifEnMinute = 1;
         private readonly System.Timers.Timer timer;
         private DateTime start;
-        
+
         public Timer(Form form)
         {
             this.form = form;
@@ -33,10 +33,10 @@ namespace CartesAcces
             this.form.MouseMove += Form_MouseMove;
             Globale._accueil.MouseMove += Form_MouseMove;
         }
-        
+
         public void ajoutEvenement()
         {
-            this.form.MouseMove += Form_MouseMove;
+            form.MouseMove += Form_MouseMove;
             Globale._accueil.MouseMove += Form_MouseMove;
             Globale._actuelle.MouseMove += Form_MouseMove;
         }
@@ -53,8 +53,9 @@ namespace CartesAcces
                 {
                     Globale._estConnecter = false;
                     Globale._actuelle = new frmConnexion();
-                    Globale._accueil.Invoke(new MethodInvoker(delegate { frmAccueil.OpenChildForm(Globale._actuelle); }));
+                    Globale._accueil.Invoke(
+                        new MethodInvoker(delegate { frmAccueil.OpenChildForm(Globale._actuelle); }));
                 }
         }
     }
-} 
+}

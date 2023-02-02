@@ -42,6 +42,7 @@ namespace CartesAcces
                     listeEleveParSection.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
                     Globale._listeEleveImpr.Add(eleve);
                 }
+
             listeEleveParSection.Sort();
             lblCount.Text = listeEleveParSection.Count.ToString();
 
@@ -58,8 +59,9 @@ namespace CartesAcces
                 var frmMultiplesCartesEdition = new frmMultiplesCartesEdition();
                 frmMultiplesCartesEdition.Show();
             }
-            catch {}
-
+            catch
+            {
+            }
         }
 
         private void frmMultiplesCartes_Load(object sender, EventArgs e)
@@ -78,7 +80,6 @@ namespace CartesAcces
 
         private void cbbImprClasse_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
         }
     }
 }
