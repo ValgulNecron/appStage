@@ -12,8 +12,6 @@ TO DO :
 
 - limiter rognage a la taille de la picturebox 
 
-- retirer le maximise 
-
 - rajouter compteur sur l'impression pour savoir l'avancement
 
 - fix compteur pour nombre impair
