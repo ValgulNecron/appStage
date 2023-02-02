@@ -269,7 +269,42 @@ namespace CartesAcces
 
         private void btnImportFaceCarte_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            
+            
+            string macAddress = string.Empty;
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                {
+                    macAddress += nic.GetPhysicalAddress().ToString();
+                    break;
+                }
+            }
+            var log = new LogActions();
+            log.DateAction = DateTime.Now;
+            log.NomUtilisateur = Globale._nomUtilisateur;
+            log.Action = "à importer des face de carte";
+            log.AdMac = macAddress;
+            ClassSql.db.Insert(log);
+        }
+
+        private void btnImportLogo_Click(object sender, EventArgs e)
+        {
+            string macAddress = string.Empty;
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                {
+                    macAddress += nic.GetPhysicalAddress().ToString();
+                    break;
+                }
+            }
+            var log = new LogActions();
+            log.DateAction = DateTime.Now;
+            log.NomUtilisateur = Globale._nomUtilisateur;
+            log.Action = "à importer le logo de l'etablissement";
+            log.AdMac = macAddress;
+            ClassSql.db.Insert(log);
         }
     }
 }
