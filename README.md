@@ -6,8 +6,6 @@ TO DO :
 
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
 - logo du collège (barre de chargement, .exe,...) 
-- passer plat sur tft (david)
-
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
 
