@@ -8,6 +8,8 @@ namespace CartesAcces
     {
         public static Label _lblDate;
 
+        public static Label _lblCount;
+
         public static int _cas = 0;
 
         public static int _classe = 6;
@@ -71,5 +73,11 @@ namespace CartesAcces
         // carte provisoire 
         public static PictureBox _pbPhoto;
         public static Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox> _listeSauvegardeProvisoire;
+        
+        // liste d'eleve trier
+        public static List<Eleve> _listeEleves6eme;
+        public static List<Eleve> _listeEleves5eme;
+        public static List<Eleve> _listeEleves4eme;
+        public static List<Eleve> _listeEleves3eme;
     }
 }

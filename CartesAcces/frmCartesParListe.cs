@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CarteAccesLib;
+using Microsoft.Office.Interop.Word;
 
 namespace CartesAcces
 {
@@ -11,6 +12,7 @@ namespace CartesAcces
      */
     public partial class frmCartesParListe : Form
     {
+        public static List<Eleve> listeEleve;
         public static List<string> eleveSelectionner;
         public static List<string> nomPrenomEleve;
 
@@ -22,7 +24,7 @@ namespace CartesAcces
 
         public static void eleveEnString()
         {
-            foreach (var eleve in Globale._listeEleve)
+            foreach (var eleve in listeEleve)
                 nomPrenomEleve.Add(eleve.NomEleve + " " + eleve.PrenomEleve + " " + eleve.ClasseEleve);
         }
 
@@ -32,11 +34,49 @@ namespace CartesAcces
             {
                 eleveSelectionner = new List<string>();
                 nomPrenomEleve = new List<string>();
+                listeEleve = Globale._listeEleve;
                 eleveEnString();
                 Eleves.DataSource = nomPrenomEleve;
                 btnAjout.Click += ajoutEleve;
                 btnRetirer.Click += retirerEleve;
                 txtRecherche.TextChanged += recheche;
+                Globale._listeEleves6eme = new List<Eleve>();
+                Globale._listeEleves5eme = new List<Eleve>();
+                Globale._listeEleves4eme = new List<Eleve>();
+                Globale._listeEleves3eme = new List<Eleve>();
+                foreach (Control VARIABLE in groupBox1.Controls)
+                {
+                    (VARIABLE as RadioButton).CheckedChanged += rbChanged;
+                }
+
+                foreach (Eleve el in Globale._listeEleve)
+                {
+                    if (el.ClasseEleve.Substring(0, 1) == 6.ToString())
+                    {
+                        Globale._listeEleves6eme.Add(el);
+                    }
+                }
+                foreach (Eleve el in Globale._listeEleve)
+                {
+                    if (el.ClasseEleve.Substring(0, 1) == 5.ToString())
+                    {
+                        Globale._listeEleves5eme.Add(el);
+                    }
+                }
+                foreach (Eleve el in Globale._listeEleve)
+                {
+                    if (el.ClasseEleve.Substring(0, 1) == 4.ToString())
+                    {
+                        Globale._listeEleves4eme.Add(el);
+                    }
+                }
+                foreach (Eleve el in Globale._listeEleve)
+                {
+                    if (el.ClasseEleve.Substring(0, 1) == 3.ToString())
+                    {
+                        Globale._listeEleves3eme.Add(el);
+                    }
+                }
             }
             catch
             {
@@ -91,7 +131,7 @@ namespace CartesAcces
             try
             {
                 var pattern = ".*" + txtRecherche.Text + ".*";
-                var el = Trie.recherche(pattern);
+                var el = Trie.recherche(pattern, listeEleve);
                 if (el != null)
                 {
                     Eleves.DataSource = el;
@@ -134,7 +174,7 @@ namespace CartesAcces
             }
         }
         
-        private void rdChanged(object sender, EventArgs e)
+        private void rbChanged(object sender, EventArgs e)
         {
             if (sender is RadioButton)
             {
@@ -164,27 +204,42 @@ namespace CartesAcces
 
         private void toutF()
         {
-            
+            listeEleve = Globale._listeEleve;
+            nomPrenomEleve = new List<string>();
+            eleveEnString();
+            Eleves.DataSource = nomPrenomEleve;
         }
 
         private void SemeF()
         {
-            
+            listeEleve = Globale._listeEleves6eme;
+            nomPrenomEleve = new List<string>();
+            eleveEnString();
+            Eleves.DataSource = nomPrenomEleve;
         }
 
         private void CemeF()
         {
-            
+            listeEleve = Globale._listeEleves5eme;
+            nomPrenomEleve = new List<string>();
+            eleveEnString();
+            Eleves.DataSource = nomPrenomEleve;
         }
 
         private void QemeF()
         {
-            
+            listeEleve = Globale._listeEleves4eme;
+            nomPrenomEleve = new List<string>();
+            eleveEnString();
+            Eleves.DataSource = nomPrenomEleve;
         }
 
         private void TemeF()
         {
-            
+            listeEleve = Globale._listeEleves3eme;
+            nomPrenomEleve = new List<string>();
+            eleveEnString();
+            Eleves.DataSource = nomPrenomEleve;
         }
     }
 }

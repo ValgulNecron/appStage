@@ -175,9 +175,14 @@ namespace CartesAcces
 
                 var cheminImpressionFinal = Chemin.setCheminImportationDossier();
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
+
+                Globale._lblCount = lblCompteur;
+                
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
                 FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto,
                     pbCarteArriere);
+                
+                
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                     if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -204,6 +209,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
+            lblCompteur.Visible = false;
             Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
@@ -212,10 +218,31 @@ namespace CartesAcces
         {
             try
             {
-                Cursor = Cursors.Default;
-                var pathEdt = Chemin.cheminEdt;
-                Edition.selectionClique = false;
-                Edt.rognageEdt(pbCarteArriere, pathEdt);
+                if (Edition.selectionClique)
+                {
+                    if(pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(Control.MousePosition)))
+                    {
+                        Edition.rognageX = Math.Min(Edition.rognageX, e.X);
+                        Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
+                        Cursor = Cursors.Default;
+                        var pathEdt = Chemin.cheminEdt;
+                        Edition.selectionClique = false;
+                        Edt.rognageEdt(pbCarteArriere, pathEdt);
+                    }
+                    else
+                    {
+                        Cursor = Cursors.Default;
+                        Edition.selectionClique = false;
+                        pbCarteArriere.Image = Image.FromFile(Chemin.cheminEdt);
+                        btnCancel.Enabled = false;
+                        btnSelect.Enabled = true;
+                        
+                        Edition.rognageX = 0;
+                        Edition.rognageY = 0;
+                        Edition.rognageHauteur = 0;
+                        Edition.rognageLargeur = 0;
+                    }
+                }
             }
             catch
             {

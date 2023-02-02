@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
 using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
@@ -14,7 +15,7 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
         }
-
+        
         private void changementTexte(object sender, EventArgs e)
         {
             var prenom = txtPrenom.Text;
@@ -83,6 +84,9 @@ namespace CartesAcces
                 rdbUPE2A.Enabled = true;
                 rdbClRelais.Enabled = true;
                 rdbRas.Enabled = true;
+                pbPhoto.Visible = false;
+                pbPhoto.Image = null;
+                pbPhoto.Location = new Point(5, 5);
             }
             catch
             {
@@ -112,6 +116,7 @@ namespace CartesAcces
                 // -- On est dans le mode selection
                 Edition.selectionClique = true;
 
+                btnSelect.Enabled = false;
                 btnCancel.Enabled = true;
             }
             catch
@@ -134,6 +139,7 @@ namespace CartesAcces
                 pbCarteArriere.Height = 354;
                 Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
                 pbCarteArriere.Refresh();
+                btnSelect.Enabled = true;
                 btnCancel.Enabled = false;
             }
             catch
@@ -206,13 +212,35 @@ namespace CartesAcces
         {
             try
             {
-                Edition.rognageX = Math.Min(Edition.rognageX, e.X);
-                Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
-                Cursor = Cursors.Default;
-                var classe = cbbClasse.Text;
-                var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
-                Edition.selectionClique = false;
-                Edt.rognageEdt(pbCarteArriere, pathEdt);
+                if (Edition.selectionClique)
+                {
+                    if(pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(Control.MousePosition)))
+                    {
+                        Edition.rognageX = Math.Min(Edition.rognageX, e.X);
+                        Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
+                        Cursor = Cursors.Default;
+                        var classe = cbbClasse.Text;
+                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                        Edition.selectionClique = false;
+                        Edt.rognageEdt(pbCarteArriere, pathEdt);
+                    }
+                    else
+                    {
+                        Cursor = Cursors.Default;
+                        var classe = cbbClasse.Text;
+                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                        Edition.selectionClique = false;
+                        pbCarteArriere.Image = Image.FromFile(pathEdt);
+                        
+                        Edition.rognageX = 0;
+                        Edition.rognageY = 0;
+                        Edition.rognageHauteur = 0;
+                        Edition.rognageLargeur = 0;
+                        
+                        btnSelect.Enabled = true;
+                        btnCancel.Enabled = false;
+                    }
+                }
             }
             catch
             {
@@ -315,7 +343,7 @@ namespace CartesAcces
             Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
                 (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
             Globale._cas = 5;
-
+            Globale._actuelle = this;
             // backgroundWorker
             var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.CenterScreen;
