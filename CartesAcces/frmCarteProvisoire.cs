@@ -246,6 +246,8 @@ namespace CartesAcces
                     pbPhoto.Size = new Size(110, 165);
                     pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
                     pbPhoto.Visible = true;
+                    // changement
+                    Globale._pbPhoto = pbPhoto; 
                 }
             }
             catch
@@ -315,36 +317,16 @@ namespace CartesAcces
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (pbPhoto.Image == null)
-                {
-                    MessageBox.Show("Veuillez ajouter une photo");
-                }
-                else
-                {
-                    FichierWord.sauvegardeCarteProvisoireWord(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
-                    string macAddress = string.Empty;
-                    foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                    {
-                        if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
-                        {
-                            macAddress += nic.GetPhysicalAddress().ToString();
-                            break;
-                        }
-                    }
-                    var log = new LogActions();
-                    log.DateAction = DateTime.Now;
-                    log.NomUtilisateur = Globale._nomUtilisateur;
-                    log.Action = "à fait une carte provisoire";
-                    log.AdMac = macAddress;
-                    ClassSql.db.Insert(log);
-                }
+          FichierWord.getDossierCarteProvisoire();
+          Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>(pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
+          Globale._cas = 5;
 
-            }
-            catch
-            {
-            }
+          // backgroundWorker
+          var frmWait = new barDeProgression();
+          frmWait.StartPosition = FormStartPosition.Manual;
+          frmWait.Location = new Point(0, 0);
+          frmWait.Show();
+          frmWait.TopMost = true;
         }
 
         private void rdbUlis_CheckedChanged(object sender, EventArgs e)

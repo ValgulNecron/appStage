@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using LinqToDB;
@@ -52,6 +53,24 @@ namespace CartesAcces
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmImportEtablissement_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var eta = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
+                txtNomEtablissement.Text = eta.NomEtablissement;
+                txtMailEtablissement.Text = eta.EmailEtablissement;
+                txtRueEtablissement.Text = eta.NomRueEtablissement;
+                txtTelEtablissement.Text = eta.NumeroTelephoneEtablissement;
+                txtVilleEtablissement.Text = eta.VilleEtablissement;
+                txtCodePostalEtablissement.Text = eta.CodePostaleEtablissement;
+                txtNumRueEtablissement.Text = eta.NumeroRueEtablissement.ToString();
+            }
+            catch
+            {
+            }
         }
     }
 }
