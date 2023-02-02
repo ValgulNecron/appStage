@@ -37,7 +37,7 @@ CREATE TABLE etablissement (
 	urlEtablissement varchar(120)
 );
 
-INSERT INTO utilisateur(nomUtilisateur, hash, themeBool) VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", 0);
+INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0);
 -- xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz -- keyuser
 
 

@@ -8,6 +8,7 @@ namespace CartesAcces
     public partial class frmAccueil : Form
     {
         public static Timer timer;
+        private Form frmPassword;
 
         public frmAccueil()
         {
@@ -79,7 +80,7 @@ namespace CartesAcces
 
             try
             {
-                var image = Image.FromFile("./data/carteface/logo.png");
+                var image = Image.FromFile("./data/FichierCartesFace/logo.png");
                 pictureBox1.Image = image;
             }
             catch (Exception exception)
@@ -141,8 +142,8 @@ namespace CartesAcces
 
         private void btnChangeMdp_Click(object sender, EventArgs e)
         {
-            var frmPassword = new frmChangeMotDePasse();
-            Text = "CARTE D'ACCES - CHANGEMENT MOT DE PASSE";
+            frmPassword?.Close();
+            frmPassword = new frmChangeMotDePasse();
             frmPassword.Show();
         }
 

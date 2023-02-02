@@ -1,8 +1,30 @@
 # appStage 
 
-Repos du l'application de création de cartes d'accès   
+Repos de l'application de création de cartes d'accès   
 
 TO DO :
+
+- edt classique fichier mauvais (voir avec aublin) 
+
+- acheter un cerveau a David introuvable
+
+- effacer modif en effacer photo 
+
+- après enregistrement reset de la carte provisoire
+
+- rognage carte multiples sens pas fonctionelle 
+
+- limiter rognage a la taille de la picturebox 
+
+- retirer le maximise 
+
+- rajouter compteur sur l'impression pour savoir l'avancement
+
+- fix compteur pour nombre impair
+
+- trie liste perso classe radio button 
+
+- changement de mot de passe design 
 
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
 

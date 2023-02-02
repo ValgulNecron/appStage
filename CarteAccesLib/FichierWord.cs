@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -245,6 +246,15 @@ namespace CarteAccesLib
                 Marshal.FinalReleaseComObject(WordApp);
 
                 GC.Collect();
+            }
+        }
+        
+        public static void fermerWord()
+        {
+            var processes = Process.GetProcessesByName("WINWORD");
+            foreach (var process in processes)
+            {
+                process.Kill();
             }
         }
     }
