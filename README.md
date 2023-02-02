@@ -8,8 +8,6 @@ TO DO :
 
 - acheter un cerveau a David introuvable
 
-- logo changement dossier + dimension 
-
 - arrondie au plus petit rognage 
 
 - ferme word si ouvert et bien fermer 
@@ -31,8 +29,6 @@ TO DO :
 - trie liste perso classe radio button 
 
 - changement de mot de passe design 
-
-- bouton changement de MDP ouverture infinie David est débile a spam 
 
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
 
