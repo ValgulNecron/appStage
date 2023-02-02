@@ -4,11 +4,9 @@ Repos du l'application de création de cartes d'accès
 
 TO DO :
 
-- user de test pas admin
-
 - est classique fichier mauvais 
 
-- acheter un cerveau a David
+- acheter un cerveau a David introuvable
 
 - logo changement dossier + dimension 
 
