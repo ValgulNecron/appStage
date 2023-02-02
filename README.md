@@ -18,8 +18,6 @@ TO DO :
 
 - fix compteur pour nombre impair
 
-- trie liste perso classe radio button 
-
 - changement de mot de passe design 
 
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
