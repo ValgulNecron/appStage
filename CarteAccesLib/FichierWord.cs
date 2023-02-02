@@ -246,7 +246,7 @@ namespace CarteAccesLib
 
                 GC.Collect();
 
-                MessageBox.Show("Saved !");
+               
             }
         }
     }
