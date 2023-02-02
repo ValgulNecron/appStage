@@ -6,11 +6,11 @@ namespace CarteAccesLib
 {
     public static class Trie
     {
-        public static List<string> recherche(string filtre)
+        public static List<string> recherche(string filtre, List<Eleve> eleves)
         {
             var listeEleveResultat = new List<string>();
             var regex = new Regex(filtre.ToLower());
-            foreach (var eleve in Globale._listeEleve)
+            foreach (var eleve in eleves)
             {
                 var nomPrenom = eleve.NomEleve + " " + eleve.PrenomEleve;
                 nomPrenom = nomPrenom.ToLower();

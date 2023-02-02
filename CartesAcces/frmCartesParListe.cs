@@ -131,7 +131,7 @@ namespace CartesAcces
             try
             {
                 var pattern = ".*" + txtRecherche.Text + ".*";
-                var el = Trie.recherche(pattern);
+                var el = Trie.recherche(pattern, listeEleve);
                 if (el != null)
                 {
                     Eleves.DataSource = el;
