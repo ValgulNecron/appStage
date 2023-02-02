@@ -266,5 +266,10 @@ namespace CartesAcces
             Form frmCreationUtilisateur = new frmCreationUtilisateur();
             frmCreationUtilisateur.Show();
         }
+
+        private void btnImportFaceCarte_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
