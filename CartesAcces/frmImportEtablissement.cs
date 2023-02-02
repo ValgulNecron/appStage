@@ -67,6 +67,7 @@ namespace CartesAcces
                 txtVilleEtablissement.Text = eta.VilleEtablissement;
                 txtCodePostalEtablissement.Text = eta.CodePostaleEtablissement;
                 txtNumRueEtablissement.Text = eta.NumeroRueEtablissement.ToString();
+                textBox1.Text = eta.UrlEtablissement;
             }
             catch
             {
