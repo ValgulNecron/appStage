@@ -71,5 +71,11 @@ namespace CartesAcces
         // carte provisoire 
         public static PictureBox _pbPhoto;
         public static Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox> _listeSauvegardeProvisoire;
+        
+        // liste d'eleve trier
+        public static List<Eleve> _listeEleves6eme;
+        public static List<Eleve> _listeEleves5eme;
+        public static List<Eleve> _listeEleves4eme;
+        public static List<Eleve> _listeEleves3eme;
     }
 }
