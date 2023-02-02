@@ -73,8 +73,7 @@ namespace CartesAcces
                                         controle2.Enabled = true;
                         Globale._cas = 1;
                         var frmWait = new barDeProgression();
-                        frmWait.StartPosition = FormStartPosition.Manual;
-                        frmWait.Location = new Point(800, 300);
+                        frmWait.StartPosition = FormStartPosition.CenterScreen;
                         ;
                         frmWait.Show();
                         frmWait.TopMost = true;
