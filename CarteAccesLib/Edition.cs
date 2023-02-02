@@ -338,7 +338,7 @@ namespace CartesAcces
         public static void importCarteFace(string chemin)
         {
             var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminCarteFace + Globale._classe + "eme.png";
+            var cheminDestination = Chemin.cheminFaceCarte + Globale._classe + "eme.png";
 
             try
             {
