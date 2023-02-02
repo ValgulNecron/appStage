@@ -18,8 +18,6 @@ TO DO :
 
 - fix compteur pour nombre impair
 
-- changement de mot de passe design 
-
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
