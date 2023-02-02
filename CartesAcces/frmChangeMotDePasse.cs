@@ -30,7 +30,6 @@ namespace CartesAcces
             nouveauMdp.PasswordChar = '*';
             nouveauMdpValid.PasswordChar = '*';
             ancienMdp.PasswordChar = '*';
-
         }
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
@@ -42,25 +41,25 @@ namespace CartesAcces
                     MessageBox.Show("Le nouveau mot de passe doit être différent de l'ancien");
                     return;
                 }
+
                 if (Securite.validationPrerequisMdp(nouveauMdp.Text))
                 {
-
                     var user = ClassSql.db.GetTable<Utilisateurs>()
                         .FirstOrDefault(u => u.NomUtilisateur == Globale._nomUtilisateur);
                     if (Securite.verificationHash(ancienMdp.Text, user.Hash))
                     {
                         if (nouveauMdp.Text == nouveauMdpValid.Text)
                         {
-                            string macAddress = string.Empty;
-                            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                            {
-                                if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                            var macAddress = string.Empty;
+                            foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                                if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                                     nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
                                     nic.OperationalStatus == OperationalStatus.Up)
                                 {
                                     macAddress += nic.GetPhysicalAddress().ToString();
                                     break;
                                 }
-                            }
+
                             var log = new LogActions();
                             log.DateAction = DateTime.Now;
                             log.NomUtilisateur = Globale._nomUtilisateur;

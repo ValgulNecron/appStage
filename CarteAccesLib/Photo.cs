@@ -1,5 +1,4 @@
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
@@ -23,7 +22,7 @@ namespace CarteAcces
             else
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/edition.jpg");
         }
-        
+
         public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
         {
             pbPhoto.Image = new Bitmap(chemin);
@@ -31,7 +30,7 @@ namespace CarteAcces
             pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPhoto.Visible = true;
         }
-        
+
         public static void proportionPhoto(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve, string path)
         {
             // -- Calcul par proportionnalité de la position et des dimensions de la photo sur le cadre de l'application par rapport a l'image réelle --
@@ -50,7 +49,7 @@ namespace CarteAcces
 
             Thread.Sleep(1000);
         }
-        
+
         public static string getDatePhotos()
         {
             var dateFile = "Aucune Importation";

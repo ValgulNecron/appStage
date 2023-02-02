@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
@@ -177,27 +176,28 @@ namespace CartesAcces
                 var cheminImpressionFinal = Chemin.setCheminImportationDossier();
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
-                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto, pbCarteArriere);
-                string macAddress = string.Empty;
-                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                {
-                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto,
+                    pbCarteArriere);
+                var macAddress = string.Empty;
+                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                        nic.OperationalStatus == OperationalStatus.Up)
                     {
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-                }
+
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
                 log.NomUtilisateur = Globale._nomUtilisateur;
                 log.Action = "Création de cartes d'accès multiples ou personnalisées";
                 log.AdMac = macAddress;
                 ClassSql.db.Insert(log);
-                labelEnCoursValidation.Visible = false; 
+                labelEnCoursValidation.Visible = false;
             }
             catch
             {
-                
             }
         }
 

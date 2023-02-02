@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CarteAcces;
+using CarteAccesLib;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -18,7 +20,7 @@ namespace CartesAcces
         private void progressBarForm_Load(object sender, EventArgs e)
         {
             backgroundWorker1.RunWorkerAsync();
-            this.ControlBox = false;
+            ControlBox = false;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -40,6 +42,9 @@ namespace CartesAcces
                         break;
                     case 4:
                         cas_4();
+                        break;
+                    case 5:
+                        cas_5();
                         break;
                 }
 
@@ -69,12 +74,8 @@ namespace CartesAcces
             Globale._actuelle.Invoke(new MethodInvoker(delegate
             {
                 foreach (Control controle in Globale._actuelle.Controls)
-                {
                     if (controle is Label && controle.Name == "lblDateListeEleve")
-                    {
                         controle.Text = ReadCSV.getDateFile();
-                    }
-                }
             }));
         }
 
@@ -86,12 +87,8 @@ namespace CartesAcces
             Globale._actuelle.Invoke(new MethodInvoker(delegate
             {
                 foreach (Control controle in Globale._actuelle.Controls)
-                {
                     if (controle is Label && controle.Name == "lblEdtEleve")
-                    {
                         controle.Text = PdfGs.getDateFile();
-                    }
-                }
             }));
             PdfGs.valeurParDefault();
         }
@@ -103,13 +100,47 @@ namespace CartesAcces
             Globale._actuelle.Invoke(new MethodInvoker(delegate
             {
                 foreach (Control controle in Globale._actuelle.Controls)
-                {
                     if (controle is Label && controle.Name == "lblPhotoEleve")
-                    {
                         controle.Text = Photo.getDatePhotos();
-                    }
-                }
             }));
+        }
+
+        private void cas_5()
+        {
+            try
+            {
+                if (Globale._pbPhoto.Image == null)
+                {
+                    MessageBox.Show("Veuillez ajouter une photo");
+                }
+                else
+                {
+                    FichierWord.sauvegardeCarteProvisoireWord(Globale._listeSauvegardeProvisoire.Item1,
+                        Globale._listeSauvegardeProvisoire.Item2,
+                        Globale._listeSauvegardeProvisoire.Item3, Globale._listeSauvegardeProvisoire.Item4,
+                        Globale._listeSauvegardeProvisoire.Item5);
+                    var macAddress = "";
+
+                    foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                        if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                             nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211)
+                            && nic.OperationalStatus == OperationalStatus.Up)
+                        {
+                            macAddress += nic.GetPhysicalAddress().ToString();
+                            break;
+                        }
+
+                    var log = new LogActions();
+                    log.DateAction = DateTime.Now;
+                    log.NomUtilisateur = Globale._nomUtilisateur;
+                    log.Action = "à fait une carte provisoire";
+                    log.AdMac = macAddress;
+                    ClassSql.db.Insert(log);
+                }
+            }
+            catch
+            {
+            }
         }
     }
 }

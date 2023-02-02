@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using Microsoft.Office.Interop.Word;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CarteAcces;
 using CartesAcces;
+using Microsoft.Office.Interop.Word;
 using Application = Microsoft.Office.Interop.Word.Application;
 
 namespace CarteAccesLib
@@ -45,7 +45,7 @@ namespace CarteAccesLib
 
             carteFace1.Height = carteFace1.Height - 20;
             carteFace2.RelativeVerticalPosition = WdRelativeVerticalPosition.wdRelativeVerticalPositionPage;
-            carteFace2.Top = applicationWord.InchesToPoints(11 - (carteFace1.Height / 72));
+            carteFace2.Top = applicationWord.InchesToPoints(11 - carteFace1.Height / 72);
             carteFace2.Height = carteFace1.Height;
         }
 
@@ -79,7 +79,7 @@ namespace CarteAccesLib
             var k = 0;
             var pages = 0;
             Eleve.possedeEdt(listeEleve);
-            var fichierWord = FichierWord.initWordFile(15, 15, 15, 15);
+            var fichierWord = initWordFile(15, 15, 15, 15);
 
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
@@ -97,7 +97,7 @@ namespace CarteAccesLib
                 var shapeCarteFace2 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png",
                     Type.Missing, Type.Missing, Type.Missing);
-                FichierWord.rectifPositionImages(fichierWord, shapeCarteFace1, shapeCarteFace2);
+                rectifPositionImages(fichierWord, shapeCarteFace1, shapeCarteFace2);
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
                 File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png");
                 File.Delete(chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve +
@@ -127,7 +127,7 @@ namespace CarteAccesLib
                     chemin + "/" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png",
                     Type.Missing, Type.Missing, Type.Missing);
 
-                FichierWord.rectifPositionImages(fichierWord, shapeCarteArriere1, shapeCarteArriere2);
+                rectifPositionImages(fichierWord, shapeCarteArriere1, shapeCarteArriere2);
 
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
                 File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png");
@@ -145,7 +145,7 @@ namespace CarteAccesLib
                 if (compt > k + 50)
                 {
                     var name = chemin + " page " + k / 50;
-                    FichierWord.limite50Pages(fichierWord, name);
+                    limite50Pages(fichierWord, name);
                     k += 50;
                     pages++;
                 }
@@ -177,8 +177,8 @@ namespace CarteAccesLib
             MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
         }
 
-        public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
-            PictureBox pbCarteFace, TextBox txtNom, TextBox txtPrenom)
+
+        public static void getDossierCarteProvisoire()
         {
             var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK)
@@ -190,9 +190,12 @@ namespace CarteAccesLib
             {
                 MessageBox.Show(
                     "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
-                return;
             }
+        }
 
+        public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
+            PictureBox pbCarteFace, TextBox txtNom, TextBox txtPrenom)
+        {
             if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
             {
                 var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;

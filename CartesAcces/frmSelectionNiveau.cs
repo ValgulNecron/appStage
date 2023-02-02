@@ -10,7 +10,7 @@ namespace CartesAcces
      * et lance la barre de progression avec le cas 3
      */
     public partial class frmSelectNiveau : Form
-    {   
+    {
         public frmSelectNiveau()
         {
             InitializeComponent();
@@ -46,12 +46,27 @@ namespace CartesAcces
                 MessageBox.Show("Veuillez selectionner une section...");
             }
 
-            Globale._cas = 3;
-            var frmWait = new barDeProgression();
-            frmWait.StartPosition = FormStartPosition.Manual;
-            frmWait.Location = new Point(0, 0);
-            frmWait.Show();
-            frmWait.TopMost = true;
+            if (Globale._pasDeBar)
+            {
+                try
+                {
+                    Edition.importCarteFace(Globale._cheminFaceCarte);
+                    MessageBox.Show("Import réussi");
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.ToString());
+                }
+            }
+            else
+            {
+                Globale._cas = 3;
+                var frmWait = new barDeProgression();
+                frmWait.StartPosition = FormStartPosition.Manual;
+                frmWait.Location = new Point(0, 0);
+                frmWait.Show();
+                frmWait.TopMost = true;
+            }
         }
     }
 }

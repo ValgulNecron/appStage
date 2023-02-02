@@ -16,7 +16,8 @@ namespace CartesAcces
      */
     public partial class frmRognageEdtClassique : Form
     {
-        private List<string> listeFichiers = new List<string>();
+        private readonly List<string> listeFichiers = new List<string>();
+
         public frmRognageEdtClassique()
         {
             InitializeComponent();
@@ -30,7 +31,9 @@ namespace CartesAcces
                 pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
                 Edt.rognageEdt(pbEdtClassique, Globale._cheminEdtClassique);
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private void btnRogner_Click(object sender, EventArgs e)
@@ -44,7 +47,7 @@ namespace CartesAcces
             // -- On peut cliquer sur rogner
             btnAnnuler.Enabled = true;
         }
-        
+
         private void pbEdtClassique_MouseDown(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selectionné est cliqué --
@@ -91,12 +94,12 @@ namespace CartesAcces
                     pbEdtClassique.Refresh();
                     Edition.rognageLargeur = e.X - Edition.rognageX;
                     Edition.rognageHauteur = e.Y - Edition.rognageY;
-                    
+
                     Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
                     Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
-                    
-                    pbEdtClassique.CreateGraphics().DrawRectangle(Edition.rognagePen,Math.Min(Edition.rognageX, e.X),
-                        Math.Min(Edition.rognageY , e.Y),
+
+                    pbEdtClassique.CreateGraphics().DrawRectangle(Edition.rognagePen, Math.Min(Edition.rognageX, e.X),
+                        Math.Min(Edition.rognageY, e.Y),
                         Math.Abs(Edition.rognageLargeur),
                         Math.Abs(Edition.rognageHauteur));
                 }
@@ -125,20 +128,19 @@ namespace CartesAcces
                 {
                     pbEdtClassique.Image = Image.FromFile(fichier);
                     Edt.rognageEdt(pbEdtClassique, fichier);
-                    string nom = fichier.Substring(fichier.LastIndexOf("\\"),
+                    var nom = fichier.Substring(fichier.LastIndexOf("\\"),
                         fichier.Length - fichier.LastIndexOf("\\"));
                     pbEdtClassique.Image.Save(Chemin.cheminEdtClassique + "//" + nom, ImageFormat.Png);
                 }
 
-                
+
                 MessageBox.Show("Import Réussi");
-                this.Close();
+                Close();
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.ToString());
             }
-
         }
     }
 }

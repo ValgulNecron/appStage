@@ -56,7 +56,7 @@ namespace CartesAcces
         {
             try
             {
-                String eleve = Eleves.SelectedItem.ToString();
+                var eleve = Eleves.SelectedItem.ToString();
                 if (verifDoublon(eleve))
                 {
                     eleveSelectionner.Add(eleve);
@@ -108,19 +108,14 @@ namespace CartesAcces
             }
         }
 
-        public static List<Eleve> convertionListeStringEleveEnEleve(List<String> convertir)
+        public static List<Eleve> convertionListeStringEleveEnEleve(List<string> convertir)
         {
-            List<Eleve> e = new List<Eleve>();
-            foreach (String ee in convertir)
+            var e = new List<Eleve>();
+            foreach (var ee in convertir)
+            foreach (var eee in Globale._listeEleve)
             {
-                foreach (Eleve eee in Globale._listeEleve)
-                {
-                    string eeee = eee.NomEleve + " " + eee.PrenomEleve + " " + eee.ClasseEleve;
-                    if (ee == eeee)
-                    {
-                        e.Add(eee);
-                    }
-                }
+                var eeee = eee.NomEleve + " " + eee.PrenomEleve + " " + eee.ClasseEleve;
+                if (ee == eeee) e.Add(eee);
             }
 
             return e;
@@ -134,7 +129,9 @@ namespace CartesAcces
                 Form frmMultipleCarteEdi = new frmMultiplesCartesEdition();
                 frmMultipleCarteEdi.Show();
             }
-            catch { }
+            catch
+            {
+            }
         }
     }
 }

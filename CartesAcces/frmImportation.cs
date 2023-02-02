@@ -68,15 +68,17 @@ namespace CartesAcces
                     frmWait.Show();
                     frmWait.TopMost = true;
                 }
-                string macAddress = string.Empty;
-                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                {
-                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+
+                var macAddress = string.Empty;
+                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                        nic.OperationalStatus == OperationalStatus.Up)
                     {
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-                }
+
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
                 log.NomUtilisateur = Globale._nomUtilisateur;
@@ -98,15 +100,16 @@ namespace CartesAcces
                 frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
                 frmSelectSection.Show();
                 //lblEdtEleve.Text = PdfGs.getDateFile();
-                string macAddress = string.Empty;
-                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                {
-                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                var macAddress = string.Empty;
+                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                        nic.OperationalStatus == OperationalStatus.Up)
                     {
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-                }
+
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
                 log.NomUtilisateur = Globale._nomUtilisateur;
@@ -130,9 +133,8 @@ namespace CartesAcces
                 frmWait.Location = new Point(0, 0);
                 frmWait.Show();
                 frmWait.TopMost = true;
-                string macAddress = string.Empty;
-                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                {
+                var macAddress = string.Empty;
+                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                     if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
                          nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
                         nic.OperationalStatus == OperationalStatus.Up)
@@ -140,7 +142,6 @@ namespace CartesAcces
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-                }
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
@@ -164,15 +165,16 @@ namespace CartesAcces
 
                 var frmRognageEdtClassique = new frmRognageEdtClassique();
                 frmRognageEdtClassique.Show();
-                string macAddress = string.Empty;
-                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                {
-                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                var macAddress = string.Empty;
+                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                        nic.OperationalStatus == OperationalStatus.Up)
                     {
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-                }
+
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
                 log.NomUtilisateur = Globale._nomUtilisateur;
@@ -185,7 +187,7 @@ namespace CartesAcces
             }
         }
 
-        
+
         /*
          * ceci est le load de la fenêtre importation
          * elle contient un easteregg ayant 1 chance sur 2 000 000 000 de se déclencher
@@ -198,7 +200,7 @@ namespace CartesAcces
                 var x = 0;
                 var random = new Random();
                 x = random.Next(0, 666);
-                if ((x == 666) && Globale._gitPoule)
+                if (x == 666 && Globale._gitPoule)
                 {
                     pictureBox1.Visible = true;
                     pictureBox1.Image = Image.FromFile("./git-poule.jpg");
@@ -217,39 +219,43 @@ namespace CartesAcces
                                 if (controle2 is Label) controle2.ForeColor = Color.White;
                             }
                         }
+
                     var url = "https://www.youtube.com/watch?v=msSc7Mv0QHY";
                     Thread.Sleep(4000);
                     Process.Start("microsoft-edge:", url);
                     // ne pas supprimer, c'est pour le webhook discord 
                     // si vous voulez etre averti quand la poule est activée rajoutez votre webhook discord en plus de celui ci
-                    string webhookUrl = "https://discord.com/api/webhooks/1069989195440980111/UfLjhmiuTWvEl7UgoBnaFkeQjU1WC9yuR5KgcQsxnDB1dzmCvg8LQgQyDHcJDe2XVZHm";
-                    string message = "La poule a été activée";
-                    WebClient client = new WebClient();
+                    var webhookUrl =
+                        "https://discord.com/api/webhooks/1069989195440980111/UfLjhmiuTWvEl7UgoBnaFkeQjU1WC9yuR5KgcQsxnDB1dzmCvg8LQgQyDHcJDe2XVZHm";
+                    var message = "La poule a été activée";
+                    var client = new WebClient();
                     client.Headers.Add("Content-Type", "application/json");
-                    string payload = "{\"content\": \"" + message + "\"}";
+                    var payload = "{\"content\": \"" + message + "\"}";
                     client.UploadData(webhookUrl, Encoding.UTF8.GetBytes(payload));
-                    
+
                     // fin du webhook discord
                     // la suite est pour l'insertion dans la base de donnée
-                    string macAddress = string.Empty;
-                    foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                    {
-                        if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                    var macAddress = string.Empty;
+                    foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                        if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                             nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                            nic.OperationalStatus == OperationalStatus.Up)
                         {
                             macAddress += nic.GetPhysicalAddress().ToString();
                             break;
                         }
-                    }
+
                     var log = new LogActions();
                     log.DateAction = DateTime.Now;
                     log.NomUtilisateur = Globale._nomUtilisateur;
                     log.Action = "à déclenché la git poule";
                     log.AdMac = macAddress;
-                    ClassSql.db.Insert(log); ;
+                    ClassSql.db.Insert(log);
+                    ;
                     Application.Exit();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -265,6 +271,68 @@ namespace CartesAcces
         {
             Form frmCreationUtilisateur = new frmCreationUtilisateur();
             frmCreationUtilisateur.Show();
+        }
+
+        private void btnImportFaceCarte_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblImportFaceCarte = Globale._lblDate;
+                Globale._cheminFaceCarte = Chemin.setCheminImportationFaceCarte();
+
+                Globale._pasDeBar = true;
+
+                Form frmSelectionNiveau = new frmSelectNiveau();
+                frmSelectionNiveau.Show();
+
+                var macAddress = string.Empty;
+                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                        nic.OperationalStatus == OperationalStatus.Up)
+                    {
+                        macAddress += nic.GetPhysicalAddress().ToString();
+                        break;
+                    }
+
+                var log = new LogActions();
+                log.DateAction = DateTime.Now;
+                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.Action = "à importer des face de carte";
+                log.AdMac = macAddress;
+                ClassSql.db.Insert(log);
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnImportLogo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var macAddress = string.Empty;
+                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                        nic.OperationalStatus == OperationalStatus.Up)
+                    {
+                        macAddress += nic.GetPhysicalAddress().ToString();
+                        break;
+                    }
+
+                var log = new LogActions();
+                log.DateAction = DateTime.Now;
+                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.Action = "à importer le logo";
+                log.AdMac = macAddress;
+                ClassSql.db.Insert(log);
+            }
+
+            catch
+
+            {
+            }
         }
     }
 }

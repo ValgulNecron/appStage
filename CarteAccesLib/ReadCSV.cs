@@ -57,7 +57,7 @@ namespace CartesAcces
 
                     listeProvisoire.Add(unEleve);
                     Globale._listeElevesString.Add(unEleve.NomEleve + " " + unEleve.PrenomEleve + " " +
-                                                  unEleve.ClasseEleve);
+                                                   unEleve.ClasseEleve);
                 }
 
                 Globale._listeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();

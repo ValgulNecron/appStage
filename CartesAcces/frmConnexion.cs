@@ -7,7 +7,6 @@ using LinqToDB;
 
 namespace CartesAcces
 {
-    
     /*
      * fenetre de connexion
      * elle permet de se connecter a l'application
@@ -31,7 +30,7 @@ namespace CartesAcces
             txtIdentifiant.Text = "";
         }
 
-        
+
         /*
          * cette fonction permet de se connecter
          * elle verifie si le nom d'utilisateur existe dans la base de donnee
@@ -49,7 +48,8 @@ namespace CartesAcces
         {
             try
             {
-                var user = ClassSql.db.GetTable<Utilisateurs>().FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
+                var user = ClassSql.db.GetTable<Utilisateurs>()
+                    .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
                 if (txtIdentifiant.Text != user.NomUtilisateur)
                 {
                     MessageBox.Show("nom d'utilisateur invalide");
@@ -57,6 +57,7 @@ namespace CartesAcces
                     txtMotDePasse.Text = "";
                     return;
                 }
+
                 try
                 {
                     if (Securite.verificationHash(txtMotDePasse.Text, user.Hash))
@@ -66,35 +67,29 @@ namespace CartesAcces
                         txtMotDePasse.Text = "";
                         txtIdentifiant.Text = "";
                         foreach (Control controle in Globale._accueil.Controls)
-                        {
-                            if(controle is Panel && controle.Name == "pnlMenu")
-                            {
+                            if (controle is Panel && controle.Name == "pnlMenu")
                                 foreach (Control controle2 in controle.Controls)
-                                {
                                     if (controle2 is Button)
-                                    {
                                         controle2.Enabled = true;
-                                    }
-                                }
-                            }
-                        }
                         Globale._cas = 1;
                         var frmWait = new barDeProgression();
                         frmWait.StartPosition = FormStartPosition.Manual;
-                        frmWait.Location = new Point(800, 300);;
+                        frmWait.Location = new Point(800, 300);
+                        ;
                         frmWait.Show();
                         frmWait.TopMost = true;
                         Globale._actuelle = new frmImportation();
                         frmAccueil.OpenChildForm(Globale._actuelle);
-                        string macAddress = string.Empty;
-                        foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-                        {
-                            if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet || nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&     nic.OperationalStatus == OperationalStatus.Up)
+                        var macAddress = string.Empty;
+                        foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+                            if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
+                                 nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
+                                nic.OperationalStatus == OperationalStatus.Up)
                             {
                                 macAddress += nic.GetPhysicalAddress().ToString();
                                 break;
                             }
-                        }
+
                         var log = new LogActions();
                         log.DateAction = DateTime.Now;
                         log.NomUtilisateur = Globale._nomUtilisateur;
@@ -114,20 +109,21 @@ namespace CartesAcces
                 MessageBox.Show(exception.Message);
             }
         }
+
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtMotDePasse.Text))
+            if (string.IsNullOrEmpty(txtMotDePasse.Text))
             {
                 MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
                 txtMotDePasse.Focus();
             }
             else
             {
-                    Connexion();
+                Connexion();
             }
         }
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -148,18 +144,10 @@ namespace CartesAcces
         {
             ActiveControl = txtIdentifiant;
             foreach (Control controle in Globale._accueil.Controls)
-            {
-                if(controle is Panel && controle.Name == "pnlMenu")
-                {
+                if (controle is Panel && controle.Name == "pnlMenu")
                     foreach (Control controle2 in controle.Controls)
-                    {
                         if (controle2 is Button && controle2.Name != "btnTheme")
-                        {
                             controle2.Enabled = false;
-                        }
-                    }
-                }
-            }
         }
 
 
@@ -167,7 +155,7 @@ namespace CartesAcces
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (String.IsNullOrEmpty(txtMotDePasse.Text))
+                if (string.IsNullOrEmpty(txtMotDePasse.Text))
                 {
                     MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
