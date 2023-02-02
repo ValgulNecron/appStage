@@ -175,9 +175,14 @@ namespace CartesAcces
 
                 var cheminImpressionFinal = Chemin.setCheminImportationDossier();
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
+
+                Globale._lblCount = lblCompteur;
+                
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
                 FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto,
                     pbCarteArriere);
+                
+                
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                     if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -204,6 +209,7 @@ namespace CartesAcces
 
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
+            lblCompteur.Visible = false;
             Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
             Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
