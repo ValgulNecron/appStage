@@ -87,5 +87,13 @@ namespace CartesAcces
         [Column(Name = "emailEtablissement")] public string EmailEtablissement { get; set; }
 
         [Column(Name = "urlEtablissement")] public string UrlEtablissement { get; set; }
+        
+        [Column(Name = "codeHexa6eme")] public string CodeHexa6eme { get; set; }
+        
+        [Column(Name = "codeHexa5eme")] public string CodeHexa5eme { get; set; }
+        
+        [Column(Name = "codeHexa4eme")] public string CodeHexa4eme { get; set; }
+        
+        [Column(Name = "codeHexa3eme")] public string CodeHexa3eme { get; set; }
     }
 }

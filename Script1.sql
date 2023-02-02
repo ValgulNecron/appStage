@@ -34,7 +34,11 @@ CREATE TABLE etablissement (
 	villeEtablissement varchar(30),
 	numeroTelephoneEtablissement varchar(15),
 	emailEtablissement varchar(60),
-	urlEtablissement varchar(120)
+	urlEtablissement varchar(120),
+	codeHexa6eme varchar(6),
+	codeHexa5eme varchar(6),
+	codeHexa4eme varchar(6),
+	codeHexa3eme varchar(6)
 );
 
 INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0);
