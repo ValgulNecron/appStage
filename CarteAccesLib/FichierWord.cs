@@ -182,15 +182,11 @@ namespace CarteAccesLib
         {
             var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK)
-            {
                 Edition.cheminImpressionFinal = diag.SelectedPath;
-            }
 
             else
-            {
                 MessageBox.Show(
                     "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
-            }
         }
 
         public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
