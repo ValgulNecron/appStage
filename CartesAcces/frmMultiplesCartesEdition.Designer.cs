@@ -43,10 +43,10 @@ namespace CartesAcces
             this.btnSelect = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlEdtPhoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCarteArriere)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pbPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pbCarteArriere)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.tkbTaillePhoto)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,7 +101,7 @@ namespace CartesAcces
             // labelEnCoursValidation
             // 
             this.labelEnCoursValidation.AutoSize = true;
-            this.labelEnCoursValidation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEnCoursValidation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.labelEnCoursValidation.ForeColor = System.Drawing.Color.Red;
             this.labelEnCoursValidation.Location = new System.Drawing.Point(-5, 148);
             this.labelEnCoursValidation.Name = "labelEnCoursValidation";
@@ -189,15 +189,16 @@ namespace CartesAcces
             this.Controls.Add(this.pnlEdtPhoto);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.MaximizeBox = false;
             this.Name = "frmMultiplesCartesEdition";
             this.Text = "frmMultiplesCartesEdition";
             this.Load += new System.EventHandler(this.frmMultiplesCartesEdition_Load);
             this.pnlEdtPhoto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCarteArriere)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pbPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pbCarteArriere)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.tkbTaillePhoto)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
         }
