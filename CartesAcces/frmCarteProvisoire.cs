@@ -206,13 +206,27 @@ namespace CartesAcces
         {
             try
             {
-                Edition.rognageX = Math.Min(Edition.rognageX, e.X);
-                Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
-                Cursor = Cursors.Default;
-                var classe = cbbClasse.Text;
-                var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
-                Edition.selectionClique = false;
-                Edt.rognageEdt(pbCarteArriere, pathEdt);
+                if (Edition.selectionClique)
+                {
+                    if(pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(Control.MousePosition)))
+                    {
+                        Edition.rognageX = Math.Min(Edition.rognageX, e.X);
+                        Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
+                        Cursor = Cursors.Default;
+                        var classe = cbbClasse.Text;
+                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                        Edition.selectionClique = false;
+                        Edt.rognageEdt(pbCarteArriere, pathEdt);
+                    }
+                    else
+                    {
+                        Cursor = Cursors.Default;
+                        var classe = cbbClasse.Text;
+                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                        Edition.selectionClique = false;
+                        pbCarteArriere.Image = Image.FromFile(pathEdt);
+                    }
+                }
             }
             catch
             {
