@@ -4,7 +4,7 @@ Repos du l'application de création de cartes d'accès
 
 TO DO :
 
-- est classique fichier mauvais 
+- edt classique fichier mauvais (voir avec aublin) 
 
 - acheter un cerveau a David introuvable
 
