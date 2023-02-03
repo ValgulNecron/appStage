@@ -8,8 +8,6 @@ TO DO :
 
 - acheter un cerveau a David introuvable (Attendre le black friday)
 
-- rajouter compteur sur l'impression pour savoir l'avancement
-
 - fix compteur pour nombre impair
 
 - Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
