@@ -349,7 +349,7 @@ namespace CartesAcces
                 ReadCsv.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
 
-                MessageBox.Show("Import Réussi");
+                MessageBox.Show(new Form { TopMost = true }, "L'importation du fichier CSV est terminée.");
             }
             catch (Exception e)
             {

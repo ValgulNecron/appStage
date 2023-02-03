@@ -73,10 +73,10 @@ namespace CartesAcces
                                         controle2.Enabled = true;
                         Globale._cas = 1;
                         var frmWait = new barDeProgression();
-                        frmWait.StartPosition = FormStartPosition.CenterScreen;            
-                        frmWait.TopMost = true;
+                        frmWait.StartPosition = FormStartPosition.CenterScreen;
                         frmWait.Show();
-                        
+                        frmWait.TopMost = true;
+
                         Globale._actuelle = new frmImportation();
                         frmAccueil.OpenChildForm(Globale._actuelle);
                         var macAddress = string.Empty;
