@@ -175,7 +175,7 @@ namespace CartesAcces
             return codeHexa4eme;
         }
         
-private string getCodeHexa3eme()
+        private string getCodeHexa3eme()
         {
             string codeHexa3eme = "";
             foreach (var VARIABLE in gb3eme.Controls)
