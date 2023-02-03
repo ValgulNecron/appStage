@@ -25,26 +25,26 @@ namespace CartesAcces
 
             if (nom.Length < 15)
             {
-                var font = new Font("times new roman", 28, FontStyle.Bold);
+                var font = new Font("Calibri", 28, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
+                var font = new Font("Calibri", 25, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
 
             if (prenom.Length < 15)
             {
-                var font = new Font("times new roman", 28, FontStyle.Bold);
+                var font = new Font("Calibri", 28, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
+                var font = new Font("Calibri", 25, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
