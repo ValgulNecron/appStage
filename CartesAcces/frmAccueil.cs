@@ -13,7 +13,7 @@ namespace CartesAcces
         public frmAccueil()
         {
             InitializeComponent();
-            Globale._accueil = this;
+            Globale.Accueil = this;
             Couleur.setCouleurFenetre(this);
             if (Globale.EstEnModeSombre)
             {
@@ -39,7 +39,7 @@ namespace CartesAcces
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
             childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel  
-            foreach (Control controle in Globale._accueil.Controls)
+            foreach (Control controle in Globale.Accueil.Controls)
                 if (controle is Panel && controle.Name == "pnlContent")
                 {
                     var pnlContent = (Panel) controle;
@@ -59,11 +59,11 @@ namespace CartesAcces
                         if (controle2 is Button && controle2.Name != "btnTheme")
                             controle2.Enabled = false;
 
-            Globale._actuelle = new frmConnexion();
+            Globale.Actuelle = new frmConnexion();
             Text = "CARTE D'ACCES - CONNEXION";
-            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
 
-            lblVersion.Text = "version :" + Globale._version + " du " + Globale._versionDate;
+            lblVersion.Text = "version :" + Globale.Version1 + " du " + Globale.VersionDate;
             var dir = new DirectoryInfo("./data/image");
             if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
                 MessageBox.Show("15j ou plus depuis le denier import des edt");
@@ -93,26 +93,26 @@ namespace CartesAcces
 
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
-            Globale._actuelle = new frmCarteProvisoire();
+            Globale.Actuelle = new frmCarteProvisoire();
             Text = "CARTE D'ACCES - CARTE PROVISOIRE";
             timer.ajoutEvenement();
-            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
-            Globale._actuelle = new frmCarteParClasseNiveau();
+            Globale.Actuelle = new frmCarteParClasseNiveau();
             Text = "CARTE D'ACCES - CARTE PAR CLASSE";
             timer.ajoutEvenement();
-            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
-            Globale._actuelle = new frmImportation();
+            Globale.Actuelle = new frmImportation();
             Text = "CARTE D'ACCES - IMPORTATION";
             timer.ajoutEvenement();
-            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
@@ -124,7 +124,7 @@ namespace CartesAcces
             Globale.EstEnModeSombre = !Globale.EstEnModeSombre;
 
             Couleur.setCouleurFenetre(this);
-            Couleur.setCouleurFenetre(Globale._actuelle);
+            Couleur.setCouleurFenetre(Globale.Actuelle);
             foreach (Control control in Controls)
                 if (control is Panel && control.Name == "pnlMenu")
                 {
@@ -149,10 +149,10 @@ namespace CartesAcces
 
         private void btnAfficheListeEleve_Click(object sender, EventArgs e)
         {
-            Globale._actuelle = new frmCartesParListe();
+            Globale.Actuelle = new frmCartesParListe();
             Text = "CARTE D'ACCES - CARTE PAR LISTE";
             timer.ajoutEvenement();
-            Globale._accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale._actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
     }
 }

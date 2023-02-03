@@ -124,7 +124,6 @@ namespace CartesAcces
             this.txtIdentifiant.Name = "txtIdentifiant";
             this.txtIdentifiant.Size = new System.Drawing.Size(175, 24);
             this.txtIdentifiant.TabIndex = 0;
-           
             // 
             // txtMotDePasse
             // 
@@ -157,7 +156,6 @@ namespace CartesAcces
             this.Load += new System.EventHandler(this.frmConnexion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Button btnChiffre;

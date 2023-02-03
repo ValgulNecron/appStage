@@ -50,8 +50,8 @@ namespace CartesAcces
             {
                 try
                 {
-                    Edition.importCarteFace(Globale._cheminFaceCarte);
-                    MessageBox.Show("Import réussi ???");
+                    Edition.importCarteFace(Globale.CheminFaceCarte);
+                    MessageBox.Show("Import réussi");
                 }
                 catch (Exception err)
                 {

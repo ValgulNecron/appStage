@@ -25,26 +25,26 @@ namespace CartesAcces
 
             if (nom.Length < 15)
             {
-                var font = new Font("times new roman", 28, FontStyle.Bold);
+                var font = new Font("Calibri", 28, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
+                var font = new Font("Calibri", 25, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
 
             if (prenom.Length < 15)
             {
-                var font = new Font("times new roman", 28, FontStyle.Bold);
+                var font = new Font("Calibri", 28, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
+                var font = new Font("Calibri", 25, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
@@ -273,7 +273,7 @@ namespace CartesAcces
                     pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
                     pbPhoto.Visible = true;
                     // changement
-                    Globale._pbPhoto = pbPhoto;
+                    Globale.PbPhoto = pbPhoto;
                 }
             }
             catch
@@ -341,10 +341,10 @@ namespace CartesAcces
         private void btnSave_Click(object sender, EventArgs e)
         {
             FichierWord.getDossierCarteProvisoire();
-            Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
+            Globale.ListeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
                 (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
             Globale.Cas = 5;
-            Globale._actuelle = this;
+            Globale.Actuelle = this;
             // backgroundWorker
             var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.CenterScreen;

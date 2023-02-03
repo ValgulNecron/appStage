@@ -41,39 +41,41 @@ namespace CartesAcces
         public static List<int> CouleurTextBoxClaire { get; set; } = new List<int> {230, 232, 245};
         public static List<int> CouleurBoutonOffClaire { get; set; } = new List<int> {140, 143, 161};
 
-        public static List<int> CouleurDeFondSombre { get; } = new List<int> {108, 112, 134};
-        public static List<int> CouleurDuTexteSombre { get; } = new List<int> {205, 214, 244};
-        public static List<int> CouleurBandeauxSombre { get; } = new List<int> {53, 54, 58};
-        public static List<int> _couleurBoutonsSombre = new List<int> {88, 91, 112};
-        public static List<int> _couleurTextBoxSombre = new List<int> {127, 132, 156};
-        public static List<int> _couleurBoutonOffSombre = new List<int> {69, 71, 90};
+        public static List<int> CouleurDeFondSombre { get; set; } = new List<int> {108, 112, 134};
+        public static List<int> CouleurDuTexteSombre { get; set; } = new List<int> {205, 214, 244};
+        public static List<int> CouleurBandeauxSombre { get; set; } = new List<int> {53, 54, 58};
+        public static List<int> CouleurBoutonsSombre { get; set; } = new List<int> {88, 91, 112};
+        public static List<int> CouleurTextBoxSombre { get; set; } = new List<int> {127, 132, 156};
+        public static List<int> CouleurBoutonOffSombre { get; set; } = new List<int> {69, 71, 90};
 
 
         // variable lier au forme utiliser pour garder une reference 
-        public static Form _actuelle;
-        public static Form _accueil;
+        public static Form Actuelle { get; set; }
+        public static Form Accueil { get; set; }
 
         // version
-        public static string _version = "0.2.1";
-        public static string _versionDate = "18/01/2023";
+        public static string Version1 { get; set; } = "0.3.2";
+        public static string VersionDate { get; set; } = "18/01/2023";
 
         // variable lier au bar de progres
-        public static string _cheminTexte;
-        public static string _cheminPdf;
-        public static string _cheminPhoto;
-        public static string _cheminEdtClassique;
-        public static string _cheminFaceCarte;
+        public static string CheminTexte { get; set; }
+        public static string CheminPdf { get; set; }
+        public static string CheminPhoto { get; set; }
+        public static string CheminEdtClassique { get; set; }
+        public static string CheminFaceCarte { get; set; }
 
-        public static bool _gitPoule = true;
+        public static bool GitPoule { get; set; } = true;
 
         // carte provisoire 
-        public static PictureBox _pbPhoto;
-        public static Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox> _listeSauvegardeProvisoire;
-        
+        public static PictureBox PbPhoto { get; set; }
+
+        public static Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox> ListeSauvegardeProvisoire
+        { get; set; }
+
         // liste d'eleve trier
-        public static List<Eleve> _listeEleves6eme;
-        public static List<Eleve> _listeEleves5eme;
-        public static List<Eleve> _listeEleves4eme;
-        public static List<Eleve> _listeEleves3eme;
+        public static List<Eleve> ListeEleves6Eme { get; set; }
+        public static List<Eleve> ListeEleves5Eme { get; set; }
+        public static List<Eleve> ListeEleves4Eme { get; set; }
+        public static List<Eleve> ListeEleves3Eme { get; set; }
     }
 }

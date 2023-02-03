@@ -27,8 +27,8 @@ namespace CartesAcces
         {
             try
             {
-                Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = false; }));
-                Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = false; }));
+                Globale.Accueil.Invoke(new MethodInvoker(delegate { Globale.Accueil.Enabled = false; }));
+                Globale.Actuelle.Invoke(new MethodInvoker(delegate { Globale.Actuelle.Enabled = false; }));
                 switch (Globale.Cas)
                 {
                     case 1:
@@ -48,8 +48,8 @@ namespace CartesAcces
                         break;
                 }
 
-                Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = true; }));
-                Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = true; }));
+                Globale.Accueil.Invoke(new MethodInvoker(delegate { Globale.Accueil.Enabled = true; }));
+                Globale.Actuelle.Invoke(new MethodInvoker(delegate { Globale.Actuelle.Enabled = true; }));
             }
             catch
             {
@@ -70,10 +70,10 @@ namespace CartesAcces
 
         private void cas_2()
         {
-            Edition.importEleves(Globale._cheminTexte);
-            Globale._actuelle.Invoke(new MethodInvoker(delegate
+            Edition.importEleves(Globale.CheminTexte);
+            Globale.Actuelle.Invoke(new MethodInvoker(delegate
             {
-                foreach (Control controle in Globale._actuelle.Controls)
+                foreach (Control controle in Globale.Actuelle.Controls)
                     if (controle is Label && controle.Name == "lblDateListeEleve")
                         controle.Text = ReadCsv.getDateFile();
             }));
@@ -81,12 +81,12 @@ namespace CartesAcces
 
         private void cas_3()
         {
-            PdfGs.getImageFromPdf(Globale._cheminPdf, Globale.Classe);
-            PdfGs.renameEdt(Globale._cheminPdf);
+            PdfGs.getImageFromPdf(Globale.CheminPdf, Globale.Classe);
+            PdfGs.renameEdt(Globale.CheminPdf);
 
-            Globale._actuelle.Invoke(new MethodInvoker(delegate
+            Globale.Actuelle.Invoke(new MethodInvoker(delegate
             {
-                foreach (Control controle in Globale._actuelle.Controls)
+                foreach (Control controle in Globale.Actuelle.Controls)
                     if (controle is Label && controle.Name == "lblEdtEleve")
                         controle.Text = PdfGs.getDateFile();
             }));
@@ -95,11 +95,11 @@ namespace CartesAcces
 
         private void cas_4()
         {
-            Edition.importPhoto(Globale._cheminPhoto);
+            Edition.importPhoto(Globale.CheminPhoto);
 
-            Globale._actuelle.Invoke(new MethodInvoker(delegate
+            Globale.Actuelle.Invoke(new MethodInvoker(delegate
             {
-                foreach (Control controle in Globale._actuelle.Controls)
+                foreach (Control controle in Globale.Actuelle.Controls)
                     if (controle is Label && controle.Name == "lblPhotoEleve")
                         controle.Text = Photo.getDatePhotos();
             }));
@@ -109,16 +109,16 @@ namespace CartesAcces
         {
             try
             {
-                if (Globale._pbPhoto.Image == null)
+                if (Globale.PbPhoto.Image == null)
                 {
                     MessageBox.Show("Veuillez ajouter une photo");
                 }
                 else
                 {
-                    FichierWord.sauvegardeCarteProvisoireWord(Globale._listeSauvegardeProvisoire.Item1,
-                        Globale._listeSauvegardeProvisoire.Item2,
-                        Globale._listeSauvegardeProvisoire.Item3, Globale._listeSauvegardeProvisoire.Item4,
-                        Globale._listeSauvegardeProvisoire.Item5);
+                    FichierWord.sauvegardeCarteProvisoireWord(Globale.ListeSauvegardeProvisoire.Item1,
+                        Globale.ListeSauvegardeProvisoire.Item2,
+                        Globale.ListeSauvegardeProvisoire.Item3, Globale.ListeSauvegardeProvisoire.Item4,
+                        Globale.ListeSauvegardeProvisoire.Item5);
 
                     var macAddress = "";
 

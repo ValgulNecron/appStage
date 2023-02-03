@@ -66,7 +66,7 @@ namespace CartesAcces
                         Globale.NomUtilisateur = txtIdentifiant.Text;
                         txtMotDePasse.Text = "";
                         txtIdentifiant.Text = "";
-                        foreach (Control controle in Globale._accueil.Controls)
+                        foreach (Control controle in Globale.Accueil.Controls)
                             if (controle is Panel && controle.Name == "pnlMenu")
                                 foreach (Control controle2 in controle.Controls)
                                     if (controle2 is Button)
@@ -77,8 +77,9 @@ namespace CartesAcces
                         frmWait.Show();
                         frmWait.TopMost = true;
 
-                        Globale._actuelle = new frmImportation();
-                        frmAccueil.OpenChildForm(Globale._actuelle);
+                        Globale.Actuelle = new frmImportation();
+                        frmAccueil.OpenChildForm(Globale.Actuelle);
+
                         var macAddress = string.Empty;
                         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                             if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -143,7 +144,7 @@ namespace CartesAcces
         private void frmConnexion_Load(object sender, EventArgs e)
         {
             ActiveControl = txtIdentifiant;
-            foreach (Control controle in Globale._accueil.Controls)
+            foreach (Control controle in Globale.Accueil.Controls)
                 if (controle is Panel && controle.Name == "pnlMenu")
                     foreach (Control controle2 in controle.Controls)
                         if (controle2 is Button && controle2.Name != "btnTheme")
