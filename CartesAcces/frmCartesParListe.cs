@@ -40,10 +40,10 @@ namespace CartesAcces
                 btnAjout.Click += ajoutEleve;
                 btnRetirer.Click += retirerEleve;
                 txtRecherche.TextChanged += recheche;
-                Globale._listeEleves6eme = new List<Eleve>();
-                Globale._listeEleves5eme = new List<Eleve>();
-                Globale._listeEleves4eme = new List<Eleve>();
-                Globale._listeEleves3eme = new List<Eleve>();
+                Globale.ListeEleves6Eme = new List<Eleve>();
+                Globale.ListeEleves5Eme = new List<Eleve>();
+                Globale.ListeEleves4Eme = new List<Eleve>();
+                Globale.ListeEleves3Eme = new List<Eleve>();
                 foreach (Control VARIABLE in groupBox1.Controls)
                 {
                     (VARIABLE as RadioButton).CheckedChanged += rbChanged;
@@ -53,28 +53,28 @@ namespace CartesAcces
                 {
                     if (el.ClasseEleve.Substring(0, 1) == 6.ToString())
                     {
-                        Globale._listeEleves6eme.Add(el);
+                        Globale.ListeEleves6Eme.Add(el);
                     }
                 }
                 foreach (Eleve el in Globale.ListeEleve)
                 {
                     if (el.ClasseEleve.Substring(0, 1) == 5.ToString())
                     {
-                        Globale._listeEleves5eme.Add(el);
+                        Globale.ListeEleves5Eme.Add(el);
                     }
                 }
                 foreach (Eleve el in Globale.ListeEleve)
                 {
                     if (el.ClasseEleve.Substring(0, 1) == 4.ToString())
                     {
-                        Globale._listeEleves4eme.Add(el);
+                        Globale.ListeEleves4Eme.Add(el);
                     }
                 }
                 foreach (Eleve el in Globale.ListeEleve)
                 {
                     if (el.ClasseEleve.Substring(0, 1) == 3.ToString())
                     {
-                        Globale._listeEleves3eme.Add(el);
+                        Globale.ListeEleves3Eme.Add(el);
                     }
                 }
             }
@@ -212,7 +212,7 @@ namespace CartesAcces
 
         private void SemeF()
         {
-            listeEleve = Globale._listeEleves6eme;
+            listeEleve = Globale.ListeEleves6Eme;
             nomPrenomEleve = new List<string>();
             eleveEnString();
             Eleves.DataSource = nomPrenomEleve;
@@ -220,7 +220,7 @@ namespace CartesAcces
 
         private void CemeF()
         {
-            listeEleve = Globale._listeEleves5eme;
+            listeEleve = Globale.ListeEleves5Eme;
             nomPrenomEleve = new List<string>();
             eleveEnString();
             Eleves.DataSource = nomPrenomEleve;
@@ -228,7 +228,7 @@ namespace CartesAcces
 
         private void QemeF()
         {
-            listeEleve = Globale._listeEleves4eme;
+            listeEleve = Globale.ListeEleves4Eme;
             nomPrenomEleve = new List<string>();
             eleveEnString();
             Eleves.DataSource = nomPrenomEleve;
@@ -236,7 +236,7 @@ namespace CartesAcces
 
         private void TemeF()
         {
-            listeEleve = Globale._listeEleves3eme;
+            listeEleve = Globale.ListeEleves3Eme;
             nomPrenomEleve = new List<string>();
             eleveEnString();
             Eleves.DataSource = nomPrenomEleve;

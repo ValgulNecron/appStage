@@ -17,8 +17,8 @@ namespace CartesAcces
                 {
                     if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
                           controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
-                            Globale._couleurTextBoxSombre[1], Globale._couleurTextBoxSombre[2]);
+                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxSombre[0],
+                            Globale.CouleurTextBoxSombre[1], Globale.CouleurTextBoxSombre[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
                         Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
                     if (controle is Button)
@@ -26,11 +26,11 @@ namespace CartesAcces
                         var controle2 = controle as Button;
                         controle2.FlatStyle = FlatStyle.Flat;
                         if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
-                                Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
+                                Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
                         else
-                            controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
-                                Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
+                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
+                                Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
                         controle2.EnabledChanged += changement_state_btn;
                     }
 
@@ -102,8 +102,8 @@ namespace CartesAcces
                 {
                     if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
                           controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
-                            Globale._couleurTextBoxSombre[1], Globale._couleurTextBoxSombre[2]);
+                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxSombre[0],
+                            Globale.CouleurTextBoxSombre[1], Globale.CouleurTextBoxSombre[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
                         Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
                     if (controle is Button)
@@ -111,11 +111,11 @@ namespace CartesAcces
                         var controle2 = controle as Button;
                         controle2.FlatStyle = FlatStyle.Flat;
                         if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
-                                Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
+                                Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
                         else
-                            controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
-                                Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
+                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
+                                Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
                         controle2.EnabledChanged += changement_state_btn;
                     }
 
@@ -182,8 +182,8 @@ namespace CartesAcces
                 {
                     if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
                           controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale._couleurTextBoxSombre[0],
-                            Globale._couleurTextBoxSombre[1], Globale._couleurTextBoxSombre[2]);
+                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxSombre[0],
+                            Globale.CouleurTextBoxSombre[1], Globale.CouleurTextBoxSombre[2]);
                     controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
                         Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
                     if (controle is Button)
@@ -191,11 +191,11 @@ namespace CartesAcces
                         var controle2 = controle as Button;
                         controle2.FlatStyle = FlatStyle.Flat;
                         if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
-                                Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
+                                Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
                         else
-                            controle.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
-                                Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
+                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
+                                Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
                         controle2.EnabledChanged += changement_state_btn;
                     }
 
@@ -270,8 +270,8 @@ namespace CartesAcces
             if (btn != null && btn.Enabled)
             {
                 if (Globale.EstEnModeSombre)
-                    btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonsSombre[0],
-                        Globale._couleurBoutonsSombre[1], Globale._couleurBoutonsSombre[2]);
+                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
+                        Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
                 else
                     btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsClaire[0],
                         Globale.CouleurBoutonsClaire[1], Globale.CouleurBoutonsClaire[2]);
@@ -279,8 +279,8 @@ namespace CartesAcces
             else if (btn != null)
             {
                 if (Globale.EstEnModeSombre)
-                    btn.BackColor = Color.FromArgb(255, Globale._couleurBoutonOffSombre[0],
-                        Globale._couleurBoutonOffSombre[1], Globale._couleurBoutonOffSombre[2]);
+                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
+                        Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
                 else
                     btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffClaire[0],
                         Globale.CouleurBoutonOffClaire[1], Globale.CouleurBoutonOffClaire[2]);

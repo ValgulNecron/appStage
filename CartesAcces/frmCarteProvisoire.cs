@@ -273,7 +273,7 @@ namespace CartesAcces
                     pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
                     pbPhoto.Visible = true;
                     // changement
-                    Globale._pbPhoto = pbPhoto;
+                    Globale.PbPhoto = pbPhoto;
                 }
             }
             catch
@@ -341,10 +341,10 @@ namespace CartesAcces
         private void btnSave_Click(object sender, EventArgs e)
         {
             FichierWord.getDossierCarteProvisoire();
-            Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
+            Globale.ListeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
                 (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
             Globale.Cas = 5;
-            Globale._actuelle = this;
+            Globale.Actuelle = this;
             // backgroundWorker
             var frmWait = new barDeProgression();
             frmWait.Show();

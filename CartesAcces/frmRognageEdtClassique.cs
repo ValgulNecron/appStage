@@ -27,9 +27,9 @@ namespace CartesAcces
         {
             try
             {
-                listeFichiers.AddRange(Directory.GetFiles(Globale._cheminEdtClassique));
+                listeFichiers.AddRange(Directory.GetFiles(Globale.CheminEdtClassique));
                 pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
-                Edt.rognageEdt(pbEdtClassique, Globale._cheminEdtClassique);
+                Edt.rognageEdt(pbEdtClassique, Globale.CheminEdtClassique);
             }
             catch
             {
@@ -123,7 +123,7 @@ namespace CartesAcces
 
                 Directory.CreateDirectory(Chemin.CheminEdtClassique);
 
-                var directory = new DirectoryInfo(Globale._cheminEdtClassique);
+                var directory = new DirectoryInfo(Globale.CheminEdtClassique);
                 foreach (var fichier in listeFichiers)
                 {
                     pbEdtClassique.Image = Image.FromFile(fichier);

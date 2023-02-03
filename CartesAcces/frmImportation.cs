@@ -36,7 +36,7 @@ namespace CartesAcces
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
             childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel
-            foreach (Control controle in Globale._accueil.Controls)
+            foreach (Control controle in Globale.Accueil.Controls)
                 if (controle is Panel && controle.Name == "pnlContent")
                 {
                     var pnlContent = controle as Panel;
@@ -56,10 +56,10 @@ namespace CartesAcces
             try
             {
                 //lblDateListeEleve = Globale._lblDate;
-                Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
-                Globale._actuelle = new frmImportation(); //
-                OpenChildForm(Globale._actuelle); //
-                if (Globale._cheminTexte.Length > 0)
+                Globale.CheminTexte = Chemin.setCheminImportationFichierExcel();
+                Globale.Actuelle = new frmImportation(); //
+                OpenChildForm(Globale.Actuelle); //
+                if (Globale.CheminTexte.Length > 0)
                 {
                     Globale.Cas = 2;
                     var frmWait = new barDeProgression();
@@ -93,7 +93,7 @@ namespace CartesAcces
         {
             try
             {
-                Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
+                Globale.CheminPdf = Chemin.setCheminImportationFichierPdf();
                 var frmSelectSection = new frmSelectNiveau();
                 frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
                 frmSelectSection.Show();
@@ -124,7 +124,7 @@ namespace CartesAcces
         {
             try
             {
-                Globale._cheminPhoto = Chemin.setCheminImportationDossier();
+                Globale.CheminPhoto = Chemin.setCheminImportationDossier();
                 Globale.Cas = 4;
                 var frmWait = new barDeProgression();
                 frmWait.Show();
@@ -156,8 +156,8 @@ namespace CartesAcces
             try
             {
                 lblImportEdtClassique = Globale.LblDate;
-                Globale._cheminEdtClassique = Chemin.setCheminImportationDossier();
-                Edition.importEdtClassique(Globale._cheminEdtClassique);
+                Globale.CheminEdtClassique = Chemin.setCheminImportationDossier();
+                Edition.importEdtClassique(Globale.CheminEdtClassique);
 
                 var frmRognageEdtClassique = new frmRognageEdtClassique();
                 frmRognageEdtClassique.Show();
@@ -196,15 +196,15 @@ namespace CartesAcces
                 var x = 0;
                 var random = new Random();
                 x = random.Next(0, 667);
-                if (x == 666 && Globale._gitPoule)
+                if (x == 666 && Globale.GitPoule)
                 {
                     pictureBox1.Visible = true;
                     pictureBox1.Image = Image.FromFile("./git-poule.jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                     pictureBox1.BringToFront();
                     pictureBox1.Location = new Point(0, 0);
-                    Globale._accueil.Text = "KFC - Git Poule";
-                    foreach (Control controle in Globale._accueil.Controls)
+                    Globale.Accueil.Text = "KFC - Git Poule";
+                    foreach (Control controle in Globale.Accueil.Controls)
                         if (controle is Panel && controle.Name == "pnlMenu")
                         {
                             controle.BackColor = Color.DeepPink;
@@ -274,7 +274,7 @@ namespace CartesAcces
             try
             {
                 lblImportFaceCarte = Globale.LblDate;
-                Globale._cheminFaceCarte = Chemin.setCheminImportationFaceCarte();
+                Globale.CheminFaceCarte = Chemin.setCheminImportationFaceCarte();
 
                 Globale.PasDeBar = true;
 

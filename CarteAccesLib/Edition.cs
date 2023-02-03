@@ -427,9 +427,9 @@ namespace CartesAcces
 
                 MessageBox.Show("Import réussie !");
 
-                Globale._actuelle.Invoke(new MethodInvoker(delegate
+                Globale.Actuelle.Invoke(new MethodInvoker(delegate
                 {
-                    foreach (Control controle in Globale._actuelle.Controls)
+                    foreach (Control controle in Globale.Actuelle.Controls)
                         if (controle is Label && controle.Name == "lblDateListeEleve")
                             controle.Text = ReadCsv.getDateFile();
                 }));
