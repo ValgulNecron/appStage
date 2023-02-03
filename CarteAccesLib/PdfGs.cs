@@ -67,7 +67,7 @@ namespace CartesAcces
             fs.Close();
 
             var process = new Process();
-            process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
+            process.StartInfo.FileName = "gswin32c.exe";
             process.StartInfo.Arguments =
                 $"-o \"{outputFile}\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;

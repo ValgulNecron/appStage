@@ -130,7 +130,7 @@ namespace CartesAcces
 
         private void btnChiffre_Click(object sender, EventArgs e)
         {
-            Securite.chiffrerDossier();
+            Securite.chiffrerDossier(); 
         }
 
         private void btnDechiffre_Click(object sender, EventArgs e)
