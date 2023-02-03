@@ -505,7 +505,6 @@ namespace CartesAcces
             this.txtCustom6.Size = new System.Drawing.Size(100, 20);
             this.txtCustom6.TabIndex = 77;
             this.txtCustom6.Visible = false;
-            this.txtCustom6.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // rdbCustom6
             // 
