@@ -7,6 +7,8 @@ using System.Linq;
 using System.Windows.Forms;
 using CarteAcces;
 using LinqToDB;
+using QRCoder;
+using QRCode = CarteAccesLib.QRCode;
 
 namespace CartesAcces
 {
@@ -122,6 +124,17 @@ namespace CartesAcces
             objetGraphique.Dispose(); // Libère les ressources
         }
 
+        // -- Récupère et place le qr code sur la face de la carte
+        public static void qrCodeFace(PictureBox pbCarteFace)
+        {
+            var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+            Bitmap bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
+            Bitmap bmpFinal = new Bitmap(bmpOriginal, new Size(220, 220));
+
+            var objGraphique =  Graphics.FromImage(pbCarteFace.Image);
+            objGraphique.DrawImage(bmpFinal, new Point(1350,80));
+        }
+        
         // -- Change le fond de la carte en fonction de la section choisie
         public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
         {
@@ -137,6 +150,8 @@ namespace CartesAcces
                 bmp.SetResolution(150, 150);
                 pbCarteFace.Image = bmp;
             }
+            
+            qrCodeFace(pbCarteFace);
             
             var police = new Font("Calibri", 45, FontStyle.Bold);
             dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
