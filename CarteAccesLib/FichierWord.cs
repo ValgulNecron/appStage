@@ -17,6 +17,7 @@ namespace CarteAccesLib
     {
         public static Application initWordFile(int margeHaute, int margeDroite, int margeGauche, int margeBasse)
         {
+            fermerWord();
             // -- Ouverture de l'applucation Word -- 
             var applicationWord = new Application();
 
@@ -77,6 +78,7 @@ namespace CarteAccesLib
         public static void sauvegardeCarteEnWord(string chemin, List<Eleve> listeEleve, PictureBox pbPhoto,
             PictureBox pbCarteArriere)
         {
+            fermerWord();
             var k = 0;
             var pages = 0;
             Eleve.possedeEdt(listeEleve);
@@ -198,6 +200,7 @@ namespace CarteAccesLib
         public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
             PictureBox pbCarteFace, TextBox txtNom, TextBox txtPrenom)
         {
+            fermerWord();
             if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
             {
                 var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
