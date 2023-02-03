@@ -26,7 +26,7 @@ namespace CartesAcces
             //TailleControle.setTailleControleTexte(this);
             //TailleControle.setTailleControleLabel(this);
             //TailleControle.setTailleBouton(this);
-            lblDateListeEleve.Text = ReadCSV.getDateFile();
+            lblDateListeEleve.Text = ReadCsv.getDateFile();
             lblEdtEleve.Text = PdfGs.getDateFile();
             lblPhotoEleve.Text = Photo.getDatePhotos();
         }

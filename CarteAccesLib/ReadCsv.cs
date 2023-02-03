@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public static class ReadCSV
+    public static class ReadCsv
     {
         public static List<string> getDataFromCSV(string pathCSV, int numColonne)
         {

@@ -350,11 +350,11 @@ namespace CartesAcces
 
                 File.Copy(cheminSource, cheminDestination);
                 File.SetCreationTime(cheminDestination, DateTime.Now);
-                ReadCSV.setLesEleves(cheminDestination);
+                ReadCsv.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
 
                 MessageBox.Show("Import Réussi");
-                //Globale._lblDate.Text = ReadCSV.getDateFile();
+                //Globale._lblDate.Text = ReadCsv.getDateFile();
             }
             catch (Exception e)
             {
@@ -436,7 +436,7 @@ namespace CartesAcces
                 {
                     foreach (Control controle in Globale._actuelle.Controls)
                         if (controle is Label && controle.Name == "lblDateListeEleve")
-                            controle.Text = ReadCSV.getDateFile();
+                            controle.Text = ReadCsv.getDateFile();
                 }));
             }
             catch (Exception e)

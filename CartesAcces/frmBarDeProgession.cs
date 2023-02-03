@@ -64,7 +64,7 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            ReadCSV.setLesEleves(Chemin.cheminListeEleve);
+            ReadCsv.setLesEleves(Chemin.cheminListeEleve);
             Eleve.setLesClasses();
         }
 
@@ -75,7 +75,7 @@ namespace CartesAcces
             {
                 foreach (Control controle in Globale._actuelle.Controls)
                     if (controle is Label && controle.Name == "lblDateListeEleve")
-                        controle.Text = ReadCSV.getDateFile();
+                        controle.Text = ReadCsv.getDateFile();
             }));
         }
 
