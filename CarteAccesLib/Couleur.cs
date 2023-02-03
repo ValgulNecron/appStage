@@ -9,7 +9,7 @@ namespace CartesAcces
     {
         public static void setCouleurFenetre(Form fenetre)
         {
-            foreach (Control controle in groupeBox.Controls)
+            foreach (Control controle in fenetre.Controls)
             {
                 var panel = controle as Panel;
                 var groupBox = controle as GroupBox;
@@ -46,14 +46,14 @@ namespace CartesAcces
 
         public static void setCouleurPanel(Panel panel)
         {
-            foreach (Control controle in groupeBox.Controls)
+            foreach (Control controle in panel.Controls)
             {
-                var panel = controle as Panel;
+                var panel2 = controle as Panel;
                 var groupBox = controle as GroupBox;
                 var button = controle as Button;
                 var textBox = controle as TextBox;
                 var listBox = controle as ListBox;
-                if (panel != null)
+                if (panel2 != null)
                 {
                     setCouleurPanel((Panel) controle);
                 }
