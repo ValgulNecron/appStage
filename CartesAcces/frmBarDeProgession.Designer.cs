@@ -65,14 +65,16 @@ namespace CartesAcces
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = new System.Drawing.Point(600, 100);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "barDeProgression";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Chargement";
             this.Load += new System.EventHandler(this.progressBarForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

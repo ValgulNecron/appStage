@@ -62,8 +62,6 @@ namespace CartesAcces
             {
                 Globale._cas = 3;
                 var frmWait = new barDeProgression();
-                frmWait.StartPosition = FormStartPosition.Manual;
-                frmWait.Location = new Point(0, 0);
                 frmWait.Show();
                 frmWait.TopMost = true;
             }

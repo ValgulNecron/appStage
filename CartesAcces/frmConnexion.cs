@@ -52,7 +52,7 @@ namespace CartesAcces
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
                 if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
-                    MessageBox.Show("nom d'utilisateur invalide");
+                    MessageBox.Show("nom d'utilisateur ou mot de passe invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
@@ -73,8 +73,6 @@ namespace CartesAcces
                                         controle2.Enabled = true;
                         Globale._cas = 1;
                         var frmWait = new barDeProgression();
-                        frmWait.StartPosition = FormStartPosition.CenterScreen;
-                        ;
                         frmWait.Show();
                         frmWait.TopMost = true;
                         Globale._actuelle = new frmImportation();
@@ -99,7 +97,7 @@ namespace CartesAcces
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                    MessageBox.Show("nom d'utilisateur ou mot de passe invalide");
                     txtMotDePasse.Text = "";
                 }
             }
