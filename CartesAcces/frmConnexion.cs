@@ -74,8 +74,8 @@ namespace CartesAcces
                         Globale._cas = 1;
                         var frmWait = new barDeProgression();
                         frmWait.StartPosition = FormStartPosition.CenterScreen;
+                        frmWait.Show();
                         frmWait.BringToFront();
-                        frmWait.Show();                        
                         Globale._actuelle = new frmImportation();
                         frmAccueil.OpenChildForm(Globale._actuelle);
                         var macAddress = string.Empty;
@@ -105,6 +105,7 @@ namespace CartesAcces
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+               
             }
         }
 
