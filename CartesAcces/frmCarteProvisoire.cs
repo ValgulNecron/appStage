@@ -347,6 +347,7 @@ namespace CartesAcces
             Globale._actuelle = this;
             // backgroundWorker
             var frmWait = new barDeProgression();
+            frmWait.StartPosition = FormStartPosition.CenterScreen;
             frmWait.Show();
             frmWait.TopMost = true;
         }

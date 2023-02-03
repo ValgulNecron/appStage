@@ -75,7 +75,7 @@ namespace CartesAcces
             var dir3 = new DirectoryInfo(Chemin.CheminListeEleve);
             if (dir3.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
                 MessageBox.Show("15j ou plus depuis le dernier import des listes eleves");
-
+            
             timer = new Timer(this);
 
             try

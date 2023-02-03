@@ -13,30 +13,26 @@ namespace CartesAcces
     public static class Edition
     {
         // ** VARIABLES : Pour l'édition de l'emploi du temps (rognage) **
-        public static bool
-            selectionClique = false; // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
+        public static bool SelectionClique { get; set; } = false;
 
-        public static int rognageX; // -> Abscisse de départ du rognage
-        public static int rognageY; // -> Ordonnée de départ du rognage
+        public static int RognageX { get; set; }
+        public static int RognageY { get; set; }
 
-        public static int rognageLargeur; // -> Largeur du rognage
-        public static int rognageHauteur; // -> Hauteur du rognage
-        public static Pen rognagePen; // -> Stylo qui dessine le rectangle correspondant au rognage
+        public static int RognageLargeur { get; set; }
+        public static int RognageHauteur { get; set; }
+        public static Pen RognagePen { get; set; }
 
         // ** VARIABLES  : Déplacement de la photo
-        public static bool
-            drag = false; // -> Est ce que l'utilisateur a cliqué sur la photo ? (clique maintenue : drag passera a true)
+        public static bool Drag { get; set; } = false;
 
-        public static int
-            posX; // -> Abscisse initiale, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
+        public static int PosX { get; set; }
 
-        public static int
-            posY; // -> Ordonnée initialie, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
+        public static int PosY { get; set; }
 
         // ** VARIABLES : Chemin de l'image **
-        public static string cheminFichier;
+        public static string CheminFichier { get; set; }
 
-        public static string cheminImpressionFinal;
+        public static string CheminImpressionFinal { get; set; }
 
         // -- Dessine le rectangle de couleur derrière le texte pour une meilleurs visibilité de celui ci --
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, int posX, int posY,
@@ -68,6 +64,43 @@ namespace CartesAcces
                 case "3eme":
                     objGraphique.FillRectangle(pinceauBleu, rectangle);
                     objGraphique.DrawRectangle(new Pen(pinceauBleu), rectangle);
+                    break;
+            }
+        }
+        
+        public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
+            int posY)
+        {
+            Brush brushJaune = new SolidBrush(Color.Yellow);
+            Brush brushVert = new SolidBrush(Color.LightGreen);
+            Brush brushRouge = new SolidBrush(Color.Red);
+            Brush brushBleu = new SolidBrush(Color.LightBlue);
+            var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
+            var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
+            var rectangle = new Rectangle(posX, posY, largeur, hauteur);
+
+            // -- Couleur du rectangle en fonction de la section (donc de la couleur de la carte) --
+            switch (eleve.ClasseEleve.Substring(0, 1))
+            {
+                case "6":
+                    objGraphique.FillRectangle(brushJaune, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
+                    break;
+                case "5":
+                    objGraphique.FillRectangle(brushVert, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushVert), rectangle);
+                    break;
+                case "4":
+                    objGraphique.FillRectangle(brushRouge, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushRouge), rectangle);
+                    break;
+                case "3":
+                    objGraphique.FillRectangle(brushBleu, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushBleu), rectangle);
+                    break;
+                default:
+                    objGraphique.FillRectangle(brushJaune, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
                     break;
             }
         }
@@ -104,50 +137,28 @@ namespace CartesAcces
                 bmp.SetResolution(150, 150);
                 pbCarteFace.Image = bmp;
             }
-            
-            var police = new Font("Calibri", 45, FontStyle.Bold);
+
+            var date = DateTime.Today.ToShortDateString();
+            var police = new Font("times new roman", 45, FontStyle.Bold);
             dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
 
-            var police3 = new Font("Calibri", 28, FontStyle.Bold);
+            var police2 = new Font("times new roman", 15, FontStyle.Bold);
+            dessineTexteCarteFace(police2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
+            
+            var police3 = new Font("times new roman", 28, FontStyle.Bold);
             dessineTexteCarteFace(police3, 50, 960, "Nom :", pbCarteFace, cbbSection);
             dessineTexteCarteFace(police3, 50, 1075, "Prénom :", pbCarteFace, cbbSection);
             
-            var police4 = new Font("Calibri", 20, FontStyle.Bold);
-            bool succes = true;
-            
-            var objetGraphique = Graphics.FromImage(pbCarteFace.Image);
-            int mesure;
-            string chaine;
+            var police4 = new Font("times new roman", 20, FontStyle.Bold);
+            bool succes = false;
 
             if (succes)
             {
-                var etab = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
-                var date = DateTime.Today.ToShortDateString();
-                
-                chaine = "Date de création : " + date;
-                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                var police2 = new Font("Calibri", 15, FontStyle.Bold);
-                dessineTexteCarteFace(police2, 1835 - mesure, 850, chaine, pbCarteFace, cbbSection);
-                
-                chaine = etab.NomEtablissement;
-                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 892, etab.NomEtablissement, pbCarteFace, cbbSection);
-
-                chaine = "Adresse : " + etab.NumeroRueEtablissement + " " + etab.NomRueEtablissement;
-                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 944,  chaine, pbCarteFace, cbbSection);
-
-                chaine = etab.CodePostaleEtablissement + " " + etab.VilleEtablissement;
-                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 996,  chaine, pbCarteFace, cbbSection);
-
-                chaine = "Tel : " + etab.NumeroTelephoneEtablissement;
-                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 1048, chaine, pbCarteFace, cbbSection);
-
-                chaine = "Mail : " + etab.EmailEtablissement;
-                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 1100, chaine, pbCarteFace, cbbSection);
+                var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+                dessineTexteCarteFace(police4, 900, 944, etab.NomEtablissement, pbCarteFace, cbbSection);
+                dessineTexteCarteFace(police4, 900, 996, "Adresse : " + etab.NumeroRueEtablissement + etab.NomRueEtablissement + etab.CodePostaleEtablissement + etab.VilleEtablissement, pbCarteFace, cbbSection);
+                dessineTexteCarteFace(police4, 900, 1048, "Tel : " + etab.NumeroTelephoneEtablissement, pbCarteFace, cbbSection);
+                dessineTexteCarteFace(police4, 900, 1100, "Mail : " + etab.EmailEtablissement, pbCarteFace, cbbSection);
             }
 
             pbCarteFace.Refresh();
@@ -159,19 +170,19 @@ namespace CartesAcces
             switch (cbbSection.Text)
             {
                 case "6eme":
-                    cbbClasse.DataSource = Globale._classes6eme;
+                    cbbClasse.DataSource = Globale.Classes6Eme;
                     break;
 
                 case "5eme":
-                    cbbClasse.DataSource = Globale._classes5eme;
+                    cbbClasse.DataSource = Globale.Classes5Eme;
                     break;
 
                 case "4eme":
-                    cbbClasse.DataSource = Globale._classes4eme;
+                    cbbClasse.DataSource = Globale.Classes4Eme;
                     break;
 
                 case "3eme":
-                    cbbClasse.DataSource = Globale._classes3eme;
+                    cbbClasse.DataSource = Globale.Classes3Eme;
                     break;
             }
         }
@@ -183,15 +194,15 @@ namespace CartesAcces
             {
                 if (txtPrenom.Length < 15)
                 {
-                    var font = new Font("Calibri", 28, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 325, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 28, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 300, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
                     fondCarteNiveau(pbCarteFace, cbbSection);
-                    var font = new Font("Calibri", 25, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 325, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 25, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 300, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
@@ -203,14 +214,14 @@ namespace CartesAcces
             {
                 if (txtNom.Length < 15)
                 {
-                    var font = new Font("Calibri", 28, FontStyle.Bold);
+                    var font = new Font("times new roman", 28, FontStyle.Bold);
                     dessineTexteCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
                     fondCarteNiveau(pbCarteFace, cbbSection);
-                    var font = new Font("Calibri", 25, FontStyle.Bold);
+                    var font = new Font("times new roman", 25, FontStyle.Bold);
                     dessineTexteCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
@@ -256,43 +267,6 @@ namespace CartesAcces
                 reprendNom(txtNom.Text, pbCarteFace, cbbSection);
                 reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
                 btnEdtPerso.Enabled = false;
-            }
-        }
-
-        public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
-            int posY)
-        {
-            Brush brushJaune = new SolidBrush(Color.Yellow);
-            Brush brushVert = new SolidBrush(Color.LightGreen);
-            Brush brushRouge = new SolidBrush(Color.Red);
-            Brush brushBleu = new SolidBrush(Color.LightBlue);
-            var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
-            var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
-            var rectangle = new Rectangle(posX, posY, largeur, hauteur);
-
-            // -- Couleur du rectangle en fonction de la section (donc de la couleur de la carte) --
-            switch (eleve.ClasseEleve.Substring(0, 1))
-            {
-                case "6":
-                    objGraphique.FillRectangle(brushJaune, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
-                    break;
-                case "5":
-                    objGraphique.FillRectangle(brushVert, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushVert), rectangle);
-                    break;
-                case "4":
-                    objGraphique.FillRectangle(brushRouge, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushRouge), rectangle);
-                    break;
-                case "3":
-                    objGraphique.FillRectangle(brushBleu, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushBleu), rectangle);
-                    break;
-                default:
-                    objGraphique.FillRectangle(brushJaune, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
-                    break;
             }
         }
 
@@ -347,7 +321,7 @@ namespace CartesAcces
 
         public static void carteArriere(Eleve eleve, PictureBox pbCarteArriere)
         {
-            if (eleve.SansEDT == false)
+            if (!eleve.SansEDT)
             {
                 var cheminEdt = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" +
                                 Eleve.creeCleEleve(eleve) + ".jpg";
@@ -363,12 +337,12 @@ namespace CartesAcces
         public static void importEleves(string path)
         {
             var cheminSource = path;
-            var cheminDestination = Chemin.cheminListeEleve;
+            var cheminDestination = Chemin.CheminListeEleve;
             try
             {
                 if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
 
-                Directory.CreateDirectory(Chemin.cheminDossierListeEleve);
+                Directory.CreateDirectory(Chemin.CheminDossierListeEleve);
 
                 File.Copy(cheminSource, cheminDestination);
                 File.SetCreationTime(cheminDestination, DateTime.Now);
@@ -376,7 +350,6 @@ namespace CartesAcces
                 Eleve.setLesClasses();
 
                 MessageBox.Show("Import Réussi");
-                //Globale._lblDate.Text = ReadCsv.getDateFile();
             }
             catch (Exception e)
             {
@@ -387,7 +360,7 @@ namespace CartesAcces
         public static void importCarteFace(string chemin)
         {
             var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminFaceCarte + Globale._classe + "eme.png";
+            var cheminDestination = Chemin.CheminFaceCarte + Globale.Classe + "eme.png";
 
             try
             {
@@ -399,13 +372,13 @@ namespace CartesAcces
             }
             catch
             {
+                // ignored
             }
         }
 
         public static void importEdtClassique(string chemin)
         {
-            var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminEdtClassique;
+            var cheminDestination = Chemin.CheminEdtClassique;
 
             try
             {
@@ -419,10 +392,10 @@ namespace CartesAcces
 
                 Directory.CreateDirectory(cheminDestination);
 
-                //MessageBox.Show("Import réussie !");
             }
             catch
             {
+                // ignored
             }
         }
 
@@ -430,7 +403,7 @@ namespace CartesAcces
         public static void importPhoto(string chemin)
         {
             var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminPhotoEleve;
+            var cheminDestination = Chemin.CheminPhotoEleve;
 
             try
             {
@@ -448,8 +421,8 @@ namespace CartesAcces
                 {
                     var img = Image.FromFile(file.FullName);
                     var nom = file.Name;
-
                     img.Save(cheminDestination + nom, ImageFormat.Png);
+                    img.Dispose();
                 }
 
                 MessageBox.Show("Import réussie !");
