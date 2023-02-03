@@ -9,6 +9,17 @@ namespace CartesAcces
     {
         public static void setCouleurFenetre(Form fenetre)
         {
+            if (Globale.EstEnModeSombre)
+            {
+                fenetre.BackColor = Color.FromArgb(255, Globale.CouleurDeFondSombre[0],
+                    Globale.CouleurDeFondSombre[1], Globale.CouleurDeFondSombre[2]);
+            }
+            else
+            {
+                fenetre.BackColor = Color.FromArgb(255, Globale.CouleurDeFondClaire[0],
+                    Globale.CouleurDeFondClaire[1], Globale.CouleurDeFondClaire[2]);
+            }
+
             foreach (Control controle in fenetre.Controls)
             {
                 var panel = controle as Panel;
@@ -148,15 +159,11 @@ namespace CartesAcces
         {
             if (Globale.EstEnModeSombre)
             {
-                controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxSombre[0],
-                    Globale.CouleurTextBoxSombre[1], Globale.CouleurTextBoxSombre[2]);
                 controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
                     Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
             }
             else
             {
-                controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxClaire[0],
-                    Globale.CouleurTextBoxClaire[1], Globale.CouleurTextBoxClaire[2]);
                 controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteclaire[0],
                     Globale.CouleurDuTexteclaire[1], Globale.CouleurDuTexteclaire[2]);
             }
