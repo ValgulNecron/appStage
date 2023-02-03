@@ -15,19 +15,19 @@ namespace CartesAcces
             InitializeComponent();
             Globale._accueil = this;
             Couleur.setCouleurFenetre(this);
-            if (Globale._estEnModeSombre)
+            if (Globale.EstEnModeSombre)
             {
-                pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
-                    Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
-                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondSombre[0],
-                    Globale._couleurDeFondSombre[1], Globale._couleurDeFondSombre[2]);
+                pnlMenu.BackColor = Color.FromArgb(255, Globale.CouleurBandeauxSombre[0],
+                    Globale.CouleurBandeauxSombre[1], Globale.CouleurBandeauxSombre[2]);
+                pnlContent.BackColor = Color.FromArgb(255, Globale.CouleurDeFondSombre[0],
+                    Globale.CouleurDeFondSombre[1], Globale.CouleurDeFondSombre[2]);
             }
             else
             {
-                pnlMenu.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
-                    Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
-                pnlContent.BackColor = Color.FromArgb(255, Globale._couleurDeFondClaire[0],
-                    Globale._couleurDeFondClaire[1], Globale._couleurDeFondClaire[2]);
+                pnlMenu.BackColor = Color.FromArgb(255, Globale.CouleurBandeauxClaire[0],
+                    Globale.CouleurBandeauxClaire[1], Globale.CouleurBandeauxClaire[2]);
+                pnlContent.BackColor = Color.FromArgb(255, Globale.CouleurDeFondClaire[0],
+                    Globale.CouleurDeFondClaire[1], Globale.CouleurDeFondClaire[2]);
             }
 
             TailleControle.setTailleBouton(this);
@@ -68,11 +68,11 @@ namespace CartesAcces
             if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
                 MessageBox.Show("15j ou plus depuis le denier import des edt");
 
-            var dir2 = new DirectoryInfo(Chemin.cheminPhotoEleve);
+            var dir2 = new DirectoryInfo(Chemin.CheminPhotoEleve);
             if (dir2.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
                 MessageBox.Show("15j ou plus depuis le dernier import de photo");
 
-            var dir3 = new DirectoryInfo(Chemin.cheminListeEleve);
+            var dir3 = new DirectoryInfo(Chemin.CheminListeEleve);
             if (dir3.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
                 MessageBox.Show("15j ou plus depuis le dernier import des listes eleves");
             
@@ -121,23 +121,23 @@ namespace CartesAcces
 
         private void btnTheme_Click(object sender, EventArgs e)
         {
-            Globale._estEnModeSombre = !Globale._estEnModeSombre;
+            Globale.EstEnModeSombre = !Globale.EstEnModeSombre;
 
             Couleur.setCouleurFenetre(this);
             Couleur.setCouleurFenetre(Globale._actuelle);
             foreach (Control control in Controls)
                 if (control is Panel && control.Name == "pnlMenu")
                 {
-                    if (Globale._estEnModeSombre)
-                        control.BackColor = Color.FromArgb(255, Globale._couleurBandeauxSombre[0],
-                            Globale._couleurBandeauxSombre[1], Globale._couleurBandeauxSombre[2]);
+                    if (Globale.EstEnModeSombre)
+                        control.BackColor = Color.FromArgb(255, Globale.CouleurBandeauxSombre[0],
+                            Globale.CouleurBandeauxSombre[1], Globale.CouleurBandeauxSombre[2]);
                     else
-                        control.BackColor = Color.FromArgb(255, Globale._couleurBandeauxClaire[0],
-                            Globale._couleurBandeauxClaire[1], Globale._couleurBandeauxClaire[2]);
+                        control.BackColor = Color.FromArgb(255, Globale.CouleurBandeauxClaire[0],
+                            Globale.CouleurBandeauxClaire[1], Globale.CouleurBandeauxClaire[2]);
                 }
 
             var user = new Utilisateurs();
-            user.ThemeBool = Globale._estEnModeSombre;
+            user.ThemeBool = Globale.EstEnModeSombre;
         }
 
         private void btnChangeMdp_Click(object sender, EventArgs e)

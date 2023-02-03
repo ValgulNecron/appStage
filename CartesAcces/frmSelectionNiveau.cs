@@ -20,25 +20,25 @@ namespace CartesAcces
         {
             if (rdb3eme.Checked)
             {
-                Globale._classe = 3;
+                Globale.Classe = 3;
                 Close();
             }
 
             else if (rdb4eme.Checked)
             {
-                Globale._classe = 4;
+                Globale.Classe = 4;
                 Close();
             }
 
             else if (rdb5eme.Checked)
             {
-                Globale._classe = 5;
+                Globale.Classe = 5;
                 Close();
             }
 
             else if (rdb6eme.Checked)
             {
-                Globale._classe = 6;
+                Globale.Classe = 6;
                 Close();
             }
             else
@@ -46,7 +46,7 @@ namespace CartesAcces
                 MessageBox.Show("Veuillez selectionner une section...");
             }
 
-            if (Globale._pasDeBar)
+            if (Globale.PasDeBar)
             {
                 try
                 {
@@ -60,7 +60,7 @@ namespace CartesAcces
             }
             else
             {
-                Globale._cas = 3;
+                Globale.Cas = 3;
                 var frmWait = new barDeProgression();
                 frmWait.StartPosition = FormStartPosition.CenterScreen;
                 frmWait.Show();

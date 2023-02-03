@@ -45,8 +45,8 @@ namespace CartesAcces
 
                 if (Securite.validationPrerequisMdp(nouveauMdp.Text))
                 {
-                    var user = ClassSql.db.GetTable<Utilisateurs>()
-                        .FirstOrDefault(u => u.NomUtilisateur == Globale._nomUtilisateur);
+                    var user = ClassSql.Db.GetTable<Utilisateurs>()
+                        .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
                     if (Securite.verificationHash(ancienMdp.Text, user.Hash))
                     {
                         if (nouveauMdp.Text == nouveauMdpValid.Text)
@@ -63,12 +63,12 @@ namespace CartesAcces
 
                             var log = new LogActions();
                             log.DateAction = DateTime.Now;
-                            log.NomUtilisateur = Globale._nomUtilisateur;
+                            log.NomUtilisateur = Globale.NomUtilisateur;
                             log.Action = "Changement de mot de passe";
                             log.AdMac = macAddress;
-                            ClassSql.db.Insert(log);
+                            ClassSql.Db.Insert(log);
                             user.Hash = Securite.creationHash(nouveauMdp.Text);
-                            ClassSql.db.Update(user);
+                            ClassSql.Db.Update(user);
                             MessageBox.Show("mot de passe changé");
                             Close();
                         }
