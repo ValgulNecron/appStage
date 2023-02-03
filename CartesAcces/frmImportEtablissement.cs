@@ -13,6 +13,8 @@ namespace CartesAcces
      */
     public partial class frmImportEtablissement : Form
     {
+        private Etablissement etaDebut;
+        
         public frmImportEtablissement()
         {
             InitializeComponent();
@@ -21,6 +23,11 @@ namespace CartesAcces
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            if (etaDebut.NomEtablissement != txtNomEtablissement.Text)
+            {
+                ClassSql.db.GetTable<Etablissement>().Where(x => x.NomEtablissement == etaDebut.NomEtablissement).Delete();
+                ClassSql.db.GetTable<Etablissement>().Delete();
+            }
             var etablissement = new Etablissement();
             etablissement.NomEtablissement = txtNomEtablissement.Text;
             etablissement.NomRueEtablissement = txtRueEtablissement.Text;
@@ -63,18 +70,18 @@ namespace CartesAcces
         {
             try
             {
-                var eta = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
-                txtNomEtablissement.Text = eta.NomEtablissement;
-                txtMailEtablissement.Text = eta.EmailEtablissement;
-                txtRueEtablissement.Text = eta.NomRueEtablissement;
-                txtTelEtablissement.Text = eta.NumeroTelephoneEtablissement;
-                txtVilleEtablissement.Text = eta.VilleEtablissement;
-                txtCodePostalEtablissement.Text = eta.CodePostaleEtablissement;
-                txtNumRueEtablissement.Text = eta.NumeroRueEtablissement.ToString();
-                var codeHexa6eme = eta.CodeHexa6eme;
-                var codeHexa5eme = eta.CodeHexa5eme;
-                var codeHexa4eme = eta.CodeHexa4eme;
-                var codeHexa3eme = eta.CodeHexa3eme;
+                etaDebut = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
+                txtNomEtablissement.Text = etaDebut.NomEtablissement;
+                txtMailEtablissement.Text = etaDebut.EmailEtablissement;
+                txtRueEtablissement.Text = etaDebut.NomRueEtablissement;
+                txtTelEtablissement.Text = etaDebut.NumeroTelephoneEtablissement;
+                txtVilleEtablissement.Text = etaDebut.VilleEtablissement;
+                txtCodePostalEtablissement.Text = etaDebut.CodePostaleEtablissement;
+                txtNumRueEtablissement.Text = etaDebut.NumeroRueEtablissement.ToString();
+                var codeHexa6eme = etaDebut.CodeHexa6eme;
+                var codeHexa5eme = etaDebut.CodeHexa5eme;
+                var codeHexa4eme = etaDebut.CodeHexa4eme;
+                var codeHexa3eme = etaDebut.CodeHexa3eme;
                 foreach (var VARIABLE in gb6eme.Controls)
                     if (VARIABLE is RadioButton)
                     {
@@ -186,7 +193,8 @@ namespace CartesAcces
                         }
                     }
 
-                textBox1.Text = eta.UrlEtablissement;
+                textBox1.Text = etaDebut.UrlEtablissement;
+                txtNumRueEtablissement.KeyPress += keyPress;
             }
             catch
             {
