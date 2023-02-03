@@ -48,7 +48,7 @@ namespace CartesAcces
             // 
             this.gbTypeUser.Controls.Add(this.rdUser);
             this.gbTypeUser.Controls.Add(this.rdAdmin);
-            this.gbTypeUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbTypeUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.gbTypeUser.Location = new System.Drawing.Point(236, 23);
             this.gbTypeUser.Name = "gbTypeUser";
             this.gbTypeUser.Size = new System.Drawing.Size(303, 58);
@@ -59,7 +59,7 @@ namespace CartesAcces
             // rdUser
             // 
             this.rdUser.Checked = true;
-            this.rdUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.rdUser.Location = new System.Drawing.Point(193, 25);
             this.rdUser.Name = "rdUser";
             this.rdUser.Size = new System.Drawing.Size(88, 18);
@@ -70,7 +70,7 @@ namespace CartesAcces
             // 
             // rdAdmin
             // 
-            this.rdAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.rdAdmin.Location = new System.Drawing.Point(20, 19);
             this.rdAdmin.Name = "rdAdmin";
             this.rdAdmin.Size = new System.Drawing.Size(97, 30);
@@ -80,7 +80,7 @@ namespace CartesAcces
             // 
             // tbUser
             // 
-            this.tbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.tbUser.Location = new System.Drawing.Point(236, 124);
             this.tbUser.MaximumSize = new System.Drawing.Size(180, 22);
             this.tbUser.MinimumSize = new System.Drawing.Size(180, 22);
@@ -90,7 +90,7 @@ namespace CartesAcces
             // 
             // tbMdp
             // 
-            this.tbMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.tbMdp.Location = new System.Drawing.Point(236, 188);
             this.tbMdp.MaximumSize = new System.Drawing.Size(180, 22);
             this.tbMdp.MinimumSize = new System.Drawing.Size(180, 22);
@@ -100,7 +100,7 @@ namespace CartesAcces
             // 
             // tbValidMdp
             // 
-            this.tbValidMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbValidMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.tbValidMdp.Location = new System.Drawing.Point(236, 256);
             this.tbValidMdp.MaximumSize = new System.Drawing.Size(180, 22);
             this.tbValidMdp.MinimumSize = new System.Drawing.Size(180, 22);
@@ -110,7 +110,7 @@ namespace CartesAcces
             // 
             // lbNomUtilisateur
             // 
-            this.lbNomUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNomUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lbNomUtilisateur.Location = new System.Drawing.Point(233, 101);
             this.lbNomUtilisateur.Name = "lbNomUtilisateur";
             this.lbNomUtilisateur.Size = new System.Drawing.Size(138, 20);
@@ -119,7 +119,7 @@ namespace CartesAcces
             // 
             // lblMdpValide
             // 
-            this.lblMdpValide.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMdpValide.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblMdpValide.Location = new System.Drawing.Point(233, 233);
             this.lblMdpValide.Name = "lblMdpValide";
             this.lblMdpValide.Size = new System.Drawing.Size(138, 20);
@@ -128,7 +128,7 @@ namespace CartesAcces
             // 
             // lblMdp
             // 
-            this.lblMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblMdp.Location = new System.Drawing.Point(233, 165);
             this.lblMdp.Name = "lblMdp";
             this.lblMdp.Size = new System.Drawing.Size(138, 20);
@@ -137,7 +137,7 @@ namespace CartesAcces
             // 
             // btValid
             // 
-            this.btValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.btValid.Location = new System.Drawing.Point(236, 300);
             this.btValid.MaximumSize = new System.Drawing.Size(303, 45);
             this.btValid.MinimumSize = new System.Drawing.Size(303, 45);
@@ -163,10 +163,10 @@ namespace CartesAcces
             this.Controls.Add(this.gbTypeUser);
             this.Name = "frmCreationUtilisateur";
             this.Text = "frmCreationUtilisateur";
+            this.Load += new System.EventHandler(this.frmCreationUtilisateur_Load);
             this.gbTypeUser.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Button btValid;
