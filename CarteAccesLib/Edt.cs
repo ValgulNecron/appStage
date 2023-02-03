@@ -20,8 +20,9 @@ namespace CarteAcces
                     pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
                 }
             }
-            catch
+            catch (Exception e)
             {
+                // ignored
             }
         }
 
@@ -48,7 +49,7 @@ namespace CarteAcces
         public static void rognageEdt(PictureBox pbCarteArriere, string cheminEdt)
         {
             // -- Si la largeur a rogner est trop faible, on sort --
-            if (Edition.rognageLargeur < 1) return;
+            if (Edition.RognageLargeur < 1) return;
 
             /* -- Rectangle pour stocker l'image rognée avec les points calculés --
                 Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
@@ -56,10 +57,10 @@ namespace CarteAcces
                 Cela permet d'éviter les problèmes de résolution d'image après le rognage */
 
             // -- Je sais c'est moche mais j'ai pas eu le choix... --
-            double rLargeurReel = Edition.rognageLargeur * pbCarteArriere.Image.Width / 540;
-            double rHauteurReel = Edition.rognageHauteur * pbCarteArriere.Image.Height / 354;
-            double rXReel = Edition.rognageX * pbCarteArriere.Image.Width / 540;
-            double rYReel = Edition.rognageY * pbCarteArriere.Image.Height / 354;
+            double rLargeurReel = (double)Edition.RognageLargeur * pbCarteArriere.Image.Width / 540;
+            double rHauteurReel = (double)Edition.RognageHauteur * pbCarteArriere.Image.Height / 354;
+            double rXReel = (double)Edition.RognageX * pbCarteArriere.Image.Width / 540;
+            double rYReel = (double)Edition.RognageY * pbCarteArriere.Image.Height / 354;
 
             var rogagneLargeurReel = Convert.ToInt32(Math.Round(rLargeurReel));
             var rogagneHauteurReel = Convert.ToInt32(Math.Round(rHauteurReel));
