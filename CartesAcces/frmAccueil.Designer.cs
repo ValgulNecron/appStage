@@ -35,15 +35,15 @@ namespace CartesAcces
             this.btnCarteParClasse = new System.Windows.Forms.Button();
             this.btnParametres = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnChangeMdp = new System.Windows.Forms.Button();
             this.btnAfficheListeEleve = new System.Windows.Forms.Button();
             this.btnTheme = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContent
@@ -62,8 +62,8 @@ namespace CartesAcces
             this.btnCreerCarte.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreerCarte.BackColor = System.Drawing.Color.AliceBlue;
             this.btnCreerCarte.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCreerCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.btnCreerCarte.Location = new System.Drawing.Point(0, 204);
+            this.btnCreerCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreerCarte.Location = new System.Drawing.Point(0, 230);
             this.btnCreerCarte.Name = "btnCreerCarte";
             this.btnCreerCarte.Size = new System.Drawing.Size(170, 42);
             this.btnCreerCarte.TabIndex = 0;
@@ -76,8 +76,8 @@ namespace CartesAcces
             this.btnCarteParClasse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCarteParClasse.BackColor = System.Drawing.Color.AliceBlue;
             this.btnCarteParClasse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCarteParClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.btnCarteParClasse.Location = new System.Drawing.Point(0, 247);
+            this.btnCarteParClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarteParClasse.Location = new System.Drawing.Point(0, 273);
             this.btnCarteParClasse.Name = "btnCarteParClasse";
             this.btnCarteParClasse.Size = new System.Drawing.Size(170, 42);
             this.btnCarteParClasse.TabIndex = 2;
@@ -90,8 +90,8 @@ namespace CartesAcces
             this.btnParametres.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnParametres.BackColor = System.Drawing.Color.AliceBlue;
             this.btnParametres.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnParametres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.btnParametres.Location = new System.Drawing.Point(0, 439);
+            this.btnParametres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnParametres.Location = new System.Drawing.Point(0, 465);
             this.btnParametres.Name = "btnParametres";
             this.btnParametres.Size = new System.Drawing.Size(170, 42);
             this.btnParametres.TabIndex = 3;
@@ -118,10 +118,18 @@ namespace CartesAcces
             this.pnlMenu.Size = new System.Drawing.Size(170, 701);
             this.pnlMenu.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(170, 130);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label2.Location = new System.Drawing.Point(12, 178);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 204);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(170, 23);
             this.label2.TabIndex = 9;
@@ -130,8 +138,8 @@ namespace CartesAcces
             // label1
             // 
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label1.Location = new System.Drawing.Point(29, 413);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(29, 439);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(170, 23);
             this.label1.TabIndex = 8;
@@ -142,8 +150,8 @@ namespace CartesAcces
             this.btnChangeMdp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnChangeMdp.BackColor = System.Drawing.Color.AliceBlue;
             this.btnChangeMdp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnChangeMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.btnChangeMdp.Location = new System.Drawing.Point(0, 482);
+            this.btnChangeMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeMdp.Location = new System.Drawing.Point(0, 508);
             this.btnChangeMdp.Name = "btnChangeMdp";
             this.btnChangeMdp.Size = new System.Drawing.Size(170, 42);
             this.btnChangeMdp.TabIndex = 7;
@@ -156,8 +164,8 @@ namespace CartesAcces
             this.btnAfficheListeEleve.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAfficheListeEleve.BackColor = System.Drawing.Color.AliceBlue;
             this.btnAfficheListeEleve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAfficheListeEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.btnAfficheListeEleve.Location = new System.Drawing.Point(0, 290);
+            this.btnAfficheListeEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAfficheListeEleve.Location = new System.Drawing.Point(0, 316);
             this.btnAfficheListeEleve.Name = "btnAfficheListeEleve";
             this.btnAfficheListeEleve.Size = new System.Drawing.Size(170, 42);
             this.btnAfficheListeEleve.TabIndex = 6;
@@ -170,8 +178,8 @@ namespace CartesAcces
             this.btnTheme.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnTheme.BackColor = System.Drawing.Color.AliceBlue;
             this.btnTheme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.btnTheme.Location = new System.Drawing.Point(0, 525);
+            this.btnTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTheme.Location = new System.Drawing.Point(0, 551);
             this.btnTheme.Name = "btnTheme";
             this.btnTheme.Size = new System.Drawing.Size(170, 42);
             this.btnTheme.TabIndex = 5;
@@ -187,14 +195,6 @@ namespace CartesAcces
             this.lblVersion.Size = new System.Drawing.Size(0, 13);
             this.lblVersion.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 170);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // frmAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,16 +203,17 @@ namespace CartesAcces
             this.ClientSize = new System.Drawing.Size(1344, 701);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlMenu);
-            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmAccueil";
             this.Text = "Application Cartes Acces";
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.PictureBox pictureBox1;
