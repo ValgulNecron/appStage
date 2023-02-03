@@ -218,15 +218,15 @@ namespace CartesAcces
             {
                 if (txtPrenom.Length < 15)
                 {
-                    var font = new Font("times new roman", 28, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 300, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    var font = new Font("Calibri", 28, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 325, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
                     fondCarteNiveau(pbCarteFace, cbbSection);
-                    var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 300, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    var font = new Font("Calibri", 25, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 325, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
