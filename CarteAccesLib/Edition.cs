@@ -275,7 +275,7 @@ namespace CartesAcces
                 fondCarteNiveau(pbCarteFace, cbbSection);
                 reprendNom(txtNom.Text, pbCarteFace, cbbSection);
                 reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
-                var police = new Font("times new roman", 30, FontStyle.Bold);
+                var police = new Font("Calibri", 30, FontStyle.Bold);
                 dessineTexteCarteFace(police, 50, 230, "ULIS ", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
@@ -285,7 +285,7 @@ namespace CartesAcces
                 fondCarteNiveau(pbCarteFace, cbbSection);
                 reprendNom(txtNom.Text, pbCarteFace, cbbSection);
                 reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
-                var police = new Font("times new roman", 30, FontStyle.Bold);
+                var police = new Font("Calibri", 30, FontStyle.Bold);
                 dessineTexteCarteFace(police, 50, 230, "UPE2A", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
@@ -295,7 +295,7 @@ namespace CartesAcces
                 fondCarteNiveau(pbCarteFace, cbbSection);
                 reprendNom(txtNom.Text, pbCarteFace, cbbSection);
                 reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
-                var police = new Font("times new roman", 30, FontStyle.Bold);
+                var police = new Font("Calibri", 30, FontStyle.Bold);
                 dessineTexteCarteFace(police, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
                 btnEdtPerso.Enabled = true;
