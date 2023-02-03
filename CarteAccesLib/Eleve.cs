@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 
 namespace CartesAcces
 {
@@ -66,6 +67,7 @@ namespace CartesAcces
             Globale._classes4eme.Sort();
             Globale._classes5eme.Sort();
             Globale._classes6eme.Sort();
+
         }
 
         public static string creeCleEleve(Eleve eleve)

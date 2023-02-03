@@ -53,7 +53,7 @@ namespace CartesAcces
             }
             catch
             {
-                MessageBox.Show("operation annulée");
+                MessageBox.Show(new Form { TopMost = true }, "operation annulée");
             }
         }
 
