@@ -78,6 +78,7 @@ namespace CartesAcces
             this.rdbRouge6 = new System.Windows.Forms.RadioButton();
             this.rdbVert6 = new System.Windows.Forms.RadioButton();
             this.rdbJaune6 = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.gb3eme.SuspendLayout();
             this.gb4eme.SuspendLayout();
             this.gb5eme.SuspendLayout();
@@ -115,11 +116,11 @@ namespace CartesAcces
             // btnValider
             // 
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Location = new System.Drawing.Point(640, 479);
+            this.btnValider.Location = new System.Drawing.Point(752, 467);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(180, 45);
+            this.btnValider.Size = new System.Drawing.Size(174, 45);
             this.btnValider.TabIndex = 67;
-            this.btnValider.Text = "Valider";
+            this.btnValider.Text = "Valider les modifitcations";
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
@@ -273,7 +274,7 @@ namespace CartesAcces
             this.gb3eme.Controls.Add(this.rdbVert3);
             this.gb3eme.Controls.Add(this.rdbJaune3);
             this.gb3eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb3eme.Location = new System.Drawing.Point(474, 336);
+            this.gb3eme.Location = new System.Drawing.Point(586, 360);
             this.gb3eme.Name = "gb3eme";
             this.gb3eme.Size = new System.Drawing.Size(346, 84);
             this.gb3eme.TabIndex = 73;
@@ -333,7 +334,7 @@ namespace CartesAcces
             // 
             this.rdbJaune3.Location = new System.Drawing.Point(5, 19);
             this.rdbJaune3.Name = "rdbJaune3";
-            this.rdbJaune3.Size = new System.Drawing.Size(59, 24);
+            this.rdbJaune3.Size = new System.Drawing.Size(65, 24);
             this.rdbJaune3.TabIndex = 0;
             this.rdbJaune3.TabStop = true;
             this.rdbJaune3.Text = "Jaune";
@@ -348,7 +349,7 @@ namespace CartesAcces
             this.gb4eme.Controls.Add(this.rdbVert4);
             this.gb4eme.Controls.Add(this.rdbJaune4);
             this.gb4eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb4eme.Location = new System.Drawing.Point(474, 229);
+            this.gb4eme.Location = new System.Drawing.Point(586, 253);
             this.gb4eme.Name = "gb4eme";
             this.gb4eme.Size = new System.Drawing.Size(346, 84);
             this.gb4eme.TabIndex = 72;
@@ -408,7 +409,7 @@ namespace CartesAcces
             // 
             this.rdbJaune4.Location = new System.Drawing.Point(5, 19);
             this.rdbJaune4.Name = "rdbJaune4";
-            this.rdbJaune4.Size = new System.Drawing.Size(59, 24);
+            this.rdbJaune4.Size = new System.Drawing.Size(65, 24);
             this.rdbJaune4.TabIndex = 0;
             this.rdbJaune4.TabStop = true;
             this.rdbJaune4.Text = "Jaune";
@@ -423,7 +424,7 @@ namespace CartesAcces
             this.gb5eme.Controls.Add(this.rdbVert5);
             this.gb5eme.Controls.Add(this.rdbJaune5);
             this.gb5eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb5eme.Location = new System.Drawing.Point(474, 122);
+            this.gb5eme.Location = new System.Drawing.Point(586, 150);
             this.gb5eme.Name = "gb5eme";
             this.gb5eme.Size = new System.Drawing.Size(346, 84);
             this.gb5eme.TabIndex = 71;
@@ -483,7 +484,7 @@ namespace CartesAcces
             // 
             this.rdbJaune5.Location = new System.Drawing.Point(5, 19);
             this.rdbJaune5.Name = "rdbJaune5";
-            this.rdbJaune5.Size = new System.Drawing.Size(59, 24);
+            this.rdbJaune5.Size = new System.Drawing.Size(65, 24);
             this.rdbJaune5.TabIndex = 0;
             this.rdbJaune5.TabStop = true;
             this.rdbJaune5.Text = "Jaune";
@@ -498,7 +499,7 @@ namespace CartesAcces
             this.gb6eme.Controls.Add(this.rdbVert6);
             this.gb6eme.Controls.Add(this.rdbJaune6);
             this.gb6eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb6eme.Location = new System.Drawing.Point(474, 18);
+            this.gb6eme.Location = new System.Drawing.Point(586, 48);
             this.gb6eme.Name = "gb6eme";
             this.gb6eme.Size = new System.Drawing.Size(346, 84);
             this.gb6eme.TabIndex = 70;
@@ -564,11 +565,22 @@ namespace CartesAcces
             this.rdbJaune6.Text = "Jaune";
             this.rdbJaune6.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(583, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(365, 16);
+            this.label7.TabIndex = 74;
+            this.label7.Text = "Choix des couleurs des cartes par niveau de classe";
+            // 
             // frmImportEtablissement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 573);
+            this.ClientSize = new System.Drawing.Size(962, 573);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.gb3eme);
             this.Controls.Add(this.gb4eme);
             this.Controls.Add(this.gb5eme);
@@ -662,5 +674,6 @@ namespace CartesAcces
         private System.Windows.Forms.TextBox txtMailEtablissement;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label7;
     }
 }

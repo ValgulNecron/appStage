@@ -202,7 +202,7 @@ namespace CartesAcces
             this.btnImporterUnEtablissement.Name = "btnImporterUnEtablissement";
             this.btnImporterUnEtablissement.Size = new System.Drawing.Size(320, 45);
             this.btnImporterUnEtablissement.TabIndex = 37;
-            this.btnImporterUnEtablissement.Text = "Importer un nouvel établissement";
+            this.btnImporterUnEtablissement.Text = "Importer établissement et paramétrage de couleur de carte d\'accès";
             this.btnImporterUnEtablissement.UseVisualStyleBackColor = true;
             this.btnImporterUnEtablissement.Click += new System.EventHandler(this.btnImporterUnEtablissement_Click);
             // 
@@ -282,6 +282,7 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Label lblDateImportLogo;
