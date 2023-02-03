@@ -70,12 +70,15 @@ namespace CartesAcces
 
         private void pbEdtClassique_MouseUp(object sender, MouseEventArgs e)
         {
-            Edition.RognageX = Math.Min(Edition.RognageX, e.X);
-            Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
-            Cursor = Cursors.Default;
-            Edition.SelectionClique = false;
-            Edt.rognageEdt(pbEdtClassique, listeFichiers[0]);
-            btnRogner.Enabled = false;
+            if (Edition.SelectionClique)
+            {
+                Edition.RognageX = Math.Min(Edition.RognageX, e.X);
+                Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
+                Cursor = Cursors.Default;
+                Edition.SelectionClique = false;
+                Edt.rognageEdt(pbEdtClassique, listeFichiers[0]);
+                btnRogner.Enabled = false;
+            }
         }
 
         private void pbEdtClassique_MouseMove(object sender, MouseEventArgs e)
@@ -134,7 +137,7 @@ namespace CartesAcces
                 }
 
 
-                MessageBox.Show("Import Réussi ??");
+                MessageBox.Show(new Form { TopMost = true },"L'importation des emplois de temps classique ont été importés");
                 Close();
             }
             catch (Exception err)

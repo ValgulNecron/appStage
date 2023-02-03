@@ -405,6 +405,8 @@ namespace CartesAcces
             {
                 if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
 
+                Directory.CreateDirectory(Chemin.CheminFaceCarte);
+                
                 Image img = Image.FromFile(cheminSource);
                 Bitmap bmp = new Bitmap(img, new Size(1754,1240));
                 bmp.Save(cheminDestination, ImageFormat.Png);
@@ -464,7 +466,7 @@ namespace CartesAcces
                     img.Dispose();
                 }
 
-                MessageBox.Show("Import réussie !");
+                MessageBox.Show(new Form {TopMost = true }, " Les photos du dossier ont été importés");
 
                 Globale.Actuelle.Invoke(new MethodInvoker(delegate
                 {

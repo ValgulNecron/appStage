@@ -93,7 +93,7 @@ namespace CartesAcces
             this.txtNomEtablissement.MinimumSize = new System.Drawing.Size(180, 22);
             this.txtNomEtablissement.Name = "txtNomEtablissement";
             this.txtNomEtablissement.Size = new System.Drawing.Size(180, 22);
-            this.txtNomEtablissement.TabIndex = 51;
+            this.txtNomEtablissement.TabIndex = 0;
             // 
             // txtRueEtablissement
             // 
@@ -101,7 +101,7 @@ namespace CartesAcces
             this.txtRueEtablissement.Location = new System.Drawing.Point(216, 162);
             this.txtRueEtablissement.Name = "txtRueEtablissement";
             this.txtRueEtablissement.Size = new System.Drawing.Size(180, 22);
-            this.txtRueEtablissement.TabIndex = 52;
+            this.txtRueEtablissement.TabIndex = 2;
             // 
             // txtNumRueEtablissement
             // 
@@ -111,7 +111,7 @@ namespace CartesAcces
             this.txtNumRueEtablissement.MinimumSize = new System.Drawing.Size(180, 22);
             this.txtNumRueEtablissement.Name = "txtNumRueEtablissement";
             this.txtNumRueEtablissement.Size = new System.Drawing.Size(180, 22);
-            this.txtNumRueEtablissement.TabIndex = 53;
+            this.txtNumRueEtablissement.TabIndex = 1;
             // 
             // btnValider
             // 
@@ -119,7 +119,7 @@ namespace CartesAcces
             this.btnValider.Location = new System.Drawing.Point(752, 467);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(174, 45);
-            this.btnValider.TabIndex = 67;
+            this.btnValider.TabIndex = 8;
             this.btnValider.Text = "Valider les modifitcations";
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
@@ -132,7 +132,7 @@ namespace CartesAcces
             this.txtTelEtablissement.MinimumSize = new System.Drawing.Size(180, 22);
             this.txtTelEtablissement.Name = "txtTelEtablissement";
             this.txtTelEtablissement.Size = new System.Drawing.Size(180, 22);
-            this.txtTelEtablissement.TabIndex = 55;
+            this.txtTelEtablissement.TabIndex = 5;
             // 
             // txtCodePostalEtablissement
             // 
@@ -142,7 +142,7 @@ namespace CartesAcces
             this.txtCodePostalEtablissement.MinimumSize = new System.Drawing.Size(180, 22);
             this.txtCodePostalEtablissement.Name = "txtCodePostalEtablissement";
             this.txtCodePostalEtablissement.Size = new System.Drawing.Size(180, 22);
-            this.txtCodePostalEtablissement.TabIndex = 54;
+            this.txtCodePostalEtablissement.TabIndex = 4;
             // 
             // label3
             // 
@@ -207,7 +207,7 @@ namespace CartesAcces
             this.txtVilleEtablissement.MinimumSize = new System.Drawing.Size(180, 22);
             this.txtVilleEtablissement.Name = "txtVilleEtablissement";
             this.txtVilleEtablissement.Size = new System.Drawing.Size(180, 22);
-            this.txtVilleEtablissement.TabIndex = 63;
+            this.txtVilleEtablissement.TabIndex = 3;
             // 
             // label11
             // 
@@ -244,7 +244,7 @@ namespace CartesAcces
             this.txtMailEtablissement.MinimumSize = new System.Drawing.Size(180, 22);
             this.txtMailEtablissement.Name = "txtMailEtablissement";
             this.txtMailEtablissement.Size = new System.Drawing.Size(180, 22);
-            this.txtMailEtablissement.TabIndex = 56;
+            this.txtMailEtablissement.TabIndex = 6;
             // 
             // label5
             // 
@@ -263,7 +263,7 @@ namespace CartesAcces
             this.textBox1.MinimumSize = new System.Drawing.Size(180, 22);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(180, 22);
-            this.textBox1.TabIndex = 69;
+            this.textBox1.TabIndex = 7;
             // 
             // gb3eme
             // 
