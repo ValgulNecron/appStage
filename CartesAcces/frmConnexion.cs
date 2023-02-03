@@ -50,7 +50,7 @@ namespace CartesAcces
             {
                 var user = ClassSql.db.GetTable<Utilisateurs>()
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
-                if (txtIdentifiant.Text != user.NomUtilisateur)
+                if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
                     MessageBox.Show("nom d'utilisateur invalide");
                     txtIdentifiant.Text = "";
@@ -60,7 +60,7 @@ namespace CartesAcces
 
                 try
                 {
-                    if (Securite.verificationHash(txtMotDePasse.Text, user.Hash))
+                    if (Securite.verificationHash(txtMotDePasse.Text, user?.Hash))
                     {
                         Globale._estConnecter = true;
                         Globale._nomUtilisateur = txtIdentifiant.Text;
