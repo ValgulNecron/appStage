@@ -52,7 +52,7 @@ namespace CartesAcces
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
                 if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
-                    MessageBox.Show("nom d'utilisateur ou mot de passe invalide");
+                    MessageBox.Show("Le nom d'utilisateur ou le mot de passe est invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
@@ -99,7 +99,7 @@ namespace CartesAcces
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("nom d'utilisateur ou mot de passe invalide");
+                    MessageBox.Show("Le nom d'utilisateur ou le mot de passe est invalide");
                     txtMotDePasse.Text = "";
                 }
             }

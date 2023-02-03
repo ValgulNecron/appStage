@@ -134,7 +134,7 @@ namespace CartesAcces
                 }
 
 
-                MessageBox.Show("Import Réussi ??");
+                MessageBox.Show("L'importation des emplois de temps classique ont été importés");
                 Close();
             }
             catch (Exception err)
