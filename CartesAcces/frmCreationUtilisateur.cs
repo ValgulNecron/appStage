@@ -28,10 +28,12 @@ namespace CartesAcces
                 MessageBox.Show("Vous n'avez pas les droits pour créer un utilisateur");
                 return;
             }
-
+            
             if (tbUser.Text == "") return;
 
             if (tbMdp.Text != tbValidMdp.Text) return;
+
+            if (Securite.validationPrerequisMdp(tbMdp.Text)) return;
 
             var userCree = new Utilisateurs();
             userCree.NomUtilisateur = tbUser.Text;
@@ -43,7 +45,13 @@ namespace CartesAcces
             }
 
             userCree.ThemeBool = false;
-            ClassSql.db.Insert(userCree);
+            ClassSql.db.InsertOrReplace(userCree);
+        }
+
+        private void frmCreationUtilisateur_Load(object sender, EventArgs e)
+        {
+            tbMdp.PasswordChar = '*';
+            tbValidMdp.PasswordChar = '*';
         }
     }
 }

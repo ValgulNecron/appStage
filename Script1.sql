@@ -27,18 +27,18 @@ CREATE TABLE logMotDePasse (
 );
 
 CREATE TABLE etablissement (
-	nomEtablissement varchar(35) PRIMARY KEY,
-	nomRueEtablissement varchar(35),
-	numeroRueEtablissement int,
-	codePostaleEtablissement varchar(15),
-	villeEtablissement varchar(30),
-	numeroTelephoneEtablissement varchar(15),
-	emailEtablissement varchar(60),
-	urlEtablissement varchar(120),
-	codeHexa6eme varchar(6),
-	codeHexa5eme varchar(6),
-	codeHexa4eme varchar(6),
-	codeHexa3eme varchar(6)
+	nomEtablissement varchar(35) PRIMARY KEY default "default",
+	nomRueEtablissement varchar(35) default "default",
+	numeroRueEtablissement int default 5,
+	codePostaleEtablissement varchar(15) default "default",
+	villeEtablissement varchar(30) default "default",
+	numeroTelephoneEtablissement varchar(20) default "default",
+	emailEtablissement varchar(60) default "default",
+	urlEtablissement varchar(120) default "default",
+	codeHexa6eme varchar(7) default "#FFFF00",
+	codeHexa5eme varchar(7) default "#00FF00",
+	codeHexa4eme varchar(7) default "#FF0000",
+	codeHexa3eme varchar(7) default "#0000FF"
 );
 
 INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0);

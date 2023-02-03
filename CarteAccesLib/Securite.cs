@@ -53,22 +53,32 @@ namespace CartesAcces
         public static bool validationPrerequisMdp(string motDePasse)
         {
             if (motDePasse.Length < 12)
+            {
                 return false;
+            }
 
-            if (!Regex.IsMatch(motDePasse, @"[a-z]"))
+            if (!(Regex.IsMatch(motDePasse, @"[a-z]")))
+            {
                 return false;
+            }
 
-            if (!Regex.IsMatch(motDePasse, @"[A-Z]"))
+            if (!(Regex.IsMatch(motDePasse, @"[A-Z]")))
+            {
                 return false;
+            }
 
-            if (!Regex.IsMatch(motDePasse, @"[0-9]"))
+            if (!(Regex.IsMatch(motDePasse, @"[0-9]")))
+            {
                 return false;
+            }
 
-            if (!Regex.IsMatch(motDePasse, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-~\\]"))
+            if (!(Regex.IsMatch(motDePasse, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-~\\]")))
+            {
                 return false;
+            }
 
-            return true;
-        }
+        return true;
+    }
 
         public static void chiffrerDossier()
         {
