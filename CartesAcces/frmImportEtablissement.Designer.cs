@@ -296,6 +296,7 @@ namespace CartesAcces
             this.rdbCustom3.TabStop = true;
             this.rdbCustom3.Text = "Custom";
             this.rdbCustom3.UseVisualStyleBackColor = true;
+            this.rdbCustom3.CheckedChanged += new System.EventHandler(this.rdbCustom3_CheckedChanged);
             // 
             // rdbBleu3
             // 
@@ -369,6 +370,7 @@ namespace CartesAcces
             this.rdbCustom4.TabStop = true;
             this.rdbCustom4.Text = "Custom";
             this.rdbCustom4.UseVisualStyleBackColor = true;
+            this.rdbCustom4.CheckedChanged += new System.EventHandler(this.rdbCustom4_CheckedChanged);
             // 
             // rdbBleu4
             // 
@@ -442,6 +444,7 @@ namespace CartesAcces
             this.rdbCustom5.TabStop = true;
             this.rdbCustom5.Text = "Custom";
             this.rdbCustom5.UseVisualStyleBackColor = true;
+            this.rdbCustom5.CheckedChanged += new System.EventHandler(this.rdbCustom5_CheckedChanged);
             // 
             // rdbBleu5
             // 
@@ -515,6 +518,7 @@ namespace CartesAcces
             this.rdbCustom6.TabStop = true;
             this.rdbCustom6.Text = "Custom";
             this.rdbCustom6.UseVisualStyleBackColor = true;
+            this.rdbCustom6.CheckedChanged += new System.EventHandler(this.rdbCustom6_CheckedChanged);
             // 
             // rdbBleu6
             // 

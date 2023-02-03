@@ -221,5 +221,41 @@ namespace CartesAcces
             }
             return codeHexa3eme;
         }
+
+        private void rdbCustom6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCustom6.Checked) txtCustom6.Visible = true;
+            else
+            {
+                txtCustom6.Visible = false;
+            }
+        }
+
+        private void rdbCustom5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCustom5.Checked) txtCustom5.Visible = true;
+            else
+            {
+                txtCustom5.Visible = false;
+            }
+        }
+
+        private void rdbCustom4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCustom4.Checked) txtCustom4.Visible = true;
+            else
+            {
+                txtCustom4.Visible = false;
+            }
+        }
+
+        private void rdbCustom3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCustom3.Checked) txtCustom3.Visible = true;
+            else
+            {
+                txtCustom3.Visible = false;
+            }
+        }
     }
 }
