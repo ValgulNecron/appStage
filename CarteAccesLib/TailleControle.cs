@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public class TailleControle
+    public static class  TailleControle
     {
         public static void setTailleControleTexte(Form form)
         {
