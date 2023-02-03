@@ -115,13 +115,13 @@ namespace CartesAcces
         {
             try
             {
-                if (Directory.Exists(Chemin.cheminEdtClassique))
+                if (Directory.Exists(Chemin.CheminEdtClassique))
                 {
-                    foreach (var file in Directory.GetFiles(Chemin.cheminEdtClassique)) File.Delete(file);
-                    Directory.Delete(Chemin.cheminEdtClassique);
+                    foreach (var file in Directory.GetFiles(Chemin.CheminEdtClassique)) File.Delete(file);
+                    Directory.Delete(Chemin.CheminEdtClassique);
                 }
 
-                Directory.CreateDirectory(Chemin.cheminEdtClassique);
+                Directory.CreateDirectory(Chemin.CheminEdtClassique);
 
                 var directory = new DirectoryInfo(Globale._cheminEdtClassique);
                 foreach (var fichier in listeFichiers)
@@ -130,7 +130,7 @@ namespace CartesAcces
                     Edt.rognageEdt(pbEdtClassique, fichier);
                     var nom = fichier.Substring(fichier.LastIndexOf("\\"),
                         fichier.Length - fichier.LastIndexOf("\\"));
-                    pbEdtClassique.Image.Save(Chemin.cheminEdtClassique + "//" + nom, ImageFormat.Png);
+                    pbEdtClassique.Image.Save(Chemin.CheminEdtClassique + "//" + nom, ImageFormat.Png);
                 }
 
 

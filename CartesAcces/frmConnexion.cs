@@ -48,7 +48,7 @@ namespace CartesAcces
         {
             try
             {
-                var user = ClassSql.db.GetTable<Utilisateurs>()
+                var user = ClassSql.Db.GetTable<Utilisateurs>()
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
                 if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
@@ -93,7 +93,7 @@ namespace CartesAcces
                         log.NomUtilisateur = Globale._nomUtilisateur;
                         log.Action = "C'est connecter au logiciel";
                         log.AdMac = macAddress;
-                        ClassSql.db.Insert(log);
+                        ClassSql.Db.Insert(log);
                     }
                 }
                 catch (Exception ex)

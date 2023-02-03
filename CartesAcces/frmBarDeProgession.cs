@@ -64,7 +64,7 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            ReadCsv.setLesEleves(Chemin.cheminListeEleve);
+            ReadCsv.setLesEleves(Chemin.CheminListeEleve);
             Eleve.setLesClasses();
         }
 
@@ -136,7 +136,7 @@ namespace CartesAcces
                     log.NomUtilisateur = Globale._nomUtilisateur;
                     log.Action = "à fait une carte provisoire";
                     log.AdMac = macAddress;
-                    ClassSql.db.Insert(log);
+                    ClassSql.Db.Insert(log);
                 }
             }
             catch

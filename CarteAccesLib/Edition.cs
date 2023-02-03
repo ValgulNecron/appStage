@@ -154,7 +154,7 @@ namespace CartesAcces
 
             if (succes)
             {
-                var etab = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
+                var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
                 dessineTexteCarteFace(police4, 900, 944, etab.NomEtablissement, pbCarteFace, cbbSection);
                 dessineTexteCarteFace(police4, 900, 996, "Adresse : " + etab.NumeroRueEtablissement + etab.NomRueEtablissement + etab.CodePostaleEtablissement + etab.VilleEtablissement, pbCarteFace, cbbSection);
                 dessineTexteCarteFace(police4, 900, 1048, "Tel : " + etab.NumeroTelephoneEtablissement, pbCarteFace, cbbSection);
@@ -337,12 +337,12 @@ namespace CartesAcces
         public static void importEleves(string path)
         {
             var cheminSource = path;
-            var cheminDestination = Chemin.cheminListeEleve;
+            var cheminDestination = Chemin.CheminListeEleve;
             try
             {
                 if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
 
-                Directory.CreateDirectory(Chemin.cheminDossierListeEleve);
+                Directory.CreateDirectory(Chemin.CheminDossierListeEleve);
 
                 File.Copy(cheminSource, cheminDestination);
                 File.SetCreationTime(cheminDestination, DateTime.Now);
@@ -360,7 +360,7 @@ namespace CartesAcces
         public static void importCarteFace(string chemin)
         {
             var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminFaceCarte + Globale._classe + "eme.png";
+            var cheminDestination = Chemin.CheminFaceCarte + Globale._classe + "eme.png";
 
             try
             {
@@ -378,7 +378,7 @@ namespace CartesAcces
 
         public static void importEdtClassique(string chemin)
         {
-            var cheminDestination = Chemin.cheminEdtClassique;
+            var cheminDestination = Chemin.CheminEdtClassique;
 
             try
             {
@@ -403,7 +403,7 @@ namespace CartesAcces
         public static void importPhoto(string chemin)
         {
             var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminPhotoEleve;
+            var cheminDestination = Chemin.CheminPhotoEleve;
 
             try
             {

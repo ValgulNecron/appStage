@@ -82,7 +82,7 @@ namespace CartesAcces
                 log.NomUtilisateur = Globale._nomUtilisateur;
                 log.Action = "à importer des élèves";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -113,7 +113,7 @@ namespace CartesAcces
                 log.NomUtilisateur = Globale._nomUtilisateur;
                 log.Action = "à importer des EDT";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -144,7 +144,7 @@ namespace CartesAcces
                 log.NomUtilisateur = Globale._nomUtilisateur;
                 log.Action = "à importer des photos";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -156,7 +156,7 @@ namespace CartesAcces
             try
             {
                 lblImportEdtClassique = Globale._lblDate;
-                Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
+                Globale._cheminEdtClassique = Chemin.setCheminImportationDossier();
                 Edition.importEdtClassique(Globale._cheminEdtClassique);
 
                 var frmRognageEdtClassique = new frmRognageEdtClassique();
@@ -176,7 +176,7 @@ namespace CartesAcces
                 log.NomUtilisateur = Globale._nomUtilisateur;
                 log.Action = "à importer des EDT classiques";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -246,7 +246,7 @@ namespace CartesAcces
                     log.NomUtilisateur = Globale._nomUtilisateur;
                     log.Action = "à déclenché la git poule";
                     log.AdMac = macAddress;
-                    ClassSql.db.Insert(log);
+                    ClassSql.Db.Insert(log);
                     ;
                     Application.Exit();
                 }
@@ -296,7 +296,7 @@ namespace CartesAcces
                 log.NomUtilisateur = Globale._nomUtilisateur;
                 log.Action = "à importer des face de carte";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -322,7 +322,7 @@ namespace CartesAcces
                 log.NomUtilisateur = Globale._nomUtilisateur;
                 log.Action = "à importer le logo";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
 
             catch

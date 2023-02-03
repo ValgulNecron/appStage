@@ -12,7 +12,6 @@ namespace CartesAcces
     /*
      * Classe qui permet d'éditer les cartes d'accès
      * elle prend une liste d'élèves et permet de leur editer une carte
-    
      */
     public partial class frmMultiplesCartesEdition : Form
     {
@@ -31,7 +30,7 @@ namespace CartesAcces
             {
                 // -- La position de la photo change --
                 pbPhoto.Left = e.X + pbPhoto.Left - Edition.PosX;
-                pbPhoto.Top = e.Y + pbPhoto.Top - Edition.posY;
+                pbPhoto.Top = e.Y + pbPhoto.Top - Edition.PosY;
             }
         }
 
@@ -41,7 +40,7 @@ namespace CartesAcces
             if (e.Button == MouseButtons.Left)
             {
                 Edition.PosX = e.X;
-                Edition.posY = e.Y;
+                Edition.PosY = e.Y;
                 Edition.Drag = true;
             }
 
@@ -198,7 +197,7 @@ namespace CartesAcces
                 log.NomUtilisateur = Globale._nomUtilisateur;
                 log.Action = "Création de cartes d'accès multiples ou personnalisées";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
                 labelEnCoursValidation.Visible = false;
             }
             catch
@@ -225,7 +224,7 @@ namespace CartesAcces
                         Edition.RognageX = Math.Min(Edition.RognageX, e.X);
                         Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
                         Cursor = Cursors.Default;
-                        var pathEdt = Chemin.cheminEdt;
+                        var pathEdt = Chemin.CheminEdt;
                         Edition.SelectionClique = false;
                         Edt.rognageEdt(pbCarteArriere, pathEdt);
                     }
@@ -233,7 +232,7 @@ namespace CartesAcces
                     {
                         Cursor = Cursors.Default;
                         Edition.SelectionClique = false;
-                        pbCarteArriere.Image = Image.FromFile(Chemin.cheminEdt);
+                        pbCarteArriere.Image = Image.FromFile(Chemin.CheminEdt);
                         btnCancel.Enabled = false;
                         btnSelect.Enabled = true;
                         

@@ -25,8 +25,8 @@ namespace CartesAcces
         {
             if (etaDebut.NomEtablissement != txtNomEtablissement.Text)
             {
-                ClassSql.db.GetTable<Etablissement>().Where(x => x.NomEtablissement == etaDebut.NomEtablissement).Delete();
-                ClassSql.db.GetTable<Etablissement>().Delete();
+                ClassSql.Db.GetTable<Etablissement>().Where(x => x.NomEtablissement == etaDebut.NomEtablissement).Delete();
+                ClassSql.Db.GetTable<Etablissement>().Delete();
             }
             var etablissement = new Etablissement();
             etablissement.NomEtablissement = txtNomEtablissement.Text;
@@ -41,7 +41,7 @@ namespace CartesAcces
             etablissement.CodeHexa5eme = getCodeHexa5eme();
             etablissement.CodeHexa4eme = getCodeHexa4eme();
             etablissement.CodeHexa3eme = getCodeHexa3eme();
-            ClassSql.db.InsertOrReplace(etablissement);
+            ClassSql.Db.InsertOrReplace(etablissement);
             var macAddress = string.Empty;
             foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                 if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -57,7 +57,7 @@ namespace CartesAcces
             log.NomUtilisateur = Globale._nomUtilisateur;
             log.Action = "à modifier les informations de établissement";
             log.AdMac = macAddress;
-            ClassSql.db.Insert(log);
+            ClassSql.Db.Insert(log);
             MessageBox.Show("Les informations de l'établissement ont été modifiées");
             Close();
         }
@@ -70,7 +70,7 @@ namespace CartesAcces
         {
             try
             {
-                etaDebut = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
+                etaDebut = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
                 txtNomEtablissement.Text = etaDebut.NomEtablissement;
                 txtMailEtablissement.Text = etaDebut.EmailEtablissement;
                 txtRueEtablissement.Text = etaDebut.NomRueEtablissement;

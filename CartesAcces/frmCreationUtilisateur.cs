@@ -21,7 +21,7 @@ namespace CartesAcces
 
         private void btValid_Click(object sender, EventArgs e)
         {
-            var user = ClassSql.db.GetTable<Utilisateurs>()
+            var user = ClassSql.Db.GetTable<Utilisateurs>()
                 .FirstOrDefault(u => u.NomUtilisateur == Globale._nomUtilisateur);
             if (user.TypeUtilisateur != "admin")
             {
@@ -45,7 +45,7 @@ namespace CartesAcces
             }
 
             userCree.ThemeBool = false;
-            ClassSql.db.InsertOrReplace(userCree);
+            ClassSql.Db.InsertOrReplace(userCree);
         }
 
         private void frmCreationUtilisateur_Load(object sender, EventArgs e)

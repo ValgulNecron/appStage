@@ -52,7 +52,7 @@ namespace CarteAcces
         public static string getDatePhotos()
         {
             var dateFile = "Aucune Importation";
-            var dir = new DirectoryInfo(Chemin.cheminPhotoEleve);
+            var dir = new DirectoryInfo(Chemin.CheminPhotoEleve);
             if (dir.Exists) dateFile = dir.CreationTime.ToString();
 
             return dateFile;

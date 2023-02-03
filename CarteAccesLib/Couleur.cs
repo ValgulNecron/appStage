@@ -2,11 +2,10 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-//using Org.BouncyCastle.Asn1.Crmf;
 
 namespace CartesAcces
 {
-    public class Couleur
+    public static class Couleur
     {
         public static void setCouleurFenetre(Form fenetre)
         {

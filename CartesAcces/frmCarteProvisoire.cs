@@ -302,7 +302,7 @@ namespace CartesAcces
             {
                 // -- La position de la photo change --
                 pbPhoto.Left = e.X + pbPhoto.Left - Edition.PosX;
-                pbPhoto.Top = e.Y + pbPhoto.Top - Edition.posY;
+                pbPhoto.Top = e.Y + pbPhoto.Top - Edition.PosY;
             }
         }
 
@@ -312,7 +312,7 @@ namespace CartesAcces
             if (e.Button == MouseButtons.Left)
             {
                 Edition.PosX = e.X;
-                Edition.posY = e.Y;
+                Edition.PosY = e.Y;
                 Edition.Drag = true;
             }
 
