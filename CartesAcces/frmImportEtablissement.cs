@@ -75,24 +75,134 @@ namespace CartesAcces
                 var codeHexa5eme = eta.CodeHexa5eme;
                 var codeHexa4eme = eta.CodeHexa4eme;
                 var codeHexa3eme = eta.CodeHexa3eme;
+                foreach (var VARIABLE in gb6eme.Controls)
+                    if (VARIABLE is RadioButton)
+                    {
+                        var rd = VARIABLE as RadioButton;
+                        if (rd.Text == "Custom")
+                        {
+                            rd.Text = "Custom";
+                            txtCustom6.Visible = true;
+                            txtCustom6.Text = codeHexa6eme;
+                        }
+                        else if (rd.Text == "Rouge" && codeHexa6eme == "#FF0000")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Vert" && codeHexa6eme == "#00FF00")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Bleu" && codeHexa6eme == "#0000FF")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Jaune" && codeHexa6eme == "#FFFF00")
+                        {
+                            rd.Checked = true;
+                        }
+                    }
+
+                foreach (var VARIABLE in gb5eme.Controls)
+                    if (VARIABLE is RadioButton)
+                    {
+                        var rd = VARIABLE as RadioButton;
+                        if (rd.Text == "Custom")
+                        {
+                            rd.Text = "Custom";
+                            txtCustom5.Visible = true;
+                            txtCustom5.Text = codeHexa5eme;
+                        }
+                        else if (rd.Text == "Rouge" && codeHexa5eme == "#FF0000")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Vert" && codeHexa5eme == "#00FF00")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Bleu" && codeHexa5eme == "#0000FF")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Jaune" && codeHexa5eme == "#FFFF00")
+                        {
+                            rd.Checked = true;
+                        }
+                    }
+
+                foreach (var VARIABLE in gb4eme.Controls)
+                {
+                    var rd = VARIABLE as RadioButton;
+                    if (rd.Text == "Custom")
+                    {
+                        rd.Text = "Custom";
+                        txtCustom4.Visible = true;
+                        txtCustom4.Text = codeHexa4eme;
+                    }
+                    else if (rd.Text == "Rouge" && codeHexa4eme == "#FF0000")
+                    {
+                        rd.Checked = true;
+                    }
+                    else if (rd.Text == "Vert" && codeHexa4eme == "#00FF00")
+                    {
+                        rd.Checked = true;
+                    }
+                    else if (rd.Text == "Bleu" && codeHexa4eme == "#0000FF")
+                    {
+                        rd.Checked = true;
+                    }
+                    else if (rd.Text == "Jaune" && codeHexa4eme == "#FFFF00")
+                    {
+                        rd.Checked = true;
+                    }
+                }
+
+                foreach (var VARIABLE in gb3eme.Controls)
+                    if (VARIABLE is RadioButton)
+                    {
+                        var rd = VARIABLE as RadioButton;
+                        if (rd.Text == "Custom")
+                        {
+                            rd.Text = "Custom";
+                            txtCustom3.Visible = true;
+                            txtCustom3.Text = codeHexa3eme;
+                        }
+                        else if (rd.Text == "Rouge" && codeHexa3eme == "#FF0000")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Vert" && codeHexa3eme == "#00FF00")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Bleu" && codeHexa3eme == "#0000FF")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Jaune" && codeHexa3eme == "#FFFF00")
+                        {
+                            rd.Checked = true;
+                        }
+                    }
+
                 textBox1.Text = eta.UrlEtablissement;
             }
             catch
             {
             }
         }
-        
-          private string getCodeHexa6eme()
+
+        private string getCodeHexa6eme()
         {
-            string codeHexa6eme = "";
+            var codeHexa6eme = "";
             foreach (var VARIABLE in gb6eme.Controls)
-            {
                 if (VARIABLE is RadioButton)
                 {
-                    RadioButton rd = VARIABLE as RadioButton;
+                    var rd = VARIABLE as RadioButton;
                     if (rd.Checked)
                     {
-                        string temp = rd.Text;
+                        var temp = rd.Text;
                         switch (temp)
                         {
                             case "Rouge":
@@ -113,21 +223,20 @@ namespace CartesAcces
                         }
                     }
                 }
-            }
+
             return codeHexa6eme;
         }
-        
+
         private string getCodeHexa5eme()
         {
-            string codeHexa5eme = "";
+            var codeHexa5eme = "";
             foreach (var VARIABLE in gb5eme.Controls)
-            {
                 if (VARIABLE is RadioButton)
                 {
-                    RadioButton rd = VARIABLE as RadioButton;
+                    var rd = VARIABLE as RadioButton;
                     if (rd.Checked)
                     {
-                        string temp = rd.Text;
+                        var temp = rd.Text;
                         switch (temp)
                         {
                             case "Rouge":
@@ -148,21 +257,20 @@ namespace CartesAcces
                         }
                     }
                 }
-            }
+
             return codeHexa5eme;
         }
-        
+
         private string getCodeHexa4eme()
         {
-            string codeHexa4eme = "";
+            var codeHexa4eme = "";
             foreach (var VARIABLE in gb4eme.Controls)
-            {
                 if (VARIABLE is RadioButton)
                 {
-                    RadioButton rd = VARIABLE as RadioButton;
+                    var rd = VARIABLE as RadioButton;
                     if (rd.Checked)
                     {
-                        string temp = rd.Text;
+                        var temp = rd.Text;
                         switch (temp)
                         {
                             case "Rouge":
@@ -183,21 +291,20 @@ namespace CartesAcces
                         }
                     }
                 }
-            }
+
             return codeHexa4eme;
         }
-        
+
         private string getCodeHexa3eme()
         {
-            string codeHexa3eme = "";
+            var codeHexa3eme = "";
             foreach (var VARIABLE in gb3eme.Controls)
-            {
                 if (VARIABLE is RadioButton)
                 {
-                    RadioButton rd = VARIABLE as RadioButton;
+                    var rd = VARIABLE as RadioButton;
                     if (rd.Checked)
                     {
-                        string temp = rd.Text;
+                        var temp = rd.Text;
                         switch (temp)
                         {
                             case "Rouge":
@@ -218,53 +325,43 @@ namespace CartesAcces
                         }
                     }
                 }
-            }
+
             return codeHexa3eme;
         }
-        
+
         private void keyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
-            {
+                e.KeyChar != '.')
                 e.Handled = true;
-            }
         }
 
         private void rdbCustom6_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbCustom6.Checked) txtCustom6.Visible = true;
             else
-            {
                 txtCustom6.Visible = false;
-            }
         }
 
         private void rdbCustom5_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbCustom5.Checked) txtCustom5.Visible = true;
             else
-            {
                 txtCustom5.Visible = false;
-            }
         }
 
         private void rdbCustom4_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbCustom4.Checked) txtCustom4.Visible = true;
             else
-            {
                 txtCustom4.Visible = false;
-            }
         }
 
         private void rdbCustom3_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbCustom3.Checked) txtCustom3.Visible = true;
             else
-            {
                 txtCustom3.Visible = false;
-            }
         }
     }
 }
