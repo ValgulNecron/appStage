@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using CarteAcces;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -113,6 +115,14 @@ namespace CartesAcces
             var police3 = new Font("times new roman", 28, FontStyle.Bold);
             dessineTexteCarteFace(police3, 50, 960, "Nom :", pbCarteFace, cbbSection);
             dessineTexteCarteFace(police3, 50, 1075, "Prénom :", pbCarteFace, cbbSection);
+            
+            var police4 = new Font("times new roman", 20, FontStyle.Bold);
+            var etab = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
+            
+            dessineTexteCarteFace(police4, 900, 944, etab.NomEtablissement, pbCarteFace, cbbSection);
+            dessineTexteCarteFace(police4, 900, 996, "Adresse : " + etab.NumeroRueEtablissement + etab.NomRueEtablissement + etab.CodePostaleEtablissement + etab.VilleEtablissement, pbCarteFace, cbbSection);
+            dessineTexteCarteFace(police4, 900, 1048, "Tel : " + etab.NumeroTelephoneEtablissement, pbCarteFace, cbbSection);
+            dessineTexteCarteFace(police4, 900, 1100, "Mail : " + etab.EmailEtablissement, pbCarteFace, cbbSection);
 
             pbCarteFace.Refresh();
         }
