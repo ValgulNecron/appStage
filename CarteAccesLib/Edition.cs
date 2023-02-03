@@ -464,7 +464,7 @@ namespace CartesAcces
                     img.Dispose();
                 }
 
-                MessageBox.Show("Import réussie !");
+                MessageBox.Show(new Form {TopMost = true }, " Les photos du dossier ont été importés");
 
                 Globale.Actuelle.Invoke(new MethodInvoker(delegate
                 {

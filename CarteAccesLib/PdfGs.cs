@@ -125,7 +125,8 @@ namespace CartesAcces
         public static void renameEdt(string pdf)
         {
             var name = getNomPrenomPdf(getTextePdf(pdf));
-            MessageBox.Show(name.Count.ToString());
+            MessageBox.Show(new Form { TopMost = true }, name.Count.ToString() 
+                + " emplois de temps ont été importés");
             var d = new DirectoryInfo(outputPath);
             var infos = d.GetFiles();
 
