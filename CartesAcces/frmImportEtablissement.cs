@@ -81,8 +81,8 @@ namespace CartesAcces
             {
             }
         }
-
-        private string getCodeHexa6eme()
+        
+          private string getCodeHexa6eme()
         {
             string codeHexa6eme = "";
             foreach (var VARIABLE in gb6eme.Controls)
@@ -92,20 +92,20 @@ namespace CartesAcces
                     string temp = (VARIABLE as RadioButton).Text;
                     switch (temp)
                     {
-                        case "rouge":
+                        case "Rouge":
                             codeHexa6eme = "#FF0000";
                             break;
-                        case "vert":
+                        case "Vert":
                             codeHexa6eme = "#00FF00";
                             break;
-                        case "bleu":
+                        case "Bleu":
                             codeHexa6eme = "#0000FF";
                             break;
-                        case "jaune":
+                        case "Jaune":
                             codeHexa6eme = "#FFFF00";
                             break;
-                        case "custom":
-                            codeHexa6eme = txtCouleurCustom.Text;
+                        case "Custom":
+                            codeHexa6eme = txtCustom6.Text;
                             break;
                     }
                 }
@@ -123,20 +123,20 @@ namespace CartesAcces
                     string temp = (VARIABLE as RadioButton).Text;
                     switch (temp)
                     {
-                        case "rouge":
+                        case "Rouge":
                             codeHexa5eme = "#FF0000";
                             break;
-                        case "vert":
+                        case "Vert":
                             codeHexa5eme = "#00FF00";
                             break;
-                        case "bleu":
+                        case "Bleu":
                             codeHexa5eme = "#0000FF";
                             break;
-                        case "jaune":
+                        case "Jaune":
                             codeHexa5eme = "#FFFF00";
                             break;
-                        case "custom":
-                            codeHexa5eme = txtCouleurCustom.Text;
+                        case "Custom":
+                            codeHexa5eme = txtCustom5.Text;
                             break;
                     }
                 }
@@ -154,20 +154,20 @@ namespace CartesAcces
                     string temp = (VARIABLE as RadioButton).Text;
                     switch (temp)
                     {
-                        case "rouge":
+                        case "Rouge":
                             codeHexa4eme = "#FF0000";
                             break;
-                        case "vert":
+                        case "Vert":
                             codeHexa4eme = "#00FF00";
                             break;
-                        case "bleu":
+                        case "Bleu":
                             codeHexa4eme = "#0000FF";
                             break;
-                        case "jaune":
+                        case "Jaune":
                             codeHexa4eme = "#FFFF00";
                             break;
-                        case "custom":
-                            codeHexa4eme = txtCouleurCustom.Text;
+                        case "Custom":
+                            codeHexa4eme = txtCustom4.Text;
                             break;
                     }
                 }
@@ -185,20 +185,20 @@ namespace CartesAcces
                     string temp = (VARIABLE as RadioButton).Text;
                     switch (temp)
                     {
-                        case "rouge":
+                        case "Rouge":
                             codeHexa3eme = "#FF0000";
                             break;
-                        case "vert":
+                        case "Vert":
                             codeHexa3eme = "#00FF00";
                             break;
                         case "bleu":
                             codeHexa3eme = "#0000FF";
                             break;
-                        case "jaune":
+                        case "Jaune":
                             codeHexa3eme = "#FFFF00";
                             break;
-                        case "custom":
-                            codeHexa3eme = txtCouleurCustom.Text;
+                        case "Custom":
+                            codeHexa3eme = txtCustom3.Text;
                             break;
                     }
                 }

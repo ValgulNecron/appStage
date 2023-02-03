@@ -130,12 +130,6 @@
         <Compile Include="frmChangeMotDePasse.Designer.cs">
             <DependentUpon>frmChangeMotDePasse.cs</DependentUpon>
         </Compile>
-        <Compile Include="frmChoixCouleurNiveau.cs">
-          <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="frmChoixCouleurNiveau.Designer.cs">
-          <DependentUpon>frmChoixCouleurNiveau.cs</DependentUpon>
-        </Compile>
         <Compile Include="frmConnexion.cs">
             <SubType>Form</SubType>
         </Compile>
