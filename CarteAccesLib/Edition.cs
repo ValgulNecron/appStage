@@ -405,6 +405,8 @@ namespace CartesAcces
             {
                 if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
 
+                Directory.CreateDirectory(Chemin.CheminFaceCarte);
+                
                 Image img = Image.FromFile(cheminSource);
                 Bitmap bmp = new Bitmap(img, new Size(1754,1240));
                 bmp.Save(cheminDestination, ImageFormat.Png);
