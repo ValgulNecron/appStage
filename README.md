@@ -67,5 +67,5 @@ https://gist.github.com/cuonggt/9b7d08a597b167299f0d
     - password : keuser
 12. dans importation creer un nouvelle utilisateur ou changer le mot de passe de l'utilisateur keyuser
 13. vous pouvez maintenant utiliser l'application et la distribuer a vos utilisateurs en leur creant un compte utilisateur
-   - ne pas donner de compte administrateur a vos utilisateurs sauf si il y a un besoin particulier
-   - les prerequis pour les mots de passe son 1 majuscule, 1 minuscule, 1 chiffre, 1 caractere special et 12 caracteres minimum
+    - ne pas donner de compte administrateur a vos utilisateurs sauf si il y a un besoin particulier
+    - les prerequis pour les mots de passe son 1 majuscule, 1 minuscule, 1 chiffre, 1 caractere special et 12 caracteres minimum
