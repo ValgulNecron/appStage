@@ -6,6 +6,11 @@ namespace CarteAccesLib
 {
     public static class Trie
     {
+        /*
+         * Cette fonction permet de rechercher un eleve dans la liste des eleves
+         * Elle prend en parametre le filtre de recherche et la liste des eleves
+         * Elle retourne une liste de string contenant le nom, le prenom et la classe de l'eleve
+         */
         public static List<string> recherche(string filtre, List<Eleve> eleves)
         {
             var listeEleveResultat = new List<string>();
