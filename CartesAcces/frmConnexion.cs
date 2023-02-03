@@ -74,10 +74,8 @@ namespace CartesAcces
                         Globale._cas = 1;
                         var frmWait = new barDeProgression();
                         frmWait.StartPosition = FormStartPosition.CenterScreen;
-                        frmWait.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - 
-                            frmWait.Width / 2, Screen.PrimaryScreen.Bounds.Height / 50 - frmWait.Height);
-                        frmWait.Show();
-                        frmWait.TopMost = true;
+                        frmWait.BringToFront();
+                        frmWait.Show();                        
                         Globale._actuelle = new frmImportation();
                         frmAccueil.OpenChildForm(Globale._actuelle);
                         var macAddress = string.Empty;
