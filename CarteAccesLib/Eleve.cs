@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Windows;
+using System.Linq;
 
 namespace CartesAcces
 {
     public class Eleve
     {
-        public static List<string> listeCleeEleve = new List<string>();
+        public static List<string> ListeCleeEleve
+        { get; set; }
 
         public Eleve()
         {
@@ -46,26 +49,27 @@ namespace CartesAcces
 
         public static void setLesClasses()
         {
-            foreach (var eleve in Globale._listeEleve)
+            foreach (var eleve in Globale.ListeEleve.Select(x => x.ClasseEleve))
             {
-                var numClasse = eleve.ClasseEleve.Substring(0, 1);
+                var numClasse = eleve.Substring(0, 1);
 
-                if (numClasse == "6" && !Globale._classes6eme.Contains(eleve.ClasseEleve))
-                    Globale._classes6eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "5" && !Globale._classes5eme.Contains(eleve.ClasseEleve))
-                    Globale._classes5eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "4" && !Globale._classes4eme.Contains(eleve.ClasseEleve))
-                    Globale._classes4eme.Add(eleve.ClasseEleve);
-                else if (numClasse == "3" && !Globale._classes3eme.Contains(eleve.ClasseEleve))
-                    Globale._classes3eme.Add(eleve.ClasseEleve);
+                if (numClasse == "6" && !Globale.Classes6Eme.Contains(eleve))
+                    Globale.Classes6Eme.Add(eleve);
+                else if (numClasse == "5" && !Globale.Classes5Eme.Contains(eleve))
+                    Globale.Classes5Eme.Add(eleve);
+                else if (numClasse == "4" && !Globale.Classes4Eme.Contains(eleve))
+                    Globale.Classes4Eme.Add(eleve);
+                else if (numClasse == "3" && !Globale.Classes3Eme.Contains(eleve))
+                    Globale.Classes3Eme.Add(eleve);
                 else
-                    Globale._classesInconnue.Add(eleve.ClasseEleve);
+                    Globale.ClassesInconnue.Add(eleve);
             }
 
-            Globale._classes3eme.Sort();
-            Globale._classes4eme.Sort();
-            Globale._classes5eme.Sort();
-            Globale._classes6eme.Sort();
+            Globale.Classes3Eme.Sort();
+            Globale.Classes4Eme.Sort();
+            Globale.Classes5Eme.Sort();
+            Globale.Classes6Eme.Sort();
+
         }
 
         public static string creeCleEleve(Eleve eleve)

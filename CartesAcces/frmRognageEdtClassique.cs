@@ -42,7 +42,7 @@ namespace CartesAcces
             Cursor = Cursors.Cross;
 
             // -- On est dans le mode selection
-            Edition.selectionClique = true;
+            Edition.SelectionClique = true;
 
             // -- On peut cliquer sur rogner
             btnAnnuler.Enabled = true;
@@ -51,16 +51,16 @@ namespace CartesAcces
         private void pbEdtClassique_MouseDown(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selectionné est cliqué --
-            if (Edition.selectionClique)
+            if (Edition.SelectionClique)
             {
                 // -- Si il y a clic gauche --
                 if (e.Button == MouseButtons.Left)
                 {
                     // -- On prend les coordonnées de départ --
-                    Edition.rognageX = e.X;
-                    Edition.rognageY = e.Y;
-                    Edition.rognagePen = new Pen(Color.Black, 1);
-                    Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
+                    Edition.RognageX = e.X;
+                    Edition.RognageY = e.Y;
+                    Edition.RognagePen = new Pen(Color.Black, 1);
+                    Edition.RognagePen.DashStyle = DashStyle.DashDotDot;
                 }
 
                 // -- Refresh constant pour avoir un apperçu pendant la selection --
@@ -70,10 +70,10 @@ namespace CartesAcces
 
         private void pbEdtClassique_MouseUp(object sender, MouseEventArgs e)
         {
-            Edition.rognageX = Math.Min(Edition.rognageX, e.X);
-            Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
+            Edition.RognageX = Math.Min(Edition.RognageX, e.X);
+            Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
             Cursor = Cursors.Default;
-            Edition.selectionClique = false;
+            Edition.SelectionClique = false;
             Edt.rognageEdt(pbEdtClassique, listeFichiers[0]);
             btnRogner.Enabled = false;
         }
@@ -81,7 +81,7 @@ namespace CartesAcces
         private void pbEdtClassique_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Si le bouton selection est cliqué --
-            if (Edition.selectionClique)
+            if (Edition.SelectionClique)
             {
                 // -- Si pas d'image, on sort --
                 if (pbEdtClassique.Image == null)
@@ -92,16 +92,16 @@ namespace CartesAcces
                 {
                     // -- On prend les dimensions a la fin du déplacement de la souris
                     pbEdtClassique.Refresh();
-                    Edition.rognageLargeur = e.X - Edition.rognageX;
-                    Edition.rognageHauteur = e.Y - Edition.rognageY;
+                    Edition.RognageLargeur = e.X - Edition.RognageX;
+                    Edition.RognageHauteur = e.Y - Edition.RognageY;
 
-                    Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
-                    Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
+                    Edition.RognageLargeur = Math.Abs(Edition.RognageLargeur);
+                    Edition.RognageHauteur = Math.Abs(Edition.RognageHauteur);
 
-                    pbEdtClassique.CreateGraphics().DrawRectangle(Edition.rognagePen, Math.Min(Edition.rognageX, e.X),
-                        Math.Min(Edition.rognageY, e.Y),
-                        Math.Abs(Edition.rognageLargeur),
-                        Math.Abs(Edition.rognageHauteur));
+                    pbEdtClassique.CreateGraphics().DrawRectangle(Edition.RognagePen, Math.Min(Edition.RognageX, e.X),
+                        Math.Min(Edition.RognageY, e.Y),
+                        Math.Abs(Edition.RognageLargeur),
+                        Math.Abs(Edition.RognageHauteur));
                 }
             }
         }
@@ -115,13 +115,13 @@ namespace CartesAcces
         {
             try
             {
-                if (Directory.Exists(Chemin.cheminEdtClassique))
+                if (Directory.Exists(Chemin.CheminEdtClassique))
                 {
-                    foreach (var file in Directory.GetFiles(Chemin.cheminEdtClassique)) File.Delete(file);
-                    Directory.Delete(Chemin.cheminEdtClassique);
+                    foreach (var file in Directory.GetFiles(Chemin.CheminEdtClassique)) File.Delete(file);
+                    Directory.Delete(Chemin.CheminEdtClassique);
                 }
 
-                Directory.CreateDirectory(Chemin.cheminEdtClassique);
+                Directory.CreateDirectory(Chemin.CheminEdtClassique);
 
                 var directory = new DirectoryInfo(Globale._cheminEdtClassique);
                 foreach (var fichier in listeFichiers)
@@ -130,7 +130,7 @@ namespace CartesAcces
                     Edt.rognageEdt(pbEdtClassique, fichier);
                     var nom = fichier.Substring(fichier.LastIndexOf("\\"),
                         fichier.Length - fichier.LastIndexOf("\\"));
-                    pbEdtClassique.Image.Save(Chemin.cheminEdtClassique + "//" + nom, ImageFormat.Png);
+                    pbEdtClassique.Image.Save(Chemin.CheminEdtClassique + "//" + nom, ImageFormat.Png);
                 }
 
 

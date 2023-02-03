@@ -12,7 +12,6 @@ namespace CartesAcces
     /*
      * Classe qui permet d'éditer les cartes d'accès
      * elle prend une liste d'élèves et permet de leur editer une carte
-    
      */
     public partial class frmMultiplesCartesEdition : Form
     {
@@ -27,11 +26,11 @@ namespace CartesAcces
         private void pbPhoto_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Lorsque l'utilisateur clique sur la photo de l'élève --
-            if (Edition.drag)
+            if (Edition.Drag)
             {
                 // -- La position de la photo change --
-                pbPhoto.Left = e.X + pbPhoto.Left - Edition.posX;
-                pbPhoto.Top = e.Y + pbPhoto.Top - Edition.posY;
+                pbPhoto.Left = e.X + pbPhoto.Left - Edition.PosX;
+                pbPhoto.Top = e.Y + pbPhoto.Top - Edition.PosY;
             }
         }
 
@@ -40,9 +39,9 @@ namespace CartesAcces
             // -- Lorsque l'utilisateur clic, la position initiale est sauvegardée, drag passe a true
             if (e.Button == MouseButtons.Left)
             {
-                Edition.posX = e.X;
-                Edition.posY = e.Y;
-                Edition.drag = true;
+                Edition.PosX = e.X;
+                Edition.PosY = e.Y;
+                Edition.Drag = true;
             }
 
             // -- Actualisation pour voir le déplacement en temps réel --
@@ -52,7 +51,7 @@ namespace CartesAcces
         private void pbPhoto_MouseUp(object sender, MouseEventArgs e)
         {
             // -- Le drag est fini lorsque le clic est relevé  --
-            Edition.drag = false;
+            Edition.Drag = false;
         }
 
         private void tkbTaillePhoto_Scroll(object sender, EventArgs e)
@@ -75,7 +74,7 @@ namespace CartesAcces
                 Cursor = Cursors.Cross;
 
                 // -- On est dans le mode selection
-                Edition.selectionClique = true;
+                Edition.SelectionClique = true;
 
                 btnCancel.Enabled = true;
                 btnSelect.Enabled = false;
@@ -91,10 +90,10 @@ namespace CartesAcces
             Cursor = Cursors.Default;
 
             // -- On est plus dans la selection --
-            Edition.selectionClique = false;
+            Edition.SelectionClique = false;
 
             // -- On remet les paramètres et l'image de base --
-            Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
+            Edt.chercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
             Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
 
             btnSelect.Enabled = true;
@@ -106,16 +105,16 @@ namespace CartesAcces
             try
             {
                 // -- Si le bouton selectionné est cliqué --
-                if (Edition.selectionClique)
+                if (Edition.SelectionClique)
                 {
                     // -- Si il y a clic gauche --
                     if (e.Button == MouseButtons.Left)
                     {
                         // -- On prend les coordonnées de départ --
-                        Edition.rognageX = e.X;
-                        Edition.rognageY = e.Y;
-                        Edition.rognagePen = new Pen(Color.Black, 1);
-                        Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
+                        Edition.RognageX = e.X;
+                        Edition.RognageY = e.Y;
+                        Edition.RognagePen = new Pen(Color.Black, 1);
+                        Edition.RognagePen.DashStyle = DashStyle.DashDotDot;
                     }
 
                     // -- Refresh constant pour avoir un apperçu pendant la selection --
@@ -132,7 +131,7 @@ namespace CartesAcces
             try
             {
                 // -- Si le bouton selection est cliqué --
-                if (Edition.selectionClique)
+                if (Edition.SelectionClique)
                 {
                     // -- Si pas d'image, on sort --
                     if (pbCarteArriere.Image == null)
@@ -143,17 +142,17 @@ namespace CartesAcces
                     {
                         // -- On prend les dimensions a la fin du déplacement de la souris
                         pbCarteArriere.Refresh();
-                        Edition.rognageLargeur = e.X - Edition.rognageX;
-                        Edition.rognageHauteur = e.Y - Edition.rognageY;
+                        Edition.RognageLargeur = e.X - Edition.RognageX;
+                        Edition.RognageHauteur = e.Y - Edition.RognageY;
 
-                        Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
-                        Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
+                        Edition.RognageLargeur = Math.Abs(Edition.RognageLargeur);
+                        Edition.RognageHauteur = Math.Abs(Edition.RognageHauteur);
 
-                        pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,
-                            Math.Min(Edition.rognageX, e.X),
-                            Math.Min(Edition.rognageY, e.Y),
-                            Math.Abs(Edition.rognageLargeur),
-                            Math.Abs(Edition.rognageHauteur));
+                        pbCarteArriere.CreateGraphics().DrawRectangle(Edition.RognagePen,
+                            Math.Min(Edition.RognageX, e.X),
+                            Math.Min(Edition.RognageY, e.Y),
+                            Math.Abs(Edition.RognageLargeur),
+                            Math.Abs(Edition.RognageHauteur));
                     }
                 }
             }
@@ -167,19 +166,19 @@ namespace CartesAcces
             try
             {
                 // -- Si la liste est impaire, on double le dernier élève
-                if (Globale._listeEleveImpr.Count % 2 == 1)
+                if (Globale.ListeEleveImpr.Count % 2 == 1)
                 {
-                    var eleve = Globale._listeEleveImpr[Globale._listeEleveImpr.Count - 1];
-                    Globale._listeEleveImpr.Add(eleve);
+                    var eleve = Globale.ListeEleveImpr[Globale.ListeEleveImpr.Count - 1];
+                    Globale.ListeEleveImpr.Add(eleve);
                 }
 
                 var cheminImpressionFinal = Chemin.setCheminImportationDossier();
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
 
-                Globale._lblCount = lblCompteur;
+                Globale.LblCount = lblCompteur;
                 
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
-                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto,
+                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale.ListeEleveImpr, pbPhoto,
                     pbCarteArriere);
                 
                 
@@ -195,10 +194,10 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "Création de cartes d'accès multiples ou personnalisées";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
                 labelEnCoursValidation.Visible = false;
             }
             catch
@@ -210,7 +209,7 @@ namespace CartesAcces
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
             lblCompteur.Visible = false;
-            Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
+            Edt.chercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
             Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
 
@@ -218,29 +217,29 @@ namespace CartesAcces
         {
             try
             {
-                if (Edition.selectionClique)
+                if (Edition.SelectionClique)
                 {
                     if(pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(Control.MousePosition)))
                     {
-                        Edition.rognageX = Math.Min(Edition.rognageX, e.X);
-                        Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
+                        Edition.RognageX = Math.Min(Edition.RognageX, e.X);
+                        Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
                         Cursor = Cursors.Default;
-                        var pathEdt = Chemin.cheminEdt;
-                        Edition.selectionClique = false;
+                        var pathEdt = Chemin.CheminEdt;
+                        Edition.SelectionClique = false;
                         Edt.rognageEdt(pbCarteArriere, pathEdt);
                     }
                     else
                     {
                         Cursor = Cursors.Default;
-                        Edition.selectionClique = false;
-                        pbCarteArriere.Image = Image.FromFile(Chemin.cheminEdt);
+                        Edition.SelectionClique = false;
+                        pbCarteArriere.Image = Image.FromFile(Chemin.CheminEdt);
                         btnCancel.Enabled = false;
                         btnSelect.Enabled = true;
                         
-                        Edition.rognageX = 0;
-                        Edition.rognageY = 0;
-                        Edition.rognageHauteur = 0;
-                        Edition.rognageLargeur = 0;
+                        Edition.RognageX = 0;
+                        Edition.RognageY = 0;
+                        Edition.RognageHauteur = 0;
+                        Edition.RognageLargeur = 0;
                     }
                 }
             }

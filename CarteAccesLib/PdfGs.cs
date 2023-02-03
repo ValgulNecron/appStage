@@ -53,7 +53,6 @@ namespace CartesAcces
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = true;
             process.Start();
-            var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
         }
 
@@ -75,13 +74,11 @@ namespace CartesAcces
             process.StartInfo.CreateNoWindow = true;
             process.Start();
 
-            var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
 
             var file = "";
             using (var sr = new StreamReader(outputFile))
             {
-                //file = File.ReadAllText(outputFile);
                 file = sr.ReadToEnd();
             }
 
@@ -127,8 +124,7 @@ namespace CartesAcces
 
         public static void renameEdt(string pdf)
         {
-            var name = new List<string>();
-            name = getNomPrenomPdf(getTextePdf(pdf));
+            var name = getNomPrenomPdf(getTextePdf(pdf));
             MessageBox.Show(name.Count.ToString());
             var d = new DirectoryInfo(outputPath);
             var infos = d.GetFiles();

@@ -21,8 +21,8 @@ namespace CartesAcces
 
         private void btValid_Click(object sender, EventArgs e)
         {
-            var user = ClassSql.db.GetTable<Utilisateurs>()
-                .FirstOrDefault(u => u.NomUtilisateur == Globale._nomUtilisateur);
+            var user = ClassSql.Db.GetTable<Utilisateurs>()
+                .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
             if (user.TypeUtilisateur != "admin")
             {
                 MessageBox.Show("Vous n'avez pas les droits pour créer un utilisateur");
@@ -45,7 +45,7 @@ namespace CartesAcces
             }
 
             userCree.ThemeBool = false;
-            ClassSql.db.InsertOrReplace(userCree);
+            ClassSql.Db.InsertOrReplace(userCree);
         }
 
         private void frmCreationUtilisateur_Load(object sender, EventArgs e)

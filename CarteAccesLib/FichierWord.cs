@@ -84,10 +84,10 @@ namespace CarteAccesLib
             Eleve.possedeEdt(listeEleve);
             var fichierWord = initWordFile(15, 15, 15, 15);
 
-            Globale._lblCount.Visible = true;
+            Globale.LblCount.Visible = true;
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
-                Globale._lblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString();
+                Globale.LblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString();
                 
                 // -- Les élèves sont gérés deux par deux --
 
@@ -125,7 +125,7 @@ namespace CarteAccesLib
                 Photo.verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
                 Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
-                Globale._lblCount.Text = (compt + 1).ToString() + "/" + listeEleve.Count.ToString();
+                Globale.LblCount.Text = (compt + 1).ToString() + "/" + listeEleve.Count.ToString();
                 
                 // -- Ajout des deux fichier PNG au nouveau document Word --
                 var shapeCarteArriere1 = fichierWord.ActiveDocument.Shapes.AddPicture(
@@ -190,7 +190,7 @@ namespace CarteAccesLib
         {
             var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK)
-                Edition.cheminImpressionFinal = diag.SelectedPath;
+                Edition.CheminImpressionFinal = diag.SelectedPath;
 
             else
                 MessageBox.Show(
@@ -211,11 +211,11 @@ namespace CarteAccesLib
                 var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
                 ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
 
-                Edition.cheminImpressionFinal = Edition.cheminImpressionFinal + "\\";
+                Edition.CheminImpressionFinal = Edition.CheminImpressionFinal + "\\";
 
-                pbCarteArriere.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png",
+                pbCarteArriere.Image.Save(Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png",
                     ImageFormat.Png);
-                pbCarteFace.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png",
+                pbCarteFace.Image.Save(Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png",
                     ImageFormat.Png);
 
                 var WordApp = new Application();
@@ -226,14 +226,14 @@ namespace CarteAccesLib
                 WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
 
                 var shapeCarte = WordApp.ActiveDocument.Shapes.AddPicture(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,
+                    Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,
                     Type.Missing, Type.Missing);
 
                 WordApp.Selection.EndKey();
                 WordApp.Selection.InsertNewPage();
 
                 var shapeEDT = WordApp.ActiveDocument.Shapes.AddPicture(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", Type.Missing,
+                    Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", Type.Missing,
                     Type.Missing, Type.Missing);
 
                 shapeCarte.Top = 0;
@@ -242,11 +242,11 @@ namespace CarteAccesLib
                 shapeEDT.Top = 0;
                 shapeEDT.Height = shapeCarte.Height;
 
-                File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png");
-                File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png");
+                File.Delete(Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png");
+                File.Delete(Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png");
 
                 WordApp.ActiveDocument.SaveAs(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + " Carte.doc", Type.Missing,
+                    Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + " Carte.doc", Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 WordApp.ActiveDocument.Close();

@@ -13,7 +13,6 @@ namespace CarteAcces
         {
             var nomFichierJPG = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
             var nomFichierPNG = eleve.NomEleve + " " + eleve.PrenomEleve + ".png";
-            var trouveBool = false;
 
             if (File.Exists("./data/ElevesPhoto/" + nomFichierJPG))
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierJPG);
@@ -53,7 +52,7 @@ namespace CarteAcces
         public static string getDatePhotos()
         {
             var dateFile = "Aucune Importation";
-            var dir = new DirectoryInfo(Chemin.cheminPhotoEleve);
+            var dir = new DirectoryInfo(Chemin.CheminPhotoEleve);
             if (dir.Exists) dateFile = dir.CreationTime.ToString();
 
             return dateFile;

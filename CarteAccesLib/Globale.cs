@@ -6,48 +6,44 @@ namespace CartesAcces
 {
     public static class Globale
     {
-        public static Label _lblDate;
-
-        public static Label _lblCount;
-
-        public static int _cas = 0;
-
-        public static int _classe = 6;
-
-        public static Form _connexion;
-
-        public static bool _pasDeBar = false;
-
+        public static Label LblDate { get; set; }
+        public static Label LblCount { get; set; }
+        public static int Cas { get; set; } = 0;
+        public static int Classe { get; set; } = 6;
+        
+        public static Form Connexion
+        { get; set; }
+        public static bool PasDeBar { get; set; } = false;
         // connexion
-        public static bool _estConnecter = false;
-        public static string _nomUtilisateur = "";
-
+        public static bool EstConnecter { get; set; } = false;
+        public static string NomUtilisateur { get; set; } = "";
+        
         // Listes des classes 
-        public static List<string> _classes6eme = new List<string>();
-        public static List<string> _classes5eme = new List<string>();
-        public static List<string> _classes4eme = new List<string>();
-        public static List<string> _classes3eme = new List<string>();
-        public static List<string> _classesInconnue = new List<string>();
+        public static List<string> Classes6Eme { get; set; } = new List<string>();
+        public static List<string> Classes5Eme { get; set; } = new List<string>();
+        public static List<string> Classes4Eme { get; set; } = new List<string>();
+        public static List<string> Classes3Eme { get; set; } = new List<string>();
+        public static List<string> ClassesInconnue { get; set; } = new List<string>();
 
         // Liste d'élèves
-        public static List<Eleve> _listeEleve = new List<Eleve>();
-        public static List<Eleve> _listeEleveImpr = new List<Eleve>();
-        public static List<Eleve> _listeEleveSansPhoto = new List<Eleve>();
-        public static List<string> _listeElevesString = new List<string>();
+        public static List<Eleve> ListeEleve { get; set; } = new List<Eleve>();
+        public static List<Eleve> ListeEleveImpr { get; set; } = new List<Eleve>();
+        public static List<Eleve> ListeEleveSansPhoto { get; set; } = new List<Eleve>();
+        public static List<string> ListeElevesString { get; set; } = new List<string>();
 
         // theme 
-        public static bool _estEnModeSombre = false;
+        public static bool EstEnModeSombre { get; set; } = false;
 
-        public static List<int> _couleurDeFondClaire = new List<int> {245, 252, 255};
-        public static List<int> _couleurDuTexteclaire = new List<int> {31, 33, 48};
-        public static List<int> _couleurBandeauxClaire = new List<int> {138, 138, 236};
-        public static List<int> _couleurBoutonsClaire = new List<int> {197, 210, 243};
-        public static List<int> _couleurTextBoxClaire = new List<int> {230, 232, 245};
-        public static List<int> _couleurBoutonOffClaire = new List<int> {140, 143, 161};
+        public static List<int> CouleurDeFondClaire { get; set; } = new List<int> {245, 252, 255};
+        public static List<int> CouleurDuTexteclaire { get; set; } = new List<int> {31, 33, 48};
+        public static List<int> CouleurBandeauxClaire { get; set; } = new List<int> {138, 138, 236};
+        public static List<int> CouleurBoutonsClaire { get; set; } = new List<int> {197, 210, 243};
+        public static List<int> CouleurTextBoxClaire { get; set; } = new List<int> {230, 232, 245};
+        public static List<int> CouleurBoutonOffClaire { get; set; } = new List<int> {140, 143, 161};
 
-        public static List<int> _couleurDeFondSombre = new List<int> {108, 112, 134};
-        public static List<int> _couleurDuTexteSombre = new List<int> {205, 214, 244};
-        public static List<int> _couleurBandeauxSombre = new List<int> {53, 54, 58};
+        public static List<int> CouleurDeFondSombre { get; } = new List<int> {108, 112, 134};
+        public static List<int> CouleurDuTexteSombre { get; } = new List<int> {205, 214, 244};
+        public static List<int> CouleurBandeauxSombre { get; } = new List<int> {53, 54, 58};
         public static List<int> _couleurBoutonsSombre = new List<int> {88, 91, 112};
         public static List<int> _couleurTextBoxSombre = new List<int> {127, 132, 156};
         public static List<int> _couleurBoutonOffSombre = new List<int> {69, 71, 90};

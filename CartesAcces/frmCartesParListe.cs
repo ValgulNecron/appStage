@@ -34,7 +34,7 @@ namespace CartesAcces
             {
                 eleveSelectionner = new List<string>();
                 nomPrenomEleve = new List<string>();
-                listeEleve = Globale._listeEleve;
+                listeEleve = Globale.ListeEleve;
                 eleveEnString();
                 Eleves.DataSource = nomPrenomEleve;
                 btnAjout.Click += ajoutEleve;
@@ -49,28 +49,28 @@ namespace CartesAcces
                     (VARIABLE as RadioButton).CheckedChanged += rbChanged;
                 }
 
-                foreach (Eleve el in Globale._listeEleve)
+                foreach (Eleve el in Globale.ListeEleve)
                 {
                     if (el.ClasseEleve.Substring(0, 1) == 6.ToString())
                     {
                         Globale._listeEleves6eme.Add(el);
                     }
                 }
-                foreach (Eleve el in Globale._listeEleve)
+                foreach (Eleve el in Globale.ListeEleve)
                 {
                     if (el.ClasseEleve.Substring(0, 1) == 5.ToString())
                     {
                         Globale._listeEleves5eme.Add(el);
                     }
                 }
-                foreach (Eleve el in Globale._listeEleve)
+                foreach (Eleve el in Globale.ListeEleve)
                 {
                     if (el.ClasseEleve.Substring(0, 1) == 4.ToString())
                     {
                         Globale._listeEleves4eme.Add(el);
                     }
                 }
-                foreach (Eleve el in Globale._listeEleve)
+                foreach (Eleve el in Globale.ListeEleve)
                 {
                     if (el.ClasseEleve.Substring(0, 1) == 3.ToString())
                     {
@@ -152,7 +152,7 @@ namespace CartesAcces
         {
             var e = new List<Eleve>();
             foreach (var ee in convertir)
-            foreach (var eee in Globale._listeEleve)
+            foreach (var eee in Globale.ListeEleve)
             {
                 var eeee = eee.NomEleve + " " + eee.PrenomEleve + " " + eee.ClasseEleve;
                 if (ee == eeee) e.Add(eee);
@@ -165,7 +165,7 @@ namespace CartesAcces
         {
             try
             {
-                Globale._listeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
+                Globale.ListeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
                 Form frmMultipleCarteEdi = new frmMultiplesCartesEdition();
                 frmMultipleCarteEdi.Show();
             }
@@ -204,7 +204,7 @@ namespace CartesAcces
 
         private void toutF()
         {
-            listeEleve = Globale._listeEleve;
+            listeEleve = Globale.ListeEleve;
             nomPrenomEleve = new List<string>();
             eleveEnString();
             Eleves.DataSource = nomPrenomEleve;
