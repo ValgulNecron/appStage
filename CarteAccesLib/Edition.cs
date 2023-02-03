@@ -90,9 +90,18 @@ namespace CartesAcces
         // -- Change le fond de la carte en fonction de la section choisie
         public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
         {
-            var bmp = new Bitmap("./data/FichierCartesFace/" + cbbSection.Text + ".png");
-            bmp.SetResolution(150, 150);
-            pbCarteFace.Image = bmp;
+            if (File.Exists("./data/FichierCartesFace/" + cbbSection.Text + ".png"))
+            {
+                var bmp = new Bitmap("./data/FichierCartesFace/" + cbbSection.Text + ".png");
+                bmp.SetResolution(150, 150);
+                pbCarteFace.Image = bmp;
+            }
+            else
+            {
+                var bmp = new Bitmap("./data/FichierCartesFace/default.png");
+                bmp.SetResolution(150, 150);
+                pbCarteFace.Image = bmp;
+            }
 
             var date = DateTime.Today.ToShortDateString();
             var police = new Font("times new roman", 45, FontStyle.Bold);
@@ -100,6 +109,10 @@ namespace CartesAcces
 
             var police2 = new Font("times new roman", 15, FontStyle.Bold);
             dessineTexteCarteFace(police2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
+            
+            var police3 = new Font("times new roman", 28, FontStyle.Bold);
+            dessineTexteCarteFace(police3, 50, 960, "Nom :", pbCarteFace, cbbSection);
+            dessineTexteCarteFace(police3, 50, 1075, "Prénom :", pbCarteFace, cbbSection);
 
             pbCarteFace.Refresh();
         }
@@ -135,14 +148,14 @@ namespace CartesAcces
                 if (txtPrenom.Length < 15)
                 {
                     var font = new Font("times new roman", 28, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 350, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    dessineTexteCarteFace(font, 300, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
                     fondCarteNiveau(pbCarteFace, cbbSection);
                     var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 350, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    dessineTexteCarteFace(font, 300, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
@@ -342,7 +355,11 @@ namespace CartesAcces
 
             try
             {
-                File.Copy(chemin, cheminDestination, true);
+                if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
+
+                Image img = Image.FromFile(cheminSource);
+                Bitmap bmp = new Bitmap(img, new Size(1754,1240));
+                bmp.Save(cheminDestination, ImageFormat.Png);
             }
             catch
             {
