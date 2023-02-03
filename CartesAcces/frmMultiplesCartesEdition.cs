@@ -93,7 +93,7 @@ namespace CartesAcces
             Edition.SelectionClique = false;
 
             // -- On remet les paramètres et l'image de base --
-            Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
+            Edt.chercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
             Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
 
             btnSelect.Enabled = true;
@@ -166,19 +166,19 @@ namespace CartesAcces
             try
             {
                 // -- Si la liste est impaire, on double le dernier élève
-                if (Globale._listeEleveImpr.Count % 2 == 1)
+                if (Globale.ListeEleveImpr.Count % 2 == 1)
                 {
-                    var eleve = Globale._listeEleveImpr[Globale._listeEleveImpr.Count - 1];
-                    Globale._listeEleveImpr.Add(eleve);
+                    var eleve = Globale.ListeEleveImpr[Globale.ListeEleveImpr.Count - 1];
+                    Globale.ListeEleveImpr.Add(eleve);
                 }
 
                 var cheminImpressionFinal = Chemin.setCheminImportationDossier();
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
 
-                Globale._lblCount = lblCompteur;
+                Globale.LblCount = lblCompteur;
                 
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
-                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale._listeEleveImpr, pbPhoto,
+                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale.ListeEleveImpr, pbPhoto,
                     pbCarteArriere);
                 
                 
@@ -194,7 +194,7 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "Création de cartes d'accès multiples ou personnalisées";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
@@ -209,7 +209,7 @@ namespace CartesAcces
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
             lblCompteur.Visible = false;
-            Edt.chercheEdtPerso(Globale._listeEleveImpr, pbCarteArriere);
+            Edt.chercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
             Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
         }
 

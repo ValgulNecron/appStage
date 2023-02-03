@@ -54,7 +54,7 @@ namespace CartesAcces
 
             var log = new LogActions();
             log.DateAction = DateTime.Now;
-            log.NomUtilisateur = Globale._nomUtilisateur;
+            log.NomUtilisateur = Globale.NomUtilisateur;
             log.Action = "à modifier les informations de établissement";
             log.AdMac = macAddress;
             ClassSql.Db.Insert(log);

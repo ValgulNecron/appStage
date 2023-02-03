@@ -343,7 +343,7 @@ namespace CartesAcces
             FichierWord.getDossierCarteProvisoire();
             Globale._listeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
                 (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
-            Globale._cas = 5;
+            Globale.Cas = 5;
             Globale._actuelle = this;
             // backgroundWorker
             var frmWait = new barDeProgression();

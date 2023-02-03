@@ -61,7 +61,7 @@ namespace CartesAcces
                 OpenChildForm(Globale._actuelle); //
                 if (Globale._cheminTexte.Length > 0)
                 {
-                    Globale._cas = 2;
+                    Globale.Cas = 2;
                     var frmWait = new barDeProgression();
                     frmWait.Show();
                     frmWait.TopMost = true;
@@ -79,7 +79,7 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des élèves";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
@@ -110,7 +110,7 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des EDT";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
@@ -125,7 +125,7 @@ namespace CartesAcces
             try
             {
                 Globale._cheminPhoto = Chemin.setCheminImportationDossier();
-                Globale._cas = 4;
+                Globale.Cas = 4;
                 var frmWait = new barDeProgression();
                 frmWait.Show();
                 frmWait.TopMost = true;
@@ -141,7 +141,7 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des photos";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
@@ -155,7 +155,7 @@ namespace CartesAcces
         {
             try
             {
-                lblImportEdtClassique = Globale._lblDate;
+                lblImportEdtClassique = Globale.LblDate;
                 Globale._cheminEdtClassique = Chemin.setCheminImportationDossier();
                 Edition.importEdtClassique(Globale._cheminEdtClassique);
 
@@ -173,7 +173,7 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des EDT classiques";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
@@ -243,7 +243,7 @@ namespace CartesAcces
 
                     var log = new LogActions();
                     log.DateAction = DateTime.Now;
-                    log.NomUtilisateur = Globale._nomUtilisateur;
+                    log.NomUtilisateur = Globale.NomUtilisateur;
                     log.Action = "à déclenché la git poule";
                     log.AdMac = macAddress;
                     ClassSql.Db.Insert(log);
@@ -273,10 +273,10 @@ namespace CartesAcces
         {
             try
             {
-                lblImportFaceCarte = Globale._lblDate;
+                lblImportFaceCarte = Globale.LblDate;
                 Globale._cheminFaceCarte = Chemin.setCheminImportationFaceCarte();
 
-                Globale._pasDeBar = true;
+                Globale.PasDeBar = true;
 
                 Form frmSelectionNiveau = new frmSelectNiveau();
                 frmSelectionNiveau.Show();
@@ -293,7 +293,7 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des face de carte";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
@@ -319,7 +319,7 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer le logo";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);

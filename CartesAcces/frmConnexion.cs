@@ -62,8 +62,8 @@ namespace CartesAcces
                 {
                     if (Securite.verificationHash(txtMotDePasse.Text, user?.Hash))
                     {
-                        Globale._estConnecter = true;
-                        Globale._nomUtilisateur = txtIdentifiant.Text;
+                        Globale.EstConnecter = true;
+                        Globale.NomUtilisateur = txtIdentifiant.Text;
                         txtMotDePasse.Text = "";
                         txtIdentifiant.Text = "";
                         foreach (Control controle in Globale._accueil.Controls)
@@ -71,7 +71,7 @@ namespace CartesAcces
                                 foreach (Control controle2 in controle.Controls)
                                     if (controle2 is Button)
                                         controle2.Enabled = true;
-                        Globale._cas = 1;
+                        Globale.Cas = 1;
                         var frmWait = new barDeProgression();
                         frmWait.StartPosition = FormStartPosition.CenterScreen;            
                         frmWait.TopMost = true;
@@ -91,7 +91,7 @@ namespace CartesAcces
 
                         var log = new LogActions();
                         log.DateAction = DateTime.Now;
-                        log.NomUtilisateur = Globale._nomUtilisateur;
+                        log.NomUtilisateur = Globale.NomUtilisateur;
                         log.Action = "C'est connecter au logiciel";
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);

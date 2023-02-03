@@ -170,19 +170,19 @@ namespace CartesAcces
             switch (cbbSection.Text)
             {
                 case "6eme":
-                    cbbClasse.DataSource = Globale._classes6eme;
+                    cbbClasse.DataSource = Globale.Classes6Eme;
                     break;
 
                 case "5eme":
-                    cbbClasse.DataSource = Globale._classes5eme;
+                    cbbClasse.DataSource = Globale.Classes5Eme;
                     break;
 
                 case "4eme":
-                    cbbClasse.DataSource = Globale._classes4eme;
+                    cbbClasse.DataSource = Globale.Classes4Eme;
                     break;
 
                 case "3eme":
-                    cbbClasse.DataSource = Globale._classes3eme;
+                    cbbClasse.DataSource = Globale.Classes3Eme;
                     break;
             }
         }
@@ -360,7 +360,7 @@ namespace CartesAcces
         public static void importCarteFace(string chemin)
         {
             var cheminSource = chemin;
-            var cheminDestination = Chemin.CheminFaceCarte + Globale._classe + "eme.png";
+            var cheminDestination = Chemin.CheminFaceCarte + Globale.Classe + "eme.png";
 
             try
             {

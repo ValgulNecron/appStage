@@ -29,7 +29,7 @@ namespace CartesAcces
             {
                 Globale._accueil.Invoke(new MethodInvoker(delegate { Globale._accueil.Enabled = false; }));
                 Globale._actuelle.Invoke(new MethodInvoker(delegate { Globale._actuelle.Enabled = false; }));
-                switch (Globale._cas)
+                switch (Globale.Cas)
                 {
                     case 1:
                         cas_1();
@@ -81,7 +81,7 @@ namespace CartesAcces
 
         private void cas_3()
         {
-            PdfGs.getImageFromPdf(Globale._cheminPdf, Globale._classe);
+            PdfGs.getImageFromPdf(Globale._cheminPdf, Globale.Classe);
             PdfGs.renameEdt(Globale._cheminPdf);
 
             Globale._actuelle.Invoke(new MethodInvoker(delegate
@@ -133,7 +133,7 @@ namespace CartesAcces
 
                     var log = new LogActions();
                     log.DateAction = DateTime.Now;
-                    log.NomUtilisateur = Globale._nomUtilisateur;
+                    log.NomUtilisateur = Globale.NomUtilisateur;
                     log.Action = "à fait une carte provisoire";
                     log.AdMac = macAddress;
                     ClassSql.Db.Insert(log);

@@ -14,13 +14,13 @@ namespace CartesAcces
 
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Globale._listeEleveImpr.Clear();
+            Globale.ListeEleveImpr.Clear();
             var listeEleveParClasse = new List<string>();
-            foreach (var eleve in Globale._listeEleve)
+            foreach (var eleve in Globale.ListeEleve)
                 if (eleve.ClasseEleve == cbbImprClasse.Text)
                 {
                     listeEleveParClasse.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
-                    Globale._listeEleveImpr.Add(eleve);
+                    Globale.ListeEleveImpr.Add(eleve);
                 }
 
             listeEleveParClasse.Sort();
@@ -34,13 +34,13 @@ namespace CartesAcces
 
         private void cbbImprSection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Globale._listeEleveImpr.Clear();
+            Globale.ListeEleveImpr.Clear();
             var listeEleveParSection = new List<string>();
-            foreach (var eleve in Globale._listeEleve)
+            foreach (var eleve in Globale.ListeEleve)
                 if (eleve.ClasseEleve.Substring(0, 1) == cbbImprSection.Text.Substring(0, 1))
                 {
                     listeEleveParSection.Add(eleve.NomEleve + " " + eleve.PrenomEleve);
-                    Globale._listeEleveImpr.Add(eleve);
+                    Globale.ListeEleveImpr.Add(eleve);
                 }
 
             listeEleveParSection.Sort();
@@ -68,10 +68,10 @@ namespace CartesAcces
         {
             var lesClasses = new List<string>();
 
-            lesClasses.AddRange(Globale._classes3eme);
-            lesClasses.AddRange(Globale._classes4eme);
-            lesClasses.AddRange(Globale._classes5eme);
-            lesClasses.AddRange(Globale._classes6eme);
+            lesClasses.AddRange(Globale.Classes3Eme);
+            lesClasses.AddRange(Globale.Classes4Eme);
+            lesClasses.AddRange(Globale.Classes5Eme);
+            lesClasses.AddRange(Globale.Classes6Eme);
 
             cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;

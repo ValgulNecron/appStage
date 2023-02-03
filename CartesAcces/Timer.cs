@@ -49,9 +49,9 @@ namespace CartesAcces
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
             if (start.Add(TimeSpan.FromMinutes(dureeMinute)) <= DateTime.Now)
-                if (Globale._estConnecter)
+                if (Globale.EstConnecter)
                 {
-                    Globale._estConnecter = false;
+                    Globale.EstConnecter = false;
                     Globale._actuelle = new frmConnexion();
                     Globale._accueil.Invoke(
                         new MethodInvoker(delegate { frmAccueil.OpenChildForm(Globale._actuelle); }));

@@ -56,11 +56,11 @@ namespace CartesAcces
                     unEleve.MefEleve = getDataFromCSV(sFilePath, 5)[i];
 
                     listeProvisoire.Add(unEleve);
-                    Globale._listeElevesString.Add(unEleve.NomEleve + " " + unEleve.PrenomEleve + " " +
+                    Globale.ListeElevesString.Add(unEleve.NomEleve + " " + unEleve.PrenomEleve + " " +
                                                    unEleve.ClasseEleve);
                 }
 
-                Globale._listeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
+                Globale.ListeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
             }
             catch
             {
