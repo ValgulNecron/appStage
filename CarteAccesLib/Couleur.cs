@@ -9,252 +9,159 @@ namespace CartesAcces
     {
         public static void setCouleurFenetre(Form fenetre)
         {
-            if (Globale.EstEnModeSombre)
+            foreach (Control controle in fenetre.Controls)
             {
-                fenetre.BackColor = Color.FromArgb(255, Globale.CouleurDeFondSombre[0],
-                    Globale.CouleurDeFondSombre[1], Globale.CouleurDeFondSombre[2]);
-                foreach (Control controle in fenetre.Controls)
+                if (controle is Panel)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
-                          controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxSombre[0],
-                            Globale.CouleurTextBoxSombre[1], Globale.CouleurTextBoxSombre[2]);
-                    controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
-                        Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
-                    if (controle is Button)
-                    {
-                        var controle2 = controle as Button;
-                        controle2.FlatStyle = FlatStyle.Flat;
-                        if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
-                                Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
-                        else
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
-                                Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
-                        controle2.EnabledChanged += changement_state_btn;
-                    }
-
-                    if (controle is TextBox)
-                    {
-                        var controle2 = controle as TextBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
-
-                    if (controle is Panel) setCouleurPanel(controle as Panel);
-
-                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
-
-                    if (controle is ListBox)
-                    {
-                        var controle2 = controle as ListBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
+                    setCouleurPanel((Panel) controle);
                 }
-            }
-            else
-            {
-                fenetre.BackColor = Color.FromArgb(255, Globale.CouleurDeFondClaire[0],
-                    Globale.CouleurDeFondClaire[1], Globale.CouleurDeFondClaire[2]);
-                foreach (Control controle in fenetre.Controls)
+
+                else if (controle is GroupBox)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
-                          controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxClaire[0],
-                            Globale.CouleurTextBoxClaire[1], Globale.CouleurTextBoxClaire[2]);
-                    controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteclaire[0],
-                        Globale.CouleurDuTexteclaire[1], Globale.CouleurDuTexteclaire[2]);
-                    if (controle is Button)
-                    {
-                        var controle2 = controle as Button;
-                        controle2.FlatStyle = FlatStyle.Flat;
-                        if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsClaire[0],
-                                Globale.CouleurBoutonsClaire[1], Globale.CouleurBoutonsClaire[2]);
-                        else
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffClaire[0],
-                                Globale.CouleurBoutonOffClaire[1], Globale.CouleurBoutonOffClaire[2]);
-                        controle2.EnabledChanged += changement_state_btn;
-                    }
+                    setCouleurGroupeBox((GroupBox) controle);
+                }
 
-                    if (controle is TextBox)
-                    {
-                        var controle2 = controle as TextBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
-
-                    if (controle is Panel) setCouleurPanel(controle as Panel);
-
-                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
-
-                    if (controle is ListBox)
-                    {
-                        var controle2 = controle as ListBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
+                else if (controle is Button)
+                {
+                    setCouleurBouton((Button) controle);
+                }
+                else if (controle is TextBox)
+                {
+                    setCouleurTextBox((TextBox) controle);
+                }
+                else if (controle is ListBox)
+                {
+                    setCouleurListBox((ListBox) controle);
+                }
+                else
+                {
+                    setCouleurAutre(controle);
                 }
             }
         }
 
         public static void setCouleurPanel(Panel panel)
         {
-            if (Globale.EstEnModeSombre)
-                foreach (Control controle in panel.Controls)
+            foreach (Control controle in panel.Controls)
+            {
+                if (controle is Panel)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
-                          controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxSombre[0],
-                            Globale.CouleurTextBoxSombre[1], Globale.CouleurTextBoxSombre[2]);
-                    controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
-                        Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
-                    if (controle is Button)
-                    {
-                        var controle2 = controle as Button;
-                        controle2.FlatStyle = FlatStyle.Flat;
-                        if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
-                                Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
-                        else
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
-                                Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
-                        controle2.EnabledChanged += changement_state_btn;
-                    }
-
-                    if (controle is TextBox)
-                    {
-                        var controle2 = controle as TextBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
-
-                    if (controle is Panel) setCouleurPanel(controle as Panel);
-
-                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
-
-                    if (controle is ListBox)
-                    {
-                        var controle2 = controle as ListBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
+                    setCouleurPanel((Panel) controle);
                 }
-            else
-                foreach (Control controle in panel.Controls)
+
+                else if (controle is GroupBox)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
-                          controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxClaire[0],
-                            Globale.CouleurTextBoxClaire[1], Globale.CouleurTextBoxClaire[2]);
-                    controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteclaire[0],
-                        Globale.CouleurDuTexteclaire[1], Globale.CouleurDuTexteclaire[2]);
-                    if (controle is Button)
-                    {
-                        var controle2 = controle as Button;
-                        controle2.FlatStyle = FlatStyle.Flat;
-                        if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsClaire[0],
-                                Globale.CouleurBoutonsClaire[1], Globale.CouleurBoutonsClaire[2]);
-                        else
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffClaire[0],
-                                Globale.CouleurBoutonOffClaire[1], Globale.CouleurBoutonOffClaire[2]);
-                        controle2.EnabledChanged += changement_state_btn;
-                    }
-
-                    if (controle is TextBox)
-                    {
-                        var controle2 = controle as TextBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
-
-                    if (controle is Panel) setCouleurPanel(controle as Panel);
-
-                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
-
-                    if (controle is ListBox)
-                    {
-                        var controle2 = controle as ListBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
+                    setCouleurGroupeBox((GroupBox) controle);
                 }
+
+                else if (controle is Button)
+                {
+                    setCouleurBouton((Button) controle);
+                }
+                else if (controle is TextBox)
+                {
+                    setCouleurTextBox((TextBox) controle);
+                }
+                else if (controle is ListBox)
+                {
+                    setCouleurListBox((ListBox) controle);
+                }
+                else
+                {
+                    setCouleurAutre(controle);
+                }
+            }
         }
 
         public static void setCouleurGroupeBox(GroupBox groupeBox)
         {
-            if (Globale.EstEnModeSombre)
-                foreach (Control controle in groupeBox.Controls)
+            foreach (Control controle in groupeBox.Controls)
+            {
+                if (controle is Panel)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
-                          controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxSombre[0],
-                            Globale.CouleurTextBoxSombre[1], Globale.CouleurTextBoxSombre[2]);
-                    controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
-                        Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
-                    if (controle is Button)
-                    {
-                        var controle2 = controle as Button;
-                        controle2.FlatStyle = FlatStyle.Flat;
-                        if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
-                                Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
-                        else
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
-                                Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
-                        controle2.EnabledChanged += changement_state_btn;
-                    }
-
-                    if (controle is TextBox)
-                    {
-                        var controle2 = controle as TextBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
-
-                    if (controle is Panel) setCouleurPanel(controle as Panel);
-
-                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
-
-                    if (controle is ListBox)
-                    {
-                        var controle2 = controle as ListBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
+                    setCouleurPanel((Panel) controle);
                 }
-            else
-                foreach (Control controle in groupeBox.Controls)
+
+                else if (controle is GroupBox)
                 {
-                    if (!(controle is Label || controle is GroupBox || controle is RadioButton ||
-                          controle is CheckBox || controle is TrackBar))
-                        controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxClaire[0],
-                            Globale.CouleurTextBoxClaire[1], Globale.CouleurTextBoxClaire[2]);
-                    controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteclaire[0],
-                        Globale.CouleurDuTexteclaire[1], Globale.CouleurDuTexteclaire[2]);
-                    if (controle is Button)
-                    {
-                        var controle2 = controle as Button;
-                        controle2.FlatStyle = FlatStyle.Flat;
-                        if (controle2.Enabled)
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsClaire[0],
-                                Globale.CouleurBoutonsClaire[1], Globale.CouleurBoutonsClaire[2]);
-                        else
-                            controle.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffClaire[0],
-                                Globale.CouleurBoutonOffClaire[1], Globale.CouleurBoutonOffClaire[2]);
-                        controle2.EnabledChanged += changement_state_btn;
-                    }
-
-                    if (controle is TextBox)
-                    {
-                        var controle2 = controle as TextBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
-
-                    if (controle is Panel) setCouleurPanel(controle as Panel);
-
-                    if (controle is GroupBox) setCouleurGroupeBox(controle as GroupBox);
-
-                    if (controle is ListBox)
-                    {
-                        var controle2 = controle as ListBox;
-                        controle2.BorderStyle = BorderStyle.None;
-                    }
+                    setCouleurGroupeBox((GroupBox) controle);
                 }
+
+                else if (controle is Button)
+                {
+                    setCouleurBouton((Button) controle);
+                }
+                else if (controle is TextBox)
+                {
+                    setCouleurTextBox((TextBox) controle);
+                }
+                else if (controle is ListBox)
+                {
+                    setCouleurListBox((ListBox) controle);
+                }
+                else
+                {
+                    setCouleurAutre(controle);
+                }
+            }
         }
 
+        public static void setCouleurBouton(Button btn)
+        {
+            if (Globale.EstEnModeSombre)
+            {
+                var controle2 = btn as Button;
+                controle2.FlatStyle = FlatStyle.Flat;
+                if (controle2.Enabled)
+                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
+                        Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
+                else
+                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
+                        Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
+                controle2.EnabledChanged += changement_state_btn;
+            }
+            else
+            {
+                var controle2 = btn as Button;
+                controle2.FlatStyle = FlatStyle.Flat;
+                if (controle2.Enabled)
+                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsClaire[0],
+                        Globale.CouleurBoutonsClaire[1], Globale.CouleurBoutonsClaire[2]);
+                else
+                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffClaire[0],
+                        Globale.CouleurBoutonOffClaire[1], Globale.CouleurBoutonOffClaire[2]);
+                controle2.EnabledChanged += changement_state_btn;
+            }
+        }
+
+        public static void setCouleurAutre(Control controle)
+        {
+            if (Globale.EstEnModeSombre)
+            {
+                controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxSombre[0],
+                    Globale.CouleurTextBoxSombre[1], Globale.CouleurTextBoxSombre[2]);
+                controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
+                    Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
+            }
+            else
+            {
+                controle.BackColor = Color.FromArgb(255, Globale.CouleurTextBoxClaire[0],
+                    Globale.CouleurTextBoxClaire[1], Globale.CouleurTextBoxClaire[2]);
+                controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteclaire[0],
+                    Globale.CouleurDuTexteclaire[1], Globale.CouleurDuTexteclaire[2]);
+            }
+        }
+
+        public static void setCouleurTextBox(TextBox txt)
+        {
+            txt.BorderStyle = BorderStyle.None;
+        }
+
+        public static void setCouleurListBox(ListBox lst)
+        {
+            lst.BorderStyle = BorderStyle.None;
+        }
+        
         public static void changement_state_btn(object sender, EventArgs e)
         {
             Button btn;
@@ -266,25 +173,8 @@ namespace CartesAcces
             {
                 return;
             }
-
-            if (btn != null && btn.Enabled)
-            {
-                if (Globale.EstEnModeSombre)
-                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
-                        Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
-                else
-                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsClaire[0],
-                        Globale.CouleurBoutonsClaire[1], Globale.CouleurBoutonsClaire[2]);
-            }
-            else if (btn != null)
-            {
-                if (Globale.EstEnModeSombre)
-                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffSombre[0],
-                        Globale.CouleurBoutonOffSombre[1], Globale.CouleurBoutonOffSombre[2]);
-                else
-                    btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonOffClaire[0],
-                        Globale.CouleurBoutonOffClaire[1], Globale.CouleurBoutonOffClaire[2]);
-            }
+            
+            setCouleurBouton(btn);
         }
     }
 }
