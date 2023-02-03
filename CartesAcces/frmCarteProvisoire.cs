@@ -88,8 +88,9 @@ namespace CartesAcces
                 pbPhoto.Image = null;
                 pbPhoto.Location = new Point(5, 5);
             }
-            catch
+            catch (Exception err)
             {
+                MessageBox.Show(err.ToString());
             }
         }
 
