@@ -7,6 +7,8 @@ using System.Linq;
 using System.Windows.Forms;
 using CarteAcces;
 using LinqToDB;
+using QRCoder;
+using QRCode = CarteAccesLib.QRCode;
 
 namespace CartesAcces
 {
@@ -122,6 +124,17 @@ namespace CartesAcces
             objetGraphique.Dispose(); // Libère les ressources
         }
 
+        // -- Récupère et place le qr code sur la face de la carte
+        public static void qrCodeFace(PictureBox pbCarteFace)
+        {
+            var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+            Bitmap bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
+            Bitmap bmpFinal = new Bitmap(bmpOriginal, new Size(220, 220));
+
+            var objGraphique =  Graphics.FromImage(pbCarteFace.Image);
+            objGraphique.DrawImage(bmpFinal, new Point(1350,80));
+        }
+        
         // -- Change le fond de la carte en fonction de la section choisie
         public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
         {
@@ -137,28 +150,54 @@ namespace CartesAcces
                 bmp.SetResolution(150, 150);
                 pbCarteFace.Image = bmp;
             }
-
-            var date = DateTime.Today.ToShortDateString();
-            var police = new Font("times new roman", 45, FontStyle.Bold);
+            
+            qrCodeFace(pbCarteFace);
+            
+            var police = new Font("Calibri", 45, FontStyle.Bold);
             dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
 
-            var police2 = new Font("times new roman", 15, FontStyle.Bold);
-            dessineTexteCarteFace(police2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
+            var police2 = new Font("Calibri", 15, FontStyle.Bold);
             
-            var police3 = new Font("times new roman", 28, FontStyle.Bold);
+            var police3 = new Font("Calibri", 28, FontStyle.Bold);
             dessineTexteCarteFace(police3, 50, 960, "Nom :", pbCarteFace, cbbSection);
             dessineTexteCarteFace(police3, 50, 1075, "Prénom :", pbCarteFace, cbbSection);
             
-            var police4 = new Font("times new roman", 20, FontStyle.Bold);
-            bool succes = false;
+            var police4 = new Font("Calibri", 20, FontStyle.Bold);
+   
+            bool succes = true;
+            
+            var objetGraphique = Graphics.FromImage(pbCarteFace.Image);
+            int mesure;
+            string chaine;
 
             if (succes)
             {
                 var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-                dessineTexteCarteFace(police4, 900, 944, etab.NomEtablissement, pbCarteFace, cbbSection);
-                dessineTexteCarteFace(police4, 900, 996, "Adresse : " + etab.NumeroRueEtablissement + etab.NomRueEtablissement + etab.CodePostaleEtablissement + etab.VilleEtablissement, pbCarteFace, cbbSection);
-                dessineTexteCarteFace(police4, 900, 1048, "Tel : " + etab.NumeroTelephoneEtablissement, pbCarteFace, cbbSection);
-                dessineTexteCarteFace(police4, 900, 1100, "Mail : " + etab.EmailEtablissement, pbCarteFace, cbbSection);
+                var date = DateTime.Today.ToShortDateString();
+                
+                chaine = "Date de création : " + date;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police2, 1835 - mesure, 850, chaine, pbCarteFace, cbbSection);
+                
+                chaine = etab.NomEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 892, etab.NomEtablissement, pbCarteFace, cbbSection);
+                
+                chaine = "Adresse : " + etab.NumeroRueEtablissement + " " + etab.NomRueEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 944, chaine, pbCarteFace, cbbSection);
+                
+                chaine = etab.CodePostaleEtablissement + " " + etab.VilleEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 996, chaine, pbCarteFace, cbbSection);
+                
+                chaine = "Tel : " + etab.NumeroTelephoneEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 1048, chaine, pbCarteFace, cbbSection);
+                
+                chaine = "Mail : " + etab.EmailEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 1100, chaine, pbCarteFace, cbbSection);
             }
 
             pbCarteFace.Refresh();
@@ -194,15 +233,15 @@ namespace CartesAcces
             {
                 if (txtPrenom.Length < 15)
                 {
-                    var font = new Font("times new roman", 28, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 300, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    var font = new Font("Calibri", 28, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 325, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
                 else
                 {
                     fondCarteNiveau(pbCarteFace, cbbSection);
-                    var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 300, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    var font = new Font("Calibri", 25, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 325, 1075, txtPrenom, pbCarteFace, cbbSection);
                     pbCarteFace.Refresh();
                 }
             }
