@@ -73,12 +73,13 @@ namespace CartesAcces
                                         controle2.Enabled = true;
                         Globale.Cas = 1;
                         var frmWait = new barDeProgression();
-                        frmWait.StartPosition = FormStartPosition.CenterScreen;            
-                        frmWait.TopMost = true;
+                        frmWait.StartPosition = FormStartPosition.CenterScreen;
                         frmWait.Show();
-                        
+                        frmWait.TopMost = true;
+
                         Globale.Actuelle = new frmImportation();
                         frmAccueil.OpenChildForm(Globale.Actuelle);
+
                         var macAddress = string.Empty;
                         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                             if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
