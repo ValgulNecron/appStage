@@ -117,17 +117,11 @@ namespace CartesAcces
             dessineTexteCarteFace(police3, 50, 1075, "Prénom :", pbCarteFace, cbbSection);
             
             var police4 = new Font("times new roman", 20, FontStyle.Bold);
-            var etab = new Etablissement();
             bool succes = false;
-            try
-            {
-                etab = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
-                succes = true;
-            }
-            catch { }
 
             if (succes)
             {
+                var etab = ClassSql.db.GetTable<Etablissement>().FirstOrDefault();
                 dessineTexteCarteFace(police4, 900, 944, etab.NomEtablissement, pbCarteFace, cbbSection);
                 dessineTexteCarteFace(police4, 900, 996, "Adresse : " + etab.NumeroRueEtablissement + etab.NomRueEtablissement + etab.CodePostaleEtablissement + etab.VilleEtablissement, pbCarteFace, cbbSection);
                 dessineTexteCarteFace(police4, 900, 1048, "Tel : " + etab.NumeroTelephoneEtablissement, pbCarteFace, cbbSection);

@@ -75,8 +75,6 @@ namespace CartesAcces
         {
             try
             {
-                Edition.classePourNiveau(cbbSection, cbbClasse);
-                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
                 btnReset.Enabled = true;
                 txtNom.Enabled = true;
                 txtPrenom.Enabled = true;
@@ -87,6 +85,8 @@ namespace CartesAcces
                 pbPhoto.Visible = false;
                 pbPhoto.Image = null;
                 pbPhoto.Location = new Point(5, 5);
+                Edition.classePourNiveau(cbbSection, cbbClasse);
+                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
             }
             catch (Exception err)
             {
