@@ -57,28 +57,23 @@ namespace CartesAcces
                 return false;
             }
 
-            if (!(Regex.IsMatch(motDePasse, @"[a-z]")))
+            if (!(Regex.IsMatch(motDePasse, ".*[a-z].*")))
             {
                 return false;
             }
 
-            if (!(Regex.IsMatch(motDePasse, @"[A-Z]")))
+            if (!(Regex.IsMatch(motDePasse, ".*[A-Z].*")))
             {
                 return false;
             }
 
-            if (!(Regex.IsMatch(motDePasse, @"[0-9]")))
+            if (!(Regex.IsMatch(motDePasse, ".*[0-9].*")))
             {
                 return false;
             }
 
-            if (!(Regex.IsMatch(motDePasse, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-~\\]")))
-            {
-                return false;
-            }
-
-        return true;
-    }
+            return true;
+        }
 
         public static void chiffrerDossier()
         {
