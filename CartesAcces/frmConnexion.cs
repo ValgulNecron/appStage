@@ -107,6 +107,7 @@ namespace CartesAcces
             {
                 MessageBox.Show(exception.Message);
             }
+            MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
         }
 
         private void btnConnexion_Click(object sender, EventArgs e)
