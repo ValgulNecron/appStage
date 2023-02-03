@@ -272,6 +272,7 @@ namespace CartesAcces
             this.gb3eme.Controls.Add(this.rdbRouge3);
             this.gb3eme.Controls.Add(this.rdbVert3);
             this.gb3eme.Controls.Add(this.rdbJaune3);
+            this.gb3eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb3eme.Location = new System.Drawing.Point(474, 336);
             this.gb3eme.Name = "gb3eme";
             this.gb3eme.Size = new System.Drawing.Size(346, 84);
@@ -281,9 +282,9 @@ namespace CartesAcces
             // 
             // txtCustom3
             // 
-            this.txtCustom3.Location = new System.Drawing.Point(70, 52);
+            this.txtCustom3.Location = new System.Drawing.Point(84, 51);
             this.txtCustom3.Name = "txtCustom3";
-            this.txtCustom3.Size = new System.Drawing.Size(100, 20);
+            this.txtCustom3.Size = new System.Drawing.Size(100, 22);
             this.txtCustom3.TabIndex = 74;
             this.txtCustom3.Visible = false;
             // 
@@ -291,7 +292,7 @@ namespace CartesAcces
             // 
             this.rdbCustom3.Location = new System.Drawing.Point(5, 49);
             this.rdbCustom3.Name = "rdbCustom3";
-            this.rdbCustom3.Size = new System.Drawing.Size(65, 24);
+            this.rdbCustom3.Size = new System.Drawing.Size(73, 24);
             this.rdbCustom3.TabIndex = 4;
             this.rdbCustom3.TabStop = true;
             this.rdbCustom3.Text = "Custom";
@@ -299,7 +300,7 @@ namespace CartesAcces
             // 
             // rdbBleu3
             // 
-            this.rdbBleu3.Location = new System.Drawing.Point(200, 19);
+            this.rdbBleu3.Location = new System.Drawing.Point(269, 19);
             this.rdbBleu3.Name = "rdbBleu3";
             this.rdbBleu3.Size = new System.Drawing.Size(59, 24);
             this.rdbBleu3.TabIndex = 3;
@@ -309,9 +310,9 @@ namespace CartesAcces
             // 
             // rdbRouge3
             // 
-            this.rdbRouge3.Location = new System.Drawing.Point(135, 19);
+            this.rdbRouge3.Location = new System.Drawing.Point(166, 19);
             this.rdbRouge3.Name = "rdbRouge3";
-            this.rdbRouge3.Size = new System.Drawing.Size(59, 24);
+            this.rdbRouge3.Size = new System.Drawing.Size(75, 24);
             this.rdbRouge3.TabIndex = 2;
             this.rdbRouge3.TabStop = true;
             this.rdbRouge3.Text = "Rouge";
@@ -319,7 +320,7 @@ namespace CartesAcces
             // 
             // rdbVert3
             // 
-            this.rdbVert3.Location = new System.Drawing.Point(70, 19);
+            this.rdbVert3.Location = new System.Drawing.Point(83, 19);
             this.rdbVert3.Name = "rdbVert3";
             this.rdbVert3.Size = new System.Drawing.Size(59, 24);
             this.rdbVert3.TabIndex = 1;
@@ -345,6 +346,7 @@ namespace CartesAcces
             this.gb4eme.Controls.Add(this.rdbRouge4);
             this.gb4eme.Controls.Add(this.rdbVert4);
             this.gb4eme.Controls.Add(this.rdbJaune4);
+            this.gb4eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb4eme.Location = new System.Drawing.Point(474, 229);
             this.gb4eme.Name = "gb4eme";
             this.gb4eme.Size = new System.Drawing.Size(346, 84);
@@ -354,9 +356,9 @@ namespace CartesAcces
             // 
             // txtCustom4
             // 
-            this.txtCustom4.Location = new System.Drawing.Point(70, 52);
+            this.txtCustom4.Location = new System.Drawing.Point(83, 51);
             this.txtCustom4.Name = "txtCustom4";
-            this.txtCustom4.Size = new System.Drawing.Size(100, 20);
+            this.txtCustom4.Size = new System.Drawing.Size(100, 22);
             this.txtCustom4.TabIndex = 75;
             this.txtCustom4.Visible = false;
             // 
@@ -364,7 +366,7 @@ namespace CartesAcces
             // 
             this.rdbCustom4.Location = new System.Drawing.Point(5, 49);
             this.rdbCustom4.Name = "rdbCustom4";
-            this.rdbCustom4.Size = new System.Drawing.Size(65, 24);
+            this.rdbCustom4.Size = new System.Drawing.Size(73, 24);
             this.rdbCustom4.TabIndex = 4;
             this.rdbCustom4.TabStop = true;
             this.rdbCustom4.Text = "Custom";
@@ -372,9 +374,9 @@ namespace CartesAcces
             // 
             // rdbBleu4
             // 
-            this.rdbBleu4.Location = new System.Drawing.Point(200, 19);
+            this.rdbBleu4.Location = new System.Drawing.Point(269, 19);
             this.rdbBleu4.Name = "rdbBleu4";
-            this.rdbBleu4.Size = new System.Drawing.Size(59, 24);
+            this.rdbBleu4.Size = new System.Drawing.Size(71, 24);
             this.rdbBleu4.TabIndex = 3;
             this.rdbBleu4.TabStop = true;
             this.rdbBleu4.Text = "Bleu";
@@ -382,9 +384,9 @@ namespace CartesAcces
             // 
             // rdbRouge4
             // 
-            this.rdbRouge4.Location = new System.Drawing.Point(135, 19);
+            this.rdbRouge4.Location = new System.Drawing.Point(166, 19);
             this.rdbRouge4.Name = "rdbRouge4";
-            this.rdbRouge4.Size = new System.Drawing.Size(59, 24);
+            this.rdbRouge4.Size = new System.Drawing.Size(75, 24);
             this.rdbRouge4.TabIndex = 2;
             this.rdbRouge4.TabStop = true;
             this.rdbRouge4.Text = "Rouge";
@@ -392,7 +394,7 @@ namespace CartesAcces
             // 
             // rdbVert4
             // 
-            this.rdbVert4.Location = new System.Drawing.Point(70, 19);
+            this.rdbVert4.Location = new System.Drawing.Point(83, 19);
             this.rdbVert4.Name = "rdbVert4";
             this.rdbVert4.Size = new System.Drawing.Size(59, 24);
             this.rdbVert4.TabIndex = 1;
@@ -418,6 +420,7 @@ namespace CartesAcces
             this.gb5eme.Controls.Add(this.rdbRouge5);
             this.gb5eme.Controls.Add(this.rdbVert5);
             this.gb5eme.Controls.Add(this.rdbJaune5);
+            this.gb5eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb5eme.Location = new System.Drawing.Point(474, 122);
             this.gb5eme.Name = "gb5eme";
             this.gb5eme.Size = new System.Drawing.Size(346, 84);
@@ -427,9 +430,9 @@ namespace CartesAcces
             // 
             // txtCustom5
             // 
-            this.txtCustom5.Location = new System.Drawing.Point(70, 49);
+            this.txtCustom5.Location = new System.Drawing.Point(83, 51);
             this.txtCustom5.Name = "txtCustom5";
-            this.txtCustom5.Size = new System.Drawing.Size(100, 20);
+            this.txtCustom5.Size = new System.Drawing.Size(100, 22);
             this.txtCustom5.TabIndex = 76;
             this.txtCustom5.Visible = false;
             // 
@@ -437,7 +440,7 @@ namespace CartesAcces
             // 
             this.rdbCustom5.Location = new System.Drawing.Point(5, 46);
             this.rdbCustom5.Name = "rdbCustom5";
-            this.rdbCustom5.Size = new System.Drawing.Size(65, 24);
+            this.rdbCustom5.Size = new System.Drawing.Size(73, 24);
             this.rdbCustom5.TabIndex = 4;
             this.rdbCustom5.TabStop = true;
             this.rdbCustom5.Text = "Custom";
@@ -445,7 +448,7 @@ namespace CartesAcces
             // 
             // rdbBleu5
             // 
-            this.rdbBleu5.Location = new System.Drawing.Point(200, 19);
+            this.rdbBleu5.Location = new System.Drawing.Point(269, 21);
             this.rdbBleu5.Name = "rdbBleu5";
             this.rdbBleu5.Size = new System.Drawing.Size(59, 24);
             this.rdbBleu5.TabIndex = 3;
@@ -455,9 +458,9 @@ namespace CartesAcces
             // 
             // rdbRouge5
             // 
-            this.rdbRouge5.Location = new System.Drawing.Point(135, 19);
+            this.rdbRouge5.Location = new System.Drawing.Point(166, 19);
             this.rdbRouge5.Name = "rdbRouge5";
-            this.rdbRouge5.Size = new System.Drawing.Size(59, 24);
+            this.rdbRouge5.Size = new System.Drawing.Size(75, 24);
             this.rdbRouge5.TabIndex = 2;
             this.rdbRouge5.TabStop = true;
             this.rdbRouge5.Text = "Rouge";
@@ -465,7 +468,7 @@ namespace CartesAcces
             // 
             // rdbVert5
             // 
-            this.rdbVert5.Location = new System.Drawing.Point(70, 19);
+            this.rdbVert5.Location = new System.Drawing.Point(83, 21);
             this.rdbVert5.Name = "rdbVert5";
             this.rdbVert5.Size = new System.Drawing.Size(59, 24);
             this.rdbVert5.TabIndex = 1;
@@ -491,6 +494,7 @@ namespace CartesAcces
             this.gb6eme.Controls.Add(this.rdbRouge6);
             this.gb6eme.Controls.Add(this.rdbVert6);
             this.gb6eme.Controls.Add(this.rdbJaune6);
+            this.gb6eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb6eme.Location = new System.Drawing.Point(474, 18);
             this.gb6eme.Name = "gb6eme";
             this.gb6eme.Size = new System.Drawing.Size(346, 84);
@@ -500,9 +504,9 @@ namespace CartesAcces
             // 
             // txtCustom6
             // 
-            this.txtCustom6.Location = new System.Drawing.Point(70, 49);
+            this.txtCustom6.Location = new System.Drawing.Point(83, 46);
             this.txtCustom6.Name = "txtCustom6";
-            this.txtCustom6.Size = new System.Drawing.Size(100, 20);
+            this.txtCustom6.Size = new System.Drawing.Size(100, 22);
             this.txtCustom6.TabIndex = 77;
             this.txtCustom6.Visible = false;
             // 
@@ -510,7 +514,7 @@ namespace CartesAcces
             // 
             this.rdbCustom6.Location = new System.Drawing.Point(5, 46);
             this.rdbCustom6.Name = "rdbCustom6";
-            this.rdbCustom6.Size = new System.Drawing.Size(65, 24);
+            this.rdbCustom6.Size = new System.Drawing.Size(73, 24);
             this.rdbCustom6.TabIndex = 4;
             this.rdbCustom6.TabStop = true;
             this.rdbCustom6.Text = "Custom";
@@ -518,7 +522,7 @@ namespace CartesAcces
             // 
             // rdbBleu6
             // 
-            this.rdbBleu6.Location = new System.Drawing.Point(200, 19);
+            this.rdbBleu6.Location = new System.Drawing.Point(269, 19);
             this.rdbBleu6.Name = "rdbBleu6";
             this.rdbBleu6.Size = new System.Drawing.Size(59, 24);
             this.rdbBleu6.TabIndex = 3;
@@ -528,9 +532,9 @@ namespace CartesAcces
             // 
             // rdbRouge6
             // 
-            this.rdbRouge6.Location = new System.Drawing.Point(135, 19);
+            this.rdbRouge6.Location = new System.Drawing.Point(166, 21);
             this.rdbRouge6.Name = "rdbRouge6";
-            this.rdbRouge6.Size = new System.Drawing.Size(59, 24);
+            this.rdbRouge6.Size = new System.Drawing.Size(75, 24);
             this.rdbRouge6.TabIndex = 2;
             this.rdbRouge6.TabStop = true;
             this.rdbRouge6.Text = "Rouge";
@@ -538,7 +542,7 @@ namespace CartesAcces
             // 
             // rdbVert6
             // 
-            this.rdbVert6.Location = new System.Drawing.Point(70, 19);
+            this.rdbVert6.Location = new System.Drawing.Point(83, 19);
             this.rdbVert6.Name = "rdbVert6";
             this.rdbVert6.Size = new System.Drawing.Size(59, 24);
             this.rdbVert6.TabIndex = 1;
@@ -550,7 +554,7 @@ namespace CartesAcces
             // 
             this.rdbJaune6.Location = new System.Drawing.Point(5, 19);
             this.rdbJaune6.Name = "rdbJaune6";
-            this.rdbJaune6.Size = new System.Drawing.Size(59, 24);
+            this.rdbJaune6.Size = new System.Drawing.Size(65, 24);
             this.rdbJaune6.TabIndex = 0;
             this.rdbJaune6.TabStop = true;
             this.rdbJaune6.Text = "Jaune";
@@ -598,6 +602,7 @@ namespace CartesAcces
             this.gb6eme.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.TextBox txtCustom5;

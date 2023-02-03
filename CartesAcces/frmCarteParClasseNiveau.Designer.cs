@@ -43,7 +43,7 @@ namespace CartesAcces
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label1.Location = new System.Drawing.Point(332, 186);
+            this.label1.Location = new System.Drawing.Point(158, 195);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 16);
             this.label1.TabIndex = 0;
@@ -53,7 +53,7 @@ namespace CartesAcces
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label2.Location = new System.Drawing.Point(331, 249);
+            this.label2.Location = new System.Drawing.Point(157, 258);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(137, 16);
             this.label2.TabIndex = 1;
@@ -69,7 +69,7 @@ namespace CartesAcces
             "5eme",
             "4eme",
             "3eme"});
-            this.cbbImprSection.Location = new System.Drawing.Point(475, 249);
+            this.cbbImprSection.Location = new System.Drawing.Point(301, 258);
             this.cbbImprSection.MaximumSize = new System.Drawing.Size(180, 0);
             this.cbbImprSection.MinimumSize = new System.Drawing.Size(180, 0);
             this.cbbImprSection.Name = "cbbImprSection";
@@ -81,7 +81,7 @@ namespace CartesAcces
             // 
             this.btnValiderImpr.Enabled = false;
             this.btnValiderImpr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnValiderImpr.Location = new System.Drawing.Point(887, 603);
+            this.btnValiderImpr.Location = new System.Drawing.Point(713, 612);
             this.btnValiderImpr.MaximumSize = new System.Drawing.Size(180, 45);
             this.btnValiderImpr.MinimumSize = new System.Drawing.Size(180, 45);
             this.btnValiderImpr.Name = "btnValiderImpr";
@@ -96,7 +96,7 @@ namespace CartesAcces
             this.lsbListeEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.lsbListeEleve.FormattingEnabled = true;
             this.lsbListeEleve.ItemHeight = 16;
-            this.lsbListeEleve.Location = new System.Drawing.Point(717, 97);
+            this.lsbListeEleve.Location = new System.Drawing.Point(543, 106);
             this.lsbListeEleve.MaximumSize = new System.Drawing.Size(350, 500);
             this.lsbListeEleve.MinimumSize = new System.Drawing.Size(350, 500);
             this.lsbListeEleve.Name = "lsbListeEleve";
@@ -107,7 +107,7 @@ namespace CartesAcces
             // 
             this.NbComptageEleveCS.AutoSize = true;
             this.NbComptageEleveCS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.NbComptageEleveCS.Location = new System.Drawing.Point(331, 320);
+            this.NbComptageEleveCS.Location = new System.Drawing.Point(157, 329);
             this.NbComptageEleveCS.Name = "NbComptageEleveCS";
             this.NbComptageEleveCS.Size = new System.Drawing.Size(311, 16);
             this.NbComptageEleveCS.TabIndex = 25;
@@ -116,7 +116,7 @@ namespace CartesAcces
             // lblCount
             // 
             this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCount.Location = new System.Drawing.Point(648, 320);
+            this.lblCount.Location = new System.Drawing.Point(474, 329);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(47, 23);
             this.lblCount.TabIndex = 27;
@@ -127,7 +127,7 @@ namespace CartesAcces
             this.cbbImprClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbImprClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cbbImprClasse.FormattingEnabled = true;
-            this.cbbImprClasse.Location = new System.Drawing.Point(475, 183);
+            this.cbbImprClasse.Location = new System.Drawing.Point(301, 192);
             this.cbbImprClasse.MaximumSize = new System.Drawing.Size(180, 0);
             this.cbbImprClasse.MinimumSize = new System.Drawing.Size(180, 0);
             this.cbbImprClasse.Name = "cbbImprClasse";

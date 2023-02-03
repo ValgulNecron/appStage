@@ -241,5 +241,10 @@ namespace CartesAcces
             eleveEnString();
             Eleves.DataSource = nomPrenomEleve;
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
