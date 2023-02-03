@@ -87,26 +87,30 @@ namespace CartesAcces
             string codeHexa6eme = "";
             foreach (var VARIABLE in gb6eme.Controls)
             {
-                if ((VARIABLE as RadioButton).Checked)
+                if (VARIABLE is RadioButton)
                 {
-                    string temp = (VARIABLE as RadioButton).Text;
-                    switch (temp)
+                    RadioButton rd = VARIABLE as RadioButton;
+                    if (rd.Checked)
                     {
-                        case "Rouge":
-                            codeHexa6eme = "#FF0000";
-                            break;
-                        case "Vert":
-                            codeHexa6eme = "#00FF00";
-                            break;
-                        case "Bleu":
-                            codeHexa6eme = "#0000FF";
-                            break;
-                        case "Jaune":
-                            codeHexa6eme = "#FFFF00";
-                            break;
-                        case "Custom":
-                            codeHexa6eme = txtCustom6.Text;
-                            break;
+                        string temp = rd.Text;
+                        switch (temp)
+                        {
+                            case "Rouge":
+                                codeHexa6eme = "#FF0000";
+                                break;
+                            case "Vert":
+                                codeHexa6eme = "#00FF00";
+                                break;
+                            case "Bleu":
+                                codeHexa6eme = "#0000FF";
+                                break;
+                            case "Jaune":
+                                codeHexa6eme = "#FFFF00";
+                                break;
+                            case "Custom":
+                                codeHexa6eme = txtCustom6.Text;
+                                break;
+                        }
                     }
                 }
             }
@@ -118,26 +122,30 @@ namespace CartesAcces
             string codeHexa5eme = "";
             foreach (var VARIABLE in gb5eme.Controls)
             {
-                if ((VARIABLE as RadioButton).Checked)
+                if (VARIABLE is RadioButton)
                 {
-                    string temp = (VARIABLE as RadioButton).Text;
-                    switch (temp)
+                    RadioButton rd = VARIABLE as RadioButton;
+                    if (rd.Checked)
                     {
-                        case "Rouge":
-                            codeHexa5eme = "#FF0000";
-                            break;
-                        case "Vert":
-                            codeHexa5eme = "#00FF00";
-                            break;
-                        case "Bleu":
-                            codeHexa5eme = "#0000FF";
-                            break;
-                        case "Jaune":
-                            codeHexa5eme = "#FFFF00";
-                            break;
-                        case "Custom":
-                            codeHexa5eme = txtCustom5.Text;
-                            break;
+                        string temp = rd.Text;
+                        switch (temp)
+                        {
+                            case "Rouge":
+                                codeHexa5eme = "#FF0000";
+                                break;
+                            case "Vert":
+                                codeHexa5eme = "#00FF00";
+                                break;
+                            case "Bleu":
+                                codeHexa5eme = "#0000FF";
+                                break;
+                            case "Jaune":
+                                codeHexa5eme = "#FFFF00";
+                                break;
+                            case "Custom":
+                                codeHexa5eme = txtCustom5.Text;
+                                break;
+                        }
                     }
                 }
             }
@@ -149,26 +157,30 @@ namespace CartesAcces
             string codeHexa4eme = "";
             foreach (var VARIABLE in gb4eme.Controls)
             {
-                if ((VARIABLE as RadioButton).Checked)
+                if (VARIABLE is RadioButton)
                 {
-                    string temp = (VARIABLE as RadioButton).Text;
-                    switch (temp)
+                    RadioButton rd = VARIABLE as RadioButton;
+                    if (rd.Checked)
                     {
-                        case "Rouge":
-                            codeHexa4eme = "#FF0000";
-                            break;
-                        case "Vert":
-                            codeHexa4eme = "#00FF00";
-                            break;
-                        case "Bleu":
-                            codeHexa4eme = "#0000FF";
-                            break;
-                        case "Jaune":
-                            codeHexa4eme = "#FFFF00";
-                            break;
-                        case "Custom":
-                            codeHexa4eme = txtCustom4.Text;
-                            break;
+                        string temp = rd.Text;
+                        switch (temp)
+                        {
+                            case "Rouge":
+                                codeHexa4eme = "#FF0000";
+                                break;
+                            case "Vert":
+                                codeHexa4eme = "#00FF00";
+                                break;
+                            case "Bleu":
+                                codeHexa4eme = "#0000FF";
+                                break;
+                            case "Jaune":
+                                codeHexa4eme = "#FFFF00";
+                                break;
+                            case "Custom":
+                                codeHexa4eme = txtCustom4.Text;
+                                break;
+                        }
                     }
                 }
             }
@@ -180,26 +192,30 @@ namespace CartesAcces
             string codeHexa3eme = "";
             foreach (var VARIABLE in gb3eme.Controls)
             {
-                if ((VARIABLE as RadioButton).Checked)
+                if (VARIABLE is RadioButton)
                 {
-                    string temp = (VARIABLE as RadioButton).Text;
-                    switch (temp)
+                    RadioButton rd = VARIABLE as RadioButton;
+                    if (rd.Checked)
                     {
-                        case "Rouge":
-                            codeHexa3eme = "#FF0000";
-                            break;
-                        case "Vert":
-                            codeHexa3eme = "#00FF00";
-                            break;
-                        case "bleu":
-                            codeHexa3eme = "#0000FF";
-                            break;
-                        case "Jaune":
-                            codeHexa3eme = "#FFFF00";
-                            break;
-                        case "Custom":
-                            codeHexa3eme = txtCustom3.Text;
-                            break;
+                        string temp = rd.Text;
+                        switch (temp)
+                        {
+                            case "Rouge":
+                                codeHexa3eme = "#FF0000";
+                                break;
+                            case "Vert":
+                                codeHexa3eme = "#00FF00";
+                                break;
+                            case "Bleu":
+                                codeHexa3eme = "#0000FF";
+                                break;
+                            case "Jaune":
+                                codeHexa3eme = "#FFFF00";
+                                break;
+                            case "Custom":
+                                codeHexa3eme = txtCustom3.Text;
+                                break;
+                        }
                     }
                 }
             }
