@@ -76,6 +76,7 @@ namespace CartesAcces
                 var codeHexa4eme = eta.CodeHexa4eme;
                 var codeHexa3eme = eta.CodeHexa3eme;
                 textBox1.Text = eta.UrlEtablissement;
+                txtNumRueEtablissement.KeyPress += keyPress;
             }
             catch
             {
@@ -220,6 +221,15 @@ namespace CartesAcces
                 }
             }
             return codeHexa3eme;
+        }
+        
+        private void keyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
