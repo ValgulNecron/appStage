@@ -13,30 +13,26 @@ namespace CartesAcces
     public static class Edition
     {
         // ** VARIABLES : Pour l'édition de l'emploi du temps (rognage) **
-        public static bool
-            selectionClique = false; // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
+        public static bool SelectionClique { get; set; } = false;
 
-        public static int rognageX; // -> Abscisse de départ du rognage
-        public static int rognageY; // -> Ordonnée de départ du rognage
+        public static int RognageX { get; set; }
+        public static int RognageY { get; set; }
 
-        public static int rognageLargeur; // -> Largeur du rognage
-        public static int rognageHauteur; // -> Hauteur du rognage
-        public static Pen rognagePen; // -> Stylo qui dessine le rectangle correspondant au rognage
+        public static int RognageLargeur { get; set; }
+        public static int RognageHauteur { get; set; }
+        public static Pen RognagePen { get; set; }
 
         // ** VARIABLES  : Déplacement de la photo
-        public static bool
-            drag = false; // -> Est ce que l'utilisateur a cliqué sur la photo ? (clique maintenue : drag passera a true)
+        public static bool Drag { get; set; } = false;
 
-        public static int
-            posX; // -> Abscisse initiale, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
+        public static int PosX { get; set; }
 
-        public static int
-            posY; // -> Ordonnée initialie, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
+        public static int PosY { get; set; }
 
         // ** VARIABLES : Chemin de l'image **
-        public static string cheminFichier;
+        public static string CheminFichier { get; set; }
 
-        public static string cheminImpressionFinal;
+        public static string CheminImpressionFinal { get; set; }
 
         // -- Dessine le rectangle de couleur derrière le texte pour une meilleurs visibilité de celui ci --
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, int posX, int posY,
@@ -68,6 +64,43 @@ namespace CartesAcces
                 case "3eme":
                     objGraphique.FillRectangle(pinceauBleu, rectangle);
                     objGraphique.DrawRectangle(new Pen(pinceauBleu), rectangle);
+                    break;
+            }
+        }
+        
+        public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
+            int posY)
+        {
+            Brush brushJaune = new SolidBrush(Color.Yellow);
+            Brush brushVert = new SolidBrush(Color.LightGreen);
+            Brush brushRouge = new SolidBrush(Color.Red);
+            Brush brushBleu = new SolidBrush(Color.LightBlue);
+            var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
+            var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
+            var rectangle = new Rectangle(posX, posY, largeur, hauteur);
+
+            // -- Couleur du rectangle en fonction de la section (donc de la couleur de la carte) --
+            switch (eleve.ClasseEleve.Substring(0, 1))
+            {
+                case "6":
+                    objGraphique.FillRectangle(brushJaune, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
+                    break;
+                case "5":
+                    objGraphique.FillRectangle(brushVert, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushVert), rectangle);
+                    break;
+                case "4":
+                    objGraphique.FillRectangle(brushRouge, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushRouge), rectangle);
+                    break;
+                case "3":
+                    objGraphique.FillRectangle(brushBleu, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushBleu), rectangle);
+                    break;
+                default:
+                    objGraphique.FillRectangle(brushJaune, rectangle);
+                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
                     break;
             }
         }
@@ -237,43 +270,6 @@ namespace CartesAcces
             }
         }
 
-        public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
-            int posY)
-        {
-            Brush brushJaune = new SolidBrush(Color.Yellow);
-            Brush brushVert = new SolidBrush(Color.LightGreen);
-            Brush brushRouge = new SolidBrush(Color.Red);
-            Brush brushBleu = new SolidBrush(Color.LightBlue);
-            var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
-            var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
-            var rectangle = new Rectangle(posX, posY, largeur, hauteur);
-
-            // -- Couleur du rectangle en fonction de la section (donc de la couleur de la carte) --
-            switch (eleve.ClasseEleve.Substring(0, 1))
-            {
-                case "6":
-                    objGraphique.FillRectangle(brushJaune, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
-                    break;
-                case "5":
-                    objGraphique.FillRectangle(brushVert, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushVert), rectangle);
-                    break;
-                case "4":
-                    objGraphique.FillRectangle(brushRouge, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushRouge), rectangle);
-                    break;
-                case "3":
-                    objGraphique.FillRectangle(brushBleu, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushBleu), rectangle);
-                    break;
-                default:
-                    objGraphique.FillRectangle(brushJaune, rectangle);
-                    objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
-                    break;
-            }
-        }
-
         public static Image imageCarteFace(Eleve eleve, Font police)
         {
             var image = Image.FromFile("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0, 1) + "eme.png");
@@ -325,7 +321,7 @@ namespace CartesAcces
 
         public static void carteArriere(Eleve eleve, PictureBox pbCarteArriere)
         {
-            if (eleve.SansEDT == false)
+            if (!eleve.SansEDT)
             {
                 var cheminEdt = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" +
                                 Eleve.creeCleEleve(eleve) + ".jpg";
@@ -354,7 +350,6 @@ namespace CartesAcces
                 Eleve.setLesClasses();
 
                 MessageBox.Show("Import Réussi");
-                //Globale._lblDate.Text = ReadCsv.getDateFile();
             }
             catch (Exception e)
             {
@@ -377,12 +372,12 @@ namespace CartesAcces
             }
             catch
             {
+                // ignored
             }
         }
 
         public static void importEdtClassique(string chemin)
         {
-            var cheminSource = chemin;
             var cheminDestination = Chemin.cheminEdtClassique;
 
             try
@@ -397,10 +392,10 @@ namespace CartesAcces
 
                 Directory.CreateDirectory(cheminDestination);
 
-                //MessageBox.Show("Import réussie !");
             }
             catch
             {
+                // ignored
             }
         }
 
@@ -426,8 +421,8 @@ namespace CartesAcces
                 {
                     var img = Image.FromFile(file.FullName);
                     var nom = file.Name;
-
                     img.Save(cheminDestination + nom, ImageFormat.Png);
+                    img.Dispose();
                 }
 
                 MessageBox.Show("Import réussie !");

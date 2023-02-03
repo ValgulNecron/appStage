@@ -13,7 +13,6 @@ namespace CarteAcces
         {
             var nomFichierJPG = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
             var nomFichierPNG = eleve.NomEleve + " " + eleve.PrenomEleve + ".png";
-            var trouveBool = false;
 
             if (File.Exists("./data/ElevesPhoto/" + nomFichierJPG))
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierJPG);
