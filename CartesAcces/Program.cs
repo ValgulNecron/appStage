@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
-using LinqToDB;
 using Sentry;
 
 namespace CartesAcces
@@ -18,7 +16,7 @@ namespace CartesAcces
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);
             using (SentrySdk.Init(o =>
-                   {
+                   { 
                        o.Dsn = "https://a4a3d0bd171f4e5a9fd0e136f7b8d973@o4504629047263232.ingest.sentry.io/4504629056438272";
                        // When configuring for the first time, to see what the SDK is doing:
                        o.Debug = true;
