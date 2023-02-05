@@ -26,7 +26,7 @@ namespace CartesAcces
             //TailleControle.setTailleControleTexte(this);
             //TailleControle.setTailleControleLabel(this);
             //TailleControle.setTailleBouton(this);
-            lblDateListeEleve.Text = ReadCSV.getDateFile();
+            lblDateListeEleve.Text = ReadCsv.getDateFile();
             lblEdtEleve.Text = PdfGs.getDateFile();
             lblPhotoEleve.Text = Photo.getDatePhotos();
         }
@@ -36,7 +36,7 @@ namespace CartesAcces
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
             childForm.Dock = DockStyle.Fill; // le WF appelé va prendre tout l'espace du panel
-            foreach (Control controle in Globale._accueil.Controls)
+            foreach (Control controle in Globale.Accueil.Controls)
                 if (controle is Panel && controle.Name == "pnlContent")
                 {
                     var pnlContent = controle as Panel;
@@ -56,15 +56,14 @@ namespace CartesAcces
             try
             {
                 //lblDateListeEleve = Globale._lblDate;
-                Globale._cheminTexte = Chemin.setCheminImportationFichierExcel();
-                Globale._actuelle = new frmImportation(); //
-                OpenChildForm(Globale._actuelle); //
-                if (Globale._cheminTexte.Length > 0)
+                Globale.CheminTexte = Chemin.setCheminImportationFichierExcel();
+                Globale.Actuelle = new frmImportation(); //
+                OpenChildForm(Globale.Actuelle); //
+                if (Globale.CheminTexte.Length > 0)
                 {
-                    Globale._cas = 2;
+                    Globale.Cas = 2;
                     var frmWait = new barDeProgression();
-                    frmWait.StartPosition = FormStartPosition.Manual;
-                    frmWait.Location = new Point(0, 0);
+                    frmWait.StartPosition = FormStartPosition.CenterScreen;
                     frmWait.Show();
                     frmWait.TopMost = true;
                 }
@@ -81,10 +80,10 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des élèves";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -95,7 +94,7 @@ namespace CartesAcces
         {
             try
             {
-                Globale._cheminPdf = Chemin.setCheminImportationFichierPdf();
+                Globale.CheminPdf = Chemin.setCheminImportationFichierPdf();
                 var frmSelectSection = new frmSelectNiveau();
                 frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
                 frmSelectSection.Show();
@@ -112,10 +111,10 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des EDT";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -126,11 +125,10 @@ namespace CartesAcces
         {
             try
             {
-                Globale._cheminPhoto = Chemin.setCheminImportationDossier();
-                Globale._cas = 4;
+                Globale.CheminPhoto = Chemin.setCheminImportationDossier();
+                Globale.Cas = 4;
                 var frmWait = new barDeProgression();
-                frmWait.StartPosition = FormStartPosition.Manual;
-                frmWait.Location = new Point(0, 0);
+                frmWait.StartPosition = FormStartPosition.CenterScreen;
                 frmWait.Show();
                 frmWait.TopMost = true;
                 var macAddress = string.Empty;
@@ -145,10 +143,10 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des photos";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -159,9 +157,9 @@ namespace CartesAcces
         {
             try
             {
-                lblImportEdtClassique = Globale._lblDate;
-                Globale._cheminEdtClassique = Chemin.setCheminImportationEdtClassique();
-                Edition.importEdtClassique(Globale._cheminEdtClassique);
+                lblImportEdtClassique = Globale.LblDate;
+                Globale.CheminEdtClassique = Chemin.setCheminImportationDossier();
+                Edition.importEdtClassique(Globale.CheminEdtClassique);
 
                 var frmRognageEdtClassique = new frmRognageEdtClassique();
                 frmRognageEdtClassique.Show();
@@ -177,10 +175,10 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des EDT classiques";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -199,16 +197,16 @@ namespace CartesAcces
             {
                 var x = 0;
                 var random = new Random();
-                x = random.Next(0, 666);
-                if (x == 666 && Globale._gitPoule)
+                x = random.Next(0, 667);
+                if (x == 666 && Globale.GitPoule)
                 {
                     pictureBox1.Visible = true;
                     pictureBox1.Image = Image.FromFile("./git-poule.jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                     pictureBox1.BringToFront();
                     pictureBox1.Location = new Point(0, 0);
-                    Globale._accueil.Text = "KFC - Git Poule";
-                    foreach (Control controle in Globale._accueil.Controls)
+                    Globale.Accueil.Text = "KFC - Git Poule";
+                    foreach (Control controle in Globale.Accueil.Controls)
                         if (controle is Panel && controle.Name == "pnlMenu")
                         {
                             controle.BackColor = Color.DeepPink;
@@ -247,10 +245,10 @@ namespace CartesAcces
 
                     var log = new LogActions();
                     log.DateAction = DateTime.Now;
-                    log.NomUtilisateur = Globale._nomUtilisateur;
+                    log.NomUtilisateur = Globale.NomUtilisateur;
                     log.Action = "à déclenché la git poule";
                     log.AdMac = macAddress;
-                    ClassSql.db.Insert(log);
+                    ClassSql.Db.Insert(log);
                     ;
                     Application.Exit();
                 }
@@ -277,10 +275,10 @@ namespace CartesAcces
         {
             try
             {
-                lblImportFaceCarte = Globale._lblDate;
-                Globale._cheminFaceCarte = Chemin.setCheminImportationFaceCarte();
+                lblImportFaceCarte = Globale.LblDate;
+                Globale.CheminFaceCarte = Chemin.setCheminImportationFaceCarte();
 
-                Globale._pasDeBar = true;
+                Globale.PasDeBar = true;
 
                 Form frmSelectionNiveau = new frmSelectNiveau();
                 frmSelectionNiveau.Show();
@@ -297,10 +295,10 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer des face de carte";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
             catch
             {
@@ -323,10 +321,10 @@ namespace CartesAcces
 
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale._nomUtilisateur;
+                log.NomUtilisateur = Globale.NomUtilisateur;
                 log.Action = "à importer le logo";
                 log.AdMac = macAddress;
-                ClassSql.db.Insert(log);
+                ClassSql.Db.Insert(log);
             }
 
             catch

@@ -33,6 +33,7 @@ namespace CartesAcces
             this.pbPhoto = new System.Windows.Forms.PictureBox();
             this.pbCarteArriere = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblCompteur = new System.Windows.Forms.Label();
             this.labelEnCoursValidation = new System.Windows.Forms.Label();
             this.btnValiderImpr = new System.Windows.Forms.Button();
             this.tkbTaillePhoto = new System.Windows.Forms.TrackBar();
@@ -98,6 +99,18 @@ namespace CartesAcces
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajout et Edition Photo";
             // 
+            // lblCompteur
+            // 
+            this.lblCompteur.AutoSize = true;
+            this.lblCompteur.Enabled = false;
+            this.lblCompteur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompteur.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.lblCompteur.Location = new System.Drawing.Point(255, 42);
+            this.lblCompteur.Name = "lblCompteur";
+            this.lblCompteur.Size = new System.Drawing.Size(32, 20);
+            this.lblCompteur.TabIndex = 18;
+            this.lblCompteur.Text = "0/x";
+            // 
             // labelEnCoursValidation
             // 
             this.labelEnCoursValidation.AutoSize = true;
@@ -151,6 +164,7 @@ namespace CartesAcces
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblCompteur);
             this.groupBox2.Controls.Add(this.btnCancel);
             this.groupBox2.Controls.Add(this.btnSelect);
             this.groupBox2.Location = new System.Drawing.Point(12, 379);
@@ -189,6 +203,7 @@ namespace CartesAcces
             this.Controls.Add(this.pnlEdtPhoto);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.MaximizeBox = false;
             this.Name = "frmMultiplesCartesEdition";
             this.Text = "frmMultiplesCartesEdition";
             this.Load += new System.EventHandler(this.frmMultiplesCartesEdition_Load);
@@ -199,8 +214,11 @@ namespace CartesAcces
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tkbTaillePhoto)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label lblCompteur;
 
         #endregion
 

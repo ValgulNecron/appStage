@@ -4,13 +4,13 @@ namespace CartesAcces
 {
     public static class Chemin
     {
-        public static string cheminListeEleve = "./data/ImportListeEleve/ImportEleve.csv";
-        public static string cheminDossierListeEleve = "./data/ImportListeEleve/";
-        public static string cheminPhotoEleve = "./data/ElevesPhoto/";
-        public static string cheminEdtClassique = "./data/FichierEdtClasse";
-        public static string cheminFaceCarte = "./data/FichierCartesFace/";
+        public static string CheminListeEleve { get; set; } = "./data/ImportListeEleve/ImportEleve.csv";
+        public static string CheminDossierListeEleve { get; set; } = "./data/ImportListeEleve/";
+        public static string CheminPhotoEleve { get; set; } = "./data/ElevesPhoto/";
+        public static string CheminEdtClassique { get; set; } = "./data/FichierEdtClasse";
+        public static string CheminFaceCarte { get; set; } = "./data/FichierCartesFace/";
 
-        public static string cheminEdt = "";
+        public static string CheminEdt { get; set; } = "";
 
         public static string setCheminImportationFaceCarte()
         {
@@ -21,13 +21,6 @@ namespace CartesAcces
                 if (ofd.ShowDialog() == DialogResult.OK) return ofd.FileName;
                 return "failed";
             }
-        }
-
-        public static string setCheminImportationEdtClassique()
-        {
-            var diag = new FolderBrowserDialog();
-            if (diag.ShowDialog() == DialogResult.OK) return diag.SelectedPath;
-            return "failed";
         }
 
         // -- Permet a l'utilisateur de donner le chemin du fichier excel a importer --

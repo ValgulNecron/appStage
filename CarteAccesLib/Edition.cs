@@ -3,38 +3,38 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using CarteAcces;
+using LinqToDB;
+using QRCoder;
+using QRCode = CarteAccesLib.QRCode;
 
 namespace CartesAcces
 {
     public static class Edition
     {
         // ** VARIABLES : Pour l'édition de l'emploi du temps (rognage) **
-        public static bool
-            selectionClique = false; // -> Est ce que le bouton "Selectionner" a été cliqué ? Si oui passe à true
+        public static bool SelectionClique { get; set; } = false;
 
-        public static int rognageX; // -> Abscisse de départ du rognage
-        public static int rognageY; // -> Ordonnée de départ du rognage
+        public static int RognageX { get; set; }
+        public static int RognageY { get; set; }
 
-        public static int rognageLargeur; // -> Largeur du rognage
-        public static int rognageHauteur; // -> Hauteur du rognage
-        public static Pen rognagePen; // -> Stylo qui dessine le rectangle correspondant au rognage
+        public static int RognageLargeur { get; set; }
+        public static int RognageHauteur { get; set; }
+        public static Pen RognagePen { get; set; }
 
         // ** VARIABLES  : Déplacement de la photo
-        public static bool
-            drag = false; // -> Est ce que l'utilisateur a cliqué sur la photo ? (clique maintenue : drag passera a true)
+        public static bool Drag { get; set; } = false;
 
-        public static int
-            posX; // -> Abscisse initiale, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
+        public static int PosX { get; set; }
 
-        public static int
-            posY; // -> Ordonnée initialie, sauvegardée quand l'utilisateur commence le déplacement (clic maintenu sur la photo)
+        public static int PosY { get; set; }
 
         // ** VARIABLES : Chemin de l'image **
-        public static string cheminFichier;
+        public static string CheminFichier { get; set; }
 
-        public static string cheminImpressionFinal;
+        public static string CheminImpressionFinal { get; set; }
 
         // -- Dessine le rectangle de couleur derrière le texte pour une meilleurs visibilité de celui ci --
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, int posX, int posY,
@@ -69,147 +69,7 @@ namespace CartesAcces
                     break;
             }
         }
-
-        // -- Dessine le texte des cases sur la carte --
-        public static void dessineTexteCarteFace(Font police, int posX, int posY, string text, PictureBox pbCarteFace,
-            ComboBox cbbSection)
-        {
-            //Pinceaux et graphique
-            var objetGraphique = Graphics.FromImage(pbCarteFace.Image);
-            Brush pinceauNoir = new SolidBrush(Color.Black);
-
-            //Dessine et rempli le fond pour l'écriture
-            fondTexteCarteFace(objetGraphique, text, police, posX, posY, cbbSection);
-
-            //Dessine la saisie en textbox
-            objetGraphique.DrawString(text, police, pinceauNoir, posX,
-                posY); // Dessine le texte sur l'image à la position X et Y + couleur
-            objetGraphique.Dispose(); // Libère les ressources
-        }
-
-        // -- Change le fond de la carte en fonction de la section choisie
-        public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
-        {
-            var bmp = new Bitmap("./data/FichierCartesFace/" + cbbSection.Text + ".png");
-            bmp.SetResolution(150, 150);
-            pbCarteFace.Image = bmp;
-
-            var date = DateTime.Today.ToShortDateString();
-            var police = new Font("times new roman", 45, FontStyle.Bold);
-            dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
-
-            var police2 = new Font("times new roman", 15, FontStyle.Bold);
-            dessineTexteCarteFace(police2, 870, 875, "Date de création : " + date, pbCarteFace, cbbSection);
-
-            pbCarteFace.Refresh();
-        }
-
-        // -- N'affiche que les classes correspondantes a la section selectionnées --
-        public static void classePourNiveau(ComboBox cbbSection, ComboBox cbbClasse)
-        {
-            switch (cbbSection.Text)
-            {
-                case "6eme":
-                    cbbClasse.DataSource = Globale._classes6eme;
-                    break;
-
-                case "5eme":
-                    cbbClasse.DataSource = Globale._classes5eme;
-                    break;
-
-                case "4eme":
-                    cbbClasse.DataSource = Globale._classes4eme;
-                    break;
-
-                case "3eme":
-                    cbbClasse.DataSource = Globale._classes3eme;
-                    break;
-            }
-        }
-
-        public static void reprendPrenom(string txtPrenom, PictureBox pbCarteFace,
-            ComboBox cbbSection)
-        {
-            if (txtPrenom != "")
-            {
-                if (txtPrenom.Length < 15)
-                {
-                    var font = new Font("times new roman", 28, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 350, 1075, txtPrenom, pbCarteFace, cbbSection);
-                    pbCarteFace.Refresh();
-                }
-                else
-                {
-                    fondCarteNiveau(pbCarteFace, cbbSection);
-                    var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 350, 1075, txtPrenom, pbCarteFace, cbbSection);
-                    pbCarteFace.Refresh();
-                }
-            }
-        }
-
-        public static void reprendNom(string txtNom, PictureBox pbCarteFace, ComboBox cbbSection)
-        {
-            if (txtNom != "")
-            {
-                if (txtNom.Length < 15)
-                {
-                    var font = new Font("times new roman", 28, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
-                    pbCarteFace.Refresh();
-                }
-                else
-                {
-                    fondCarteNiveau(pbCarteFace, cbbSection);
-                    var font = new Font("times new roman", 25, FontStyle.Bold);
-                    dessineTexteCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
-                    pbCarteFace.Refresh();
-                }
-            }
-        }
-
-        public static void checkMef(RadioButton rdbUlis, RadioButton rdbUPE2A, RadioButton rdbClRelais,
-            PictureBox pbCarteFace, ComboBox cbbSection, Button btnEdtPerso, TextBox txtNom, TextBox txtPrenom)
-        {
-            if (rdbUlis.Checked)
-            {
-                fondCarteNiveau(pbCarteFace, cbbSection);
-                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
-                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
-                var police = new Font("times new roman", 30, FontStyle.Bold);
-                dessineTexteCarteFace(police, 50, 230, "ULIS ", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else if (rdbUPE2A.Checked)
-            {
-                fondCarteNiveau(pbCarteFace, cbbSection);
-                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
-                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
-                var police = new Font("times new roman", 30, FontStyle.Bold);
-                dessineTexteCarteFace(police, 50, 230, "UPE2A", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else if (rdbClRelais.Checked)
-            {
-                fondCarteNiveau(pbCarteFace, cbbSection);
-                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
-                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
-                var police = new Font("times new roman", 30, FontStyle.Bold);
-                dessineTexteCarteFace(police, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
-                pbCarteFace.Refresh();
-                btnEdtPerso.Enabled = true;
-            }
-            else
-            {
-                fondCarteNiveau(pbCarteFace, cbbSection);
-                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
-                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
-                btnEdtPerso.Enabled = false;
-            }
-        }
-
+        
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
             int posY)
         {
@@ -244,6 +104,208 @@ namespace CartesAcces
                     objGraphique.FillRectangle(brushJaune, rectangle);
                     objGraphique.DrawRectangle(new Pen(brushJaune), rectangle);
                     break;
+            }
+        }
+
+        // -- Dessine le texte des cases sur la carte --
+        public static void dessineTexteCarteFace(Font police, int posX, int posY, string text, PictureBox pbCarteFace,
+            ComboBox cbbSection)
+        {
+            //Pinceaux et graphique
+            var objetGraphique = Graphics.FromImage(pbCarteFace.Image);
+            Brush pinceauNoir = new SolidBrush(Color.Black);
+
+            //Dessine et rempli le fond pour l'écriture
+            fondTexteCarteFace(objetGraphique, text, police, posX, posY, cbbSection);
+
+            //Dessine la saisie en textbox
+            objetGraphique.DrawString(text, police, pinceauNoir, posX,
+                posY); // Dessine le texte sur l'image à la position X et Y + couleur
+            objetGraphique.Dispose(); // Libère les ressources
+        }
+
+        // -- Récupère et place le qr code sur la face de la carte
+        public static void qrCodeFace(PictureBox pbCarteFace)
+        {
+            var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+            Bitmap bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
+            Bitmap bmpFinal = new Bitmap(bmpOriginal, new Size(220, 220));
+
+            var objGraphique =  Graphics.FromImage(pbCarteFace.Image);
+            objGraphique.DrawImage(bmpFinal, new Point(1350,80));
+        }
+        
+        // -- Change le fond de la carte en fonction de la section choisie
+        public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
+        {
+            if (File.Exists("./data/FichierCartesFace/" + cbbSection.Text + ".png"))
+            {
+                var bmp = new Bitmap("./data/FichierCartesFace/" + cbbSection.Text + ".png");
+                bmp.SetResolution(150, 150);
+                pbCarteFace.Image = bmp;
+            }
+            else
+            {
+                var bmp = new Bitmap("./data/FichierCartesFace/default.png");
+                bmp.SetResolution(150, 150);
+                pbCarteFace.Image = bmp;
+            }
+            
+            qrCodeFace(pbCarteFace);
+            
+            var police = new Font("Calibri", 45, FontStyle.Bold);
+            dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
+
+            var police2 = new Font("Calibri", 15, FontStyle.Bold);
+            
+            var police3 = new Font("Calibri", 28, FontStyle.Bold);
+            dessineTexteCarteFace(police3, 50, 960, "Nom :", pbCarteFace, cbbSection);
+            dessineTexteCarteFace(police3, 50, 1075, "Prénom :", pbCarteFace, cbbSection);
+            
+            var police4 = new Font("Calibri", 20, FontStyle.Bold);
+   
+            bool succes = true;
+            
+            var objetGraphique = Graphics.FromImage(pbCarteFace.Image);
+            int mesure;
+            string chaine;
+
+            if (succes)
+            {
+                var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+                var date = DateTime.Today.ToShortDateString();
+                
+                chaine = "Date de création : " + date;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police2, 1835 - mesure, 850, chaine, pbCarteFace, cbbSection);
+                
+                chaine = etab.NomEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 892, etab.NomEtablissement, pbCarteFace, cbbSection);
+                
+                chaine = "Adresse : " + etab.NumeroRueEtablissement + " " + etab.NomRueEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 944, chaine, pbCarteFace, cbbSection);
+                
+                chaine = etab.CodePostaleEtablissement + " " + etab.VilleEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 996, chaine, pbCarteFace, cbbSection);
+                
+                chaine = "Tel : " + etab.NumeroTelephoneEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 1048, chaine, pbCarteFace, cbbSection);
+                
+                chaine = "Mail : " + etab.EmailEtablissement;
+                mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
+                dessineTexteCarteFace(police4, 1700 - mesure, 1100, chaine, pbCarteFace, cbbSection);
+            }
+
+            pbCarteFace.Refresh();
+        }
+
+        // -- N'affiche que les classes correspondantes a la section selectionnées --
+        public static void classePourNiveau(ComboBox cbbSection, ComboBox cbbClasse)
+        {
+            switch (cbbSection.Text)
+            {
+                case "6eme":
+                    cbbClasse.DataSource = Globale.Classes6Eme;
+                    break;
+
+                case "5eme":
+                    cbbClasse.DataSource = Globale.Classes5Eme;
+                    break;
+
+                case "4eme":
+                    cbbClasse.DataSource = Globale.Classes4Eme;
+                    break;
+
+                case "3eme":
+                    cbbClasse.DataSource = Globale.Classes3Eme;
+                    break;
+            }
+        }
+
+        public static void reprendPrenom(string txtPrenom, PictureBox pbCarteFace,
+            ComboBox cbbSection)
+        {
+            if (txtPrenom != "")
+            {
+                if (txtPrenom.Length < 15)
+                {
+                    var font = new Font("Calibri", 28, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 325, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    pbCarteFace.Refresh();
+                }
+                else
+                {
+                    fondCarteNiveau(pbCarteFace, cbbSection);
+                    var font = new Font("Calibri", 25, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 325, 1075, txtPrenom, pbCarteFace, cbbSection);
+                    pbCarteFace.Refresh();
+                }
+            }
+        }
+
+        public static void reprendNom(string txtNom, PictureBox pbCarteFace, ComboBox cbbSection)
+        {
+            if (txtNom != "")
+            {
+                if (txtNom.Length < 15)
+                {
+                    var font = new Font("times new roman", 28, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
+                    pbCarteFace.Refresh();
+                }
+                else
+                {
+                    fondCarteNiveau(pbCarteFace, cbbSection);
+                    var font = new Font("times new roman", 25, FontStyle.Bold);
+                    dessineTexteCarteFace(font, 250, 960, txtNom, pbCarteFace, cbbSection);
+                    pbCarteFace.Refresh();
+                }
+            }
+        }
+
+        public static void checkMef(RadioButton rdbUlis, RadioButton rdbUPE2A, RadioButton rdbClRelais,
+            PictureBox pbCarteFace, ComboBox cbbSection, Button btnEdtPerso, TextBox txtNom, TextBox txtPrenom)
+        {
+            if (rdbUlis.Checked)
+            {
+                fondCarteNiveau(pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
+                var police = new Font("Calibri", 30, FontStyle.Bold);
+                dessineTexteCarteFace(police, 50, 230, "ULIS ", pbCarteFace, cbbSection);
+                pbCarteFace.Refresh();
+                btnEdtPerso.Enabled = true;
+            }
+            else if (rdbUPE2A.Checked)
+            {
+                fondCarteNiveau(pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
+                var police = new Font("Calibri", 30, FontStyle.Bold);
+                dessineTexteCarteFace(police, 50, 230, "UPE2A", pbCarteFace, cbbSection);
+                pbCarteFace.Refresh();
+                btnEdtPerso.Enabled = true;
+            }
+            else if (rdbClRelais.Checked)
+            {
+                fondCarteNiveau(pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
+                var police = new Font("Calibri", 30, FontStyle.Bold);
+                dessineTexteCarteFace(police, 50, 230, "CL-Relais", pbCarteFace, cbbSection);
+                pbCarteFace.Refresh();
+                btnEdtPerso.Enabled = true;
+            }
+            else
+            {
+                fondCarteNiveau(pbCarteFace, cbbSection);
+                reprendNom(txtNom.Text, pbCarteFace, cbbSection);
+                reprendPrenom(txtPrenom.Text, pbCarteFace, cbbSection);
+                btnEdtPerso.Enabled = false;
             }
         }
 
@@ -298,7 +360,7 @@ namespace CartesAcces
 
         public static void carteArriere(Eleve eleve, PictureBox pbCarteArriere)
         {
-            if (eleve.SansEDT == false)
+            if (!eleve.SansEDT)
             {
                 var cheminEdt = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" +
                                 Eleve.creeCleEleve(eleve) + ".jpg";
@@ -314,20 +376,19 @@ namespace CartesAcces
         public static void importEleves(string path)
         {
             var cheminSource = path;
-            var cheminDestination = Chemin.cheminListeEleve;
+            var cheminDestination = Chemin.CheminListeEleve;
             try
             {
                 if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
 
-                Directory.CreateDirectory(Chemin.cheminDossierListeEleve);
+                Directory.CreateDirectory(Chemin.CheminDossierListeEleve);
 
                 File.Copy(cheminSource, cheminDestination);
                 File.SetCreationTime(cheminDestination, DateTime.Now);
-                ReadCSV.setLesEleves(cheminDestination);
+                ReadCsv.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
 
                 MessageBox.Show("Import Réussi");
-                //Globale._lblDate.Text = ReadCSV.getDateFile();
             }
             catch (Exception e)
             {
@@ -338,21 +399,27 @@ namespace CartesAcces
         public static void importCarteFace(string chemin)
         {
             var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminFaceCarte + Globale._classe + "eme.png";
+            var cheminDestination = Chemin.CheminFaceCarte + Globale.Classe + "eme.png";
 
             try
             {
-                File.Copy(chemin, cheminDestination, true);
+                if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
+
+                Directory.CreateDirectory(Chemin.CheminFaceCarte);
+                
+                Image img = Image.FromFile(cheminSource);
+                Bitmap bmp = new Bitmap(img, new Size(1754,1240));
+                bmp.Save(cheminDestination, ImageFormat.Png);
             }
             catch
             {
+                // ignored
             }
         }
 
         public static void importEdtClassique(string chemin)
         {
-            var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminEdtClassique;
+            var cheminDestination = Chemin.CheminEdtClassique;
 
             try
             {
@@ -366,10 +433,10 @@ namespace CartesAcces
 
                 Directory.CreateDirectory(cheminDestination);
 
-                //MessageBox.Show("Import réussie !");
             }
             catch
             {
+                // ignored
             }
         }
 
@@ -377,7 +444,7 @@ namespace CartesAcces
         public static void importPhoto(string chemin)
         {
             var cheminSource = chemin;
-            var cheminDestination = Chemin.cheminPhotoEleve;
+            var cheminDestination = Chemin.CheminPhotoEleve;
 
             try
             {
@@ -395,17 +462,17 @@ namespace CartesAcces
                 {
                     var img = Image.FromFile(file.FullName);
                     var nom = file.Name;
-
                     img.Save(cheminDestination + nom, ImageFormat.Png);
+                    img.Dispose();
                 }
 
-                MessageBox.Show("Import réussie !");
+                MessageBox.Show(new Form {TopMost = true }, " Les photos du dossier ont été importés");
 
-                Globale._actuelle.Invoke(new MethodInvoker(delegate
+                Globale.Actuelle.Invoke(new MethodInvoker(delegate
                 {
-                    foreach (Control controle in Globale._actuelle.Controls)
+                    foreach (Control controle in Globale.Actuelle.Controls)
                         if (controle is Label && controle.Name == "lblDateListeEleve")
-                            controle.Text = ReadCSV.getDateFile();
+                            controle.Text = ReadCsv.getDateFile();
                 }));
             }
             catch (Exception e)

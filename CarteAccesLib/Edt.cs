@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -19,8 +20,9 @@ namespace CarteAcces
                     pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
                 }
             }
-            catch
+            catch (Exception e)
             {
+                // ignored
             }
         }
 
@@ -47,18 +49,24 @@ namespace CarteAcces
         public static void rognageEdt(PictureBox pbCarteArriere, string cheminEdt)
         {
             // -- Si la largeur a rogner est trop faible, on sort --
-            if (Edition.rognageLargeur < 1) return;
+            if (Edition.RognageLargeur < 1) return;
 
             /* -- Rectangle pour stocker l'image rognée avec les points calculés --
                 Les dimensions calculées ci dessous utilisent les dimensions 920 x 604 (calcul par proportionnalité)
                 qui sont celles des vrai fichier EDT !
                 Cela permet d'éviter les problèmes de résolution d'image après le rognage */
 
-            var rogagneLargeurReel = Edition.rognageLargeur * pbCarteArriere.Image.Width / 540;
-            var rogagneHauteurReel = Edition.rognageHauteur * pbCarteArriere.Image.Height / 354;
-            var rognageXReel = Edition.rognageX * pbCarteArriere.Image.Width / 540;
-            var rogangeYReel = Edition.rognageY * pbCarteArriere.Image.Height / 354;
+            // -- Je sais c'est moche mais j'ai pas eu le choix... --
+            double rLargeurReel = (double)Edition.RognageLargeur * pbCarteArriere.Image.Width / 540;
+            double rHauteurReel = (double)Edition.RognageHauteur * pbCarteArriere.Image.Height / 354;
+            double rXReel = (double)Edition.RognageX * pbCarteArriere.Image.Width / 540;
+            double rYReel = (double)Edition.RognageY * pbCarteArriere.Image.Height / 354;
 
+            var rogagneLargeurReel = Convert.ToInt32(Math.Round(rLargeurReel));
+            var rogagneHauteurReel = Convert.ToInt32(Math.Round(rHauteurReel));
+            var rognageXReel = Convert.ToInt32(Math.Round(rXReel));
+            var rogangeYReel = Convert.ToInt32(Math.Round(rYReel));
+            
             var rectangle = new Rectangle(rognageXReel, rogangeYReel, rogagneLargeurReel, rogagneHauteurReel);
 
             // -- On stock l'image original dans un bitmap --
@@ -92,7 +100,7 @@ namespace CarteAcces
                 {
                     var dossier = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
                     pbCarteArriere.Image = Image.FromFile(dossier + Eleve.creeCleEleve(eleve) + ".jpg");
-                    Chemin.cheminEdt = dossier + Eleve.creeCleEleve(eleve) + ".jpg";
+                    Chemin.CheminEdt = dossier + Eleve.creeCleEleve(eleve) + ".jpg";
                     break;
                 }
                 catch

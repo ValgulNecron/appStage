@@ -32,15 +32,19 @@ CREATE TABLE etablissement (
 	numeroRueEtablissement int,
 	codePostaleEtablissement varchar(15),
 	villeEtablissement varchar(30),
-	numeroTelephoneEtablissement varchar(15),
+	numeroTelephoneEtablissement varchar(20),
 	emailEtablissement varchar(60),
-	urlEtablissement varchar(120)
+	urlEtablissement varchar(120),
+	codeHexa6eme varchar(7),
+	codeHexa5eme varchar(7),
+	codeHexa4eme varchar(7),
+	codeHexa3eme varchar(7)
 );
 
-INSERT INTO utilisateur(nomUtilisateur, hash, themeBool) VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", 0);
+INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0);
 -- xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz -- keyuser
 
-
+insert into etablissement values ("default", "default", 5, "default", "default", "default", "default", "default", "#FFFF00", "#00FF00", "#FF0000", "#0000FF");
 DROP TRIGGER IF EXISTS updateMotDePasse;
 DELIMITER $$
 CREATE TRIGGER updateMotDePasse AFTER UPDATE ON utilisateur FOR EACH ROW

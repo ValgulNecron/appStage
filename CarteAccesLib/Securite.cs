@@ -9,7 +9,7 @@ namespace CartesAcces
 {
     public static class Securite
     {
-        public static string pathFolder = "./data/";
+        public static string PathFolder { get; set; } = "./data/";
 
         public static string creationHash(string motDePasse)
         {
@@ -52,27 +52,44 @@ namespace CartesAcces
 
         public static bool validationPrerequisMdp(string motDePasse)
         {
-            if (motDePasse.Length < 12)
+            if (motDePasse.Length >= 12)
+            {
                 return false;
+            }
+            bool majuscule = false;
+            bool minuscule = false;
+            bool chiffre = false;
+            bool caractereSpecial = false;
+            foreach (char c in motDePasse)
+            {
+                if (c >= 'A' && c <= 'Z')
+                {
+                    majuscule = true;
+                }
+                else if (c >= 'a' && c <= 'z')
+                {
+                    minuscule = true;
+                }
+                else if (c >= '0' && c <= '9')
+                {
+                    chiffre = true;
+                }
+                else
+                {
+                    caractereSpecial = true;
+                }
+            }
+            if (majuscule && minuscule && chiffre && caractereSpecial)
+            {
+                return true;
+            }
 
-            if (!Regex.IsMatch(motDePasse, @"[a-z]"))
-                return false;
-
-            if (!Regex.IsMatch(motDePasse, @"[A-Z]"))
-                return false;
-
-            if (!Regex.IsMatch(motDePasse, @"[0-9]"))
-                return false;
-
-            if (!Regex.IsMatch(motDePasse, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-~\\]"))
-                return false;
-
-            return true;
+            return false;
         }
 
         public static void chiffrerDossier()
         {
-            var directory = new DirectoryInfo(pathFolder);
+            var directory = new DirectoryInfo(PathFolder);
 
             foreach (var file in directory.GetFiles()) Task.Run(() => { chiffrerFichier(file.FullName); });
 
@@ -80,8 +97,8 @@ namespace CartesAcces
             {
                 foreach (var file in dir.GetFiles()) Task.Run(() => { chiffrerFichier(file.FullName); });
                 foreach (var dir2 in dir.GetDirectories())
-                foreach (var file in dir2.GetFiles())
-                    chiffrerFichier(file.FullName);
+                    foreach (var file in dir2.GetFiles())
+                        chiffrerFichier(file.FullName);
             }
 
             MessageBox.Show("Chiffrement terminé");
@@ -126,7 +143,7 @@ namespace CartesAcces
 
         public static void dechiffrerDossier()
         {
-            var directory = new DirectoryInfo(pathFolder);
+            var directory = new DirectoryInfo(PathFolder);
 
             foreach (var file in directory.GetFiles()) Task.Run(() => { dechiffrerFichier(file.FullName); });
 
@@ -134,8 +151,8 @@ namespace CartesAcces
             {
                 foreach (var file in dir.GetFiles()) Task.Run(() => { dechiffrerFichier(file.FullName); });
                 foreach (var dir2 in dir.GetDirectories())
-                foreach (var file in dir2.GetFiles())
-                    dechiffrerFichier(file.FullName);
+                        foreach (var file in dir2.GetFiles())
+                            dechiffrerFichier(file.FullName);
             }
 
             MessageBox.Show("Dossier déchiffré");
@@ -153,6 +170,7 @@ namespace CartesAcces
                 {
                     using (var aes = new RijndaelManaged())
                     {
+                        if(extension != "enc") return;
                         aes.Key = keyBytes;
                         aes.IV = iv;
 

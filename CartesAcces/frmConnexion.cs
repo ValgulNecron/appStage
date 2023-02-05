@@ -48,11 +48,11 @@ namespace CartesAcces
         {
             try
             {
-                var user = ClassSql.db.GetTable<Utilisateurs>()
+                var user = ClassSql.Db.GetTable<Utilisateurs>()
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
-                if (txtIdentifiant.Text != user.NomUtilisateur)
+                if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
-                    MessageBox.Show("nom d'utilisateur invalide");
+                    MessageBox.Show("Le nom d'utilisateur ou le mot de passe est invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
@@ -60,26 +60,26 @@ namespace CartesAcces
 
                 try
                 {
-                    if (Securite.verificationHash(txtMotDePasse.Text, user.Hash))
+                    if (Securite.verificationHash(txtMotDePasse.Text, user?.Hash))
                     {
-                        Globale._estConnecter = true;
-                        Globale._nomUtilisateur = txtIdentifiant.Text;
+                        Globale.EstConnecter = true;
+                        Globale.NomUtilisateur = txtIdentifiant.Text;
                         txtMotDePasse.Text = "";
                         txtIdentifiant.Text = "";
-                        foreach (Control controle in Globale._accueil.Controls)
+                        foreach (Control controle in Globale.Accueil.Controls)
                             if (controle is Panel && controle.Name == "pnlMenu")
                                 foreach (Control controle2 in controle.Controls)
                                     if (controle2 is Button)
                                         controle2.Enabled = true;
-                        Globale._cas = 1;
+                        Globale.Cas = 1;
                         var frmWait = new barDeProgression();
-                        frmWait.StartPosition = FormStartPosition.Manual;
-                        frmWait.Location = new Point(800, 300);
-                        ;
+                        frmWait.StartPosition = FormStartPosition.CenterScreen;
                         frmWait.Show();
                         frmWait.TopMost = true;
-                        Globale._actuelle = new frmImportation();
-                        frmAccueil.OpenChildForm(Globale._actuelle);
+
+                        Globale.Actuelle = new frmImportation();
+                        frmAccueil.OpenChildForm(Globale.Actuelle);
+
                         var macAddress = string.Empty;
                         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                             if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -92,21 +92,22 @@ namespace CartesAcces
 
                         var log = new LogActions();
                         log.DateAction = DateTime.Now;
-                        log.NomUtilisateur = Globale._nomUtilisateur;
+                        log.NomUtilisateur = Globale.NomUtilisateur;
                         log.Action = "C'est connecter au logiciel";
                         log.AdMac = macAddress;
-                        ClassSql.db.Insert(log);
+                        ClassSql.Db.Insert(log);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("mot de passe ou nom d'utilisateur invalide");
+                    MessageBox.Show("Le nom d'utilisateur ou le mot de passe est invalide");
                     txtMotDePasse.Text = "";
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+               
             }
         }
 
@@ -132,7 +133,7 @@ namespace CartesAcces
 
         private void btnChiffre_Click(object sender, EventArgs e)
         {
-            Securite.chiffrerDossier();
+            Securite.chiffrerDossier(); 
         }
 
         private void btnDechiffre_Click(object sender, EventArgs e)
@@ -143,7 +144,7 @@ namespace CartesAcces
         private void frmConnexion_Load(object sender, EventArgs e)
         {
             ActiveControl = txtIdentifiant;
-            foreach (Control controle in Globale._accueil.Controls)
+            foreach (Control controle in Globale.Accueil.Controls)
                 if (controle is Panel && controle.Name == "pnlMenu")
                     foreach (Control controle2 in controle.Controls)
                         if (controle2 is Button && controle2.Name != "btnTheme")
@@ -167,5 +168,7 @@ namespace CartesAcces
                 }
             }
         }
+
+
     }
 }

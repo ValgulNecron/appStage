@@ -8,7 +8,7 @@ namespace CartesAcces
 {
     public static class ClassSql
     {
-        public static DataConnection db;
+        public static DataConnection Db { get; set; }
 
         public static void init()
         {
@@ -24,7 +24,7 @@ namespace CartesAcces
             if (node.Attributes != null) mariaDb += "Uid=" + node.Attributes["value"].Value + ";";
             node = doc.SelectSingleNode("/configuration/appSettings/add[@key='MOTDEPASSE']");
             if (node.Attributes != null) mariaDb += "Pwd=" + node.Attributes["value"].Value + ";";
-            db = new DataConnection(
+            Db = new DataConnection(
                 ProviderName.MySql,
                 mariaDb);
         }
@@ -87,5 +87,13 @@ namespace CartesAcces
         [Column(Name = "emailEtablissement")] public string EmailEtablissement { get; set; }
 
         [Column(Name = "urlEtablissement")] public string UrlEtablissement { get; set; }
+        
+        [Column(Name = "codeHexa6eme")] public string CodeHexa6eme { get; set; }
+        
+        [Column(Name = "codeHexa5eme")] public string CodeHexa5eme { get; set; }
+        
+        [Column(Name = "codeHexa4eme")] public string CodeHexa4eme { get; set; }
+        
+        [Column(Name = "codeHexa3eme")] public string CodeHexa3eme { get; set; }
     }
 }

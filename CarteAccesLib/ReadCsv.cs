@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public static class ReadCSV
+    public static class ReadCsv
     {
         public static List<string> getDataFromCSV(string pathCSV, int numColonne)
         {
@@ -56,11 +56,11 @@ namespace CartesAcces
                     unEleve.MefEleve = getDataFromCSV(sFilePath, 5)[i];
 
                     listeProvisoire.Add(unEleve);
-                    Globale._listeElevesString.Add(unEleve.NomEleve + " " + unEleve.PrenomEleve + " " +
+                    Globale.ListeElevesString.Add(unEleve.NomEleve + " " + unEleve.PrenomEleve + " " +
                                                    unEleve.ClasseEleve);
                 }
 
-                Globale._listeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
+                Globale.ListeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
             }
             catch
             {
@@ -83,8 +83,8 @@ namespace CartesAcces
             {
                 var dateFile = "Aucune Importation";
 
-                if (File.Exists(Chemin.cheminListeEleve))
-                    dateFile = File.GetCreationTime(Chemin.cheminListeEleve).ToString();
+                if (File.Exists(Chemin.CheminListeEleve))
+                    dateFile = File.GetCreationTime(Chemin.CheminListeEleve).ToString();
 
                 return dateFile;
             }

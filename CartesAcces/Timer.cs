@@ -31,14 +31,14 @@ namespace CartesAcces
             timer.AutoReset = true;
             timer.Start();
             this.form.MouseMove += Form_MouseMove;
-            Globale._accueil.MouseMove += Form_MouseMove;
+            Globale.Accueil.MouseMove += Form_MouseMove;
         }
 
         public void ajoutEvenement()
         {
             form.MouseMove += Form_MouseMove;
-            Globale._accueil.MouseMove += Form_MouseMove;
-            Globale._actuelle.MouseMove += Form_MouseMove;
+            Globale.Accueil.MouseMove += Form_MouseMove;
+            Globale.Actuelle.MouseMove += Form_MouseMove;
         }
 
         private void Form_MouseMove(object sender, MouseEventArgs e)
@@ -49,12 +49,12 @@ namespace CartesAcces
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
             if (start.Add(TimeSpan.FromMinutes(dureeMinute)) <= DateTime.Now)
-                if (Globale._estConnecter)
+                if (Globale.EstConnecter)
                 {
-                    Globale._estConnecter = false;
-                    Globale._actuelle = new frmConnexion();
-                    Globale._accueil.Invoke(
-                        new MethodInvoker(delegate { frmAccueil.OpenChildForm(Globale._actuelle); }));
+                    Globale.EstConnecter = false;
+                    Globale.Actuelle = new frmConnexion();
+                    Globale.Accueil.Invoke(
+                        new MethodInvoker(delegate { frmAccueil.OpenChildForm(Globale.Actuelle); }));
                 }
         }
     }

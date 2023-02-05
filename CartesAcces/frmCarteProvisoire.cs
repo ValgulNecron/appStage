@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
 using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
@@ -14,7 +15,7 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
         }
-
+        
         private void changementTexte(object sender, EventArgs e)
         {
             var prenom = txtPrenom.Text;
@@ -24,27 +25,27 @@ namespace CartesAcces
 
             if (nom.Length < 15)
             {
-                var font = new Font("times new roman", 28, FontStyle.Bold);
+                var font = new Font("Calibri", 28, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
+                var font = new Font("Calibri", 25, FontStyle.Bold);
                 Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
 
             if (prenom.Length < 15)
             {
-                var font = new Font("times new roman", 28, FontStyle.Bold);
-                Edition.dessineTexteCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
+                var font = new Font("Calibri", 28, FontStyle.Bold);
+                Edition.dessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
-                var font = new Font("times new roman", 25, FontStyle.Bold);
-                Edition.dessineTexteCarteFace(font, 350, 1075, prenom, pbCarteFace, cbbSection);
+                var font = new Font("Calibri", 25, FontStyle.Bold);
+                Edition.dessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
 
@@ -74,8 +75,6 @@ namespace CartesAcces
         {
             try
             {
-                Edition.classePourNiveau(cbbSection, cbbClasse);
-                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
                 btnReset.Enabled = true;
                 txtNom.Enabled = true;
                 txtPrenom.Enabled = true;
@@ -83,9 +82,15 @@ namespace CartesAcces
                 rdbUPE2A.Enabled = true;
                 rdbClRelais.Enabled = true;
                 rdbRas.Enabled = true;
+                pbPhoto.Visible = false;
+                pbPhoto.Image = null;
+                pbPhoto.Location = new Point(5, 5);
+                Edition.classePourNiveau(cbbSection, cbbClasse);
+                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
             }
-            catch
+            catch (Exception err)
             {
+                MessageBox.Show(err.ToString());
             }
         }
 
@@ -110,8 +115,9 @@ namespace CartesAcces
                 Cursor = Cursors.Cross;
 
                 // -- On est dans le mode selection
-                Edition.selectionClique = true;
+                Edition.SelectionClique = true;
 
+                btnSelect.Enabled = false;
                 btnCancel.Enabled = true;
             }
             catch
@@ -127,13 +133,14 @@ namespace CartesAcces
                 Cursor = Cursors.Default;
 
                 // -- On est plus dans la selection --
-                Edition.selectionClique = false;
+                Edition.SelectionClique = false;
 
                 // -- On remet les paramètres et l'image de base --
                 pbCarteArriere.Width = 540;
                 pbCarteArriere.Height = 354;
                 Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
                 pbCarteArriere.Refresh();
+                btnSelect.Enabled = true;
                 btnCancel.Enabled = false;
             }
             catch
@@ -146,16 +153,16 @@ namespace CartesAcces
             try
             {
                 // -- Si le bouton selectionné est cliqué --
-                if (Edition.selectionClique)
+                if (Edition.SelectionClique)
                 {
                     // -- Si il y a clic gauche --
                     if (e.Button == MouseButtons.Left)
                     {
                         // -- On prend les coordonnées de départ --
-                        Edition.rognageX = e.X;
-                        Edition.rognageY = e.Y;
-                        Edition.rognagePen = new Pen(Color.Black, 1);
-                        Edition.rognagePen.DashStyle = DashStyle.DashDotDot;
+                        Edition.RognageX = e.X;
+                        Edition.RognageY = e.Y;
+                        Edition.RognagePen = new Pen(Color.Black, 1);
+                        Edition.RognagePen.DashStyle = DashStyle.DashDotDot;
                     }
 
                     // -- Refresh constant pour avoir un apperçu pendant la selection --
@@ -172,7 +179,7 @@ namespace CartesAcces
             try
             {
                 // -- Si le bouton selection est cliqué --
-                if (Edition.selectionClique)
+                if (Edition.SelectionClique)
                 {
                     // -- Si pas d'image, on sort --
                     if (pbCarteArriere.Image == null)
@@ -183,17 +190,17 @@ namespace CartesAcces
                     {
                         // -- On prend les dimensions a la fin du déplacement de la souris
                         pbCarteArriere.Refresh();
-                        Edition.rognageLargeur = e.X - Edition.rognageX;
-                        Edition.rognageHauteur = e.Y - Edition.rognageY;
+                        Edition.RognageLargeur = e.X - Edition.RognageX;
+                        Edition.RognageHauteur = e.Y - Edition.RognageY;
 
-                        Edition.rognageLargeur = Math.Abs(Edition.rognageLargeur);
-                        Edition.rognageHauteur = Math.Abs(Edition.rognageHauteur);
+                        Edition.RognageLargeur = Math.Abs(Edition.RognageLargeur);
+                        Edition.RognageHauteur = Math.Abs(Edition.RognageHauteur);
 
-                        pbCarteArriere.CreateGraphics().DrawRectangle(Edition.rognagePen,
-                            Math.Min(Edition.rognageX, e.X),
-                            Math.Min(Edition.rognageY, e.Y),
-                            Math.Abs(Edition.rognageLargeur),
-                            Math.Abs(Edition.rognageHauteur));
+                        pbCarteArriere.CreateGraphics().DrawRectangle(Edition.RognagePen,
+                            Math.Min(Edition.RognageX, e.X),
+                            Math.Min(Edition.RognageY, e.Y),
+                            Math.Abs(Edition.RognageLargeur),
+                            Math.Abs(Edition.RognageHauteur));
                     }
                 }
             }
@@ -206,13 +213,35 @@ namespace CartesAcces
         {
             try
             {
-                Edition.rognageX = Math.Min(Edition.rognageX, e.X);
-                Edition.rognageY = Math.Min(Edition.rognageY, e.Y);
-                Cursor = Cursors.Default;
-                var classe = cbbClasse.Text;
-                var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
-                Edition.selectionClique = false;
-                Edt.rognageEdt(pbCarteArriere, pathEdt);
+                if (Edition.SelectionClique)
+                {
+                    if(pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(Control.MousePosition)))
+                    {
+                        Edition.RognageX = Math.Min(Edition.RognageX, e.X);
+                        Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
+                        Cursor = Cursors.Default;
+                        var classe = cbbClasse.Text;
+                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                        Edition.SelectionClique = false;
+                        Edt.rognageEdt(pbCarteArriere, pathEdt);
+                    }
+                    else
+                    {
+                        Cursor = Cursors.Default;
+                        var classe = cbbClasse.Text;
+                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                        Edition.SelectionClique = false;
+                        pbCarteArriere.Image = Image.FromFile(pathEdt);
+                        
+                        Edition.RognageX = 0;
+                        Edition.RognageY = 0;
+                        Edition.RognageHauteur = 0;
+                        Edition.RognageLargeur = 0;
+                        
+                        btnSelect.Enabled = true;
+                        btnCancel.Enabled = false;
+                    }
+                }
             }
             catch
             {
@@ -244,7 +273,7 @@ namespace CartesAcces
                     pbPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
                     pbPhoto.Visible = true;
                     // changement
-                    Globale._pbPhoto = pbPhoto;
+                    Globale.PbPhoto = pbPhoto;
                 }
             }
             catch
@@ -269,11 +298,11 @@ namespace CartesAcces
         private void pbPhoto_MouseMove(object sender, MouseEventArgs e)
         {
             // -- Lorsque l'utilisateur clique sur la photo de l'élève --
-            if (Edition.drag)
+            if (Edition.Drag)
             {
                 // -- La position de la photo change --
-                pbPhoto.Left = e.X + pbPhoto.Left - Edition.posX;
-                pbPhoto.Top = e.Y + pbPhoto.Top - Edition.posY;
+                pbPhoto.Left = e.X + pbPhoto.Left - Edition.PosX;
+                pbPhoto.Top = e.Y + pbPhoto.Top - Edition.PosY;
             }
         }
 
@@ -282,9 +311,9 @@ namespace CartesAcces
             // -- Lorsque l'utilisateur clic, la position initiale est sauvegardée, drag passe a true
             if (e.Button == MouseButtons.Left)
             {
-                Edition.posX = e.X;
-                Edition.posY = e.Y;
-                Edition.drag = true;
+                Edition.PosX = e.X;
+                Edition.PosY = e.Y;
+                Edition.Drag = true;
             }
 
             if (e.Button == MouseButtons.Right) return;
@@ -296,7 +325,7 @@ namespace CartesAcces
         private void pbPhoto_MouseUp(object sender, MouseEventArgs e)
         {
             // -- Le drag est fini lorsque le clic est relevé  --
-            Edition.drag = false;
+            Edition.Drag = false;
         }
 
         private void tkbTaillePhoto_Scroll(object sender, EventArgs e)
@@ -312,15 +341,13 @@ namespace CartesAcces
         private void btnSave_Click(object sender, EventArgs e)
         {
             FichierWord.getDossierCarteProvisoire();
-            Globale._listeSauvegardeProvisoire =
-                new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>(pbCarteArriere, pbPhoto, pbCarteFace,
-                    txtNom, txtPrenom);
-            Globale._cas = 5;
-
+            Globale.ListeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
+                (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
+            Globale.Cas = 5;
+            Globale.Actuelle = this;
             // backgroundWorker
             var frmWait = new barDeProgression();
-            frmWait.StartPosition = FormStartPosition.Manual;
-            frmWait.Location = new Point(0, 0);
+            frmWait.StartPosition = FormStartPosition.CenterScreen;
             frmWait.Show();
             frmWait.TopMost = true;
         }

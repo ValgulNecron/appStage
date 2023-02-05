@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -16,6 +17,7 @@ namespace CarteAccesLib
     {
         public static Application initWordFile(int margeHaute, int margeDroite, int margeGauche, int margeBasse)
         {
+            fermerWord();
             // -- Ouverture de l'applucation Word -- 
             var applicationWord = new Application();
 
@@ -76,13 +78,17 @@ namespace CarteAccesLib
         public static void sauvegardeCarteEnWord(string chemin, List<Eleve> listeEleve, PictureBox pbPhoto,
             PictureBox pbCarteArriere)
         {
+            fermerWord();
             var k = 0;
             var pages = 0;
             Eleve.possedeEdt(listeEleve);
             var fichierWord = initWordFile(15, 15, 15, 15);
 
+            Globale.LblCount.Visible = true;
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
+                Globale.LblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString();
+                
                 // -- Les élèves sont gérés deux par deux --
 
                 // -- Carte Face : 1/2 Eleve --
@@ -119,6 +125,8 @@ namespace CarteAccesLib
                 Photo.verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
                 Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
+                Globale.LblCount.Text = (compt + 1).ToString() + "/" + listeEleve.Count.ToString();
+                
                 // -- Ajout des deux fichier PNG au nouveau document Word --
                 var shapeCarteArriere1 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "/" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png", Type.Missing,
@@ -182,20 +190,17 @@ namespace CarteAccesLib
         {
             var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK)
-            {
-                Edition.cheminImpressionFinal = diag.SelectedPath;
-            }
+                Edition.CheminImpressionFinal = diag.SelectedPath;
 
             else
-            {
                 MessageBox.Show(
                     "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
-            }
         }
 
         public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
             PictureBox pbCarteFace, TextBox txtNom, TextBox txtPrenom)
         {
+            fermerWord();
             if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
             {
                 var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
@@ -206,11 +211,11 @@ namespace CarteAccesLib
                 var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
                 ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
 
-                Edition.cheminImpressionFinal = Edition.cheminImpressionFinal + "\\";
+                Edition.CheminImpressionFinal = Edition.CheminImpressionFinal + "\\";
 
-                pbCarteArriere.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png",
+                pbCarteArriere.Image.Save(Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png",
                     ImageFormat.Png);
-                pbCarteFace.Image.Save(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png",
+                pbCarteFace.Image.Save(Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png",
                     ImageFormat.Png);
 
                 var WordApp = new Application();
@@ -221,14 +226,14 @@ namespace CarteAccesLib
                 WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
 
                 var shapeCarte = WordApp.ActiveDocument.Shapes.AddPicture(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,
+                    Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,
                     Type.Missing, Type.Missing);
 
                 WordApp.Selection.EndKey();
                 WordApp.Selection.InsertNewPage();
 
                 var shapeEDT = WordApp.ActiveDocument.Shapes.AddPicture(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", Type.Missing,
+                    Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png", Type.Missing,
                     Type.Missing, Type.Missing);
 
                 shapeCarte.Top = 0;
@@ -237,11 +242,11 @@ namespace CarteAccesLib
                 shapeEDT.Top = 0;
                 shapeEDT.Height = shapeCarte.Height;
 
-                File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png");
-                File.Delete(Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png");
+                File.Delete(Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "EDT.png");
+                File.Delete(Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png");
 
                 WordApp.ActiveDocument.SaveAs(
-                    Edition.cheminImpressionFinal + txtNom.Text + txtPrenom.Text + " Carte.doc", Type.Missing,
+                    Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + " Carte.doc", Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 WordApp.ActiveDocument.Close();
@@ -249,8 +254,15 @@ namespace CarteAccesLib
                 Marshal.FinalReleaseComObject(WordApp);
 
                 GC.Collect();
-
-                MessageBox.Show("Saved !");
+            }
+        }
+        
+        public static void fermerWord()
+        {
+            var processes = Process.GetProcessesByName("WINWORD");
+            foreach (var process in processes)
+            {
+                process.Kill();
             }
         }
     }

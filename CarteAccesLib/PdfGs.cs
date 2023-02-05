@@ -53,7 +53,6 @@ namespace CartesAcces
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = true;
             process.Start();
-            var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
         }
 
@@ -67,7 +66,7 @@ namespace CartesAcces
             fs.Close();
 
             var process = new Process();
-            process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
+            process.StartInfo.FileName = "gswin32c.exe";
             process.StartInfo.Arguments =
                 $"-o \"{outputFile}\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
@@ -75,13 +74,11 @@ namespace CartesAcces
             process.StartInfo.CreateNoWindow = true;
             process.Start();
 
-            var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
 
             var file = "";
             using (var sr = new StreamReader(outputFile))
             {
-                //file = File.ReadAllText(outputFile);
                 file = sr.ReadToEnd();
             }
 
@@ -127,9 +124,9 @@ namespace CartesAcces
 
         public static void renameEdt(string pdf)
         {
-            var name = new List<string>();
-            name = getNomPrenomPdf(getTextePdf(pdf));
-            MessageBox.Show(name.Count.ToString());
+            var name = getNomPrenomPdf(getTextePdf(pdf));
+            MessageBox.Show(new Form { TopMost = true }, name.Count.ToString() 
+                + " emplois de temps ont été importés");
             var d = new DirectoryInfo(outputPath);
             var infos = d.GetFiles();
 
