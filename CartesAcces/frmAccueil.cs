@@ -123,7 +123,7 @@ namespace CartesAcces
         {
             Globale.EstEnModeSombre = !Globale.EstEnModeSombre;
 
-            Couleur.setCouleurFenetre(this);
+            Couleur.setCouleurFenetre(Globale.Accueil);
             Couleur.setCouleurFenetre(Globale.Actuelle);
             foreach (Control control in Controls)
                 if (control is Panel && control.Name == "pnlMenu")
