@@ -127,17 +127,18 @@ namespace CartesAcces
                 Directory.CreateDirectory(Chemin.CheminEdtClassique);
 
                 var directory = new DirectoryInfo(Globale.CheminEdtClassique);
+                MessageBox.Show(listeFichiers.Count.ToString());
                 foreach (var fichier in listeFichiers)
                 {
                     pbEdtClassique.Image = Image.FromFile(fichier);
                     Edt.rognageEdt(pbEdtClassique, fichier);
-                    var nom = fichier.Substring(fichier.LastIndexOf("\\"),
-                        fichier.Length - fichier.LastIndexOf("\\"));
+                    var nom = fichier.Substring(fichier.LastIndexOf("/"),
+                        fichier.Length - fichier.LastIndexOf("/"));
                     pbEdtClassique.Image.Save(Chemin.CheminEdtClassique + "//" + nom, ImageFormat.Png);
                 }
 
 
-                MessageBox.Show(new Form { TopMost = true },"L'importation des emplois de temps classique ont été importés");
+                MessageBox.Show(new Form { TopMost = true },"L'importation des emplois de temps classique à réussis");
                 Close();
             }
             catch (Exception err)

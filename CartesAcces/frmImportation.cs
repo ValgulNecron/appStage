@@ -94,6 +94,7 @@ namespace CartesAcces
         {
             try
             {
+                Globale.CheminEdtClassique = "./data/image/classes/";
                 Globale.CheminPdf = Chemin.setCheminImportationFichierPdf();
                 var frmSelectSection = new frmSelectNiveau();
                 frmSelectSection.StartPosition = FormStartPosition.CenterScreen;

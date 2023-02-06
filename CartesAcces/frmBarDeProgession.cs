@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
 using LinqToDB;
+using LinqToDB.Tools;
 
 namespace CartesAcces
 {
@@ -90,6 +91,18 @@ namespace CartesAcces
                     if (controle is Label && controle.Name == "lblEdtEleve")
                         controle.Text = PdfGs.getDateFile();
             }));
+
+            Globale.Actuelle.Invoke(new MethodInvoker(delegate
+            {
+                if (Globale.Classe == 7)
+                {
+                    Edition.importEdtClassique(Globale.CheminEdtClassique);
+
+                    var frmRognageEdtClassique = new frmRognageEdtClassique();
+                    frmRognageEdtClassique.Show();
+                }
+            }));
+            
             PdfGs.valeurParDefault();
         }
 
