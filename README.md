@@ -6,8 +6,6 @@ TO DO :
 
 - acheter un cerveau a David introuvable (Attendre le black friday)
 
-- fix compteur pour nombre impair
-
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
 
 POUR LE RAPPORT DE STAGE (ballec) :
