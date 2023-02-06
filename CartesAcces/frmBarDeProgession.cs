@@ -124,7 +124,7 @@ namespace CartesAcces
             {
                 if (Globale.PbPhoto.Image == null)
                 {
-                    MessageBox.Show("Veuillez ajouter une photo");
+                    MessageBox.Show(new Form { TopMost = true }, "Veuillez ajouter une photo");
                 }
                 else
                 {

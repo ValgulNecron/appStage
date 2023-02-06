@@ -61,7 +61,7 @@ namespace CartesAcces
             log.Action = "à modifier les informations de établissement";
             log.AdMac = macAddress;
             ClassSql.Db.Insert(log);
-            MessageBox.Show("Les informations de l'établissement ont été modifiées");
+            MessageBox.Show(new Form { TopMost = true }, "Les informations de l'établissement ont été modifiées");
             Close();
         }
 

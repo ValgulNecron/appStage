@@ -39,7 +39,7 @@ namespace CartesAcces
             {
                 if (nouveauMdp.Text == ancienMdp.Text)
                 {
-                    MessageBox.Show("Le nouveau mot de passe doit être différent de l'ancien");
+                    MessageBox.Show(new Form { TopMost = true }, "Le nouveau mot de passe doit être différent de l'ancien");
                     return;
                 }
 
@@ -69,12 +69,12 @@ namespace CartesAcces
                             ClassSql.Db.Insert(log);
                             user.Hash = Securite.creationHash(nouveauMdp.Text);
                             ClassSql.Db.Update(user);
-                            MessageBox.Show("mot de passe changé");
+                            MessageBox.Show(new Form { TopMost = true }, "mot de passe changé");
                             Close();
                         }
                         else
                         {
-                            MessageBox.Show("les deux mots de passe ne sont pas identiques");
+                            MessageBox.Show(new Form { TopMost = true }, "les deux mots de passe ne sont pas identiques");
                         }
                     }
                 }

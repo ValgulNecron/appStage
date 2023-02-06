@@ -52,7 +52,7 @@ namespace CartesAcces
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
                 if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
-                    MessageBox.Show("Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
@@ -100,7 +100,7 @@ namespace CartesAcces
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtMotDePasse.Text = "";
                 }
             }
@@ -115,7 +115,7 @@ namespace CartesAcces
         {
             if (string.IsNullOrEmpty(txtMotDePasse.Text))
             {
-                MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                MessageBox.Show(new Form { TopMost = true }, "Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtMotDePasse.Focus();
             }
@@ -158,7 +158,7 @@ namespace CartesAcces
             {
                 if (string.IsNullOrEmpty(txtMotDePasse.Text))
                 {
-                    MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                    MessageBox.Show(new Form { TopMost = true }, "Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtMotDePasse.Focus();
                 }

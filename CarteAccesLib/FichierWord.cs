@@ -184,11 +184,11 @@ namespace CarteAccesLib
             // -- Message qui indique que nous sommes arrivé au bout --
             if (Globale.eleveImp)
             {
-                MessageBox.Show(listeEleve.Count - 1 + " élèves ont été imprimés.");
+                MessageBox.Show(new Form { TopMost = true }, listeEleve.Count - 1 + " élèves ont été imprimés.");
             }
             else
             {
-                MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
+                MessageBox.Show(new Form { TopMost = true }, listeEleve.Count + " élèves ont été imprimés.");
             }
         }
 
@@ -200,7 +200,7 @@ namespace CarteAccesLib
                 Edition.CheminImpressionFinal = diag.SelectedPath;
 
             else
-                MessageBox.Show(
+                MessageBox.Show(new Form { TopMost = true },
                     "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
         }
 

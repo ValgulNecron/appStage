@@ -388,7 +388,7 @@ namespace CartesAcces
                 ReadCsv.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
 
-                MessageBox.Show("Import Réussi");
+                MessageBox.Show(new Form { TopMost = true }, "Import Réussi");
             }
             catch (Exception e)
             {
