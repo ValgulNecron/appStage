@@ -36,7 +36,7 @@ namespace CartesAcces
                 }
                 case 7:
                 {
-                    outputPath = "./data/FichierEdtClasse/";
+                    outputPath += "/classes/";
                     break;
                 }
             }
@@ -167,6 +167,7 @@ namespace CartesAcces
         public static void renameEdt(string pdf)
         {
             List<string> name = new List<string>();
+
             if (Globale.Classe == 7)
             {
                 name = getClassePDF(getTextePdf(pdf));
