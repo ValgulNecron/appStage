@@ -142,8 +142,8 @@ namespace CartesAcces
             while (posFin != -1)
             {
                 var line = pdftext.Substring(posDepart, posFin - posDepart);
-                // -- Si la ligne contient la mention "Elève" .. -- 
-                if (line.Contains(" Classe "))
+                // -- Si la ligne contient la mention "Classe" .. -- 
+                if (line.Contains("Classe"))
                 {
                     line = line.Replace(" ", null);
                     line = line.Replace("/", null);
@@ -180,7 +180,7 @@ namespace CartesAcces
             var d = new DirectoryInfo(outputPath);
             var infos = d.GetFiles();
 
-            for (var i = 1; i < infos.Length; i++)
+            for (var i = 0; i < infos.Length; i++)
             {
                 var nameWithoutExt = infos[i].Name.Substring(0, infos[i].Name.Length - 4);
                 var index = nameWithoutExt.Substring(4, nameWithoutExt.Length - 4);
