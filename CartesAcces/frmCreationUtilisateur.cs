@@ -25,7 +25,7 @@ namespace CartesAcces
                 .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
             if (user.TypeUtilisateur != "admin")
             {
-                MessageBox.Show("Vous n'avez pas les droits pour créer un utilisateur");
+                MessageBox.Show(new Form { TopMost = true }, "Vous n'avez pas les droits pour créer un utilisateur");
                 return;
             }
             
