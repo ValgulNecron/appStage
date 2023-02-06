@@ -38,9 +38,6 @@ namespace CartesAcces
             this.label5 = new System.Windows.Forms.Label();
             this.lblPhotoEleve = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnImportEdtClassique = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblImportEdtClassique = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnImporterUnEtablissement = new System.Windows.Forms.Button();
             this.btCreationUtilisateur = new System.Windows.Forms.Button();
@@ -150,39 +147,6 @@ namespace CartesAcces
             this.label7.TabIndex = 29;
             this.label7.Text = "Dernière importation :";
             // 
-            // btnImportEdtClassique
-            // 
-            this.btnImportEdtClassique.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportEdtClassique.Location = new System.Drawing.Point(210, 443);
-            this.btnImportEdtClassique.MaximumSize = new System.Drawing.Size(320, 35);
-            this.btnImportEdtClassique.MinimumSize = new System.Drawing.Size(320, 35);
-            this.btnImportEdtClassique.Name = "btnImportEdtClassique";
-            this.btnImportEdtClassique.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnImportEdtClassique.Size = new System.Drawing.Size(320, 35);
-            this.btnImportEdtClassique.TabIndex = 31;
-            this.btnImportEdtClassique.Text = "Importer des emplois du temps pour les classes";
-            this.btnImportEdtClassique.UseVisualStyleBackColor = true;
-            this.btnImportEdtClassique.Click += new System.EventHandler(this.btnImportEdtClassique_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(545, 452);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 16);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "Dernière importation :";
-            // 
-            // lblImportEdtClassique
-            // 
-            this.lblImportEdtClassique.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImportEdtClassique.Location = new System.Drawing.Point(686, 452);
-            this.lblImportEdtClassique.Name = "lblImportEdtClassique";
-            this.lblImportEdtClassique.Size = new System.Drawing.Size(258, 23);
-            this.lblImportEdtClassique.TabIndex = 35;
-            this.lblImportEdtClassique.Text = "Aucune Importation";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(907, 67);
@@ -222,7 +186,7 @@ namespace CartesAcces
             // btnImportFaceCarte
             // 
             this.btnImportFaceCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportFaceCarte.Location = new System.Drawing.Point(210, 504);
+            this.btnImportFaceCarte.Location = new System.Drawing.Point(210, 442);
             this.btnImportFaceCarte.MaximumSize = new System.Drawing.Size(320, 35);
             this.btnImportFaceCarte.MinimumSize = new System.Drawing.Size(320, 35);
             this.btnImportFaceCarte.Name = "btnImportFaceCarte";
@@ -236,7 +200,7 @@ namespace CartesAcces
             // lblImportFaceCarte
             // 
             this.lblImportFaceCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImportFaceCarte.Location = new System.Drawing.Point(686, 516);
+            this.lblImportFaceCarte.Location = new System.Drawing.Point(686, 454);
             this.lblImportFaceCarte.Name = "lblImportFaceCarte";
             this.lblImportFaceCarte.Size = new System.Drawing.Size(258, 23);
             this.lblImportFaceCarte.TabIndex = 41;
@@ -246,7 +210,7 @@ namespace CartesAcces
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(545, 516);
+            this.label4.Location = new System.Drawing.Point(545, 454);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 16);
             this.label4.TabIndex = 40;
@@ -264,9 +228,6 @@ namespace CartesAcces
             this.Controls.Add(this.btCreationUtilisateur);
             this.Controls.Add(this.btnImporterUnEtablissement);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblImportEdtClassique);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnImportEdtClassique);
             this.Controls.Add(this.lblPhotoEleve);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblEdtEleve);
@@ -282,7 +243,6 @@ namespace CartesAcces
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Label lblDateImportLogo;
@@ -300,8 +260,6 @@ namespace CartesAcces
 
         private System.Windows.Forms.PictureBox pictureBox1;
 
-        private System.Windows.Forms.Button btnImportEdtClassique;
-
         private System.Windows.Forms.Label lblDateListeEleve;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblEdtEleve;
@@ -314,7 +272,5 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnImporterEleves;
         private System.Windows.Forms.Button btnImportEDT;
         private System.Windows.Forms.Button btnImportPhoto;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblImportEdtClassique;
     }
 }

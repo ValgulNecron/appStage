@@ -158,7 +158,7 @@ namespace CartesAcces
         {
             try
             {
-                lblImportEdtClassique = Globale.LblDate;
+                lblEdtEleve = Globale.LblDate;
                 Globale.CheminEdtClassique = Chemin.setCheminImportationDossier();
                 Edition.importEdtClassique(Globale.CheminEdtClassique);
 
