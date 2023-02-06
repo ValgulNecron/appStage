@@ -46,6 +46,7 @@ namespace CartesAcces
 
             userCree.ThemeBool = false;
             ClassSql.Db.InsertOrReplace(userCree);
+            MessageBox.Show("Utilisateur créé avec succès");
         }
 
         private void frmCreationUtilisateur_Load(object sender, EventArgs e)
