@@ -23,10 +23,13 @@ namespace CartesAcces
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            if (etaDebut.NomEtablissement != txtNomEtablissement.Text)
+            if (etaDebut != null)
             {
-                ClassSql.Db.GetTable<Etablissement>().Where(x => x.NomEtablissement == etaDebut.NomEtablissement).Delete();
-                ClassSql.Db.GetTable<Etablissement>().Delete();
+                if (etaDebut.NomEtablissement != txtNomEtablissement.Text)
+                {
+                    ClassSql.Db.GetTable<Etablissement>().Where(x => x.NomEtablissement == etaDebut.NomEtablissement).Delete();
+                    ClassSql.Db.GetTable<Etablissement>().Delete();
+                }
             }
             var etablissement = new Etablissement();
             etablissement.NomEtablissement = txtNomEtablissement.Text;
