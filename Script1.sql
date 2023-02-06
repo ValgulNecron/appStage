@@ -44,7 +44,7 @@ CREATE TABLE etablissement (
 INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0);
 -- xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz -- keyuser
 
-insert into etablissement values ("default", "default", 5, "default", "default", "default", "default", "default", "#FFFF00", "#00FF00", "#FF0000", "#0000FF");
+insert into etablissement values ("default", "default", 5, "default", "default", "default", "default", "default",   "#FFFF00", "#00FF00", "#FF0000", "#0000FF");
 DROP TRIGGER IF EXISTS updateMotDePasse;
 DELIMITER $$
 CREATE TRIGGER updateMotDePasse AFTER UPDATE ON utilisateur FOR EACH ROW

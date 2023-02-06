@@ -4,13 +4,9 @@ Repos de l'application de création de cartes d'accès
 
 TO DO :
 
-- edt classique fichier mauvais (voir avec aublin) 
-
 - acheter un cerveau a David introuvable (Attendre le black friday)
 
 - fix compteur pour nombre impair
-
-- Adapter l'application pour qu'elle soit utilisable par d'autres établissements 
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
 

@@ -17,7 +17,7 @@ namespace CarteAcces
                 if (cbbClasse.Text != "")
                 {
                     var classe = cbbClasse.Text;
-                    pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".png");
+                    pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + classe + ".jpg");
                 }
             }
             catch (Exception e)

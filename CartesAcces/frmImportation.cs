@@ -94,6 +94,7 @@ namespace CartesAcces
         {
             try
             {
+                Globale.CheminEdtClassique = "./data/image/classes/";
                 Globale.CheminPdf = Chemin.setCheminImportationFichierPdf();
                 var frmSelectSection = new frmSelectNiveau();
                 frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
@@ -152,39 +153,6 @@ namespace CartesAcces
             {
             }
         }
-
-        private void btnImportEdtClassique_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                lblImportEdtClassique = Globale.LblDate;
-                Globale.CheminEdtClassique = Chemin.setCheminImportationDossier();
-                Edition.importEdtClassique(Globale.CheminEdtClassique);
-
-                var frmRognageEdtClassique = new frmRognageEdtClassique();
-                frmRognageEdtClassique.Show();
-                var macAddress = string.Empty;
-                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
-                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
-                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
-                        nic.OperationalStatus == OperationalStatus.Up)
-                    {
-                        macAddress += nic.GetPhysicalAddress().ToString();
-                        break;
-                    }
-
-                var log = new LogActions();
-                log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale.NomUtilisateur;
-                log.Action = "à importer des EDT classiques";
-                log.AdMac = macAddress;
-                ClassSql.Db.Insert(log);
-            }
-            catch
-            {
-            }
-        }
-
 
         /*
          * ceci est le load de la fenêtre importation
