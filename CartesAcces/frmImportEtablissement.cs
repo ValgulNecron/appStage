@@ -14,7 +14,7 @@ namespace CartesAcces
     public partial class frmImportEtablissement : Form
     {
         private Etablissement etaDebut;
-        
+
         public frmImportEtablissement()
         {
             InitializeComponent();
@@ -89,13 +89,7 @@ namespace CartesAcces
                     if (VARIABLE is RadioButton)
                     {
                         var rd = VARIABLE as RadioButton;
-                        if (rd.Text == "Custom")
-                        {
-                            rd.Text = "Custom";
-                            txtCustom6.Visible = true;
-                            txtCustom6.Text = codeHexa6eme;
-                        }
-                        else if (rd.Text == "Rouge" && codeHexa6eme == "#FF0000")
+                        if (rd.Text == "Rouge" && codeHexa6eme == "#FF0000")
                         {
                             rd.Checked = true;
                         }
@@ -111,19 +105,19 @@ namespace CartesAcces
                         {
                             rd.Checked = true;
                         }
+                        else if (rd.Text == "Custom")
+                        {
+                            rd.Checked = true;
+                            txtCustom6.Visible = true;
+                            txtCustom6.Text = codeHexa6eme;
+                        }
                     }
 
                 foreach (var VARIABLE in gb5eme.Controls)
                     if (VARIABLE is RadioButton)
                     {
                         var rd = VARIABLE as RadioButton;
-                        if (rd.Text == "Custom")
-                        {
-                            rd.Text = "Custom";
-                            txtCustom5.Visible = true;
-                            txtCustom5.Text = codeHexa5eme;
-                        }
-                        else if (rd.Text == "Rouge" && codeHexa5eme == "#FF0000")
+                        if (rd.Text == "Rouge" && codeHexa5eme == "#FF0000")
                         {
                             rd.Checked = true;
                         }
@@ -139,18 +133,19 @@ namespace CartesAcces
                         {
                             rd.Checked = true;
                         }
+                        else if (rd.Text == "Custom")
+                        {
+                            rd.Text = "Custom";
+                            txtCustom5.Visible = true;
+                            txtCustom5.Text = codeHexa5eme;
+                        }
                     }
 
                 foreach (var VARIABLE in gb4eme.Controls)
                 {
                     var rd = VARIABLE as RadioButton;
-                    if (rd.Text == "Custom")
-                    {
-                        rd.Text = "Custom";
-                        txtCustom4.Visible = true;
-                        txtCustom4.Text = codeHexa4eme;
-                    }
-                    else if (rd.Text == "Rouge" && codeHexa4eme == "#FF0000")
+
+                    if (rd.Text == "Rouge" && codeHexa4eme == "#FF0000")
                     {
                         rd.Checked = true;
                     }
@@ -166,19 +161,20 @@ namespace CartesAcces
                     {
                         rd.Checked = true;
                     }
+                    else if (rd.Text == "Custom")
+                    {
+                        rd.Text = "Custom";
+                        txtCustom4.Visible = true;
+                        txtCustom4.Text = codeHexa4eme;
+                    }
                 }
 
                 foreach (var VARIABLE in gb3eme.Controls)
                     if (VARIABLE is RadioButton)
                     {
                         var rd = VARIABLE as RadioButton;
-                        if (rd.Text == "Custom")
-                        {
-                            rd.Text = "Custom";
-                            txtCustom3.Visible = true;
-                            txtCustom3.Text = codeHexa3eme;
-                        }
-                        else if (rd.Text == "Rouge" && codeHexa3eme == "#FF0000")
+
+                        if (rd.Text == "Rouge" && codeHexa3eme == "#FF0000")
                         {
                             rd.Checked = true;
                         }
@@ -193,6 +189,12 @@ namespace CartesAcces
                         else if (rd.Text == "Jaune" && codeHexa3eme == "#FFFF00")
                         {
                             rd.Checked = true;
+                        }
+                        else if (rd.Text == "Custom")
+                        {
+                            rd.Text = "Custom";
+                            txtCustom3.Visible = true;
+                            txtCustom3.Text = codeHexa3eme;
                         }
                     }
 
