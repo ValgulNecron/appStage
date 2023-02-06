@@ -81,6 +81,7 @@ namespace CartesAcces
                 txtVilleEtablissement.Text = etaDebut.VilleEtablissement;
                 txtCodePostalEtablissement.Text = etaDebut.CodePostaleEtablissement;
                 txtNumRueEtablissement.Text = etaDebut.NumeroRueEtablissement.ToString();
+                textBox1.Text = etaDebut.UrlEtablissement;
                 var codeHexa6eme = etaDebut.CodeHexa6eme;
                 var codeHexa5eme = etaDebut.CodeHexa5eme;
                 var codeHexa4eme = etaDebut.CodeHexa4eme;
@@ -89,27 +90,30 @@ namespace CartesAcces
                     if (VARIABLE is RadioButton)
                     {
                         var rd = VARIABLE as RadioButton;
-                        if (rd.Text == "Rouge" && codeHexa6eme == "#FF0000")
+                        if (rd != null)
                         {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Vert" && codeHexa6eme == "#00FF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Bleu" && codeHexa6eme == "#0000FF")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Jaune" && codeHexa6eme == "#FFFF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Custom")
-                        {
-                            rd.Checked = true;
-                            txtCustom6.Visible = true;
-                            txtCustom6.Text = codeHexa6eme;
+                            if (rd.Text == "Rouge" && codeHexa6eme == "#FF0000")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Vert" && codeHexa6eme == "#00FF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Bleu" && codeHexa6eme == "#0000FF")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Jaune" && codeHexa6eme == "#FFFF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Custom")
+                            {
+                                rd.Checked = true;
+                                txtCustom6.Visible = true;
+                                txtCustom6.Text = codeHexa6eme;
+                            }
                         }
                     }
 
@@ -117,55 +121,60 @@ namespace CartesAcces
                     if (VARIABLE is RadioButton)
                     {
                         var rd = VARIABLE as RadioButton;
-                        if (rd.Text == "Rouge" && codeHexa5eme == "#FF0000")
+                        if (rd != null)
                         {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Vert" && codeHexa5eme == "#00FF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Bleu" && codeHexa5eme == "#0000FF")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Jaune" && codeHexa5eme == "#FFFF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Custom")
-                        {
-                            rd.Text = "Custom";
-                            txtCustom5.Visible = true;
-                            txtCustom5.Text = codeHexa5eme;
+                            if (rd.Text == "Rouge" && codeHexa5eme == "#FF0000")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Vert" && codeHexa5eme == "#00FF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Bleu" && codeHexa5eme == "#0000FF")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Jaune" && codeHexa5eme == "#FFFF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Custom")
+                            {
+                                rd.Checked = true;
+                                txtCustom5.Visible = true;
+                                txtCustom5.Text = codeHexa5eme;
+                            }
                         }
                     }
 
                 foreach (var VARIABLE in gb4eme.Controls)
                 {
                     var rd = VARIABLE as RadioButton;
-
-                    if (rd.Text == "Rouge" && codeHexa4eme == "#FF0000")
+                    if (rd != null)
                     {
-                        rd.Checked = true;
-                    }
-                    else if (rd.Text == "Vert" && codeHexa4eme == "#00FF00")
-                    {
-                        rd.Checked = true;
-                    }
-                    else if (rd.Text == "Bleu" && codeHexa4eme == "#0000FF")
-                    {
-                        rd.Checked = true;
-                    }
-                    else if (rd.Text == "Jaune" && codeHexa4eme == "#FFFF00")
-                    {
-                        rd.Checked = true;
-                    }
-                    else if (rd.Text == "Custom")
-                    {
-                        rd.Text = "Custom";
-                        txtCustom4.Visible = true;
-                        txtCustom4.Text = codeHexa4eme;
+                        if (rd.Text == "Rouge" && codeHexa4eme == "#FF0000")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Vert" && codeHexa4eme == "#00FF00")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Bleu" && codeHexa4eme == "#0000FF")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Jaune" && codeHexa4eme == "#FFFF00")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Custom")
+                        {
+                            rd.Checked = true;
+                            txtCustom4.Visible = true;
+                            txtCustom4.Text = codeHexa4eme;
+                        }
                     }
                 }
 
@@ -173,28 +182,30 @@ namespace CartesAcces
                     if (VARIABLE is RadioButton)
                     {
                         var rd = VARIABLE as RadioButton;
-
-                        if (rd.Text == "Rouge" && codeHexa3eme == "#FF0000")
+                        if (rd != null)
                         {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Vert" && codeHexa3eme == "#00FF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Bleu" && codeHexa3eme == "#0000FF")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Jaune" && codeHexa3eme == "#FFFF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Custom")
-                        {
-                            rd.Text = "Custom";
-                            txtCustom3.Visible = true;
-                            txtCustom3.Text = codeHexa3eme;
+                            if (rd.Text == "Rouge" && codeHexa3eme == "#FF0000")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Vert" && codeHexa3eme == "#00FF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Bleu" && codeHexa3eme == "#0000FF")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Jaune" && codeHexa3eme == "#FFFF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Custom")
+                            {
+                                rd.Checked = true;
+                                txtCustom3.Visible = true;
+                                txtCustom3.Text = codeHexa3eme;
+                            }
                         }
                     }
 
