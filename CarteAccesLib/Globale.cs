@@ -10,6 +10,8 @@ namespace CartesAcces
         public static Label LblCount { get; set; }
         public static int Cas { get; set; } = 0;
         public static int Classe { get; set; } = 6;
+
+        public static bool eleveImp = false;
         
         public static Form Connexion
         { get; set; }
