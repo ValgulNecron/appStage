@@ -168,6 +168,7 @@ namespace CartesAcces
                 // -- Si la liste est impaire, on double le dernier élève
                 if (Globale.ListeEleveImpr.Count % 2 == 1)
                 {
+                    Globale.eleveImp = true;
                     var eleve = Globale.ListeEleveImpr[Globale.ListeEleveImpr.Count - 1];
                     Globale.ListeEleveImpr.Add(eleve);
                 }

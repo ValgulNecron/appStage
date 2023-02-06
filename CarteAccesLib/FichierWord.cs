@@ -182,7 +182,14 @@ namespace CarteAccesLib
             GC.Collect();
 
             // -- Message qui indique que nous sommes arrivé au bout --
-            MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
+            if (Globale.eleveImp)
+            {
+                MessageBox.Show(listeEleve.Count - 1 + " élèves ont été imprimés.");
+            }
+            else
+            {
+                MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
+            }
         }
 
 
