@@ -32,8 +32,9 @@ namespace CartesAcces
                 {
                     ClassSql.init();
                 }
-                catch
+                catch(Exception e)
                 {
+                    MessageBox.Show("fichier config ou connection impossible" + e.Message);
                 }
 
                 Globale.Accueil = new frmAccueil();
