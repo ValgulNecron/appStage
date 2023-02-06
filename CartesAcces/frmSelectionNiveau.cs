@@ -41,6 +41,13 @@ namespace CartesAcces
                 Globale.Classe = 6;
                 Close();
             }
+            
+            else if (rdbClassique.Checked)
+            {
+                Globale.Classe = 7;
+                Close();
+            }
+            
             else
             {
                 MessageBox.Show("Veuillez selectionner une section...");

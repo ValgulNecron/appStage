@@ -34,6 +34,11 @@ namespace CartesAcces
                     outputPath += "/6eme/";
                     break;
                 }
+                case 7:
+                {
+                    outputPath = "./data/FichierEdtClasse/";
+                    break;
+                }
             }
 
             var outputPattern = outputPath + "page%d.jpg";
@@ -121,12 +126,57 @@ namespace CartesAcces
 
             return listeExtractPDF;
         }
+        
+        public static List<string> getClassePDF(string pdftext)
+        {
+            var listeExtractPDF = new List<string>();
+
+            // !! Recherche des lignes qui nous interesse !!
+
+            // -- On commence au premier caractère de la chaine --
+            var posDepart = 0;
+            // -- La ligne s'arrete lorsqu'il y a un saut --
+            var posFin = pdftext.IndexOf(Environment.NewLine);
+            // -- Tant qu'on a pas attein la fin de la variable --
+
+            while (posFin != -1)
+            {
+                var line = pdftext.Substring(posDepart, posFin - posDepart);
+                // -- Si la ligne contient la mention "Elève" .. -- 
+                if (line.Contains(" Classe "))
+                {
+                    line = line.Replace(" ", null);
+                    line = line.Replace("/", null);
+                    line = line.Replace("-", null);
+                    line = line.Replace(Environment.NewLine, null);
+                    line = line.Replace("Classe", null);
+                    // -- .. Alors on affecte cette ligne a la liste --
+                    listeExtractPDF.Add(line);
+                }
+
+                // -- La position de départ se place au début de la ligne suivante --
+                posDepart = posFin + 1;
+                // -- La position de fin se place au saut de ligne de la ligne suivante --
+                posFin = pdftext.IndexOf("\r\n", posDepart + 1);
+                // -- Toujours vrai sauf si erreur --
+            }
+
+            return listeExtractPDF;
+        }
 
         public static void renameEdt(string pdf)
         {
-            var name = getNomPrenomPdf(getTextePdf(pdf));
+            List<string> name = new List<string>();
+            if (Globale.Classe == 7)
+            {
+                name = getClassePDF(getTextePdf(pdf));
+            }
+            else
+            {
+                name = getNomPrenomPdf(getTextePdf(pdf));   
+            }
             MessageBox.Show(new Form { TopMost = true }, name.Count.ToString() 
-                + " emplois de temps ont été importés");
+                                                         + " emplois de temps ont été importés");
             var d = new DirectoryInfo(outputPath);
             var infos = d.GetFiles();
 

@@ -33,6 +33,7 @@ namespace CartesAcces
         {
             this.label1 = new System.Windows.Forms.Label();
             this.gpbSelectSection = new System.Windows.Forms.GroupBox();
+            this.rdbClassique = new System.Windows.Forms.RadioButton();
             this.rdb3eme = new System.Windows.Forms.RadioButton();
             this.rdb4eme = new System.Windows.Forms.RadioButton();
             this.rdb5eme = new System.Windows.Forms.RadioButton();
@@ -52,6 +53,7 @@ namespace CartesAcces
             // 
             // gpbSelectSection
             // 
+            this.gpbSelectSection.Controls.Add(this.rdbClassique);
             this.gpbSelectSection.Controls.Add(this.rdb3eme);
             this.gpbSelectSection.Controls.Add(this.rdb4eme);
             this.gpbSelectSection.Controls.Add(this.rdb5eme);
@@ -59,10 +61,21 @@ namespace CartesAcces
             this.gpbSelectSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpbSelectSection.Location = new System.Drawing.Point(44, 57);
             this.gpbSelectSection.Name = "gpbSelectSection";
-            this.gpbSelectSection.Size = new System.Drawing.Size(150, 171);
+            this.gpbSelectSection.Size = new System.Drawing.Size(164, 189);
             this.gpbSelectSection.TabIndex = 1;
             this.gpbSelectSection.TabStop = false;
             this.gpbSelectSection.Text = "Section";
+            // 
+            // rdbClassique
+            // 
+            this.rdbClassique.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbClassique.Location = new System.Drawing.Point(45, 153);
+            this.rdbClassique.Name = "rdbClassique";
+            this.rdbClassique.Size = new System.Drawing.Size(119, 24);
+            this.rdbClassique.TabIndex = 4;
+            this.rdbClassique.TabStop = true;
+            this.rdbClassique.Text = "Toutes classes";
+            this.rdbClassique.UseVisualStyleBackColor = true;
             // 
             // rdb3eme
             // 
@@ -111,7 +124,7 @@ namespace CartesAcces
             // btnValider
             // 
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Location = new System.Drawing.Point(89, 246);
+            this.btnValider.Location = new System.Drawing.Point(89, 265);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(105, 23);
             this.btnValider.TabIndex = 2;
@@ -131,8 +144,9 @@ namespace CartesAcces
             this.Text = "frmSelectNiveau";
             this.gpbSelectSection.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
+
+        private System.Windows.Forms.RadioButton rdbClassique;
 
         private System.Windows.Forms.Button btnValider;
 
