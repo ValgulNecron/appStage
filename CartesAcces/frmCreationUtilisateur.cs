@@ -39,7 +39,7 @@ namespace CartesAcces
             userCree.NomUtilisateur = tbUser.Text;
             userCree.Hash = Securite.creationHash(tbMdp.Text);
             foreach (Control var in gbTypeUser.Controls)
-            {
+            {   
                 var rb = var as RadioButton;
                 if (rb != null && rb.Checked) userCree.TypeUtilisateur = rb.Text;
             }
