@@ -17,7 +17,8 @@ namespace CartesAcces
             var mariaDb = "";
             var node = doc.SelectSingleNode("/configuration/appSettings/add[@key='IP']");
             if (node.Attributes != null) mariaDb += "Server=" + node.Attributes["value"].Value + ";";
-            mariaDb += "Port=3306;";
+            node = doc.SelectSingleNode("/configuration/appSettings/add[@key='PORT']");
+            if (node.Attributes != null) mariaDb += "Port=" + node.Attributes["value"].Value + ";";
             node = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
             if (node.Attributes != null) mariaDb += "Database=" + node.Attributes["value"].Value + ";";
             node = doc.SelectSingleNode("/configuration/appSettings/add[@key='UTILISATEUR']");

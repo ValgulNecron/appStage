@@ -54,5 +54,17 @@ namespace CartesAcces
             tbMdp.PasswordChar = '*';
             tbValidMdp.PasswordChar = '*';
         }
+
+        private void btnSuppr_Click(object sender, EventArgs e)
+        {
+            var user = ClassSql.Db.GetTable<Utilisateurs>()
+                .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
+            if (user.TypeUtilisateur != "admin")
+            {
+                MessageBox.Show(new Form { TopMost = true }, "Vous n'avez pas les droits pour supprimer un utilisateur");
+                return;
+            }
+            ClassSql.Db.Delete(user);
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace CartesAcces
             this.lblMdpValide = new System.Windows.Forms.Label();
             this.lblMdp = new System.Windows.Forms.Label();
             this.btValid = new System.Windows.Forms.Button();
+            this.btnSuppr = new System.Windows.Forms.Button();
             this.gbTypeUser.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,11 +149,22 @@ namespace CartesAcces
             this.btValid.UseVisualStyleBackColor = true;
             this.btValid.Click += new System.EventHandler(this.btValid_Click);
             // 
+            // btnSuppr
+            // 
+            this.btnSuppr.Location = new System.Drawing.Point(424, 123);
+            this.btnSuppr.Name = "btnSuppr";
+            this.btnSuppr.Size = new System.Drawing.Size(201, 22);
+            this.btnSuppr.TabIndex = 8;
+            this.btnSuppr.Text = "supprimer";
+            this.btnSuppr.UseVisualStyleBackColor = true;
+            this.btnSuppr.Click += new System.EventHandler(this.btnSuppr_Click);
+            // 
             // frmCreationUtilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 362);
+            this.Controls.Add(this.btnSuppr);
             this.Controls.Add(this.btValid);
             this.Controls.Add(this.lblMdp);
             this.Controls.Add(this.lblMdpValide);
@@ -168,6 +180,8 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button btnSuppr;
 
         private System.Windows.Forms.Button btValid;
 
