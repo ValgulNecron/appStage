@@ -14,7 +14,6 @@ namespace CartesAcces
     public partial class frmImportEtablissement : Form
     {
         private Etablissement etaDebut;
-        private int oldInt;
 
         public frmImportEtablissement()
         {
@@ -24,6 +23,12 @@ namespace CartesAcces
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            int result;
+            if (!int.TryParse(txtNumRueEtablissement.Text, out result))
+            {
+                textBox1.Text = string.Empty;
+                MessageBox.Show("Entrer un nume.");
+            }
             if (etaDebut != null)
             {
                 if (etaDebut.NomEtablissement != txtNomEtablissement.Text)
@@ -211,8 +216,6 @@ namespace CartesAcces
                     }
 
                 textBox1.Text = etaDebut.UrlEtablissement;
-                txtNumRueEtablissement.TextChanged += textChanged;
-                txtTelEtablissement.KeyPress += textChanged;
             }
             catch
             {
@@ -353,17 +356,6 @@ namespace CartesAcces
                 }
 
             return codeHexa3eme;
-        }
-
-        private void textChanged(object sender, EventArgs e)
-        {
-            int result;
-            if (!int.TryParse(textBox1.Text, out result))
-            {
-                textBox1.Text = oldInt.ToString();
-                return;
-            }
-            oldInt = result;
         }
 
         private void rdbCustom6_CheckedChanged(object sender, EventArgs e)

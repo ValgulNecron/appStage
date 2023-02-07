@@ -27,13 +27,13 @@ CREATE TABLE logMotDePasse (
 );
 
 CREATE TABLE etablissement (
-	nomEtablissement varchar(35) PRIMARY KEY,
-	nomRueEtablissement varchar(35),
-	numeroRueEtablissement int,
+	nomEtablissement varchar(50) PRIMARY KEY,
+	nomRueEtablissement varchar(60),
+	numeroRueEtablissement varchar(10),
 	codePostaleEtablissement varchar(15),
-	villeEtablissement varchar(30),
+	villeEtablissement varchar(60),
 	numeroTelephoneEtablissement varchar(20),
-	emailEtablissement varchar(60),
+	emailEtablissement varchar(120),
 	urlEtablissement varchar(120),
 	codeHexa6eme varchar(7),
 	codeHexa5eme varchar(7),
