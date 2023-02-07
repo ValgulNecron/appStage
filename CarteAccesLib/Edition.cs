@@ -446,9 +446,11 @@ namespace CartesAcces
                 Image img = Image.FromFile(cheminSource);
                 Bitmap bmp = new Bitmap(img, new Size(1754,1240));
                 
-                if (Globale.testBordure)
+                var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+                var bord = etab.Bordure;
+                
+                if (bord)
                 {
-                    var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
                     string couleur = "";
                 
                     switch (Globale.Classe)
