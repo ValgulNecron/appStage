@@ -6,5 +6,6 @@
         <add key="BD" value="stage2"/>
         <add key="UTILISATEUR" value="admin_user"/>
         <add key="MOTDEPASSE" value="kreyderslam2!"/>
+        <add key="PORT" value="3306"/>
     </appSettings>
 </configuration>

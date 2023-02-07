@@ -23,6 +23,12 @@ namespace CartesAcces
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            int result;
+            if (!int.TryParse(txtNumRueEtablissement.Text, out result))
+            {
+                textBox1.Text = string.Empty;
+                MessageBox.Show("Entrer un nume.");
+            }
             if (etaDebut != null)
             {
                 if (etaDebut.NomEtablissement != txtNomEtablissement.Text)
@@ -44,6 +50,7 @@ namespace CartesAcces
             etablissement.CodeHexa5eme = getCodeHexa5eme();
             etablissement.CodeHexa4eme = getCodeHexa4eme();
             etablissement.CodeHexa3eme = getCodeHexa3eme();
+            etablissement.Bordure = cbBordure.Checked;
             ClassSql.Db.InsertOrReplace(etablissement);
             var macAddress = string.Empty;
             foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
@@ -96,11 +103,11 @@ namespace CartesAcces
                             {
                                 rd.Checked = true;
                             }
-                            else if (rd.Text == "Vert" && codeHexa6eme == "#00FF00")
+                            else if (rd.Text == "Vert" && codeHexa6eme == "#90EE90")
                             {
                                 rd.Checked = true;
                             }
-                            else if (rd.Text == "Bleu" && codeHexa6eme == "#0000FF")
+                            else if (rd.Text == "Bleu" && codeHexa6eme == "#ADD8E6")
                             {
                                 rd.Checked = true;
                             }
@@ -127,11 +134,11 @@ namespace CartesAcces
                             {
                                 rd.Checked = true;
                             }
-                            else if (rd.Text == "Vert" && codeHexa5eme == "#00FF00")
+                            else if (rd.Text == "Vert" && codeHexa5eme == "#90EE90")
                             {
                                 rd.Checked = true;
                             }
-                            else if (rd.Text == "Bleu" && codeHexa5eme == "#0000FF")
+                            else if (rd.Text == "Bleu" && codeHexa5eme == "#ADD8E6")
                             {
                                 rd.Checked = true;
                             }
@@ -157,11 +164,11 @@ namespace CartesAcces
                         {
                             rd.Checked = true;
                         }
-                        else if (rd.Text == "Vert" && codeHexa4eme == "#00FF00")
+                        else if (rd.Text == "Vert" && codeHexa4eme == "#90EE90")
                         {
                             rd.Checked = true;
                         }
-                        else if (rd.Text == "Bleu" && codeHexa4eme == "#0000FF")
+                        else if (rd.Text == "Bleu" && codeHexa4eme == "#ADD8E6")
                         {
                             rd.Checked = true;
                         }
@@ -188,11 +195,11 @@ namespace CartesAcces
                             {
                                 rd.Checked = true;
                             }
-                            else if (rd.Text == "Vert" && codeHexa3eme == "#00FF00")
+                            else if (rd.Text == "Vert" && codeHexa3eme == "#90EE90")
                             {
                                 rd.Checked = true;
                             }
-                            else if (rd.Text == "Bleu" && codeHexa3eme == "#0000FF")
+                            else if (rd.Text == "Bleu" && codeHexa3eme == "#ADD8E6")
                             {
                                 rd.Checked = true;
                             }
@@ -210,7 +217,6 @@ namespace CartesAcces
                     }
 
                 textBox1.Text = etaDebut.UrlEtablissement;
-                txtNumRueEtablissement.KeyPress += keyPress;
             }
             catch
             {
@@ -233,10 +239,10 @@ namespace CartesAcces
                                 codeHexa6eme = "#FF0000";
                                 break;
                             case "Vert":
-                                codeHexa6eme = "#00FF00";
+                                codeHexa6eme = "#90EE90";
                                 break;
                             case "Bleu":
-                                codeHexa6eme = "#0000FF";
+                                codeHexa6eme = "#ADD8E6";
                                 break;
                             case "Jaune":
                                 codeHexa6eme = "#FFFF00";
@@ -267,10 +273,10 @@ namespace CartesAcces
                                 codeHexa5eme = "#FF0000";
                                 break;
                             case "Vert":
-                                codeHexa5eme = "#00FF00";
+                                codeHexa5eme = "#90EE90";
                                 break;
                             case "Bleu":
-                                codeHexa5eme = "#0000FF";
+                                codeHexa5eme = "#ADD8E6";
                                 break;
                             case "Jaune":
                                 codeHexa5eme = "#FFFF00";
@@ -301,10 +307,10 @@ namespace CartesAcces
                                 codeHexa4eme = "#FF0000";
                                 break;
                             case "Vert":
-                                codeHexa4eme = "#00FF00";
+                                codeHexa4eme = "#90EE90";
                                 break;
                             case "Bleu":
-                                codeHexa4eme = "#0000FF";
+                                codeHexa4eme = "#ADD8E6";
                                 break;
                             case "Jaune":
                                 codeHexa4eme = "#FFFF00";
@@ -335,10 +341,10 @@ namespace CartesAcces
                                 codeHexa3eme = "#FF0000";
                                 break;
                             case "Vert":
-                                codeHexa3eme = "#00FF00";
+                                codeHexa3eme = "#90EE90";
                                 break;
                             case "Bleu":
-                                codeHexa3eme = "#0000FF";
+                                codeHexa3eme = "#ADD8E6";
                                 break;
                             case "Jaune":
                                 codeHexa3eme = "#FFFF00";
@@ -351,13 +357,6 @@ namespace CartesAcces
                 }
 
             return codeHexa3eme;
-        }
-
-        private void keyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                e.KeyChar != '.')
-                e.Handled = true;
         }
 
         private void rdbCustom6_CheckedChanged(object sender, EventArgs e)

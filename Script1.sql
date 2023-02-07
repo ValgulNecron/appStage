@@ -27,24 +27,25 @@ CREATE TABLE logMotDePasse (
 );
 
 CREATE TABLE etablissement (
-	nomEtablissement varchar(35) PRIMARY KEY,
-	nomRueEtablissement varchar(35),
-	numeroRueEtablissement int,
+	nomEtablissement varchar(50) PRIMARY KEY,
+	nomRueEtablissement varchar(60),
+	numeroRueEtablissement varchar(10),
 	codePostaleEtablissement varchar(15),
-	villeEtablissement varchar(30),
+	villeEtablissement varchar(60),
 	numeroTelephoneEtablissement varchar(20),
-	emailEtablissement varchar(60),
+	emailEtablissement varchar(120),
 	urlEtablissement varchar(120),
 	codeHexa6eme varchar(7),
 	codeHexa5eme varchar(7),
 	codeHexa4eme varchar(7),
-	codeHexa3eme varchar(7)
+	codeHexa3eme varchar(7),
+	bordure bool
 );
 
 INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0);
 -- xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz -- keyuser
 
-insert into etablissement values ("default", "default", 5, "default", "default", "default", "default", "default",   "#FFFF00", "#00FF00", "#FF0000", "#0000FF");
+insert into etablissement values ("default", "default", 5, "default", "default", "default", "default", "default", "#FFFF00", "#90EE90", "#FF0000", "#ADD8E6", 1);
 DROP TRIGGER IF EXISTS updateMotDePasse;
 DELIMITER $$
 CREATE TRIGGER updateMotDePasse AFTER UPDATE ON utilisateur FOR EACH ROW
