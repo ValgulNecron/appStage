@@ -69,7 +69,7 @@ namespace CarteAccesLib
             applicationWord.Documents.Add();
 
             // -- Marge à 0 pour éviter les espaces blancs entre la page et l'image sur le document --
-            applicationWord.ActiveDocument.PageSetup.TopMargin = 15; // 15 points = env à 0.5 cm
+            applicationWord.ActiveDocument.PageSetup.TopMargin = 15;
             applicationWord.ActiveDocument.PageSetup.RightMargin = 15;
             applicationWord.ActiveDocument.PageSetup.LeftMargin = 15;
             applicationWord.ActiveDocument.PageSetup.BottomMargin = 15;
@@ -233,10 +233,10 @@ namespace CarteAccesLib
 
                 var WordApp = new Application();
                 WordApp.Documents.Add();
-                WordApp.ActiveDocument.PageSetup.TopMargin = 1;
-                WordApp.ActiveDocument.PageSetup.RightMargin = 1;
-                WordApp.ActiveDocument.PageSetup.LeftMargin = 1;
-                WordApp.ActiveDocument.PageSetup.BottomMargin = 1;
+                WordApp.ActiveDocument.PageSetup.TopMargin = 15;
+                WordApp.ActiveDocument.PageSetup.RightMargin = 15;
+                WordApp.ActiveDocument.PageSetup.LeftMargin = 15;
+                WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
 
                 var shapeCarte = WordApp.ActiveDocument.Shapes.AddPicture(
                     Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,
