@@ -286,6 +286,23 @@ namespace CartesAcces
             }
         }
 
+        public static string getDateFace()
+        {
+            if (File.Exists("./data/FichierCartesFace/6eme.png"))
+                return File.GetCreationTime("./data/FichierCartesFace/6eme.png").ToString();
+            
+            if (File.Exists("./data/FichierCartesFace/5eme.png"))
+                return File.GetCreationTime("./data/FichierCartesFace/5eme.png").ToString();
+            
+            if (File.Exists("./data/FichierCartesFace/3eme.png"))
+                return File.GetCreationTime("./data/FichierCartesFace/3eme.png").ToString();
+            
+            if (File.Exists("./data/FichierCartesFace/4eme.png"))
+                return File.GetCreationTime("./data/FichierCartesFace/4eme.png").ToString();
+            
+            return null;
+        }
+        
         public static void checkMef(RadioButton rdbUlis, RadioButton rdbUPE2A, RadioButton rdbClRelais,
             PictureBox pbCarteFace, ComboBox cbbSection, Button btnEdtPerso, TextBox txtNom, TextBox txtPrenom)
         {

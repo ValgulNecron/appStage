@@ -14,6 +14,7 @@ namespace CartesAcces
         public frmSelectNiveau()
         {
             InitializeComponent();
+            if (Globale.PasDeBar) rdbClassique.Visible = false;
         }
 
         private void btnValider_Click(object sender, EventArgs e)
