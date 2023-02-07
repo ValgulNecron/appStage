@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -35,10 +36,15 @@ namespace CarteAcces
             // -- Calcul par proportionnalité de la position et des dimensions de la photo sur le cadre de l'application par rapport a l'image réelle --
             // -- Cela permet de répercuter les déplacements effectués par l'utilisateur sur l'image originelle afin de pouvoir réutiliser celle ci --
             // -- Et ainsi ne pas perdre en qualité de l'image --
-            var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-            var realLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-            var realWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-            var realHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+            double rLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+            double rLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+            double rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+            double rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+
+            int realLocX = Convert.ToInt32(Math.Round(rLocX));
+            int realLocY = Convert.ToInt32(Math.Round(rLocY));
+            int realWidth = Convert.ToInt32(Math.Round(rWidth));
+            int realHeight = Convert.ToInt32(Math.Round(rHeight));
 
             // -- Superposition des deux image dans un objet "Graphics" --
             var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
