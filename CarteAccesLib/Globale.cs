@@ -12,6 +12,8 @@ namespace CartesAcces
         public static int Classe { get; set; } = 6;
 
         public static bool eleveImp = false;
+
+        public static bool testBordure = true;
         
         public static Form Connexion
         { get; set; }

@@ -5,9 +5,14 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Media;
 using CarteAcces;
 using LinqToDB;
 using QRCoder;
+using Brush = System.Drawing.Brush;
+using Brushes = System.Drawing.Brushes;
+using Color = System.Drawing.Color;
+using Pen = System.Drawing.Pen;
 using QRCode = CarteAccesLib.QRCode;
 
 namespace CartesAcces
@@ -40,10 +45,17 @@ namespace CartesAcces
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, int posX, int posY,
             ComboBox cbbSection)
         {
-            Brush pinceauJaune = new SolidBrush(Color.Yellow);
-            Brush pinceauVert = new SolidBrush(Color.LightGreen);
-            Brush pinceauRouge = new SolidBrush(Color.Red);
-            Brush pinceauBleu = new SolidBrush(Color.LightBlue);
+            var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+            Color couleur3 = ColorTranslator.FromHtml(etab.CodeHexa3eme);
+            Color couleur4 = ColorTranslator.FromHtml(etab.CodeHexa4eme);
+            Color couleur5 = ColorTranslator.FromHtml(etab.CodeHexa5eme);
+            Color couleur6 = ColorTranslator.FromHtml(etab.CodeHexa6eme);
+            
+            Brush pinceauJaune = new SolidBrush(couleur6);
+            Brush pinceauVert = new SolidBrush(couleur5);
+            Brush pinceauRouge = new SolidBrush(couleur4);
+            Brush pinceauBleu = new SolidBrush(couleur3);
+            
             var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
             var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
             var rectangle = new Rectangle(posX, posY, largeur, hauteur);
@@ -73,10 +85,17 @@ namespace CartesAcces
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
             int posY)
         {
-            Brush brushJaune = new SolidBrush(Color.Yellow);
-            Brush brushVert = new SolidBrush(Color.LightGreen);
-            Brush brushRouge = new SolidBrush(Color.Red);
-            Brush brushBleu = new SolidBrush(Color.LightBlue);
+            var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+            Color couleur3 = ColorTranslator.FromHtml(etab.CodeHexa3eme);
+            Color couleur4 = ColorTranslator.FromHtml(etab.CodeHexa4eme);
+            Color couleur5 = ColorTranslator.FromHtml(etab.CodeHexa5eme);
+            Color couleur6 = ColorTranslator.FromHtml(etab.CodeHexa6eme);
+            
+            Brush brushJaune = new SolidBrush(couleur6);
+            Brush brushVert = new SolidBrush(couleur5);
+            Brush brushRouge = new SolidBrush(couleur4);
+            Brush brushBleu = new SolidBrush(couleur3);
+            
             var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
             var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
             var rectangle = new Rectangle(posX, posY, largeur, hauteur);
@@ -406,9 +425,40 @@ namespace CartesAcces
                 if (File.Exists(cheminDestination)) File.Delete(cheminDestination);
 
                 Directory.CreateDirectory(Chemin.CheminFaceCarte);
-                
+
                 Image img = Image.FromFile(cheminSource);
                 Bitmap bmp = new Bitmap(img, new Size(1754,1240));
+                
+                if (Globale.testBordure)
+                {
+                    var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+                    string couleur = "";
+                
+                    switch (Globale.Classe)
+                    {
+                        case 6:
+                            couleur = etab.CodeHexa6eme;
+                            break;
+                        case 5:
+                            couleur = etab.CodeHexa5eme;
+                            break;
+                        case 4:
+                            couleur = etab.CodeHexa4eme;
+                            break;
+                        case 3:
+                            couleur = etab.CodeHexa3eme;
+                            break;
+                    }
+                    
+                    Color col = ColorTranslator.FromHtml(couleur);
+                    Brush br = new SolidBrush(col);
+                    
+                    using (Graphics g = Graphics.FromImage(bmp))
+                    {
+                        g.DrawRectangle(new Pen(br, 40), new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    }  
+                }
+
                 bmp.Save(cheminDestination, ImageFormat.Png);
             }
             catch
