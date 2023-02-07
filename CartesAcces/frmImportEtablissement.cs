@@ -89,6 +89,7 @@ namespace CartesAcces
                 txtCodePostalEtablissement.Text = etaDebut.CodePostaleEtablissement;
                 txtNumRueEtablissement.Text = etaDebut.NumeroRueEtablissement.ToString();
                 textBox1.Text = etaDebut.UrlEtablissement;
+                cbBordure.Checked = etaDebut.Bordure;
                 var codeHexa6eme = etaDebut.CodeHexa6eme;
                 var codeHexa5eme = etaDebut.CodeHexa5eme;
                 var codeHexa4eme = etaDebut.CodeHexa4eme;
