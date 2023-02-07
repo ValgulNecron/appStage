@@ -215,10 +215,11 @@ namespace CarteAccesLib
                 double rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
                 double rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
 
-                int realLocX = Convert.ToInt32(Math.Round(rLocX));
-                int realLocY = Convert.ToInt32(Math.Round(rLocY));
-                int realWidth = Convert.ToInt32(Math.Round(rWidth));
-                int realHeight = Convert.ToInt32(Math.Round(rHeight));
+                // -- Rectifications des positions --
+                int realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
+                int realLocY = Convert.ToInt32(Math.Round(rLocY)) + 3;
+                int realWidth = Convert.ToInt32(Math.Round(rWidth)) - 1;
+                int realHeight = Convert.ToInt32(Math.Round(rHeight)) - 1;
 
                 var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
                 ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
@@ -232,10 +233,10 @@ namespace CarteAccesLib
 
                 var WordApp = new Application();
                 WordApp.Documents.Add();
-                WordApp.ActiveDocument.PageSetup.TopMargin = 15;
-                WordApp.ActiveDocument.PageSetup.RightMargin = 15;
-                WordApp.ActiveDocument.PageSetup.LeftMargin = 15;
-                WordApp.ActiveDocument.PageSetup.BottomMargin = 15;
+                WordApp.ActiveDocument.PageSetup.TopMargin = 1;
+                WordApp.ActiveDocument.PageSetup.RightMargin = 1;
+                WordApp.ActiveDocument.PageSetup.LeftMargin = 1;
+                WordApp.ActiveDocument.PageSetup.BottomMargin = 1;
 
                 var shapeCarte = WordApp.ActiveDocument.Shapes.AddPicture(
                     Edition.CheminImpressionFinal + txtNom.Text + txtPrenom.Text + "Carte.png", Type.Missing,

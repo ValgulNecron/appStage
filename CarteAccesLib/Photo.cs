@@ -41,10 +41,10 @@ namespace CarteAcces
             double rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
             double rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
 
-            int realLocX = Convert.ToInt32(Math.Round(rLocX));
-            int realLocY = Convert.ToInt32(Math.Round(rLocY));
-            int realWidth = Convert.ToInt32(Math.Round(rWidth));
-            int realHeight = Convert.ToInt32(Math.Round(rHeight));
+            int realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
+            int realLocY = Convert.ToInt32(Math.Round(rLocY)) + 3;
+            int realWidth = Convert.ToInt32(Math.Round(rWidth)) - 1;
+            int realHeight = Convert.ToInt32(Math.Round(rHeight)) - 1;
 
             // -- Superposition des deux image dans un objet "Graphics" --
             var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
