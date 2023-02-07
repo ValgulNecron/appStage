@@ -50,6 +50,7 @@ namespace CartesAcces
             etablissement.CodeHexa5eme = getCodeHexa5eme();
             etablissement.CodeHexa4eme = getCodeHexa4eme();
             etablissement.CodeHexa3eme = getCodeHexa3eme();
+            etablissement.Bordure = cbBordure.Checked;
             ClassSql.Db.InsertOrReplace(etablissement);
             var macAddress = string.Empty;
             foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())

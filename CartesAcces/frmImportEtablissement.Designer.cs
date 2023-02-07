@@ -79,6 +79,7 @@ namespace CartesAcces
             this.rdbVert6 = new System.Windows.Forms.RadioButton();
             this.rdbJaune6 = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
+            this.cbBordure = new System.Windows.Forms.CheckBox();
             this.gb3eme.SuspendLayout();
             this.gb4eme.SuspendLayout();
             this.gb5eme.SuspendLayout();
@@ -587,11 +588,21 @@ namespace CartesAcces
             this.label7.TabIndex = 74;
             this.label7.Text = "Choix des couleurs des cartes par niveau de classe";
             // 
+            // cbBordure
+            // 
+            this.cbBordure.Location = new System.Drawing.Point(591, 472);
+            this.cbBordure.Name = "cbBordure";
+            this.cbBordure.Size = new System.Drawing.Size(99, 36);
+            this.cbBordure.TabIndex = 75;
+            this.cbBordure.Text = "bordure";
+            this.cbBordure.UseVisualStyleBackColor = true;
+            // 
             // frmImportEtablissement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 573);
+            this.Controls.Add(this.cbBordure);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.gb3eme);
             this.Controls.Add(this.gb4eme);
@@ -631,6 +642,8 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.CheckBox cbBordure;
 
         private System.Windows.Forms.TextBox txtCustom5;
 
