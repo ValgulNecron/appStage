@@ -69,7 +69,7 @@ namespace CarteAccesLib
             applicationWord.Documents.Add();
 
             // -- Marge à 0 pour éviter les espaces blancs entre la page et l'image sur le document --
-            applicationWord.ActiveDocument.PageSetup.TopMargin = 15; // 15 points = env à 0.5 cm
+            applicationWord.ActiveDocument.PageSetup.TopMargin = 15;
             applicationWord.ActiveDocument.PageSetup.RightMargin = 15;
             applicationWord.ActiveDocument.PageSetup.LeftMargin = 15;
             applicationWord.ActiveDocument.PageSetup.BottomMargin = 15;
@@ -210,10 +210,16 @@ namespace CarteAccesLib
             fermerWord();
             if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
             {
-                var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                var realLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-                var realWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                var realHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                double rLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                double rLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                double rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                double rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+
+                // -- Rectifications des positions --
+                int realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
+                int realLocY = Convert.ToInt32(Math.Round(rLocY)) + 3;
+                int realWidth = Convert.ToInt32(Math.Round(rWidth)) - 1;
+                int realHeight = Convert.ToInt32(Math.Round(rHeight)) - 1;
 
                 var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
                 ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
