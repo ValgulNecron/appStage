@@ -95,5 +95,7 @@ namespace CartesAcces
         [Column(Name = "codeHexa4eme")] public string CodeHexa4eme { get; set; }
         
         [Column(Name = "codeHexa3eme")] public string CodeHexa3eme { get; set; }
+        
+        [Column(Name = "bordure")] public string Bordure { get; set; }
     }
 }

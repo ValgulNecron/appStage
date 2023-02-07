@@ -38,7 +38,8 @@ CREATE TABLE etablissement (
 	codeHexa6eme varchar(7),
 	codeHexa5eme varchar(7),
 	codeHexa4eme varchar(7),
-	codeHexa3eme varchar(7)
+	codeHexa3eme varchar(7),
+	bordure bool
 );
 
 INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0);
