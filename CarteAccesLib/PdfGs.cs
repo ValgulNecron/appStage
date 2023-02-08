@@ -9,7 +9,7 @@ namespace CartesAcces
     public static class PdfGs
     {
         private static string outputPath = "./data/image";
-
+        
         public static void getImageFromPdf(string path, int classe)
         {
             switch (classe)
