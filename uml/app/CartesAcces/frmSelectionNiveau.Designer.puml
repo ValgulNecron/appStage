@@ -1,0 +1,7 @@
+@startuml
+class frmSelectNiveau <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmSelectNiveau o-> "components" IContainer
+@enduml

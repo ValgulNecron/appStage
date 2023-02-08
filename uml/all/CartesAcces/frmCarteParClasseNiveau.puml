@@ -1,0 +1,11 @@
+@startuml
+class frmCarteParClasseNiveau <<partial>> {
+    + frmCarteParClasseNiveau()
+    - cbbImprClasse_SelectedIndexChanged(sender:object, e:EventArgs) : void
+    - cbbImprSection_SelectedIndexChanged(sender:object, e:EventArgs) : void
+    + btnValiderImpr_Click(sender:object, e:EventArgs) : void
+    - frmMultiplesCartes_Load(sender:object, e:EventArgs) : void
+    - cbbImprClasse_SelectedIndexChanged_1(sender:object, e:EventArgs) : void
+}
+Form <|-- frmCarteParClasseNiveau
+@enduml

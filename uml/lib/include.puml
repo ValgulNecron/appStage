@@ -1,0 +1,225 @@
+@startuml
+class Chemin <<static>> {
+    + {static} CheminListeEleve : string <<get>> <<set>> = "./data/ImportListeEleve/ImportEleve.csv"
+    + {static} CheminDossierListeEleve : string <<get>> <<set>> = "./data/ImportListeEleve/"
+    + {static} CheminPhotoEleve : string <<get>> <<set>> = "./data/ElevesPhoto/"
+    + {static} CheminEdtClassique : string <<get>> <<set>> = "./data/FichierEdtClasse"
+    + {static} CheminFaceCarte : string <<get>> <<set>> = "./data/FichierCartesFace/"
+    + {static} CheminEdt : string <<get>> <<set>> = ""
+    + {static} setCheminImportationFaceCarte() : string
+    + {static} setCheminImportationFichierExcel() : string
+    + {static} setCheminImportationFichierPdf() : string
+    + {static} setCheminImportationDossier() : string
+}
+class ClassSql <<static>> {
+    + {static} init() : void
+}
+class Utilisateurs {
+    + NomUtilisateur : string <<get>> <<set>>
+    + Hash : string <<get>> <<set>>
+    + TypeUtilisateur : string <<get>> <<set>>
+    + ThemeBool : bool <<get>> <<set>>
+}
+class LogActions {
+    + NomUtilisateur : string <<get>> <<set>>
+    + Action : string <<get>> <<set>>
+    + AdMac : string <<get>> <<set>>
+}
+class Etablissement {
+    + NomEtablissement : string <<get>> <<set>>
+    + NomRueEtablissement : string <<get>> <<set>>
+    + NumeroRueEtablissement : int <<get>> <<set>>
+    + CodePostaleEtablissement : string <<get>> <<set>>
+    + VilleEtablissement : string <<get>> <<set>>
+    + NumeroTelephoneEtablissement : string <<get>> <<set>>
+    + EmailEtablissement : string <<get>> <<set>>
+    + UrlEtablissement : string <<get>> <<set>>
+    + CodeHexa6eme : string <<get>> <<set>>
+    + CodeHexa5eme : string <<get>> <<set>>
+    + CodeHexa4eme : string <<get>> <<set>>
+    + CodeHexa3eme : string <<get>> <<set>>
+    + Bordure : bool <<get>> <<set>>
+}
+ClassSql --> "Db" DataConnection
+LogActions --> "DateAction" DateTime
+LogActions --> "Utilisateur" Utilisateurs
+class Couleur <<static>> {
+    + {static} setCouleurFenetre(fenetre:Form) : void
+    + {static} setCouleurPanel(panel:Panel) : void
+    + {static} setCouleurGroupeBox(groupeBox:GroupBox) : void
+    + {static} setCouleurBouton(btn:Button) : void
+    + {static} setCouleurAutre(controle:Control) : void
+    + {static} setCouleurTextBox(txt:TextBox) : void
+    + {static} setCouleurListBox(lst:ListBox) : void
+    + {static} changement_state_btn(sender:object, e:EventArgs) : void
+}
+class Edition <<static>> {
+    + {static} SelectionClique : bool <<get>> <<set>> = false
+    + {static} RognageX : int <<get>> <<set>>
+    + {static} RognageY : int <<get>> <<set>>
+    + {static} RognageLargeur : int <<get>> <<set>>
+    + {static} RognageHauteur : int <<get>> <<set>>
+    + {static} Drag : bool <<get>> <<set>> = false
+    + {static} PosX : int <<get>> <<set>>
+    + {static} PosY : int <<get>> <<set>>
+    + {static} PosXClassique : int <<get>> <<set>>
+    + {static} PosYClassique : int <<get>> <<set>>
+    + {static} CheminFichier : string <<get>> <<set>>
+    + {static} CheminImpressionFinal : string <<get>> <<set>>
+    + {static} fondTexteCarteFace(objGraphique:Graphics, texte:string, police:Font, posX:int, posY:int, cbbSection:ComboBox) : void
+    + {static} fondTexteCarteFace(objGraphique:Graphics, texte:string, police:Font, eleve:Eleve, posX:int, posY:int) : void
+    + {static} dessineTexteCarteFace(police:Font, posX:int, posY:int, text:string, pbCarteFace:PictureBox, cbbSection:ComboBox) : void
+    + {static} qrCodeFace(pbCarteFace:PictureBox) : void
+    + {static} fondCarteNiveau(pbCarteFace:PictureBox, cbbSection:ComboBox) : void
+    + {static} classePourNiveau(cbbSection:ComboBox, cbbClasse:ComboBox) : void
+    + {static} reprendPrenom(txtPrenom:string, pbCarteFace:PictureBox, cbbSection:ComboBox) : void
+    + {static} reprendNom(txtNom:string, pbCarteFace:PictureBox, cbbSection:ComboBox) : void
+    + {static} getDateFace() : string
+    + {static} checkMef(rdbUlis:RadioButton, rdbUPE2A:RadioButton, rdbClRelais:RadioButton, pbCarteFace:PictureBox, cbbSection:ComboBox, btnEdtPerso:Button, txtNom:TextBox, txtPrenom:TextBox) : void
+    + {static} imageCarteFace(eleve:Eleve) : Image
+    + {static} carteFace(eleve:Eleve, chemin:string) : void
+    + {static} carteArriere(eleve:Eleve, pbCarteArriere:PictureBox) : void
+    + {static} ReplacementPhotoClassique(posx:int, posy:int) : void
+    + {static} importEleves(path:string) : void
+    + {static} importCarteFace(chemin:string) : void
+    + {static} importEdtClassique(chemin:string) : void
+    + {static} importPhoto(chemin:string) : void
+    + {static} gitPoule() : void
+}
+Edition --> "RognagePen" Pen
+class Edt <<static>> {
+    + {static} afficheEmploiDuTemps(cbbClasse:ComboBox, pbCarteArriere:PictureBox) : void
+    + {static} ajouterEdtPerso(pbCarteArriere:PictureBox) : void
+    + {static} rognageEdt(pbCarteArriere:PictureBox, cheminEdt:string) : void
+    + {static} chercheEdtPerso(listeEleve:List<Eleve>, pbCarteArriere:PictureBox) : void
+}
+class Eleve {
+    + Eleve()
+    + NumEleve : int <<get>> <<set>>
+    + NomEleve : string <<get>> <<set>>
+    + PrenomEleve : string <<get>> <<set>>
+    + ClasseEleve : string <<get>> <<set>>
+    + RegimeEleve : string <<get>> <<set>>
+    + OptionUnEleve : string <<get>> <<set>>
+    + OptionDeuxEleve : string <<get>> <<set>>
+    + OptionTroisEleve : string <<get>> <<set>>
+    + OptionQuatreEleve : string <<get>> <<set>>
+    + MefEleve : string <<get>> <<set>>
+    + SansEDT : bool <<get>> <<set>>
+    + {static} setLesClasses() : void
+    + {static} creeCleEleve(eleve:Eleve) : string
+    + {static} possedeEdt(listeEleve:List<Eleve>) : void
+}
+class "List`1"<T> {
+}
+Eleve --> "ListeCleeEleve<string>" "List`1"
+class FichierWord <<static>> {
+    + {static} initWordFile(margeHaute:int, margeDroite:int, margeGauche:int, margeBasse:int) : Application
+    + {static} rectifPositionImages(applicationWord:Application, carteFace1:Shape, carteFace2:Shape) : void
+    + {static} limite50Pages(applicationWord:Application, chemin:string) : void
+    + {static} sauvegardeCarteEnWord(chemin:string, listeEleve:List<Eleve>, pbPhoto:PictureBox, pbCarteArriere:PictureBox) : void
+    + {static} getDossierCarteProvisoire() : void
+    + {static} sauvegardeCarteProvisoireWord(pbCarteArriere:PictureBox, pbPhoto:PictureBox, pbCarteFace:PictureBox, txtNom:TextBox, txtPrenom:TextBox) : void
+    + {static} fermerWord() : void
+}
+class Globale <<static>> {
+    + {static} Cas : int <<get>> <<set>> = 0
+    + {static} Classe : int <<get>> <<set>> = 6
+    + {static} eleveImp : bool = false
+    + {static} testBordure : bool = true
+    + {static} positionPhotoClassique : bool = false
+    + {static} PasDeBar : bool <<get>> <<set>> = false
+    + {static} EstConnecter : bool <<get>> <<set>> = false
+    + {static} NomUtilisateur : string <<get>> <<set>> = ""
+    + {static} EstEnModeSombre : bool <<get>> <<set>> = false
+    + {static} Version1 : string <<get>> <<set>> = "0.3.2"
+    + {static} VersionDate : string <<get>> <<set>> = "18/01/2023"
+    + {static} CheminTexte : string <<get>> <<set>>
+    + {static} CheminPdf : string <<get>> <<set>>
+    + {static} CheminPhoto : string <<get>> <<set>>
+    + {static} CheminEdtClassique : string <<get>> <<set>>
+    + {static} CheminFaceCarte : string <<get>> <<set>>
+    + {static} GitPoule : bool <<get>> <<set>> = true
+}
+class "List`1"<T> {
+}
+class "Tuple`5"<T1,T2,T3,T4,T5> {
+}
+Globale --> "LblDate" Label
+Globale --> "LblCount" Label
+Globale --> "Connexion" Form
+Globale o-> "Classes6Eme<string>" "List`1"
+Globale o-> "Classes5Eme<string>" "List`1"
+Globale o-> "Classes4Eme<string>" "List`1"
+Globale o-> "Classes3Eme<string>" "List`1"
+Globale o-> "ClassesInconnue<string>" "List`1"
+Globale o-> "ListeEleve<Eleve>" "List`1"
+Globale o-> "ListeEleveImpr<Eleve>" "List`1"
+Globale o-> "ListeEleveSansPhoto<Eleve>" "List`1"
+Globale o-> "ListeElevesString<string>" "List`1"
+Globale o-> "CouleurDeFondClaire<int>" "List`1"
+Globale o-> "CouleurDuTexteclaire<int>" "List`1"
+Globale o-> "CouleurBandeauxClaire<int>" "List`1"
+Globale o-> "CouleurBoutonsClaire<int>" "List`1"
+Globale o-> "CouleurTextBoxClaire<int>" "List`1"
+Globale o-> "CouleurBoutonOffClaire<int>" "List`1"
+Globale o-> "CouleurDeFondSombre<int>" "List`1"
+Globale o-> "CouleurDuTexteSombre<int>" "List`1"
+Globale o-> "CouleurBandeauxSombre<int>" "List`1"
+Globale o-> "CouleurBoutonsSombre<int>" "List`1"
+Globale o-> "CouleurTextBoxSombre<int>" "List`1"
+Globale o-> "CouleurBoutonOffSombre<int>" "List`1"
+Globale --> "Actuelle" Form
+Globale --> "Accueil" Form
+Globale --> "PbPhoto" PictureBox
+Globale --> "ListeSauvegardeProvisoire<PictureBox,PictureBox,PictureBox,TextBox,TextBox>" "Tuple`5"
+Globale --> "ListeEleves6Eme<Eleve>" "List`1"
+Globale --> "ListeEleves5Eme<Eleve>" "List`1"
+Globale --> "ListeEleves4Eme<Eleve>" "List`1"
+Globale --> "ListeEleves3Eme<Eleve>" "List`1"
+class PdfGs <<static>> {
+    - {static} outputPath : string = "./data/image"
+    + {static} getImageFromPdf(path:string, classe:int) : void
+    + {static} getTextePdf(path:string) : string
+    + {static} getNomPrenomPdf(pdftext:string) : List<string>
+    + {static} getClassePDF(pdftext:string) : List<string>
+    + {static} renameEdt(pdf:string) : void
+    + {static} getDateFile() : string
+    + {static} valeurParDefault() : void
+}
+class Photo <<static>> {
+    - {static} pasDePhoto : bool = false
+    + {static} verifPhotoEleve(eleve:Eleve, pbPhoto:PictureBox) : void
+    + {static} affichePhotoProvisoire(chemin:string, pbPhoto:PictureBox) : void
+    + {static} proportionPhoto(pbPhoto:PictureBox, pbCarteArriere:PictureBox, eleve:Eleve, path:string) : void
+    + {static} getDatePhotos() : string
+}
+class QRCode <<static>> {
+    + {static} creationQRCode(url:string) : Bitmap
+}
+class ReadCsv <<static>> {
+    + {static} getDataFromCSV(pathCSV:string, numColonne:int) : List<string>
+    + {static} getNumberOfLines(pathCSV:string) : int
+    + {static} setLesEleves(sFilePath:string) : void
+    + {static} rectifClasse(classe:string) : string
+    + {static} getDateFile() : string
+}
+class Securite <<static>> {
+    + {static} PathFolder : string <<get>> <<set>> = "./data/"
+    + {static} creationHash(motDePasse:string) : string
+    + {static} verificationHash(motDePasse:string, savedPasswordHash:string) : bool
+    + {static} validationPrerequisMdp(motDePasse:string) : bool
+    + {static} chiffrerDossier() : void
+    + {static} chiffrerFichier(path:string) : void
+    + {static} dechiffrerDossier() : void
+    + {static} dechiffrerFichier(path:string) : void
+}
+class TailleControle <<static>> {
+    + {static} setTailleControleTexte(form:Form) : void
+    + {static} setTailleControleLabel(form:Form) : void
+    + {static} setTailleBouton(form:Form) : void
+}
+class Trie <<static>> {
+    + {static} recherche(filtre:string, eleves:List<Eleve>) : List<string>
+}
+@enduml

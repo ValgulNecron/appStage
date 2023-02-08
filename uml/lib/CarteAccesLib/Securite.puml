@@ -1,0 +1,12 @@
+@startuml
+class Securite <<static>> {
+    + {static} PathFolder : string <<get>> <<set>> = "./data/"
+    + {static} creationHash(motDePasse:string) : string
+    + {static} verificationHash(motDePasse:string, savedPasswordHash:string) : bool
+    + {static} validationPrerequisMdp(motDePasse:string) : bool
+    + {static} chiffrerDossier() : void
+    + {static} chiffrerFichier(path:string) : void
+    + {static} dechiffrerDossier() : void
+    + {static} dechiffrerFichier(path:string) : void
+}
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class Eleve {
+    + Eleve()
+    + NumEleve : int <<get>> <<set>>
+    + NomEleve : string <<get>> <<set>>
+    + PrenomEleve : string <<get>> <<set>>
+    + ClasseEleve : string <<get>> <<set>>
+    + RegimeEleve : string <<get>> <<set>>
+    + OptionUnEleve : string <<get>> <<set>>
+    + OptionDeuxEleve : string <<get>> <<set>>
+    + OptionTroisEleve : string <<get>> <<set>>
+    + OptionQuatreEleve : string <<get>> <<set>>
+    + MefEleve : string <<get>> <<set>>
+    + SansEDT : bool <<get>> <<set>>
+    + {static} setLesClasses() : void
+    + {static} creeCleEleve(eleve:Eleve) : string
+    + {static} possedeEdt(listeEleve:List<Eleve>) : void
+}
+class "List`1"<T> {
+}
+Eleve --> "ListeCleeEleve<string>" "List`1"
+@enduml

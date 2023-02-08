@@ -1,0 +1,16 @@
+@startuml
+class frmAccueil <<partial>> {
+    + frmAccueil()
+    + {static} OpenChildForm(childForm:Form) : void
+    - frmAccueil_Load(sender:object, e:EventArgs) : void
+    - btnCreerCarte_Click(sender:object, e:EventArgs) : void
+    - btnCarteParClasse_Click(sender:object, e:EventArgs) : void
+    - btnParametres_Click(sender:object, e:EventArgs) : void
+    - pnlContent_Paint(sender:object, e:PaintEventArgs) : void
+    - btnTheme_Click(sender:object, e:EventArgs) : void
+    - btnChangeMdp_Click(sender:object, e:EventArgs) : void
+    - btnAfficheListeEleve_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmAccueil
+frmAccueil --> "frmPassword" Form
+@enduml

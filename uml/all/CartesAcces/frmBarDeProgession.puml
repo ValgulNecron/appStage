@@ -1,0 +1,14 @@
+@startuml
+class barDeProgression <<partial>> {
+    + barDeProgression()
+    - progressBarForm_Load(sender:object, e:EventArgs) : void
+    - backgroundWorker1_DoWork(sender:object, e:DoWorkEventArgs) : void
+    - backgroundWorker1_RunWorkerCompleted(sender:object, e:RunWorkerCompletedEventArgs) : void
+    - cas_1() : void
+    - cas_2() : void
+    - cas_3() : void
+    - cas_4() : void
+    - cas_5() : void
+}
+Form <|-- barDeProgression
+@enduml

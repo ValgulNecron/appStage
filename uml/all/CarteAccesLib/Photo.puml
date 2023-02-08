@@ -1,0 +1,9 @@
+@startuml
+class Photo <<static>> {
+    - {static} pasDePhoto : bool = false
+    + {static} verifPhotoEleve(eleve:Eleve, pbPhoto:PictureBox) : void
+    + {static} affichePhotoProvisoire(chemin:string, pbPhoto:PictureBox) : void
+    + {static} proportionPhoto(pbPhoto:PictureBox, pbCarteArriere:PictureBox, eleve:Eleve, path:string) : void
+    + {static} getDatePhotos() : string
+}
+@enduml

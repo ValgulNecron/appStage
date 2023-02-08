@@ -1,0 +1,57 @@
+@startuml
+class Globale <<static>> {
+    + {static} Cas : int <<get>> <<set>> = 0
+    + {static} Classe : int <<get>> <<set>> = 6
+    + {static} eleveImp : bool = false
+    + {static} testBordure : bool = true
+    + {static} positionPhotoClassique : bool = false
+    + {static} PasDeBar : bool <<get>> <<set>> = false
+    + {static} EstConnecter : bool <<get>> <<set>> = false
+    + {static} NomUtilisateur : string <<get>> <<set>> = ""
+    + {static} EstEnModeSombre : bool <<get>> <<set>> = false
+    + {static} Version1 : string <<get>> <<set>> = "0.3.2"
+    + {static} VersionDate : string <<get>> <<set>> = "18/01/2023"
+    + {static} CheminTexte : string <<get>> <<set>>
+    + {static} CheminPdf : string <<get>> <<set>>
+    + {static} CheminPhoto : string <<get>> <<set>>
+    + {static} CheminEdtClassique : string <<get>> <<set>>
+    + {static} CheminFaceCarte : string <<get>> <<set>>
+    + {static} GitPoule : bool <<get>> <<set>> = true
+}
+class "List`1"<T> {
+}
+class "Tuple`5"<T1,T2,T3,T4,T5> {
+}
+Globale --> "LblDate" Label
+Globale --> "LblCount" Label
+Globale --> "Connexion" Form
+Globale o-> "Classes6Eme<string>" "List`1"
+Globale o-> "Classes5Eme<string>" "List`1"
+Globale o-> "Classes4Eme<string>" "List`1"
+Globale o-> "Classes3Eme<string>" "List`1"
+Globale o-> "ClassesInconnue<string>" "List`1"
+Globale o-> "ListeEleve<Eleve>" "List`1"
+Globale o-> "ListeEleveImpr<Eleve>" "List`1"
+Globale o-> "ListeEleveSansPhoto<Eleve>" "List`1"
+Globale o-> "ListeElevesString<string>" "List`1"
+Globale o-> "CouleurDeFondClaire<int>" "List`1"
+Globale o-> "CouleurDuTexteclaire<int>" "List`1"
+Globale o-> "CouleurBandeauxClaire<int>" "List`1"
+Globale o-> "CouleurBoutonsClaire<int>" "List`1"
+Globale o-> "CouleurTextBoxClaire<int>" "List`1"
+Globale o-> "CouleurBoutonOffClaire<int>" "List`1"
+Globale o-> "CouleurDeFondSombre<int>" "List`1"
+Globale o-> "CouleurDuTexteSombre<int>" "List`1"
+Globale o-> "CouleurBandeauxSombre<int>" "List`1"
+Globale o-> "CouleurBoutonsSombre<int>" "List`1"
+Globale o-> "CouleurTextBoxSombre<int>" "List`1"
+Globale o-> "CouleurBoutonOffSombre<int>" "List`1"
+Globale --> "Actuelle" Form
+Globale --> "Accueil" Form
+Globale --> "PbPhoto" PictureBox
+Globale --> "ListeSauvegardeProvisoire<PictureBox,PictureBox,PictureBox,TextBox,TextBox>" "Tuple`5"
+Globale --> "ListeEleves6Eme<Eleve>" "List`1"
+Globale --> "ListeEleves5Eme<Eleve>" "List`1"
+Globale --> "ListeEleves4Eme<Eleve>" "List`1"
+Globale --> "ListeEleves3Eme<Eleve>" "List`1"
+@enduml

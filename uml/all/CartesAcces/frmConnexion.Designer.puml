@@ -1,0 +1,7 @@
+@startuml
+class frmConnexion <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmConnexion o-> "components" IContainer
+@enduml

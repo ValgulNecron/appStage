@@ -1,0 +1,36 @@
+@startuml
+class Edition <<static>> {
+    + {static} SelectionClique : bool <<get>> <<set>> = false
+    + {static} RognageX : int <<get>> <<set>>
+    + {static} RognageY : int <<get>> <<set>>
+    + {static} RognageLargeur : int <<get>> <<set>>
+    + {static} RognageHauteur : int <<get>> <<set>>
+    + {static} Drag : bool <<get>> <<set>> = false
+    + {static} PosX : int <<get>> <<set>>
+    + {static} PosY : int <<get>> <<set>>
+    + {static} PosXClassique : int <<get>> <<set>>
+    + {static} PosYClassique : int <<get>> <<set>>
+    + {static} CheminFichier : string <<get>> <<set>>
+    + {static} CheminImpressionFinal : string <<get>> <<set>>
+    + {static} fondTexteCarteFace(objGraphique:Graphics, texte:string, police:Font, posX:int, posY:int, cbbSection:ComboBox) : void
+    + {static} fondTexteCarteFace(objGraphique:Graphics, texte:string, police:Font, eleve:Eleve, posX:int, posY:int) : void
+    + {static} dessineTexteCarteFace(police:Font, posX:int, posY:int, text:string, pbCarteFace:PictureBox, cbbSection:ComboBox) : void
+    + {static} qrCodeFace(pbCarteFace:PictureBox) : void
+    + {static} fondCarteNiveau(pbCarteFace:PictureBox, cbbSection:ComboBox) : void
+    + {static} classePourNiveau(cbbSection:ComboBox, cbbClasse:ComboBox) : void
+    + {static} reprendPrenom(txtPrenom:string, pbCarteFace:PictureBox, cbbSection:ComboBox) : void
+    + {static} reprendNom(txtNom:string, pbCarteFace:PictureBox, cbbSection:ComboBox) : void
+    + {static} getDateFace() : string
+    + {static} checkMef(rdbUlis:RadioButton, rdbUPE2A:RadioButton, rdbClRelais:RadioButton, pbCarteFace:PictureBox, cbbSection:ComboBox, btnEdtPerso:Button, txtNom:TextBox, txtPrenom:TextBox) : void
+    + {static} imageCarteFace(eleve:Eleve) : Image
+    + {static} carteFace(eleve:Eleve, chemin:string) : void
+    + {static} carteArriere(eleve:Eleve, pbCarteArriere:PictureBox) : void
+    + {static} ReplacementPhotoClassique(posx:int, posy:int) : void
+    + {static} importEleves(path:string) : void
+    + {static} importCarteFace(chemin:string) : void
+    + {static} importEdtClassique(chemin:string) : void
+    + {static} importPhoto(chemin:string) : void
+    + {static} gitPoule() : void
+}
+Edition --> "RognagePen" Pen
+@enduml

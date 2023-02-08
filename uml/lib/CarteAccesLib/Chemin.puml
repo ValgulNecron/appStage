@@ -1,0 +1,14 @@
+@startuml
+class Chemin <<static>> {
+    + {static} CheminListeEleve : string <<get>> <<set>> = "./data/ImportListeEleve/ImportEleve.csv"
+    + {static} CheminDossierListeEleve : string <<get>> <<set>> = "./data/ImportListeEleve/"
+    + {static} CheminPhotoEleve : string <<get>> <<set>> = "./data/ElevesPhoto/"
+    + {static} CheminEdtClassique : string <<get>> <<set>> = "./data/FichierEdtClasse"
+    + {static} CheminFaceCarte : string <<get>> <<set>> = "./data/FichierCartesFace/"
+    + {static} CheminEdt : string <<get>> <<set>> = ""
+    + {static} setCheminImportationFaceCarte() : string
+    + {static} setCheminImportationFichierExcel() : string
+    + {static} setCheminImportationFichierPdf() : string
+    + {static} setCheminImportationDossier() : string
+}
+@enduml

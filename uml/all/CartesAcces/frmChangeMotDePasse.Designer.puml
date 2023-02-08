@@ -1,0 +1,7 @@
+@startuml
+class frmChangeMotDePasse <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmChangeMotDePasse o-> "components" IContainer
+@enduml
