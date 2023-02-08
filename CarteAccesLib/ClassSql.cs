@@ -4,6 +4,7 @@ using LinqToDB;
 using LinqToDB.Data;
 using LinqToDB.Mapping;
 
+
 namespace CartesAcces
 {
     public static class ClassSql
