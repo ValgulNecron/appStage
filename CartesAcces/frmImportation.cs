@@ -294,11 +294,11 @@ namespace CartesAcces
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
             }
-
             catch
-
             {
             }
+
+            Globale.GitPoule = false;
         }
     }
 }
