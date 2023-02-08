@@ -9,7 +9,7 @@ Admin -> User
 
 (Connexion) as login
 
-create => login
+create -o login
 User -------> login
 Admin -> create
 
@@ -21,12 +21,12 @@ User -> import
 User --> carteLs
 User --> carteP
 User --> carteS
-import => login
-carteLs => login
-carteP => login
-carteS => login
-carteLs ==> import
-carteP ==> import
-carteS ==> import
+import -o login
+carteLs -o login
+carteP -o login
+carteS -o login
+carteLs --o import
+carteP --o import
+carteS --o import
     
 @enduml
