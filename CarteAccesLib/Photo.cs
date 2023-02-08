@@ -10,7 +10,6 @@ namespace CarteAcces
 {
     public static class Photo
     {
-        private static bool pasDePhoto = false;
         public static void verifPhotoEleve(Eleve eleve, PictureBox pbPhoto)
         {
             var nomFichierJPG = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
@@ -21,8 +20,10 @@ namespace CarteAcces
             else if (File.Exists("./data/ElevesPhoto/" + nomFichierPNG))
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierPNG);
             else
-                pasDePhoto = true;
+            {
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/edition.jpg");
+            }
+                
         }
 
         public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
@@ -43,17 +44,17 @@ namespace CarteAcces
             double rWidth = 0.0;
             double rHeight = 0.0;
             
-            if (pasDePhoto)
+            if (eleve.SansEDT)
             {
-                rLocX = Edition.PosYClassique * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                rLocY = Edition.PosXClassique * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                rLocX = Edition.PosXClassique * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                rLocY = Edition.PosYClassique * pbCarteArriere.Image.Height / pbCarteArriere.Height;
                 rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
                 rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
             }
             else
             {
-                rLocX = Edition.PosX * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                rLocY = Edition.PosY * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                rLocX = Edition.PosXDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                rLocY = Edition.PosYDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
                 rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
                 rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
             }
