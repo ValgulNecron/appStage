@@ -7,10 +7,19 @@ using LinqToDB.Mapping;
 
 namespace CartesAcces
 {
+    /*
+     * Cette classe permet de se connecter à la base de données
+     * Elle contient une variable statique qui permet de se connecter à la base de données
+     * Elle contient une fonction statique qui permet d'initialiser la variable statique
+     */
     public static class ClassSql
     {
         public static DataConnection Db { get; set; }
 
+        /*
+         * Cette fonction permet d'initialiser la variable statique
+         * Elle lit le fichier de configuration et initialise la variable statique
+         */
         public static void init()
         {
             var doc = new XmlDocument();
@@ -32,6 +41,9 @@ namespace CartesAcces
         }
     }
 
+    /*
+     * Cette classe permet de gérer les utilisateurs
+     */
     [Table(Name = "utilisateur")]
     public class Utilisateurs
     {
@@ -47,6 +59,9 @@ namespace CartesAcces
     }
 
 
+    /*
+     * Cette classe permet de gérer les logActions
+     */
     [Table(Name = "logAction")]
     public class LogActions
     {
@@ -66,6 +81,9 @@ namespace CartesAcces
         public Utilisateurs Utilisateur { get; set; }
     }
 
+    /*
+     * Cette classe permet de gérer les etablissements
+     */
     [Table(Name = "etablissement")]
     public class Etablissement
     {
