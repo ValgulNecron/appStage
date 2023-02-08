@@ -364,19 +364,20 @@ namespace CartesAcces
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
             
             //Dessine et rempli le fond pour l'écriture
-            fondTexteCarteFace(objGraphique, eleve.NomEleve, police, eleve, 250, 960);
-            fondTexteCarteFace(objGraphique, eleve.PrenomEleve, police, eleve, 350, 1075);
-            fondTexteCarteFace(objGraphique, eleve.MefEleve, police2, eleve, 50, 70);
 
             //Dessine la saisie en textbox
+            fondTexteCarteFace(objGraphique, "Nom : " + eleve.NomEleve, police3, eleve, 250, 960);
             objGraphique.DrawString("Nom : " + eleve.NomEleve, police3, pinceauNoir, 250,
                 960); // Dessine le texte sur l'image à la position X et Y + couleur
+            fondTexteCarteFace(objGraphique, "Prenom : " + eleve.PrenomEleve, police3, eleve, 350, 1075);
             objGraphique.DrawString("Prenom : " + eleve.PrenomEleve, police3, pinceauNoir, 350, 1075);
-            objGraphique.DrawString(eleve.MefEleve, police2, pinceauNoir, 50, 70);
-            objGraphique.Dispose(); // Libère les ressources
             
+            fondTexteCarteFace(objGraphique, eleve.MefEleve, police, eleve, 50, 70);
+            objGraphique.DrawString(eleve.MefEleve, police, pinceauNoir, 50, 70);
+
             string chaine = "Date de création : " + date;
             int mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
+            fondTexteCarteFace(objGraphique,chaine, police2, eleve, 1835 - mesure, 850);
             objGraphique.DrawString(chaine, police2, pinceauNoir, 1835 - mesure, 850);
 
             chaine = etab.NomEtablissement;
@@ -398,7 +399,8 @@ namespace CartesAcces
             chaine = "Mail : " + etab.EmailEtablissement;
             mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
             objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 1100);
-
+            objGraphique.Dispose(); // Libère les ressources
+            
             return image;
         }
 
