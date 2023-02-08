@@ -42,8 +42,6 @@ namespace CartesAcces
             this.btnImporterUnEtablissement = new System.Windows.Forms.Button();
             this.btCreationUtilisateur = new System.Windows.Forms.Button();
             this.btnImportFaceCarte = new System.Windows.Forms.Button();
-            this.lblImportFaceCarte = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,33 +195,12 @@ namespace CartesAcces
             this.btnImportFaceCarte.UseVisualStyleBackColor = true;
             this.btnImportFaceCarte.Click += new System.EventHandler(this.btnImportFaceCarte_Click);
             // 
-            // lblImportFaceCarte
-            // 
-            this.lblImportFaceCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImportFaceCarte.Location = new System.Drawing.Point(686, 454);
-            this.lblImportFaceCarte.Name = "lblImportFaceCarte";
-            this.lblImportFaceCarte.Size = new System.Drawing.Size(258, 23);
-            this.lblImportFaceCarte.TabIndex = 41;
-            this.lblImportFaceCarte.Text = "Aucune Importation";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(545, 454);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 16);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Dernière importation :";
-            // 
             // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1196, 749);
-            this.Controls.Add(this.lblImportFaceCarte);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnImportFaceCarte);
             this.Controls.Add(this.btCreationUtilisateur);
             this.Controls.Add(this.btnImporterUnEtablissement);
@@ -251,8 +228,6 @@ namespace CartesAcces
         private System.Windows.Forms.Button btnImportLogo;
 
         private System.Windows.Forms.Button btnImportFaceCarte;
-        private System.Windows.Forms.Label lblImportFaceCarte;
-        private System.Windows.Forms.Label label4;
 
         private System.Windows.Forms.Button btCreationUtilisateur;
 

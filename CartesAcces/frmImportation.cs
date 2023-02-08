@@ -29,7 +29,6 @@ namespace CartesAcces
             lblDateListeEleve.Text = ReadCsv.getDateFile();
             lblEdtEleve.Text = PdfGs.getDateFile();
             lblPhotoEleve.Text = Photo.getDatePhotos();
-            lblImportFaceCarte.Text = Edition.getDateFace();
         }
 
         private void OpenChildForm(Form childForm)
@@ -245,7 +244,6 @@ namespace CartesAcces
         {
             try
             {
-                lblImportFaceCarte = Globale.LblDate;
                 Globale.CheminFaceCarte = Chemin.setCheminImportationFaceCarte();
 
                 Globale.PasDeBar = true;
