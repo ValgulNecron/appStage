@@ -17,6 +17,10 @@ namespace CartesAcces
             if (Globale.PasDeBar) rdbClassique.Visible = false;
         }
 
+        /*
+         * Cette fonction permet de valider la selection du niveau
+         * elle lance la barre de progression avec le cas 3
+         */
         private void btnValider_Click(object sender, EventArgs e)
         {
             if (rdb3eme.Checked)

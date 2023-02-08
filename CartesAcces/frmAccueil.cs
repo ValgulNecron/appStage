@@ -7,7 +7,6 @@ namespace CartesAcces
 {
     public partial class frmAccueil : Form
     {
-        public static Timer timer;
         private Form frmPassword;
 
         public frmAccueil()
@@ -76,8 +75,6 @@ namespace CartesAcces
             if (dir3.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
                 MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le dernier import des listes eleves");
             
-            timer = new Timer(this);
-
             try
             {
                 var image = Image.FromFile("./data/FichierCartesFace/logo.png");
@@ -95,7 +92,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCarteProvisoire();
             Text = "CARTE D'ACCES - CARTE PROVISOIRE";
-            timer.ajoutEvenement();
+            frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
@@ -103,7 +100,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCarteParClasseNiveau();
             Text = "CARTE D'ACCES - CARTE PAR CLASSE";
-            timer.ajoutEvenement();
+            frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
@@ -111,7 +108,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmImportation();
             Text = "CARTE D'ACCES - IMPORTATION";
-            timer.ajoutEvenement();
+            frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
@@ -151,7 +148,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCartesParListe();
             Text = "CARTE D'ACCES - CARTE PAR LISTE";
-            timer.ajoutEvenement();
+            frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
     }

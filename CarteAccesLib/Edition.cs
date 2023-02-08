@@ -459,7 +459,7 @@ namespace CartesAcces
                 ReadCsv.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
 
-                MessageBox.Show(new Form { TopMost = true }, "Import Réussi");
+                MessageBox.Show(new Form { TopMost = true }, "L'importation du fichier CSV a réussi");
             }
             catch (Exception e)
             {
@@ -569,15 +569,15 @@ namespace CartesAcces
                     img.Save(cheminDestination + nom, ImageFormat.Png);
                     img.Dispose();
                 }
-
-                MessageBox.Show(new Form {TopMost = true }, " Les photos du dossier ont été importés");
-
+                
                 Globale.Actuelle.Invoke(new MethodInvoker(delegate
                 {
                     foreach (Control controle in Globale.Actuelle.Controls)
                         if (controle is Label && controle.Name == "lblDateListeEleve")
                             controle.Text = ReadCsv.getDateFile();
                 }));
+                
+                MessageBox.Show(new Form {TopMost = true }, " Les photos du dossier ont été importés");
             }
             catch (Exception e)
             {

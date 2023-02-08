@@ -9,7 +9,13 @@ namespace CartesAcces
     public static class PdfGs
     {
         private static string outputPath = "./data/image";
-        
+
+        /*
+         * Cette fonction permet de récupérer les images d'un pdf
+         * @param path : le chemin vers le pdf
+         * @param classe : la classe de l'élève
+         * la fonction va créer un dossier dans le dossier image en fonction de la classe de l'élève
+         */
         public static void getImageFromPdf(string path, int classe)
         {
             switch (classe)

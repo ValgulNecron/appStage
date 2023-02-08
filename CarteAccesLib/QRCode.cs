@@ -5,6 +5,11 @@ namespace CarteAccesLib
 {
     public static class QRCode
     {
+        /*
+         * Cette fonction permet de créer un QRCode à partir d'une url
+         * @param url : l'url à encoder
+         * @return un bitmap contenant le QRCode
+         */
         public static Bitmap creationQRCode(string url)
         {
             var qrGenerator = new QRCodeGenerator();

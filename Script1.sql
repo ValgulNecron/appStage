@@ -12,7 +12,7 @@ CREATE TABLE utilisateur (
 CREATE TABLE logAction (
 	dateAction datetime,
 	nomUtilisateur varchar(20),
-	action varchar(50),
+	action varchar(300),
 	adMac varchar(20),
 	FOREIGN KEY (nomUtilisateur) REFERENCES utilisateur(nomUtilisateur),
 	PRIMARY KEY (dateAction, nomUtilisateur)
