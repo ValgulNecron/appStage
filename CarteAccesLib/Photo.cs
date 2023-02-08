@@ -10,6 +10,7 @@ namespace CarteAcces
 {
     public static class Photo
     {
+        private static bool pasDePhoto = false;
         public static void verifPhotoEleve(Eleve eleve, PictureBox pbPhoto)
         {
             var nomFichierJPG = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
@@ -20,6 +21,7 @@ namespace CarteAcces
             else if (File.Exists("./data/ElevesPhoto/" + nomFichierPNG))
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierPNG);
             else
+                pasDePhoto = true;
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/edition.jpg");
         }
 
@@ -36,10 +38,25 @@ namespace CarteAcces
             // -- Calcul par proportionnalité de la position et des dimensions de la photo sur le cadre de l'application par rapport a l'image réelle --
             // -- Cela permet de répercuter les déplacements effectués par l'utilisateur sur l'image originelle afin de pouvoir réutiliser celle ci --
             // -- Et ainsi ne pas perdre en qualité de l'image --
-            double rLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-            double rLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-            double rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-            double rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+            double rLocX = 0.0;
+            double rLocY = 0.0;
+            double rWidth = 0.0;
+            double rHeight = 0.0;
+            
+            if (pasDePhoto)
+            {
+                rLocX = Edition.PosYClassique * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                rLocY = Edition.PosXClassique * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+            }
+            else
+            {
+                rLocX = Edition.PosX * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                rLocY = Edition.PosY * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+            }
 
             int realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
             int realLocY = Convert.ToInt32(Math.Round(rLocY)) + 3;

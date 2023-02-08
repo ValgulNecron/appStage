@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CarteAcces;
@@ -163,6 +165,15 @@ namespace CartesAcces
 
         private void btnValiderImpr_Click(object sender, EventArgs e)
         {
+            if (Globale.positionPhotoClassique == false)
+            {
+                MessageBox.Show("Veuillez placer la photo une seconde fois pour les emplois du temps classiques");
+                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + Globale.ListeEleveImpr[0].ClasseEleve + ".jpg");
+                Edition.ReplacementPhotoClassique(pbPhoto.Left, pbPhoto.Top);
+                Globale.positionPhotoClassique = true;
+                return;
+            }
+            
             try
             {
                 // -- Si la liste est impaire, on double le dernier élève
@@ -192,7 +203,7 @@ namespace CartesAcces
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-
+                
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
                 log.NomUtilisateur = Globale.NomUtilisateur;

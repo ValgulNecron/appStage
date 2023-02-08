@@ -85,6 +85,7 @@ namespace CarteAccesLib
             var fichierWord = initWordFile(15, 15, 15, 15);
 
             Globale.LblCount.Visible = true;
+            MessageBox.Show(listeEleve.Count.ToString());
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
                 Globale.LblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString();

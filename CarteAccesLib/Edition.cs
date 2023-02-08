@@ -35,6 +35,10 @@ namespace CartesAcces
         public static int PosX { get; set; }
 
         public static int PosY { get; set; }
+        
+        public static int PosXClassique{ get; set; }
+
+        public static int PosYClassique { get; set; }
 
         // ** VARIABLES : Chemin de l'image **
         public static string CheminFichier { get; set; }
@@ -345,30 +349,55 @@ namespace CartesAcces
             }
         }
 
-        public static Image imageCarteFace(Eleve eleve, Font police)
+        public static Image imageCarteFace(Eleve eleve)
         {
             var image = Image.FromFile("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0, 1) + "eme.png");
             var objGraphique = Graphics.FromImage(image);
             Brush pinceauNoir = new SolidBrush(Color.Black);
-
-            var police2 = new Font("times new roman", 30, FontStyle.Bold);
-            var police3 = new Font("times new roman", 15, FontStyle.Bold);
+            
+            var police = new Font("Calibri", 45, FontStyle.Bold);
+            var police2 = new Font("Calibri", 15, FontStyle.Bold);
+            var police3 = new Font("Calibri", 28, FontStyle.Bold);
+            var police4 = new Font("Calibri", 20, FontStyle.Bold);
 
             var date = DateTime.Today.ToShortDateString();
-
+            var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+            
             //Dessine et rempli le fond pour l'écriture
             fondTexteCarteFace(objGraphique, eleve.NomEleve, police, eleve, 250, 960);
             fondTexteCarteFace(objGraphique, eleve.PrenomEleve, police, eleve, 350, 1075);
             fondTexteCarteFace(objGraphique, eleve.MefEleve, police2, eleve, 50, 70);
-            fondTexteCarteFace(objGraphique, "Date de création: " + date, police3, eleve, 870, 875);
 
             //Dessine la saisie en textbox
-            objGraphique.DrawString(eleve.NomEleve, police, pinceauNoir, 250,
+            objGraphique.DrawString("Nom : " + eleve.NomEleve, police3, pinceauNoir, 250,
                 960); // Dessine le texte sur l'image à la position X et Y + couleur
-            objGraphique.DrawString(eleve.PrenomEleve, police, pinceauNoir, 350, 1075);
+            objGraphique.DrawString("Prenom : " + eleve.PrenomEleve, police3, pinceauNoir, 350, 1075);
             objGraphique.DrawString(eleve.MefEleve, police2, pinceauNoir, 50, 70);
-            objGraphique.DrawString("Date de création: " + date, police3, pinceauNoir, 870, 875);
             objGraphique.Dispose(); // Libère les ressources
+            
+            string chaine = "Date de création : " + date;
+            int mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
+            objGraphique.DrawString(chaine, police2, pinceauNoir, 1835 - mesure, 850);
+
+            chaine = etab.NomEtablissement;
+            mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
+            objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 892);
+       
+            chaine = "Adresse : " + etab.NumeroRueEtablissement + " " + etab.NomRueEtablissement;
+            mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
+            objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 944);
+
+            chaine = etab.CodePostaleEtablissement + " " + etab.VilleEtablissement;
+            mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
+            objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 996);
+          
+            chaine = "Tel : " + etab.NumeroTelephoneEtablissement;
+            mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
+            objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 1048);
+
+            chaine = "Mail : " + etab.EmailEtablissement;
+            mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
+            objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 1100);
 
             return image;
         }
@@ -382,12 +411,12 @@ namespace CartesAcces
             if (eleve.NomEleve.Length > 10 || eleve.PrenomEleve.Length > 10)
             {
                 var police = new Font("times new roman", 20, FontStyle.Bold);
-                imageFace = imageCarteFace(eleve, police);
+                imageFace = imageCarteFace(eleve);
             }
             else
             {
                 var police = new Font("times new roman", 25, FontStyle.Bold);
-                imageFace = imageCarteFace(eleve, police);
+                imageFace = imageCarteFace(eleve);
             }
 
             // -- Sauvegarde l'image --
@@ -405,10 +434,16 @@ namespace CartesAcces
             }
             else
             {
-                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + eleve.ClasseEleve + ".png");
+                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + eleve.ClasseEleve + ".jpg");
             }
         }
 
+        public static void ReplacementPhotoClassique(int posx, int posy)
+        {
+            PosYClassique = posy;
+            PosXClassique = posx;
+        }   
+        
         public static void importEleves(string path)
         {
             var cheminSource = path;

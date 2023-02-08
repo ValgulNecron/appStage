@@ -15,6 +15,8 @@ namespace CartesAcces
         public static bool eleveImp = false;
 
         public static bool testBordure = true;
+
+        public static bool positionPhotoClassique = false;
         
         public static Form Connexion
         { get; set; }
