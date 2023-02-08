@@ -11,12 +11,19 @@ TO DO :
 POUR LE RAPPORT DE STAGE (ballec) :
 
 - un diagramme de cas d’utilisation, (IAN FAIT)
-- une analyse RGPD, (DAVID)
+- une analyse RGPD, (DAVID A FAIRE)
+- rédaction un guide de l'utilisateur (DAVID EN COURS)
+- réaliser une vidéo de présentation de l'application (DAVID A FAIRE)
+- rédaction la documentation pour la base de données (DAVID FAIT)
+- rédaction du guide pour le SysAdmin (DAVID FAIT)
+- rédaction du cahier des charges (DAVID A FAIRE)
+- rédaction la documentation technique de l'application (DAVID, IAN, YANN A FAIRE)
+- lister et documenter les référentiels utilisés dans votre entreprise (DAVID A FAIRE)
+- rédaction rapide de versionning et gestion de projet (DAVID A FAIRE)
 - présentez la mise en œuvre de la sécurité (B3/CEJMA) pour votre solution, (YANN FAIT)
 - une analyse de l’impact environnemental / informatique verte 
 - une analyse des coûts, des délais, des calculs. (YANN)
 - une analyse du contenu du site web réalisé ou en place, (IAN)
-- Lister et documenter les référentiels utilisés dans votre entreprise. 
 - (utilisable pour l’épreuve B1/E4 en lien avec le portefeuille)
 
 
