@@ -14,33 +14,43 @@ namespace CartesAcces
          */
     public class Timer
     {
-        private readonly int dureeMinute = 15;
-        private readonly Form form;
-        private readonly int frequenceDesVerifEnMinute = 1;
-        private readonly System.Timers.Timer timer;
+        // valeur en minute de la durée d'inactivité avant déconnexion
+        public static int DureeMinute { get; set; } = 15;
+        public Form Form1 { get; set; }
+        // valeur en minute de la fréquence de vérification
+        public int FrequenceDesVerifEnMinute { get; set;} = 1;
+        public System.Timers.Timer Timer1 { get; set; }
         private DateTime start;
 
+        /*
+         * constructeur de la classe
+         * @param form : l'objet de la fenêtre à surveiller
+         * il faut initialiser la classe avec l'objet de la fenêtre à surveiller
+         */
         public Timer(Form form)
         {
-            this.form = form;
+            this.Form1 = form;
             start = DateTime.Now;
-            timer = new System.Timers.Timer();
-            timer.Interval = frequenceDesVerifEnMinute * 60 * 1000;
-            timer.Elapsed += OnTimeEvent;
-            timer.Enabled = true;
-            timer.AutoReset = true;
-            timer.Start();
-            this.form.MouseMove += Form_MouseMove;
+            Timer1 = new System.Timers.Timer();
+            Timer1.Interval = FrequenceDesVerifEnMinute * 60 * 1000;
+            Timer1.Elapsed += OnTimeEvent;
+            Timer1.Enabled = true;
+            Timer1.AutoReset = true;
+            Timer1.Start();
+            this.Form1.MouseMove += Form_MouseMove;
             Globale.Accueil.MouseMove += Form_MouseMove;
         }
 
+        /*
+         * cette fonction permet d'ajouter un événement à la fenêtre à surveiller
+         */
         public void ajoutEvenement()
         {
-            form.MouseMove += Form_MouseMove;
+            Form1.MouseMove += Form_MouseMove;
             Globale.Accueil.MouseMove += Form_MouseMove;
             Globale.Actuelle.MouseMove += Form_MouseMove;
         }
-
+        
         private void Form_MouseMove(object sender, MouseEventArgs e)
         {
             start = DateTime.Now;
@@ -48,7 +58,7 @@ namespace CartesAcces
 
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
-            if (start.Add(TimeSpan.FromMinutes(dureeMinute)) <= DateTime.Now)
+            if (start.Add(TimeSpan.FromMinutes(DureeMinute)) <= DateTime.Now)
                 if (Globale.EstConnecter)
                 {
                     Globale.EstConnecter = false;

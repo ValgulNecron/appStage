@@ -15,6 +15,8 @@ namespace CartesAcces
      */
     public partial class frmConnexion : Form
     {
+        public static Timer timer;
+
         public frmConnexion()
         {
             InitializeComponent();
@@ -96,6 +98,7 @@ namespace CartesAcces
                         log.Action = "C'est connecter au logiciel";
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);
+                        timer = new Timer(Globale.Accueil);
                     }
                 }
                 catch (Exception ex)
@@ -107,7 +110,6 @@ namespace CartesAcces
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
-               
             }
         }
 
