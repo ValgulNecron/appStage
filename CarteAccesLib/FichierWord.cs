@@ -42,13 +42,21 @@ namespace CarteAccesLib
              * Et enfin on gère la hauteur des deux images pour que celles ci aient les mêmes dimensions.
             */
 
+            carteFace1.Height = 379;
+
+            //MessageBox.Show(carteFace1.Height.ToString());
+
             carteFace1.Top = 0;
             carteFace1.Left = 0;
 
-            carteFace1.Height = carteFace1.Height - 20;
-            carteFace2.RelativeVerticalPosition = WdRelativeVerticalPosition.wdRelativeVerticalPositionPage;
-            carteFace2.Top = applicationWord.InchesToPoints(11 - carteFace1.Height / 72);
             carteFace2.Height = carteFace1.Height;
+            carteFace2.Top = carteFace1.Height + 50;
+            carteFace2.Left = 0;
+
+            // carteFace1.Height = carteFace1.Height - 20;
+            // carteFace2.RelativeVerticalPosition = WdRelativeVerticalPosition.wdRelativeVerticalPositionPage;
+            // carteFace2.Top = applicationWord.InchesToPoints(11 - carteFace1.Height / 72);
+            // carteFace2.Height = carteFace1.Height;
         }
 
         public static void limite50Pages(Application applicationWord, string chemin)
@@ -85,7 +93,6 @@ namespace CarteAccesLib
             var fichierWord = initWordFile(15, 15, 15, 15);
 
             Globale.LblCount.Visible = true;
-            MessageBox.Show(listeEleve.Count.ToString());
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
                 Globale.LblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString();
@@ -112,8 +119,9 @@ namespace CarteAccesLib
                 //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
                 GC.Collect();
                 // -- Nouvelle page --
-                fichierWord.Selection.EndKey();
-                fichierWord.Selection.InsertNewPage();
+                //fichierWord.Selection.InsertNewPage();
+                fichierWord.Selection.EndKey(WdUnits.wdStory, System.Reflection.Missing.Value);
+                fichierWord.Selection.InsertBreak(WdBreakType.wdSectionBreakNextPage);
 
                 // ------------------------------------------------------------------
 
@@ -147,9 +155,9 @@ namespace CarteAccesLib
                 GC.Collect();
 
                 // -- Nouvelle page --
-
-                fichierWord.Selection.EndKey();
-                fichierWord.Selection.InsertNewPage();
+                fichierWord.Selection.EndKey(WdUnits.wdStory, System.Reflection.Missing.Value);
+                fichierWord.Selection.InsertBreak(WdBreakType.wdSectionBreakNextPage);
+                //fichierWord.Selection.InsertBreak(WdBreakType.wdPageBreak);
 
                 if (compt > k + 50)
                 {
