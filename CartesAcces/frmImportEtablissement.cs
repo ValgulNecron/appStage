@@ -381,5 +381,15 @@ namespace CartesAcces
             else
                 txtCustom3.Visible = false;
         }
+
+        private void cbBordure_CheckedChanged(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

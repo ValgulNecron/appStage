@@ -153,12 +153,12 @@ namespace CartesAcces
             // 
             this.btnSuppr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnSuppr.Location = new System.Drawing.Point(424, 123);
-            this.btnSuppr.MaximumSize = new System.Drawing.Size(180, 22);
-            this.btnSuppr.MinimumSize = new System.Drawing.Size(180, 22);
+            this.btnSuppr.MaximumSize = new System.Drawing.Size(270, 40);
+            this.btnSuppr.MinimumSize = new System.Drawing.Size(270, 40);
             this.btnSuppr.Name = "btnSuppr";
-            this.btnSuppr.Size = new System.Drawing.Size(180, 22);
+            this.btnSuppr.Size = new System.Drawing.Size(270, 40);
             this.btnSuppr.TabIndex = 8;
-            this.btnSuppr.Text = "supprimer";
+            this.btnSuppr.Text = "Supprimer l\'utilisateur de la base de données qui se situe à gauche du bouton";
             this.btnSuppr.UseVisualStyleBackColor = true;
             this.btnSuppr.Click += new System.EventHandler(this.btnSuppr_Click);
             // 

@@ -192,7 +192,7 @@ namespace CartesAcces
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-
+                
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
                 log.NomUtilisateur = Globale.NomUtilisateur;
