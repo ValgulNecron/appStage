@@ -1,0 +1,12 @@
+@startuml
+class Couleur <<static>> {
+    + {static} setCouleurFenetre(fenetre:Form) : void
+    + {static} setCouleurPanel(panel:Panel) : void
+    + {static} setCouleurGroupeBox(groupeBox:GroupBox) : void
+    + {static} setCouleurBouton(btn:Button) : void
+    + {static} setCouleurAutre(controle:Control) : void
+    + {static} setCouleurTextBox(txt:TextBox) : void
+    + {static} setCouleurListBox(lst:ListBox) : void
+    + {static} changement_state_btn(sender:object, e:EventArgs) : void
+}
+@enduml

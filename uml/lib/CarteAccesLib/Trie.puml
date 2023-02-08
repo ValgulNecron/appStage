@@ -1,0 +1,5 @@
+@startuml
+class Trie <<static>> {
+    + {static} recherche(filtre:string, eleves:List<Eleve>) : List<string>
+}
+@enduml

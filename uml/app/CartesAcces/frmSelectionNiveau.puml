@@ -1,0 +1,7 @@
+@startuml
+class frmSelectNiveau <<partial>> {
+    + frmSelectNiveau()
+    - btnValider_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmSelectNiveau
+@enduml

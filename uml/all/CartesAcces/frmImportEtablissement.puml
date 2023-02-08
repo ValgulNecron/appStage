@@ -1,0 +1,20 @@
+@startuml
+class frmImportEtablissement <<partial>> {
+    + frmImportEtablissement()
+    - btnValider_Click(sender:object, e:EventArgs) : void
+    - label6_Click(sender:object, e:EventArgs) : void
+    - frmImportEtablissement_Load(sender:object, e:EventArgs) : void
+    - GetCodeHexa6Eme() : string
+    - GetCodeHexa5Eme() : string
+    - GetCodeHexa4Eme() : string
+    - GetCodeHexa3Eme() : string
+    - rdbCustom6_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbCustom5_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbCustom4_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbCustom3_CheckedChanged(sender:object, e:EventArgs) : void
+    - cbBordure_CheckedChanged(sender:object, e:EventArgs) : void
+    - label7_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmImportEtablissement
+frmImportEtablissement --> "etaDebut" Etablissement
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class frmConnexion <<partial>> {
+    + frmConnexion()
+    + on_Visibility_Change(sender:object, e:EventArgs) : void
+    - Connexion() : void
+    - btnConnexion_Click(sender:object, e:EventArgs) : void
+    - button1_Click(sender:object, e:EventArgs) : void
+    - btnChiffre_Click(sender:object, e:EventArgs) : void
+    - btnDechiffre_Click(sender:object, e:EventArgs) : void
+    - frmConnexion_Load(sender:object, e:EventArgs) : void
+    - txtMotDePasse_KeyDown(sender:object, e:KeyEventArgs) : void
+}
+Form <|-- frmConnexion
+frmConnexion --> "timer" Timer
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+class ReadCsv <<static>> {
+    + {static} getDataFromCSV(pathCSV:string, numColonne:int) : List<string>
+    + {static} getNumberOfLines(pathCSV:string) : int
+    + {static} setLesEleves(sFilePath:string) : void
+    + {static} rectifClasse(classe:string) : string
+    + {static} getDateFile() : string
+}
+@enduml

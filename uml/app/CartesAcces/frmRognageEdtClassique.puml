@@ -1,0 +1,16 @@
+@startuml
+class frmRognageEdtClassique <<partial>> {
+    + frmRognageEdtClassique()
+    - frmRognageEdtClassique_Load(sender:object, e:EventArgs) : void
+    - btnRogner_Click(sender:object, e:EventArgs) : void
+    - pbEdtClassique_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbEdtClassique_MouseUp(sender:object, e:MouseEventArgs) : void
+    - pbEdtClassique_MouseMove(sender:object, e:MouseEventArgs) : void
+    - btnAnnuler_Click(sender:object, e:EventArgs) : void
+    - btnValider_Click(sender:object, e:EventArgs) : void
+}
+class "List`1"<T> {
+}
+Form <|-- frmRognageEdtClassique
+frmRognageEdtClassique o-> "listeFichiers<string>" "List`1"
+@enduml

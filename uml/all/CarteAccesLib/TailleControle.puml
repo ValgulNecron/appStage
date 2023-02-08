@@ -1,0 +1,7 @@
+@startuml
+class TailleControle <<static>> {
+    + {static} setTailleControleTexte(form:Form) : void
+    + {static} setTailleControleLabel(form:Form) : void
+    + {static} setTailleBouton(form:Form) : void
+}
+@enduml

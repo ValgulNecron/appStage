@@ -1,0 +1,7 @@
+@startuml
+class frmImportEtablissement <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmImportEtablissement o-> "components" IContainer
+@enduml

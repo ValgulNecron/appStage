@@ -1,0 +1,34 @@
+@startuml
+class ClassSql <<static>> {
+    + {static} init() : void
+}
+class Utilisateurs {
+    + NomUtilisateur : string <<get>> <<set>>
+    + Hash : string <<get>> <<set>>
+    + TypeUtilisateur : string <<get>> <<set>>
+    + ThemeBool : bool <<get>> <<set>>
+}
+class LogActions {
+    + NomUtilisateur : string <<get>> <<set>>
+    + Action : string <<get>> <<set>>
+    + AdMac : string <<get>> <<set>>
+}
+class Etablissement {
+    + NomEtablissement : string <<get>> <<set>>
+    + NomRueEtablissement : string <<get>> <<set>>
+    + NumeroRueEtablissement : int <<get>> <<set>>
+    + CodePostaleEtablissement : string <<get>> <<set>>
+    + VilleEtablissement : string <<get>> <<set>>
+    + NumeroTelephoneEtablissement : string <<get>> <<set>>
+    + EmailEtablissement : string <<get>> <<set>>
+    + UrlEtablissement : string <<get>> <<set>>
+    + CodeHexa6eme : string <<get>> <<set>>
+    + CodeHexa5eme : string <<get>> <<set>>
+    + CodeHexa4eme : string <<get>> <<set>>
+    + CodeHexa3eme : string <<get>> <<set>>
+    + Bordure : bool <<get>> <<set>>
+}
+ClassSql --> "Db" DataConnection
+LogActions --> "DateAction" DateTime
+LogActions --> "Utilisateur" Utilisateurs
+@enduml

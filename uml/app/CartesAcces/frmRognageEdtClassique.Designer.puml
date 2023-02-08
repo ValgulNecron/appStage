@@ -1,0 +1,7 @@
+@startuml
+class frmRognageEdtClassique <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmRognageEdtClassique o-> "components" IContainer
+@enduml

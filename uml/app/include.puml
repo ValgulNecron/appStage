@@ -1,0 +1,260 @@
+@startuml
+class frmAccueil <<partial>> {
+    + frmAccueil()
+    + {static} OpenChildForm(childForm:Form) : void
+    - frmAccueil_Load(sender:object, e:EventArgs) : void
+    - btnCreerCarte_Click(sender:object, e:EventArgs) : void
+    - btnCarteParClasse_Click(sender:object, e:EventArgs) : void
+    - btnParametres_Click(sender:object, e:EventArgs) : void
+    - pnlContent_Paint(sender:object, e:PaintEventArgs) : void
+    - btnTheme_Click(sender:object, e:EventArgs) : void
+    - btnChangeMdp_Click(sender:object, e:EventArgs) : void
+    - btnAfficheListeEleve_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmAccueil
+frmAccueil --> "frmPassword" Form
+class frmAccueil <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+class barDeProgression <<partial>> {
+    + barDeProgression()
+    - progressBarForm_Load(sender:object, e:EventArgs) : void
+    - backgroundWorker1_DoWork(sender:object, e:DoWorkEventArgs) : void
+    - backgroundWorker1_RunWorkerCompleted(sender:object, e:RunWorkerCompletedEventArgs) : void
+    - cas_1() : void
+    - cas_2() : void
+    - cas_3() : void
+    - cas_4() : void
+    - cas_5() : void
+}
+Form <|-- barDeProgression
+class barDeProgression <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+class frmCarteParClasseNiveau <<partial>> {
+    + frmCarteParClasseNiveau()
+    - cbbImprClasse_SelectedIndexChanged(sender:object, e:EventArgs) : void
+    - cbbImprSection_SelectedIndexChanged(sender:object, e:EventArgs) : void
+    + btnValiderImpr_Click(sender:object, e:EventArgs) : void
+    - frmMultiplesCartes_Load(sender:object, e:EventArgs) : void
+    - cbbImprClasse_SelectedIndexChanged_1(sender:object, e:EventArgs) : void
+}
+Form <|-- frmCarteParClasseNiveau
+class frmCarteParClasseNiveau <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+class frmCarteProvisoire <<partial>> {
+    + frmCarteProvisoire()
+    - changementTexte(sender:object, e:EventArgs) : void
+    - btnReset_Click(sender:object, e:EventArgs) : void
+    - cbbSection_SelectedIndexChanged(sender:object, e:EventArgs) : void
+    - cbbClasse_SelectedIndexChanged(sender:object, e:EventArgs) : void
+    - btnSelect_Click(sender:object, e:EventArgs) : void
+    - btnCancel_Click(sender:object, e:EventArgs) : void
+    - pbCarteArriere_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbCarteArriere_MouseMove(sender:object, e:MouseEventArgs) : void
+    - pbCarteArriere_MouseUp(sender:object, e:MouseEventArgs) : void
+    - btnAjouterPhoto_Click(sender:object, e:EventArgs) : void
+    - btnAnnulerPhoto_Click(sender:object, e:EventArgs) : void
+    - pbPhoto_MouseMove(sender:object, e:MouseEventArgs) : void
+    - pbPhoto_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbPhoto_MouseUp(sender:object, e:MouseEventArgs) : void
+    - tkbTaillePhoto_Scroll(sender:object, e:EventArgs) : void
+    - btnSave_Click(sender:object, e:EventArgs) : void
+    - rdbUlis_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbUPE2A_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbRas_CheckedChanged(sender:object, e:EventArgs) : void
+    - btnEdtPerso_Click(sender:object, e:EventArgs) : void
+    - label6_Click(sender:object, e:EventArgs) : void
+    - frmCarteProvisoire_Load(sender:object, e:EventArgs) : void
+    - pictureBox1_MouseWheel(sender:object, e:MouseEventArgs) : void
+    - rdbClRelais_CheckedChanged(sender:object, e:EventArgs) : void
+}
+Form <|-- frmCarteProvisoire
+class frmCarteProvisoire <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+class frmCartesParListe <<partial>> {
+    + frmCartesParListe()
+    + {static} eleveEnString() : void
+    - frmCartesParListe_Load(sender:object, e:EventArgs) : void
+    - verifDoublon(ajout:string) : bool
+    - ajoutEleve(sender:object, e:EventArgs) : void
+    - retirerEleve(sender:object, e:EventArgs) : void
+    - recheche(sender:object, e:EventArgs) : void
+    + {static} convertionListeStringEleveEnEleve(convertir:List<string>) : List<Eleve>
+    - btnValider_Click(sender:object, e:EventArgs) : void
+    - rbChanged(sender:object, e:EventArgs) : void
+    - toutF() : void
+    - SemeF() : void
+    - CemeF() : void
+    - QemeF() : void
+    - TemeF() : void
+    - groupBox1_Enter(sender:object, e:EventArgs) : void
+}
+class "List`1"<T> {
+}
+Form <|-- frmCartesParListe
+frmCartesParListe --> "listeEleve<Eleve>" "List`1"
+frmCartesParListe --> "eleveSelectionner<string>" "List`1"
+frmCartesParListe --> "nomPrenomEleve<string>" "List`1"
+class frmCartesParListe <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmCartesParListe o-> "components" IContainer
+class frmChangeMotDePasse <<partial>> {
+    + frmChangeMotDePasse()
+    - frmChangeMotDePasse_Load(sender:object, e:EventArgs) : void
+    - btnEnregistrer_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmChangeMotDePasse
+class frmChangeMotDePasse <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmChangeMotDePasse o-> "components" IContainer
+class frmConnexion <<partial>> {
+    + frmConnexion()
+    + on_Visibility_Change(sender:object, e:EventArgs) : void
+    - Connexion() : void
+    - btnConnexion_Click(sender:object, e:EventArgs) : void
+    - button1_Click(sender:object, e:EventArgs) : void
+    - btnChiffre_Click(sender:object, e:EventArgs) : void
+    - btnDechiffre_Click(sender:object, e:EventArgs) : void
+    - frmConnexion_Load(sender:object, e:EventArgs) : void
+    - txtMotDePasse_KeyDown(sender:object, e:KeyEventArgs) : void
+}
+Form <|-- frmConnexion
+frmConnexion --> "timer" Timer
+class frmConnexion <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmConnexion o-> "components" IContainer
+class frmCreationUtilisateur <<partial>> {
+    + frmCreationUtilisateur()
+    - btValid_Click(sender:object, e:EventArgs) : void
+    - frmCreationUtilisateur_Load(sender:object, e:EventArgs) : void
+    - btnSuppr_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmCreationUtilisateur
+class frmCreationUtilisateur <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmCreationUtilisateur o-> "components" IContainer
+class frmImportation <<partial>> {
+    + frmImportation()
+    - OpenChildForm(childForm:Form) : void
+    - btnImporterEleves_Click(sender:object, e:EventArgs) : void
+    - btnImportEDT_Click(sender:object, e:EventArgs) : void
+    - btnImportPhoto_Click(sender:object, e:EventArgs) : void
+    - frmParametres_Load(sender:object, e:EventArgs) : void
+    - btnImporterUnEtablissement_Click(sender:object, e:EventArgs) : void
+    - btCreationUtilisateur_Click(sender:object, e:EventArgs) : void
+    - btnImportFaceCarte_Click(sender:object, e:EventArgs) : void
+    - btnImportLogo_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmImportation
+class frmImportation <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+class frmImportEtablissement <<partial>> {
+    + frmImportEtablissement()
+    - btnValider_Click(sender:object, e:EventArgs) : void
+    - label6_Click(sender:object, e:EventArgs) : void
+    - frmImportEtablissement_Load(sender:object, e:EventArgs) : void
+    - GetCodeHexa6Eme() : string
+    - GetCodeHexa5Eme() : string
+    - GetCodeHexa4Eme() : string
+    - GetCodeHexa3Eme() : string
+    - rdbCustom6_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbCustom5_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbCustom4_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbCustom3_CheckedChanged(sender:object, e:EventArgs) : void
+    - cbBordure_CheckedChanged(sender:object, e:EventArgs) : void
+    - label7_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmImportEtablissement
+frmImportEtablissement --> "etaDebut" Etablissement
+class frmImportEtablissement <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmImportEtablissement o-> "components" IContainer
+class frmMultiplesCartesEdition <<partial>> {
+    + frmMultiplesCartesEdition()
+    - pbPhoto_MouseMove(sender:object, e:MouseEventArgs) : void
+    - pbPhoto_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbPhoto_MouseUp(sender:object, e:MouseEventArgs) : void
+    - tkbTaillePhoto_Scroll(sender:object, e:EventArgs) : void
+    - btnSelect_Click(sender:object, e:EventArgs) : void
+    - btnCancel_Click(sender:object, e:EventArgs) : void
+    - pbCarteArriere_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbCarteArriere_MouseMove(sender:object, e:MouseEventArgs) : void
+    - btnValiderImpr_Click(sender:object, e:EventArgs) : void
+    - frmMultiplesCartesEdition_Load(sender:object, e:EventArgs) : void
+    - pbCarteArriere_MouseUp(sender:object, e:MouseEventArgs) : void
+}
+Form <|-- frmMultiplesCartesEdition
+class frmMultiplesCartesEdition <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+class frmRognageEdtClassique <<partial>> {
+    + frmRognageEdtClassique()
+    - frmRognageEdtClassique_Load(sender:object, e:EventArgs) : void
+    - btnRogner_Click(sender:object, e:EventArgs) : void
+    - pbEdtClassique_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbEdtClassique_MouseUp(sender:object, e:MouseEventArgs) : void
+    - pbEdtClassique_MouseMove(sender:object, e:MouseEventArgs) : void
+    - btnAnnuler_Click(sender:object, e:EventArgs) : void
+    - btnValider_Click(sender:object, e:EventArgs) : void
+}
+class "List`1"<T> {
+}
+Form <|-- frmRognageEdtClassique
+frmRognageEdtClassique o-> "listeFichiers<string>" "List`1"
+class frmRognageEdtClassique <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmRognageEdtClassique o-> "components" IContainer
+class frmSelectNiveau <<partial>> {
+    + frmSelectNiveau()
+    - btnValider_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmSelectNiveau
+class frmSelectNiveau <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmSelectNiveau o-> "components" IContainer
+class Program <<static>> {
+    - {static} Main() : void
+}
+class Timer {
+    + {static} DureeMinute : int <<get>> <<set>> = 15
+    + FrequenceDesVerifEnMinute : int <<get>> <<set>> = 1
+    + Timer(form:Form)
+    + ajoutEvenement() : void
+    - Form_MouseMove(sender:object, e:MouseEventArgs) : void
+    - OnTimeEvent(source:object, e:ElapsedEventArgs) : void
+}
+Timer --> "Form1" Form
+Timer --> "start" DateTime
+class Resources {
+    <<internal>> Resources()
+}
+class Settings <<sealed>> <<partial>> {
+    + DateImport : string <<get>> <<set>>
+}
+Settings o-> "defaultInstance" Settings
+Settings --> "Default" Settings
+@enduml

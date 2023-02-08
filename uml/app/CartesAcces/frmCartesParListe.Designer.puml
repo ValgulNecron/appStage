@@ -1,0 +1,7 @@
+@startuml
+class frmCartesParListe <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+frmCartesParListe o-> "components" IContainer
+@enduml
