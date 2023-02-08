@@ -2,7 +2,7 @@
 
 <configuration>
     <appSettings>
-        <add key="IP" value="10.167.224.54"/>
+        <add key="IP" value="192.168.197.206"/>
         <add key="BD" value="stage2"/>
         <add key="UTILISATEUR" value="admin_user"/>
         <add key="MOTDEPASSE" value="kreyderslam2!"/>

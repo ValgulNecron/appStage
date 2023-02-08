@@ -64,8 +64,7 @@ namespace CartesAcces
             }
             catch
             {
-                MessageBox.Show(
-                    "Pas de liste importée, afin de pouvoir créer des carte merci d'importer le fichier Excel");
+                MessageBox.Show(new Form {TopMost = true}, "Pas de liste importée, afin de pouvoir créer des carte merci d'importer le fichier Excel");
             }
         }
 
