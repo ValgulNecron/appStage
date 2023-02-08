@@ -24,6 +24,7 @@ POUR LE RAPPORT DE STAGE (ballec) :
 - une analyse de l’impact environnemental / informatique verte 
 - une analyse des coûts, des délais, des calculs. (YANN)
 - une analyse du contenu du site web réalisé ou en place, (IAN)
+- mcd, uml diagramme de classe
 - (utilisable pour l’épreuve B1/E4 en lien avec le portefeuille)
 
 
