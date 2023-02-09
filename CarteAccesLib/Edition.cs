@@ -363,7 +363,7 @@ namespace CartesAcces
             Bitmap bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
             Bitmap bmpFinal = new Bitmap(bmpOriginal, new Size(300, 300));
             
-            objGraphique.DrawImage(bmpFinal, new Point(1350,80));
+            objGraphique.DrawImage(bmpFinal, new Point(1400,80));
         }
 
         public static Image imageCarteFace(Eleve eleve)
@@ -476,12 +476,10 @@ namespace CartesAcces
             }
         }
 
-        public static void ReplacementPhotoClassique(int posx, int posy, int height, int width)
+        public static void ReplacementPhotoClassique(int posx, int posy)
         {
             PosYClassique = posy;
             PosXClassique = posx;
-            PosWidthDef = width;
-            PosHeightDef = height;
         }   
         
         public static void importEleves(string path)

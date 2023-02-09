@@ -177,7 +177,7 @@ namespace CartesAcces
                 return;
             }
             
-            Edition.ReplacementPhotoClassique(pbPhoto.Location.X, pbPhoto.Location.Y, pbPhoto.Height, pbPhoto.Width);
+            Edition.ReplacementPhotoClassique(pbPhoto.Location.X, pbPhoto.Location.Y);
             
             try
             {
