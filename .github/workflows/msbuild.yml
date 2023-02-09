@@ -15,7 +15,8 @@ on:
 env:
   # emplacement de la solution (.sln) relative au projet 
   SOLUTION_FILE_PATH: .
-  
+  version: ${{ github.event.inputs.version }} 
+  date: $(date -d @${{ env.GITHUB_RUN_TIMESTAMP }})
 
   # Configuration type to build.
   # You can convert this to a build matrix if you need coverage of multiple configuration types.
@@ -44,17 +45,16 @@ jobs:
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
     # upload un artifact de la build sur le workflow
-    - name: Copy data
-      uses: canastro/copy-action@0.0.2
-      with:
-        source: ${{env.SOLUTION_FILE_PATH}}\..\data
-        target: ${{env.SOLUTION_FILE_PATH}}\CreditCeleste\bin\Release\
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with: 
           name: build
-          path: ${{env.SOLUTION_FILE_PATH}}\CreditCeleste\bin\Release\
-          
+          path: ${{env.SOLUTION_FILE_PATH}}\CartesAcces\bin\Release\
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with: 
+          name: data
+          path: ${{env.SOLUTION_FILE_PATH}}\data
   release:
     # s'execute sur la derniere version des machine ubuntu de github
     runs-on: ubuntu-latest
@@ -65,6 +65,10 @@ jobs:
         uses: actions/download-artifact@v3
         with: 
           name: build
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with: 
+          name: data
       # compresse l'arifact dans un fichier .zip 
       - name: Zip File
         uses: thedoctor0/zip-release@main
