@@ -16,7 +16,7 @@ env:
   # emplacement de la solution (.sln) relative au projet 
   SOLUTION_FILE_PATH: .
   version: ${{ github.event.inputs.version }} 
-  date: $(date -d @${{ env.GITHUB_RUN_TIMESTAMP }})
+  date: ${{ env.GITHUB_RUN_TIMESTAMP }}
 
   # Configuration type to build.
   # You can convert this to a build matrix if you need coverage of multiple configuration types.
