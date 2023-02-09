@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DotNetEnv;
 using Sentry;
 
 namespace CartesAcces
@@ -29,8 +30,9 @@ namespace CartesAcces
                        o.IsGlobalModeEnabled = true;
                    }))
             {
-                Globale.Version = Environment.GetEnvironmentVariable("version");
-                Globale.VersionDate = Environment.GetEnvironmentVariable("date");
+                Env.Load("./.env");
+                Globale.Version = Env.GetString("versionapp");
+                Globale.VersionDate = Env.GetString("date");
                 // App code goes here. Dispose the SDK before exiting to flush events.
                 try
                 {
