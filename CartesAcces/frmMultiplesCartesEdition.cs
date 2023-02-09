@@ -191,7 +191,8 @@ namespace CartesAcces
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
 
                 Globale.LblCount = lblCompteur;
-                
+
+                pbPhoto.Visible = false;
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
                 FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale.ListeEleveImpr, pbPhoto,
                     pbCarteArriere);
