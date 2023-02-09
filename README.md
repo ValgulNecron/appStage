@@ -1,5 +1,24 @@
 # appStage 
 
+
+## uml des classe
+![](.\uml\all\include.svg)
+![](.\uml\app\include.svg)
+![](.\uml\lib\include.svg)
+
+## uml et mcd de la bdd
+![](.\uml\BDD.svg)
+![](.\uml\stage2.svg)
+
+## uml des cas d'utilisation
+![](.\uml\UseCase.svg)
+
+
+
+
+
+
+
 Repos de l'application de création de cartes d'accès   
 
 TO DO :
