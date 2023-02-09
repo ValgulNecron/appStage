@@ -159,9 +159,6 @@
         <None Include="App.config" />
         <None Include="packages.config" />
     </ItemGroup>
-    <ItemGroup>
-        <Content Include="config.xml" />
-    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Import Project="..\packages\Sentry.3.27.1\build\Sentry.targets" Condition="Exists('..\packages\Sentry.3.27.1\build\Sentry.targets')" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

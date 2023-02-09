@@ -23,7 +23,7 @@ namespace CartesAcces
         public static void init()
         {
             var doc = new XmlDocument();
-            doc.Load("./config.xml");
+            doc.Load("./data/config.xml");
             var mariaDb = "";
             var node = doc.SelectSingleNode("/configuration/appSettings/add[@key='IP']");
             if (node.Attributes != null) mariaDb += "Server=" + node.Attributes["value"].Value + ";";
