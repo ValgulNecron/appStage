@@ -27,6 +27,8 @@ jobs:
       with:
         date: "${{ steps.current-time.outputs.day }} : ${{ steps.current-time.outputs.month }} : ${{ steps.current-time.outputs.year }}"
         verionapp: "${{ github.event.inputs.version }}"
+        directory: ${{env.SOLUTION_FILE_PATH}}\CartesAcces\
+        file_name: .env
     - uses: actions/checkout@v3
     # permet de rajouter msbuild sur l'environement de build
     - name: Add MSBuild to PATH
