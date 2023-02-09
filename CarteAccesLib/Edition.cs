@@ -40,6 +40,10 @@ namespace CartesAcces
 
         public static int PosYDef { get; set; }
         
+        public static int PosHeightDef { get; set; }
+
+        public static int PosWidthDef { get; set; }
+        
         public static int PosXClassique{ get; set; }
 
         public static int PosYClassique { get; set; }
@@ -359,7 +363,7 @@ namespace CartesAcces
             Bitmap bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
             Bitmap bmpFinal = new Bitmap(bmpOriginal, new Size(300, 300));
             
-            objGraphique.DrawImage(bmpFinal, new Point(1350,80));
+            objGraphique.DrawImage(bmpFinal, new Point(1400,80));
         }
 
         public static Image imageCarteFace(Eleve eleve)

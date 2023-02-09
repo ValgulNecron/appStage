@@ -64,11 +64,7 @@ namespace CartesAcces
             this.cbbImprSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbImprSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cbbImprSection.FormattingEnabled = true;
-            this.cbbImprSection.Items.AddRange(new object[] {
-            "6eme",
-            "5eme",
-            "4eme",
-            "3eme"});
+            this.cbbImprSection.Items.AddRange(new object[] {"6eme", "5eme", "4eme", "3eme"});
             this.cbbImprSection.Location = new System.Drawing.Point(301, 258);
             this.cbbImprSection.MaximumSize = new System.Drawing.Size(180, 0);
             this.cbbImprSection.MinimumSize = new System.Drawing.Size(180, 0);
@@ -115,7 +111,7 @@ namespace CartesAcces
             // 
             // lblCount
             // 
-            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblCount.Location = new System.Drawing.Point(474, 329);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(47, 23);
@@ -133,7 +129,7 @@ namespace CartesAcces
             this.cbbImprClasse.Name = "cbbImprClasse";
             this.cbbImprClasse.Size = new System.Drawing.Size(180, 24);
             this.cbbImprClasse.TabIndex = 28;
-            this.cbbImprClasse.SelectedIndexChanged += new System.EventHandler(this.cbbImprClasse_SelectedIndexChanged);
+            this.cbbImprClasse.SelectionChangeCommitted += new System.EventHandler(this.cbbImprClasse_SelectedIndexChanged);
             // 
             // frmCarteParClasseNiveau
             // 
@@ -153,7 +149,6 @@ namespace CartesAcces
             this.Load += new System.EventHandler(this.frmMultiplesCartes_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Label lblCount;

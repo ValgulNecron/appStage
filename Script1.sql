@@ -14,6 +14,7 @@ CREATE TABLE logAction (
 	nomUtilisateur varchar(20),
 	action varchar(300),
 	adMac varchar(20),
+	FOREIGN KEY (nomUtilisateur) REFERENCES utilisateur(nomUtilisateur),
 	PRIMARY KEY (dateAction, nomUtilisateur)
 );
 
@@ -21,6 +22,7 @@ CREATE TABLE logMotDePasse (
 	dateLogMotDePasse datetime,
 	hash varchar(120),
 	nomUtilisateur varchar(20),
+	FOREIGN KEY (nomUtilisateur) REFERENCES utilisateur(nomUtilisateur),
 	PRIMARY KEY (dateLogMotDePasse, nomUtilisateur)
 );
 
