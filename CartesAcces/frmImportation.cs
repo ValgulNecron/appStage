@@ -170,7 +170,7 @@ namespace CartesAcces
                 if (x == 666 && Globale.GitPoule)
                 {
                     pictureBox1.Visible = true;
-                    pictureBox1.Image = Image.FromFile("./git-poule.jpg");
+                    pictureBox1.Image = Image.FromFile("./data/ElevesPhoto/git-poule.jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                     pictureBox1.BringToFront();
                     pictureBox1.Location = new Point(0, 0);
@@ -224,8 +224,9 @@ namespace CartesAcces
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
             }
+            Globale.GitPoule = false;
+
         }
 
         private void btnImporterUnEtablissement_Click(object sender, EventArgs e)
@@ -297,8 +298,6 @@ namespace CartesAcces
             catch
             {
             }
-
-            Globale.GitPoule = false;
         }
     }
 }
