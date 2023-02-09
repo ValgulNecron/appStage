@@ -138,12 +138,10 @@ namespace CartesAcces
 
         private void btnChiffre_Click(object sender, EventArgs e)
         {
-            Securite.chiffrerDossier(); 
         }
 
         private void btnDechiffre_Click(object sender, EventArgs e)
         {
-            Securite.dechiffrerDossier();
         }
 
         private void frmConnexion_Load(object sender, EventArgs e)
