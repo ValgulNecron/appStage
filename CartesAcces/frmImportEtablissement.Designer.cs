@@ -111,7 +111,7 @@ namespace CartesAcces
             this.txtNumRueEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtNumRueEtablissement.Location = new System.Drawing.Point(216, 129);
             this.txtNumRueEtablissement.MaximumSize = new System.Drawing.Size(180, 22);
-            this.txtNumRueEtablissement.MaxLength = 60;
+            this.txtNumRueEtablissement.MaxLength = 10;
             this.txtNumRueEtablissement.MinimumSize = new System.Drawing.Size(180, 22);
             this.txtNumRueEtablissement.Name = "txtNumRueEtablissement";
             this.txtNumRueEtablissement.Size = new System.Drawing.Size(180, 22);
