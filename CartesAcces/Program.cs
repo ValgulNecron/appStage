@@ -29,8 +29,8 @@ namespace CartesAcces
                        o.IsGlobalModeEnabled = true;
                    }))
             {
-                Globale.Version = "09/02/2023";
-                Globale.VersionDate = "1.3";
+                Globale.VersionDate = "09/02/2023";
+                Globale.Version = "1.3";
                 // App code goes here. Dispose the SDK before exiting to flush events.
                 try
                 {
