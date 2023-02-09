@@ -56,8 +56,9 @@ namespace CartesAcces
         [Column(Name = "typeUtilisateur")] public string TypeUtilisateur { get; set; }
 
         [Column(Name = "themeBool")] public bool ThemeBool { get; set; }
+        
+        [Column(Name = "active")] public bool Active { get; set; }
     }
-
 
     /*
      * Cette classe permet de gérer les logActions

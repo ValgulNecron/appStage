@@ -6,7 +6,8 @@ CREATE TABLE utilisateur (
 	nomUtilisateur varchar(20) PRIMARY KEY,
 	hash varchar(120),
 	typeUtilisateur varchar(20),
-	themeBool bool
+	themeBool bool,
+	active bool
 );
 
 CREATE TABLE logAction (
@@ -42,7 +43,7 @@ CREATE TABLE etablissement (
 	bordure bool
 );
 
-INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0);
+INSERT INTO utilisateur VALUES("keyuser", "xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz", "admin",0, 1);
 -- xKVfl8R9C3RJWCRMyfJUvGnhbUCfEa8NdZglhdoHBI12n7Fz -- keyuser
 
 insert into etablissement values ("default", "default", 5, "default", "default", "default", "default", "default", "#FFFF00", "#90EE90", "#FF0000", "#ADD8E6", 1);

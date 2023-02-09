@@ -77,8 +77,12 @@ namespace CartesAcces
             
             try
             {
-                var image = Image.FromFile("./data/FichierCartesFace/logo.png");
+                var image = Image.FromFile("./data/logo.png");
                 pictureBox1.Image = image;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                var image2 = Image.FromFile("./data/github.png");
+                pictureBox2.Image = image2;
+                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             catch (Exception exception)
             {
@@ -150,6 +154,11 @@ namespace CartesAcces
             Text = "CARTE D'ACCES - CARTE PAR LISTE";
             frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ValgulNecron/appStage/");
         }
     }
 }

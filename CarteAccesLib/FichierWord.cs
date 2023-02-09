@@ -199,6 +199,7 @@ namespace CarteAccesLib
             {
                 MessageBox.Show(new Form { TopMost = true }, listeEleve.Count + " élèves ont été imprimés.");
             }
+            fermerWord();
         }
 
 
