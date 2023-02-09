@@ -88,7 +88,7 @@ namespace CartesAcces
             // 
             // txtNomEtablissement
             // 
-            this.txtNomEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtNomEtablissement.Location = new System.Drawing.Point(216, 18);
             this.txtNomEtablissement.MaximumSize = new System.Drawing.Size(180, 22);
             this.txtNomEtablissement.MaxLength = 50;
@@ -99,16 +99,16 @@ namespace CartesAcces
             // 
             // txtRueEtablissement
             // 
-            this.txtRueEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRueEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtRueEtablissement.Location = new System.Drawing.Point(216, 162);
-            this.txtRueEtablissement.MaxLength = 10;
+            this.txtRueEtablissement.MaxLength = 60;
             this.txtRueEtablissement.Name = "txtRueEtablissement";
             this.txtRueEtablissement.Size = new System.Drawing.Size(180, 22);
             this.txtRueEtablissement.TabIndex = 2;
             // 
             // txtNumRueEtablissement
             // 
-            this.txtNumRueEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumRueEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtNumRueEtablissement.Location = new System.Drawing.Point(216, 129);
             this.txtNumRueEtablissement.MaximumSize = new System.Drawing.Size(180, 22);
             this.txtNumRueEtablissement.MaxLength = 60;
@@ -119,7 +119,7 @@ namespace CartesAcces
             // 
             // btnValider
             // 
-            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.btnValider.Location = new System.Drawing.Point(703, 484);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(252, 45);
@@ -130,7 +130,7 @@ namespace CartesAcces
             // 
             // txtTelEtablissement
             // 
-            this.txtTelEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtTelEtablissement.Location = new System.Drawing.Point(216, 336);
             this.txtTelEtablissement.MaximumSize = new System.Drawing.Size(180, 22);
             this.txtTelEtablissement.MaxLength = 20;
@@ -141,7 +141,7 @@ namespace CartesAcces
             // 
             // txtCodePostalEtablissement
             // 
-            this.txtCodePostalEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodePostalEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtCodePostalEtablissement.Location = new System.Drawing.Point(216, 229);
             this.txtCodePostalEtablissement.MaximumSize = new System.Drawing.Size(180, 22);
             this.txtCodePostalEtablissement.MaxLength = 15;
@@ -152,7 +152,7 @@ namespace CartesAcces
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label3.Location = new System.Drawing.Point(23, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 23);
@@ -161,7 +161,7 @@ namespace CartesAcces
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label4.Location = new System.Drawing.Point(61, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 23);
@@ -170,7 +170,7 @@ namespace CartesAcces
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label6.Location = new System.Drawing.Point(61, 129);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 23);
@@ -180,7 +180,7 @@ namespace CartesAcces
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label8.Location = new System.Drawing.Point(61, 229);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 23);
@@ -189,7 +189,7 @@ namespace CartesAcces
             // 
             // label9
             // 
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label9.Location = new System.Drawing.Point(61, 336);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(149, 23);
@@ -198,7 +198,7 @@ namespace CartesAcces
             // 
             // label10
             // 
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label10.Location = new System.Drawing.Point(61, 369);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(149, 23);
@@ -207,7 +207,7 @@ namespace CartesAcces
             // 
             // txtVilleEtablissement
             // 
-            this.txtVilleEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVilleEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtVilleEtablissement.Location = new System.Drawing.Point(216, 196);
             this.txtVilleEtablissement.MaximumSize = new System.Drawing.Size(180, 22);
             this.txtVilleEtablissement.MaxLength = 60;
@@ -218,7 +218,7 @@ namespace CartesAcces
             // 
             // label11
             // 
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label11.Location = new System.Drawing.Point(61, 196);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 23);
@@ -227,7 +227,7 @@ namespace CartesAcces
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label1.Location = new System.Drawing.Point(23, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 28);
@@ -236,7 +236,7 @@ namespace CartesAcces
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label2.Location = new System.Drawing.Point(23, 299);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 22);
@@ -245,7 +245,7 @@ namespace CartesAcces
             // 
             // txtMailEtablissement
             // 
-            this.txtMailEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMailEtablissement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtMailEtablissement.Location = new System.Drawing.Point(216, 369);
             this.txtMailEtablissement.MaximumSize = new System.Drawing.Size(180, 22);
             this.txtMailEtablissement.MaxLength = 120;
@@ -256,7 +256,7 @@ namespace CartesAcces
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label5.Location = new System.Drawing.Point(61, 406);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(149, 23);
@@ -265,7 +265,7 @@ namespace CartesAcces
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.textBox1.Location = new System.Drawing.Point(216, 406);
             this.textBox1.MaximumSize = new System.Drawing.Size(180, 22);
             this.textBox1.MaxLength = 120;
@@ -282,7 +282,7 @@ namespace CartesAcces
             this.gb3eme.Controls.Add(this.rdbRouge3);
             this.gb3eme.Controls.Add(this.rdbVert3);
             this.gb3eme.Controls.Add(this.rdbJaune3);
-            this.gb3eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb3eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.gb3eme.Location = new System.Drawing.Point(615, 348);
             this.gb3eme.Name = "gb3eme";
             this.gb3eme.Size = new System.Drawing.Size(346, 84);
@@ -358,7 +358,7 @@ namespace CartesAcces
             this.gb4eme.Controls.Add(this.rdbRouge4);
             this.gb4eme.Controls.Add(this.rdbVert4);
             this.gb4eme.Controls.Add(this.rdbJaune4);
-            this.gb4eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb4eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.gb4eme.Location = new System.Drawing.Point(615, 241);
             this.gb4eme.Name = "gb4eme";
             this.gb4eme.Size = new System.Drawing.Size(346, 84);
@@ -434,7 +434,7 @@ namespace CartesAcces
             this.gb5eme.Controls.Add(this.rdbRouge5);
             this.gb5eme.Controls.Add(this.rdbVert5);
             this.gb5eme.Controls.Add(this.rdbJaune5);
-            this.gb5eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb5eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.gb5eme.Location = new System.Drawing.Point(615, 138);
             this.gb5eme.Name = "gb5eme";
             this.gb5eme.Size = new System.Drawing.Size(346, 84);
@@ -510,7 +510,7 @@ namespace CartesAcces
             this.gb6eme.Controls.Add(this.rdbRouge6);
             this.gb6eme.Controls.Add(this.rdbVert6);
             this.gb6eme.Controls.Add(this.rdbJaune6);
-            this.gb6eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb6eme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.gb6eme.Location = new System.Drawing.Point(615, 36);
             this.gb6eme.Name = "gb6eme";
             this.gb6eme.Size = new System.Drawing.Size(346, 84);
@@ -581,7 +581,7 @@ namespace CartesAcces
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label7.Location = new System.Drawing.Point(464, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(497, 16);
