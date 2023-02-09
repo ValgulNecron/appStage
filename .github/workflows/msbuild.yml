@@ -16,7 +16,6 @@ env:
   # emplacement de la solution (.sln) relative au projet 
   SOLUTION_FILE_PATH: .
   version: ${{ github.event.inputs.version }} 
-  date: ${{ env.GITHUB_RUN_TIMESTAMP }}
 
   # Configuration type to build.
   # You can convert this to a build matrix if you need coverage of multiple configuration types.
@@ -30,6 +29,15 @@ jobs:
     runs-on: windows-latest
     # permet de checkout le projet
     steps:
+    - name: Get current time
+      uses: josStorer/get-current-time@v2
+      id: current-time
+      with:
+        format: YYYYMMDD-HH
+        utcOffset: "+08:00"
+    - name: Use current time
+      env:
+        date: "${{ steps.current-time.outputs.formattedTime }}"
     - uses: actions/checkout@v3
     # permet de rajouter msbuild sur l'environement de build
     - name: Add MSBuild to PATH
