@@ -62,7 +62,7 @@ namespace CartesAcces
             Text = "CARTE D'ACCES - CONNEXION";
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
 
-            lblVersion.Text = "version :" + Globale.Version1 + " du " + Globale.VersionDate;
+            lblVersion.Text = "version :" + Globale.Version + " du " + Globale.VersionDate;
             var dir = new DirectoryInfo("./data/image");
             if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
                 MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le denier import des edt");
