@@ -178,6 +178,7 @@ namespace CartesAcces
             }
             
             Edition.ReplacementPhotoClassique(pbPhoto.Location.X, pbPhoto.Location.Y);
+           
             
             try
             {
@@ -199,7 +200,7 @@ namespace CartesAcces
                 FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale.ListeEleveImpr, pbPhoto,
                     pbCarteArriere);
                 pbPhoto.Visible = true;
-                
+                Globale.positionPhotoClassique = false;
                 
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
