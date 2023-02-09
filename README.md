@@ -28,6 +28,11 @@ POUR LE RAPPORT DE STAGE (ballec) :
 - (utilisable pour l’épreuve B1/E4 en lien avec le portefeuille)
 
 
+BUG :
+ - le rognage dans carte provisoire ne marche plus
+ - le déchiffrement casse les images et ne supprime pas celles qui sont chiffrées
+ 
+
 https://gist.github.com/cuonggt/9b7d08a597b167299f0d
 
 ---
