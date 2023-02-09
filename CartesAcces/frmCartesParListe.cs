@@ -242,9 +242,9 @@ namespace CartesAcces
             Eleves.DataSource = nomPrenomEleve;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void CheckedChanged(object sender, EventArgs e)
         {
-
+            txtRecherche.Text = "";
         }
     }
 }
