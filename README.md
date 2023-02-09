@@ -2,16 +2,11 @@
 
 
 ## uml des classe
-![](https://raw.githubusercontent.com/ValgulNecron/appStage/dev/uml/all/include.svg)
-![](\uml\app\include.svg)
-![](\uml\lib\include.svg)
+![](./uml/all/include.svg)
 
 ## uml et mcd de la bdd
-![](\uml\BDD.svg)
-![](\uml\stage2.svg)
 
 ## uml des cas d'utilisation
-![](\uml\UseCase.svg)
 
 
 
