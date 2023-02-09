@@ -96,6 +96,7 @@ namespace CartesAcces
             {
                 Globale.CheminEdtClassique = "./data/image/classes/";
                 Globale.CheminPdf = Chemin.setCheminImportationFichierPdf();
+                Globale.PasDeBar = false;
                 var frmSelectSection = new frmSelectNiveau();
                 frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
                 frmSelectSection.Show();
@@ -169,7 +170,7 @@ namespace CartesAcces
                 if (x == 666 && Globale.GitPoule)
                 {
                     pictureBox1.Visible = true;
-                    pictureBox1.Image = Image.FromFile("./git-poule.jpg");
+                    pictureBox1.Image = Image.FromFile("./data/ElevesPhoto/git-poule.jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                     pictureBox1.BringToFront();
                     pictureBox1.Location = new Point(0, 0);
@@ -223,8 +224,9 @@ namespace CartesAcces
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
             }
+            Globale.GitPoule = false;
+
         }
 
         private void btnImporterUnEtablissement_Click(object sender, EventArgs e)
@@ -243,7 +245,6 @@ namespace CartesAcces
         {
             try
             {
-                lblImportFaceCarte = Globale.LblDate;
                 Globale.CheminFaceCarte = Chemin.setCheminImportationFaceCarte();
 
                 Globale.PasDeBar = true;
@@ -294,9 +295,7 @@ namespace CartesAcces
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
             }
-
             catch
-
             {
             }
         }

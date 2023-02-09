@@ -1,0 +1,5 @@
+@startuml
+class Resources {
+    <<internal>> Resources()
+}
+@enduml

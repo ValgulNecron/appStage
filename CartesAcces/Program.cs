@@ -14,6 +14,8 @@ namespace CartesAcces
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            // sentry permet de récupérer les erreurs et de les envoyer sur le serveur
             using (SentrySdk.Init(o =>
                    {
                        o.Dsn =
@@ -36,7 +38,9 @@ namespace CartesAcces
                 {
                     MessageBox.Show("fichier config ou connection impossible" + e.Message);
                 }
-
+                
+                // mettre les fonction et le code a execute au lancement de l'application
+                // avant de lancer le formulaire
                 Globale.Accueil = new frmAccueil();
                 Application.Run(Globale.Accueil);
             }

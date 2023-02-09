@@ -15,6 +15,8 @@ namespace CartesAcces
      */
     public partial class frmConnexion : Form
     {
+        public static Timer timer;
+
         public frmConnexion()
         {
             InitializeComponent();
@@ -50,9 +52,16 @@ namespace CartesAcces
             {
                 var user = ClassSql.Db.GetTable<Utilisateurs>()
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
+                if (!user.Active)
+                {
+                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
+                    txtIdentifiant.Text = "";
+                    txtMotDePasse.Text = "";
+                    return;
+                }
                 if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
-                    MessageBox.Show("Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
@@ -96,18 +105,21 @@ namespace CartesAcces
                         log.Action = "C'est connecter au logiciel";
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);
+                        timer = new Timer(Globale.Accueil);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtMotDePasse.Text = "";
+                    txtIdentifiant.Text = "";
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
-               
+                txtMotDePasse.Text = "";
+                txtIdentifiant.Text = "";
             }
         }
 
@@ -115,7 +127,7 @@ namespace CartesAcces
         {
             if (string.IsNullOrEmpty(txtMotDePasse.Text))
             {
-                MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                MessageBox.Show(new Form { TopMost = true }, "Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtMotDePasse.Focus();
             }
@@ -133,12 +145,10 @@ namespace CartesAcces
 
         private void btnChiffre_Click(object sender, EventArgs e)
         {
-            Securite.chiffrerDossier(); 
         }
 
         private void btnDechiffre_Click(object sender, EventArgs e)
         {
-            Securite.dechiffrerDossier();
         }
 
         private void frmConnexion_Load(object sender, EventArgs e)
@@ -158,7 +168,7 @@ namespace CartesAcces
             {
                 if (string.IsNullOrEmpty(txtMotDePasse.Text))
                 {
-                    MessageBox.Show("Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                    MessageBox.Show(new Form { TopMost = true }, "Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtMotDePasse.Focus();
                 }

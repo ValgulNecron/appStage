@@ -1,0 +1,26 @@
+@startuml
+class frmCartesParListe <<partial>> {
+    + frmCartesParListe()
+    + {static} eleveEnString() : void
+    - frmCartesParListe_Load(sender:object, e:EventArgs) : void
+    - verifDoublon(ajout:string) : bool
+    - ajoutEleve(sender:object, e:EventArgs) : void
+    - retirerEleve(sender:object, e:EventArgs) : void
+    - recheche(sender:object, e:EventArgs) : void
+    + {static} convertionListeStringEleveEnEleve(convertir:List<string>) : List<Eleve>
+    - btnValider_Click(sender:object, e:EventArgs) : void
+    - rbChanged(sender:object, e:EventArgs) : void
+    - toutF() : void
+    - SemeF() : void
+    - CemeF() : void
+    - QemeF() : void
+    - TemeF() : void
+    - groupBox1_Enter(sender:object, e:EventArgs) : void
+}
+class "List`1"<T> {
+}
+Form <|-- frmCartesParListe
+frmCartesParListe --> "listeEleve<Eleve>" "List`1"
+frmCartesParListe --> "eleveSelectionner<string>" "List`1"
+frmCartesParListe --> "nomPrenomEleve<string>" "List`1"
+@enduml

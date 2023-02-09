@@ -1,0 +1,9 @@
+@startuml
+class frmCreationUtilisateur <<partial>> {
+    + frmCreationUtilisateur()
+    - btValid_Click(sender:object, e:EventArgs) : void
+    - frmCreationUtilisateur_Load(sender:object, e:EventArgs) : void
+    - btnSuppr_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmCreationUtilisateur
+@enduml

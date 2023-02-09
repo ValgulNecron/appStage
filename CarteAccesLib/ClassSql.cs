@@ -4,12 +4,22 @@ using LinqToDB;
 using LinqToDB.Data;
 using LinqToDB.Mapping;
 
+
 namespace CartesAcces
 {
+    /*
+     * Cette classe permet de se connecter à la base de données
+     * Elle contient une variable statique qui permet de se connecter à la base de données
+     * Elle contient une fonction statique qui permet d'initialiser la variable statique
+     */
     public static class ClassSql
     {
         public static DataConnection Db { get; set; }
 
+        /*
+         * Cette fonction permet d'initialiser la variable statique
+         * Elle lit le fichier de configuration et initialise la variable statique
+         */
         public static void init()
         {
             var doc = new XmlDocument();
@@ -17,7 +27,8 @@ namespace CartesAcces
             var mariaDb = "";
             var node = doc.SelectSingleNode("/configuration/appSettings/add[@key='IP']");
             if (node.Attributes != null) mariaDb += "Server=" + node.Attributes["value"].Value + ";";
-            mariaDb += "Port=3306;";
+            node = doc.SelectSingleNode("/configuration/appSettings/add[@key='PORT']");
+            if (node.Attributes != null) mariaDb += "Port=" + node.Attributes["value"].Value + ";";
             node = doc.SelectSingleNode("/configuration/appSettings/add[@key='BD']");
             if (node.Attributes != null) mariaDb += "Database=" + node.Attributes["value"].Value + ";";
             node = doc.SelectSingleNode("/configuration/appSettings/add[@key='UTILISATEUR']");
@@ -30,6 +41,9 @@ namespace CartesAcces
         }
     }
 
+    /*
+     * Cette classe permet de gérer les utilisateurs
+     */
     [Table(Name = "utilisateur")]
     public class Utilisateurs
     {
@@ -42,9 +56,13 @@ namespace CartesAcces
         [Column(Name = "typeUtilisateur")] public string TypeUtilisateur { get; set; }
 
         [Column(Name = "themeBool")] public bool ThemeBool { get; set; }
+        
+        [Column(Name = "active")] public bool Active { get; set; }
     }
 
-
+    /*
+     * Cette classe permet de gérer les logActions
+     */
     [Table(Name = "logAction")]
     public class LogActions
     {
@@ -64,6 +82,9 @@ namespace CartesAcces
         public Utilisateurs Utilisateur { get; set; }
     }
 
+    /*
+     * Cette classe permet de gérer les etablissements
+     */
     [Table(Name = "etablissement")]
     public class Etablissement
     {
@@ -95,5 +116,7 @@ namespace CartesAcces
         [Column(Name = "codeHexa4eme")] public string CodeHexa4eme { get; set; }
         
         [Column(Name = "codeHexa3eme")] public string CodeHexa3eme { get; set; }
+        
+        [Column(Name = "bordure")] public bool Bordure { get; set; }
     }
 }

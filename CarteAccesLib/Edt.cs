@@ -96,17 +96,20 @@ namespace CarteAcces
         public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
         {
             foreach (var eleve in listeEleve)
+            {
+                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + eleve.ClasseEleve + ".jpg");
                 try
                 {
                     var dossier = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
                     pbCarteArriere.Image = Image.FromFile(dossier + Eleve.creeCleEleve(eleve) + ".jpg");
                     Chemin.CheminEdt = dossier + Eleve.creeCleEleve(eleve) + ".jpg";
-                    break;
+                    return;
                 }
                 catch
                 {
                     // Next ..
                 }
+            }
         }
     }
 }

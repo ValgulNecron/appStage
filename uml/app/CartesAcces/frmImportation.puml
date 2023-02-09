@@ -1,0 +1,15 @@
+@startuml
+class frmImportation <<partial>> {
+    + frmImportation()
+    - OpenChildForm(childForm:Form) : void
+    - btnImporterEleves_Click(sender:object, e:EventArgs) : void
+    - btnImportEDT_Click(sender:object, e:EventArgs) : void
+    - btnImportPhoto_Click(sender:object, e:EventArgs) : void
+    - frmParametres_Load(sender:object, e:EventArgs) : void
+    - btnImporterUnEtablissement_Click(sender:object, e:EventArgs) : void
+    - btCreationUtilisateur_Click(sender:object, e:EventArgs) : void
+    - btnImportFaceCarte_Click(sender:object, e:EventArgs) : void
+    - btnImportLogo_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmImportation
+@enduml

@@ -7,7 +7,6 @@ namespace CartesAcces
 {
     public partial class frmAccueil : Form
     {
-        public static Timer timer;
         private Form frmPassword;
 
         public frmAccueil()
@@ -66,22 +65,24 @@ namespace CartesAcces
             lblVersion.Text = "version :" + Globale.Version1 + " du " + Globale.VersionDate;
             var dir = new DirectoryInfo("./data/image");
             if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show("15j ou plus depuis le denier import des edt");
+                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le denier import des edt");
 
             var dir2 = new DirectoryInfo(Chemin.CheminPhotoEleve);
             if (dir2.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show("15j ou plus depuis le dernier import de photo");
+                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le dernier import de photo");
 
             var dir3 = new DirectoryInfo(Chemin.CheminListeEleve);
             if (dir3.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show("15j ou plus depuis le dernier import des listes eleves");
+                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le dernier import des listes eleves");
             
-            timer = new Timer(this);
-
             try
             {
-                var image = Image.FromFile("./data/FichierCartesFace/logo.png");
+                var image = Image.FromFile("./data/logo.png");
                 pictureBox1.Image = image;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                var image2 = Image.FromFile("./data/github.png");
+                pictureBox2.Image = image2;
+                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             catch (Exception exception)
             {
@@ -95,7 +96,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCarteProvisoire();
             Text = "CARTE D'ACCES - CARTE PROVISOIRE";
-            timer.ajoutEvenement();
+            frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
@@ -103,7 +104,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCarteParClasseNiveau();
             Text = "CARTE D'ACCES - CARTE PAR CLASSE";
-            timer.ajoutEvenement();
+            frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
@@ -111,7 +112,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmImportation();
             Text = "CARTE D'ACCES - IMPORTATION";
-            timer.ajoutEvenement();
+            frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
@@ -123,7 +124,7 @@ namespace CartesAcces
         {
             Globale.EstEnModeSombre = !Globale.EstEnModeSombre;
 
-            Couleur.setCouleurFenetre(this);
+            Couleur.setCouleurFenetre(Globale.Accueil);
             Couleur.setCouleurFenetre(Globale.Actuelle);
             foreach (Control control in Controls)
                 if (control is Panel && control.Name == "pnlMenu")
@@ -151,8 +152,13 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCartesParListe();
             Text = "CARTE D'ACCES - CARTE PAR LISTE";
-            timer.ajoutEvenement();
+            frmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ValgulNecron/appStage/");
         }
     }
 }

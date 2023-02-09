@@ -1,0 +1,11 @@
+@startuml
+class FichierWord <<static>> {
+    + {static} initWordFile(margeHaute:int, margeDroite:int, margeGauche:int, margeBasse:int) : Application
+    + {static} rectifPositionImages(applicationWord:Application, carteFace1:Shape, carteFace2:Shape) : void
+    + {static} limite50Pages(applicationWord:Application, chemin:string) : void
+    + {static} sauvegardeCarteEnWord(chemin:string, listeEleve:List<Eleve>, pbPhoto:PictureBox, pbCarteArriere:PictureBox) : void
+    + {static} getDossierCarteProvisoire() : void
+    + {static} sauvegardeCarteProvisoireWord(pbCarteArriere:PictureBox, pbPhoto:PictureBox, pbCarteFace:PictureBox, txtNom:TextBox, txtPrenom:TextBox) : void
+    + {static} fermerWord() : void
+}
+@enduml

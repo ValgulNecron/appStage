@@ -6,8 +6,6 @@ TO DO :
 
 - acheter un cerveau a David introuvable (Attendre le black friday)
 
-- fix compteur pour nombre impair
-
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
 
 POUR LE RAPPORT DE STAGE (ballec) :
@@ -26,8 +24,12 @@ POUR LE RAPPORT DE STAGE (ballec) :
 - une analyse de l’impact environnemental / informatique verte 
 - une analyse des coûts, des délais, des calculs. (YANN)
 - une analyse du contenu du site web réalisé ou en place, (IAN)
+- mcd, uml diagramme de classe
 - (utilisable pour l’épreuve B1/E4 en lien avec le portefeuille)
 
+
+BUG :
+ - le déchiffrement casse les images et ne supprime pas celles qui sont chiffrées
 
 https://gist.github.com/cuonggt/9b7d08a597b167299f0d
 

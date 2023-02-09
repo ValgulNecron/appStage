@@ -33,12 +33,12 @@ namespace CartesAcces
             this.pbPhoto = new System.Windows.Forms.PictureBox();
             this.pbCarteArriere = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblCompteur = new System.Windows.Forms.Label();
             this.labelEnCoursValidation = new System.Windows.Forms.Label();
             this.btnValiderImpr = new System.Windows.Forms.Button();
             this.tkbTaillePhoto = new System.Windows.Forms.TrackBar();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblCompteur = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
@@ -99,18 +99,6 @@ namespace CartesAcces
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajout et Edition Photo";
             // 
-            // lblCompteur
-            // 
-            this.lblCompteur.AutoSize = true;
-            this.lblCompteur.Enabled = false;
-            this.lblCompteur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompteur.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblCompteur.Location = new System.Drawing.Point(255, 42);
-            this.lblCompteur.Name = "lblCompteur";
-            this.lblCompteur.Size = new System.Drawing.Size(32, 20);
-            this.lblCompteur.TabIndex = 18;
-            this.lblCompteur.Text = "0/x";
-            // 
             // labelEnCoursValidation
             // 
             this.labelEnCoursValidation.AutoSize = true;
@@ -162,6 +150,18 @@ namespace CartesAcces
             this.label5.TabIndex = 4;
             this.label5.Text = "Redefinir la taille";
             // 
+            // lblCompteur
+            // 
+            this.lblCompteur.AutoSize = true;
+            this.lblCompteur.Enabled = false;
+            this.lblCompteur.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompteur.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCompteur.Location = new System.Drawing.Point(160, 33);
+            this.lblCompteur.Name = "lblCompteur";
+            this.lblCompteur.Size = new System.Drawing.Size(38, 24);
+            this.lblCompteur.TabIndex = 18;
+            this.lblCompteur.Text = "0/x";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lblCompteur);
@@ -176,7 +176,7 @@ namespace CartesAcces
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(391, 33);
+            this.btnCancel.Location = new System.Drawing.Point(413, 30);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 23);
             this.btnCancel.TabIndex = 2;
@@ -186,7 +186,7 @@ namespace CartesAcces
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(21, 33);
+            this.btnSelect.Location = new System.Drawing.Point(6, 24);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(148, 41);
             this.btnSelect.TabIndex = 0;

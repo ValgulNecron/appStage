@@ -1,0 +1,12 @@
+@startuml
+class PdfGs <<static>> {
+    - {static} outputPath : string = "./data/image"
+    + {static} getImageFromPdf(path:string, classe:int) : void
+    + {static} getTextePdf(path:string) : string
+    + {static} getNomPrenomPdf(pdftext:string) : List<string>
+    + {static} getClassePDF(pdftext:string) : List<string>
+    + {static} renameEdt(pdf:string) : void
+    + {static} getDateFile() : string
+    + {static} valeurParDefault() : void
+}
+@enduml

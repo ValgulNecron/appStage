@@ -1,0 +1,12 @@
+@startuml
+class Timer {
+    + {static} DureeMinute : int <<get>> <<set>> = 15
+    + FrequenceDesVerifEnMinute : int <<get>> <<set>> = 1
+    + Timer(form:Form)
+    + ajoutEvenement() : void
+    - Form_MouseMove(sender:object, e:MouseEventArgs) : void
+    - OnTimeEvent(source:object, e:ElapsedEventArgs) : void
+}
+Timer --> "Form1" Form
+Timer --> "start" DateTime
+@enduml

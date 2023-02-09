@@ -1,0 +1,8 @@
+@startuml
+class Edt <<static>> {
+    + {static} afficheEmploiDuTemps(cbbClasse:ComboBox, pbCarteArriere:PictureBox) : void
+    + {static} ajouterEdtPerso(pbCarteArriere:PictureBox) : void
+    + {static} rognageEdt(pbCarteArriere:PictureBox, cheminEdt:string) : void
+    + {static} chercheEdtPerso(listeEleve:List<Eleve>, pbCarteArriere:PictureBox) : void
+}
+@enduml

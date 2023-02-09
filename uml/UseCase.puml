@@ -1,0 +1,32 @@
+@startuml
+
+:Admin: as Admin
+:Utilissateur: as User
+
+Admin -> User
+
+(Crée un compte utilisateur ou admin) as create
+
+(Connexion) as login
+
+create -o login
+User -------> login
+Admin -> create
+
+(importer des information) as import
+(imprimer des carte provisoire) as carteP
+(imprimer des carte par section) as carteS
+(imprimer des carte par liste perso) as carteLs
+User -> import
+User --> carteLs
+User --> carteP
+User --> carteS
+import -o login
+carteLs -o login
+carteP -o login
+carteS -o login
+carteLs --o import
+carteP --o import
+carteS --o import
+    
+@enduml

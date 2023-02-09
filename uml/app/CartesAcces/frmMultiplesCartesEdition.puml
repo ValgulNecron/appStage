@@ -1,0 +1,17 @@
+@startuml
+class frmMultiplesCartesEdition <<partial>> {
+    + frmMultiplesCartesEdition()
+    - pbPhoto_MouseMove(sender:object, e:MouseEventArgs) : void
+    - pbPhoto_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbPhoto_MouseUp(sender:object, e:MouseEventArgs) : void
+    - tkbTaillePhoto_Scroll(sender:object, e:EventArgs) : void
+    - btnSelect_Click(sender:object, e:EventArgs) : void
+    - btnCancel_Click(sender:object, e:EventArgs) : void
+    - pbCarteArriere_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbCarteArriere_MouseMove(sender:object, e:MouseEventArgs) : void
+    - btnValiderImpr_Click(sender:object, e:EventArgs) : void
+    - frmMultiplesCartesEdition_Load(sender:object, e:EventArgs) : void
+    - pbCarteArriere_MouseUp(sender:object, e:MouseEventArgs) : void
+}
+Form <|-- frmMultiplesCartesEdition
+@enduml

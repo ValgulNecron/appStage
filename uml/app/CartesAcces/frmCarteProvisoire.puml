@@ -1,0 +1,30 @@
+@startuml
+class frmCarteProvisoire <<partial>> {
+    + frmCarteProvisoire()
+    - changementTexte(sender:object, e:EventArgs) : void
+    - btnReset_Click(sender:object, e:EventArgs) : void
+    - cbbSection_SelectedIndexChanged(sender:object, e:EventArgs) : void
+    - cbbClasse_SelectedIndexChanged(sender:object, e:EventArgs) : void
+    - btnSelect_Click(sender:object, e:EventArgs) : void
+    - btnCancel_Click(sender:object, e:EventArgs) : void
+    - pbCarteArriere_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbCarteArriere_MouseMove(sender:object, e:MouseEventArgs) : void
+    - pbCarteArriere_MouseUp(sender:object, e:MouseEventArgs) : void
+    - btnAjouterPhoto_Click(sender:object, e:EventArgs) : void
+    - btnAnnulerPhoto_Click(sender:object, e:EventArgs) : void
+    - pbPhoto_MouseMove(sender:object, e:MouseEventArgs) : void
+    - pbPhoto_MouseDown(sender:object, e:MouseEventArgs) : void
+    - pbPhoto_MouseUp(sender:object, e:MouseEventArgs) : void
+    - tkbTaillePhoto_Scroll(sender:object, e:EventArgs) : void
+    - btnSave_Click(sender:object, e:EventArgs) : void
+    - rdbUlis_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbUPE2A_CheckedChanged(sender:object, e:EventArgs) : void
+    - rdbRas_CheckedChanged(sender:object, e:EventArgs) : void
+    - btnEdtPerso_Click(sender:object, e:EventArgs) : void
+    - label6_Click(sender:object, e:EventArgs) : void
+    - frmCarteProvisoire_Load(sender:object, e:EventArgs) : void
+    - pictureBox1_MouseWheel(sender:object, e:MouseEventArgs) : void
+    - rdbClRelais_CheckedChanged(sender:object, e:EventArgs) : void
+}
+Form <|-- frmCarteProvisoire
+@enduml

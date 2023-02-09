@@ -42,13 +42,21 @@ namespace CarteAccesLib
              * Et enfin on gère la hauteur des deux images pour que celles ci aient les mêmes dimensions.
             */
 
+            carteFace1.Height = 379;
+
+            //MessageBox.Show(carteFace1.Height.ToString());
+
             carteFace1.Top = 0;
             carteFace1.Left = 0;
 
-            carteFace1.Height = carteFace1.Height - 20;
-            carteFace2.RelativeVerticalPosition = WdRelativeVerticalPosition.wdRelativeVerticalPositionPage;
-            carteFace2.Top = applicationWord.InchesToPoints(11 - carteFace1.Height / 72);
             carteFace2.Height = carteFace1.Height;
+            carteFace2.Top = carteFace1.Height + 50;
+            carteFace2.Left = 0;
+
+            // carteFace1.Height = carteFace1.Height - 20;
+            // carteFace2.RelativeVerticalPosition = WdRelativeVerticalPosition.wdRelativeVerticalPositionPage;
+            // carteFace2.Top = applicationWord.InchesToPoints(11 - carteFace1.Height / 72);
+            // carteFace2.Height = carteFace1.Height;
         }
 
         public static void limite50Pages(Application applicationWord, string chemin)
@@ -69,7 +77,7 @@ namespace CarteAccesLib
             applicationWord.Documents.Add();
 
             // -- Marge à 0 pour éviter les espaces blancs entre la page et l'image sur le document --
-            applicationWord.ActiveDocument.PageSetup.TopMargin = 15; // 15 points = env à 0.5 cm
+            applicationWord.ActiveDocument.PageSetup.TopMargin = 15;
             applicationWord.ActiveDocument.PageSetup.RightMargin = 15;
             applicationWord.ActiveDocument.PageSetup.LeftMargin = 15;
             applicationWord.ActiveDocument.PageSetup.BottomMargin = 15;
@@ -87,7 +95,7 @@ namespace CarteAccesLib
             Globale.LblCount.Visible = true;
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
-                Globale.LblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString();
+                Globale.LblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString() + " cartes réalisées";
                 
                 // -- Les élèves sont gérés deux par deux --
 
@@ -111,8 +119,9 @@ namespace CarteAccesLib
                 //Permet d'éviter la surcharge de mémoire qui s'arrête à 2400 ko, puis l'application s'arrête
                 GC.Collect();
                 // -- Nouvelle page --
-                fichierWord.Selection.EndKey();
-                fichierWord.Selection.InsertNewPage();
+                //fichierWord.Selection.InsertNewPage();
+                fichierWord.Selection.EndKey(WdUnits.wdStory, System.Reflection.Missing.Value);
+                fichierWord.Selection.InsertBreak(WdBreakType.wdSectionBreakNextPage);
 
                 // ------------------------------------------------------------------
 
@@ -125,7 +134,7 @@ namespace CarteAccesLib
                 Photo.verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
                 Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
-                Globale.LblCount.Text = (compt + 1).ToString() + "/" + listeEleve.Count.ToString();
+                Globale.LblCount.Text = (compt + 1).ToString() + "/" + listeEleve.Count.ToString() + " cartes réalisées";
                 
                 // -- Ajout des deux fichier PNG au nouveau document Word --
                 var shapeCarteArriere1 = fichierWord.ActiveDocument.Shapes.AddPicture(
@@ -146,9 +155,9 @@ namespace CarteAccesLib
                 GC.Collect();
 
                 // -- Nouvelle page --
-
-                fichierWord.Selection.EndKey();
-                fichierWord.Selection.InsertNewPage();
+                fichierWord.Selection.EndKey(WdUnits.wdStory, System.Reflection.Missing.Value);
+                fichierWord.Selection.InsertBreak(WdBreakType.wdSectionBreakNextPage);
+                //fichierWord.Selection.InsertBreak(WdBreakType.wdPageBreak);
 
                 if (compt > k + 50)
                 {
@@ -182,7 +191,15 @@ namespace CarteAccesLib
             GC.Collect();
 
             // -- Message qui indique que nous sommes arrivé au bout --
-            MessageBox.Show(listeEleve.Count + " élèves ont été imprimés.");
+            if (Globale.eleveImp)
+            {
+                MessageBox.Show(new Form { TopMost = true }, listeEleve.Count - 1 + " élèves ont été imprimés.");
+            }
+            else
+            {
+                MessageBox.Show(new Form { TopMost = true }, listeEleve.Count + " élèves ont été imprimés.");
+            }
+            fermerWord();
         }
 
 
@@ -193,7 +210,7 @@ namespace CarteAccesLib
                 Edition.CheminImpressionFinal = diag.SelectedPath;
 
             else
-                MessageBox.Show(
+                MessageBox.Show(new Form { TopMost = true },
                     "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
         }
 
@@ -203,10 +220,16 @@ namespace CarteAccesLib
             fermerWord();
             if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
             {
-                var realLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                var realLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-                var realWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                var realHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                double rLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                double rLocY = pbPhoto.Location.Y * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                double rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                double rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+
+                // -- Rectifications des positions --
+                int realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
+                int realLocY = Convert.ToInt32(Math.Round(rLocY)) + 3;
+                int realWidth = Convert.ToInt32(Math.Round(rWidth)) - 1;
+                int realHeight = Convert.ToInt32(Math.Round(rHeight)) - 1;
 
                 var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
                 ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);

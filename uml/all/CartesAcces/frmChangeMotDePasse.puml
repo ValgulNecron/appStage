@@ -1,0 +1,8 @@
+@startuml
+class frmChangeMotDePasse <<partial>> {
+    + frmChangeMotDePasse()
+    - frmChangeMotDePasse_Load(sender:object, e:EventArgs) : void
+    - btnEnregistrer_Click(sender:object, e:EventArgs) : void
+}
+Form <|-- frmChangeMotDePasse
+@enduml

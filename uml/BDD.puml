@@ -1,0 +1,42 @@
+﻿@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class etablissement {
+   nomRueEtablissement: varchar(60)
+   numeroRueEtablissement: varchar(10)
+   codePostaleEtablissement: varchar(15)
+   villeEtablissement: varchar(60)
+   numeroTelephoneEtablissement: varchar(20)
+   emailEtablissement: varchar(120)
+   urlEtablissement: varchar(120)
+   codeHexa6eme: varchar(7)
+   codeHexa5eme: varchar(7)
+   codeHexa4eme: varchar(7)
+   codeHexa3eme: varchar(7)
+   bordure: tinyint(1)
+   nomEtablissement: varchar(50)
+}
+class logAction {
+   action: varchar(300)
+   adMac: varchar(20)
+   dateAction: datetime
+   nomUtilisateur: varchar(20)
+}
+class logMotDePasse {
+   hash: varchar(120)
+   dateLogMotDePasse: datetime
+   nomUtilisateur: varchar(20)
+}
+class utilisateur {
+   hash: varchar(120)
+   typeUtilisateur: varchar(20)
+   themeBool: tinyint(1)
+   nomUtilisateur: varchar(20)
+}
+
+logAction      -[#595959,plain]-^  utilisateur   : "nomUtilisateur"
+logMotDePasse  -[#595959,plain]-^  utilisateur   : "nomUtilisateur"
+@enduml

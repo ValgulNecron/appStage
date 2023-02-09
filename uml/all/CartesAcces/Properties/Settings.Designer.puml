@@ -1,0 +1,7 @@
+@startuml
+class Settings <<sealed>> <<partial>> {
+    + DateImport : string <<get>> <<set>>
+}
+Settings o-> "defaultInstance" Settings
+Settings --> "Default" Settings
+@enduml

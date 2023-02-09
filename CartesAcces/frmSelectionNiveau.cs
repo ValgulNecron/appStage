@@ -14,8 +14,13 @@ namespace CartesAcces
         public frmSelectNiveau()
         {
             InitializeComponent();
+            if (Globale.PasDeBar) rdbClassique.Visible = false;
         }
 
+        /*
+         * Cette fonction permet de valider la selection du niveau
+         * elle lance la barre de progression avec le cas 3
+         */
         private void btnValider_Click(object sender, EventArgs e)
         {
             if (rdb3eme.Checked)
@@ -58,7 +63,7 @@ namespace CartesAcces
                 try
                 {
                     Edition.importCarteFace(Globale.CheminFaceCarte);
-                    MessageBox.Show("Import réussi");
+                    MessageBox.Show(new Form { TopMost = true }, "Import réussi");
                 }
                 catch (Exception err)
                 {

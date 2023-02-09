@@ -40,10 +40,11 @@ namespace CartesAcces
             etablissement.NumeroTelephoneEtablissement = txtTelEtablissement.Text;
             etablissement.NumeroRueEtablissement = Convert.ToInt32(txtNumRueEtablissement.Text);
             etablissement.UrlEtablissement = textBox1.Text;
-            etablissement.CodeHexa6eme = getCodeHexa6eme();
-            etablissement.CodeHexa5eme = getCodeHexa5eme();
-            etablissement.CodeHexa4eme = getCodeHexa4eme();
-            etablissement.CodeHexa3eme = getCodeHexa3eme();
+            etablissement.CodeHexa6eme = GetCodeHexa6Eme();
+            etablissement.CodeHexa5eme = GetCodeHexa5Eme();
+            etablissement.CodeHexa4eme = GetCodeHexa4Eme();
+            etablissement.CodeHexa3eme = GetCodeHexa3Eme();
+            etablissement.Bordure = cbBordure.Checked;
             ClassSql.Db.InsertOrReplace(etablissement);
             var macAddress = string.Empty;
             foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
@@ -61,7 +62,7 @@ namespace CartesAcces
             log.Action = "à modifier les informations de établissement";
             log.AdMac = macAddress;
             ClassSql.Db.Insert(log);
-            MessageBox.Show("Les informations de l'établissement ont été modifiées");
+            MessageBox.Show(new Form { TopMost = true }, "Les informations de l'établissement ont été modifiées");
             Close();
         }
 
@@ -81,272 +82,276 @@ namespace CartesAcces
                 txtVilleEtablissement.Text = etaDebut.VilleEtablissement;
                 txtCodePostalEtablissement.Text = etaDebut.CodePostaleEtablissement;
                 txtNumRueEtablissement.Text = etaDebut.NumeroRueEtablissement.ToString();
-                var codeHexa6eme = etaDebut.CodeHexa6eme;
-                var codeHexa5eme = etaDebut.CodeHexa5eme;
-                var codeHexa4eme = etaDebut.CodeHexa4eme;
-                var codeHexa3eme = etaDebut.CodeHexa3eme;
-                foreach (var VARIABLE in gb6eme.Controls)
-                    if (VARIABLE is RadioButton)
+                textBox1.Text = etaDebut.UrlEtablissement;
+                cbBordure.Checked = etaDebut.Bordure;
+                var codeHexa6Eme = etaDebut.CodeHexa6eme;
+                var codeHexa5Eme = etaDebut.CodeHexa5eme;
+                var codeHexa4Eme = etaDebut.CodeHexa4eme;
+                var codeHexa3Eme = etaDebut.CodeHexa3eme;
+                foreach (var variable in gb6eme.Controls)
+                    if (variable is RadioButton)
                     {
-                        var rd = VARIABLE as RadioButton;
-                        if (rd.Text == "Rouge" && codeHexa6eme == "#FF0000")
+                        var rd = variable as RadioButton;
+                        if (rd != null)
                         {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Vert" && codeHexa6eme == "#00FF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Bleu" && codeHexa6eme == "#0000FF")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Jaune" && codeHexa6eme == "#FFFF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Custom")
-                        {
-                            rd.Checked = true;
-                            txtCustom6.Visible = true;
-                            txtCustom6.Text = codeHexa6eme;
+                            if (rd.Text == "Rouge" && codeHexa6Eme == "#FF0000")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Vert" && codeHexa6Eme == "#90EE90")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Bleu" && codeHexa6Eme == "#ADD8E6")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Jaune" && codeHexa6Eme == "#FFFF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Custom")
+                            {
+                                rd.Checked = true;
+                                txtCustom6.Visible = true;
+                                txtCustom6.Text = codeHexa6Eme;
+                            }
                         }
                     }
 
-                foreach (var VARIABLE in gb5eme.Controls)
-                    if (VARIABLE is RadioButton)
+                foreach (var variable in gb5eme.Controls)
+                    if (variable is RadioButton)
                     {
-                        var rd = VARIABLE as RadioButton;
-                        if (rd.Text == "Rouge" && codeHexa5eme == "#FF0000")
+                        var rd = variable as RadioButton;
+                        if (rd != null)
                         {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Vert" && codeHexa5eme == "#00FF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Bleu" && codeHexa5eme == "#0000FF")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Jaune" && codeHexa5eme == "#FFFF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Custom")
-                        {
-                            rd.Text = "Custom";
-                            txtCustom5.Visible = true;
-                            txtCustom5.Text = codeHexa5eme;
+                            if (rd.Text == "Rouge" && codeHexa5Eme == "#FF0000")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Vert" && codeHexa5Eme == "#90EE90")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Bleu" && codeHexa5Eme == "#ADD8E6")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Jaune" && codeHexa5Eme == "#FFFF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Custom")
+                            {
+                                rd.Checked = true;
+                                txtCustom5.Visible = true;
+                                txtCustom5.Text = codeHexa5Eme;
+                            }
                         }
                     }
 
-                foreach (var VARIABLE in gb4eme.Controls)
+                foreach (var variable in gb4eme.Controls)
                 {
-                    var rd = VARIABLE as RadioButton;
-
-                    if (rd.Text == "Rouge" && codeHexa4eme == "#FF0000")
+                    var rd = variable as RadioButton;
+                    if (rd != null)
                     {
-                        rd.Checked = true;
-                    }
-                    else if (rd.Text == "Vert" && codeHexa4eme == "#00FF00")
-                    {
-                        rd.Checked = true;
-                    }
-                    else if (rd.Text == "Bleu" && codeHexa4eme == "#0000FF")
-                    {
-                        rd.Checked = true;
-                    }
-                    else if (rd.Text == "Jaune" && codeHexa4eme == "#FFFF00")
-                    {
-                        rd.Checked = true;
-                    }
-                    else if (rd.Text == "Custom")
-                    {
-                        rd.Text = "Custom";
-                        txtCustom4.Visible = true;
-                        txtCustom4.Text = codeHexa4eme;
+                        if (rd.Text == "Rouge" && codeHexa4Eme == "#FF0000")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Vert" && codeHexa4Eme == "#90EE90")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Bleu" && codeHexa4Eme == "#ADD8E6")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Jaune" && codeHexa4Eme == "#FFFF00")
+                        {
+                            rd.Checked = true;
+                        }
+                        else if (rd.Text == "Custom")
+                        {
+                            rd.Checked = true;
+                            txtCustom4.Visible = true;
+                            txtCustom4.Text = codeHexa4Eme;
+                        }
                     }
                 }
 
-                foreach (var VARIABLE in gb3eme.Controls)
-                    if (VARIABLE is RadioButton)
+                foreach (var variable in gb3eme.Controls)
+                    if (variable is RadioButton)
                     {
-                        var rd = VARIABLE as RadioButton;
-
-                        if (rd.Text == "Rouge" && codeHexa3eme == "#FF0000")
+                        var rd = variable as RadioButton;
+                        if (rd != null)
                         {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Vert" && codeHexa3eme == "#00FF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Bleu" && codeHexa3eme == "#0000FF")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Jaune" && codeHexa3eme == "#FFFF00")
-                        {
-                            rd.Checked = true;
-                        }
-                        else if (rd.Text == "Custom")
-                        {
-                            rd.Text = "Custom";
-                            txtCustom3.Visible = true;
-                            txtCustom3.Text = codeHexa3eme;
+                            if (rd.Text == "Rouge" && codeHexa3Eme == "#FF0000")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Vert" && codeHexa3Eme == "#90EE90")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Bleu" && codeHexa3Eme == "#ADD8E6")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Jaune" && codeHexa3Eme == "#FFFF00")
+                            {
+                                rd.Checked = true;
+                            }
+                            else if (rd.Text == "Custom")
+                            {
+                                rd.Checked = true;
+                                txtCustom3.Visible = true;
+                                txtCustom3.Text = codeHexa3Eme;
+                            }
                         }
                     }
 
                 textBox1.Text = etaDebut.UrlEtablissement;
-                txtNumRueEtablissement.KeyPress += keyPress;
             }
             catch
             {
             }
         }
 
-        private string getCodeHexa6eme()
+        private string GetCodeHexa6Eme()
         {
-            var codeHexa6eme = "";
-            foreach (var VARIABLE in gb6eme.Controls)
-                if (VARIABLE is RadioButton)
+            var codeHexa6Eme = "";
+            foreach (var variable in gb6eme.Controls)
+                if (variable is RadioButton)
                 {
-                    var rd = VARIABLE as RadioButton;
+                    var rd = variable as RadioButton;
                     if (rd.Checked)
                     {
                         var temp = rd.Text;
                         switch (temp)
                         {
                             case "Rouge":
-                                codeHexa6eme = "#FF0000";
+                                codeHexa6Eme = "#FF0000";
                                 break;
                             case "Vert":
-                                codeHexa6eme = "#00FF00";
+                                codeHexa6Eme = "#90EE90";
                                 break;
                             case "Bleu":
-                                codeHexa6eme = "#0000FF";
+                                codeHexa6Eme = "#ADD8E6";
                                 break;
                             case "Jaune":
-                                codeHexa6eme = "#FFFF00";
+                                codeHexa6Eme = "#FFFF00";
                                 break;
                             case "Custom":
-                                codeHexa6eme = txtCustom6.Text;
+                                codeHexa6Eme = txtCustom6.Text;
                                 break;
                         }
                     }
                 }
 
-            return codeHexa6eme;
+            return codeHexa6Eme;
         }
 
-        private string getCodeHexa5eme()
+        private string GetCodeHexa5Eme()
         {
-            var codeHexa5eme = "";
-            foreach (var VARIABLE in gb5eme.Controls)
-                if (VARIABLE is RadioButton)
+            var codeHexa5Eme = "";
+            foreach (var variable in gb5eme.Controls)
+                if (variable is RadioButton)
                 {
-                    var rd = VARIABLE as RadioButton;
+                    var rd = variable as RadioButton;
                     if (rd.Checked)
                     {
                         var temp = rd.Text;
                         switch (temp)
                         {
                             case "Rouge":
-                                codeHexa5eme = "#FF0000";
+                                codeHexa5Eme = "#FF0000";
                                 break;
                             case "Vert":
-                                codeHexa5eme = "#00FF00";
+                                codeHexa5Eme = "#90EE90";
                                 break;
                             case "Bleu":
-                                codeHexa5eme = "#0000FF";
+                                codeHexa5Eme = "#ADD8E6";
                                 break;
                             case "Jaune":
-                                codeHexa5eme = "#FFFF00";
+                                codeHexa5Eme = "#FFFF00";
                                 break;
                             case "Custom":
-                                codeHexa5eme = txtCustom5.Text;
+                                codeHexa5Eme = txtCustom5.Text;
                                 break;
                         }
                     }
                 }
 
-            return codeHexa5eme;
+            return codeHexa5Eme;
         }
 
-        private string getCodeHexa4eme()
+        private string GetCodeHexa4Eme()
         {
-            var codeHexa4eme = "";
-            foreach (var VARIABLE in gb4eme.Controls)
-                if (VARIABLE is RadioButton)
+            var codeHexa4Eme = "";
+            foreach (var variable in gb4eme.Controls)
+                if (variable is RadioButton)
                 {
-                    var rd = VARIABLE as RadioButton;
+                    var rd = variable as RadioButton;
                     if (rd.Checked)
                     {
                         var temp = rd.Text;
                         switch (temp)
                         {
                             case "Rouge":
-                                codeHexa4eme = "#FF0000";
+                                codeHexa4Eme = "#FF0000";
                                 break;
                             case "Vert":
-                                codeHexa4eme = "#00FF00";
+                                codeHexa4Eme = "#90EE90";
                                 break;
                             case "Bleu":
-                                codeHexa4eme = "#0000FF";
+                                codeHexa4Eme = "#ADD8E6";
                                 break;
                             case "Jaune":
-                                codeHexa4eme = "#FFFF00";
+                                codeHexa4Eme = "#FFFF00";
                                 break;
                             case "Custom":
-                                codeHexa4eme = txtCustom4.Text;
+                                codeHexa4Eme = txtCustom4.Text;
                                 break;
                         }
                     }
                 }
 
-            return codeHexa4eme;
+            return codeHexa4Eme;
         }
 
-        private string getCodeHexa3eme()
+        private string GetCodeHexa3Eme()
         {
-            var codeHexa3eme = "";
-            foreach (var VARIABLE in gb3eme.Controls)
-                if (VARIABLE is RadioButton)
+            var codeHexa3Eme = "";
+            foreach (var variable in gb3eme.Controls)
+                if (variable is RadioButton)
                 {
-                    var rd = VARIABLE as RadioButton;
+                    var rd = variable as RadioButton;
                     if (rd.Checked)
                     {
                         var temp = rd.Text;
                         switch (temp)
                         {
                             case "Rouge":
-                                codeHexa3eme = "#FF0000";
+                                codeHexa3Eme = "#FF0000";
                                 break;
                             case "Vert":
-                                codeHexa3eme = "#00FF00";
+                                codeHexa3Eme = "#90EE90";
                                 break;
                             case "Bleu":
-                                codeHexa3eme = "#0000FF";
+                                codeHexa3Eme = "#ADD8E6";
                                 break;
                             case "Jaune":
-                                codeHexa3eme = "#FFFF00";
+                                codeHexa3Eme = "#FFFF00";
                                 break;
                             case "Custom":
-                                codeHexa3eme = txtCustom3.Text;
+                                codeHexa3Eme = txtCustom3.Text;
                                 break;
                         }
                     }
                 }
 
-            return codeHexa3eme;
-        }
-
-        private void keyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                e.KeyChar != '.')
-                e.Handled = true;
+            return codeHexa3Eme;
         }
 
         private void rdbCustom6_CheckedChanged(object sender, EventArgs e)
@@ -376,5 +381,11 @@ namespace CartesAcces
             else
                 txtCustom3.Visible = false;
         }
+
+        private void cbBordure_CheckedChanged(object sender, EventArgs e)
+        { }
+
+        private void label7_Click(object sender, EventArgs e)
+        { }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Linq;
 using System.Windows.Forms;
 using LinqToDB;
@@ -25,7 +25,7 @@ namespace CartesAcces
                 .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
             if (user.TypeUtilisateur != "admin")
             {
-                MessageBox.Show("Vous n'avez pas les droits pour créer un utilisateur");
+                MessageBox.Show(new Form { TopMost = true }, "Vous n'avez pas les droits pour créer un utilisateur");
                 return;
             }
             
@@ -39,19 +39,37 @@ namespace CartesAcces
             userCree.NomUtilisateur = tbUser.Text;
             userCree.Hash = Securite.creationHash(tbMdp.Text);
             foreach (Control var in gbTypeUser.Controls)
-            {
+            {   
                 var rb = var as RadioButton;
                 if (rb != null && rb.Checked) userCree.TypeUtilisateur = rb.Text;
             }
 
             userCree.ThemeBool = false;
+            userCree.Active = true;
             ClassSql.Db.InsertOrReplace(userCree);
+            MessageBox.Show("Utilisateur créé avec succès");
         }
 
         private void frmCreationUtilisateur_Load(object sender, EventArgs e)
         {
             tbMdp.PasswordChar = '*';
             tbValidMdp.PasswordChar = '*';
+        }
+
+        private void btnSuppr_Click(object sender, EventArgs e)
+        {
+            var user = ClassSql.Db.GetTable<Utilisateurs>()
+                .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
+            if (user.TypeUtilisateur != "admin")
+            {
+                MessageBox.Show(new Form { TopMost = true }, "Vous n'avez pas les droits pour supprimer un utilisateur");
+                return;
+            }
+            var user2 = ClassSql.Db.GetTable<Utilisateurs>()
+                .FirstOrDefault(u => u.NomUtilisateur == tbUser.Text);
+            user2.Active = false;
+            ClassSql.Db.InsertOrReplace(user2);
+            MessageBox.Show("Utilisateur supprimé avec succès");
         }
     }
 }

@@ -221,7 +221,7 @@ namespace CartesAcces
                         Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
                         Cursor = Cursors.Default;
                         var classe = cbbClasse.Text;
-                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".jpg";
                         Edition.SelectionClique = false;
                         Edt.rognageEdt(pbCarteArriere, pathEdt);
                     }
@@ -229,7 +229,7 @@ namespace CartesAcces
                     {
                         Cursor = Cursors.Default;
                         var classe = cbbClasse.Text;
-                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".png";
+                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".jpg";
                         Edition.SelectionClique = false;
                         pbCarteArriere.Image = Image.FromFile(pathEdt);
                         

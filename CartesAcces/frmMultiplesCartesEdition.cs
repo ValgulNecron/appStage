@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CarteAcces;
@@ -163,11 +165,27 @@ namespace CartesAcces
 
         private void btnValiderImpr_Click(object sender, EventArgs e)
         {
+            if (Globale.positionPhotoClassique == false)
+            {
+                Edition.PosXDef = pbPhoto.Location.X;
+                Edition.PosYDef = pbPhoto.Location.Y;
+                Edition.PosHeightDef = pbPhoto.Height;
+                Edition.PosWidthDef = pbPhoto.Width;
+                MessageBox.Show("Veuillez placer la photo une seconde fois pour les emplois du temps classiques");
+                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + Globale.ListeEleveImpr[0].ClasseEleve + ".jpg");
+                Globale.positionPhotoClassique = true;
+                return;
+            }
+            
+            Edition.ReplacementPhotoClassique(pbPhoto.Location.X, pbPhoto.Location.Y);
+           
+            
             try
             {
                 // -- Si la liste est impaire, on double le dernier élève
                 if (Globale.ListeEleveImpr.Count % 2 == 1)
                 {
+                    Globale.eleveImp = true;
                     var eleve = Globale.ListeEleveImpr[Globale.ListeEleveImpr.Count - 1];
                     Globale.ListeEleveImpr.Add(eleve);
                 }
@@ -176,11 +194,13 @@ namespace CartesAcces
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
 
                 Globale.LblCount = lblCompteur;
-                
+
+                pbPhoto.Visible = false;
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
                 FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale.ListeEleveImpr, pbPhoto,
                     pbCarteArriere);
-                
+                pbPhoto.Visible = true;
+                Globale.positionPhotoClassique = false;
                 
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
@@ -191,7 +211,7 @@ namespace CartesAcces
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-
+                
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
                 log.NomUtilisateur = Globale.NomUtilisateur;
@@ -200,8 +220,10 @@ namespace CartesAcces
                 ClassSql.Db.Insert(log);
                 labelEnCoursValidation.Visible = false;
             }
-            catch
+            catch(Exception ex)
             {
+                pbPhoto.Visible = true;
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -245,6 +267,7 @@ namespace CartesAcces
             }
             catch
             {
+                
             }
         }
     }
