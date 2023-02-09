@@ -29,6 +29,8 @@ namespace CartesAcces
                        o.IsGlobalModeEnabled = true;
                    }))
             {
+                Globale.Version = Environment.GetEnvironmentVariable("version");
+                Globale.VersionDate = Environment.GetEnvironmentVariable("date");
                 // App code goes here. Dispose the SDK before exiting to flush events.
                 try
                 {

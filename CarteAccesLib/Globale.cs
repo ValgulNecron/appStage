@@ -61,8 +61,8 @@ namespace CartesAcces
         public static Form Accueil { get; set; }
 
         // version
-        public static string Version1 { get; set; } = "0.3.2";
-        public static string VersionDate { get; set; } = "18/01/2023";
+        public static string Version { get; set; }
+        public static string VersionDate { get; set; }
 
         // variable lier au bar de progres
         public static string CheminTexte { get; set; }
