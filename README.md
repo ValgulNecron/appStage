@@ -2,16 +2,16 @@
 
 
 ## uml des classe
-![](./uml/all/include.svg)
-![](./uml/app/include.svg)
-![](./uml/lib/include.svg)
+![](./file/all/include.svg)
+![](./file/app/include.svg)
+![](./file/lib/include.svg)
 
 ## uml et mcd de la bdd
-![](./uml/stage2.svg)
-![](./uml/BDD.svg)
+![](./file/stage2.svg)
+![](./file/BDD.svg)
 
 ## uml des cas d'utilisation
-![](./uml/UseCase.svg)
+![](./file/UseCase.svg)
 
 
 
