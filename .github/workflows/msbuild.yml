@@ -44,6 +44,11 @@ jobs:
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
     # upload un artifact de la build sur le workflow
+    - name: Copy data
+      uses: canastro/copy-action@0.0.2
+      with:
+        source: ${{env.SOLUTION_FILE_PATH}}\..\data
+        target: ${{env.SOLUTION_FILE_PATH}}\CreditCeleste\bin\Release\
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with: 
