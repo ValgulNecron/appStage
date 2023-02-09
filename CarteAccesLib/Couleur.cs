@@ -134,6 +134,8 @@ namespace CartesAcces
             if (Globale.EstEnModeSombre)
             {
                 btn.FlatStyle = FlatStyle.Flat;
+                btn.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
+                    Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
                 if (btn.Enabled)
                     btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsSombre[0],
                         Globale.CouleurBoutonsSombre[1], Globale.CouleurBoutonsSombre[2]);
@@ -145,6 +147,8 @@ namespace CartesAcces
             else
             {
                 btn.FlatStyle = FlatStyle.Flat;
+                btn.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteclaire[0],
+                    Globale.CouleurDuTexteclaire[1], Globale.CouleurDuTexteclaire[2]);
                 if (btn.Enabled)
                     btn.BackColor = Color.FromArgb(255, Globale.CouleurBoutonsClaire[0],
                         Globale.CouleurBoutonsClaire[1], Globale.CouleurBoutonsClaire[2]);
