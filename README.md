@@ -31,6 +31,7 @@ POUR LE RAPPORT DE STAGE (ballec) :
 BUG :
  - le déchiffrement casse les images et ne supprime pas celles qui sont chiffrées
  - rognage des photos lors de carte par classe / section => la position est modifié mais pas la taille lors du 2ème rognage
+ - frmMultipleCarteEdition => la demande de positionnement est demandé deux fois (pour classique et spécifique) lors du premier enregistrement, lors du deuxième enregistrement la deuxième demande de positionnement n'est pas demander
 
 https://gist.github.com/cuonggt/9b7d08a597b167299f0d
 
