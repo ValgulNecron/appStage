@@ -382,7 +382,7 @@ namespace CartesAcces
             Brush pinceauNoir = new SolidBrush(Color.Black);
 
             var police = new Font("Calibri", 45, FontStyle.Bold);
-            var police2 = new Font("Calibri", 17, FontStyle.Bold);
+            var police2 = new Font("Calibri", 22, FontStyle.Bold);
             var police3 = new Font("Calibri", 40, FontStyle.Bold);
             var police4 = new Font("Calibri", 32, FontStyle.Bold);
 
@@ -390,8 +390,6 @@ namespace CartesAcces
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
             
             //Dessine et rempli le fond pour l'écriture
-            fondTexteCarteFace(objGraphique, eleve.NomEleve, police, eleve, 250, 960);
-            fondTexteCarteFace(objGraphique, eleve.PrenomEleve, police, eleve, 350, 1075);
             fondTexteCarteFace(objGraphique, eleve.MefEleve, police2, eleve, 50, 70);
 
             //Dessine la saisie en textbox
