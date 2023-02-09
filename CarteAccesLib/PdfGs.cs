@@ -57,7 +57,7 @@ namespace CartesAcces
 
             Directory.CreateDirectory(outputPath);
             var process = new Process();
-            process.StartInfo.FileName = "gswin32c.exe"; // or the appropriate version of the executable for your system
+            process.StartInfo.FileName = "./data/gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments =
                 $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -r150 -dPDFFitPage -c \"<< /Orientation 3 >> setpagedevice\" -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
@@ -77,7 +77,7 @@ namespace CartesAcces
             fs.Close();
 
             var process = new Process();
-            process.StartInfo.FileName = "gswin32c.exe";
+            process.StartInfo.FileName = "./data/gswin32c.exe";
             process.StartInfo.Arguments =
                 $"-o \"{outputFile}\" -dTextFormat=3 -sDEVICE=txtwrite -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
