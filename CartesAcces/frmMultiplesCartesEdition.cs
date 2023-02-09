@@ -169,13 +169,15 @@ namespace CartesAcces
             {
                 Edition.PosXDef = pbPhoto.Location.X;
                 Edition.PosYDef = pbPhoto.Location.Y;
+                Edition.PosHeightDef = pbPhoto.Height;
+                Edition.PosWidthDef = pbPhoto.Width;
                 MessageBox.Show("Veuillez placer la photo une seconde fois pour les emplois du temps classiques");
                 pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + Globale.ListeEleveImpr[0].ClasseEleve + ".jpg");
                 Globale.positionPhotoClassique = true;
                 return;
             }
             
-            Edition.ReplacementPhotoClassique(pbPhoto.Location.X, pbPhoto.Location.Y);
+            Edition.ReplacementPhotoClassique(pbPhoto.Location.X, pbPhoto.Location.Y, pbPhoto.Height, pbPhoto.Width);
             
             try
             {

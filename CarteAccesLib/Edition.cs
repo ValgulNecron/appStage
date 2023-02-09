@@ -40,6 +40,10 @@ namespace CartesAcces
 
         public static int PosYDef { get; set; }
         
+        public static int PosHeightDef { get; set; }
+
+        public static int PosWidthDef { get; set; }
+        
         public static int PosXClassique{ get; set; }
 
         public static int PosYClassique { get; set; }
@@ -472,10 +476,12 @@ namespace CartesAcces
             }
         }
 
-        public static void ReplacementPhotoClassique(int posx, int posy)
+        public static void ReplacementPhotoClassique(int posx, int posy, int height, int width)
         {
             PosYClassique = posy;
             PosXClassique = posx;
+            PosWidthDef = width;
+            PosHeightDef = height;
         }   
         
         public static void importEleves(string path)

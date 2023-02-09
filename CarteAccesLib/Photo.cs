@@ -55,8 +55,8 @@ namespace CarteAcces
             {
                 rLocX = Edition.PosXDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
                 rLocY = Edition.PosYDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-                rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+                rWidth = Edition.PosWidthDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+                rHeight = Edition.PosHeightDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
             }
 
             int realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
