@@ -352,6 +352,15 @@ namespace CartesAcces
                 btnEdtPerso.Enabled = false;
             }
         }
+        
+        public static void qrCodeFace(Graphics objGraphique)
+        {
+            var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
+            Bitmap bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
+            Bitmap bmpFinal = new Bitmap(bmpOriginal, new Size(300, 300));
+            
+            objGraphique.DrawImage(bmpFinal, new Point(1350,80));
+        }
 
         public static Image imageCarteFace(Eleve eleve)
         {
@@ -363,6 +372,9 @@ namespace CartesAcces
             }
 
             var objGraphique = Graphics.FromImage(image);
+            
+            qrCodeFace(objGraphique);
+            
             Brush pinceauNoir = new SolidBrush(Color.Black);
 
             var police = new Font("Calibri", 45, FontStyle.Bold);
@@ -379,16 +391,18 @@ namespace CartesAcces
             fondTexteCarteFace(objGraphique, eleve.MefEleve, police2, eleve, 50, 70);
 
             //Dessine la saisie en textbox
-            fondTexteCarteFace(objGraphique, "Nom : " + eleve.NomEleve, police3, eleve, 50, 960);
-            objGraphique.DrawString("Nom : " + eleve.NomEleve, police3, pinceauNoir, 50,
+            string chaine = "Nom : " + eleve.NomEleve;
+            fondTexteCarteFace(objGraphique, chaine , police3, eleve, 50, 960);
+            objGraphique.DrawString(chaine, police3, pinceauNoir, 50,
                 960); // Dessine le texte sur l'image à la position X et Y + couleur
-            fondTexteCarteFace(objGraphique, "Prenom : " + eleve.PrenomEleve, police3, eleve, 50, 1075);
-            objGraphique.DrawString("Prenom : " + eleve.PrenomEleve, police3, pinceauNoir, 50, 1075);
+            chaine = "Prenom : " + eleve.PrenomEleve;
+            fondTexteCarteFace(objGraphique, chaine, police3, eleve, 50, 1075);
+            objGraphique.DrawString(chaine, police3, pinceauNoir, 50, 1075);
             
             fondTexteCarteFace(objGraphique, eleve.MefEleve, police, eleve, 50, 70);
             objGraphique.DrawString(eleve.MefEleve, police, pinceauNoir, 50, 70);
 
-            string chaine = "Date de création : " + date;
+            chaine = "Date de création : " + date;
             int mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
             fondTexteCarteFace(objGraphique,chaine, police2, eleve, 1850 - mesure, 850);
             objGraphique.DrawString(chaine, police2, pinceauNoir, 1850 - mesure, 850);
