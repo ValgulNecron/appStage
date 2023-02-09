@@ -27,7 +27,7 @@ jobs:
         date: "${{ steps.current-time.outputs.day }} : ${{ steps.current-time.outputs.month }} : ${{ steps.current-time.outputs.year }}"
         ver: "${{ github.event.inputs.version }}"
       run: |
-        touch ./CartesAcces/.env
+        type nul > ./CartesAcces/.env
         echo version=$ver >> ./CartesAcces/.env
         echo date=$date >> ./CartesAcces/.env
     - uses: actions/checkout@v3
