@@ -10,7 +10,6 @@ on:
         
 env:
   SOLUTION_FILE_PATH: .
-  version: ${{ github.event.inputs.version }} 
   BUILD_CONFIGURATION: Release
 
 jobs:
@@ -26,7 +25,11 @@ jobs:
     - name: Use current time
       env:
         date: "${{ steps.current-time.outputs.day }} : ${{ steps.current-time.outputs.month }} : ${{ steps.current-time.outputs.year }}"
-      run: echo $date
+        ver: "${{ github.event.inputs.version }}"
+      run: |
+        touch ./CartesAcces/.env
+        echo version=$ver >> ./CartesAcces/.env
+        echo date=$date >> ./CartesAcces/.env
     - uses: actions/checkout@v3
     # permet de rajouter msbuild sur l'environement de build
     - name: Add MSBuild to PATH
