@@ -216,8 +216,9 @@ namespace CartesAcces
                 ClassSql.Db.Insert(log);
                 labelEnCoursValidation.Visible = false;
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
 
