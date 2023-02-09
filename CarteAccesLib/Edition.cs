@@ -355,7 +355,13 @@ namespace CartesAcces
 
         public static Image imageCarteFace(Eleve eleve)
         {
-            var image = Image.FromFile("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0, 1) + "eme.png");
+            var image = Image.FromFile("./data/FichierCartesFace/default.png");
+            
+            if (File.Exists("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0, 1) + "eme.png"))
+            {
+                image = Image.FromFile("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0, 1) + "eme.png");
+            }
+
             var objGraphique = Graphics.FromImage(image);
             Brush pinceauNoir = new SolidBrush(Color.Black);
 

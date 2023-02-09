@@ -196,6 +196,7 @@ namespace CartesAcces
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
                 FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale.ListeEleveImpr, pbPhoto,
                     pbCarteArriere);
+                pbPhoto.Visible = true;
                 
                 
                 var macAddress = string.Empty;
@@ -218,6 +219,7 @@ namespace CartesAcces
             }
             catch(Exception ex)
             {
+                pbPhoto.Visible = true;
                 MessageBox.Show(ex.Message);
             }
         }
@@ -262,6 +264,7 @@ namespace CartesAcces
             }
             catch
             {
+                
             }
         }
     }
