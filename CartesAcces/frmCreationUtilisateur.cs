@@ -45,6 +45,7 @@ namespace CartesAcces
             }
 
             userCree.ThemeBool = false;
+            userCree.Active = true;
             ClassSql.Db.InsertOrReplace(userCree);
             MessageBox.Show("Utilisateur créé avec succès");
         }
@@ -58,13 +59,17 @@ namespace CartesAcces
         private void btnSuppr_Click(object sender, EventArgs e)
         {
             var user = ClassSql.Db.GetTable<Utilisateurs>()
-                .FirstOrDefault(u => u.NomUtilisateur == tbUser.Text);
+                .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
             if (user.TypeUtilisateur != "admin")
             {
                 MessageBox.Show(new Form { TopMost = true }, "Vous n'avez pas les droits pour supprimer un utilisateur");
                 return;
             }
-            ClassSql.Db.Delete(user);
+            var user2 = ClassSql.Db.GetTable<Utilisateurs>()
+                .FirstOrDefault(u => u.NomUtilisateur == tbUser.Text);
+            user2.Active = false;
+            ClassSql.Db.InsertOrReplace(user2);
+            MessageBox.Show("Utilisateur supprimé avec succès");
         }
     }
 }
