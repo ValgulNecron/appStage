@@ -105,11 +105,14 @@ namespace CartesAcces
                 {
                     MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtMotDePasse.Text = "";
+                    txtIdentifiant.Text = "";
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+                txtMotDePasse.Text = "";
+                txtIdentifiant.Text = "";
             }
         }
 
