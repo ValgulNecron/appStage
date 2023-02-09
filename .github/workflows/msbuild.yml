@@ -23,13 +23,10 @@ jobs:
         format: YYYYMMDD-HH
         utcOffset: "+08:00"
     - name: Use current time
-      env:
+      uses: SpicyPizza/create-envfile@v1.3
+      with:
         date: "${{ steps.current-time.outputs.day }} : ${{ steps.current-time.outputs.month }} : ${{ steps.current-time.outputs.year }}"
-        ver: "${{ github.event.inputs.version }}"
-      run: |
-        type nul > ./CartesAcces/.env
-        echo version=$ver >> ./CartesAcces/.env
-        echo date=$date >> ./CartesAcces/.env
+        verionapp: "${{ github.event.inputs.version }}"
     - uses: actions/checkout@v3
     # permet de rajouter msbuild sur l'environement de build
     - name: Add MSBuild to PATH
