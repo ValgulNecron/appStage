@@ -183,13 +183,13 @@ namespace CartesAcces
             var police = new Font("Calibri", 45, FontStyle.Bold);
             dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
 
-            var police2 = new Font("Calibri", 15, FontStyle.Bold);
+            var police2 = new Font("Calibri", 24, FontStyle.Bold);
             
-            var police3 = new Font("Calibri", 28, FontStyle.Bold);
+            var police3 = new Font("Calibri", 24, FontStyle.Bold);
             dessineTexteCarteFace(police3, 50, 960, "Nom :", pbCarteFace, cbbSection);
             dessineTexteCarteFace(police3, 50, 1075, "Prénom :", pbCarteFace, cbbSection);
             
-            var police4 = new Font("Calibri", 20, FontStyle.Bold);
+            var police4 = new Font("Calibri", 24, FontStyle.Bold);
    
             bool succes = true;
             
@@ -204,23 +204,23 @@ namespace CartesAcces
                 
                 chaine = "Date de création : " + date;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police2, 1835 - mesure, 850, chaine, pbCarteFace, cbbSection);
+                dessineTexteCarteFace(police2, 1700 - mesure, 700, chaine, pbCarteFace, cbbSection);
                 
                 chaine = etab.NomEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 892, etab.NomEtablissement, pbCarteFace, cbbSection);
+                dessineTexteCarteFace(police4, 1700 - mesure, 780, etab.NomEtablissement, pbCarteFace, cbbSection);
                 
                 chaine = "Adresse : " + etab.NumeroRueEtablissement + " " + etab.NomRueEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 944, chaine, pbCarteFace, cbbSection);
+                dessineTexteCarteFace(police4, 1700 - mesure, 860, chaine, pbCarteFace, cbbSection);
                 
                 chaine = etab.CodePostaleEtablissement + " " + etab.VilleEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 996, chaine, pbCarteFace, cbbSection);
+                dessineTexteCarteFace(police4, 1700 - mesure, 940, chaine, pbCarteFace, cbbSection);
                 
                 chaine = "Tel : " + etab.NumeroTelephoneEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
-                dessineTexteCarteFace(police4, 1700 - mesure, 1048, chaine, pbCarteFace, cbbSection);
+                dessineTexteCarteFace(police4, 1700 - mesure, 1020, chaine, pbCarteFace, cbbSection);
                 
                 chaine = "Mail : " + etab.EmailEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
