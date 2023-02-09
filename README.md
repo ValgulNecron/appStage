@@ -2,7 +2,7 @@
 
 
 ## uml des classe
-![](\uml\all\include.svg)
+![](https://raw.githubusercontent.com/ValgulNecron/appStage/dev/uml/all/include.svg)
 ![](\uml\app\include.svg)
 ![](\uml\lib\include.svg)
 
