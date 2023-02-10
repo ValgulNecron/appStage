@@ -171,7 +171,7 @@ namespace CartesAcces
                 if (x == 666 && Globale.GitPoule)
                 {
                     pictureBox1.Visible = true;
-                    pictureBox1.Image = Image.FromFile("./data/ElevesPhoto/git-poule.jpg");
+                    pictureBox1.Image = Image.FromFile("./data/git-poule.jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                     pictureBox1.BringToFront();
                     pictureBox1.Location = new Point(0, 0);
