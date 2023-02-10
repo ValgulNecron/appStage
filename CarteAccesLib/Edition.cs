@@ -620,6 +620,28 @@ namespace CartesAcces
                 MessageBox.Show(e.ToString());
             }
         }
+        
+        public static void importLogo(string chemin)
+        {
+            var cheminSource = chemin;
+            var cheminDestination = "./data/";
+
+            try
+            {
+                if (File.Exists("./data/logo.png"))
+                {
+                    File.Delete("./data/logo.png");
+                }
+                
+                var img = Image.FromFile(chemin);
+                img.Save(cheminDestination + "logo.png", ImageFormat.Png);
+                img.Dispose();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
 
 
         public static void gitPoule()

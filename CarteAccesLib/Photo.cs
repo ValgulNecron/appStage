@@ -34,15 +34,20 @@ namespace CarteAcces
             pbPhoto.Visible = true;
         }
 
-        public static void proportionPhoto(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve, string path)
+        public static void proportionPhotoMultiple(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve, string path)
         {
             // -- Calcul par proportionnalité de la position et des dimensions de la photo sur le cadre de l'application par rapport a l'image réelle --
             // -- Cela permet de répercuter les déplacements effectués par l'utilisateur sur l'image originelle afin de pouvoir réutiliser celle ci --
             // -- Et ainsi ne pas perdre en qualité de l'image --
-            double rLocX = 0.0;
-            double rLocY = 0.0;
-            double rWidth = 0.0;
-            double rHeight = 0.0;
+            //double rLocX = 0.0;
+            //double rLocY = 0.0;
+            //double rWidth = 0.0;
+            //double rHeight = 0.0;
+            
+            var rLocX = Edition.PosXDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+            var rLocY = Edition.PosYDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
+            var rWidth = Edition.PosWidthDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
+            var rHeight = Edition.PosHeightDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
             
             if (eleve.SansEDT)
             {
@@ -51,22 +56,10 @@ namespace CarteAcces
                 rWidth = pbPhoto.Width * pbCarteArriere.Image.Width / pbCarteArriere.Width;
                 rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
             }
-            else
-            {
-                rLocX = Edition.PosXDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                rLocY = Edition.PosYDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-                rWidth = Edition.PosWidthDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
-                rHeight = Edition.PosHeightDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-            }
-
-            int realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
-            int realLocY = Convert.ToInt32(Math.Round(rLocY)) + 3;
-            int realWidth = Convert.ToInt32(Math.Round(rWidth)) - 1;
-            int realHeight = Convert.ToInt32(Math.Round(rHeight)) - 1;
 
             // -- Superposition des deux image dans un objet "Graphics" --
             var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
-            ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
+            ObjGraphics.DrawImage(pbPhoto.Image, rLocX, rLocY, rWidth, rHeight);
 
             pbCarteArriere.Image.Save(path + "/" + eleve.NomEleve + eleve.PrenomEleve + "EDT.png", ImageFormat.Png);
 

@@ -128,11 +128,11 @@ namespace CarteAccesLib
                 // -- Carte arriere : 1/2 Eleve --
                 Edition.carteArriere(listeEleve[compt], pbCarteArriere);
                 Photo.verifPhotoEleve(listeEleve[compt], pbPhoto);
-                Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt], chemin);
+                Photo.proportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt], chemin);
                 // -- Carte arriere : 2/2 Eleve --
                 Edition.carteArriere(listeEleve[compt - 1], pbCarteArriere);
                 Photo.verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
-                Photo.proportionPhoto(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
+                Photo.proportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
                 Globale.LblCount.Text = (compt + 1).ToString() + "/" + listeEleve.Count.ToString() + " cartes réalisées";
                 
