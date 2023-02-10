@@ -31,7 +31,7 @@ TO DO :
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
 
-POUR LE RAPPORT DE STAGE (ballec) :
+POUR LE RAPPORT DE STAGE :
 
 ![](./file/lib/BDD.png)
 
