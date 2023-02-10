@@ -153,6 +153,8 @@ namespace CartesAcces
 
         private void frmConnexion_Load(object sender, EventArgs e)
         {
+            btnChiffre.Visible = false;
+            btnDechiffre.Visible = false;
             ActiveControl = txtIdentifiant;
             foreach (Control controle in Globale.Accueil.Controls)
                 if (controle is Panel && controle.Name == "pnlMenu")
