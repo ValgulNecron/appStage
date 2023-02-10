@@ -36,6 +36,7 @@ namespace CartesAcces
                 nomPrenomEleve = new List<string>();
                 listeEleve = Globale.ListeEleve;
                 eleveEnString();
+                lblCount.Text = nomPrenomEleve.Count.ToString();
                 Eleves.DataSource = nomPrenomEleve;
                 btnAjout.Click += ajoutEleve;
                 btnRetirer.Click += retirerEleve;
@@ -134,11 +135,13 @@ namespace CartesAcces
                 var el = Trie.recherche(pattern, listeEleve);
                 if (el != null)
                 {
+                    lblCount.Text = el.Count.ToString();
                     Eleves.DataSource = el;
                     Eleves.Refresh();
                 }
                 else
                 {
+                    lblCount.Text = listeEleve.Count.ToString();
                     Eleves.DataSource = nomPrenomEleve;
                     Eleves.Refresh();
                 }
@@ -207,6 +210,7 @@ namespace CartesAcces
             listeEleve = Globale.ListeEleve;
             nomPrenomEleve = new List<string>();
             eleveEnString();
+            lblCount.Text = listeEleve.Count.ToString();
             Eleves.DataSource = nomPrenomEleve;
         }
 
@@ -215,6 +219,7 @@ namespace CartesAcces
             listeEleve = Globale.ListeEleves6Eme;
             nomPrenomEleve = new List<string>();
             eleveEnString();
+            lblCount.Text = listeEleve.Count.ToString();
             Eleves.DataSource = nomPrenomEleve;
         }
 
@@ -223,6 +228,7 @@ namespace CartesAcces
             listeEleve = Globale.ListeEleves5Eme;
             nomPrenomEleve = new List<string>();
             eleveEnString();
+            lblCount.Text = listeEleve.Count.ToString();
             Eleves.DataSource = nomPrenomEleve;
         }
 
@@ -231,6 +237,7 @@ namespace CartesAcces
             listeEleve = Globale.ListeEleves4Eme;
             nomPrenomEleve = new List<string>();
             eleveEnString();
+            lblCount.Text = listeEleve.Count.ToString();
             Eleves.DataSource = nomPrenomEleve;
         }
 
@@ -239,6 +246,7 @@ namespace CartesAcces
             listeEleve = Globale.ListeEleves3Eme;
             nomPrenomEleve = new List<string>();
             eleveEnString();
+            lblCount.Text = listeEleve.Count.ToString();
             Eleves.DataSource = nomPrenomEleve;
         }
 
