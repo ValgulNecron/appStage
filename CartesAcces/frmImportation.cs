@@ -323,6 +323,7 @@ namespace CartesAcces
             }
             catch
             {
+                MessageBox.Show("Une erreur est survenue");
             }
         }
     }
