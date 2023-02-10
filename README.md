@@ -24,11 +24,6 @@ pour pouvoir utiliser l'application il faut suivre les étapes suivantes :
 
 
 
-Repos de l'application de création de cartes d'accès   
-
-
-
-
 ---
 ---
 ---
