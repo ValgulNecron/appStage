@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -164,6 +165,7 @@ namespace CartesAcces
         {
             try
             {
+                btnLogo.Click += btnImportLogo_Click;
                 var x = 0;
                 var random = new Random();
                 x = random.Next(0, 667);
@@ -278,6 +280,26 @@ namespace CartesAcces
         {
             try
             {
+                var path = "./data/logo.png";
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+
+                var pathLogo = "";
+                using (var ofd = new OpenFileDialog())
+                {
+                    ofd.Filter = "Image file only | *.jpg; *.JPG; *.jpeg; *.JPEG; *.png; *.PNG; *.gif; *.GIF; *.bmp; *.BMP";
+                    ofd.Title = "Choose the File";
+                    if (ofd.ShowDialog() == DialogResult.OK) pathLogo = ofd.FileName;
+                }
+
+                Globale.Accueil.Invoke(new MethodInvoker(delegate
+                {
+                    var image = Image.FromFile("./data/logo.png");
+                    pictureBox1.Image = image;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                }));
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                     if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
