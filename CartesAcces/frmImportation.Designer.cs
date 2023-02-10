@@ -42,6 +42,7 @@ namespace CartesAcces
             this.btnImporterUnEtablissement = new System.Windows.Forms.Button();
             this.btCreationUtilisateur = new System.Windows.Forms.Button();
             this.btnImportFaceCarte = new System.Windows.Forms.Button();
+            this.btnLogo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -195,12 +196,25 @@ namespace CartesAcces
             this.btnImportFaceCarte.UseVisualStyleBackColor = true;
             this.btnImportFaceCarte.Click += new System.EventHandler(this.btnImportFaceCarte_Click);
             // 
+            // btnLogo
+            // 
+            this.btnLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogo.Location = new System.Drawing.Point(210, 505);
+            this.btnLogo.MaximumSize = new System.Drawing.Size(320, 35);
+            this.btnLogo.MinimumSize = new System.Drawing.Size(320, 35);
+            this.btnLogo.Name = "btnLogo";
+            this.btnLogo.Size = new System.Drawing.Size(320, 35);
+            this.btnLogo.TabIndex = 40;
+            this.btnLogo.Text = "Importer le logo de l\'établissement";
+            this.btnLogo.UseVisualStyleBackColor = true;
+            // 
             // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1196, 749);
+            this.Controls.Add(this.btnLogo);
             this.Controls.Add(this.btnImportFaceCarte);
             this.Controls.Add(this.btCreationUtilisateur);
             this.Controls.Add(this.btnImporterUnEtablissement);
@@ -221,6 +235,8 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button btnLogo;
 
         private System.Windows.Forms.Label lblDateImportLogo;
         private System.Windows.Forms.Label lblDateImportLogoDate;
