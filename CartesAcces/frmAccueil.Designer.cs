@@ -83,7 +83,7 @@ namespace CartesAcces
             this.btnCarteParClasse.Name = "btnCarteParClasse";
             this.btnCarteParClasse.Size = new System.Drawing.Size(170, 42);
             this.btnCarteParClasse.TabIndex = 2;
-            this.btnCarteParClasse.Text = "Cartes par Classes / Niveaux";
+            this.btnCarteParClasse.Text = "Cartes par classe / niveau";
             this.btnCarteParClasse.UseVisualStyleBackColor = false;
             this.btnCarteParClasse.Click += new System.EventHandler(this.btnCarteParClasse_Click);
             // 
@@ -193,17 +193,18 @@ namespace CartesAcces
             this.btnTheme.Name = "btnTheme";
             this.btnTheme.Size = new System.Drawing.Size(170, 42);
             this.btnTheme.TabIndex = 5;
-            this.btnTheme.Text = "Changer le thème";
+            this.btnTheme.Text = "Thème sombre / clair";
             this.btnTheme.UseVisualStyleBackColor = false;
             this.btnTheme.Click += new System.EventHandler(this.btnTheme_Click);
             // 
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersion.Location = new System.Drawing.Point(3, 606);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(85, 16);
+            this.lblVersion.Size = new System.Drawing.Size(68, 15);
             this.lblVersion.TabIndex = 0;
             this.lblVersion.Text = "Version 1.0";
             // 
