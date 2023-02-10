@@ -26,11 +26,6 @@ pour pouvoir utiliser l'application il faut suivre les étapes suivantes :
 
 Repos de l'application de création de cartes d'accès   
 
-TO DO :
-
-- acheter un cerveau a David introuvable (Attendre le black friday)
-
-- ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
 
 POUR LE RAPPORT DE STAGE :
 
@@ -50,11 +45,6 @@ POUR LE RAPPORT DE STAGE :
 - mcd, uml diagramme de classe (fait)
 - (utilisable pour l’épreuve B1/E4 en lien avec le portefeuille)
 
-
-BUG :
- - le déchiffrement casse les images et ne supprime pas celles qui sont chiffrées
-
-https://gist.github.com/cuonggt/9b7d08a597b167299f0d
 
 ---
  
