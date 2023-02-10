@@ -96,7 +96,7 @@ namespace CartesAcces
 
             // -- On remet les paramètres et l'image de base --
             Edt.chercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
-            Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+            Photo.affichePhotoProvisoire("./data/edition.jpg", pbPhoto);
 
             btnSelect.Enabled = true;
             btnCancel.Enabled = false;
@@ -232,7 +232,7 @@ namespace CartesAcces
         {
             lblCompteur.Visible = false;
             Edt.chercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
-            Photo.affichePhotoProvisoire("./data/ElevesPhoto/edition.jpg", pbPhoto);
+            Photo.affichePhotoProvisoire("./data/edition.jpg", pbPhoto);
         }
 
         private void pbCarteArriere_MouseUp(object sender, MouseEventArgs e)
