@@ -293,7 +293,9 @@ namespace CartesAcces
                     ofd.Title = "Choose the File";
                     if (ofd.ShowDialog() == DialogResult.OK) pathLogo = ofd.FileName;
                 }
-
+                
+                File.Copy(pathLogo, path);
+                
                 Globale.Accueil.Invoke(new MethodInvoker(delegate
                 {
                     var image = Image.FromFile("./data/logo.png");
@@ -316,6 +318,8 @@ namespace CartesAcces
                 log.Action = "à importer le logo";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
+                
+                MessageBox.Show("Le logo a été importé avec succès")
             }
             catch
             {
