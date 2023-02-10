@@ -1,7 +1,7 @@
 # appStage 
 
 pour pouvoir utiliser l'application il faut suivre les étapes suivantes :
-<img src=./file/lib/catcatcat.gif align="right" height="3000" width="3000">
+<img src=./file/lib/catcatcat.gif align="right" height="250" width="250">
 - [Activer la virtualisation](./file/pdf/Activer_la_virtualisation.pdf)
 - [Installation de la base de donnée](./file/pdf/Mise_en_place_BDD__WinSCP__Script.pdf)
 - [Configuration de l'application](./file/pdf/Guide_dinstallation_Carte_Acces_-_SysAdmin.pdf)
