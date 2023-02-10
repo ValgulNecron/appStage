@@ -282,12 +282,6 @@ namespace CartesAcces
             {
                 pictureBox1.Image = null;
                 pictureBox1.Refresh();
-                var path = "./data/logo.png";
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-                }
-
                 var pathLogo = "";
                 using (var ofd = new OpenFileDialog())
                 {
@@ -296,14 +290,22 @@ namespace CartesAcces
                     if (ofd.ShowDialog() == DialogResult.OK) pathLogo = ofd.FileName;
                 }
                 
-                File.Copy(pathLogo, path);
-                
                 Globale.Accueil.Invoke(new MethodInvoker(delegate
                 {
-                    var image = Image.FromFile("./data/logo.png");
+                    var image = Image.FromFile(pathLogo);
                     pictureBox1.Image = image;
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }));
+                
+                var path = "./data/logo.png";
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+                
+                File.Copy(pathLogo, path);
+                
+                
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                     if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
