@@ -293,7 +293,7 @@ namespace CartesAcces
                 Globale.Accueil.Invoke(new MethodInvoker(delegate
                 {
                     var image = Image.FromFile(pathLogo);
-                    pictureBox1.Image = image;
+                    pictureBox1.Image = new Bitmap(image);
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }));
                 
