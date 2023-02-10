@@ -65,6 +65,7 @@ namespace CartesAcces
                 rdbUPE2A.Checked = false;
                 rdbRas.Checked = true;
                 btnSelect.Enabled = true;
+                Chemin.CheminEdtPerso = "";
             }
             catch
             {
@@ -143,6 +144,7 @@ namespace CartesAcces
                 pbCarteArriere.Refresh();
                 btnSelect.Enabled = true;
                 btnCancel.Enabled = false;
+                Chemin.CheminEdtPerso = "";
             }
             catch
             {
@@ -264,6 +266,7 @@ namespace CartesAcces
             catch
             {
             }
+            Chemin.CheminEdtPerso = "";
         }
 
         // #### Ajout & Edition de la photo ####
