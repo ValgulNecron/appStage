@@ -33,7 +33,8 @@ TO DO :
 
 POUR LE RAPPORT DE STAGE (ballec) :
 
-![](./lib/BDD.png)
+![heh](./lib/BDD.png)
+
 - un diagramme de cas d’utilisation, (IAN FAIT)
 - une analyse RGPD, (DAVID A FAIRE)
 - rédaction un guide de l'utilisateur (DAVID EN COURS)
