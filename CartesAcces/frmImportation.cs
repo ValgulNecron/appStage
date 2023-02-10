@@ -289,6 +289,8 @@ namespace CartesAcces
                     ofd.Title = "Choose the File";
                     if (ofd.ShowDialog() == DialogResult.OK) pathLogo = ofd.FileName;
                 }
+
+                pictureBox1 = new PictureBox();
                 
                 Globale.Accueil.Invoke(new MethodInvoker(delegate
                 {
