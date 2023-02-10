@@ -297,13 +297,7 @@ namespace CartesAcces
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }));
                 
-                var path = "./data/logo.png";
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-                }
                 
-                File.Copy(pathLogo, path);
                 
                 
                 var macAddress = string.Empty;
