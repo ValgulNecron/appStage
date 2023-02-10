@@ -297,9 +297,8 @@ namespace CartesAcces
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }));
                 
-                
-                
-                
+                var path = "./data/logo.png";
+                File.Replace(path, pathLogo, path + ".bak");
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                     if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
