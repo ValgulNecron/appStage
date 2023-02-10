@@ -321,9 +321,10 @@ namespace CartesAcces
 
                 MessageBox.Show("Le logo a été importé avec succès");
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBox.Show("Une erreur est survenue");
+                MessageBox.Show(ex.Message);
             }
         }
     }
