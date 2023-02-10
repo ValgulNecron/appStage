@@ -33,7 +33,7 @@ TO DO :
 
 POUR LE RAPPORT DE STAGE :
 
-![](./file/lib/catcatcat.gif)
+<img src=./file/lib/catcatcat.gif>
 
 - un diagramme de cas d’utilisation, (IAN FAIT)
 - une analyse RGPD, (DAVID A FAIRE)
