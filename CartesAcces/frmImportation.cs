@@ -165,7 +165,6 @@ namespace CartesAcces
         {
             try
             {
-                btnLogo.Click += btnImportLogo_Click;
                 var x = 0;
                 var random = new Random();
                 x = random.Next(0, 667);
@@ -273,58 +272,6 @@ namespace CartesAcces
             }
             catch
             {
-            }
-        }
-
-        private void btnImportLogo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                pictureBox1.Image.Dispose();
-                pictureBox1.Refresh();
-                var pathLogo = "";
-                using (var ofd = new OpenFileDialog())
-                {
-                    ofd.Filter = "Image file only | *.jpg; *.JPG; *.jpeg; *.JPEG; *.png; *.PNG; *.gif; *.GIF; *.bmp; *.BMP";
-                    ofd.Title = "Choose the File";
-                    if (ofd.ShowDialog() == DialogResult.OK) pathLogo = ofd.FileName;
-                }
-
-                pictureBox1 = new PictureBox();
-                
-                Globale.Accueil.Invoke(new MethodInvoker(delegate
-                {
-                    var image = Image.FromFile(pathLogo);
-                    pictureBox1.Image = new Bitmap(image);
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                }));
-                
-                var path = "./data/logo.png";
-                File.Replace(path, pathLogo, path + ".bak");
-                
-                var macAddress = string.Empty;
-                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
-                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
-                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
-                        nic.OperationalStatus == OperationalStatus.Up)
-                    {
-                        macAddress += nic.GetPhysicalAddress().ToString();
-                        break;
-                    }
-
-                var log = new LogActions();
-                log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale.NomUtilisateur;
-                log.Action = "à importer le logo";
-                log.AdMac = macAddress;
-                ClassSql.Db.Insert(log);
-
-                MessageBox.Show("Le logo a été importé avec succès");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Une erreur est survenue");
-                MessageBox.Show(ex.Message);
             }
         }
     }   
