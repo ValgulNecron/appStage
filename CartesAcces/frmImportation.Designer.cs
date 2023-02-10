@@ -42,7 +42,6 @@ namespace CartesAcces
             this.btnImporterUnEtablissement = new System.Windows.Forms.Button();
             this.btCreationUtilisateur = new System.Windows.Forms.Button();
             this.btnImportFaceCarte = new System.Windows.Forms.Button();
-            this.btnLogo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
