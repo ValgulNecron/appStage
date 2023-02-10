@@ -66,6 +66,7 @@ begin
         signal sqlstate '45000' set message_text = "Le type d'utilisateur doit être 'admin' ou 'user'";
     end if;
 end $$
+DELIMITER ;
 
 DROP USER IF EXISTS 'admin_user'@'%';
 CREATE USER 'admin_user'@'%' Identified BY 'kreyderslam2!';
