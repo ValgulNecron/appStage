@@ -37,6 +37,7 @@ namespace CartesAcces
             this.NbComptageEleveCS = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.Label();
             this.cbbImprClasse = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -53,18 +54,18 @@ namespace CartesAcces
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label2.Location = new System.Drawing.Point(157, 258);
+            this.label2.Location = new System.Drawing.Point(158, 261);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 16);
+            this.label2.Size = new System.Drawing.Size(126, 16);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Imprimer une section :";
+            this.label2.Text = "Imprimer par niveau";
             // 
             // cbbImprSection
             // 
             this.cbbImprSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbImprSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cbbImprSection.FormattingEnabled = true;
-            this.cbbImprSection.Items.AddRange(new object[] {"6eme", "5eme", "4eme", "3eme"});
+            this.cbbImprSection.Items.AddRange(new object[] { "6eme", "5eme", "4eme", "3eme" });
             this.cbbImprSection.Location = new System.Drawing.Point(301, 258);
             this.cbbImprSection.MaximumSize = new System.Drawing.Size(180, 0);
             this.cbbImprSection.MinimumSize = new System.Drawing.Size(180, 0);
@@ -111,7 +112,7 @@ namespace CartesAcces
             // 
             // lblCount
             // 
-            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCount.Location = new System.Drawing.Point(474, 329);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(47, 23);
@@ -131,11 +132,21 @@ namespace CartesAcces
             this.cbbImprClasse.TabIndex = 28;
             this.cbbImprClasse.SelectionChangeCommitted += new System.EventHandler(this.cbbImprClasse_SelectedIndexChanged);
             // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(199, 227);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 24);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "OU";
+            // 
             // frmCarteParClasseNiveau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 749);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.cbbImprClasse);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.NbComptageEleveCS);
@@ -150,6 +161,8 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label3;
 
         private System.Windows.Forms.Label lblCount;
 

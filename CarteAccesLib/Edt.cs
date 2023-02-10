@@ -26,23 +26,34 @@ namespace CarteAcces
             }
         }
 
-        public static void ajouterEdtPerso(PictureBox pbCarteArriere)
+        public static void ajouterEdtPerso(PictureBox pbCarteArriere, Button btnSelect)
         {
-            // -- Parcours des fichiers...
-            var opf = new OpenFileDialog();
-
-            var opfPath = "";
-
-            opf.InitialDirectory = "./data/ElevesEdt/";
-            opf.Filter = "Images (*.png, *.jpg) | *.png; *.jpg";
-            opf.FilterIndex = 1;
-            opf.RestoreDirectory = true;
-
-            if (opf.ShowDialog() == DialogResult.OK)
+            try
             {
-                opfPath = opf.FileName;
-                // -- Ajout de l'image dans la picturebox, celle ci devient visible
-                pbCarteArriere.Image = new Bitmap(opfPath);
+                // -- Parcours des fichiers...
+                var opf = new OpenFileDialog();
+
+                var opfPath = "";
+
+                opf.InitialDirectory = "./data/ElevesEdt/";
+                opf.Filter = "Images (*.png, *.jpg) | *.png; *.jpg";
+                opf.FilterIndex = 1;
+                opf.RestoreDirectory = true;
+                Chemin.CheminEdtPerso = "";
+
+                if (opf.ShowDialog() == DialogResult.OK)
+                {
+                    opfPath = opf.FileName;
+                    // -- Ajout de l'image dans la picturebox, celle ci devient visible
+                    pbCarteArriere.Image = new Bitmap(opfPath);
+                    Chemin.CheminEdtPerso = opfPath;
+                    btnSelect.Enabled = true;
+                }
+
+            }
+            catch
+            {
+                btnSelect.Enabled = true;
             }
         }
 

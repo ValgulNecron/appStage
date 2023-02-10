@@ -64,6 +64,7 @@ namespace CartesAcces
                 rdbUlis.Checked = false;
                 rdbUPE2A.Checked = false;
                 rdbRas.Checked = true;
+                btnSelect.Enabled = true;
             }
             catch
             {
@@ -221,7 +222,16 @@ namespace CartesAcces
                         Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
                         Cursor = Cursors.Default;
                         var classe = cbbClasse.Text;
-                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".jpg";
+                        string pathEdt;
+                        if (Chemin.CheminEdtPerso == "")
+                        {
+                            pathEdt = "./data/FichierEdtClasse/" + classe + ".jpg";
+                        }
+                        else
+                        {
+                            pathEdt = Chemin.CheminEdtPerso;
+                        }
+                        
                         Edition.SelectionClique = false;
                         Edt.rognageEdt(pbCarteArriere, pathEdt);
                     }
@@ -229,7 +239,15 @@ namespace CartesAcces
                     {
                         Cursor = Cursors.Default;
                         var classe = cbbClasse.Text;
-                        var pathEdt = "./data/FichierEdtClasse/" + classe + ".jpg";
+                        string pathEdt;
+                        if (Chemin.CheminEdtPerso == "")
+                        {
+                            pathEdt = "./data/FichierEdtClasse/" + classe + ".jpg";
+                        }
+                        else
+                        {
+                            pathEdt = Chemin.CheminEdtPerso;
+                        }
                         Edition.SelectionClique = false;
                         pbCarteArriere.Image = Image.FromFile(pathEdt);
                         
@@ -369,8 +387,15 @@ namespace CartesAcces
 
         private void btnEdtPerso_Click(object sender, EventArgs e)
         {
-            Edt.ajouterEdtPerso(pbCarteArriere);
-            groupBox2.Enabled = false;
+            try
+            {
+                Edt.ajouterEdtPerso(pbCarteArriere, btnSelect);
+                btnSelect.Enabled = true;
+            }
+            catch
+            {
+                btnSelect.Enabled = true;
+            }
         }
 
         private void label6_Click(object sender, EventArgs e)
