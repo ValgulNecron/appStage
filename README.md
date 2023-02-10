@@ -8,7 +8,7 @@ TO DO :
 
 - ne pas oublier ghostscript lol, pour import emploi temps lol ^^" xd (Merci David) 
 
-POUR LE RAPPORT DE STAGE (ballec) :
+POUR LE RAPPORT DE STAGE :
 
 - un diagramme de cas d’utilisation, (IAN FAIT)
 - une analyse RGPD, (DAVID A FAIRE)
