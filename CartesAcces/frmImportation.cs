@@ -318,8 +318,8 @@ namespace CartesAcces
                 log.Action = "à importer le logo";
                 log.AdMac = macAddress;
                 ClassSql.Db.Insert(log);
-                
-                MessageBox.Show("Le logo a été importé avec succès")
+
+                MessageBox.Show("Le logo a été importé avec succès");
             }
             catch
             {
