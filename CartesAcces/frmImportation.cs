@@ -281,6 +281,7 @@ namespace CartesAcces
             try
             {
                 pictureBox1.Image = null;
+                pictureBox1.Refresh();
                 var path = "./data/logo.png";
                 if (File.Exists(path))
                 {
