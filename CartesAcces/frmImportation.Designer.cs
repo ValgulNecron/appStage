@@ -221,12 +221,10 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
-
+        
         private System.Windows.Forms.Label lblDateImportLogo;
         private System.Windows.Forms.Label lblDateImportLogoDate;
-
-        private System.Windows.Forms.Button btnImportLogo;
-
+        
         private System.Windows.Forms.Button btnImportFaceCarte;
 
         private System.Windows.Forms.Button btCreationUtilisateur;

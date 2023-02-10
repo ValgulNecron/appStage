@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -273,31 +274,5 @@ namespace CartesAcces
             {
             }
         }
-
-        private void btnImportLogo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var macAddress = string.Empty;
-                foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
-                    if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
-                         nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) &&
-                        nic.OperationalStatus == OperationalStatus.Up)
-                    {
-                        macAddress += nic.GetPhysicalAddress().ToString();
-                        break;
-                    }
-
-                var log = new LogActions();
-                log.DateAction = DateTime.Now;
-                log.NomUtilisateur = Globale.NomUtilisateur;
-                log.Action = "à importer le logo";
-                log.AdMac = macAddress;
-                ClassSql.Db.Insert(log);
-            }
-            catch
-            {
-            }
-        }
-    }
+    }   
 }
