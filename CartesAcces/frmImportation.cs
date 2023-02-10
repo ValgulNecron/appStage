@@ -280,6 +280,7 @@ namespace CartesAcces
         {
             try
             {
+                pictureBox1.Image = null;
                 var path = "./data/logo.png";
                 if (File.Exists(path))
                 {
@@ -327,5 +328,5 @@ namespace CartesAcces
                 MessageBox.Show(ex.Message);
             }
         }
-    }
+    }   
 }
