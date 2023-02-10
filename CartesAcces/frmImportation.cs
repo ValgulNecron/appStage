@@ -280,7 +280,7 @@ namespace CartesAcces
         {
             try
             {
-                pictureBox1.Image = null;
+                pictureBox1.Image.Dispose();
                 pictureBox1.Refresh();
                 var pathLogo = "";
                 using (var ofd = new OpenFileDialog())
@@ -299,6 +299,7 @@ namespace CartesAcces
                 
                 var path = "./data/logo.png";
                 File.Replace(path, pathLogo, path + ".bak");
+                
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                     if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
