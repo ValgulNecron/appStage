@@ -21,7 +21,7 @@ namespace CarteAcces
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierPNG);
             else
             {
-                pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/edition.jpg");
+                pbPhoto.Image = Image.FromFile("./data/edition.jpg");
             }
                 
         }
