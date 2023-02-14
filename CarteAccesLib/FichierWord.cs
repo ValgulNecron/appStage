@@ -59,10 +59,10 @@ namespace CarteAccesLib
             // carteFace2.Height = carteFace1.Height;
         }
 
-        public static void limite50Pages(Application applicationWord, string chemin)
+        public static void limite50Pages(Application applicationWord, string chemin, int nbPage)
         {
             // -- Sauvegarde du document --
-            applicationWord.ActiveDocument.SaveAs(chemin + "test.doc", Type.Missing, Type.Missing, Type.Missing,
+            applicationWord.ActiveDocument.SaveAs(chemin + "Part " + nbPage + " " + ".doc", Type.Missing, Type.Missing, Type.Missing,
                 Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing);
@@ -161,8 +161,9 @@ namespace CarteAccesLib
 
                 if (compt > k + 50)
                 {
-                    var name = chemin + " page " + k / 50;
-                    limite50Pages(fichierWord, name);
+                    var name = chemin + "/Imprimer ";
+                    var nbPage = k / 50;
+                    limite50Pages(fichierWord, name, nbPage);
                     k += 50;
                     pages++;
                 }
