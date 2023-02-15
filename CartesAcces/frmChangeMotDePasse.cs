@@ -74,9 +74,14 @@ namespace CartesAcces
                         }
                         else
                         {
-                            MessageBox.Show(new Form { TopMost = true }, "les deux mots de passe ne sont pas identiques");
+                            MessageBox.Show(new Form { TopMost = true }, "Les deux mots de passes de sont pas identiques.");
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show(new Form { TopMost = true }, "Il faut un caractère spécial, une majuscule, une miniscule, et une longueur de mot de passe" +
+                                                                 " supérieur ou égale à 12 caractères.");
                 }
             }
             catch (Exception exception)

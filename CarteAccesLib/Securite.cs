@@ -52,7 +52,7 @@ namespace CartesAcces
 
         public static bool validationPrerequisMdp(string motDePasse)
         {
-            if (motDePasse.Length >= 12)
+            if (motDePasse.Length <= 12)
             {
                 return false;
             }
