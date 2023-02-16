@@ -76,7 +76,6 @@ namespace CartesAcces
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMotDePasse";
             this.Text = "frmMotDePasse";
-            this.Load += new System.EventHandler(this.frmMotDePasse_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
         }

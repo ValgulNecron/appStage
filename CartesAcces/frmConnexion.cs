@@ -98,9 +98,25 @@ namespace CartesAcces
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);
                         timer = new Timer(Globale.Accueil);
-                        
-                        var mdpChiffrement = new frmMotDePasse();
-                        mdpChiffrement.Show();
+                        if(Globale.MotsDePasseChifffrement != "")
+                        {
+                            Securite.dechiffrerDossier();
+            
+                            Globale.Cas = 1;
+                            var frmWait = new barDeProgression();
+                            frmWait.StartPosition = FormStartPosition.CenterScreen;
+                            frmWait.Show();
+                            frmWait.TopMost = true;
+
+                            Globale.Actuelle = new frmImportation();
+                            frmAccueil.OpenChildForm(Globale.Actuelle);
+                        }
+                        else
+                        {
+                            Globale.ChangementMotDePasseChiffrement = false;
+                            var mdpChiffrement = new frmMotDePasse();
+                            mdpChiffrement.Show();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -132,26 +148,6 @@ namespace CartesAcces
             }
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            maskedTextBox1.Text = Securite.creationHash(maskedTextBox1.Text);
-        }
-
-        private void btnChiffre_Click(object sender, EventArgs e)
-        {
-            var frmMotDePasse = new frmMotDePasse();
-            Globale.ChiffrementDechiffrement = true;
-            frmMotDePasse.ShowDialog();
-        }
-
-        private void btnDechiffre_Click(object sender, EventArgs e)
-        {
-            var frmMotDePasse = new frmMotDePasse();
-            Globale.ChiffrementDechiffrement = false;
-            frmMotDePasse.Show();
-        }
-
         private void frmConnexion_Load(object sender, EventArgs e)
         {
             ActiveControl = txtIdentifiant;
@@ -161,8 +157,7 @@ namespace CartesAcces
                         if (controle2 is Button && controle2.Name != "btnTheme")
                             controle2.Enabled = false;
         }
-
-
+        
         private void txtMotDePasse_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
