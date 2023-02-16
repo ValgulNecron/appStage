@@ -132,26 +132,6 @@ namespace CartesAcces
             }
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            maskedTextBox1.Text = Securite.creationHash(maskedTextBox1.Text);
-        }
-
-        private void btnChiffre_Click(object sender, EventArgs e)
-        {
-            var frmMotDePasse = new frmMotDePasse();
-            Globale.ChiffrementDechiffrement = true;
-            frmMotDePasse.Show();
-        }
-
-        private void btnDechiffre_Click(object sender, EventArgs e)
-        {
-            var frmMotDePasse = new frmMotDePasse();
-            Globale.ChiffrementDechiffrement = false;
-            frmMotDePasse.Show();
-        }
-
         private void frmConnexion_Load(object sender, EventArgs e)
         {
             ActiveControl = txtIdentifiant;
