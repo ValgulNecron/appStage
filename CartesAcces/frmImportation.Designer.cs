@@ -42,13 +42,14 @@ namespace CartesAcces
             this.btnImporterUnEtablissement = new System.Windows.Forms.Button();
             this.btCreationUtilisateur = new System.Windows.Forms.Button();
             this.btnImportFaceCarte = new System.Windows.Forms.Button();
+            this.btnModifierChiffrementMDP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImporterEleves
             // 
             this.btnImporterEleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImporterEleves.Location = new System.Drawing.Point(210, 248);
+            this.btnImporterEleves.Location = new System.Drawing.Point(210, 329);
             this.btnImporterEleves.MaximumSize = new System.Drawing.Size(320, 35);
             this.btnImporterEleves.MinimumSize = new System.Drawing.Size(320, 35);
             this.btnImporterEleves.Name = "btnImporterEleves";
@@ -62,7 +63,7 @@ namespace CartesAcces
             // btnImportEDT
             // 
             this.btnImportEDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportEDT.Location = new System.Drawing.Point(210, 313);
+            this.btnImportEDT.Location = new System.Drawing.Point(210, 394);
             this.btnImportEDT.MaximumSize = new System.Drawing.Size(320, 35);
             this.btnImportEDT.MinimumSize = new System.Drawing.Size(320, 35);
             this.btnImportEDT.Name = "btnImportEDT";
@@ -77,7 +78,7 @@ namespace CartesAcces
             // 
             this.btnImportPhoto.AutoSize = true;
             this.btnImportPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportPhoto.Location = new System.Drawing.Point(210, 379);
+            this.btnImportPhoto.Location = new System.Drawing.Point(210, 460);
             this.btnImportPhoto.MaximumSize = new System.Drawing.Size(320, 35);
             this.btnImportPhoto.MinimumSize = new System.Drawing.Size(320, 35);
             this.btnImportPhoto.Name = "btnImportPhoto";
@@ -91,7 +92,7 @@ namespace CartesAcces
             // lblDateListeEleve
             // 
             this.lblDateListeEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateListeEleve.Location = new System.Drawing.Point(686, 255);
+            this.lblDateListeEleve.Location = new System.Drawing.Point(686, 336);
             this.lblDateListeEleve.Name = "lblDateListeEleve";
             this.lblDateListeEleve.Size = new System.Drawing.Size(258, 23);
             this.lblDateListeEleve.TabIndex = 26;
@@ -101,7 +102,7 @@ namespace CartesAcces
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(545, 257);
+            this.label2.Location = new System.Drawing.Point(545, 338);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 16);
             this.label2.TabIndex = 25;
@@ -110,7 +111,7 @@ namespace CartesAcces
             // lblEdtEleve
             // 
             this.lblEdtEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEdtEleve.Location = new System.Drawing.Point(686, 322);
+            this.lblEdtEleve.Location = new System.Drawing.Point(686, 403);
             this.lblEdtEleve.Name = "lblEdtEleve";
             this.lblEdtEleve.Size = new System.Drawing.Size(258, 23);
             this.lblEdtEleve.TabIndex = 28;
@@ -120,7 +121,7 @@ namespace CartesAcces
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(545, 322);
+            this.label5.Location = new System.Drawing.Point(545, 403);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(135, 16);
             this.label5.TabIndex = 27;
@@ -129,7 +130,7 @@ namespace CartesAcces
             // lblPhotoEleve
             // 
             this.lblPhotoEleve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhotoEleve.Location = new System.Drawing.Point(686, 388);
+            this.lblPhotoEleve.Location = new System.Drawing.Point(686, 469);
             this.lblPhotoEleve.Name = "lblPhotoEleve";
             this.lblPhotoEleve.Size = new System.Drawing.Size(258, 23);
             this.lblPhotoEleve.TabIndex = 30;
@@ -139,7 +140,7 @@ namespace CartesAcces
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(545, 388);
+            this.label7.Location = new System.Drawing.Point(545, 469);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(135, 16);
             this.label7.TabIndex = 29;
@@ -184,7 +185,7 @@ namespace CartesAcces
             // btnImportFaceCarte
             // 
             this.btnImportFaceCarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportFaceCarte.Location = new System.Drawing.Point(210, 442);
+            this.btnImportFaceCarte.Location = new System.Drawing.Point(210, 523);
             this.btnImportFaceCarte.MaximumSize = new System.Drawing.Size(320, 35);
             this.btnImportFaceCarte.MinimumSize = new System.Drawing.Size(320, 35);
             this.btnImportFaceCarte.Name = "btnImportFaceCarte";
@@ -195,12 +196,27 @@ namespace CartesAcces
             this.btnImportFaceCarte.UseVisualStyleBackColor = true;
             this.btnImportFaceCarte.Click += new System.EventHandler(this.btnImportFaceCarte_Click);
             // 
+            // btnModifierChiffrementMDP
+            // 
+            this.btnModifierChiffrementMDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifierChiffrementMDP.Location = new System.Drawing.Point(210, 191);
+            this.btnModifierChiffrementMDP.MaximumSize = new System.Drawing.Size(320, 45);
+            this.btnModifierChiffrementMDP.MinimumSize = new System.Drawing.Size(320, 45);
+            this.btnModifierChiffrementMDP.Name = "btnModifierChiffrementMDP";
+            this.btnModifierChiffrementMDP.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnModifierChiffrementMDP.Size = new System.Drawing.Size(320, 45);
+            this.btnModifierChiffrementMDP.TabIndex = 40;
+            this.btnModifierChiffrementMDP.Text = "Changer le mot de passe de chiffrement";
+            this.btnModifierChiffrementMDP.UseVisualStyleBackColor = true;
+            this.btnModifierChiffrementMDP.Click += new System.EventHandler(this.btnModifierChiffrementMDP_Click);
+            // 
             // frmImportation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1196, 749);
+            this.Controls.Add(this.btnModifierChiffrementMDP);
             this.Controls.Add(this.btnImportFaceCarte);
             this.Controls.Add(this.btCreationUtilisateur);
             this.Controls.Add(this.btnImporterUnEtablissement);
@@ -221,7 +237,9 @@ namespace CartesAcces
             this.ResumeLayout(false);
             this.PerformLayout();
         }
-        
+
+        private System.Windows.Forms.Button btnModifierChiffrementMDP;
+
         private System.Windows.Forms.Label lblDateImportLogo;
         private System.Windows.Forms.Label lblDateImportLogoDate;
         
