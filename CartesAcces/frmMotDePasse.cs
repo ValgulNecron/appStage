@@ -24,8 +24,6 @@ namespace CartesAcces
                 }
                 else
                 {
-                    Securite.dechiffrerDossier();
-                
                     Globale.Cas = 1;
                     var frmWait = new barDeProgression();
                     frmWait.StartPosition = FormStartPosition.CenterScreen;
