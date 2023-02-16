@@ -15,8 +15,8 @@ namespace CartesAcces
             try
             {
                 Globale.MotsDePasseChifffrement = textBox1.Text;
-                if(Globale.MotsDePasseChifffrement == "")
-                    throw new Exception("Mot de passe vide");
+                //if(Globale.MotsDePasseChifffrement == "")
+                    //throw new Exception("Mot de passe vide");
                 
                 if (Globale.ChangementMotDePasseChiffrement)
                 {
@@ -34,7 +34,7 @@ namespace CartesAcces
     
                     Globale.Actuelle = new frmImportation();
                     frmAccueil.OpenChildForm(Globale.Actuelle);
-                }
+                }   
 
                 DialogResult = DialogResult.OK;
                 Close();
