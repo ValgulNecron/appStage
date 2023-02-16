@@ -85,7 +85,8 @@ namespace CartesAcces
         public static List<Eleve> ListeEleves4Eme { get; set; }
         public static List<Eleve> ListeEleves3Eme { get; set; }
         
-        public static String MotsDePasseChifffrement { get; set; } = "password";
-        public static bool ChiffrementDechiffrement { get; set; } = false; // true = chiffrement, false = dechiffrement
+        public static String MotsDePasseChifffrement { get; set; } = "";
+        
+        public static bool ChangementMotDePasseChiffrement { get; set; } = false;
     }
 }
