@@ -145,16 +145,16 @@ namespace CartesAcces
 
         private void btnChiffre_Click(object sender, EventArgs e)
         {
+            Securite.chiffrerDossier();
         }
 
         private void btnDechiffre_Click(object sender, EventArgs e)
         {
+            Securite.dechiffrerDossier();
         }
 
         private void frmConnexion_Load(object sender, EventArgs e)
         {
-            btnChiffre.Visible = false;
-            btnDechiffre.Visible = false;
             ActiveControl = txtIdentifiant;
             foreach (Control controle in Globale.Accueil.Controls)
                 if (controle is Panel && controle.Name == "pnlMenu")

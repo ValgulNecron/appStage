@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,6 +57,7 @@ namespace CartesAcces
             {
                 return false;
             }
+
             bool majuscule = false;
             bool minuscule = false;
             bool chiffre = false;
@@ -71,8 +73,8 @@ namespace CartesAcces
                 else
                     caractereSpecial = true;
 
-            if (majuscule && minuscule && chiffre && caractereSpecial) return true;
-
+                if (majuscule && minuscule && chiffre && caractereSpecial) return true;
+            }
             return false;
         }
 
@@ -82,11 +84,6 @@ namespace CartesAcces
         public static void chiffrerDossier()
         {
             var directory = new DirectoryInfo(PathFolder);
-
-            foreach (var file in directory.GetFiles())
-            {
-                chiffrerFichier(file.FullName, file.FullName + ".enc", "password");
-            }
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
@@ -96,10 +93,12 @@ namespace CartesAcces
                 }
 
                 foreach (var dir2 in dir.GetDirectories())
-                foreach (var file in dir2.GetFiles())
                 {
-                    chiffrerFichier(file.FullName, file.FullName + ".enc", "password");
-                    file.Delete();
+                    foreach (var file in dir2.GetFiles())
+                    {
+                        chiffrerFichier(file.FullName, file.FullName + ".enc", "password");
+                        file.Delete();
+                    }
                 }
             }
 
@@ -149,24 +148,23 @@ namespace CartesAcces
         {
             var directory = new DirectoryInfo(PathFolder);
 
-            foreach (var file in directory.GetFiles())
-            {
-                dechiffrerFichier(file.FullName, file.FullName + ".dec", "password" );
-            }
-
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
-                {
-                    dechiffrerFichier(file.FullName, file.FullName + ".dec", "password");
+                {   
+                    string output = file.FullName.Substring(0, file.FullName.Length - 4);
+                    dechiffrerFichier(file.FullName, output, "password");
                     file.Delete();
                 }
 
                 foreach (var dir2 in dir.GetDirectories())
-                foreach (var file in dir2.GetFiles())
                 {
-                    dechiffrerFichier(file.FullName, file.FullName + ".dec", "password");
-                    file.Delete();
+                    foreach (var file in dir2.GetFiles())
+                    {
+                        string output = file.FullName.Substring(0, file.FullName.Length - 4);
+                        dechiffrerFichier(file.FullName, output, "password");
+                        file.Delete();
+                    }
                 }
             }
 
