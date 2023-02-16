@@ -142,7 +142,7 @@ namespace CartesAcces
         {
             var frmMotDePasse = new frmMotDePasse();
             Globale.ChiffrementDechiffrement = true;
-            frmMotDePasse.Show();
+            frmMotDePasse.ShowDialog();
         }
 
         private void btnDechiffre_Click(object sender, EventArgs e)

@@ -12,20 +12,34 @@ namespace CartesAcces
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Globale.MotsDePasseChifffrement = textBox1.Text;
-            
-            Securite.dechiffrerDossier();
-            
-            Globale.Cas = 1;
-            var frmWait = new barDeProgression();
-            frmWait.StartPosition = FormStartPosition.CenterScreen;
-            frmWait.Show();
-            frmWait.TopMost = true;
+            try
+            {
+                Globale.MotsDePasseChifffrement = textBox1.Text;
 
-            Globale.Actuelle = new frmImportation();
-            frmAccueil.OpenChildForm(Globale.Actuelle);
-            
-            Close();
+                Securite.dechiffrerDossier();
+
+                Globale.Cas = 1;
+                var frmWait = new barDeProgression();
+                frmWait.StartPosition = FormStartPosition.CenterScreen;
+                frmWait.Show();
+                frmWait.TopMost = true;
+
+                Globale.Actuelle = new frmImportation();
+                frmAccueil.OpenChildForm(Globale.Actuelle);
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch
+            {
+                
+            }
+        }
+
+
+        private void frmMotDePasse_Load(object sender, EventArgs e)
+        {
+
         }
     }   
 }
