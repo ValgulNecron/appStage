@@ -332,6 +332,9 @@
     <EmbeddedResource Include="frmCreationUtilisateur.resx">
       <DependentUpon>frmCreationUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMotDePasse.resx">
+      <DependentUpon>frmMotDePasse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMultiplesCartesEdition.resx">
       <DependentUpon>frmMultiplesCartesEdition.cs</DependentUpon>
     </EmbeddedResource>
