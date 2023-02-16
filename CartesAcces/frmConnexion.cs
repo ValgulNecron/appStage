@@ -145,12 +145,16 @@ namespace CartesAcces
 
         private void btnChiffre_Click(object sender, EventArgs e)
         {
-            Securite.chiffrerDossier();
+            var frmMotDePasse = new frmMotDePasse();
+            Globale.ChiffrementDechiffrement = true;
+            frmMotDePasse.Show();
         }
 
         private void btnDechiffre_Click(object sender, EventArgs e)
         {
-            Securite.dechiffrerDossier();
+            var frmMotDePasse = new frmMotDePasse();
+            Globale.ChiffrementDechiffrement = false;
+            frmMotDePasse.Show();
         }
 
         private void frmConnexion_Load(object sender, EventArgs e)
