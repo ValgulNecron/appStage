@@ -153,8 +153,12 @@ namespace CartesAcces
                 foreach (var file in dir.GetFiles())
                 {   
                     string output = file.FullName.Substring(0, file.FullName.Length - 4);
-                    dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
-                    file.Delete();
+                    string extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                    if (extension == ".enc")
+                    {
+                        dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
+                        file.Delete();
+                    }
                 }
 
                 foreach (var dir2 in dir.GetDirectories())
@@ -162,8 +166,12 @@ namespace CartesAcces
                     foreach (var file in dir2.GetFiles())
                     {
                         string output = file.FullName.Substring(0, file.FullName.Length - 4);
-                        dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
-                        file.Delete();
+                        string extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                        if (extension == ".enc")
+                        {
+                            dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
+                            file.Delete();
+                        }
                     }
                 }
             }
