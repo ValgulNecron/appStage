@@ -14,6 +14,8 @@ namespace CartesAcces
         {
             Globale.MotsDePasseChifffrement = textBox1.Text;
             
+            Securite.dechiffrerDossier();
+            
             Globale.Cas = 1;
             var frmWait = new barDeProgression();
             frmWait.StartPosition = FormStartPosition.CenterScreen;
