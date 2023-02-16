@@ -278,7 +278,7 @@ namespace CartesAcces
         private void btnModifierChiffrementMDP_Click(object sender, EventArgs e)
         {
             var frmMotDePasse = new frmMotDePasse();
-            Globale.ChiffrementDechiffrement = true;
+            Globale.ChangementMotDePasseChiffrement = true;
             frmMotDePasse.ShowDialog();
         }
     }   
