@@ -88,7 +88,7 @@ namespace CartesAcces
             {
                 foreach (var file in dir.GetFiles())
                 {
-                    chiffrerFichier(file.FullName, file.FullName + ".enc", "password");
+                    chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
                     file.Delete();
                 }
 
@@ -96,7 +96,7 @@ namespace CartesAcces
                 {
                     foreach (var file in dir2.GetFiles())
                     {
-                        chiffrerFichier(file.FullName, file.FullName + ".enc", "password");
+                        chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
                         file.Delete();
                     }
                 }
@@ -153,7 +153,7 @@ namespace CartesAcces
                 foreach (var file in dir.GetFiles())
                 {   
                     string output = file.FullName.Substring(0, file.FullName.Length - 4);
-                    dechiffrerFichier(file.FullName, output, "password");
+                    dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
                     file.Delete();
                 }
 
@@ -162,7 +162,7 @@ namespace CartesAcces
                     foreach (var file in dir2.GetFiles())
                     {
                         string output = file.FullName.Substring(0, file.FullName.Length - 4);
-                        dechiffrerFichier(file.FullName, output, "password");
+                        dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
                         file.Delete();
                     }
                 }
