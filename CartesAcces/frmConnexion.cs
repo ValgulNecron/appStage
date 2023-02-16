@@ -115,7 +115,7 @@ namespace CartesAcces
                         {
                             Globale.ChangementMotDePasseChiffrement = false;
                             var mdpChiffrement = new frmMotDePasse();
-                            mdpChiffrement.Show();
+                            mdpChiffrement.ShowDialog();
                         }
                     }
                 }
