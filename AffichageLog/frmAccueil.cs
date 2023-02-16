@@ -51,6 +51,7 @@ namespace AffichageLog
 
         private void frmAccueil_Load(object sender, EventArgs e)
         {
+            lblVersion.Text = "version :" + Globale.Version + " du " + Globale.VersionDate;
             try
             {
                 var image = Image.FromFile("./data/logo.png");
@@ -69,6 +70,27 @@ namespace AffichageLog
         private void pictureBox2_Click(object sender, EventArgs e)
         { 
             System.Diagnostics.Process.Start("https://github.com/ValgulNecron/appStage/");
+        }
+
+        private void btnTheme_Click(object sender, EventArgs e)
+        {
+            Globale.EstEnModeSombre = !Globale.EstEnModeSombre;
+
+            Couleur.setCouleurFenetre(Globale.Accueil);
+            Couleur.setCouleurFenetre(Globale.Actuelle);
+            foreach (Control control in Controls)
+                if (control is Panel && control.Name == "pnlMenu")
+                {
+                    if (Globale.EstEnModeSombre)
+                        control.BackColor = Color.FromArgb(255, Globale.CouleurBandeauxSombre[0],
+                            Globale.CouleurBandeauxSombre[1], Globale.CouleurBandeauxSombre[2]);
+                    else
+                        control.BackColor = Color.FromArgb(255, Globale.CouleurBandeauxClaire[0],
+                            Globale.CouleurBandeauxClaire[1], Globale.CouleurBandeauxClaire[2]);
+                }
+
+            var user = new Utilisateurs();
+            user.ThemeBool = Globale.EstEnModeSombre;
         }
     }
 }
