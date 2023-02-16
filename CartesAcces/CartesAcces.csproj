@@ -266,6 +266,12 @@
     <Compile Include="frmCreationUtilisateur.Designer.cs">
       <DependentUpon>frmCreationUtilisateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMotDePasse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMotDePasse.Designer.cs">
+      <DependentUpon>frmMotDePasse.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMultiplesCartesEdition.cs">
       <SubType>Form</SubType>
     </Compile>
