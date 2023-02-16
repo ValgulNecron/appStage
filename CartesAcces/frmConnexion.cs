@@ -80,15 +80,7 @@ namespace CartesAcces
                                 foreach (Control controle2 in controle.Controls)
                                     if (controle2 is Button)
                                         controle2.Enabled = true;
-                        Globale.Cas = 1;
-                        var frmWait = new barDeProgression();
-                        frmWait.StartPosition = FormStartPosition.CenterScreen;
-                        frmWait.Show();
-                        frmWait.TopMost = true;
-
-                        Globale.Actuelle = new frmImportation();
-                        frmAccueil.OpenChildForm(Globale.Actuelle);
-
+                        
                         var macAddress = string.Empty;
                         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                             if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -106,6 +98,9 @@ namespace CartesAcces
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);
                         timer = new Timer(Globale.Accueil);
+                        
+                        var mdpChiffrement = new frmMotDePasse();
+                        mdpChiffrement.Show();
                     }
                 }
                 catch (Exception ex)

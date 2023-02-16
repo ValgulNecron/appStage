@@ -160,6 +160,10 @@ namespace CartesAcces
         {
             System.Diagnostics.Process.Start("https://github.com/ValgulNecron/appStage/");
         }
-        
+
+        private void on_closing(object sender, FormClosingEventArgs e)
+        {
+            Securite.chiffrerDossier();
+        }
     }
 }
