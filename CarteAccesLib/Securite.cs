@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -52,13 +52,16 @@ namespace CartesAcces
 
         public static bool validationPrerequisMdp(string motDePasse)
         {
-            if (motDePasse.Length >= 12) return false;
-
-            var majuscule = false;
-            var minuscule = false;
-            var chiffre = false;
-            var caractereSpecial = false;
-            foreach (var c in motDePasse)
+            if (motDePasse.Length <= 12)
+            {
+                return false;
+            }
+            bool majuscule = false;
+            bool minuscule = false;
+            bool chiffre = false;
+            bool caractereSpecial = false;
+            foreach (char c in motDePasse)
+            {
                 if (c >= 'A' && c <= 'Z')
                     majuscule = true;
                 else if (c >= 'a' && c <= 'z')
