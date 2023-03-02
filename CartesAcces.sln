@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartesAcces", "CartesAcces\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarteAccesLib", "CarteAccesLib\CarteAccesLib.csproj", "{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffichageLog", "AffichageLog\AffichageLog.csproj", "{2CC031C9-3213-4856-85D4-684A486FFE40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD9BF0D7-D3B2-4BC8-8FD2-875AA0D637F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC031C9-3213-4856-85D4-684A486FFE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC031C9-3213-4856-85D4-684A486FFE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC031C9-3213-4856-85D4-684A486FFE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC031C9-3213-4856-85D4-684A486FFE40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

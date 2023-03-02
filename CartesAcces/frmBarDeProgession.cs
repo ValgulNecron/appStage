@@ -65,6 +65,7 @@ namespace CartesAcces
 
         private void cas_1()
         {
+            Securite.dechiffrerDossier();
             ReadCsv.setLesEleves(Chemin.CheminListeEleve);
             Eleve.setLesClasses();
         }

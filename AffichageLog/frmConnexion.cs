@@ -3,9 +3,10 @@ using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
+using CartesAcces;
 using LinqToDB;
 
-namespace CartesAcces
+namespace AffichageLog
 {
     /*
      * fenetre de connexion
@@ -75,12 +76,10 @@ namespace CartesAcces
                         Globale.NomUtilisateur = txtIdentifiant.Text;
                         txtMotDePasse.Text = "";
                         txtIdentifiant.Text = "";
-                        foreach (Control controle in Globale.Accueil.Controls)
-                            if (controle is Panel && controle.Name == "pnlMenu")
-                                foreach (Control controle2 in controle.Controls)
-                                    if (controle2 is Button)
-                                        controle2.Enabled = true;
-                        
+
+                        Globale.Actuelle = new AffichageLogAction();
+                        frmAccueil.OpenChildForm(Globale.Actuelle);
+
                         var macAddress = string.Empty;
                         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                             if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -98,25 +97,6 @@ namespace CartesAcces
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);
                         timer = new Timer(Globale.Accueil);
-                        if(Globale.MotsDePasseChifffrement != "")
-                        {
-                            Securite.dechiffrerDossier();
-            
-                            Globale.Cas = 1;
-                            var frmWait = new barDeProgression();
-                            frmWait.StartPosition = FormStartPosition.CenterScreen;
-                            frmWait.Show();
-                            frmWait.TopMost = true;
-
-                            Globale.Actuelle = new frmImportation();
-                            frmAccueil.OpenChildForm(Globale.Actuelle);
-                        }
-                        else
-                        {
-                            Globale.ChangementMotDePasseChiffrement = false;
-                            var mdpChiffrement = new frmMotDePasse();
-                            mdpChiffrement.ShowDialog();
-                        }
                     }
                 }
                 catch (Exception ex)
@@ -157,7 +137,8 @@ namespace CartesAcces
                         if (controle2 is Button && controle2.Name != "btnTheme")
                             controle2.Enabled = false;
         }
-        
+
+
         private void txtMotDePasse_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -174,7 +155,5 @@ namespace CartesAcces
                 }
             }
         }
-
-
     }
 }

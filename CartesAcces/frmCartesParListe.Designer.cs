@@ -51,7 +51,7 @@ namespace CartesAcces
             // 
             // Eleves
             // 
-            this.Eleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Eleves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Eleves.FormattingEnabled = true;
             this.Eleves.ItemHeight = 16;
             this.Eleves.Location = new System.Drawing.Point(23, 123);
@@ -63,7 +63,7 @@ namespace CartesAcces
             // 
             // Impression
             // 
-            this.Impression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Impression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Impression.FormattingEnabled = true;
             this.Impression.ItemHeight = 16;
             this.Impression.Location = new System.Drawing.Point(615, 123);
@@ -75,7 +75,7 @@ namespace CartesAcces
             // 
             // btnAjout
             // 
-            this.btnAjout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.btnAjout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjout.Location = new System.Drawing.Point(397, 307);
             this.btnAjout.MaximumSize = new System.Drawing.Size(180, 45);
             this.btnAjout.MinimumSize = new System.Drawing.Size(180, 45);
@@ -87,7 +87,7 @@ namespace CartesAcces
             // 
             // btnRetirer
             // 
-            this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.btnRetirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetirer.Location = new System.Drawing.Point(397, 385);
             this.btnRetirer.MaximumSize = new System.Drawing.Size(180, 45);
             this.btnRetirer.MinimumSize = new System.Drawing.Size(180, 45);
@@ -99,7 +99,7 @@ namespace CartesAcces
             // 
             // btnValider
             // 
-            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.Location = new System.Drawing.Point(785, 641);
             this.btnValider.MaximumSize = new System.Drawing.Size(180, 45);
             this.btnValider.MinimumSize = new System.Drawing.Size(180, 45);
@@ -112,7 +112,7 @@ namespace CartesAcces
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
@@ -121,7 +121,7 @@ namespace CartesAcces
             // 
             // lblCount
             // 
-            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCount.Location = new System.Drawing.Point(103, 9);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(100, 23);
@@ -130,7 +130,7 @@ namespace CartesAcces
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 23);
@@ -139,7 +139,7 @@ namespace CartesAcces
             // 
             // txtRecherche
             // 
-            this.txtRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.txtRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRecherche.Location = new System.Drawing.Point(106, 51);
             this.txtRecherche.Name = "txtRecherche";
             this.txtRecherche.Size = new System.Drawing.Size(259, 22);
@@ -152,7 +152,7 @@ namespace CartesAcces
             this.groupBox1.Controls.Add(this.Teme);
             this.groupBox1.Controls.Add(this.Qeme);
             this.groupBox1.Controls.Add(this.Seme);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(384, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(353, 84);
@@ -162,7 +162,7 @@ namespace CartesAcces
             // 
             // Ceme
             // 
-            this.Ceme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Ceme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ceme.Location = new System.Drawing.Point(132, 16);
             this.Ceme.Name = "Ceme";
             this.Ceme.Size = new System.Drawing.Size(94, 22);
@@ -174,7 +174,7 @@ namespace CartesAcces
             // tout
             // 
             this.tout.Checked = true;
-            this.tout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.tout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tout.Location = new System.Drawing.Point(132, 44);
             this.tout.Name = "tout";
             this.tout.Size = new System.Drawing.Size(127, 22);
@@ -186,7 +186,7 @@ namespace CartesAcces
             // 
             // Teme
             // 
-            this.Teme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Teme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Teme.Location = new System.Drawing.Point(20, 44);
             this.Teme.Name = "Teme";
             this.Teme.Size = new System.Drawing.Size(94, 22);
@@ -197,7 +197,7 @@ namespace CartesAcces
             // 
             // Qeme
             // 
-            this.Qeme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Qeme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Qeme.Location = new System.Drawing.Point(243, 16);
             this.Qeme.Name = "Qeme";
             this.Qeme.Size = new System.Drawing.Size(94, 22);
@@ -208,7 +208,7 @@ namespace CartesAcces
             // 
             // Seme
             // 
-            this.Seme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.Seme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seme.Location = new System.Drawing.Point(20, 16);
             this.Seme.Name = "Seme";
             this.Seme.Size = new System.Drawing.Size(94, 22);

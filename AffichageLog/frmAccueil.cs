@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
+using CartesAcces;
 
-namespace CartesAcces
+namespace AffichageLog
 {
     public partial class frmAccueil : Form
     {
-        private Form frmPassword;
-
         public frmAccueil()
         {
             InitializeComponent();
@@ -32,7 +30,7 @@ namespace CartesAcces
             TailleControle.setTailleBouton(this);
             TailleControle.setTailleControleTexte(this);
         }
-
+        
         public static void OpenChildForm(Form childForm)
         {
             childForm.TopLevel = false;
@@ -50,31 +48,10 @@ namespace CartesAcces
                 }
         }
 
+
         private void frmAccueil_Load(object sender, EventArgs e)
         {
-            foreach (Control controle in Controls)
-                if (controle is Panel && controle.Name == "pnlMenu")
-                    foreach (Control controle2 in controle.Controls)
-                        if (controle2 is Button && controle2.Name != "btnTheme")
-                            controle2.Enabled = false;
-
-            Globale.Actuelle = new frmConnexion();
-            Text = "CARTE D'ACCES - CONNEXION";
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
-
             lblVersion.Text = "version :" + Globale.Version + " du " + Globale.VersionDate;
-            var dir = new DirectoryInfo("./data/image");
-            if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le denier import des edt");
-
-            var dir2 = new DirectoryInfo(Chemin.CheminPhotoEleve);
-            if (dir2.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le dernier import de photo");
-
-            var dir3 = new DirectoryInfo(Chemin.CheminListeEleve);
-            if (dir3.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le dernier import des listes eleves");
-            
             try
             {
                 var image = Image.FromFile("./data/logo.png");
@@ -90,34 +67,9 @@ namespace CartesAcces
             }
         }
 
-        //Création de menu de navigation
-
-        private void btnCreerCarte_Click(object sender, EventArgs e)
-        {
-            Globale.Actuelle = new frmCarteProvisoire();
-            Text = "CARTE D'ACCES - CARTE PROVISOIRE";
-            frmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
-        }
-
-        private void btnCarteParClasse_Click(object sender, EventArgs e)
-        {
-            Globale.Actuelle = new frmCarteParClasseNiveau();
-            Text = "CARTE D'ACCES - CARTE PAR CLASSE";
-            frmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
-        }
-
-        private void btnParametres_Click(object sender, EventArgs e)
-        {
-            Globale.Actuelle = new frmImportation();
-            Text = "CARTE D'ACCES - IMPORTATION";
-            frmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
-        }
-
-        private void pnlContent_Paint(object sender, PaintEventArgs e)
-        {
+        private void pictureBox2_Click(object sender, EventArgs e)
+        { 
+            System.Diagnostics.Process.Start("https://github.com/ValgulNecron/appStage/");
         }
 
         private void btnTheme_Click(object sender, EventArgs e)
@@ -139,31 +91,6 @@ namespace CartesAcces
 
             var user = new Utilisateurs();
             user.ThemeBool = Globale.EstEnModeSombre;
-        }
-
-        private void btnChangeMdp_Click(object sender, EventArgs e)
-        {
-            frmPassword?.Close();
-            frmPassword = new frmChangeMotDePasse();
-            frmPassword.Show();
-        }
-
-        private void btnAfficheListeEleve_Click(object sender, EventArgs e)
-        {
-            Globale.Actuelle = new frmCartesParListe();
-            Text = "CARTE D'ACCES - CARTE PAR LISTE";
-            frmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/ValgulNecron/appStage/");
-        }
-
-        private void on_closing(object sender, FormClosingEventArgs e)
-        {
-            Securite.chiffrerDossier();
         }
     }
 }

@@ -274,5 +274,12 @@ namespace CartesAcces
             {
             }
         }
+
+        private void btnModifierChiffrementMDP_Click(object sender, EventArgs e)
+        {
+            var frmMotDePasse = new frmMotDePasse();
+            Globale.ChangementMotDePasseChiffrement = true;
+            frmMotDePasse.ShowDialog();
+        }
     }   
 }
