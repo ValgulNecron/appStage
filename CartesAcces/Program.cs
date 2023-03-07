@@ -35,9 +35,11 @@ namespace CartesAcces
                 try
                 {
                     ClassSql.init();
+                    Globale.ConnectionBdd = true;
                 }
                 catch(Exception e)
                 {
+                    Globale.ConnectionBdd = false;
                     MessageBox.Show("fichier config ou connection impossible" + e.Message);
                 }
                 

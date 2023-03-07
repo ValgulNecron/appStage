@@ -5,15 +5,19 @@ using LinqToDB;
 
 namespace CartesAcces
 {
-    /*
-     * cette classe permet de créer un utilisateur
-     * elle est accessible uniquement par un utilisateur admin
-     * elle permet de créer un utilisateur avec un nom et un mot de passe
-     * elle permet de choisir le type d'utilisateur
-     */
-    public partial class frmCreationUtilisateur : Form
+
+    /// <summary>
+    /// cette classe permet de créer un utilisateur
+    /// elle est accessible uniquement par un utilisateur admin
+    /// elle permet de créer un utilisateur avec un nom et un mot de passe
+    /// elle permet de choisir le type d'utilisateur
+    /// </summary>
+    public partial class FrmCreationUtilisateur : Form
     {
-        public frmCreationUtilisateur()
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        public FrmCreationUtilisateur()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);

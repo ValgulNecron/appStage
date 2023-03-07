@@ -2,7 +2,7 @@
 
 namespace CartesAcces
 {
-    partial class frmCreationUtilisateur
+    partial class FrmCreationUtilisateur
     {
         /// <summary>
         /// Required designer variable.
@@ -176,7 +176,7 @@ namespace CartesAcces
             this.Controls.Add(this.tbMdp);
             this.Controls.Add(this.tbUser);
             this.Controls.Add(this.gbTypeUser);
-            this.Name = "frmCreationUtilisateur";
+            this.Name = "FrmCreationUtilisateur";
             this.Text = "frmCreationUtilisateur";
             this.Load += new System.EventHandler(this.frmCreationUtilisateur_Load);
             this.gbTypeUser.ResumeLayout(false);

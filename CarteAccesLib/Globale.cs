@@ -85,8 +85,19 @@ namespace CartesAcces
         public static List<Eleve> ListeEleves4Eme { get; set; }
         public static List<Eleve> ListeEleves3Eme { get; set; }
         
+        /// <summary>
+        /// Le mot de passe de chiffrement
+        /// </summary>
         public static String MotsDePasseChifffrement { get; set; } = "";
         
+        /// <summary>
+        /// Si le mot de passe doit etre changer
+        /// </summary>
         public static bool ChangementMotDePasseChiffrement { get; set; } = false;
+        
+        /// <summary>
+        /// si la connection a la base de donnée est etablie
+        /// </summary>
+        public static bool ConnectionBdd { get; set; } = false;
     }
 }

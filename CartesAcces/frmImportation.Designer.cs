@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmImportation
+    partial class FrmImportation
     {
         /// <summary>
         /// Required designer variable.
@@ -230,7 +230,7 @@ namespace CartesAcces
             this.Controls.Add(this.btnImportPhoto);
             this.Controls.Add(this.btnImportEDT);
             this.Controls.Add(this.btnImporterEleves);
-            this.Name = "frmImportation";
+            this.Name = "FrmImportation";
             this.Text = "frmImportation";
             this.Load += new System.EventHandler(this.frmParametres_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

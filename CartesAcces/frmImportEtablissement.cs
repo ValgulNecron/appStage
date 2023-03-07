@@ -11,11 +11,19 @@ namespace CartesAcces
      * si l'etablissement existe déjà, il est modifié
      * si l'etablissement n'existe pas, il est créé
      */
-    public partial class frmImportEtablissement : Form
+    /// <summary>
+    ///  permet de créer l'etablissement dans la base de données
+    ///  si l'etablissement existe déjà, il est modifié
+    ///  si l'etablissement n'existe pas, il est créé
+    /// </summary>
+    public partial class FrmImportEtablissement : Form
     {
         private Etablissement etaDebut;
 
-        public frmImportEtablissement()
+        /// <summary>
+        /// constructeur de la classe
+        /// </summary>
+        public FrmImportEtablissement()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
@@ -40,10 +48,10 @@ namespace CartesAcces
             etablissement.NumeroTelephoneEtablissement = txtTelEtablissement.Text;
             etablissement.NumeroRueEtablissement = Convert.ToInt32(txtNumRueEtablissement.Text);
             etablissement.UrlEtablissement = textBox1.Text;
-            etablissement.CodeHexa6eme = GetCodeHexa6Eme();
-            etablissement.CodeHexa5eme = GetCodeHexa5Eme();
-            etablissement.CodeHexa4eme = GetCodeHexa4Eme();
-            etablissement.CodeHexa3eme = GetCodeHexa3Eme();
+            etablissement.CodeHexa6eme = getCodeHexa6Eme();
+            etablissement.CodeHexa5eme = getCodeHexa5Eme();
+            etablissement.CodeHexa4eme = getCodeHexa4Eme();
+            etablissement.CodeHexa3eme = getCodeHexa3Eme();
             etablissement.Bordure = cbBordure.Checked;
             ClassSql.Db.InsertOrReplace(etablissement);
             var macAddress = string.Empty;
@@ -218,7 +226,7 @@ namespace CartesAcces
             }
         }
 
-        private string GetCodeHexa6Eme()
+        private string getCodeHexa6Eme()
         {
             var codeHexa6Eme = "";
             foreach (var variable in gb6eme.Controls)
@@ -252,7 +260,7 @@ namespace CartesAcces
             return codeHexa6Eme;
         }
 
-        private string GetCodeHexa5Eme()
+        private string getCodeHexa5Eme()
         {
             var codeHexa5Eme = "";
             foreach (var variable in gb5eme.Controls)
@@ -286,7 +294,7 @@ namespace CartesAcces
             return codeHexa5Eme;
         }
 
-        private string GetCodeHexa4Eme()
+        private string getCodeHexa4Eme()
         {
             var codeHexa4Eme = "";
             foreach (var variable in gb4eme.Controls)
@@ -320,7 +328,7 @@ namespace CartesAcces
             return codeHexa4Eme;
         }
 
-        private string GetCodeHexa3Eme()
+        private string getCodeHexa3Eme()
         {
             var codeHexa3Eme = "";
             foreach (var variable in gb3eme.Controls)

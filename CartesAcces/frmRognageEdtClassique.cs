@@ -9,16 +9,19 @@ using CarteAcces;
 
 namespace CartesAcces
 {
-    /*
-     * Permet de rogner l'edt classique
-     * l'edt classique est un edt de classe non personnalisé
-     * il est enregistré dans le dossier data/FichierEdtClasse
-     */
-    public partial class frmRognageEdtClassique : Form
+    /// <summary>
+    /// Permet de rogner l'edt classique
+    /// l'edt classique est un edt de classe non personnalisé
+    /// il est enregistré dans le dossier data/FichierEdtClasse
+    /// </summary>
+    public partial class FrmRognageEdtClassique : Form
     {
-        private readonly List<string> listeFichiers = new List<string>();
+        private readonly List<string> _listeFichiers = new List<string>();
 
-        public frmRognageEdtClassique()
+        /// <summary>
+        /// constructeur de la classe
+        /// </summary>
+        public FrmRognageEdtClassique()
         {
             InitializeComponent();
         }
@@ -28,8 +31,8 @@ namespace CartesAcces
         {
             try
             {
-                listeFichiers.AddRange(Directory.GetFiles(Globale.CheminEdtClassique));
-                pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
+                _listeFichiers.AddRange(Directory.GetFiles(Globale.CheminEdtClassique));
+                pbEdtClassique.Image = Image.FromFile(_listeFichiers[0]);
                 Edt.rognageEdt(pbEdtClassique, Globale.CheminEdtClassique);
             }
             catch
@@ -77,7 +80,7 @@ namespace CartesAcces
                 Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
                 Cursor = Cursors.Default;
                 Edition.SelectionClique = false;
-                Edt.rognageEdt(pbEdtClassique, listeFichiers[0]);
+                Edt.rognageEdt(pbEdtClassique, _listeFichiers[0]);
                 btnRogner.Enabled = false;
             }
         }
@@ -112,7 +115,7 @@ namespace CartesAcces
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            pbEdtClassique.Image = Image.FromFile(listeFichiers[0]);
+            pbEdtClassique.Image = Image.FromFile(_listeFichiers[0]);
         }
 
         private void btnValider_Click(object sender, EventArgs e)
@@ -128,8 +131,8 @@ namespace CartesAcces
                 Directory.CreateDirectory(Chemin.CheminEdtClassique);
 
                 var directory = new DirectoryInfo(Globale.CheminEdtClassique);
-                MessageBox.Show(listeFichiers.Count.ToString());
-                foreach (var fichier in listeFichiers)
+                MessageBox.Show(_listeFichiers.Count.ToString());
+                foreach (var fichier in _listeFichiers)
                 {
                     pbEdtClassique.Image = Image.FromFile(fichier);
                     Edt.rognageEdt(pbEdtClassique, fichier);

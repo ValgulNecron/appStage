@@ -15,9 +15,16 @@ namespace CartesAcces
      * Classe qui permet d'éditer les cartes d'accès
      * elle prend une liste d'élèves et permet de leur editer une carte
      */
-    public partial class frmMultiplesCartesEdition : Form
+    /// <summary>
+    /// Classe qui permet d'éditer les cartes d'accès
+    /// elle prend une liste d'élèves et permet de leur editer une carte
+    /// </summary>
+    public partial class FrmMultiplesCartesEdition : Form
     {
-        public frmMultiplesCartesEdition()
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        public FrmMultiplesCartesEdition()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);

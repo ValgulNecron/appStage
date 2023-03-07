@@ -13,11 +13,20 @@ namespace CartesAcces
      * elle stocke le nom d'utilisateur dans la variable globale _nomUtilisateur
      * et lance la barre de progression avec le cas 1
      */
-    public partial class frmConnexion : Form
+    /// <summary>
+    ///  fenetre de connexion
+    /// elle permet de se connecter a l'application
+    /// elle stocke le nom d'utilisateur dans la variable globale _nomUtilisateur
+    /// et lance la barre de progression avec le cas 1
+    /// </summary>
+    public partial class FrmConnexion : Form
     {
         public static Timer timer;
 
-        public frmConnexion()
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        public FrmConnexion()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
@@ -26,6 +35,11 @@ namespace CartesAcces
             txtMotDePasse.PasswordChar = '*';
         }
 
+        /// <summary>
+        /// Permet de vider les champs quand la fenetre est fermee
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void on_Visibility_Change(object sender, EventArgs e)
         {
             txtMotDePasse.Text = "";
@@ -46,7 +60,7 @@ namespace CartesAcces
          * si le nom d'utilisateur n'existe pas elle affiche un message d'erreur
          * et elle vide les champs
          */
-        private void Connexion()
+        private void connexion()
         {
             try
             {
@@ -108,13 +122,13 @@ namespace CartesAcces
                             frmWait.Show();
                             frmWait.TopMost = true;
 
-                            Globale.Actuelle = new frmImportation();
+                            Globale.Actuelle = new FrmImportation();
                             frmAccueil.OpenChildForm(Globale.Actuelle);
                         }
                         else
                         {
                             Globale.ChangementMotDePasseChiffrement = false;
-                            var mdpChiffrement = new frmMotDePasse();
+                            var mdpChiffrement = new FrmMotDePasse();
                             mdpChiffrement.ShowDialog();
                         }
                     }
@@ -144,7 +158,7 @@ namespace CartesAcces
             }
             else
             {
-                Connexion();
+                connexion();
             }
         }
 
@@ -156,6 +170,18 @@ namespace CartesAcces
                     foreach (Control controle2 in controle.Controls)
                         if (controle2 is Button && controle2.Name != "btnTheme")
                             controle2.Enabled = false;
+            if (Globale.ConnectionBdd)
+            {
+                btnRetry.Visible = false;
+                lbConnection.Text = "Connexion à la base de données réussie";
+                lbConnection.ForeColor = Color.Green;
+            }
+            else
+            {
+                btnRetry.Visible = true;
+                lbConnection.Text = "Connexion à la base de données échouée";
+                lbConnection.ForeColor = Color.Red;
+            }
         }
         
         private void txtMotDePasse_KeyDown(object sender, KeyEventArgs e)
@@ -170,11 +196,24 @@ namespace CartesAcces
                 }
                 else
                 {
-                    Connexion();
+                    connexion();
                 }
             }
         }
 
-
+        private void btnRetry_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClassSql.init();
+                MessageBox.Show("Connexion réussie");
+                Globale.ConnectionBdd = true;
+            }
+            catch (Exception exception)
+            {
+                Globale.ConnectionBdd = false;
+                MessageBox.Show(exception.Message);
+            }
+        }
     }
 }

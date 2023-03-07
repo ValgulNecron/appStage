@@ -99,7 +99,7 @@ namespace CartesAcces
                 {
                     Edition.importEdtClassique(Globale.CheminEdtClassique);
 
-                    var frmRognageEdtClassique = new frmRognageEdtClassique();
+                    var frmRognageEdtClassique = new FrmRognageEdtClassique();
                     frmRognageEdtClassique.Show();
                 }
             }));
