@@ -83,21 +83,44 @@ namespace CartesAcces
          */
         public static void chiffrerDossier()
         {
+            if (!Directory.Exists(PathFolder))
+            {
+                MessageBox.Show("Le dossier data n'existe pas");
+                return;
+            }
+            if (Globale.MotsDePasseChifffrement == null)
+            {
+                MessageBox.Show("Le mot de passe de chiffrement n'est pas renseigné");
+                return;
+            }
+            if (Globale.MotsDePasseChifffrement == "")
+            {
+                MessageBox.Show("Le mot de passe de chiffrement est vide");
+                return;
+            }
             var directory = new DirectoryInfo(PathFolder);
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
                 {
-                    chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
-                    file.Delete();
+                    string extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                    if (extension != ".enc")
+                    {
+                        chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
+                        file.Delete();
+                    }
                 }
 
                 foreach (var dir2 in dir.GetDirectories())
                 {
                     foreach (var file in dir2.GetFiles())
                     {
-                        chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
-                        file.Delete();
+                        string extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                        if (extension != ".enc")
+                        {
+                            chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
+                            file.Delete();
+                        }
                     }
                 }
             }
@@ -120,7 +143,7 @@ namespace CartesAcces
             var keyGenerator = new Rfc2898DeriveBytes(passwordBytes, salt, 1000);
             var key = keyGenerator.GetBytes(32);
             var iv = keyGenerator.GetBytes(16);
-
+            
             using (var aes = new AesManaged())
             {
                 aes.KeySize = 256;
