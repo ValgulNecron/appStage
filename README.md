@@ -4,8 +4,8 @@ pour pouvoir utiliser l'application il faut suivre les étapes suivantes :
 <img src=./file/lib/catcatcat.gif align="right" height="250" width="250">
 - [Activer la virtualisation](./file/pdf/Activer_la_virtualisation.pdf)
 - [Installation de la base de donnée](./file/pdf/Mise_en_place_BDD__WinSCP__Script.pdf)
-- [Configuration de l'application](./file/pdf/Guide_dinstallation_Carte_Acces_-_SysAdmin_-_16.02.2023.pdf)
-- [Guide d'utilisation](./file/pdf/Guide_de_lutilisateur_-_16.02.2023.pdf)
+- [Configuration de l'application](./file/pdf/Guide_d'installation_Carte_Accès_-_SysAdmin_-_16.02.2023.pdf)
+- [Guide d'utilisation](./file/pdf/Guide_de_l'utilisateur_-_16.02.2023.pdf)
 
 ## uml des classe
 ![](./file/all/include.svg)
