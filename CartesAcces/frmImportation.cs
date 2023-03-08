@@ -18,9 +18,18 @@ namespace CartesAcces
      * elle permet de vérifier si les données sont à jour
      * elle permet de mettre à jour les données
      */
-    public partial class frmImportation : Form
+    /// <summary>
+    /// fenêtre d'imporation des données
+    /// elle permet de rediriger vers les fenêtres d'importation des données
+    /// elle permet de vérifier si les données sont à jour
+    /// elle permet de mettre à jour les données
+    /// </summary>
+    public partial class FrmImportation : Form
     {
-        public frmImportation()
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        public FrmImportation()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
@@ -32,7 +41,7 @@ namespace CartesAcces
             lblPhotoEleve.Text = Photo.getDatePhotos();
         }
 
-        private void OpenChildForm(Form childForm)
+        private void openChildForm(Form childForm)
         {
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
@@ -58,8 +67,8 @@ namespace CartesAcces
             {
                 //lblDateListeEleve = Globale._lblDate;
                 Globale.CheminTexte = Chemin.setCheminImportationFichierExcel();
-                Globale.Actuelle = new frmImportation(); //
-                OpenChildForm(Globale.Actuelle); //
+                Globale.Actuelle = new FrmImportation(); //
+                openChildForm(Globale.Actuelle); //
                 if (Globale.CheminTexte.Length > 0)
                 {
                     Globale.Cas = 2;
@@ -232,13 +241,13 @@ namespace CartesAcces
 
         private void btnImporterUnEtablissement_Click(object sender, EventArgs e)
         {
-            Form frmImportEtab = new frmImportEtablissement();
+            Form frmImportEtab = new FrmImportEtablissement();
             frmImportEtab.Show();
         }
 
         private void btCreationUtilisateur_Click(object sender, EventArgs e)
         {
-            Form frmCreationUtilisateur = new frmCreationUtilisateur();
+            Form frmCreationUtilisateur = new FrmCreationUtilisateur();
             frmCreationUtilisateur.Show();
         }
 
@@ -277,7 +286,7 @@ namespace CartesAcces
 
         private void btnModifierChiffrementMDP_Click(object sender, EventArgs e)
         {
-            var frmMotDePasse = new frmMotDePasse();
+            var frmMotDePasse = new FrmMotDePasse();
             Globale.ChangementMotDePasseChiffrement = true;
             frmMotDePasse.ShowDialog();
         }

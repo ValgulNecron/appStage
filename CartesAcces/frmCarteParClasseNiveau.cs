@@ -56,7 +56,7 @@ namespace CartesAcces
         {
             try
             {
-                var frmMultiplesCartesEdition = new frmMultiplesCartesEdition();
+                var frmMultiplesCartesEdition = new FrmMultiplesCartesEdition();
                 frmMultiplesCartesEdition.Show();
             }
             catch

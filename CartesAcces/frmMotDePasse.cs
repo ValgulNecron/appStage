@@ -3,9 +3,15 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class frmMotDePasse : Form
+    /// <summary>
+    /// Form pour le mot de passe de chiffrement
+    /// </summary>
+    public partial class FrmMotDePasse : Form
     {
-        public frmMotDePasse()
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        public FrmMotDePasse()
         {
             InitializeComponent();
         }
@@ -30,7 +36,7 @@ namespace CartesAcces
                     frmWait.Show();
                     frmWait.TopMost = true;
     
-                    Globale.Actuelle = new frmImportation();
+                    Globale.Actuelle = new FrmImportation();
                     frmAccueil.OpenChildForm(Globale.Actuelle);
                 }   
 

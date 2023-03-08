@@ -4,33 +4,44 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    /*
-     * cette classe permet de vérifier si l'utilisateur est inactif depuis un certain temps
-         * si c'est le cas, elle retourne sur la page de connexion
-         * les valeur de dureeMinute et frequenceDesVerifEnMinute sont en minutes et peuvent être modifiées
-         * la fréquence de vérification est de 1 minute par défaut elle indique que la vérification se fera toutes les minutes
-         * la durée est de 15 minutes par défaut elle indique que si l'utilisateur est inactif depuis 15 minutes, il sera déconnecté
-         * il suffit de creer un objet de cette classe dans la page qui doit être surveillée et de l'initialiser avec l'objet de la fenêtre
-         */
+    /// <summary>
+    ///    Cette classe permet de vérifier si l'utilisateur est inactif depuis un certain temps
+    ///     si c'est le cas, elle retourne sur la page de connexion
+    /// les valeur de dureeMinute et frequenceDesVerifEnMinute sont en minutes et peuvent être modifiées
+    /// la fréquence de vérification est de 1 minute par défaut elle indique que la vérification se fera toutes les minutes
+    /// la durée est de 15 minutes par défaut elle indique que si l'utilisateur est inactif depuis 15 minutes, il sera déconnecté
+    /// il suffit de creer un objet de cette classe dans la page qui doit être surveillée et de l'initialiser avec l'objet de la fenêtre
+    /// </summary>
     public class Timer
     {
-        // valeur en minute de la durée d'inactivité avant déconnexion
+        /// <summary>
+        /// valeur en minute de la durée d'inactivité avant déconnexion
+        /// </summary>
         public static int DureeMinute { get; set; } = 15;
+        /// <summary>
+        /// l'objet de la fenêtre à surveiller
+        /// </summary>
         public Form Form1 { get; set; }
-        // valeur en minute de la fréquence de vérification
+        /// <summary>
+        /// valeur en minute de la fréquence de vérification
+        /// </summary>
         public int FrequenceDesVerifEnMinute { get; set;} = 1;
+        /// <summary>
+        /// l'objet de la classe System.Timers.Timer
+        /// </summary>
         public System.Timers.Timer Timer1 { get; set; }
-        private DateTime start;
+        private DateTime _start;
 
-        /*
-         * constructeur de la classe
-         * @param form : l'objet de la fenêtre à surveiller
-         * il faut initialiser la classe avec l'objet de la fenêtre à surveiller
-         */
+
+        /// <summary>
+        /// constructeur de la classe
+        /// il faut initialiser la classe avec l'objet de la fenêtre à surveiller
+        /// </summary>
+        /// <param name="form"></param>
         public Timer(Form form)
         {
             this.Form1 = form;
-            start = DateTime.Now;
+            _start = DateTime.Now;
             Timer1 = new System.Timers.Timer();
             Timer1.Interval = FrequenceDesVerifEnMinute * 60 * 1000;
             Timer1.Elapsed += OnTimeEvent;
@@ -40,10 +51,10 @@ namespace CartesAcces
             this.Form1.MouseMove += Form_MouseMove;
             Globale.Accueil.MouseMove += Form_MouseMove;
         }
-
-        /*
-         * cette fonction permet d'ajouter un événement à la fenêtre à surveiller
-         */
+        
+        /// <summary>
+        /// cette fonction permet d'ajouter un événement à la fenêtre à surveiller
+        /// </summary>
         public void ajoutEvenement()
         {
             Form1.MouseMove += Form_MouseMove;
@@ -53,16 +64,16 @@ namespace CartesAcces
         
         private void Form_MouseMove(object sender, MouseEventArgs e)
         {
-            start = DateTime.Now;
+            _start = DateTime.Now;
         }
 
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
-            if (start.Add(TimeSpan.FromMinutes(DureeMinute)) <= DateTime.Now)
+            if (_start.Add(TimeSpan.FromMinutes(DureeMinute)) <= DateTime.Now)
                 if (Globale.EstConnecter)
                 {
                     Globale.EstConnecter = false;
-                    Globale.Actuelle = new frmConnexion();
+                    Globale.Actuelle = new FrmConnexion();
                     Globale.Accueil.Invoke(
                         new MethodInvoker(delegate { frmAccueil.OpenChildForm(Globale.Actuelle); }));
                 }

@@ -11,6 +11,9 @@ namespace CartesAcces
      */
     public partial class frmSelectNiveau : Form
     {
+        /// <summary>
+        /// constructeur de la classe
+        /// </summary>
         public frmSelectNiveau()
         {
             InitializeComponent();

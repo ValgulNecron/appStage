@@ -169,7 +169,7 @@ namespace CartesAcces
             try
             {
                 Globale.ListeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
-                Form frmMultipleCarteEdi = new frmMultiplesCartesEdition();
+                Form frmMultipleCarteEdi = new FrmMultiplesCartesEdition();
                 frmMultipleCarteEdi.Show();
             }
             catch

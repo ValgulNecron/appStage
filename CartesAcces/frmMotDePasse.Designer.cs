@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace CartesAcces
 {
-    partial class frmMotDePasse
+    partial class FrmMotDePasse
     {
         /// <summary>
         /// Required designer variable.
@@ -74,7 +74,7 @@ namespace CartesAcces
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmMotDePasse";
+            this.Name = "FrmMotDePasse";
             this.Text = "frmMotDePasse";
             this.ResumeLayout(false);
             this.PerformLayout();

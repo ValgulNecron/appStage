@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace CartesAcces
 {
-    partial class frmImportEtablissement
+    partial class FrmImportEtablissement
     {
         /// <summary>
         /// Required designer variable.
@@ -631,7 +631,7 @@ namespace CartesAcces
             this.Controls.Add(this.txtRueEtablissement);
             this.Controls.Add(this.txtNomEtablissement);
             this.MinimumSize = new System.Drawing.Size(180, 39);
-            this.Name = "frmImportEtablissement";
+            this.Name = "FrmImportEtablissement";
             this.Text = "Importer un établissement";
             this.Load += new System.EventHandler(this.frmImportEtablissement_Load);
             this.gb3eme.ResumeLayout(false);

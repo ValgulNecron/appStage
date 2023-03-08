@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace CartesAcces
 {
-    partial class frmRognageEdtClassique
+    partial class FrmRognageEdtClassique
     {
         /// <summary>
         /// Required designer variable.
@@ -89,7 +89,7 @@ namespace CartesAcces
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnRogner);
             this.Controls.Add(this.pbEdtClassique);
-            this.Name = "frmRognageEdtClassique";
+            this.Name = "FrmRognageEdtClassique";
             this.Text = "frmRognageEdtClassique";
             this.Load += new System.EventHandler(this.frmRognageEdtClassique_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbEdtClassique)).EndInit();

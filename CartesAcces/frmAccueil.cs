@@ -58,7 +58,7 @@ namespace CartesAcces
                         if (controle2 is Button && controle2.Name != "btnTheme")
                             controle2.Enabled = false;
 
-            Globale.Actuelle = new frmConnexion();
+            Globale.Actuelle = new FrmConnexion();
             Text = "CARTE D'ACCES - CONNEXION";
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
 
@@ -96,7 +96,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCarteProvisoire();
             Text = "CARTE D'ACCES - CARTE PROVISOIRE";
-            frmConnexion.timer.ajoutEvenement();
+            FrmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
@@ -104,15 +104,15 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCarteParClasseNiveau();
             Text = "CARTE D'ACCES - CARTE PAR CLASSE";
-            frmConnexion.timer.ajoutEvenement();
+            FrmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
         {
-            Globale.Actuelle = new frmImportation();
+            Globale.Actuelle = new FrmImportation();
             Text = "CARTE D'ACCES - IMPORTATION";
-            frmConnexion.timer.ajoutEvenement();
+            FrmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
@@ -152,7 +152,7 @@ namespace CartesAcces
         {
             Globale.Actuelle = new frmCartesParListe();
             Text = "CARTE D'ACCES - CARTE PAR LISTE";
-            frmConnexion.timer.ajoutEvenement();
+            FrmConnexion.timer.ajoutEvenement();
             Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 

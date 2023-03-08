@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmMultiplesCartesEdition
+    partial class FrmMultiplesCartesEdition
     {
         /// <summary>
         /// Required designer variable.
@@ -204,7 +204,7 @@ namespace CartesAcces
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.MaximizeBox = false;
-            this.Name = "frmMultiplesCartesEdition";
+            this.Name = "FrmMultiplesCartesEdition";
             this.Text = "frmMultiplesCartesEdition";
             this.Load += new System.EventHandler(this.frmMultiplesCartesEdition_Load);
             this.pnlEdtPhoto.ResumeLayout(false);

@@ -2,7 +2,7 @@
 
 namespace CartesAcces
 {
-    partial class frmConnexion
+    partial class FrmConnexion
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,8 @@ namespace CartesAcces
             this.btnConnexion = new System.Windows.Forms.Button();
             this.txtIdentifiant = new System.Windows.Forms.TextBox();
             this.txtMotDePasse = new System.Windows.Forms.TextBox();
+            this.btnRetry = new System.Windows.Forms.Button();
+            this.lbConnection = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblMdp
@@ -94,11 +96,31 @@ namespace CartesAcces
             this.txtMotDePasse.TabIndex = 1;
             this.txtMotDePasse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMotDePasse_KeyDown);
             // 
-            // frmConnexion
+            // btnRetry
+            // 
+            this.btnRetry.Location = new System.Drawing.Point(1320, 75);
+            this.btnRetry.Name = "btnRetry";
+            this.btnRetry.Size = new System.Drawing.Size(304, 40);
+            this.btnRetry.TabIndex = 4;
+            this.btnRetry.Text = "réassayer la connection";
+            this.btnRetry.UseVisualStyleBackColor = true;
+            this.btnRetry.Click += new System.EventHandler(this.btnRetry_Click);
+            // 
+            // lbConnection
+            // 
+            this.lbConnection.Location = new System.Drawing.Point(1320, 15);
+            this.lbConnection.Name = "lbConnection";
+            this.lbConnection.Size = new System.Drawing.Size(295, 57);
+            this.lbConnection.TabIndex = 5;
+            this.lbConnection.Text = "Est connecter";
+            // 
+            // FrmConnexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1636, 911);
+            this.Controls.Add(this.lbConnection);
+            this.Controls.Add(this.btnRetry);
             this.Controls.Add(this.txtMotDePasse);
             this.Controls.Add(this.txtIdentifiant);
             this.Controls.Add(this.btnConnexion);
@@ -106,12 +128,15 @@ namespace CartesAcces
             this.Controls.Add(this.lblMdp);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(252, 56);
-            this.Name = "frmConnexion";
+            this.Name = "FrmConnexion";
             this.Text = "frmConnexion";
             this.Load += new System.EventHandler(this.frmConnexion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button btnRetry;
+        private System.Windows.Forms.Label lbConnection;
 
         #endregion
 
