@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
-using System.Threading;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
@@ -93,8 +93,7 @@ namespace CartesAcces
                 MessageBox.Show(exception.Message);
             }
             
-            var updateThread = new Thread(CheckForUpdate);
-            updateThread.Start();
+            CheckForUpdate();
         }
 
         //Création de menu de navigation
@@ -173,40 +172,37 @@ namespace CartesAcces
             Securite.chiffrerDossier();
         }
 
-        private void CheckForUpdate()
+
+        public void CheckForUpdate()
         {
-            using (var client = new WebClient())
+            var client = new WebClient();
+            var currentVersion = Globale.Version;
+            var apiurl = $"https://api.github.com/repos/{Globale.Owner}/{Globale.Repo}/releases/latest";
+            client.Headers.Add("User-Agent", "request");
+            string json = null;
+
+            try
             {
-                client.Headers.Add("User-Agent", "AutoUpdater"); // ajout de l'en-tête requis pour utiliser l'API GitHub
-
-                var response = client.DownloadString(Globale.RepoUrl); // récupération de la réponse de l'API GitHub
-                dynamic release =
-                    JsonConvert
-                        .DeserializeObject(response); // désérialisation de la réponse en objet dynamique
-
-                string latestVersion = release.tag_name; // récupération de la dernière version
-
-                if (latestVersion != Globale.Version)
+                json = client.DownloadString(apiurl);
+            }   
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une erreur s'est produite lors de la récupération de la dernière version depuis GitHub. Erreur : " + ex.Message, "Erreur de récupération de la dernière version", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            dynamic release = JsonConvert.DeserializeObject(json);
+            var latestVersion = release.tag_name;
+            if (latestVersion != currentVersion)
+            {   
+                var result = MessageBox.Show("Une mise à jour est disponible. Voulez-vous la télécharger maintenant ?", "Mise à jour disponible", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
                 {
-                    var dialogResult =
-                        MessageBox.Show(
-                            "Une nouvelle version est disponible. Voulez-vous la télécharger et installer la mise à jour ?",
-                            "Mise à jour disponible", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        // Télécharger la dernière version
-                        var tempPath = Path.GetTempPath();
-                        var tempFilePath = Path.Combine(tempPath, Globale.FileName);
-                        client.DownloadFile(Globale.DownloadUrl, tempFilePath);
-
-                        // Fermer l'application après une courte attente
-                        Thread.Sleep(TimeSpan.FromSeconds(Globale.SecondsToWait));
-                        Process.Start(tempFilePath);
-
-                        Application.Exit();
-                    }
+                    String dlUrl = release.assets[0].browser_download_url;
+                    var downloadDialog = new DownloadDialog(dlUrl);
+                    downloadDialog.ShowDialog();
                 }
             }
         }
+
     }
 }

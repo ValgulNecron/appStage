@@ -16,14 +16,6 @@ namespace CartesAcces
         public static readonly string Repo = "appStage"; // nom du dépôt GitHub
         public static readonly string FileName = "Release.zip"; // nom du fichier de la dernière version
 
-        public static readonly string RepoUrl =
-            "https://api.github.com/repos/" + Owner + "/" + Repo +
-            "/releases/latest"; // URL de l'API GitHub pour récupérer la dernière version
-
-        public static readonly string DownloadUrl =
-            "https://github.com/" + Owner + "/" + Repo + "/releases/latest/download/" +
-            FileName; // URL de téléchargement de la dernière version
-
         public static readonly int
             SecondsToWait = 5; // temps d'attente avant de fermer l'application pour lancer la mise à jour
 
