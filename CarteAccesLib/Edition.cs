@@ -495,7 +495,7 @@ namespace CartesAcces
                 ReadCsv.setLesEleves(cheminDestination);
                 Eleve.setLesClasses();
 
-                MessageBox.Show(new Form { TopMost = true }, "L'importation du fichier CSV a réussi");
+                MessageBox.Show(new Form {TopLevel = true, TopMost = true}, "L'importation du fichier CSV a réussi");
             }
             catch (Exception e)
             {

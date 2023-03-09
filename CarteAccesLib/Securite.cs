@@ -199,7 +199,7 @@ namespace CartesAcces
                 }
             }
 
-            MessageBox.Show("Déchiffrement terminé");
+            MessageBox.Show(new Form {TopLevel = true, TopMost = true}, "Déchiffrement terminé");
         }
 
         public static void dechiffrerFichier(string inputFile, string outputFile, string password)
