@@ -57,14 +57,15 @@ namespace CartesAcces
 
                     listeProvisoire.Add(unEleve);
                     Globale.ListeElevesString.Add(unEleve.NomEleve + " " + unEleve.PrenomEleve + " " +
-                                                   unEleve.ClasseEleve);
+                                                  unEleve.ClasseEleve);
                 }
 
                 Globale.ListeEleve = listeProvisoire.OrderBy(o => o.ClasseEleve).ThenBy(o => o.NomEleve).ToList();
             }
             catch
             {
-                MessageBox.Show(new Form {TopMost = true}, "Pas de liste importée, afin de pouvoir créer des carte merci d'importer le fichier Excel");
+                MessageBox.Show(new Form {TopMost = true},
+                    "Pas de liste importée, afin de pouvoir créer des carte merci d'importer le fichier Excel");
             }
         }
 

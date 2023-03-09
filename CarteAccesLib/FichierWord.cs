@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CarteAcces;
@@ -62,7 +63,8 @@ namespace CarteAccesLib
         public static void limite50Pages(Application applicationWord, string chemin, int nbPage)
         {
             // -- Sauvegarde du document --
-            applicationWord.ActiveDocument.SaveAs(chemin + "Part " + nbPage + " " + ".doc", Type.Missing, Type.Missing, Type.Missing,
+            applicationWord.ActiveDocument.SaveAs(chemin + "Part " + nbPage + " " + ".doc", Type.Missing, Type.Missing,
+                Type.Missing,
                 Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing);
@@ -95,8 +97,8 @@ namespace CarteAccesLib
             Globale.LblCount.Visible = true;
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
             {
-                Globale.LblCount.Text = compt.ToString() + "/" + listeEleve.Count.ToString() + " cartes réalisées";
-                
+                Globale.LblCount.Text = compt + "/" + listeEleve.Count + " cartes réalisées";
+
                 // -- Les élèves sont gérés deux par deux --
 
                 // -- Carte Face : 1/2 Eleve --
@@ -120,7 +122,7 @@ namespace CarteAccesLib
                 GC.Collect();
                 // -- Nouvelle page --
                 //fichierWord.Selection.InsertNewPage();
-                fichierWord.Selection.EndKey(WdUnits.wdStory, System.Reflection.Missing.Value);
+                fichierWord.Selection.EndKey(WdUnits.wdStory, Missing.Value);
                 fichierWord.Selection.InsertBreak(WdBreakType.wdSectionBreakNextPage);
 
                 // ------------------------------------------------------------------
@@ -134,8 +136,8 @@ namespace CarteAccesLib
                 Photo.verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
                 Photo.proportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
-                Globale.LblCount.Text = (compt + 1).ToString() + "/" + listeEleve.Count.ToString() + " cartes réalisées";
-                
+                Globale.LblCount.Text = compt + 1 + "/" + listeEleve.Count + " cartes réalisées";
+
                 // -- Ajout des deux fichier PNG au nouveau document Word --
                 var shapeCarteArriere1 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "/" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png", Type.Missing,
@@ -155,7 +157,7 @@ namespace CarteAccesLib
                 GC.Collect();
 
                 // -- Nouvelle page --
-                fichierWord.Selection.EndKey(WdUnits.wdStory, System.Reflection.Missing.Value);
+                fichierWord.Selection.EndKey(WdUnits.wdStory, Missing.Value);
                 fichierWord.Selection.InsertBreak(WdBreakType.wdSectionBreakNextPage);
                 //fichierWord.Selection.InsertBreak(WdBreakType.wdPageBreak);
 
@@ -193,13 +195,9 @@ namespace CarteAccesLib
 
             // -- Message qui indique que nous sommes arrivé au bout --
             if (Globale.eleveImp)
-            {
-                MessageBox.Show(new Form { TopMost = true }, listeEleve.Count - 1 + " élèves ont été imprimés.");
-            }
+                MessageBox.Show(new Form {TopMost = true}, listeEleve.Count - 1 + " élèves ont été imprimés.");
             else
-            {
-                MessageBox.Show(new Form { TopMost = true }, listeEleve.Count + " élèves ont été imprimés.");
-            }
+                MessageBox.Show(new Form {TopMost = true}, listeEleve.Count + " élèves ont été imprimés.");
             fermerWord();
         }
 
@@ -211,7 +209,7 @@ namespace CarteAccesLib
                 Edition.CheminImpressionFinal = diag.SelectedPath;
 
             else
-                MessageBox.Show(new Form { TopMost = true },
+                MessageBox.Show(new Form {TopMost = true},
                     "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
         }
 
@@ -227,10 +225,10 @@ namespace CarteAccesLib
                 double rHeight = pbPhoto.Height * pbCarteArriere.Image.Height / pbCarteArriere.Height;
 
                 // -- Rectifications des positions --
-                int realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
-                int realLocY = Convert.ToInt32(Math.Round(rLocY)) + 3;
-                int realWidth = Convert.ToInt32(Math.Round(rWidth)) - 1;
-                int realHeight = Convert.ToInt32(Math.Round(rHeight)) - 1;
+                var realLocX = Convert.ToInt32(Math.Round(rLocX)) - 2;
+                var realLocY = Convert.ToInt32(Math.Round(rLocY)) + 3;
+                var realWidth = Convert.ToInt32(Math.Round(rWidth)) - 1;
+                var realHeight = Convert.ToInt32(Math.Round(rHeight)) - 1;
 
                 var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
                 ObjGraphics.DrawImage(pbPhoto.Image, realLocX, realLocY, realWidth, realHeight);
@@ -280,14 +278,11 @@ namespace CarteAccesLib
                 GC.Collect();
             }
         }
-        
+
         public static void fermerWord()
         {
             var processes = Process.GetProcessesByName("WINWORD");
-            foreach (var process in processes)
-            {
-                process.Kill();
-            }
+            foreach (var process in processes) process.Kill();
         }
     }
 }

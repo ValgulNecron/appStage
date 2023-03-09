@@ -5,15 +5,9 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Media;
 using CarteAcces;
+using CarteAccesLib;
 using LinqToDB;
-using QRCoder;
-using Brush = System.Drawing.Brush;
-using Brushes = System.Drawing.Brushes;
-using Color = System.Drawing.Color;
-using Pen = System.Drawing.Pen;
-using QRCode = CarteAccesLib.QRCode;
 
 namespace CartesAcces
 {
@@ -35,16 +29,16 @@ namespace CartesAcces
         public static int PosX { get; set; }
 
         public static int PosY { get; set; }
-        
+
         public static int PosXDef { get; set; }
 
         public static int PosYDef { get; set; }
-        
+
         public static int PosHeightDef { get; set; }
 
         public static int PosWidthDef { get; set; }
-        
-        public static int PosXClassique{ get; set; }
+
+        public static int PosXClassique { get; set; }
 
         public static int PosYClassique { get; set; }
 
@@ -58,16 +52,16 @@ namespace CartesAcces
             ComboBox cbbSection)
         {
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            Color couleur3 = ColorTranslator.FromHtml(etab.CodeHexa3eme);
-            Color couleur4 = ColorTranslator.FromHtml(etab.CodeHexa4eme);
-            Color couleur5 = ColorTranslator.FromHtml(etab.CodeHexa5eme);
-            Color couleur6 = ColorTranslator.FromHtml(etab.CodeHexa6eme);
-            
+            var couleur3 = ColorTranslator.FromHtml(etab.CodeHexa3eme);
+            var couleur4 = ColorTranslator.FromHtml(etab.CodeHexa4eme);
+            var couleur5 = ColorTranslator.FromHtml(etab.CodeHexa5eme);
+            var couleur6 = ColorTranslator.FromHtml(etab.CodeHexa6eme);
+
             Brush pinceauJaune = new SolidBrush(couleur6);
             Brush pinceauVert = new SolidBrush(couleur5);
             Brush pinceauRouge = new SolidBrush(couleur4);
             Brush pinceauBleu = new SolidBrush(couleur3);
-            
+
             var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
             var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
             var rectangle = new Rectangle(posX, posY, largeur, hauteur);
@@ -93,21 +87,21 @@ namespace CartesAcces
                     break;
             }
         }
-        
+
         public static void fondTexteCarteFace(Graphics objGraphique, string texte, Font police, Eleve eleve, int posX,
             int posY)
         {
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            Color couleur3 = ColorTranslator.FromHtml(etab.CodeHexa3eme);
-            Color couleur4 = ColorTranslator.FromHtml(etab.CodeHexa4eme);
-            Color couleur5 = ColorTranslator.FromHtml(etab.CodeHexa5eme);
-            Color couleur6 = ColorTranslator.FromHtml(etab.CodeHexa6eme);
-            
+            var couleur3 = ColorTranslator.FromHtml(etab.CodeHexa3eme);
+            var couleur4 = ColorTranslator.FromHtml(etab.CodeHexa4eme);
+            var couleur5 = ColorTranslator.FromHtml(etab.CodeHexa5eme);
+            var couleur6 = ColorTranslator.FromHtml(etab.CodeHexa6eme);
+
             Brush brushJaune = new SolidBrush(couleur6);
             Brush brushVert = new SolidBrush(couleur5);
             Brush brushRouge = new SolidBrush(couleur4);
             Brush brushBleu = new SolidBrush(couleur3);
-            
+
             var largeur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Width);
             var hauteur = Convert.ToInt32(objGraphique.MeasureString(texte, police).Height);
             var rectangle = new Rectangle(posX, posY, largeur, hauteur);
@@ -159,13 +153,13 @@ namespace CartesAcces
         public static void qrCodeFace(PictureBox pbCarteFace)
         {
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            Bitmap bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
-            Bitmap bmpFinal = new Bitmap(bmpOriginal, new Size(220, 220));
+            var bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
+            var bmpFinal = new Bitmap(bmpOriginal, new Size(220, 220));
 
-            var objGraphique =  Graphics.FromImage(pbCarteFace.Image);
-            objGraphique.DrawImage(bmpFinal, new Point(1350,80));
+            var objGraphique = Graphics.FromImage(pbCarteFace.Image);
+            objGraphique.DrawImage(bmpFinal, new Point(1350, 80));
         }
-        
+
         // -- Change le fond de la carte en fonction de la section choisie
         public static void fondCarteNiveau(PictureBox pbCarteFace, ComboBox cbbSection)
         {
@@ -181,22 +175,22 @@ namespace CartesAcces
                 bmp.SetResolution(150, 150);
                 pbCarteFace.Image = bmp;
             }
-            
+
             qrCodeFace(pbCarteFace);
-            
+
             var police = new Font("Calibri", 45, FontStyle.Bold);
             dessineTexteCarteFace(police, 50, 70, "Carte Provisoire", pbCarteFace, cbbSection);
 
             var police2 = new Font("Calibri", 24, FontStyle.Bold);
-            
+
             var police3 = new Font("Calibri", 24, FontStyle.Bold);
             dessineTexteCarteFace(police3, 50, 960, "Nom :", pbCarteFace, cbbSection);
             dessineTexteCarteFace(police3, 50, 1075, "Prénom :", pbCarteFace, cbbSection);
-            
+
             var police4 = new Font("Calibri", 24, FontStyle.Bold);
-   
-            bool succes = true;
-            
+
+            var succes = true;
+
             var objetGraphique = Graphics.FromImage(pbCarteFace.Image);
             int mesure;
             string chaine;
@@ -205,27 +199,27 @@ namespace CartesAcces
             {
                 var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
                 var date = DateTime.Today.ToShortDateString();
-                
+
                 chaine = "Date de création : " + date;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
                 dessineTexteCarteFace(police2, 1700 - mesure, 700, chaine, pbCarteFace, cbbSection);
-                
+
                 chaine = etab.NomEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
                 dessineTexteCarteFace(police4, 1700 - mesure, 780, etab.NomEtablissement, pbCarteFace, cbbSection);
-                
+
                 chaine = "Adresse : " + etab.NumeroRueEtablissement + " " + etab.NomRueEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
                 dessineTexteCarteFace(police4, 1700 - mesure, 860, chaine, pbCarteFace, cbbSection);
-                
+
                 chaine = etab.CodePostaleEtablissement + " " + etab.VilleEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
                 dessineTexteCarteFace(police4, 1700 - mesure, 940, chaine, pbCarteFace, cbbSection);
-                
+
                 chaine = "Tel : " + etab.NumeroTelephoneEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
                 dessineTexteCarteFace(police4, 1700 - mesure, 1020, chaine, pbCarteFace, cbbSection);
-                
+
                 chaine = "Mail : " + etab.EmailEtablissement;
                 mesure = Convert.ToInt32(objetGraphique.MeasureString(chaine, police4).Width);
                 dessineTexteCarteFace(police4, 1700 - mesure, 1100, chaine, pbCarteFace, cbbSection);
@@ -302,19 +296,19 @@ namespace CartesAcces
         {
             if (File.Exists("./data/FichierCartesFace/6eme.png"))
                 return File.GetCreationTime("./data/FichierCartesFace/6eme.png").ToString();
-            
+
             if (File.Exists("./data/FichierCartesFace/5eme.png"))
                 return File.GetCreationTime("./data/FichierCartesFace/5eme.png").ToString();
-            
+
             if (File.Exists("./data/FichierCartesFace/3eme.png"))
                 return File.GetCreationTime("./data/FichierCartesFace/3eme.png").ToString();
-            
+
             if (File.Exists("./data/FichierCartesFace/4eme.png"))
                 return File.GetCreationTime("./data/FichierCartesFace/4eme.png").ToString();
-            
+
             return null;
         }
-        
+
         public static void checkMef(RadioButton rdbUlis, RadioButton rdbUPE2A, RadioButton rdbClRelais,
             PictureBox pbCarteFace, ComboBox cbbSection, Button btnEdtPerso, TextBox txtNom, TextBox txtPrenom)
         {
@@ -356,29 +350,27 @@ namespace CartesAcces
                 btnEdtPerso.Enabled = false;
             }
         }
-        
+
         public static void qrCodeFace(Graphics objGraphique)
         {
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            Bitmap bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
-            Bitmap bmpFinal = new Bitmap(bmpOriginal, new Size(300, 300));
-            
-            objGraphique.DrawImage(bmpFinal, new Point(1400,80));
+            var bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
+            var bmpFinal = new Bitmap(bmpOriginal, new Size(300, 300));
+
+            objGraphique.DrawImage(bmpFinal, new Point(1400, 80));
         }
 
         public static Image imageCarteFace(Eleve eleve)
         {
             var image = Image.FromFile("./data/FichierCartesFace/default.png");
-            
+
             if (File.Exists("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0, 1) + "eme.png"))
-            {
                 image = Image.FromFile("./data/FichierCartesFace/" + eleve.ClasseEleve.Substring(0, 1) + "eme.png");
-            }
 
             var objGraphique = Graphics.FromImage(image);
-            
+
             qrCodeFace(objGraphique);
-            
+
             Brush pinceauNoir = new SolidBrush(Color.Black);
 
             var police = new Font("Calibri", 45, FontStyle.Bold);
@@ -388,53 +380,53 @@ namespace CartesAcces
 
             var date = DateTime.Today.ToShortDateString();
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            
+
             //Dessine et rempli le fond pour l'écriture
             fondTexteCarteFace(objGraphique, eleve.MefEleve, police2, eleve, 50, 70);
 
             //Dessine la saisie en textbox
-            string chaine = "Nom : " + eleve.NomEleve;
-            fondTexteCarteFace(objGraphique, chaine , police3, eleve, 50, 960);
+            var chaine = "Nom : " + eleve.NomEleve;
+            fondTexteCarteFace(objGraphique, chaine, police3, eleve, 50, 960);
             objGraphique.DrawString(chaine, police3, pinceauNoir, 50,
                 960); // Dessine le texte sur l'image à la position X et Y + couleur
             chaine = "Prenom : " + eleve.PrenomEleve;
             fondTexteCarteFace(objGraphique, chaine, police3, eleve, 50, 1075);
             objGraphique.DrawString(chaine, police3, pinceauNoir, 50, 1075);
-            
+
             fondTexteCarteFace(objGraphique, eleve.MefEleve, police, eleve, 50, 70);
             objGraphique.DrawString(eleve.MefEleve, police, pinceauNoir, 50, 70);
 
             chaine = "Date de création : " + date;
-            int mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
-            fondTexteCarteFace(objGraphique,chaine, police2, eleve, 1850 - mesure, 850);
+            var mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
+            fondTexteCarteFace(objGraphique, chaine, police2, eleve, 1850 - mesure, 850);
             objGraphique.DrawString(chaine, police2, pinceauNoir, 1850 - mesure, 850);
 
             chaine = etab.NomEtablissement;
             mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
-            fondTexteCarteFace(objGraphique,chaine, police4, eleve, 1700 - mesure, 892);
+            fondTexteCarteFace(objGraphique, chaine, police4, eleve, 1700 - mesure, 892);
             objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 892);
-       
+
             chaine = "Adresse : " + etab.NumeroRueEtablissement + " " + etab.NomRueEtablissement;
             mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
-            fondTexteCarteFace(objGraphique,chaine, police4, eleve, 1700 - mesure, 944);
+            fondTexteCarteFace(objGraphique, chaine, police4, eleve, 1700 - mesure, 944);
             objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 944);
 
             chaine = etab.CodePostaleEtablissement + " " + etab.VilleEtablissement;
             mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
-            fondTexteCarteFace(objGraphique,chaine, police4, eleve, 1700 - mesure, 996);
+            fondTexteCarteFace(objGraphique, chaine, police4, eleve, 1700 - mesure, 996);
             objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 996);
-          
+
             chaine = "Tel : " + etab.NumeroTelephoneEtablissement;
             mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
-            fondTexteCarteFace(objGraphique,chaine, police4, eleve, 1700 - mesure, 1048);
+            fondTexteCarteFace(objGraphique, chaine, police4, eleve, 1700 - mesure, 1048);
             objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 1048);
 
             chaine = "Mail : " + etab.EmailEtablissement;
             mesure = Convert.ToInt32(objGraphique.MeasureString(chaine, police4).Width);
-            fondTexteCarteFace(objGraphique,chaine, police4, eleve, 1700 - mesure, 1100);
+            fondTexteCarteFace(objGraphique, chaine, police4, eleve, 1700 - mesure, 1100);
             objGraphique.DrawString(chaine, police4, pinceauNoir, 1700 - mesure, 1100);
             objGraphique.Dispose(); // Libère les ressources
-            
+
             return image;
         }
 
@@ -478,8 +470,8 @@ namespace CartesAcces
         {
             PosYClassique = posy;
             PosXClassique = posx;
-        }   
-        
+        }
+
         public static void importEleves(string path)
         {
             var cheminSource = path;
@@ -514,16 +506,16 @@ namespace CartesAcces
 
                 Directory.CreateDirectory(Chemin.CheminFaceCarte);
 
-                Image img = Image.FromFile(cheminSource);
-                Bitmap bmp = new Bitmap(img, new Size(1754,1240));
-                
+                var img = Image.FromFile(cheminSource);
+                var bmp = new Bitmap(img, new Size(1754, 1240));
+
                 var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
                 var bord = etab.Bordure;
-                
+
                 if (bord)
                 {
-                    string couleur = "";
-                
+                    var couleur = "";
+
                     switch (Globale.Classe)
                     {
                         case 6:
@@ -539,14 +531,14 @@ namespace CartesAcces
                             couleur = etab.CodeHexa3eme;
                             break;
                     }
-                    
-                    Color col = ColorTranslator.FromHtml(couleur);
+
+                    var col = ColorTranslator.FromHtml(couleur);
                     Brush br = new SolidBrush(col);
-                    
-                    using (Graphics g = Graphics.FromImage(bmp))
+
+                    using (var g = Graphics.FromImage(bmp))
                     {
                         g.DrawRectangle(new Pen(br, 40), new Rectangle(0, 0, bmp.Width, bmp.Height));
-                    }  
+                    }
                 }
 
                 bmp.Save(cheminDestination, ImageFormat.Png);
@@ -572,7 +564,6 @@ namespace CartesAcces
                 }
 
                 Directory.CreateDirectory(cheminDestination);
-
             }
             catch
             {
@@ -605,22 +596,22 @@ namespace CartesAcces
                     img.Save(cheminDestination + nom, ImageFormat.Png);
                     img.Dispose();
                 }
-                
+
                 Globale.Actuelle.Invoke(new MethodInvoker(delegate
                 {
                     foreach (Control controle in Globale.Actuelle.Controls)
                         if (controle is Label && controle.Name == "lblDateListeEleve")
                             controle.Text = ReadCsv.getDateFile();
                 }));
-                
-                MessageBox.Show(new Form {TopMost = true }, " Les photos du dossier ont été importés");
+
+                MessageBox.Show(new Form {TopMost = true}, " Les photos du dossier ont été importés");
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
         }
-        
+
         public static void importLogo(string chemin)
         {
             var cheminSource = chemin;
@@ -628,11 +619,8 @@ namespace CartesAcces
 
             try
             {
-                if (File.Exists("./data/logo.png"))
-                {
-                    File.Delete("./data/logo.png");
-                }
-                
+                if (File.Exists("./data/logo.png")) File.Delete("./data/logo.png");
+
                 var img = Image.FromFile(chemin);
                 img.Save(cheminDestination + "logo.png", ImageFormat.Png);
                 img.Dispose();

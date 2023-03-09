@@ -6,25 +6,41 @@ namespace CartesAcces
 {
     public static class Globale
     {
-        public static Label LblDate { get; set; }
-        public static Label LblCount { get; set; }
-        
-        public static int Cas { get; set; } = 0;
-        public static int Classe { get; set; } = 6;
-
         public static bool eleveImp = false;
 
         public static bool testBordure = true;
 
         public static bool positionPhotoClassique = false;
-        
-        public static Form Connexion
-        { get; set; }
+
+        public static readonly string Owner = "ValgulNecron"; // nom du propriétaire du dépôt GitHub
+        public static readonly string Repo = "appStage"; // nom du dépôt GitHub
+        public static readonly string FileName = "Release.zip"; // nom du fichier de la dernière version
+
+        public static readonly string RepoUrl =
+            "https://api.github.com/repos/" + Owner + "/" + Repo +
+            "/releases/latest"; // URL de l'API GitHub pour récupérer la dernière version
+
+        public static readonly string DownloadUrl =
+            "https://github.com/" + Owner + "/" + Repo + "/releases/latest/download/" +
+            FileName; // URL de téléchargement de la dernière version
+
+        public static readonly int
+            SecondsToWait = 5; // temps d'attente avant de fermer l'application pour lancer la mise à jour
+
+        public static Label LblDate { get; set; }
+        public static Label LblCount { get; set; }
+
+        public static int Cas { get; set; } = 0;
+        public static int Classe { get; set; } = 6;
+
+        public static Form Connexion { get; set; }
+
         public static bool PasDeBar { get; set; } = false;
+
         // connexion
         public static bool EstConnecter { get; set; } = false;
         public static string NomUtilisateur { get; set; } = "";
-        
+
         // Listes des classes 
         public static List<string> Classes6Eme { get; set; } = new List<string>();
         public static List<string> Classes5Eme { get; set; } = new List<string>();
@@ -64,6 +80,7 @@ namespace CartesAcces
         public static string Version { get; set; }
         public static string VersionDate { get; set; }
 
+
         // variable lier au bar de progres
         public static string CheminTexte { get; set; }
         public static string CheminPdf { get; set; }
@@ -77,26 +94,29 @@ namespace CartesAcces
         public static PictureBox PbPhoto { get; set; }
 
         public static Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox> ListeSauvegardeProvisoire
-        { get; set; }
+        {
+            get;
+            set;
+        }
 
         // liste d'eleve trier
         public static List<Eleve> ListeEleves6Eme { get; set; }
         public static List<Eleve> ListeEleves5Eme { get; set; }
         public static List<Eleve> ListeEleves4Eme { get; set; }
         public static List<Eleve> ListeEleves3Eme { get; set; }
-        
+
         /// <summary>
-        /// Le mot de passe de chiffrement
+        ///     Le mot de passe de chiffrement
         /// </summary>
-        public static String MotsDePasseChifffrement { get; set; } = "";
-        
+        public static string MotsDePasseChifffrement { get; set; } = "";
+
         /// <summary>
-        /// Si le mot de passe doit etre changer
+        ///     Si le mot de passe doit etre changer
         /// </summary>
         public static bool ChangementMotDePasseChiffrement { get; set; } = false;
-        
+
         /// <summary>
-        /// si la connection a la base de donnée est etablie
+        ///     si la connection a la base de donnée est etablie
         /// </summary>
         public static bool ConnectionBdd { get; set; } = false;
     }

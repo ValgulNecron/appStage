@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.IO;
-using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using CarteAcces;
@@ -16,13 +14,13 @@ namespace CartesAcces
      * elle prend une liste d'élèves et permet de leur editer une carte
      */
     /// <summary>
-    /// Classe qui permet d'éditer les cartes d'accès
-    /// elle prend une liste d'élèves et permet de leur editer une carte
+    ///     Classe qui permet d'éditer les cartes d'accès
+    ///     elle prend une liste d'élèves et permet de leur editer une carte
     /// </summary>
     public partial class FrmMultiplesCartesEdition : Form
     {
         /// <summary>
-        /// Constructeur de la classe
+        ///     Constructeur de la classe
         /// </summary>
         public FrmMultiplesCartesEdition()
         {
@@ -179,14 +177,15 @@ namespace CartesAcces
                 Edition.PosHeightDef = pbPhoto.Height;
                 Edition.PosWidthDef = pbPhoto.Width;
                 MessageBox.Show("Veuillez placer la photo une seconde fois pour les emplois du temps classiques");
-                pbCarteArriere.Image = Image.FromFile("./data/FichierEdtClasse/" + Globale.ListeEleveImpr[0].ClasseEleve + ".jpg");
+                pbCarteArriere.Image =
+                    Image.FromFile("./data/FichierEdtClasse/" + Globale.ListeEleveImpr[0].ClasseEleve + ".jpg");
                 Globale.positionPhotoClassique = true;
                 return;
             }
-            
+
             Edition.ReplacementPhotoClassique(pbPhoto.Location.X, pbPhoto.Location.Y);
-           
-            
+
+
             try
             {
                 // -- Si la liste est impaire, on double le dernier élève
@@ -208,7 +207,7 @@ namespace CartesAcces
                     pbCarteArriere);
                 pbPhoto.Visible = true;
                 Globale.positionPhotoClassique = false;
-                
+
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                     if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -218,7 +217,7 @@ namespace CartesAcces
                         macAddress += nic.GetPhysicalAddress().ToString();
                         break;
                     }
-                
+
                 var log = new LogActions();
                 log.DateAction = DateTime.Now;
                 log.NomUtilisateur = Globale.NomUtilisateur;
@@ -227,7 +226,7 @@ namespace CartesAcces
                 ClassSql.Db.Insert(log);
                 labelEnCoursValidation.Visible = false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 pbPhoto.Visible = true;
                 MessageBox.Show(ex.Message);
@@ -248,7 +247,7 @@ namespace CartesAcces
             {
                 if (Edition.SelectionClique)
                 {
-                    if(pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(Control.MousePosition)))
+                    if (pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(MousePosition)))
                     {
                         Edition.RognageX = Math.Min(Edition.RognageX, e.X);
                         Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
@@ -264,7 +263,7 @@ namespace CartesAcces
                         pbCarteArriere.Image = Image.FromFile(Chemin.CheminEdt);
                         btnCancel.Enabled = false;
                         btnSelect.Enabled = true;
-                        
+
                         Edition.RognageX = 0;
                         Edition.RognageY = 0;
                         Edition.RognageHauteur = 0;
@@ -274,7 +273,6 @@ namespace CartesAcces
             }
             catch
             {
-                
             }
         }
     }

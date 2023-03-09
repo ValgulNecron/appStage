@@ -1,21 +1,20 @@
-﻿    using System;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
 using LinqToDB;
 
 namespace CartesAcces
 {
-
     /// <summary>
-    /// cette classe permet de créer un utilisateur
-    /// elle est accessible uniquement par un utilisateur admin
-    /// elle permet de créer un utilisateur avec un nom et un mot de passe
-    /// elle permet de choisir le type d'utilisateur
+    ///     cette classe permet de créer un utilisateur
+    ///     elle est accessible uniquement par un utilisateur admin
+    ///     elle permet de créer un utilisateur avec un nom et un mot de passe
+    ///     elle permet de choisir le type d'utilisateur
     /// </summary>
     public partial class FrmCreationUtilisateur : Form
     {
         /// <summary>
-        /// Constructeur de la classe
+        ///     Constructeur de la classe
         /// </summary>
         public FrmCreationUtilisateur()
         {
@@ -29,10 +28,10 @@ namespace CartesAcces
                 .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
             if (user.TypeUtilisateur != "admin")
             {
-                MessageBox.Show(new Form { TopMost = true }, "Vous n'avez pas les droits pour créer un utilisateur");
+                MessageBox.Show(new Form {TopMost = true}, "Vous n'avez pas les droits pour créer un utilisateur");
                 return;
             }
-            
+
             if (tbUser.Text == "") return;
 
             if (tbMdp.Text != tbValidMdp.Text) return;
@@ -43,7 +42,7 @@ namespace CartesAcces
             userCree.NomUtilisateur = tbUser.Text;
             userCree.Hash = Securite.creationHash(tbMdp.Text);
             foreach (Control var in gbTypeUser.Controls)
-            {   
+            {
                 var rb = var as RadioButton;
                 if (rb != null && rb.Checked) userCree.TypeUtilisateur = rb.Text;
             }
@@ -66,9 +65,10 @@ namespace CartesAcces
                 .FirstOrDefault(u => u.NomUtilisateur == Globale.NomUtilisateur);
             if (user.TypeUtilisateur != "admin")
             {
-                MessageBox.Show(new Form { TopMost = true }, "Vous n'avez pas les droits pour supprimer un utilisateur");
+                MessageBox.Show(new Form {TopMost = true}, "Vous n'avez pas les droits pour supprimer un utilisateur");
                 return;
             }
+
             var user2 = ClassSql.Db.GetTable<Utilisateurs>()
                 .FirstOrDefault(u => u.NomUtilisateur == tbUser.Text);
             user2.Active = false;

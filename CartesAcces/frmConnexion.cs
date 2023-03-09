@@ -14,17 +14,17 @@ namespace CartesAcces
      * et lance la barre de progression avec le cas 1
      */
     /// <summary>
-    ///  fenetre de connexion
-    /// elle permet de se connecter a l'application
-    /// elle stocke le nom d'utilisateur dans la variable globale _nomUtilisateur
-    /// et lance la barre de progression avec le cas 1
+    ///     fenetre de connexion
+    ///     elle permet de se connecter a l'application
+    ///     elle stocke le nom d'utilisateur dans la variable globale _nomUtilisateur
+    ///     et lance la barre de progression avec le cas 1
     /// </summary>
     public partial class FrmConnexion : Form
     {
         public static Timer timer;
 
         /// <summary>
-        /// Constructeur de la classe
+        ///     Constructeur de la classe
         /// </summary>
         public FrmConnexion()
         {
@@ -36,7 +36,7 @@ namespace CartesAcces
         }
 
         /// <summary>
-        /// Permet de vider les champs quand la fenetre est fermee
+        ///     Permet de vider les champs quand la fenetre est fermee
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -68,14 +68,15 @@ namespace CartesAcces
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
                 if (!user.Active)
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form {TopMost = true}, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
                 }
+
                 if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form {TopMost = true}, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
@@ -94,7 +95,7 @@ namespace CartesAcces
                                 foreach (Control controle2 in controle.Controls)
                                     if (controle2 is Button)
                                         controle2.Enabled = true;
-                        
+
                         var macAddress = string.Empty;
                         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
                             if ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet ||
@@ -112,10 +113,10 @@ namespace CartesAcces
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);
                         timer = new Timer(Globale.Accueil);
-                        if(Globale.MotsDePasseChifffrement != "")
+                        if (Globale.MotsDePasseChifffrement != "")
                         {
                             Securite.dechiffrerDossier();
-            
+
                             Globale.Cas = 1;
                             var frmWait = new barDeProgression();
                             frmWait.StartPosition = FormStartPosition.CenterScreen;
@@ -135,7 +136,7 @@ namespace CartesAcces
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form {TopMost = true}, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtMotDePasse.Text = "";
                     txtIdentifiant.Text = "";
                 }
@@ -152,7 +153,8 @@ namespace CartesAcces
         {
             if (string.IsNullOrEmpty(txtMotDePasse.Text))
             {
-                MessageBox.Show(new Form { TopMost = true }, "Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                MessageBox.Show(new Form {TopMost = true}, "Veuillez saisir un mot de passe", ":(",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtMotDePasse.Focus();
             }
@@ -183,14 +185,15 @@ namespace CartesAcces
                 lbConnection.ForeColor = Color.Red;
             }
         }
-        
+
         private void txtMotDePasse_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 if (string.IsNullOrEmpty(txtMotDePasse.Text))
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                    MessageBox.Show(new Form {TopMost = true}, "Veuillez saisir un mot de passe", ":(",
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtMotDePasse.Focus();
                 }
@@ -206,13 +209,16 @@ namespace CartesAcces
             try
             {
                 ClassSql.init();
-                MessageBox.Show("Connexion réussie");
                 Globale.ConnectionBdd = true;
+                var user = ClassSql.Db.GetTable<Utilisateurs>()
+                    .FirstOrDefault();
             }
             catch (Exception exception)
             {
                 Globale.ConnectionBdd = false;
-                MessageBox.Show(exception.Message);
+                Globale.ConnectionBdd = false;
+                MessageBox.Show("Connection impossible : " + exception.Message);
+                MessageBox.Show("Veuiller verifier le fichier config.xml et relancer l'application");
             }
         }
     }

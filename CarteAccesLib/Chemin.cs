@@ -11,7 +11,7 @@ namespace CartesAcces
         public static string CheminFaceCarte { get; set; } = "./data/FichierCartesFace/";
 
         public static string CheminEdtPerso { get; set; } = "";
-        
+
         public static string CheminEdt { get; set; } = "";
 
         public static string setCheminImportationFaceCarte()

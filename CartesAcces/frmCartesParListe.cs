@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CarteAccesLib;
-using Microsoft.Office.Interop.Word;
 
 namespace CartesAcces
 {
@@ -45,39 +44,20 @@ namespace CartesAcces
                 Globale.ListeEleves5Eme = new List<Eleve>();
                 Globale.ListeEleves4Eme = new List<Eleve>();
                 Globale.ListeEleves3Eme = new List<Eleve>();
-                foreach (Control VARIABLE in groupBox1.Controls)
-                {
-                    (VARIABLE as RadioButton).CheckedChanged += rbChanged;
-                }
+                foreach (Control VARIABLE in groupBox1.Controls) (VARIABLE as RadioButton).CheckedChanged += rbChanged;
 
-                foreach (Eleve el in Globale.ListeEleve)
-                {
+                foreach (var el in Globale.ListeEleve)
                     if (el.ClasseEleve.Substring(0, 1) == 6.ToString())
-                    {
                         Globale.ListeEleves6Eme.Add(el);
-                    }
-                }
-                foreach (Eleve el in Globale.ListeEleve)
-                {
+                foreach (var el in Globale.ListeEleve)
                     if (el.ClasseEleve.Substring(0, 1) == 5.ToString())
-                    {
                         Globale.ListeEleves5Eme.Add(el);
-                    }
-                }
-                foreach (Eleve el in Globale.ListeEleve)
-                {
+                foreach (var el in Globale.ListeEleve)
                     if (el.ClasseEleve.Substring(0, 1) == 4.ToString())
-                    {
                         Globale.ListeEleves4Eme.Add(el);
-                    }
-                }
-                foreach (Eleve el in Globale.ListeEleve)
-                {
+                foreach (var el in Globale.ListeEleve)
                     if (el.ClasseEleve.Substring(0, 1) == 3.ToString())
-                    {
                         Globale.ListeEleves3Eme.Add(el);
-                    }
-                }
             }
             catch
             {
@@ -176,13 +156,11 @@ namespace CartesAcces
             {
             }
         }
-        
+
         private void rbChanged(object sender, EventArgs e)
         {
             if (sender is RadioButton)
-            {
                 if ((sender as RadioButton).Checked)
-                {
                     switch ((sender as RadioButton).Name)
                     {
                         case "tout":
@@ -201,8 +179,6 @@ namespace CartesAcces
                             TemeF();
                             break;
                     }
-                }
-            }
         }
 
         private void toutF()

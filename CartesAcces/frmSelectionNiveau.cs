@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -12,7 +11,7 @@ namespace CartesAcces
     public partial class frmSelectNiveau : Form
     {
         /// <summary>
-        /// constructeur de la classe
+        ///     constructeur de la classe
         /// </summary>
         public frmSelectNiveau()
         {
@@ -49,13 +48,13 @@ namespace CartesAcces
                 Globale.Classe = 6;
                 Close();
             }
-            
+
             else if (rdbClassique.Checked)
             {
                 Globale.Classe = 7;
                 Close();
             }
-            
+
             else
             {
                 MessageBox.Show("Veuillez selectionner une section...");
@@ -66,7 +65,7 @@ namespace CartesAcces
                 try
                 {
                     Edition.importCarteFace(Globale.CheminFaceCarte);
-                    MessageBox.Show(new Form { TopMost = true }, "Import réussi");
+                    MessageBox.Show(new Form {TopMost = true}, "Import réussi");
                 }
                 catch (Exception err)
                 {

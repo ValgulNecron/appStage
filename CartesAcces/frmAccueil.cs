@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Threading;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace CartesAcces
 {
@@ -65,16 +69,16 @@ namespace CartesAcces
             lblVersion.Text = "version :" + Globale.Version + " du " + Globale.VersionDate;
             var dir = new DirectoryInfo("./data/image");
             if (dir.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le denier import des edt");
+                MessageBox.Show(new Form {TopMost = true}, "15j ou plus depuis le denier import des edt");
 
             var dir2 = new DirectoryInfo(Chemin.CheminPhotoEleve);
             if (dir2.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le dernier import de photo");
+                MessageBox.Show(new Form {TopMost = true}, "15j ou plus depuis le dernier import de photo");
 
             var dir3 = new DirectoryInfo(Chemin.CheminListeEleve);
             if (dir3.CreationTime.Add(TimeSpan.FromDays(15)) <= DateTime.Now)
-                MessageBox.Show(new Form { TopMost = true }, "15j ou plus depuis le dernier import des listes eleves");
-            
+                MessageBox.Show(new Form {TopMost = true}, "15j ou plus depuis le dernier import des listes eleves");
+
             try
             {
                 var image = Image.FromFile("./data/logo.png");
@@ -88,6 +92,9 @@ namespace CartesAcces
             {
                 MessageBox.Show(exception.Message);
             }
+            
+            var updateThread = new Thread(CheckForUpdate);
+            updateThread.Start();
         }
 
         //Création de menu de navigation
@@ -158,12 +165,48 @@ namespace CartesAcces
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/ValgulNecron/appStage/");
+            Process.Start("https://github.com/ValgulNecron/appStage/");
         }
 
         private void on_closing(object sender, FormClosingEventArgs e)
         {
             Securite.chiffrerDossier();
+        }
+
+        private void CheckForUpdate()
+        {
+            using (var client = new WebClient())
+            {
+                client.Headers.Add("User-Agent", "AutoUpdater"); // ajout de l'en-tête requis pour utiliser l'API GitHub
+
+                var response = client.DownloadString(Globale.RepoUrl); // récupération de la réponse de l'API GitHub
+                dynamic release =
+                    JsonConvert
+                        .DeserializeObject(response); // désérialisation de la réponse en objet dynamique
+
+                string latestVersion = release.tag_name; // récupération de la dernière version
+
+                if (latestVersion != Globale.Version)
+                {
+                    var dialogResult =
+                        MessageBox.Show(
+                            "Une nouvelle version est disponible. Voulez-vous la télécharger et installer la mise à jour ?",
+                            "Mise à jour disponible", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // Télécharger la dernière version
+                        var tempPath = Path.GetTempPath();
+                        var tempFilePath = Path.Combine(tempPath, Globale.FileName);
+                        client.DownloadFile(Globale.DownloadUrl, tempFilePath);
+
+                        // Fermer l'application après une courte attente
+                        Thread.Sleep(TimeSpan.FromSeconds(Globale.SecondsToWait));
+                        Process.Start(tempFilePath);
+
+                        Application.Exit();
+                    }
+                }
+            }
         }
     }
 }

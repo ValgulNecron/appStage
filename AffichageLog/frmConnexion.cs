@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
@@ -55,14 +54,15 @@ namespace AffichageLog
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
                 if (!user.Active)
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form {TopMost = true}, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
                 }
+
                 if (txtIdentifiant.Text != user?.NomUtilisateur)
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form {TopMost = true}, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtIdentifiant.Text = "";
                     txtMotDePasse.Text = "";
                     return;
@@ -101,7 +101,7 @@ namespace AffichageLog
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Le nom d'utilisateur ou le mot de passe est invalide");
+                    MessageBox.Show(new Form {TopMost = true}, "Le nom d'utilisateur ou le mot de passe est invalide");
                     txtMotDePasse.Text = "";
                     txtIdentifiant.Text = "";
                 }
@@ -118,7 +118,8 @@ namespace AffichageLog
         {
             if (string.IsNullOrEmpty(txtMotDePasse.Text))
             {
-                MessageBox.Show(new Form { TopMost = true }, "Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                MessageBox.Show(new Form {TopMost = true}, "Veuillez saisir un mot de passe", ":(",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtMotDePasse.Focus();
             }
@@ -145,7 +146,8 @@ namespace AffichageLog
             {
                 if (string.IsNullOrEmpty(txtMotDePasse.Text))
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Veuillez saisir un mot de passe", ":(", MessageBoxButtons.OK,
+                    MessageBox.Show(new Form {TopMost = true}, "Veuillez saisir un mot de passe", ":(",
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtMotDePasse.Focus();
                 }

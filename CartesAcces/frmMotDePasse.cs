@@ -4,12 +4,12 @@ using System.Windows.Forms;
 namespace CartesAcces
 {
     /// <summary>
-    /// Form pour le mot de passe de chiffrement
+    ///     Form pour le mot de passe de chiffrement
     /// </summary>
     public partial class FrmMotDePasse : Form
     {
         /// <summary>
-        /// Constructeur de la classe
+        ///     Constructeur de la classe
         /// </summary>
         public FrmMotDePasse()
         {
@@ -22,11 +22,10 @@ namespace CartesAcces
             {
                 Globale.MotsDePasseChifffrement = textBox1.Text;
                 //if(Globale.MotsDePasseChifffrement == "")
-                    //throw new Exception("Mot de passe vide");
-                
+                //throw new Exception("Mot de passe vide");
+
                 if (Globale.ChangementMotDePasseChiffrement)
                 {
-                
                 }
                 else
                 {
@@ -35,18 +34,18 @@ namespace CartesAcces
                     frmWait.StartPosition = FormStartPosition.CenterScreen;
                     frmWait.Show();
                     frmWait.TopMost = true;
-    
+
                     Globale.Actuelle = new FrmImportation();
                     frmAccueil.OpenChildForm(Globale.Actuelle);
-                }   
+                }
 
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-    }   
+    }
 }

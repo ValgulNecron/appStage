@@ -2,7 +2,6 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace CartesAcces
 {
     public static class Couleur
@@ -10,15 +9,11 @@ namespace CartesAcces
         public static void setCouleurFenetre(Form fenetre)
         {
             if (Globale.EstEnModeSombre)
-            {
                 fenetre.BackColor = Color.FromArgb(255, Globale.CouleurDeFondSombre[0],
                     Globale.CouleurDeFondSombre[1], Globale.CouleurDeFondSombre[2]);
-            }
             else
-            {
                 fenetre.BackColor = Color.FromArgb(255, Globale.CouleurDeFondClaire[0],
                     Globale.CouleurDeFondClaire[1], Globale.CouleurDeFondClaire[2]);
-            }
 
             foreach (Control controle in fenetre.Controls)
             {
@@ -28,30 +23,18 @@ namespace CartesAcces
                 var textBox = controle as TextBox;
                 var listBox = controle as ListBox;
                 if (panel != null)
-                {
                     setCouleurPanel((Panel) controle);
-                }
                 else if (groupBox != null)
-                {
                     setCouleurGroupeBox((GroupBox) controle);
-                }
 
                 else if (button != null)
-                {
                     setCouleurBouton((Button) controle);
-                }
                 else if (textBox != null)
-                {
                     setCouleurTextBox((TextBox) controle);
-                }
                 else if (listBox != null)
-                {
                     setCouleurListBox((ListBox) controle);
-                }
                 else
-                {
                     setCouleurAutre(controle);
-                }
             }
         }
 
@@ -65,30 +48,18 @@ namespace CartesAcces
                 var textBox = controle as TextBox;
                 var listBox = controle as ListBox;
                 if (panel2 != null)
-                {
                     setCouleurPanel((Panel) controle);
-                }
                 else if (groupBox != null)
-                {
                     setCouleurGroupeBox((GroupBox) controle);
-                }
 
                 else if (button != null)
-                {
                     setCouleurBouton((Button) controle);
-                }
                 else if (textBox != null)
-                {
                     setCouleurTextBox((TextBox) controle);
-                }
                 else if (listBox != null)
-                {
                     setCouleurListBox((ListBox) controle);
-                }
                 else
-                {
                     setCouleurAutre(controle);
-                }
             }
         }
 
@@ -102,30 +73,18 @@ namespace CartesAcces
                 var textBox = controle as TextBox;
                 var listBox = controle as ListBox;
                 if (panel != null)
-                {
                     setCouleurPanel((Panel) controle);
-                }
                 else if (groupBox != null)
-                {
                     setCouleurGroupeBox((GroupBox) controle);
-                }
 
                 else if (button != null)
-                {
                     setCouleurBouton((Button) controle);
-                }
                 else if (textBox != null)
-                {
                     setCouleurTextBox((TextBox) controle);
-                }
                 else if (listBox != null)
-                {
                     setCouleurListBox((ListBox) controle);
-                }
                 else
-                {
                     setCouleurAutre(controle);
-                }
             }
         }
 
@@ -162,15 +121,11 @@ namespace CartesAcces
         public static void setCouleurAutre(Control controle)
         {
             if (Globale.EstEnModeSombre)
-            {
                 controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
                     Globale.CouleurDuTexteSombre[1], Globale.CouleurDuTexteSombre[2]);
-            }
             else
-            {
                 controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteclaire[0],
                     Globale.CouleurDuTexteclaire[1], Globale.CouleurDuTexteclaire[2]);
-            }
         }
 
         public static void setCouleurTextBox(TextBox txt)
@@ -210,7 +165,7 @@ namespace CartesAcces
                     Globale.CouleurBoutonsClaire[1], Globale.CouleurBoutonsClaire[2]);
             }
         }
-        
+
         public static void changement_state_btn(object sender, EventArgs e)
         {
             Button btn;
@@ -222,7 +177,7 @@ namespace CartesAcces
             {
                 return;
             }
-            
+
             setCouleurBouton(btn);
         }
     }

@@ -57,7 +57,8 @@ namespace CartesAcces
 
             Directory.CreateDirectory(outputPath);
             var process = new Process();
-            process.StartInfo.FileName = "./data/gswin32c.exe"; // or the appropriate version of the executable for your system
+            process.StartInfo.FileName =
+                "./data/gswin32c.exe"; // or the appropriate version of the executable for your system
             process.StartInfo.Arguments =
                 $"-o \"{outputPattern}\" -I\"./font/a.ttg\" -sDEVICE=jpeg -dJPEGQ=100 -r150 -dPDFFitPage -c \"<< /Orientation 3 >> setpagedevice\" -dPrinted=false -dNOPAUSE -dBATCH \"{path}\"";
             process.StartInfo.UseShellExecute = false;
@@ -132,7 +133,7 @@ namespace CartesAcces
 
             return listeExtractPDF;
         }
-        
+
         public static List<string> getClassePDF(string pdftext)
         {
             var listeExtractPDF = new List<string>();
@@ -172,18 +173,14 @@ namespace CartesAcces
 
         public static void renameEdt(string pdf)
         {
-            List<string> name = new List<string>();
+            var name = new List<string>();
 
             if (Globale.Classe == 7)
-            {
                 name = getClassePDF(getTextePdf(pdf));
-            }
             else
-            {
-                name = getNomPrenomPdf(getTextePdf(pdf));   
-            }
-            MessageBox.Show(new Form { TopMost = true }, name.Count.ToString() 
-                                                         + " emplois de temps ont été importés");
+                name = getNomPrenomPdf(getTextePdf(pdf));
+            MessageBox.Show(new Form {TopMost = true}, name.Count
+                                                       + " emplois de temps ont été importés");
             var d = new DirectoryInfo(outputPath);
             var infos = d.GetFiles();
 
