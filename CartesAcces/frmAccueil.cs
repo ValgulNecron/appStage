@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -92,7 +91,7 @@ namespace CartesAcces
             {
                 MessageBox.Show(exception.Message);
             }
-            
+
             CheckForUpdate();
         }
 
@@ -184,29 +183,35 @@ namespace CartesAcces
             try
             {
                 json = client.DownloadString(apiurl);
-            }   
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Une erreur s'est produite lors de la récupération de la dernière version depuis GitHub. Erreur : " + ex.Message, "Erreur de récupération de la dernière version", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Une erreur s'est produite lors de la récupération de la dernière version depuis GitHub. Erreur : " +
+                    ex.Message, "Erreur de récupération de la dernière version", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
+
             dynamic release = JsonConvert.DeserializeObject(json);
             var latestVersion = release.tag_name;
             if (latestVersion != currentVersion)
-            {   
-                var result = MessageBox.Show("Une mise à jour est disponible. Voulez-vous la télécharger maintenant ?", "Mise à jour disponible", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            {
+                var result = MessageBox.Show("Une mise à jour est disponible. Voulez-vous la télécharger maintenant ?",
+                    "Mise à jour disponible", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    String dlUrl = release.assets[0].browser_download_url;
+                    string dlUrl = release.assets[0].browser_download_url;
                     var downloadDialog = new DownloadDialog(dlUrl);
                     downloadDialog.ShowDialog();
-                   
+
                     // Récupérer le chemin du fichier de mise à jour
-                    string updateFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Release.zip");
+                    var updateFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Release.zip");
                     // Créer une nouvelle instance de ProcessStartInfo pour configurer le lancement de PowerShell
-                    ProcessStartInfo psi = new ProcessStartInfo();
+                    var psi = new ProcessStartInfo();
                     psi.FileName = "powershell.exe";
-                    psi.Arguments = $"-Command \"Expand-Archive -Path '{updateFilePath}' -DestinationPath '{AppDomain.CurrentDomain.BaseDirectory}' -Force ; Start-Process '{Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CartesAcces.exe")}'\"";
+                    psi.Arguments =
+                        $"-Command \"Expand-Archive -Path '{updateFilePath}' -DestinationPath '{AppDomain.CurrentDomain.BaseDirectory}' -Force ; Start-Process '{Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CartesAcces.exe")}'\"";
                     psi.UseShellExecute = false;
 
 // Lancer le processus PowerShell
@@ -217,6 +222,5 @@ namespace CartesAcces
                 }
             }
         }
-    
     }
 }
