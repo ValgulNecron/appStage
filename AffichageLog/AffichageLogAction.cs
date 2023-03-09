@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using LinqToDB;
 using CartesAcces;
+using LinqToDB;
 
 namespace AffichageLog
 {
@@ -15,8 +15,8 @@ namespace AffichageLog
 
         private void AffichageLogAction_Load(object sender, EventArgs e)
         {
-            foreach(LogActions log in ClassSql.Db.GetTable<LogActions>().ToList())
+            foreach (var log in ClassSql.Db.GetTable<LogActions>().ToList())
                 listBox1.Items.Add(log.DateAction + " " + log.Action + " " + log.AdMac + " " + log.NomUtilisateur);
         }
     }
-}    
+}

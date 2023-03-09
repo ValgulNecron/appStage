@@ -1,9 +1,7 @@
-﻿    using System;
+﻿using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CartesAcces
@@ -53,16 +51,13 @@ namespace CartesAcces
 
         public static bool validationPrerequisMdp(string motDePasse)
         {
-            if (motDePasse.Length <= 12)
-            {
-                return false;
-            }
+            if (motDePasse.Length <= 12) return false;
 
-            bool majuscule = false;
-            bool minuscule = false;
-            bool chiffre = false;
-            bool caractereSpecial = false;
-            foreach (char c in motDePasse)
+            var majuscule = false;
+            var minuscule = false;
+            var chiffre = false;
+            var caractereSpecial = false;
+            foreach (var c in motDePasse)
             {
                 if (c >= 'A' && c <= 'Z')
                     majuscule = true;
@@ -75,6 +70,7 @@ namespace CartesAcces
 
                 if (majuscule && minuscule && chiffre && caractereSpecial) return true;
             }
+
             return false;
         }
 
@@ -88,22 +84,25 @@ namespace CartesAcces
                 MessageBox.Show("Le dossier data n'existe pas");
                 return;
             }
+
             if (Globale.MotsDePasseChifffrement == null)
             {
                 MessageBox.Show("Le mot de passe de chiffrement n'est pas renseigné");
                 return;
             }
+
             if (Globale.MotsDePasseChifffrement == "")
             {
                 MessageBox.Show("Le mot de passe de chiffrement est vide");
                 return;
             }
+
             var directory = new DirectoryInfo(PathFolder);
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
                 {
-                    string extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                    var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
                     if (extension != ".enc")
                     {
                         chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
@@ -112,15 +111,13 @@ namespace CartesAcces
                 }
 
                 foreach (var dir2 in dir.GetDirectories())
+                foreach (var file in dir2.GetFiles())
                 {
-                    foreach (var file in dir2.GetFiles())
+                    var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                    if (extension != ".enc")
                     {
-                        string extension = file.FullName.Substring(file.FullName.Length - 4, 4);
-                        if (extension != ".enc")
-                        {
-                            chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
-                            file.Delete();
-                        }
+                        chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
+                        file.Delete();
                     }
                 }
             }
@@ -143,7 +140,7 @@ namespace CartesAcces
             var keyGenerator = new Rfc2898DeriveBytes(passwordBytes, salt, 1000);
             var key = keyGenerator.GetBytes(32);
             var iv = keyGenerator.GetBytes(16);
-            
+
             using (var aes = new AesManaged())
             {
                 aes.KeySize = 256;
@@ -174,9 +171,9 @@ namespace CartesAcces
             foreach (var dir in directory.GetDirectories())
             {
                 foreach (var file in dir.GetFiles())
-                {   
-                    string output = file.FullName.Substring(0, file.FullName.Length - 4);
-                    string extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                {
+                    var output = file.FullName.Substring(0, file.FullName.Length - 4);
+                    var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
                     if (extension == ".enc")
                     {
                         dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
@@ -185,21 +182,19 @@ namespace CartesAcces
                 }
 
                 foreach (var dir2 in dir.GetDirectories())
+                foreach (var file in dir2.GetFiles())
                 {
-                    foreach (var file in dir2.GetFiles())
+                    var output = file.FullName.Substring(0, file.FullName.Length - 4);
+                    var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                    if (extension == ".enc")
                     {
-                        string output = file.FullName.Substring(0, file.FullName.Length - 4);
-                        string extension = file.FullName.Substring(file.FullName.Length - 4, 4);
-                        if (extension == ".enc")
-                        {
-                            dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
-                            file.Delete();
-                        }
+                        dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
+                        file.Delete();
                     }
                 }
             }
 
-            MessageBox.Show("Déchiffrement terminé");
+            MessageBox.Show(new Form {TopLevel = true, TopMost = true}, "Déchiffrement terminé");
         }
 
         public static void dechiffrerFichier(string inputFile, string outputFile, string password)

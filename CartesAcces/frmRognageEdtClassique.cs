@@ -10,23 +10,23 @@ using CarteAcces;
 namespace CartesAcces
 {
     /// <summary>
-    /// Permet de rogner l'edt classique
-    /// l'edt classique est un edt de classe non personnalisé
-    /// il est enregistré dans le dossier data/FichierEdtClasse
+    ///     Permet de rogner l'edt classique
+    ///     l'edt classique est un edt de classe non personnalisé
+    ///     il est enregistré dans le dossier data/FichierEdtClasse
     /// </summary>
     public partial class FrmRognageEdtClassique : Form
     {
         private readonly List<string> _listeFichiers = new List<string>();
 
         /// <summary>
-        /// constructeur de la classe
+        ///     constructeur de la classe
         /// </summary>
         public FrmRognageEdtClassique()
         {
             InitializeComponent();
         }
 
-        
+
         private void frmRognageEdtClassique_Load(object sender, EventArgs e)
         {
             try
@@ -142,7 +142,7 @@ namespace CartesAcces
                 }
 
 
-                MessageBox.Show(new Form { TopMost = true },"L'importation des emplois de temps classique à réussis");
+                MessageBox.Show(new Form {TopMost = true}, "L'importation des emplois de temps classique à réussis");
                 Close();
             }
             catch (Exception err)

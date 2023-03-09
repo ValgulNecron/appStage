@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Threading;
 using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
@@ -15,7 +14,7 @@ namespace CartesAcces
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
         }
-        
+
         private void changementTexte(object sender, EventArgs e)
         {
             var prenom = txtPrenom.Text;
@@ -218,7 +217,7 @@ namespace CartesAcces
             {
                 if (Edition.SelectionClique)
                 {
-                    if(pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(Control.MousePosition)))
+                    if (pbCarteArriere.ClientRectangle.Contains(pbCarteArriere.PointToClient(MousePosition)))
                     {
                         Edition.RognageX = Math.Min(Edition.RognageX, e.X);
                         Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
@@ -226,14 +225,10 @@ namespace CartesAcces
                         var classe = cbbClasse.Text;
                         string pathEdt;
                         if (Chemin.CheminEdtPerso == "")
-                        {
                             pathEdt = "./data/FichierEdtClasse/" + classe + ".jpg";
-                        }
                         else
-                        {
                             pathEdt = Chemin.CheminEdtPerso;
-                        }
-                        
+
                         Edition.SelectionClique = false;
                         Edt.rognageEdt(pbCarteArriere, pathEdt);
                     }
@@ -243,21 +238,17 @@ namespace CartesAcces
                         var classe = cbbClasse.Text;
                         string pathEdt;
                         if (Chemin.CheminEdtPerso == "")
-                        {
                             pathEdt = "./data/FichierEdtClasse/" + classe + ".jpg";
-                        }
                         else
-                        {
                             pathEdt = Chemin.CheminEdtPerso;
-                        }
                         Edition.SelectionClique = false;
                         pbCarteArriere.Image = Image.FromFile(pathEdt);
-                        
+
                         Edition.RognageX = 0;
                         Edition.RognageY = 0;
                         Edition.RognageHauteur = 0;
                         Edition.RognageLargeur = 0;
-                        
+
                         btnSelect.Enabled = true;
                         btnCancel.Enabled = false;
                     }
@@ -266,6 +257,7 @@ namespace CartesAcces
             catch
             {
             }
+
             Chemin.CheminEdtPerso = "";
         }
 

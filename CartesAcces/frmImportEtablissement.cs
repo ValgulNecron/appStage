@@ -12,16 +12,16 @@ namespace CartesAcces
      * si l'etablissement n'existe pas, il est créé
      */
     /// <summary>
-    ///  permet de créer l'etablissement dans la base de données
-    ///  si l'etablissement existe déjà, il est modifié
-    ///  si l'etablissement n'existe pas, il est créé
+    ///     permet de créer l'etablissement dans la base de données
+    ///     si l'etablissement existe déjà, il est modifié
+    ///     si l'etablissement n'existe pas, il est créé
     /// </summary>
     public partial class FrmImportEtablissement : Form
     {
         private Etablissement etaDebut;
 
         /// <summary>
-        /// constructeur de la classe
+        ///     constructeur de la classe
         /// </summary>
         public FrmImportEtablissement()
         {
@@ -32,13 +32,13 @@ namespace CartesAcces
         private void btnValider_Click(object sender, EventArgs e)
         {
             if (etaDebut != null)
-            {
                 if (etaDebut.NomEtablissement != txtNomEtablissement.Text)
                 {
-                    ClassSql.Db.GetTable<Etablissement>().Where(x => x.NomEtablissement == etaDebut.NomEtablissement).Delete();
+                    ClassSql.Db.GetTable<Etablissement>().Where(x => x.NomEtablissement == etaDebut.NomEtablissement)
+                        .Delete();
                     ClassSql.Db.GetTable<Etablissement>().Delete();
                 }
-            }
+
             var etablissement = new Etablissement();
             etablissement.NomEtablissement = txtNomEtablissement.Text;
             etablissement.NomRueEtablissement = txtRueEtablissement.Text;
@@ -70,7 +70,7 @@ namespace CartesAcces
             log.Action = "à modifier les informations de établissement";
             log.AdMac = macAddress;
             ClassSql.Db.Insert(log);
-            MessageBox.Show(new Form { TopMost = true }, "Les informations de l'établissement ont été modifiées");
+            MessageBox.Show(new Form {TopMost = true}, "Les informations de l'établissement ont été modifiées");
             Close();
         }
 
@@ -391,9 +391,11 @@ namespace CartesAcces
         }
 
         private void cbBordure_CheckedChanged(object sender, EventArgs e)
-        { }
+        {
+        }
 
         private void label7_Click(object sender, EventArgs e)
-        { }
+        {
+        }
     }
 }

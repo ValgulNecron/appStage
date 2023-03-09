@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
-using Sentry;
+using LinqToDB;
 
 namespace CartesAcces
 {
@@ -12,42 +13,27 @@ namespace CartesAcces
         [STAThread]
         private static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-            // sentry permet de récupérer les erreurs et de les envoyer sur le serveur
-            using (SentrySdk.Init(o =>
-                   {
-                       o.Dsn =
-                           "https://a4a3d0bd171f4e5a9fd0e136f7b8d973@o4504629047263232.ingest.sentry.io/4504629056438272";
-                       // When configuring for the first time, to see what the SDK is doing:
-                       o.Debug = true;
-                       // Set traces_sample_rate to 1.0 to capture 100% of transactions for performance monitoring.
-                       // We recommend adjusting this value in production.
-                       o.TracesSampleRate = 1.0;
-                       // Enable Global Mode if running in a client app
-                       o.IsGlobalModeEnabled = true;
-                   }))
+            Globale.VersionDate = "16/02/2023";
+            Globale.Version = "1.4.3";
+            // App code goes here. Dispose the SDK before exiting to flush events.
+            try
             {
-                Globale.VersionDate = "16/02/2023";
-                Globale.Version = "1.4.2";
-                // App code goes here. Dispose the SDK before exiting to flush events.
-                try
-                {
-                    ClassSql.init();
-                    Globale.ConnectionBdd = true;
-                }
-                catch(Exception e)
-                {
-                    Globale.ConnectionBdd = false;
-                    MessageBox.Show("fichier config ou connection impossible" + e.Message);
-                }
-                
-                // mettre les fonction et le code a execute au lancement de l'application
-                // avant de lancer le formulaire
-                Globale.Accueil = new frmAccueil();
-                Application.Run(Globale.Accueil);
+                ClassSql.init();
+                Globale.ConnectionBdd = true;
+                var user = ClassSql.Db.GetTable<Utilisateurs>()
+                    .FirstOrDefault();
             }
+            catch (Exception e)
+            {
+                Globale.ConnectionBdd = false;
+                MessageBox.Show("Connection impossible : " + e.Message);
+                MessageBox.Show("Veuiller verifier le fichier config.xml et relancer l'application");
+            }
+
+            // mettre les fonction et le code a execute au lancement de l'application
+            // avant de lancer le formulaire
+            Globale.Accueil = new frmAccueil();
+            Application.Run(Globale.Accueil);
         }
     }
 }

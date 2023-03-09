@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -19,15 +18,15 @@ namespace CartesAcces
      * elle permet de mettre à jour les données
      */
     /// <summary>
-    /// fenêtre d'imporation des données
-    /// elle permet de rediriger vers les fenêtres d'importation des données
-    /// elle permet de vérifier si les données sont à jour
-    /// elle permet de mettre à jour les données
+    ///     fenêtre d'imporation des données
+    ///     elle permet de rediriger vers les fenêtres d'importation des données
+    ///     elle permet de vérifier si les données sont à jour
+    ///     elle permet de mettre à jour les données
     /// </summary>
     public partial class FrmImportation : Form
     {
         /// <summary>
-        /// Constructeur de la classe
+        ///     Constructeur de la classe
         /// </summary>
         public FrmImportation()
         {
@@ -235,8 +234,8 @@ namespace CartesAcces
             catch (Exception ex)
             {
             }
-            Globale.GitPoule = false;
 
+            Globale.GitPoule = false;
         }
 
         private void btnImporterUnEtablissement_Click(object sender, EventArgs e)
@@ -290,5 +289,5 @@ namespace CartesAcces
             Globale.ChangementMotDePasseChiffrement = true;
             frmMotDePasse.ShowDialog();
         }
-    }   
+    }
 }

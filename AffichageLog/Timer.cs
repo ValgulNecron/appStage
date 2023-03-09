@@ -15,12 +15,6 @@ namespace AffichageLog
          */
     public class Timer
     {
-        // valeur en minute de la durée d'inactivité avant déconnexion
-        public static int DureeMinute { get; set; } = 15;
-        public Form Form1 { get; set; }
-        // valeur en minute de la fréquence de vérification
-        public int FrequenceDesVerifEnMinute { get; set;} = 1;
-        public System.Timers.Timer Timer1 { get; set; }
         private DateTime start;
 
         /*
@@ -30,7 +24,7 @@ namespace AffichageLog
          */
         public Timer(Form form)
         {
-            this.Form1 = form;
+            Form1 = form;
             start = DateTime.Now;
             Timer1 = new System.Timers.Timer();
             Timer1.Interval = FrequenceDesVerifEnMinute * 60 * 1000;
@@ -38,9 +32,18 @@ namespace AffichageLog
             Timer1.Enabled = true;
             Timer1.AutoReset = true;
             Timer1.Start();
-            this.Form1.MouseMove += Form_MouseMove;
+            Form1.MouseMove += Form_MouseMove;
             Globale.Accueil.MouseMove += Form_MouseMove;
         }
+
+        // valeur en minute de la durée d'inactivité avant déconnexion
+        public static int DureeMinute { get; set; } = 15;
+
+        public Form Form1 { get; set; }
+
+        // valeur en minute de la fréquence de vérification
+        public int FrequenceDesVerifEnMinute { get; set; } = 1;
+        public System.Timers.Timer Timer1 { get; set; }
 
         /*
          * cette fonction permet d'ajouter un événement à la fenêtre à surveiller
@@ -51,7 +54,7 @@ namespace AffichageLog
             Globale.Accueil.MouseMove += Form_MouseMove;
             Globale.Actuelle.MouseMove += Form_MouseMove;
         }
-        
+
         private void Form_MouseMove(object sender, MouseEventArgs e)
         {
             start = DateTime.Now;

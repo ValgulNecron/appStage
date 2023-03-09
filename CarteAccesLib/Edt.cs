@@ -49,7 +49,6 @@ namespace CarteAcces
                     Chemin.CheminEdtPerso = opfPath;
                     btnSelect.Enabled = true;
                 }
-
             }
             catch
             {
@@ -68,16 +67,16 @@ namespace CarteAcces
                 Cela permet d'éviter les problèmes de résolution d'image après le rognage */
 
             // -- Je sais c'est moche mais j'ai pas eu le choix... --
-            double rLargeurReel = (double)Edition.RognageLargeur * pbCarteArriere.Image.Width / 540;
-            double rHauteurReel = (double)Edition.RognageHauteur * pbCarteArriere.Image.Height / 354;
-            double rXReel = (double)Edition.RognageX * pbCarteArriere.Image.Width / 540;
-            double rYReel = (double)Edition.RognageY * pbCarteArriere.Image.Height / 354;
+            var rLargeurReel = (double) Edition.RognageLargeur * pbCarteArriere.Image.Width / 540;
+            var rHauteurReel = (double) Edition.RognageHauteur * pbCarteArriere.Image.Height / 354;
+            var rXReel = (double) Edition.RognageX * pbCarteArriere.Image.Width / 540;
+            var rYReel = (double) Edition.RognageY * pbCarteArriere.Image.Height / 354;
 
             var rogagneLargeurReel = Convert.ToInt32(Math.Round(rLargeurReel));
             var rogagneHauteurReel = Convert.ToInt32(Math.Round(rHauteurReel));
             var rognageXReel = Convert.ToInt32(Math.Round(rXReel));
             var rogangeYReel = Convert.ToInt32(Math.Round(rYReel));
-            
+
             var rectangle = new Rectangle(rognageXReel, rogangeYReel, rogagneLargeurReel, rogagneHauteurReel);
 
             // -- On stock l'image original dans un bitmap --

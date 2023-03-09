@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using CartesAcces;
@@ -30,7 +31,7 @@ namespace AffichageLog
             TailleControle.setTailleBouton(this);
             TailleControle.setTailleControleTexte(this);
         }
-        
+
         public static void OpenChildForm(Form childForm)
         {
             childForm.TopLevel = false;
@@ -68,8 +69,8 @@ namespace AffichageLog
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
-        { 
-            System.Diagnostics.Process.Start("https://github.com/ValgulNecron/appStage/");
+        {
+            Process.Start("https://github.com/ValgulNecron/appStage/");
         }
 
         private void btnTheme_Click(object sender, EventArgs e)

@@ -1,4 +1,3 @@
-using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -20,10 +19,7 @@ namespace CarteAcces
             else if (File.Exists("./data/ElevesPhoto/" + nomFichierPNG))
                 pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierPNG);
             else
-            {
                 pbPhoto.Image = Image.FromFile("./data/edition.jpg");
-            }
-                
         }
 
         public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
@@ -34,7 +30,8 @@ namespace CarteAcces
             pbPhoto.Visible = true;
         }
 
-        public static void proportionPhotoMultiple(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve, string path)
+        public static void proportionPhotoMultiple(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve,
+            string path)
         {
             // -- Calcul par proportionnalité de la position et des dimensions de la photo sur le cadre de l'application par rapport a l'image réelle --
             // -- Cela permet de répercuter les déplacements effectués par l'utilisateur sur l'image originelle afin de pouvoir réutiliser celle ci --
@@ -43,12 +40,12 @@ namespace CarteAcces
             //double rLocY = 0.0;
             //double rWidth = 0.0;
             //double rHeight = 0.0;
-            
+
             var rLocX = Edition.PosXDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
             var rLocY = Edition.PosYDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
             var rWidth = Edition.PosWidthDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
             var rHeight = Edition.PosHeightDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
-            
+
             if (eleve.SansEDT)
             {
                 rLocX = Edition.PosXClassique * pbCarteArriere.Image.Width / pbCarteArriere.Width;

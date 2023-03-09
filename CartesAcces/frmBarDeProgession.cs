@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using CarteAcces;
 using CarteAccesLib;
 using LinqToDB;
-using LinqToDB.Tools;
 
 namespace CartesAcces
 {
@@ -54,7 +53,7 @@ namespace CartesAcces
             }
             catch
             {
-                MessageBox.Show(new Form { TopMost = true }, "operation annulée");
+                MessageBox.Show(new Form {TopMost = true}, "operation annulée");
             }
         }
 
@@ -103,7 +102,7 @@ namespace CartesAcces
                     frmRognageEdtClassique.Show();
                 }
             }));
-            
+
             PdfGs.valeurParDefault();
         }
 
@@ -125,7 +124,7 @@ namespace CartesAcces
             {
                 if (Globale.PbPhoto.Image == null)
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Veuillez ajouter une photo");
+                    MessageBox.Show(new Form {TopMost = true}, "Veuillez ajouter une photo");
                 }
                 else
                 {

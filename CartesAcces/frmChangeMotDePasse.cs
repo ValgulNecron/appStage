@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -39,7 +38,8 @@ namespace CartesAcces
             {
                 if (nouveauMdp.Text == ancienMdp.Text)
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Le nouveau mot de passe doit être différent de l'ancien");
+                    MessageBox.Show(new Form {TopMost = true},
+                        "Le nouveau mot de passe doit être différent de l'ancien");
                     return;
                 }
 
@@ -69,19 +69,21 @@ namespace CartesAcces
                             ClassSql.Db.Insert(log);
                             user.Hash = Securite.creationHash(nouveauMdp.Text);
                             ClassSql.Db.Update(user);
-                            MessageBox.Show(new Form { TopMost = true }, "mot de passe changé");
+                            MessageBox.Show(new Form {TopMost = true}, "mot de passe changé");
                             Close();
                         }
                         else
                         {
-                            MessageBox.Show(new Form { TopMost = true }, "Les deux mots de passes de sont pas identiques.");
+                            MessageBox.Show(new Form {TopMost = true},
+                                "Les deux mots de passes de sont pas identiques.");
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show(new Form { TopMost = true }, "Il faut un caractère spécial, une majuscule, une miniscule, et une longueur de mot de passe" +
-                                                                 " supérieur ou égale à 12 caractères.");
+                    MessageBox.Show(new Form {TopMost = true},
+                        "Il faut un caractère spécial, une majuscule, une miniscule, et une longueur de mot de passe" +
+                        " supérieur ou égale à 12 caractères.");
                 }
             }
             catch (Exception exception)

@@ -1,15 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Windows;
 using System.Linq;
 
 namespace CartesAcces
 {
     public class Eleve
     {
-        public static List<string> ListeCleeEleve
-        { get; set; }
-
         public Eleve()
         {
             NumEleve = 0;
@@ -24,6 +20,8 @@ namespace CartesAcces
             MefEleve = "null";
             SansEDT = false;
         }
+
+        public static List<string> ListeCleeEleve { get; set; }
 
         public int NumEleve { get; set; }
 
@@ -69,7 +67,6 @@ namespace CartesAcces
             Globale.Classes4Eme.Sort();
             Globale.Classes5Eme.Sort();
             Globale.Classes6Eme.Sort();
-
         }
 
         public static string creeCleEleve(Eleve eleve)
