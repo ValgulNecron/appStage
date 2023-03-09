@@ -200,6 +200,20 @@ namespace CartesAcces
                     String dlUrl = release.assets[0].browser_download_url;
                     var downloadDialog = new DownloadDialog(dlUrl);
                     downloadDialog.ShowDialog();
+                   
+                    // Récupérer le chemin du fichier de mise à jour
+                    string updateFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Release.zip");
+                    // Créer une nouvelle instance de ProcessStartInfo pour configurer le lancement de PowerShell
+                    ProcessStartInfo psi = new ProcessStartInfo();
+                    psi.FileName = "powershell.exe";
+                    psi.Arguments = $"-Command \"Expand-Archive -Path '{updateFilePath}' -DestinationPath '{AppDomain.CurrentDomain.BaseDirectory}' -Force ; Start-Process '{Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CartesAcces.exe")}'\"";
+                    psi.UseShellExecute = false;
+
+// Lancer le processus PowerShell
+                    Process.Start(psi);
+
+// Fermer l'application
+                    Application.Exit();
                 }
             }
         }
