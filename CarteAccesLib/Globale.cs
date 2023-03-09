@@ -80,11 +80,20 @@ namespace CartesAcces
         public static string CheminEdtClassique { get; set; }
         public static string CheminFaceCarte { get; set; }
 
+        /// <summary>
+        /// Si la GitPoule est activé
+        /// </summary>
         public static bool GitPoule { get; set; } = true;
 
         // carte provisoire 
+        /// <summary>
+        ///    PictureBox
+        /// </summary>
         public static PictureBox PbPhoto { get; set; }
 
+        /// <summary>
+        ///  tuple de sauvegarde provisoire
+        /// </summary>
         public static Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox> ListeSauvegardeProvisoire
         {
             get;
@@ -92,9 +101,21 @@ namespace CartesAcces
         }
 
         // liste d'eleve trier
+        /// <summary>
+        ///     Liste des élèves de la 6eme
+        /// </summary>
         public static List<Eleve> ListeEleves6Eme { get; set; }
+        /// <summary>
+        ///   Liste des élèves de la 5eme
+        /// </summary>
         public static List<Eleve> ListeEleves5Eme { get; set; }
+        /// <summary>
+        ///   Liste des élèves de la 4eme
+        /// </summary>
         public static List<Eleve> ListeEleves4Eme { get; set; }
+        /// <summary>
+        ///    Liste des élèves de la 3eme
+        /// </summary>
         public static List<Eleve> ListeEleves3Eme { get; set; }
 
         /// <summary>

@@ -75,7 +75,7 @@ namespace CartesAcces
             else
             {
                 Globale.Cas = 3;
-                var frmWait = new barDeProgression();
+                var frmWait = new BarDeProgression();
                 frmWait.StartPosition = FormStartPosition.CenterScreen;
                 frmWait.Show();
                 frmWait.TopMost = true;

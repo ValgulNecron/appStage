@@ -32,7 +32,7 @@ namespace CartesAcces
 
             // mettre les fonction et le code a execute au lancement de l'application
             // avant de lancer le formulaire
-            Globale.Accueil = new frmAccueil();
+            Globale.Accueil = new FrmAccueil();
             Application.Run(Globale.Accueil);
         }
     }

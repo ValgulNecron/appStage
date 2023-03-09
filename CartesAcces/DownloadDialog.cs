@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
+    /// <summary>
+    /// Dialogue de téléchargement des mises à jour de l'application
+    /// </summary>
     public class DownloadDialog : Form
     {
         private readonly Button _cancelButton;
@@ -16,6 +19,10 @@ namespace CartesAcces
         private readonly ProgressBar _progressBar;
         private readonly Label _speedLabel;
 
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        /// <param name="downloadUrl"></param>
         public DownloadDialog(string downloadUrl)
         {
             _downloadUrl = downloadUrl;
@@ -66,6 +73,10 @@ namespace CartesAcces
             Size = new Size(300, 150);
         }
 
+        /// <summary>
+        /// Lorsque le dialogue est chargé, on lance le téléchargement
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -73,6 +84,10 @@ namespace CartesAcces
             _client.DownloadFileAsync(new Uri(_downloadUrl), Globale.FileName);
         }
 
+        /// <summary>
+        /// Lorsque le dialogue est fermé, on annule le téléchargement
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -89,16 +104,13 @@ namespace CartesAcces
             _progressBar.Value = e.ProgressPercentage;
             _percentageLabel.Text = $"{e.ProgressPercentage} %";
 
-            if (e.UserState != null)
-            {
-                var speed = e.BytesReceived / (double) e.UserState;
-                _speedLabel.Text = $"{speed / 1024.0:N2} KB/s";
-            }
+                double speed = e.BytesReceived / (e.ProgressPercentage / 100.0) / 1024.0;
+                _speedLabel.Text = $"{e.BytesReceived} / {e.TotalBytesToReceive} octets ({speed:N2} Ko/s)";
         }
 
         private void OnDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            if (e.Cancelled)
+            if (e.Cancelled)    
             {
                 MessageBox.Show("Le téléchargement a été annulé.", "Téléchargement annulé", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);

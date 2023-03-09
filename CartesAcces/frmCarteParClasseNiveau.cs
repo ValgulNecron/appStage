@@ -4,9 +4,15 @@ using System.Windows.Forms;
 
 namespace CartesAcces
 {
-    public partial class frmCarteParClasseNiveau : Form
+    /// <summary>
+    /// Permet de créer des cartes d'accès par classe et niveau
+    /// </summary>
+    public partial class FrmCarteParClasseNiveau : Form
     {
-        public frmCarteParClasseNiveau()
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        public FrmCarteParClasseNiveau()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);

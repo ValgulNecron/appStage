@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace CartesAcces
 {
-    partial class frmCartesParListe
+    partial class FrmCartesParListe
     {
         /// <summary>
         /// Required designer variable.
@@ -232,7 +232,7 @@ namespace CartesAcces
             this.Controls.Add(this.btnAjout);
             this.Controls.Add(this.Impression);
             this.Controls.Add(this.Eleves);
-            this.Name = "frmCartesParListe";
+            this.Name = "FrmCartesParListe";
             this.Text = "frmCartesParListe";
             this.Load += new System.EventHandler(this.frmCartesParListe_Load);
             this.groupBox1.ResumeLayout(false);

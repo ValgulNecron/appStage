@@ -4,20 +4,21 @@ using CartesAcces;
 
 namespace CarteAccesLib
 {
-    /*
-     * Cette fonction permet de rechercher un eleve dans la liste des eleves
-     * Elle prend en parametre le filtre de recherche et la liste des eleves
-     * Elle retourne une liste de string contenant le nom, le prenom et la classe de l'eleve
-     */
-    public static class Trie
+    
+    /// <summary>
+    /// Cette fonction permet de rechercher un eleve dans la liste des eleves
+    /// Elle prend en parametre le filtre de recherche et la liste des eleves
+    /// Elle retourne une liste de string contenant le nom, le prenom et la classe de l'eleve
+    /// </summary>
+    public static class XTrie
     {
-        /*
-         * Cette fonction permet de rechercher un eleve dans la liste des eleves
-         * Elle prend en parametre le filtre de recherche et la liste des eleves
-         * @param filtre : le filtre de recherche
-         * @param eleves : la liste des eleves
-         * @return listeEleveResultat : la liste des eleves qui correspondent au filtre
-         */
+        /// <summary>
+        /// Cette fonction permet de rechercher un eleve dans la liste des eleves
+        /// Elle prend en parametre le filtre de recherche et la liste des eleves
+        /// </summary>
+        /// <param name="filtre"></param>
+        /// <param name="eleves"></param>
+        /// <returns></returns>
         public static List<string> recherche(string filtre, List<Eleve> eleves)
         {
             var listeEleveResultat = new List<string>();

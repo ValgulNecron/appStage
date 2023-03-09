@@ -5,23 +5,36 @@ using System.Threading;
 using System.Windows.Forms;
 using CartesAcces;
 
-namespace CarteAcces
+namespace CarteAccesLib
 {
+    /// <summary>
+    /// Cette classe permet de gérer les photos
+    /// </summary>
     public static class Photo
     {
+        /// <summary>
+        /// Cette fonction permet de vérifier si une photo existe pour un élève
+        /// </summary>
+        /// <param name="eleve"></param>
+        /// <param name="pbPhoto"></param>
         public static void verifPhotoEleve(Eleve eleve, PictureBox pbPhoto)
         {
-            var nomFichierJPG = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
-            var nomFichierPNG = eleve.NomEleve + " " + eleve.PrenomEleve + ".png";
+            var nomFichierJpg = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
+            var nomFichierPng = eleve.NomEleve + " " + eleve.PrenomEleve + ".png";
 
-            if (File.Exists("./data/ElevesPhoto/" + nomFichierJPG))
-                pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierJPG);
-            else if (File.Exists("./data/ElevesPhoto/" + nomFichierPNG))
-                pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierPNG);
+            if (File.Exists("./data/ElevesPhoto/" + nomFichierJpg))
+                pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierJpg);
+            else if (File.Exists("./data/ElevesPhoto/" + nomFichierPng))
+                pbPhoto.Image = Image.FromFile("./data/ElevesPhoto/" + nomFichierPng);
             else
                 pbPhoto.Image = Image.FromFile("./data/edition.jpg");
         }
 
+        /// <summary>
+        /// Cette fonction permet de d'afficher une photo provisoire
+        /// </summary>
+        /// <param name="chemin"></param>
+        /// <param name="pbPhoto"></param>
         public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
         {
             pbPhoto.Image = new Bitmap(chemin);
@@ -30,6 +43,13 @@ namespace CarteAcces
             pbPhoto.Visible = true;
         }
 
+        /// <summary>
+        /// Cette fonction permet de gérer les proportions de la photo
+        /// </summary>
+        /// <param name="pbPhoto"></param>
+        /// <param name="pbCarteArriere"></param>
+        /// <param name="eleve"></param>
+        /// <param name="path"></param>
         public static void proportionPhotoMultiple(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve,
             string path)
         {
@@ -63,6 +83,10 @@ namespace CarteAcces
             Thread.Sleep(1000);
         }
 
+        /// <summary>
+        /// Cette fonction permet d'obtenir la date de la dernière importation des photos
+        /// </summary>
+        /// <returns></returns>
         public static string getDatePhotos()
         {
             var dateFile = "Aucune Importation";

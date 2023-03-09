@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmAccueil
+    partial class FrmAccueil
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -29,7 +29,7 @@ namespace CartesAcces
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccueil));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAccueil));
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnCreerCarte = new System.Windows.Forms.Button();
             this.btnCarteParClasse = new System.Windows.Forms.Button();
@@ -222,7 +222,7 @@ namespace CartesAcces
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(15, 15);
             this.MaximizeBox = false;
-            this.Name = "frmAccueil";
+            this.Name = "FrmAccueil";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.on_closing);
             this.Load += new System.EventHandler(this.frmAccueil_Load);
             this.pnlMenu.ResumeLayout(false);

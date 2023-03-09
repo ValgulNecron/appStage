@@ -1,61 +1,64 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
 namespace CartesAcces
 {
+    /// <summary>
+    /// Cette classe permet de récupérer des images d'un pdf
+    /// </summary>
     public static class PdfGs
     {
-        private static string outputPath = "./data/image";
-
-        /*
-         * Cette fonction permet de récupérer les images d'un pdf
-         * @param path : le chemin vers le pdf
-         * @param classe : la classe de l'élève
-         * la fonction va créer un dossier dans le dossier image en fonction de la classe de l'élève
-         */
+        private static string _outputPath = "./data/image";
+        
+        /// <summary>
+        ///  Cette fonction permet de récupérer les images d'un pdf
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="classe"></param>
         public static void getImageFromPdf(string path, int classe)
         {
             switch (classe)
             {
                 case 3:
                 {
-                    outputPath += "/3eme/";
+                    _outputPath += "/3eme/";
                     break;
                 }
                 case 4:
                 {
-                    outputPath += "/4eme/";
+                    _outputPath += "/4eme/";
                     break;
                 }
                 case 5:
                 {
-                    outputPath += "/5eme/";
+                    _outputPath += "/5eme/";
                     break;
                 }
                 case 6:
                 {
-                    outputPath += "/6eme/";
+                    _outputPath += "/6eme/";
                     break;
                 }
                 case 7:
                 {
-                    outputPath += "/classes/";
+                    _outputPath += "/classes/";
                     break;
                 }
             }
 
-            var outputPattern = outputPath + "page%d.jpg";
+            var outputPattern = _outputPath + "page%d.jpg";
 
-            if (Directory.Exists(outputPath))
+            if (Directory.Exists(_outputPath))
             {
-                foreach (var file in Directory.GetFiles(outputPath)) File.Delete(file);
-                Directory.Delete(outputPath);
+                foreach (var file in Directory.GetFiles(_outputPath)) File.Delete(file);
+                Directory.Delete(_outputPath);
             }
 
-            Directory.CreateDirectory(outputPath);
+            Directory.CreateDirectory(_outputPath);
             var process = new Process();
             process.StartInfo.FileName =
                 "./data/gswin32c.exe"; // or the appropriate version of the executable for your system
@@ -68,6 +71,11 @@ namespace CartesAcces
             process.WaitForExit();
         }
 
+        /// <summary>
+        /// Cette fonction permet de récupérer le texte d'un pdf
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static string getTextePdf(string path)
         {
             var outputFile = "./output.txt";
@@ -97,16 +105,21 @@ namespace CartesAcces
             return file;
         }
 
+        /// <summary>
+        /// Cette fonction permet de récupérer le nom et le prenom d'un eleve dans un pdf
+        /// </summary>
+        /// <param name="pdftext"></param>
+        /// <returns></returns>
         public static List<string> getNomPrenomPdf(string pdftext)
         {
-            var listeExtractPDF = new List<string>();
+            var listeExtractPdf = new List<string>();
 
             // !! Recherche des lignes qui nous interesse !!
 
             // -- On commence au premier caractère de la chaine --
             var posDepart = 0;
             // -- La ligne s'arrete lorsqu'il y a un saut --
-            var posFin = pdftext.IndexOf(Environment.NewLine);
+            var posFin = pdftext.IndexOf(Environment.NewLine, StringComparison.Ordinal);
             // -- Tant qu'on a pas attein la fin de la variable --
 
             while (posFin != -1)
@@ -121,29 +134,34 @@ namespace CartesAcces
                     line = line.Replace(Environment.NewLine, null);
                     line = line.Replace("Elève", null);
                     // -- .. Alors on affecte cette ligne a la liste --
-                    listeExtractPDF.Add(line);
+                    listeExtractPdf.Add(line);
                 }
 
                 // -- La position de départ se place au début de la ligne suivante --
                 posDepart = posFin + 1;
                 // -- La position de fin se place au saut de ligne de la ligne suivante --
-                posFin = pdftext.IndexOf("\r\n", posDepart + 1);
+                posFin = pdftext.IndexOf("\r\n", posDepart + 1, StringComparison.Ordinal);
                 // -- Toujours vrai sauf si erreur --
             }
 
-            return listeExtractPDF;
+            return listeExtractPdf;
         }
 
-        public static List<string> getClassePDF(string pdftext)
+        /// <summary>
+        /// Cette fonction permet de récupérer la classe d'un eleve dans un pdf
+        /// </summary>
+        /// <param name="pdftext"></param>
+        /// <returns></returns>
+        public static List<string> getClassePdf(string pdftext)
         {
-            var listeExtractPDF = new List<string>();
+            var listeExtractPdf = new List<string>();
 
             // !! Recherche des lignes qui nous interesse !!
 
             // -- On commence au premier caractère de la chaine --
             var posDepart = 0;
             // -- La ligne s'arrete lorsqu'il y a un saut --
-            var posFin = pdftext.IndexOf(Environment.NewLine);
+            var posFin = pdftext.IndexOf(Environment.NewLine, StringComparison.Ordinal);
             // -- Tant qu'on a pas attein la fin de la variable --
 
             while (posFin != -1)
@@ -158,30 +176,34 @@ namespace CartesAcces
                     line = line.Replace(Environment.NewLine, null);
                     line = line.Replace("Classe", null);
                     // -- .. Alors on affecte cette ligne a la liste --
-                    listeExtractPDF.Add(line);
+                    listeExtractPdf.Add(line);
                 }
 
                 // -- La position de départ se place au début de la ligne suivante --
                 posDepart = posFin + 1;
                 // -- La position de fin se place au saut de ligne de la ligne suivante --
-                posFin = pdftext.IndexOf("\r\n", posDepart + 1);
+                posFin = pdftext.IndexOf("\r\n", posDepart + 1, StringComparison.Ordinal);
                 // -- Toujours vrai sauf si erreur --
             }
 
-            return listeExtractPDF;
+            return listeExtractPdf;
         }
 
+        /// <summary>
+        /// Cette fonction permet de renommer les edt
+        /// </summary>
+        /// <param name="pdf"></param>
         public static void renameEdt(string pdf)
         {
             var name = new List<string>();
 
             if (Globale.Classe == 7)
-                name = getClassePDF(getTextePdf(pdf));
+                name = getClassePdf(getTextePdf(pdf));
             else
                 name = getNomPrenomPdf(getTextePdf(pdf));
             MessageBox.Show(new Form {TopMost = true}, name.Count
                                                        + " emplois de temps ont été importés");
-            var d = new DirectoryInfo(outputPath);
+            var d = new DirectoryInfo(_outputPath);
             var infos = d.GetFiles();
 
             for (var i = 0; i < infos.Length; i++)
@@ -196,18 +218,25 @@ namespace CartesAcces
             }
         }
 
+        /// <summary>
+        /// Cette fonction permet de récupérer la date de la dernière importation
+        /// </summary>
+        /// <returns></returns>
         public static string getDateFile()
         {
             var dateFile = "Aucune Importation";
-            var dir = new DirectoryInfo(outputPath);
-            if (dir.Exists) dateFile = dir.CreationTime.ToString();
+            var dir = new DirectoryInfo(_outputPath);
+            if (dir.Exists) dateFile = dir.CreationTime.ToString(CultureInfo.InvariantCulture);
 
             return dateFile;
         }
 
+        /// <summary>
+        /// Cette fonction permet de remettre les valeurs par défaut
+        /// </summary>
         public static void valeurParDefault()
         {
-            outputPath = "./data/image";
+            _outputPath = "./data/image";
         }
     }
 }

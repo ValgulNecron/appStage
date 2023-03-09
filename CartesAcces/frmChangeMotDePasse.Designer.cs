@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace CartesAcces
 {
-    partial class frmChangeMotDePasse
+    partial class FrmChangeMotDePasse
     {
         /// <summary>
         /// Required designer variable.
@@ -125,7 +125,7 @@ namespace CartesAcces
             this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.nouveauMdp);
             this.Controls.Add(this.ancienMdp);
-            this.Name = "frmChangeMotDePasse";
+            this.Name = "FrmChangeMotDePasse";
             this.Text = "Changer le mot de passe";
             this.Load += new System.EventHandler(this.frmChangeMotDePasse_Load);
             this.ResumeLayout(false);

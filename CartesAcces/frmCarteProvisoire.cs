@@ -7,9 +7,15 @@ using CarteAccesLib;
 
 namespace CartesAcces
 {
-    public partial class frmCarteProvisoire : Form
+    /// <summary>
+    ///    Permet de créer une carte provisoire
+    /// </summary>
+    public partial class FrmCarteProvisoire : Form
     {
-        public frmCarteProvisoire() // -- Main, constructeur de l'application --
+        /// <summary>
+        ///    Constructeur de la classe
+        /// </summary>
+        public FrmCarteProvisoire() // -- Main, constructeur de l'application --
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
@@ -359,7 +365,7 @@ namespace CartesAcces
             Globale.Cas = 5;
             Globale.Actuelle = this;
             // backgroundWorker
-            var frmWait = new barDeProgression();
+            var frmWait = new BarDeProgression();
             frmWait.StartPosition = FormStartPosition.CenterScreen;
             frmWait.Show();
             frmWait.TopMost = true;
