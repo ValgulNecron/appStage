@@ -13,8 +13,8 @@ namespace CartesAcces
         [STAThread]
         private static void Main()
         {
-            Globale.VersionDate = "16/02/2023";
-            Globale.Version = "1.4.3";
+            Globale.VersionDate = "09/03/2023";
+            Globale.Version = "1.4.5";
             // App code goes here. Dispose the SDK before exiting to flush events.
             try
             {
@@ -32,7 +32,7 @@ namespace CartesAcces
 
             // mettre les fonction et le code a execute au lancement de l'application
             // avant de lancer le formulaire
-            Globale.Accueil = new frmAccueil();
+            Globale.Accueil = new FrmAccueil();
             Application.Run(Globale.Accueil);
         }
     }

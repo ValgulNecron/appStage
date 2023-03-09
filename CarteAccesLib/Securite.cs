@@ -3,13 +3,25 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using CartesAcces;
 
-namespace CartesAcces
+namespace CarteAccesLib
 {
+    /// <summary>
+    /// Classe de sécurité
+    /// </summary>
     public static class Securite
     {
+        /// <summary>
+        /// Chemin du dossier de données
+        /// </summary>
         public static string PathFolder { get; set; } = "./data/";
 
+        /// <summary>
+        /// Chemin du fichier de donnéesx   
+        /// </summary>
+        /// <param name="motDePasse"></param>
+        /// <returns></returns>
         public static string creationHash(string motDePasse)
         {
             //on crée le sel qui permettra au mot de passe d'avoir un hash unique et différent à chaque fois meme si le mot de passe est le meme
@@ -30,6 +42,13 @@ namespace CartesAcces
             return savedPasswordHash;
         }
 
+        /// <summary>
+        /// Verifie le hash du mot de passe entré avec le hash du mot de passe enregistré
+        /// </summary>
+        /// <param name="motDePasse"></param>
+        /// <param name="savedPasswordHash"></param>
+        /// <returns></returns>
+        /// <exception cref="UnauthorizedAccessException"></exception>
         public static bool verificationHash(string motDePasse, string savedPasswordHash)
         {
             //on recupere le hash et le sel du mot de passe enregistréw
@@ -49,6 +68,11 @@ namespace CartesAcces
             return true;
         }
 
+        /// <summary>
+        /// Verifie si le mot de passe entré respecte les prérequis
+        /// </summary>
+        /// <param name="motDePasse"></param>
+        /// <returns></returns>
         public static bool validationPrerequisMdp(string motDePasse)
         {
             if (motDePasse.Length <= 12) return false;
@@ -74,9 +98,10 @@ namespace CartesAcces
             return false;
         }
 
-        /*
-         * Chiffre le dossier data
-         */
+
+        /// <summary>
+        /// Chiffre le dossier data
+        /// </summary>
         public static void chiffrerDossier()
         {
             if (!Directory.Exists(PathFolder))
@@ -85,15 +110,9 @@ namespace CartesAcces
                 return;
             }
 
-            if (Globale.MotsDePasseChifffrement == null)
+            if (Globale.MotsDePasseChifffrement == null && Globale.MotsDePasseChifffrement == "")
             {
                 MessageBox.Show("Le mot de passe de chiffrement n'est pas renseigné");
-                return;
-            }
-
-            if (Globale.MotsDePasseChifffrement == "")
-            {
-                MessageBox.Show("Le mot de passe de chiffrement est vide");
                 return;
             }
 
@@ -102,37 +121,38 @@ namespace CartesAcces
             {
                 foreach (var file in dir.GetFiles())
                 {
-                    var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
-                    if (extension != ".enc")
-                    {
-                        chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
+                    chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
                         file.Delete();
-                    }
                 }
 
                 foreach (var dir2 in dir.GetDirectories())
-                foreach (var file in dir2.GetFiles())
                 {
-                    var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
-                    if (extension != ".enc")
+                    foreach (var file in dir2.GetFiles())
                     {
                         chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
-                        file.Delete();
+                            file.Delete();
                     }
                 }
             }
 
             MessageBox.Show("Chiffrement terminé");
         }
-
-        /*
-         * Chiffre un fichier
-         * @param inputFile : chemin du fichier à chiffrer
-         * @param outputFile : chemin du fichier chiffré
-         * @param password : mot de passe pour le chiffrement
-         */
+        
+        /// <summary>
+        /// Chiffre un fichier
+        /// </summary>
+        /// <param name="inputFile"></param>
+        /// <param name="outputFile"></param>
+        /// <param name="password"></param>
         public static void chiffrerFichier(string inputFile, string outputFile, string password)
         {
+            var file = new FileInfo(inputFile);
+            var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+            if (extension == ".enc")
+            {
+                return;
+            }
+
             var salt = new byte[16];
             new RNGCryptoServiceProvider().GetBytes(salt);
             var passwordBytes = Encoding.UTF8.GetBytes(password);
@@ -164,6 +184,9 @@ namespace CartesAcces
             }
         }
 
+        /// <summary>
+        /// Dechiffre le dossier data
+        /// </summary>
         public static void dechiffrerDossier()
         {
             var directory = new DirectoryInfo(PathFolder);
@@ -182,14 +205,16 @@ namespace CartesAcces
                 }
 
                 foreach (var dir2 in dir.GetDirectories())
-                foreach (var file in dir2.GetFiles())
                 {
-                    var output = file.FullName.Substring(0, file.FullName.Length - 4);
-                    var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
-                    if (extension == ".enc")
+                    foreach (var file in dir2.GetFiles())
                     {
-                        dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
-                        file.Delete();
+                        var output = file.FullName.Substring(0, file.FullName.Length - 4);
+                        var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
+                        if (extension == ".enc")
+                        {
+                            dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
+                            file.Delete();
+                        }
                     }
                 }
             }
@@ -197,6 +222,12 @@ namespace CartesAcces
             MessageBox.Show(new Form {TopLevel = true, TopMost = true}, "Déchiffrement terminé");
         }
 
+        /// <summary>
+        /// Dechiffre un fichier
+        /// </summary>
+        /// <param name="inputFile"></param>
+        /// <param name="outputFile"></param>
+        /// <param name="password"></param>
         public static void dechiffrerFichier(string inputFile, string outputFile, string password)
         {
             var salt = new byte[16];

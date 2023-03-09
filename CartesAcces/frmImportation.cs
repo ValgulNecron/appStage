@@ -7,16 +7,11 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using CarteAcces;
+using CarteAccesLib;
 using LinqToDB;
 
 namespace CartesAcces
 {
-    /*
-     * fenêtre d'imporation des données
-     * elle permet de rediriger vers les fenêtres d'importation des données
-     * elle permet de vérifier si les données sont à jour
-     * elle permet de mettre à jour les données
-     */
     /// <summary>
     ///     fenêtre d'imporation des données
     ///     elle permet de rediriger vers les fenêtres d'importation des données
@@ -71,7 +66,7 @@ namespace CartesAcces
                 if (Globale.CheminTexte.Length > 0)
                 {
                     Globale.Cas = 2;
-                    var frmWait = new barDeProgression();
+                    var frmWait = new BarDeProgression();
                     frmWait.StartPosition = FormStartPosition.CenterScreen;
                     frmWait.Show();
                     frmWait.TopMost = true;
@@ -138,7 +133,7 @@ namespace CartesAcces
             {
                 Globale.CheminPhoto = Chemin.setCheminImportationDossier();
                 Globale.Cas = 4;
-                var frmWait = new barDeProgression();
+                var frmWait = new BarDeProgression();
                 frmWait.StartPosition = FormStartPosition.CenterScreen;
                 frmWait.Show();
                 frmWait.TopMost = true;

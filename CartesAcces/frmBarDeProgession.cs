@@ -8,9 +8,15 @@ using LinqToDB;
 
 namespace CartesAcces
 {
-    public partial class barDeProgression : Form
+    /// <summary>
+    ///    fenetre de progression
+    /// </summary>
+    public partial class BarDeProgression : Form
     {
-        public barDeProgression()
+        /// <summary>
+        ///    Constructeur de la classe
+        /// </summary>
+        public BarDeProgression()
         {
             InitializeComponent();
             TailleControle.setTailleControleTexte(this);

@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class frmCarteParClasseNiveau
+    partial class FrmCarteParClasseNiveau
     {
         /// <summary>
         /// Required designer variable.
@@ -155,7 +155,7 @@ namespace CartesAcces
             this.Controls.Add(this.cbbImprSection);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "frmCarteParClasseNiveau";
+            this.Name = "FrmCarteParClasseNiveau";
             this.Text = "frmCreationCarteParClasse";
             this.Load += new System.EventHandler(this.frmMultiplesCartes_Load);
             this.ResumeLayout(false);

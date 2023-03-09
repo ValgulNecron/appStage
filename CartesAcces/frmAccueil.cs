@@ -3,17 +3,23 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net;
-using System.Threading;
 using System.Windows.Forms;
+using CarteAccesLib;
 using Newtonsoft.Json;
 
 namespace CartesAcces
 {
-    public partial class frmAccueil : Form
+    /// <summary>
+    /// Fenêtre d'accueil
+    /// </summary>
+    public partial class FrmAccueil : Form
     {
-        private Form frmPassword;
+        private Form _frmPassword;
 
-        public frmAccueil()
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        public FrmAccueil()
         {
             InitializeComponent();
             Globale.Accueil = this;
@@ -37,7 +43,11 @@ namespace CartesAcces
             TailleControle.setTailleControleTexte(this);
         }
 
-        public static void OpenChildForm(Form childForm)
+        /// <summary>
+        ///    ouvre une fenetre enfant dans le panel
+        /// </summary>
+        /// <param name="childForm"></param>
+        public static void openChildForm(Form childForm)
         {
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
@@ -64,7 +74,7 @@ namespace CartesAcces
 
             Globale.Actuelle = new FrmConnexion();
             Text = "CARTE D'ACCES - CONNEXION";
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
 
             lblVersion.Text = "version :" + Globale.Version + " du " + Globale.VersionDate;
             var dir = new DirectoryInfo("./data/image");
@@ -92,27 +102,26 @@ namespace CartesAcces
             {
                 MessageBox.Show(exception.Message);
             }
-            
-            var updateThread = new Thread(CheckForUpdate);
-            updateThread.Start();
+
+            CheckForUpdate();
         }
 
         //Création de menu de navigation
 
         private void btnCreerCarte_Click(object sender, EventArgs e)
         {
-            Globale.Actuelle = new frmCarteProvisoire();
+            Globale.Actuelle = new FrmCarteProvisoire();
             Text = "CARTE D'ACCES - CARTE PROVISOIRE";
             FrmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
         {
-            Globale.Actuelle = new frmCarteParClasseNiveau();
+            Globale.Actuelle = new FrmCarteParClasseNiveau();
             Text = "CARTE D'ACCES - CARTE PAR CLASSE";
             FrmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
@@ -120,7 +129,7 @@ namespace CartesAcces
             Globale.Actuelle = new FrmImportation();
             Text = "CARTE D'ACCES - IMPORTATION";
             FrmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
@@ -150,17 +159,17 @@ namespace CartesAcces
 
         private void btnChangeMdp_Click(object sender, EventArgs e)
         {
-            frmPassword?.Close();
-            frmPassword = new frmChangeMotDePasse();
-            frmPassword.Show();
+            _frmPassword?.Close();
+            _frmPassword = new FrmChangeMotDePasse();
+            _frmPassword.Show();
         }
 
         private void btnAfficheListeEleve_Click(object sender, EventArgs e)
         {
-            Globale.Actuelle = new frmCartesParListe();
+            Globale.Actuelle = new FrmCartesParListe();
             Text = "CARTE D'ACCES - CARTE PAR LISTE";
             FrmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -173,38 +182,54 @@ namespace CartesAcces
             Securite.chiffrerDossier();
         }
 
-        private void CheckForUpdate()
+
+        public void CheckForUpdate()
         {
-            using (var client = new WebClient())
+            var client = new WebClient();
+            var currentVersion = Globale.Version;
+            var apiurl = $"https://api.github.com/repos/{Globale.Owner}/{Globale.Repo}/releases/latest";
+            client.Headers.Add("User-Agent", "request");
+            string json = null;
+
+            try
             {
-                client.Headers.Add("User-Agent", "AutoUpdater"); // ajout de l'en-tête requis pour utiliser l'API GitHub
+                json = client.DownloadString(apiurl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Une erreur s'est produite lors de la récupération de la dernière version depuis GitHub. Erreur : " +
+                    ex.Message, "Erreur de récupération de la dernière version", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
 
-                var response = client.DownloadString(Globale.RepoUrl); // récupération de la réponse de l'API GitHub
-                dynamic release =
-                    JsonConvert
-                        .DeserializeObject(response); // désérialisation de la réponse en objet dynamique
-
-                string latestVersion = release.tag_name; // récupération de la dernière version
-
-                if (latestVersion != Globale.Version)
+            dynamic release = JsonConvert.DeserializeObject(json);
+            var latestVersion = release.tag_name;
+            if (latestVersion != currentVersion)
+            {
+                var result = MessageBox.Show("Une mise à jour est disponible. Voulez-vous la télécharger maintenant ?",
+                    "Mise à jour disponible", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
                 {
-                    var dialogResult =
-                        MessageBox.Show(
-                            "Une nouvelle version est disponible. Voulez-vous la télécharger et installer la mise à jour ?",
-                            "Mise à jour disponible", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        // Télécharger la dernière version
-                        var tempPath = Path.GetTempPath();
-                        var tempFilePath = Path.Combine(tempPath, Globale.FileName);
-                        client.DownloadFile(Globale.DownloadUrl, tempFilePath);
+                    string dlUrl = release.assets[0].browser_download_url;
+                    var downloadDialog = new DownloadDialog(dlUrl);
+                    downloadDialog.ShowDialog();
 
-                        // Fermer l'application après une courte attente
-                        Thread.Sleep(TimeSpan.FromSeconds(Globale.SecondsToWait));
-                        Process.Start(tempFilePath);
+                    // Récupérer le chemin du fichier de mise à jour
+                    var updateFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Release.zip");
+                    // Créer une nouvelle instance de ProcessStartInfo pour configurer le lancement de PowerShell
+                    var psi = new ProcessStartInfo();
+                    psi.FileName = "powershell.exe";
+                    psi.Arguments =
+                        $"-Command \"Expand-Archive -Path '{updateFilePath}' -DestinationPath '{AppDomain.CurrentDomain.BaseDirectory}' -Force ; Start-Process '{Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CartesAcces.exe")}'\"";
+                    psi.UseShellExecute = false;
 
-                        Application.Exit();
-                    }
+                    // Lancer le processus PowerShell
+                    Process.Start(psi);
+
+                    // Fermer l'application
+                    Application.Exit();
                 }
             }
         }

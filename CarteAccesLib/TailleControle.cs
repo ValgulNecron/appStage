@@ -4,10 +4,17 @@ using System.Linq;
 using System.Windows.Forms;
 using Google.Protobuf.Reflection;
 
-namespace CartesAcces
+namespace CarteAccesLib
 {
+    /// <summary>
+    /// Classe permettant de définir la taille des contrôles
+    /// </summary>
     public static class TailleControle
     {
+        /// <summary>
+        /// Cette fonction permet de définir la taille des contrôles de type TextBox
+        /// </summary>
+        /// <param name="form"></param>
         public static void setTailleControleTexte(Form form)
         {
             var policeParDefault = new Font("Microsoft Sans Serif", 10);
@@ -22,6 +29,10 @@ namespace CartesAcces
             }
         }
 
+        /// <summary>
+        /// Cette fonction permet de définir la taille des contrôles de type Label
+        /// </summary>
+        /// <param name="form"></param>
         public static void setTailleControleLabel(Form form)
         {
             var policeParDefault = new Font("Microsoft Sans Serif", 10);
@@ -35,6 +46,10 @@ namespace CartesAcces
             }
         }
 
+        /// <summary>
+        /// Cette fonction permet de définir la taille des contrôles de type Button
+        /// </summary>
+        /// <param name="form"></param>
         public static void setTailleBouton(Form form)
         {
             var policeParDefault = new Font("Microsoft Sans Serif", 10);

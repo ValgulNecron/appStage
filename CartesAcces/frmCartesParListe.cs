@@ -5,22 +5,36 @@ using CarteAccesLib;
 
 namespace CartesAcces
 {
-    /*
-     * Permet de créer des cartes d'accès pour une liste d'élèves personnalisée
-     * 
-     */
-    public partial class frmCartesParListe : Form
+    /// <summary>
+    /// Permet de créer des cartes d'accès pour une liste d'élèves personnalisée
+    /// </summary>
+    public partial class FrmCartesParListe : Form
     {
+        /// <summary>
+        /// Liste des élèves
+        /// </summary>
         public static List<Eleve> listeEleve;
+        /// <summary>
+        /// Liste des élèves sélectionnés
+        /// </summary>
         public static List<string> eleveSelectionner;
+        /// <summary>
+        /// Liste des noms et prénoms des élèves
+        /// </summary>
         public static List<string> nomPrenomEleve;
 
-        public frmCartesParListe()
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        public FrmCartesParListe()
         {
             InitializeComponent();
             Couleur.setCouleurFenetre(this);
         }
 
+        /// <summary>
+        /// Convertit la liste des élèves en une liste de string
+        /// </summary>
         public static void eleveEnString()
         {
             foreach (var eleve in listeEleve)
@@ -112,7 +126,7 @@ namespace CartesAcces
             try
             {
                 var pattern = ".*" + txtRecherche.Text + ".*";
-                var el = Trie.recherche(pattern, listeEleve);
+                var el = XTrie.recherche(pattern, listeEleve);
                 if (el != null)
                 {
                     lblCount.Text = el.Count.ToString();
@@ -131,6 +145,11 @@ namespace CartesAcces
             }
         }
 
+        /// <summary>
+        /// Convertit une liste de string en une liste d'élèves
+        /// </summary>
+        /// <param name="convertir"></param>
+        /// <returns></returns>
         public static List<Eleve> convertionListeStringEleveEnEleve(List<string> convertir)
         {
             var e = new List<Eleve>();

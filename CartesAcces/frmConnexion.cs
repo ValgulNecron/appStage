@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
+using CarteAccesLib;
 using LinqToDB;
 
 namespace CartesAcces
@@ -118,13 +119,13 @@ namespace CartesAcces
                             Securite.dechiffrerDossier();
 
                             Globale.Cas = 1;
-                            var frmWait = new barDeProgression();
+                            var frmWait = new BarDeProgression();
                             frmWait.StartPosition = FormStartPosition.CenterScreen;
                             frmWait.Show();
                             frmWait.TopMost = true;
 
                             Globale.Actuelle = new FrmImportation();
-                            frmAccueil.OpenChildForm(Globale.Actuelle);
+                            FrmAccueil.openChildForm(Globale.Actuelle);
                         }
                         else
                         {

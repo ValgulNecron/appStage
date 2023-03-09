@@ -81,7 +81,7 @@ namespace CartesAcces
                     Globale.EstConnecter = false;
                     Globale.Actuelle = new FrmConnexion();
                     Globale.Accueil.Invoke(
-                        new MethodInvoker(delegate { frmAccueil.OpenChildForm(Globale.Actuelle); }));
+                        new MethodInvoker(delegate { FrmAccueil.openChildForm(Globale.Actuelle); }));
                 }
         }
     }

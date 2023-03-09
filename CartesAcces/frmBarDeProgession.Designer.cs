@@ -1,7 +1,7 @@
 ﻿
 namespace CartesAcces
 {
-    partial class barDeProgression
+    partial class BarDeProgression
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace CartesAcces
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(barDeProgression));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarDeProgression));
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -69,7 +69,7 @@ namespace CartesAcces
             this.Location = new System.Drawing.Point(600, 100);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "barDeProgression";
+            this.Name = "BarDeProgression";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Chargement";
             this.Load += new System.EventHandler(this.progressBarForm_Load);
