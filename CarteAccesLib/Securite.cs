@@ -134,8 +134,6 @@ namespace CarteAccesLib
                     }
                 }
             }
-
-            MessageBox.Show("Chiffrement terminé");
         }
         
         /// <summary>
