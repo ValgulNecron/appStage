@@ -103,7 +103,7 @@ namespace CartesAcces
                 MessageBox.Show(exception.Message);
             }
 
-            CheckForUpdate();
+            //CheckForUpdate();
         }
 
         //Création de menu de navigation
@@ -232,6 +232,8 @@ namespace CartesAcces
                     Application.Exit();
                 }
             }
+            FormBorderStyle = default;
+            
         }
     }
 }
