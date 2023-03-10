@@ -153,7 +153,7 @@ namespace CartesAcces
         public static void qrCodeFace(PictureBox pbCarteFace)
         {
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            var bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
+            var bmpOriginal = QrCode.creationQRCode(etab.UrlEtablissement);
             var bmpFinal = new Bitmap(bmpOriginal, new Size(220, 220));
 
             var objGraphique = Graphics.FromImage(pbCarteFace.Image);
@@ -354,7 +354,7 @@ namespace CartesAcces
         public static void qrCodeFace(Graphics objGraphique)
         {
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            var bmpOriginal = QRCode.creationQRCode(etab.UrlEtablissement);
+            var bmpOriginal = QrCode.creationQRCode(etab.UrlEtablissement);
             var bmpFinal = new Bitmap(bmpOriginal, new Size(300, 300));
 
             objGraphique.DrawImage(bmpFinal, new Point(1400, 80));
