@@ -21,6 +21,7 @@ namespace CartesAcces
             InitializeComponent();
             TailleControle.setTailleControleTexte(this);
             Couleur.setCouleurFenetre(this);
+            Application.EnableVisualStyles();
         }
 
         private void progressBarForm_Load(object sender, EventArgs e)
