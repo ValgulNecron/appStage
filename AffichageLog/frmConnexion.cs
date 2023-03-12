@@ -71,7 +71,7 @@ namespace AffichageLog
 
                 try
                 {
-                    if (Securite.verificationHash(txtMotDePasse.Text, user?.Hash))
+                    if (Securite.VerificationHash(txtMotDePasse.Text, user?.Hash))
                     {
                         Globale.EstConnecter = true;
                         Globale.NomUtilisateur = txtIdentifiant.Text;

@@ -179,7 +179,7 @@ namespace CartesAcces
 
         private void on_closing(object sender, FormClosingEventArgs e)
         {
-            Securite.chiffrerDossier();
+            Securite.ChiffrerDossier();
         }
 
 

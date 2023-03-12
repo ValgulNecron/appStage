@@ -71,7 +71,7 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            Securite.dechiffrerDossier();
+            Securite.DechiffrerDossier();
             ReadCsv.setLesEleves(Chemin.CheminListeEleve);
             Eleve.setLesClasses();
         }

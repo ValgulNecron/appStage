@@ -22,7 +22,7 @@ namespace CarteAccesLib
         /// </summary>
         /// <param name="motDePasse"></param>
         /// <returns></returns>
-        public static string creationHash(string motDePasse)
+        public static string CreationHash(string motDePasse)
         {
             //on crée le sel qui permettra au mot de passe d'avoir un hash unique et différent à chaque fois meme si le mot de passe est le meme
             var salt = new byte[16];
@@ -49,7 +49,7 @@ namespace CarteAccesLib
         /// <param name="savedPasswordHash"></param>
         /// <returns></returns>
         /// <exception cref="UnauthorizedAccessException"></exception>
-        public static bool verificationHash(string motDePasse, string savedPasswordHash)
+        public static bool VerificationHash(string motDePasse, string savedPasswordHash)
         {
             //on recupere le hash et le sel du mot de passe enregistréw
             var hashBytes = Convert.FromBase64String(savedPasswordHash);
@@ -71,10 +71,11 @@ namespace CarteAccesLib
         /// <summary>
         /// Verifie si le mot de passe entré respecte les prérequis
         /// </summary>
-        /// <param name="motDePasse"></param>
+        /// <param name="motDePasse">mot de passe a verifier</param>
         /// <returns></returns>
-        public static bool validationPrerequisMdp(string motDePasse)
+        public static bool ValidationPrerequisMdp(string motDePasse)
         {
+            if (string.IsNullOrEmpty(motDePasse)) return false;
             if (motDePasse.Length <= 12) return false;
 
             var majuscule = false;
@@ -102,7 +103,7 @@ namespace CarteAccesLib
         /// <summary>
         /// Chiffre le dossier data
         /// </summary>
-        public static void chiffrerDossier()
+        public static void ChiffrerDossier()
         {
             if (!Directory.Exists(PathFolder))
             {
@@ -121,7 +122,7 @@ namespace CarteAccesLib
             {
                 foreach (var file in dir.GetFiles())
                 {
-                    chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
+                    ChiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
                         file.Delete();
                 }
 
@@ -129,7 +130,7 @@ namespace CarteAccesLib
                 {
                     foreach (var file in dir2.GetFiles())
                     {
-                        chiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
+                        ChiffrerFichier(file.FullName, file.FullName + ".enc", Globale.MotsDePasseChifffrement);
                             file.Delete();
                     }
                 }
@@ -142,7 +143,7 @@ namespace CarteAccesLib
         /// <param name="inputFile"></param>
         /// <param name="outputFile"></param>
         /// <param name="password"></param>
-        public static void chiffrerFichier(string inputFile, string outputFile, string password)
+        public static void ChiffrerFichier(string inputFile, string outputFile, string password)
         {
             var file = new FileInfo(inputFile);
             var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
@@ -185,7 +186,7 @@ namespace CarteAccesLib
         /// <summary>
         /// Dechiffre le dossier data
         /// </summary>
-        public static void dechiffrerDossier()
+        public static void DechiffrerDossier()
         {
             var directory = new DirectoryInfo(PathFolder);
 
@@ -197,7 +198,7 @@ namespace CarteAccesLib
                     var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
                     if (extension == ".enc")
                     {
-                        dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
+                        DechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
                         file.Delete();
                     }
                 }
@@ -210,7 +211,7 @@ namespace CarteAccesLib
                         var extension = file.FullName.Substring(file.FullName.Length - 4, 4);
                         if (extension == ".enc")
                         {
-                            dechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
+                            DechiffrerFichier(file.FullName, output, Globale.MotsDePasseChifffrement);
                             file.Delete();
                         }
                     }
@@ -226,7 +227,7 @@ namespace CarteAccesLib
         /// <param name="inputFile"></param>
         /// <param name="outputFile"></param>
         /// <param name="password"></param>
-        public static void dechiffrerFichier(string inputFile, string outputFile, string password)
+        public static void DechiffrerFichier(string inputFile, string outputFile, string password)
         {
             var salt = new byte[16];
             var iv = new byte[16];
