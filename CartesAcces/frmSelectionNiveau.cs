@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using CarteAccesLib;
 
 namespace CartesAcces
 {
@@ -64,7 +65,7 @@ namespace CartesAcces
             {
                 try
                 {
-                    Edition.importCarteFace(Globale.CheminFaceCarte);
+                    Edition.ImportCarteFace(Globale.CheminFaceCarte);
                     MessageBox.Show(new Form {TopMost = true}, "Import réussi");
                 }
                 catch (Exception err)

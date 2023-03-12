@@ -13,7 +13,7 @@ namespace AffichageLog
         {
             InitializeComponent();
             Globale.Accueil = this;
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
             if (Globale.EstEnModeSombre)
             {
                 pnlMenu.BackColor = Color.FromArgb(255, Globale.CouleurBandeauxSombre[0],
@@ -78,8 +78,8 @@ namespace AffichageLog
         {
             Globale.EstEnModeSombre = !Globale.EstEnModeSombre;
 
-            Couleur.setCouleurFenetre(Globale.Accueil);
-            Couleur.setCouleurFenetre(Globale.Actuelle);
+            Couleur.SetCouleurFenetre(Globale.Accueil);
+            Couleur.SetCouleurFenetre(Globale.Actuelle);
             foreach (Control control in Controls)
                 if (control is Panel && control.Name == "pnlMenu")
                 {

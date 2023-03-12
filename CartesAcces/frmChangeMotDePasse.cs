@@ -26,7 +26,7 @@ namespace CartesAcces
         public FrmChangeMotDePasse()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
         }
 
         private void frmChangeMotDePasse_Load(object sender, EventArgs e)

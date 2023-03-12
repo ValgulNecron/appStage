@@ -30,7 +30,7 @@ namespace CartesAcces
         public FrmConnexion()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
 
             VisibleChanged += on_Visibility_Change;
             txtMotDePasse.PasswordChar = '*';
@@ -209,7 +209,7 @@ namespace CartesAcces
         {
             try
             {
-                ClassSql.init();
+                ClassSql.Init();
                 Globale.ConnectionBdd = true;
                 var user = ClassSql.Db.GetTable<Utilisateurs>()
                     .FirstOrDefault();

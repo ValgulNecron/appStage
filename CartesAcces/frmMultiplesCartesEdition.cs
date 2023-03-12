@@ -24,7 +24,7 @@ namespace CartesAcces
         public FrmMultiplesCartesEdition()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
             labelEnCoursValidation.Visible = false;
             labelEnCoursValidation.ForeColor = Color.Red;
         }
@@ -195,7 +195,7 @@ namespace CartesAcces
                     Globale.ListeEleveImpr.Add(eleve);
                 }
 
-                var cheminImpressionFinal = Chemin.setCheminImportationDossier();
+                var cheminImpressionFinal = Chemin.SetCheminImportationDossier();
                 if (cheminImpressionFinal != "failed") labelEnCoursValidation.Visible = true;
 
                 Globale.LblCount = lblCompteur;

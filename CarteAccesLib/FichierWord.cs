@@ -131,9 +131,9 @@ namespace CarteAccesLib
                 // -- Les élèves sont gérés deux par deux --
 
                 // -- Carte Face : 1/2 Eleve --
-                Edition.carteFace(listeEleve[compt], chemin);
+                Edition.CarteFace(listeEleve[compt], chemin);
                 // -- Carte Face : 2/2 Eleve --
-                Edition.carteFace(listeEleve[compt - 1], chemin);
+                Edition.CarteFace(listeEleve[compt - 1], chemin);
 
                 // -- Ajout des deux fichier PNG au nouveau document Word --
                 var shapeCarteFace1 = fichierWord.ActiveDocument.Shapes.AddPicture(
@@ -157,11 +157,11 @@ namespace CarteAccesLib
                 // ------------------------------------------------------------------
 
                 // -- Carte arriere : 1/2 Eleve --
-                Edition.carteArriere(listeEleve[compt], pbCarteArriere);
+                Edition.CarteArriere(listeEleve[compt], pbCarteArriere);
                 Photo.VerifPhotoEleve(listeEleve[compt], pbPhoto);
                 Photo.ProportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt], chemin);
                 // -- Carte arriere : 2/2 Eleve --
-                Edition.carteArriere(listeEleve[compt - 1], pbCarteArriere);
+                Edition.CarteArriere(listeEleve[compt - 1], pbCarteArriere);
                 Photo.VerifPhotoEleve(listeEleve[compt - 1], pbPhoto);
                 Photo.ProportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 

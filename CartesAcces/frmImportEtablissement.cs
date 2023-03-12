@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
+using CarteAccesLib;
 using LinqToDB;
 
 namespace CartesAcces
@@ -26,7 +27,7 @@ namespace CartesAcces
         public FrmImportEtablissement()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
         }
 
         private void btnValider_Click(object sender, EventArgs e)
@@ -48,10 +49,10 @@ namespace CartesAcces
             etablissement.NumeroTelephoneEtablissement = txtTelEtablissement.Text;
             etablissement.NumeroRueEtablissement = Convert.ToInt32(txtNumRueEtablissement.Text);
             etablissement.UrlEtablissement = textBox1.Text;
-            etablissement.CodeHexa6eme = GetCodeHexa6Eme();
-            etablissement.CodeHexa5eme = GetCodeHexa5Eme();
-            etablissement.CodeHexa4eme = GetCodeHexa4Eme();
-            etablissement.CodeHexa3eme = GetCodeHexa3Eme();
+            etablissement.CodeHexa6Eme = GetCodeHexa6Eme();
+            etablissement.CodeHexa5Eme = GetCodeHexa5Eme();
+            etablissement.CodeHexa4Eme = GetCodeHexa4Eme();
+            etablissement.CodeHexa3Eme = GetCodeHexa3Eme();
             etablissement.Bordure = cbBordure.Checked;
             ClassSql.Db.InsertOrReplace(etablissement);
             var macAddress = string.Empty;
@@ -92,10 +93,10 @@ namespace CartesAcces
                 txtNumRueEtablissement.Text = etaDebut.NumeroRueEtablissement.ToString();
                 textBox1.Text = etaDebut.UrlEtablissement;
                 cbBordure.Checked = etaDebut.Bordure;
-                var codeHexa6Eme = etaDebut.CodeHexa6eme;
-                var codeHexa5Eme = etaDebut.CodeHexa5eme;
-                var codeHexa4Eme = etaDebut.CodeHexa4eme;
-                var codeHexa3Eme = etaDebut.CodeHexa3eme;
+                var codeHexa6Eme = etaDebut.CodeHexa6Eme;
+                var codeHexa5Eme = etaDebut.CodeHexa5Eme;
+                var codeHexa4Eme = etaDebut.CodeHexa4Eme;
+                var codeHexa3Eme = etaDebut.CodeHexa3Eme;
                 foreach (var variable in gb6eme.Controls)
                     if (variable is RadioButton)
                     {

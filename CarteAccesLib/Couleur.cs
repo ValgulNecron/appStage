@@ -1,12 +1,20 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using CartesAcces;
 
-namespace CartesAcces
+namespace CarteAccesLib
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class Couleur
     {
-        public static void setCouleurFenetre(Form fenetre)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fenetre"></param>
+        public static void SetCouleurFenetre(Form fenetre)
         {
             if (Globale.EstEnModeSombre)
                 fenetre.BackColor = Color.FromArgb(255, Globale.CouleurDeFondSombre[0],
@@ -23,22 +31,26 @@ namespace CartesAcces
                 var textBox = controle as TextBox;
                 var listBox = controle as ListBox;
                 if (panel != null)
-                    setCouleurPanel((Panel) controle);
+                    SetCouleurPanel((Panel) controle);
                 else if (groupBox != null)
-                    setCouleurGroupeBox((GroupBox) controle);
+                    SetCouleurGroupeBox((GroupBox) controle);
 
                 else if (button != null)
-                    setCouleurBouton((Button) controle);
+                    SetCouleurBouton((Button) controle);
                 else if (textBox != null)
-                    setCouleurTextBox((TextBox) controle);
+                    SetCouleurTextBox((TextBox) controle);
                 else if (listBox != null)
-                    setCouleurListBox((ListBox) controle);
+                    SetCouleurListBox((ListBox) controle);
                 else
-                    setCouleurAutre(controle);
+                    SetCouleurAutre(controle);
             }
         }
 
-        public static void setCouleurPanel(Panel panel)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="panel"></param>
+        public static void SetCouleurPanel(Panel panel)
         {
             foreach (Control controle in panel.Controls)
             {
@@ -48,22 +60,26 @@ namespace CartesAcces
                 var textBox = controle as TextBox;
                 var listBox = controle as ListBox;
                 if (panel2 != null)
-                    setCouleurPanel((Panel) controle);
+                    SetCouleurPanel((Panel) controle);
                 else if (groupBox != null)
-                    setCouleurGroupeBox((GroupBox) controle);
+                    SetCouleurGroupeBox((GroupBox) controle);
 
                 else if (button != null)
-                    setCouleurBouton((Button) controle);
+                    SetCouleurBouton((Button) controle);
                 else if (textBox != null)
-                    setCouleurTextBox((TextBox) controle);
+                    SetCouleurTextBox((TextBox) controle);
                 else if (listBox != null)
-                    setCouleurListBox((ListBox) controle);
+                    SetCouleurListBox((ListBox) controle);
                 else
-                    setCouleurAutre(controle);
+                    SetCouleurAutre(controle);
             }
         }
 
-        public static void setCouleurGroupeBox(GroupBox groupeBox)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="groupeBox"></param>
+        public static void SetCouleurGroupeBox(GroupBox groupeBox)
         {
             foreach (Control controle in groupeBox.Controls)
             {
@@ -73,22 +89,26 @@ namespace CartesAcces
                 var textBox = controle as TextBox;
                 var listBox = controle as ListBox;
                 if (panel != null)
-                    setCouleurPanel((Panel) controle);
+                    SetCouleurPanel((Panel) controle);
                 else if (groupBox != null)
-                    setCouleurGroupeBox((GroupBox) controle);
+                    SetCouleurGroupeBox((GroupBox) controle);
 
                 else if (button != null)
-                    setCouleurBouton((Button) controle);
+                    SetCouleurBouton((Button) controle);
                 else if (textBox != null)
-                    setCouleurTextBox((TextBox) controle);
+                    SetCouleurTextBox((TextBox) controle);
                 else if (listBox != null)
-                    setCouleurListBox((ListBox) controle);
+                    SetCouleurListBox((ListBox) controle);
                 else
-                    setCouleurAutre(controle);
+                    SetCouleurAutre(controle);
             }
         }
 
-        public static void setCouleurBouton(Button btn)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="btn"></param>
+        public static void SetCouleurBouton(Button btn)
         {
             if (Globale.EstEnModeSombre)
             {
@@ -118,7 +138,11 @@ namespace CartesAcces
             }
         }
 
-        public static void setCouleurAutre(Control controle)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="controle"></param>
+        public static void SetCouleurAutre(Control controle)
         {
             if (Globale.EstEnModeSombre)
                 controle.ForeColor = Color.FromArgb(255, Globale.CouleurDuTexteSombre[0],
@@ -128,7 +152,11 @@ namespace CartesAcces
                     Globale.CouleurDuTexteclaire[1], Globale.CouleurDuTexteclaire[2]);
         }
 
-        public static void setCouleurTextBox(TextBox txt)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="txt"></param>
+        public static void SetCouleurTextBox(TextBox txt)
         {
             txt.BorderStyle = BorderStyle.None;
             if (Globale.EstEnModeSombre)
@@ -147,7 +175,11 @@ namespace CartesAcces
             }
         }
 
-        public static void setCouleurListBox(ListBox lst)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lst"></param>
+        public static void SetCouleurListBox(ListBox lst)
         {
             lst.BorderStyle = BorderStyle.None;
             if (Globale.EstEnModeSombre)
@@ -166,6 +198,11 @@ namespace CartesAcces
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public static void changement_state_btn(object sender, EventArgs e)
         {
             Button btn;
@@ -178,7 +215,7 @@ namespace CartesAcces
                 return;
             }
 
-            setCouleurBouton(btn);
+            SetCouleurBouton(btn);
         }
     }
 }

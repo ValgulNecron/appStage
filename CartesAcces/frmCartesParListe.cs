@@ -29,7 +29,7 @@ namespace CartesAcces
         public FrmCartesParListe()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
         }
 
         /// <summary>

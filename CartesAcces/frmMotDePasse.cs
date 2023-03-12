@@ -51,7 +51,7 @@ namespace CartesAcces
 
         private void FrmMotDePasse_Load(object sender, EventArgs e)
         {
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
         }
     }
 }

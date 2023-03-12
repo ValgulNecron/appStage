@@ -20,7 +20,7 @@ namespace CartesAcces
         public FrmCreationUtilisateur()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
         }
 
         private void btValid_Click(object sender, EventArgs e)

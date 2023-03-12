@@ -25,7 +25,7 @@ namespace CartesAcces
         public FrmImportation()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
             //TailleControle.setTailleControleTexte(this);
             //TailleControle.setTailleControleLabel(this);
             //TailleControle.setTailleBouton(this);
@@ -59,7 +59,7 @@ namespace CartesAcces
             try
             {
                 //lblDateListeEleve = Globale._lblDate;
-                Globale.CheminTexte = Chemin.setCheminImportationFichierExcel();
+                Globale.CheminTexte = Chemin.SetCheminImportationFichierExcel();
                 Globale.Actuelle = new FrmImportation(); //
                 OpenChildForm(Globale.Actuelle); //
                 if (Globale.CheminTexte.Length > 0)
@@ -98,7 +98,7 @@ namespace CartesAcces
             try
             {
                 Globale.CheminEdtClassique = "./data/image/classes/";
-                Globale.CheminPdf = Chemin.setCheminImportationFichierPdf();
+                Globale.CheminPdf = Chemin.SetCheminImportationFichierPdf();
                 Globale.PasDeBar = false;
                 var frmSelectSection = new frmSelectNiveau();
                 frmSelectSection.StartPosition = FormStartPosition.CenterScreen;
@@ -130,7 +130,7 @@ namespace CartesAcces
         {
             try
             {
-                Globale.CheminPhoto = Chemin.setCheminImportationDossier();
+                Globale.CheminPhoto = Chemin.SetCheminImportationDossier();
                 Globale.Cas = 4;
                 var frmWait = new BarDeProgression();
                 frmWait.StartPosition = FormStartPosition.CenterScreen;

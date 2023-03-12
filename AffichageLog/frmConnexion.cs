@@ -21,7 +21,7 @@ namespace AffichageLog
         public frmConnexion()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
 
             VisibleChanged += on_Visibility_Change;
             txtMotDePasse.PasswordChar = '*';

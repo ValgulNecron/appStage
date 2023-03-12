@@ -17,7 +17,7 @@ namespace CartesAcces
         public FrmCarteProvisoire() // -- Main, constructeur de l'application --
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
         }
 
         private void ChangementTexte(object sender, EventArgs e)
@@ -25,31 +25,31 @@ namespace CartesAcces
             var prenom = txtPrenom.Text;
             var nom = txtNom.Text;
 
-            Edition.fondCarteNiveau(pbCarteFace, cbbSection);
+            Edition.FondCarteNiveau(pbCarteFace, cbbSection);
 
             if (nom.Length < 15)
             {
                 var font = new Font("Calibri", 28, FontStyle.Bold);
-                Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
+                Edition.DessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
                 var font = new Font("Calibri", 25, FontStyle.Bold);
-                Edition.dessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
+                Edition.DessineTexteCarteFace(font, 250, 960, nom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
 
             if (prenom.Length < 15)
             {
                 var font = new Font("Calibri", 28, FontStyle.Bold);
-                Edition.dessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
+                Edition.DessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
             else
             {
                 var font = new Font("Calibri", 25, FontStyle.Bold);
-                Edition.dessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
+                Edition.DessineTexteCarteFace(font, 325, 1075, prenom, pbCarteFace, cbbSection);
                 pbCarteFace.Refresh();
             }
 
@@ -60,7 +60,7 @@ namespace CartesAcces
         {
             try
             {
-                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
+                Edition.FondCarteNiveau(pbCarteFace, cbbSection);
                 Edt.AfficheEmploiDuTemps(cbbClasse, pbCarteArriere);
                 txtPrenom.Text = "";
                 txtNom.Text = "";
@@ -91,8 +91,8 @@ namespace CartesAcces
                 pbPhoto.Visible = false;
                 pbPhoto.Image = null;
                 pbPhoto.Location = new Point(5, 5);
-                Edition.classePourNiveau(cbbSection, cbbClasse);
-                Edition.fondCarteNiveau(pbCarteFace, cbbSection);
+                Edition.ClassePourNiveau(cbbSection, cbbClasse);
+                Edition.FondCarteNiveau(pbCarteFace, cbbSection);
             }
             catch (Exception err)
             {
@@ -372,17 +372,17 @@ namespace CartesAcces
 
         private void rdbUlis_CheckedChanged(object sender, EventArgs e)
         {
-            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
+            Edition.CheckMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void rdbUPE2A_CheckedChanged(object sender, EventArgs e)
         {
-            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
+            Edition.CheckMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void rdbRas_CheckedChanged(object sender, EventArgs e)
         {
-            Edition.checkMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
+            Edition.CheckMef(rdbUlis, rdbUPE2A, rdbClRelais, pbCarteFace, cbbSection, btnEdtPerso, txtNom, txtPrenom);
         }
 
         private void btnEdtPerso_Click(object sender, EventArgs e)

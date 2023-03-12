@@ -19,7 +19,7 @@ namespace CartesAcces
         {
             InitializeComponent();
             TailleControle.SetTailleControleTexte(this);
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
             Application.EnableVisualStyles();
         }
 
@@ -77,7 +77,7 @@ namespace CartesAcces
 
         private void cas_2()
         {
-            Edition.importEleves(Globale.CheminTexte);
+            Edition.ImportEleves(Globale.CheminTexte);
             Globale.Actuelle.Invoke(new MethodInvoker(delegate
             {
                 foreach (Control controle in Globale.Actuelle.Controls)
@@ -102,7 +102,7 @@ namespace CartesAcces
             {
                 if (Globale.Classe == 7)
                 {
-                    Edition.importEdtClassique(Globale.CheminEdtClassique);
+                    Edition.ImportEdtClassique(Globale.CheminEdtClassique);
 
                     var frmRognageEdtClassique = new FrmRognageEdtClassique();
                     frmRognageEdtClassique.Show();
@@ -114,7 +114,7 @@ namespace CartesAcces
 
         private void cas_4()
         {
-            Edition.importPhoto(Globale.CheminPhoto);
+            Edition.ImportPhoto(Globale.CheminPhoto);
 
             Globale.Actuelle.Invoke(new MethodInvoker(delegate
             {

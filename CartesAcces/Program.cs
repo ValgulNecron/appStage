@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using CarteAccesLib;
 using LinqToDB;
 
 namespace CartesAcces
@@ -18,7 +19,7 @@ namespace CartesAcces
             // App code goes here. Dispose the SDK before exiting to flush events.
             try
             {
-                ClassSql.init();
+                ClassSql.Init();
                 Globale.ConnectionBdd = true;
                 var user = ClassSql.Db.GetTable<Utilisateurs>()
                     .FirstOrDefault();

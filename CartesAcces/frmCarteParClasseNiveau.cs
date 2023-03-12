@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CarteAccesLib;
 
 namespace CartesAcces
 {
@@ -15,7 +16,7 @@ namespace CartesAcces
         public FrmCarteParClasseNiveau()
         {
             InitializeComponent();
-            Couleur.setCouleurFenetre(this);
+            Couleur.SetCouleurFenetre(this);
         }
 
         private void cbbImprClasse_SelectedIndexChanged(object sender, EventArgs e)
