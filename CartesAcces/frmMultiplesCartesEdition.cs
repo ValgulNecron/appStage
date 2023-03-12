@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
-using CarteAcces;
 using CarteAccesLib;
 using LinqToDB;
 
@@ -100,8 +99,8 @@ namespace CartesAcces
             Edition.SelectionClique = false;
 
             // -- On remet les paramètres et l'image de base --
-            Edt.chercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
-            Photo.affichePhotoProvisoire("./data/edition.jpg", pbPhoto);
+            Edt.ChercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
+            Photo.AffichePhotoProvisoire("./data/edition.jpg", pbPhoto);
 
             btnSelect.Enabled = true;
             btnCancel.Enabled = false;
@@ -170,7 +169,7 @@ namespace CartesAcces
 
         private void btnValiderImpr_Click(object sender, EventArgs e)
         {
-            if (Globale.positionPhotoClassique == false)
+            if (Globale.PositionPhotoClassique == false)
             {
                 Edition.PosXDef = pbPhoto.Location.X;
                 Edition.PosYDef = pbPhoto.Location.Y;
@@ -179,7 +178,7 @@ namespace CartesAcces
                 MessageBox.Show("Veuillez placer la photo une seconde fois pour les emplois du temps classiques");
                 pbCarteArriere.Image =
                     Image.FromFile("./data/FichierEdtClasse/" + Globale.ListeEleveImpr[0].ClasseEleve + ".jpg");
-                Globale.positionPhotoClassique = true;
+                Globale.PositionPhotoClassique = true;
                 return;
             }
 
@@ -191,7 +190,7 @@ namespace CartesAcces
                 // -- Si la liste est impaire, on double le dernier élève
                 if (Globale.ListeEleveImpr.Count % 2 == 1)
                 {
-                    Globale.eleveImp = true;
+                    Globale.EleveImpr = true;
                     var eleve = Globale.ListeEleveImpr[Globale.ListeEleveImpr.Count - 1];
                     Globale.ListeEleveImpr.Add(eleve);
                 }
@@ -203,10 +202,10 @@ namespace CartesAcces
 
                 pbPhoto.Visible = false;
                 // MessageBox.Show(cheminImpressionFinal); // la valeur renvoyé est "failed" en cas d'annulation
-                FichierWord.sauvegardeCarteEnWord(cheminImpressionFinal, Globale.ListeEleveImpr, pbPhoto,
+                FichierWord.SauvegardeCarteEnWord(cheminImpressionFinal, Globale.ListeEleveImpr, pbPhoto,
                     pbCarteArriere);
                 pbPhoto.Visible = true;
-                Globale.positionPhotoClassique = false;
+                Globale.PositionPhotoClassique = false;
 
                 var macAddress = string.Empty;
                 foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
@@ -237,8 +236,8 @@ namespace CartesAcces
         private void frmMultiplesCartesEdition_Load(object sender, EventArgs e)
         {
             lblCompteur.Visible = false;
-            Edt.chercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
-            Photo.affichePhotoProvisoire("./data/edition.jpg", pbPhoto);
+            Edt.ChercheEdtPerso(Globale.ListeEleveImpr, pbCarteArriere);
+            Photo.AffichePhotoProvisoire("./data/edition.jpg", pbPhoto);
         }
 
         private void pbCarteArriere_MouseUp(object sender, MouseEventArgs e)
@@ -254,7 +253,7 @@ namespace CartesAcces
                         Cursor = Cursors.Default;
                         var pathEdt = Chemin.CheminEdt;
                         Edition.SelectionClique = false;
-                        Edt.rognageEdt(pbCarteArriere, pathEdt);
+                        Edt.RognageEdt(pbCarteArriere, pathEdt);
                     }
                     else
                     {

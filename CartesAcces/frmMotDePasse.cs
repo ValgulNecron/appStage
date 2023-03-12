@@ -37,7 +37,7 @@ namespace CartesAcces
                     frmWait.TopMost = true;
 
                     Globale.Actuelle = new FrmImportation();
-                    FrmAccueil.openChildForm(Globale.Actuelle);
+                    FrmAccueil.OpenChildForm(Globale.Actuelle);
                 }
 
                 DialogResult = DialogResult.OK;

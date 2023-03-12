@@ -224,9 +224,9 @@ namespace CarteAccesLib
         /// <summary>
         /// Dechiffre un fichier
         /// </summary>
-        /// <param name="inputFile"></param>
-        /// <param name="outputFile"></param>
-        /// <param name="password"></param>
+        /// <param name="inputFile">Fichier chiffrer</param>
+        /// <param name="outputFile">Nom du fichier de sortie</param>
+        /// <param name="password">Mot de passe de chiffrement</param>
         public static void DechiffrerFichier(string inputFile, string outputFile, string password)
         {
             var salt = new byte[16];

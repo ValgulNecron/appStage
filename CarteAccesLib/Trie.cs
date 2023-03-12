@@ -19,7 +19,7 @@ namespace CarteAccesLib
         /// <param name="filtre"></param>
         /// <param name="eleves"></param>
         /// <returns></returns>
-        public static List<string> recherche(string filtre, List<Eleve> eleves)
+        public static List<string> Recherche(string filtre, List<Eleve> eleves)
         {
             var listeEleveResultat = new List<string>();
             var regex = new Regex(filtre.ToLower());

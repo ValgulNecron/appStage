@@ -13,15 +13,15 @@ namespace CartesAcces
         /// <summary>
         /// Liste des élèves
         /// </summary>
-        public static List<Eleve> listeEleve;
+        public static List<Eleve> ListeEleve;
         /// <summary>
         /// Liste des élèves sélectionnés
         /// </summary>
-        public static List<string> eleveSelectionner;
+        public static List<string> EleveSelectionner;
         /// <summary>
         /// Liste des noms et prénoms des élèves
         /// </summary>
-        public static List<string> nomPrenomEleve;
+        public static List<string> NomPrenomEleve;
 
         /// <summary>
         /// Constructeur de la classe
@@ -35,30 +35,30 @@ namespace CartesAcces
         /// <summary>
         /// Convertit la liste des élèves en une liste de string
         /// </summary>
-        public static void eleveEnString()
+        public static void EleveEnString()
         {
-            foreach (var eleve in listeEleve)
-                nomPrenomEleve.Add(eleve.NomEleve + " " + eleve.PrenomEleve + " " + eleve.ClasseEleve);
+            foreach (var eleve in ListeEleve)
+                NomPrenomEleve.Add(eleve.NomEleve + " " + eleve.PrenomEleve + " " + eleve.ClasseEleve);
         }
 
         private void frmCartesParListe_Load(object sender, EventArgs e)
         {
             try
             {
-                eleveSelectionner = new List<string>();
-                nomPrenomEleve = new List<string>();
-                listeEleve = Globale.ListeEleve;
-                eleveEnString();
-                lblCount.Text = nomPrenomEleve.Count.ToString();
-                Eleves.DataSource = nomPrenomEleve;
-                btnAjout.Click += ajoutEleve;
-                btnRetirer.Click += retirerEleve;
-                txtRecherche.TextChanged += recheche;
+                EleveSelectionner = new List<string>();
+                NomPrenomEleve = new List<string>();
+                ListeEleve = Globale.ListeEleve;
+                EleveEnString();
+                lblCount.Text = NomPrenomEleve.Count.ToString();
+                Eleves.DataSource = NomPrenomEleve;
+                btnAjout.Click += AjoutEleve;
+                btnRetirer.Click += RetirerEleve;
+                txtRecherche.TextChanged += Recheche;
                 Globale.ListeEleves6Eme = new List<Eleve>();
                 Globale.ListeEleves5Eme = new List<Eleve>();
                 Globale.ListeEleves4Eme = new List<Eleve>();
                 Globale.ListeEleves3Eme = new List<Eleve>();
-                foreach (Control VARIABLE in groupBox1.Controls) (VARIABLE as RadioButton).CheckedChanged += rbChanged;
+                foreach (Control VARIABLE in groupBox1.Controls) (VARIABLE as RadioButton).CheckedChanged += RbChanged;
 
                 foreach (var el in Globale.ListeEleve)
                     if (el.ClasseEleve.Substring(0, 1) == 6.ToString())
@@ -78,7 +78,7 @@ namespace CartesAcces
             }
         }
 
-        private bool verifDoublon(string ajout)
+        private bool VerifDoublon(string ajout)
         {
             foreach (string selectioner in Impression.Items)
                 if (selectioner == ajout)
@@ -87,16 +87,16 @@ namespace CartesAcces
             return true;
         }
 
-        private void ajoutEleve(object sender, EventArgs e)
+        private void AjoutEleve(object sender, EventArgs e)
         {
             try
             {
                 var eleve = Eleves.SelectedItem.ToString();
-                if (verifDoublon(eleve))
+                if (VerifDoublon(eleve))
                 {
-                    eleveSelectionner.Add(eleve);
+                    EleveSelectionner.Add(eleve);
                     Impression.DataSource = null;
-                    Impression.DataSource = eleveSelectionner;
+                    Impression.DataSource = EleveSelectionner;
                     Impression.Refresh();
                 }
             }
@@ -105,13 +105,13 @@ namespace CartesAcces
             }
         }
 
-        private void retirerEleve(object sender, EventArgs e)
+        private void RetirerEleve(object sender, EventArgs e)
         {
             try
             {
-                eleveSelectionner.Remove(Impression.SelectedItem.ToString());
+                EleveSelectionner.Remove(Impression.SelectedItem.ToString());
                 Impression.DataSource = null;
-                Impression.DataSource = eleveSelectionner;
+                Impression.DataSource = EleveSelectionner;
                 Eleves.Refresh();
                 Impression.Refresh();
                 Impression.ClearSelected();
@@ -121,12 +121,12 @@ namespace CartesAcces
             }
         }
 
-        private void recheche(object sender, EventArgs e)
+        private void Recheche(object sender, EventArgs e)
         {
             try
             {
                 var pattern = ".*" + txtRecherche.Text + ".*";
-                var el = XTrie.recherche(pattern, listeEleve);
+                var el = XTrie.Recherche(pattern, ListeEleve);
                 if (el != null)
                 {
                     lblCount.Text = el.Count.ToString();
@@ -135,8 +135,8 @@ namespace CartesAcces
                 }
                 else
                 {
-                    lblCount.Text = listeEleve.Count.ToString();
-                    Eleves.DataSource = nomPrenomEleve;
+                    lblCount.Text = ListeEleve.Count.ToString();
+                    Eleves.DataSource = NomPrenomEleve;
                     Eleves.Refresh();
                 }
             }
@@ -150,7 +150,7 @@ namespace CartesAcces
         /// </summary>
         /// <param name="convertir"></param>
         /// <returns></returns>
-        public static List<Eleve> convertionListeStringEleveEnEleve(List<string> convertir)
+        public static List<Eleve> ConvertionListeStringEleveEnEleve(List<string> convertir)
         {
             var e = new List<Eleve>();
             foreach (var ee in convertir)
@@ -167,7 +167,7 @@ namespace CartesAcces
         {
             try
             {
-                Globale.ListeEleveImpr = convertionListeStringEleveEnEleve(eleveSelectionner);
+                Globale.ListeEleveImpr = ConvertionListeStringEleveEnEleve(EleveSelectionner);
                 Form frmMultipleCarteEdi = new FrmMultiplesCartesEdition();
                 frmMultipleCarteEdi.Show();
             }
@@ -176,14 +176,14 @@ namespace CartesAcces
             }
         }
 
-        private void rbChanged(object sender, EventArgs e)
+        private void RbChanged(object sender, EventArgs e)
         {
             if (sender is RadioButton)
                 if ((sender as RadioButton).Checked)
                     switch ((sender as RadioButton).Name)
                     {
                         case "tout":
-                            toutF();
+                            ToutF();
                             break;
                         case "Seme":
                             SemeF();
@@ -200,49 +200,49 @@ namespace CartesAcces
                     }
         }
 
-        private void toutF()
+        private void ToutF()
         {
-            listeEleve = Globale.ListeEleve;
-            nomPrenomEleve = new List<string>();
-            eleveEnString();
-            lblCount.Text = listeEleve.Count.ToString();
-            Eleves.DataSource = nomPrenomEleve;
+            ListeEleve = Globale.ListeEleve;
+            NomPrenomEleve = new List<string>();
+            EleveEnString();
+            lblCount.Text = ListeEleve.Count.ToString();
+            Eleves.DataSource = NomPrenomEleve;
         }
 
         private void SemeF()
         {
-            listeEleve = Globale.ListeEleves6Eme;
-            nomPrenomEleve = new List<string>();
-            eleveEnString();
-            lblCount.Text = listeEleve.Count.ToString();
-            Eleves.DataSource = nomPrenomEleve;
+            ListeEleve = Globale.ListeEleves6Eme;
+            NomPrenomEleve = new List<string>();
+            EleveEnString();
+            lblCount.Text = ListeEleve.Count.ToString();
+            Eleves.DataSource = NomPrenomEleve;
         }
 
         private void CemeF()
         {
-            listeEleve = Globale.ListeEleves5Eme;
-            nomPrenomEleve = new List<string>();
-            eleveEnString();
-            lblCount.Text = listeEleve.Count.ToString();
-            Eleves.DataSource = nomPrenomEleve;
+            ListeEleve = Globale.ListeEleves5Eme;
+            NomPrenomEleve = new List<string>();
+            EleveEnString();
+            lblCount.Text = ListeEleve.Count.ToString();
+            Eleves.DataSource = NomPrenomEleve;
         }
 
         private void QemeF()
         {
-            listeEleve = Globale.ListeEleves4Eme;
-            nomPrenomEleve = new List<string>();
-            eleveEnString();
-            lblCount.Text = listeEleve.Count.ToString();
-            Eleves.DataSource = nomPrenomEleve;
+            ListeEleve = Globale.ListeEleves4Eme;
+            NomPrenomEleve = new List<string>();
+            EleveEnString();
+            lblCount.Text = ListeEleve.Count.ToString();
+            Eleves.DataSource = NomPrenomEleve;
         }
 
         private void TemeF()
         {
-            listeEleve = Globale.ListeEleves3Eme;
-            nomPrenomEleve = new List<string>();
-            eleveEnString();
-            lblCount.Text = listeEleve.Count.ToString();
-            Eleves.DataSource = nomPrenomEleve;
+            ListeEleve = Globale.ListeEleves3Eme;
+            NomPrenomEleve = new List<string>();
+            EleveEnString();
+            lblCount.Text = ListeEleve.Count.ToString();
+            Eleves.DataSource = NomPrenomEleve;
         }
 
         private void CheckedChanged(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace CarteAccesLib
         /// </summary>
         /// <param name="eleve"></param>
         /// <param name="pbPhoto"></param>
-        public static void verifPhotoEleve(Eleve eleve, PictureBox pbPhoto)
+        public static void VerifPhotoEleve(Eleve eleve, PictureBox pbPhoto)
         {
             var nomFichierJpg = eleve.NomEleve + " " + eleve.PrenomEleve + ".jpg";
             var nomFichierPng = eleve.NomEleve + " " + eleve.PrenomEleve + ".png";
@@ -35,7 +36,7 @@ namespace CarteAccesLib
         /// </summary>
         /// <param name="chemin"></param>
         /// <param name="pbPhoto"></param>
-        public static void affichePhotoProvisoire(string chemin, PictureBox pbPhoto)
+        public static void AffichePhotoProvisoire(string chemin, PictureBox pbPhoto)
         {
             pbPhoto.Image = new Bitmap(chemin);
             pbPhoto.Size = new Size(110, 165);
@@ -50,7 +51,7 @@ namespace CarteAccesLib
         /// <param name="pbCarteArriere"></param>
         /// <param name="eleve"></param>
         /// <param name="path"></param>
-        public static void proportionPhotoMultiple(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve,
+        public static void ProportionPhotoMultiple(PictureBox pbPhoto, PictureBox pbCarteArriere, Eleve eleve,
             string path)
         {
             // -- Calcul par proportionnalité de la position et des dimensions de la photo sur le cadre de l'application par rapport a l'image réelle --
@@ -66,7 +67,7 @@ namespace CarteAccesLib
             var rWidth = Edition.PosWidthDef * pbCarteArriere.Image.Width / pbCarteArriere.Width;
             var rHeight = Edition.PosHeightDef * pbCarteArriere.Image.Height / pbCarteArriere.Height;
 
-            if (eleve.SansEDT)
+            if (eleve.SansEdt)
             {
                 rLocX = Edition.PosXClassique * pbCarteArriere.Image.Width / pbCarteArriere.Width;
                 rLocY = Edition.PosYClassique * pbCarteArriere.Image.Height / pbCarteArriere.Height;
@@ -75,8 +76,8 @@ namespace CarteAccesLib
             }
 
             // -- Superposition des deux image dans un objet "Graphics" --
-            var ObjGraphics = Graphics.FromImage(pbCarteArriere.Image);
-            ObjGraphics.DrawImage(pbPhoto.Image, rLocX, rLocY, rWidth, rHeight);
+            var objGraphics = Graphics.FromImage(pbCarteArriere.Image);
+            objGraphics.DrawImage(pbPhoto.Image, rLocX, rLocY, rWidth, rHeight);
 
             pbCarteArriere.Image.Save(path + "/" + eleve.NomEleve + eleve.PrenomEleve + "EDT.png", ImageFormat.Png);
 
@@ -87,11 +88,11 @@ namespace CarteAccesLib
         /// Cette fonction permet d'obtenir la date de la dernière importation des photos
         /// </summary>
         /// <returns></returns>
-        public static string getDatePhotos()
+        public static string GetDatePhotos()
         {
             var dateFile = "Aucune Importation";
             var dir = new DirectoryInfo(Chemin.CheminPhotoEleve);
-            if (dir.Exists) dateFile = dir.CreationTime.ToString();
+            if (dir.Exists) dateFile = dir.CreationTime.ToString(CultureInfo.InvariantCulture);
 
             return dateFile;
         }

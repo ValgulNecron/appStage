@@ -7,18 +7,28 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using CarteAcces;
 using CartesAcces;
 using Microsoft.Office.Interop.Word;
 using Application = Microsoft.Office.Interop.Word.Application;  
 
 namespace CarteAccesLib
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class FichierWord
     {
-        public static Application initWordFile(int margeHaute, int margeDroite, int margeGauche, int margeBasse)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="margeHaute"></param>
+        /// <param name="margeDroite"></param>
+        /// <param name="margeGauche"></param>
+        /// <param name="margeBasse"></param>
+        /// <returns></returns>
+        public static Application InitWordFile(int margeHaute, int margeDroite, int margeGauche, int margeBasse)
         {
-            fermerWord();
+            FermerWord();
             // -- Ouverture de l'applucation Word -- 
             var applicationWord = new Application();
 
@@ -34,7 +44,13 @@ namespace CarteAccesLib
             return applicationWord;
         }
 
-        public static void rectifPositionImages(Application applicationWord, Shape carteFace1, Shape carteFace2)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="applicationWord"></param>
+        /// <param name="carteFace1"></param>
+        /// <param name="carteFace2"></param>
+        public static void RectifPositionImages(Application applicationWord, Shape carteFace1, Shape carteFace2)
         {
             // -- Gestion de la hauteur et de la position des images --
             /*
@@ -60,7 +76,13 @@ namespace CarteAccesLib
             // carteFace2.Height = carteFace1.Height;
         }
 
-        public static void limite50Pages(Application applicationWord, string chemin, int nbPage)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="applicationWord"></param>
+        /// <param name="chemin"></param>
+        /// <param name="nbPage"></param>
+        public static void Limite50Pages(Application applicationWord, string chemin, int nbPage)
         {
             // -- Sauvegarde du document --
             applicationWord.ActiveDocument.SaveAs(chemin + "Part " + nbPage + " " + ".doc", Type.Missing, Type.Missing,
@@ -85,14 +107,21 @@ namespace CarteAccesLib
             applicationWord.ActiveDocument.PageSetup.BottomMargin = 15;
         }
 
-        public static void sauvegardeCarteEnWord(string chemin, List<Eleve> listeEleve, PictureBox pbPhoto,
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chemin"></param>
+        /// <param name="listeEleve"></param>
+        /// <param name="pbPhoto"></param>
+        /// <param name="pbCarteArriere"></param>
+        public static void SauvegardeCarteEnWord(string chemin, List<Eleve> listeEleve, PictureBox pbPhoto,
             PictureBox pbCarteArriere)
         {
-            fermerWord();
+            FermerWord();
             var k = 0;
             var pages = 0;
-            Eleve.possedeEdt(listeEleve);
-            var fichierWord = initWordFile(15, 15, 15, 15);
+            Eleve.PossedeEdt(listeEleve);
+            var fichierWord = InitWordFile(15, 15, 15, 15);
 
             Globale.LblCount.Visible = true;
             for (var compt = 1; compt <= listeEleve.Count; compt += 2)
@@ -113,7 +142,7 @@ namespace CarteAccesLib
                 var shapeCarteFace2 = fichierWord.ActiveDocument.Shapes.AddPicture(
                     chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "Carte.png",
                     Type.Missing, Type.Missing, Type.Missing);
-                rectifPositionImages(fichierWord, shapeCarteFace1, shapeCarteFace2);
+                RectifPositionImages(fichierWord, shapeCarteFace1, shapeCarteFace2);
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
                 File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "Carte.png");
                 File.Delete(chemin + "\\" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve +
@@ -129,12 +158,12 @@ namespace CarteAccesLib
 
                 // -- Carte arriere : 1/2 Eleve --
                 Edition.carteArriere(listeEleve[compt], pbCarteArriere);
-                Photo.verifPhotoEleve(listeEleve[compt], pbPhoto);
-                Photo.proportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt], chemin);
+                Photo.VerifPhotoEleve(listeEleve[compt], pbPhoto);
+                Photo.ProportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt], chemin);
                 // -- Carte arriere : 2/2 Eleve --
                 Edition.carteArriere(listeEleve[compt - 1], pbCarteArriere);
-                Photo.verifPhotoEleve(listeEleve[compt - 1], pbPhoto);
-                Photo.proportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
+                Photo.VerifPhotoEleve(listeEleve[compt - 1], pbPhoto);
+                Photo.ProportionPhotoMultiple(pbPhoto, pbCarteArriere, listeEleve[compt - 1], chemin);
 
                 Globale.LblCount.Text = compt + 1 + "/" + listeEleve.Count + " cartes réalisées";
 
@@ -146,7 +175,7 @@ namespace CarteAccesLib
                     chemin + "/" + listeEleve[compt - 1].NomEleve + listeEleve[compt - 1].PrenomEleve + "EDT.png",
                     Type.Missing, Type.Missing, Type.Missing);
 
-                rectifPositionImages(fichierWord, shapeCarteArriere1, shapeCarteArriere2);
+                RectifPositionImages(fichierWord, shapeCarteArriere1, shapeCarteArriere2);
 
                 // -- Suppression des deux fichiers PNG, plus besoin d'eux maintenant qu'ils sont dans le fichier Word -- 
                 File.Delete(chemin + "\\" + listeEleve[compt].NomEleve + listeEleve[compt].PrenomEleve + "EDT.png");
@@ -165,7 +194,7 @@ namespace CarteAccesLib
                 {
                     var name = chemin + "/Imprimer ";
                     var nbPage = k / 50;
-                    limite50Pages(fichierWord, name, nbPage);
+                    Limite50Pages(fichierWord, name, nbPage);
                     k += 50;
                     pages++;
                 }
@@ -194,15 +223,18 @@ namespace CarteAccesLib
             GC.Collect();
 
             // -- Message qui indique que nous sommes arrivé au bout --
-            if (Globale.eleveImp)
+            if (Globale.EleveImpr)
                 MessageBox.Show(new Form {TopMost = true}, listeEleve.Count - 1 + " élèves ont été imprimés.");
             else
                 MessageBox.Show(new Form {TopMost = true}, listeEleve.Count + " élèves ont été imprimés.");
-            fermerWord();
+            FermerWord();
         }
 
 
-        public static void getDossierCarteProvisoire()
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void GetDossierCarteProvisoire()
         {
             var diag = new FolderBrowserDialog();
             if (diag.ShowDialog() == DialogResult.OK)
@@ -213,10 +245,18 @@ namespace CarteAccesLib
                     "Merci de choisir un dossier de destination pour les fichiers générés par l'application");
         }
 
-        public static void sauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pbCarteArriere"></param>
+        /// <param name="pbPhoto"></param>
+        /// <param name="pbCarteFace"></param>
+        /// <param name="txtNom"></param>
+        /// <param name="txtPrenom"></param>
+        public static void SauvegardeCarteProvisoireWord(PictureBox pbCarteArriere, PictureBox pbPhoto,
             PictureBox pbCarteFace, TextBox txtNom, TextBox txtPrenom)
         {
-            fermerWord();
+            FermerWord();
             if (pbCarteArriere.Image != null && pbCarteFace.Image != null && pbPhoto.Image != null)
             {
                 double rLocX = pbPhoto.Location.X * pbCarteArriere.Image.Width / pbCarteArriere.Width;
@@ -279,7 +319,10 @@ namespace CarteAccesLib
             }
         }
 
-        public static void fermerWord()
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void FermerWord()
         {
             var processes = Process.GetProcessesByName("WINWORD");
             foreach (var process in processes) process.Kill();

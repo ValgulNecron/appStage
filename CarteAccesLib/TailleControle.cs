@@ -15,7 +15,7 @@ namespace CarteAccesLib
         /// Cette fonction permet de définir la taille des contrôles de type TextBox
         /// </summary>
         /// <param name="form"></param>
-        public static void setTailleControleTexte(Form form)
+        public static void SetTailleControleTexte(Form form)
         {
             var policeParDefault = new Font("Microsoft Sans Serif", 10);
 
@@ -24,8 +24,11 @@ namespace CarteAccesLib
             foreach (var controle in controlsList.Where(x => x is TextBox))
             {
                 var controle2 = controle as TextBox; // indique que ce contrôle est de type
-                controle2.MinimumSize = new Size(150, 20); // application des modification sur le type choisi
-                controle2.Font = policeParDefault;
+                if (controle2 != null)
+                {
+                    controle2.MinimumSize = new Size(150, 20); // application des modification sur le type choisi
+                    controle2.Font = policeParDefault;
+                }
             }
         }
 
@@ -33,7 +36,7 @@ namespace CarteAccesLib
         /// Cette fonction permet de définir la taille des contrôles de type Label
         /// </summary>
         /// <param name="form"></param>
-        public static void setTailleControleLabel(Form form)
+        public static void SetTailleControleLabel(Form form)
         {
             var policeParDefault = new Font("Microsoft Sans Serif", 10);
 
@@ -42,7 +45,7 @@ namespace CarteAccesLib
             foreach (var controle in controlsList.Where(x => x is FieldDescriptorProto.Types.Label))
             {
                 var controle2 = controle as Label;
-                controle2.Font = policeParDefault;
+                if (controle2 != null) controle2.Font = policeParDefault;
             }
         }
 
@@ -50,7 +53,7 @@ namespace CarteAccesLib
         /// Cette fonction permet de définir la taille des contrôles de type Button
         /// </summary>
         /// <param name="form"></param>
-        public static void setTailleBouton(Form form)
+        public static void SetTailleBouton(Form form)
         {
             var policeParDefault = new Font("Microsoft Sans Serif", 10);
 
@@ -60,9 +63,12 @@ namespace CarteAccesLib
             foreach (var controle in controlsList.Where(x => x is Button))
             {
                 var controle2 = controle as Button; // indique que ce contrôle est de type
-                controle2.Font = policeParDefault; // application des modification sur le type choisi
-                controle2.Size = new Size(330, 29);
-                controle2.AutoSize = false;
+                if (controle2 != null)
+                {
+                    controle2.Font = policeParDefault; // application des modification sur le type choisi
+                    controle2.Size = new Size(330, 29);
+                    controle2.AutoSize = false;
+                }
             }
         }
     }

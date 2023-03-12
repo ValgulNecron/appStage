@@ -19,7 +19,7 @@ namespace CarteAccesLib
         /// <param name="pathCsv"></param>
         /// <param name="numColonne"></param>
         /// <returns></returns>
-        public static List<string> getDataFromCSV(string pathCsv, int numColonne)
+        public static List<string> GetDataFromCsv(string pathCsv, int numColonne)
         {
             var list = new List<string>();
 
@@ -42,7 +42,7 @@ namespace CarteAccesLib
         /// </summary>
         /// <param name="pathCsv"></param>
         /// <returns></returns>
-        public static int getNumberOfLines(string pathCsv)
+        public static int GetNumberOfLines(string pathCsv)
         {
             return File.ReadAllLines(pathCsv).Length - 1;
         }
@@ -51,28 +51,28 @@ namespace CarteAccesLib
         /// Cette fonction permet de créer la liste des élèves
         /// </summary>
         /// <param name="sFilePath"></param>
-        public static void setLesEleves(string sFilePath)
+        public static void SetLesEleves(string sFilePath)
         {
             //string sFilePath = ""; // chemin vers le fichier csv
             try
             {
                 var listeProvisoire = new List<Eleve>();
-                var rowCount = getNumberOfLines(sFilePath);
+                var rowCount = GetNumberOfLines(sFilePath);
 
                 for (var i = 1; i <= rowCount; i++)
                 {
-                    var classe = rectifClasse(getDataFromCSV(sFilePath, 6)[i]);
+                    var classe = RectifClasse(GetDataFromCsv(sFilePath, 6)[i]);
                     var unEleve = new Eleve();
                     unEleve.NumEleve = i;
-                    unEleve.NomEleve = getDataFromCSV(sFilePath, 0)[i];
-                    unEleve.PrenomEleve = getDataFromCSV(sFilePath, 1)[i];
+                    unEleve.NomEleve = GetDataFromCsv(sFilePath, 0)[i];
+                    unEleve.PrenomEleve = GetDataFromCsv(sFilePath, 1)[i];
                     unEleve.ClasseEleve = classe;
-                    unEleve.RegimeEleve = getDataFromCSV(sFilePath, 14)[i];
-                    unEleve.OptionUnEleve = getDataFromCSV(sFilePath, 7)[i];
-                    unEleve.OptionDeuxEleve = getDataFromCSV(sFilePath, 8)[i];
-                    unEleve.OptionTroisEleve = getDataFromCSV(sFilePath, 9)[i];
-                    unEleve.OptionQuatreEleve = getDataFromCSV(sFilePath, 10)[i];
-                    unEleve.MefEleve = getDataFromCSV(sFilePath, 5)[i];
+                    unEleve.RegimeEleve = GetDataFromCsv(sFilePath, 14)[i];
+                    unEleve.OptionUnEleve = GetDataFromCsv(sFilePath, 7)[i];
+                    unEleve.OptionDeuxEleve = GetDataFromCsv(sFilePath, 8)[i];
+                    unEleve.OptionTroisEleve = GetDataFromCsv(sFilePath, 9)[i];
+                    unEleve.OptionQuatreEleve = GetDataFromCsv(sFilePath, 10)[i];
+                    unEleve.MefEleve = GetDataFromCsv(sFilePath, 5)[i];
 
                     listeProvisoire.Add(unEleve);
                     Globale.ListeElevesString.Add(unEleve.NomEleve + " " + unEleve.PrenomEleve + " " +
@@ -93,7 +93,7 @@ namespace CarteAccesLib
         /// </summary>
         /// <param name="classe"></param>
         /// <returns></returns>
-        public static string rectifClasse(string classe)
+        public static string RectifClasse(string classe)
         {
             var index = classe.IndexOf('"');
             var classeRectif = classe.Substring(index + 1, classe.Length - 3);
@@ -105,7 +105,7 @@ namespace CarteAccesLib
         /// Cette fonction permet d'obtenir la date de création du fichier CSV
         /// </summary>
         /// <returns></returns>
-        public static string getDateFile()
+        public static string GetDateFile()
         {
             try
             {

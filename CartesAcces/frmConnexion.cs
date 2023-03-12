@@ -61,7 +61,7 @@ namespace CartesAcces
          * si le nom d'utilisateur n'existe pas elle affiche un message d'erreur
          * et elle vide les champs
          */
-        private void connexion()
+        private void Connexion()
         {
             try
             {
@@ -125,7 +125,7 @@ namespace CartesAcces
                             frmWait.TopMost = true;
 
                             Globale.Actuelle = new FrmImportation();
-                            FrmAccueil.openChildForm(Globale.Actuelle);
+                            FrmAccueil.OpenChildForm(Globale.Actuelle);
                         }
                         else
                         {
@@ -161,7 +161,7 @@ namespace CartesAcces
             }
             else
             {
-                connexion();
+                Connexion();
             }
         }
 
@@ -200,7 +200,7 @@ namespace CartesAcces
                 }
                 else
                 {
-                    connexion();
+                    Connexion();
                 }
             }
         }

@@ -6,7 +6,6 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using CarteAcces;
 using CarteAccesLib;
 using LinqToDB;
 
@@ -30,12 +29,12 @@ namespace CartesAcces
             //TailleControle.setTailleControleTexte(this);
             //TailleControle.setTailleControleLabel(this);
             //TailleControle.setTailleBouton(this);
-            lblDateListeEleve.Text = ReadCsv.getDateFile();
+            lblDateListeEleve.Text = ReadCsv.GetDateFile();
             lblEdtEleve.Text = PdfGs.getDateFile();
-            lblPhotoEleve.Text = Photo.getDatePhotos();
+            lblPhotoEleve.Text = Photo.GetDatePhotos();
         }
 
-        private void openChildForm(Form childForm)
+        private void OpenChildForm(Form childForm)
         {
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
@@ -62,7 +61,7 @@ namespace CartesAcces
                 //lblDateListeEleve = Globale._lblDate;
                 Globale.CheminTexte = Chemin.setCheminImportationFichierExcel();
                 Globale.Actuelle = new FrmImportation(); //
-                openChildForm(Globale.Actuelle); //
+                OpenChildForm(Globale.Actuelle); //
                 if (Globale.CheminTexte.Length > 0)
                 {
                     Globale.Cas = 2;
