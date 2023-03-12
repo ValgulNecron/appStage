@@ -37,7 +37,7 @@ namespace CartesAcces
 
             if (tbMdp.Text != tbValidMdp.Text) return;
 
-            if (Securite.ValidationPrerequisMdp(tbMdp.Text)) return;
+            if (!(Securite.ValidationPrerequisMdp(tbMdp.Text))) return;
 
             var userCree = new Utilisateurs();
             userCree.NomUtilisateur = tbUser.Text;
