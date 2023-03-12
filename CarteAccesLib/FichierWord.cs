@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using CarteAcces;
 using CartesAcces;
 using Microsoft.Office.Interop.Word;
-using Application = Microsoft.Office.Interop.Word.Application;
+using Application = Microsoft.Office.Interop.Word.Application;  
 
 namespace CarteAccesLib
 {
