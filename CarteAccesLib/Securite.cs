@@ -76,7 +76,7 @@ namespace CarteAccesLib
         public static bool ValidationPrerequisMdp(string motDePasse)
         {
             if (string.IsNullOrEmpty(motDePasse)) return false;
-            if (motDePasse.Length <= 12) return false;
+            if (motDePasse.Length < 12) return false;
 
             var majuscule = false;
             var minuscule = false;
