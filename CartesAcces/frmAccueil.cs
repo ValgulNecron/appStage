@@ -238,7 +238,7 @@ namespace CartesAcces
                     Application.Exit();
                 }
             }
-            FormBorderStyle = default;
+           
             
         }
     }
