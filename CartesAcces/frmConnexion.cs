@@ -86,7 +86,7 @@ namespace CartesAcces
 
                 try
                 {
-                    if (Securite.verificationHash(txtMotDePasse.Text, user?.Hash))
+                    if (Securite.VerificationHash(txtMotDePasse.Text, user?.Hash))
                     {
                         Globale.EstConnecter = true;
                         Globale.NomUtilisateur = txtIdentifiant.Text;
@@ -127,7 +127,7 @@ namespace CartesAcces
                             frmWait.TopMost = true;
 
                             Globale.Actuelle = new FrmImportation();
-                            FrmAccueil.openChildForm(Globale.Actuelle);
+                            FrmAccueil.OpenChildForm(Globale.Actuelle);
                         }
                         else
                         {
