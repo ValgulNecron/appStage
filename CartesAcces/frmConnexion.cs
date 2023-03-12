@@ -67,6 +67,7 @@ namespace CartesAcces
             {
                 var user = ClassSql.Db.GetTable<Utilisateurs>()
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
+                
                 if (!user.Active)
                 {
                     MessageBox.Show(new Form {TopMost = true}, "Le nom d'utilisateur ou le mot de passe est invalide");
@@ -114,9 +115,10 @@ namespace CartesAcces
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);
                         timer = new Timer(Globale.Accueil);
+                        
                         if (Globale.MotsDePasseChifffrement != "")
                         {
-                            Securite.dechiffrerDossier();
+                            // Securite.dechiffrerDossier();
 
                             Globale.Cas = 1;
                             var frmWait = new BarDeProgression();
