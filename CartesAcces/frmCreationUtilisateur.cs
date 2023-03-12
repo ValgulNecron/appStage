@@ -37,11 +37,11 @@ namespace CartesAcces
 
             if (tbMdp.Text != tbValidMdp.Text) return;
 
-            if (Securite.validationPrerequisMdp(tbMdp.Text)) return;
+            if (!(Securite.ValidationPrerequisMdp(tbMdp.Text))) return;
 
             var userCree = new Utilisateurs();
             userCree.NomUtilisateur = tbUser.Text;
-            userCree.Hash = Securite.creationHash(tbMdp.Text);
+            userCree.Hash = Securite.CreationHash(tbMdp.Text);
             foreach (Control var in gbTypeUser.Controls)
             {
                 var rb = var as RadioButton;

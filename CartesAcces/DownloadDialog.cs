@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace CartesAcces
 {
@@ -11,13 +12,11 @@ namespace CartesAcces
     /// </summary>
     public class DownloadDialog : Form
     {
-        private readonly Button _cancelButton;
-
-        private readonly WebClient _client;
-        private readonly string _downloadUrl;
-        private readonly Label _percentageLabel;
-        private readonly ProgressBar _progressBar;
-        private readonly Label _speedLabel;
+        private readonly WebClient client;
+        private readonly string downloadUrl;
+        private readonly Label percentageLabel;
+        private readonly ProgressBar progressBar;
+        private readonly Label speedLabel;
 
         /// <summary>
         /// Constructeur de la classe
@@ -25,13 +24,13 @@ namespace CartesAcces
         /// <param name="downloadUrl"></param>
         public DownloadDialog(string downloadUrl)
         {
-            _downloadUrl = downloadUrl;
+            this.downloadUrl = downloadUrl;
 
-            _client = new WebClient();
-            _client.DownloadProgressChanged += OnDownloadProgressChanged;
-            _client.DownloadFileCompleted += OnDownloadFileCompleted;
+            client = new WebClient();
+            client.DownloadProgressChanged += OnDownloadProgressChanged;
+            client.DownloadFileCompleted += OnDownloadFileCompleted;
 
-            _progressBar = new ProgressBar
+            progressBar = new ProgressBar
             {
                 Minimum = 0,
                 Maximum = 100,
@@ -39,19 +38,19 @@ namespace CartesAcces
                 Dock = DockStyle.Top
             };
 
-            _percentageLabel = new Label
+            percentageLabel = new Label
             {
                 Text = "0 %",
                 Dock = DockStyle.Top
             };
 
-            _speedLabel = new Label
+            speedLabel = new Label
             {
                 Text = "0 KB/s",
                 Dock = DockStyle.Top
             };
 
-            _cancelButton = new Button
+            var cancelButton = new Button
             {
                 Text = "Annuler",
                 DialogResult = DialogResult.Cancel,
@@ -59,10 +58,10 @@ namespace CartesAcces
                 Dock = DockStyle.Bottom
             };
 
-            Controls.Add(_cancelButton);
-            Controls.Add(_speedLabel);
-            Controls.Add(_percentageLabel);
-            Controls.Add(_progressBar);
+            Controls.Add(cancelButton);
+            Controls.Add(speedLabel);
+            Controls.Add(percentageLabel);
+            Controls.Add(progressBar);
 
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -81,7 +80,7 @@ namespace CartesAcces
         {
             base.OnLoad(e);
 
-            _client.DownloadFileAsync(new Uri(_downloadUrl), Globale.FileName);
+            client.DownloadFileAsync(new Uri(downloadUrl), Globale.FileName);
         }
 
         /// <summary>
@@ -95,17 +94,17 @@ namespace CartesAcces
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                _client.CancelAsync();
+                client.CancelAsync();
             }
         }
 
         private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            _progressBar.Value = e.ProgressPercentage;
-            _percentageLabel.Text = $"{e.ProgressPercentage} %";
+            progressBar.Value = e.ProgressPercentage;
+            percentageLabel.Text = $"{e.ProgressPercentage} %";
 
                 double speed = e.BytesReceived / (e.ProgressPercentage / 100.0) / 1024.0;
-                _speedLabel.Text = $"{e.BytesReceived} / {e.TotalBytesToReceive} octets ({speed:N2} Ko/s)";
+                speedLabel.Text = $"{e.BytesReceived} / {e.TotalBytesToReceive} octets ({speed:N2} Ko/s)";
         }
 
         private void OnDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)

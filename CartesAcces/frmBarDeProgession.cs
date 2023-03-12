@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
-using CarteAcces;
 using CarteAccesLib;
 using LinqToDB;
 
@@ -19,8 +18,9 @@ namespace CartesAcces
         public BarDeProgression()
         {
             InitializeComponent();
-            TailleControle.setTailleControleTexte(this);
+            TailleControle.SetTailleControleTexte(this);
             Couleur.setCouleurFenetre(this);
+            Application.EnableVisualStyles();
         }
 
         private void progressBarForm_Load(object sender, EventArgs e)
@@ -70,9 +70,9 @@ namespace CartesAcces
 
         private void cas_1()
         {
-            Securite.dechiffrerDossier();
-            ReadCsv.setLesEleves(Chemin.CheminListeEleve);
-            Eleve.setLesClasses();
+            Securite.DechiffrerDossier();
+            ReadCsv.SetLesEleves(Chemin.CheminListeEleve);
+            Eleve.SetLesClasses();
         }
 
         private void cas_2()
@@ -82,14 +82,14 @@ namespace CartesAcces
             {
                 foreach (Control controle in Globale.Actuelle.Controls)
                     if (controle is Label && controle.Name == "lblDateListeEleve")
-                        controle.Text = ReadCsv.getDateFile();
+                        controle.Text = ReadCsv.GetDateFile();
             }));
         }
 
         private void cas_3()
         {
-            PdfGs.getImageFromPdf(Globale.CheminPdf, Globale.Classe);
-            PdfGs.renameEdt(Globale.CheminPdf);
+            PdfGs.GetImageFromPdf(Globale.CheminPdf, Globale.Classe);
+            PdfGs.RenameEdt(Globale.CheminPdf);
 
             Globale.Actuelle.Invoke(new MethodInvoker(delegate
             {
@@ -120,7 +120,7 @@ namespace CartesAcces
             {
                 foreach (Control controle in Globale.Actuelle.Controls)
                     if (controle is Label && controle.Name == "lblPhotoEleve")
-                        controle.Text = Photo.getDatePhotos();
+                        controle.Text = Photo.GetDatePhotos();
             }));
         }
 
@@ -134,7 +134,7 @@ namespace CartesAcces
                 }
                 else
                 {
-                    FichierWord.sauvegardeCarteProvisoireWord(Globale.ListeSauvegardeProvisoire.Item1,
+                    FichierWord.SauvegardeCarteProvisoireWord(Globale.ListeSauvegardeProvisoire.Item1,
                         Globale.ListeSauvegardeProvisoire.Item2,
                         Globale.ListeSauvegardeProvisoire.Item3, Globale.ListeSauvegardeProvisoire.Item4,
                         Globale.ListeSauvegardeProvisoire.Item5);

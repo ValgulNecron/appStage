@@ -16,7 +16,7 @@ namespace CartesAcces
     /// </summary>
     public class Timer
     {
-        private DateTime _start;
+        private DateTime start;
 
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace CartesAcces
         public Timer(Form form)
         {
             Form1 = form;
-            _start = DateTime.Now;
+            start = DateTime.Now;
             Timer1 = new System.Timers.Timer();
             Timer1.Interval = FrequenceDesVerifEnMinute * 60 * 1000;
             Timer1.Elapsed += OnTimeEvent;
@@ -70,18 +70,18 @@ namespace CartesAcces
 
         private void Form_MouseMove(object sender, MouseEventArgs e)
         {
-            _start = DateTime.Now;
+            start = DateTime.Now;
         }
 
         private void OnTimeEvent(object source, ElapsedEventArgs e)
         {
-            if (_start.Add(TimeSpan.FromMinutes(DureeMinute)) <= DateTime.Now)
+            if (start.Add(TimeSpan.FromMinutes(DureeMinute)) <= DateTime.Now)
                 if (Globale.EstConnecter)
                 {
                     Globale.EstConnecter = false;
                     Globale.Actuelle = new FrmConnexion();
                     Globale.Accueil.Invoke(
-                        new MethodInvoker(delegate { FrmAccueil.openChildForm(Globale.Actuelle); }));
+                        new MethodInvoker(delegate { FrmAccueil.OpenChildForm(Globale.Actuelle); }));
                 }
         }
     }

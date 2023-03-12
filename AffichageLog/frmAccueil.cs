@@ -29,8 +29,8 @@ namespace AffichageLog
                     Globale.CouleurDeFondClaire[1], Globale.CouleurDeFondClaire[2]);
             }
 
-            TailleControle.setTailleBouton(this);
-            TailleControle.setTailleControleTexte(this);
+            TailleControle.SetTailleBouton(this);
+            TailleControle.SetTailleControleTexte(this);
         }
 
         public static void OpenChildForm(Form childForm)

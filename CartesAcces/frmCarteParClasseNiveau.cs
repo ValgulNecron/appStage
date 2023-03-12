@@ -58,7 +58,7 @@ namespace CartesAcces
             btnValiderImpr.Enabled = true;
         }
 
-        public void btnValiderImpr_Click(object sender, EventArgs e)
+        private void btnValiderImpr_Click(object sender, EventArgs e)
         {
             try
             {
@@ -82,10 +82,6 @@ namespace CartesAcces
             cbbImprClasse.DataSource = lesClasses;
             cbbImprClasse.SelectedItem = null;
             lblCount.Text = "";
-        }
-
-        private void cbbImprClasse_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
         }
     }
 }

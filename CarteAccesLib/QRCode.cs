@@ -13,11 +13,11 @@ namespace CarteAccesLib
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static Bitmap creationQRCode(string url)
+        public static Bitmap CreationQrCode(string url)
         {
             var qrGenerator = new QRCodeGenerator();
             var qrCodeData = qrGenerator.CreateQrCode(url, QRCodeGenerator.ECCLevel.Q);
-            var qrCode = new QRCoder.QRCode(qrCodeData);
+            var qrCode = new QRCode(qrCodeData);
             var qrCodeImage = qrCode.GetGraphic(20);
             return qrCodeImage;
         }

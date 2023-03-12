@@ -5,7 +5,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using CarteAcces;
 using CarteAccesLib;
 using LinqToDB;
 
@@ -153,7 +152,7 @@ namespace CartesAcces
         public static void qrCodeFace(PictureBox pbCarteFace)
         {
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            var bmpOriginal = QrCode.creationQRCode(etab.UrlEtablissement);
+            var bmpOriginal = QrCode.CreationQrCode(etab.UrlEtablissement);
             var bmpFinal = new Bitmap(bmpOriginal, new Size(220, 220));
 
             var objGraphique = Graphics.FromImage(pbCarteFace.Image);
@@ -354,7 +353,7 @@ namespace CartesAcces
         public static void qrCodeFace(Graphics objGraphique)
         {
             var etab = ClassSql.Db.GetTable<Etablissement>().FirstOrDefault();
-            var bmpOriginal = QrCode.creationQRCode(etab.UrlEtablissement);
+            var bmpOriginal = QrCode.CreationQrCode(etab.UrlEtablissement);
             var bmpFinal = new Bitmap(bmpOriginal, new Size(300, 300));
 
             objGraphique.DrawImage(bmpFinal, new Point(1400, 80));
@@ -453,12 +452,12 @@ namespace CartesAcces
 
         public static void carteArriere(Eleve eleve, PictureBox pbCarteArriere)
         {
-            if (!eleve.SansEDT)
+            if (!eleve.SansEdt)
             {
                 var cheminEdt = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" +
-                                Eleve.creeCleEleve(eleve) + ".jpg";
+                                Eleve.CreeCleEleve(eleve) + ".jpg";
                 pbCarteArriere.Image = Image.FromFile(cheminEdt);
-                Edt.rognageEdt(pbCarteArriere, cheminEdt);
+                Edt.RognageEdt(pbCarteArriere, cheminEdt);
             }
             else
             {
@@ -484,8 +483,8 @@ namespace CartesAcces
 
                 File.Copy(cheminSource, cheminDestination);
                 File.SetCreationTime(cheminDestination, DateTime.Now);
-                ReadCsv.setLesEleves(cheminDestination);
-                Eleve.setLesClasses();
+                ReadCsv.SetLesEleves(cheminDestination);
+                Eleve.SetLesClasses();
 
                 MessageBox.Show(new Form {TopLevel = true, TopMost = true}, "L'importation du fichier CSV a réussi");
             }
@@ -601,7 +600,7 @@ namespace CartesAcces
                 {
                     foreach (Control controle in Globale.Actuelle.Controls)
                         if (controle is Label && controle.Name == "lblDateListeEleve")
-                            controle.Text = ReadCsv.getDateFile();
+                            controle.Text = ReadCsv.GetDateFile();
                 }));
 
                 MessageBox.Show(new Form {TopMost = true}, " Les photos du dossier ont été importés");

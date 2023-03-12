@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using CarteAccesLib;
 
 namespace CartesAcces
 {
@@ -36,7 +37,7 @@ namespace CartesAcces
                     frmWait.TopMost = true;
 
                     Globale.Actuelle = new FrmImportation();
-                    FrmAccueil.openChildForm(Globale.Actuelle);
+                    FrmAccueil.OpenChildForm(Globale.Actuelle);
                 }
 
                 DialogResult = DialogResult.OK;
@@ -46,6 +47,11 @@ namespace CartesAcces
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void FrmMotDePasse_Load(object sender, EventArgs e)
+        {
+            Couleur.setCouleurFenetre(this);
         }
     }
 }
