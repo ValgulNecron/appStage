@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
-using CarteAcces;
+using CarteAccesLib;
 
 namespace CartesAcces
 {
@@ -33,7 +33,7 @@ namespace CartesAcces
             {
                 _listeFichiers.AddRange(Directory.GetFiles(Globale.CheminEdtClassique));
                 pbEdtClassique.Image = Image.FromFile(_listeFichiers[0]);
-                Edt.rognageEdt(pbEdtClassique, Globale.CheminEdtClassique);
+                Edt.RognageEdt(pbEdtClassique, Globale.CheminEdtClassique);
             }
             catch
             {
@@ -80,7 +80,7 @@ namespace CartesAcces
                 Edition.RognageY = Math.Min(Edition.RognageY, e.Y);
                 Cursor = Cursors.Default;
                 Edition.SelectionClique = false;
-                Edt.rognageEdt(pbEdtClassique, _listeFichiers[0]);
+                Edt.RognageEdt(pbEdtClassique, _listeFichiers[0]);
                 btnRogner.Enabled = false;
             }
         }
@@ -135,7 +135,7 @@ namespace CartesAcces
                 foreach (var fichier in _listeFichiers)
                 {
                     pbEdtClassique.Image = Image.FromFile(fichier);
-                    Edt.rognageEdt(pbEdtClassique, fichier);
+                    Edt.RognageEdt(pbEdtClassique, fichier);
                     var nom = fichier.Substring(fichier.LastIndexOf("/"),
                         fichier.Length - fichier.LastIndexOf("/"));
                     pbEdtClassique.Image.Save(Chemin.CheminEdtClassique + "//" + nom, ImageFormat.Png);

@@ -5,12 +5,17 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using CartesAcces;
 
-namespace CarteAcces
+namespace CarteAccesLib
 {
     public static class Edt
     {
         // -- Selection du bon emploi du temps en fonction de la classe selectionnée
-        public static void afficheEmploiDuTemps(ComboBox cbbClasse, PictureBox pbCarteArriere)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cbbClasse"></param>
+        /// <param name="pbCarteArriere"></param>
+        public static void AfficheEmploiDuTemps(ComboBox cbbClasse, PictureBox pbCarteArriere)
         {
             try
             {
@@ -26,7 +31,12 @@ namespace CarteAcces
             }
         }
 
-        public static void ajouterEdtPerso(PictureBox pbCarteArriere, Button btnSelect)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pbCarteArriere"></param>
+        /// <param name="btnSelect"></param>
+        public static void AjouterEdtPerso(PictureBox pbCarteArriere, Button btnSelect)
         {
             try
             {
@@ -56,7 +66,12 @@ namespace CarteAcces
             }
         }
 
-        public static void rognageEdt(PictureBox pbCarteArriere, string cheminEdt)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pbCarteArriere"></param>
+        /// <param name="cheminEdt"></param>
+        public static void RognageEdt(PictureBox pbCarteArriere, string cheminEdt)
         {
             // -- Si la largeur a rogner est trop faible, on sort --
             if (Edition.RognageLargeur < 1) return;
@@ -103,7 +118,12 @@ namespace CarteAcces
             pbCarteArriere.Height = 354;
         }
 
-        public static void chercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="listeEleve"></param>
+        /// <param name="pbCarteArriere"></param>
+        public static void ChercheEdtPerso(List<Eleve> listeEleve, PictureBox pbCarteArriere)
         {
             foreach (var eleve in listeEleve)
             {
@@ -111,8 +131,8 @@ namespace CarteAcces
                 try
                 {
                     var dossier = "./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/";
-                    pbCarteArriere.Image = Image.FromFile(dossier + Eleve.creeCleEleve(eleve) + ".jpg");
-                    Chemin.CheminEdt = dossier + Eleve.creeCleEleve(eleve) + ".jpg";
+                    pbCarteArriere.Image = Image.FromFile(dossier + Eleve.CreeCleEleve(eleve) + ".jpg");
+                    Chemin.CheminEdt = dossier + Eleve.CreeCleEleve(eleve) + ".jpg";
                     return;
                 }
                 catch

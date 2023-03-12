@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Threading;
 using System.Windows.Forms;
 using CarteAccesLib;
 using Newtonsoft.Json;
@@ -39,15 +40,15 @@ namespace CartesAcces
                     Globale.CouleurDeFondClaire[1], Globale.CouleurDeFondClaire[2]);
             }
 
-            TailleControle.setTailleBouton(this);
-            TailleControle.setTailleControleTexte(this);
+            TailleControle.SetTailleBouton(this);
+            TailleControle.SetTailleControleTexte(this);
         }
 
         /// <summary>
         ///    ouvre une fenetre enfant dans le panel
         /// </summary>
         /// <param name="childForm"></param>
-        public static void openChildForm(Form childForm)
+        public static void OpenChildForm(Form childForm)
         {
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None; // pour faire stylax
@@ -74,7 +75,7 @@ namespace CartesAcces
 
             Globale.Actuelle = new FrmConnexion();
             Text = "CARTE D'ACCES - CONNEXION";
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
 
             lblVersion.Text = "version :" + Globale.Version + " du " + Globale.VersionDate;
             var dir = new DirectoryInfo("./data/image");
@@ -103,7 +104,9 @@ namespace CartesAcces
                 MessageBox.Show(exception.Message);
             }
 
-            //CheckForUpdate();
+            Thread updateThread = new Thread(CheckForUpdate);
+            updateThread.Start();
+
         }
 
         //Création de menu de navigation
@@ -113,7 +116,7 @@ namespace CartesAcces
             Globale.Actuelle = new FrmCarteProvisoire();
             Text = "CARTE D'ACCES - CARTE PROVISOIRE";
             FrmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
         private void btnCarteParClasse_Click(object sender, EventArgs e)
@@ -121,7 +124,7 @@ namespace CartesAcces
             Globale.Actuelle = new FrmCarteParClasseNiveau();
             Text = "CARTE D'ACCES - CARTE PAR CLASSE";
             FrmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
         private void btnParametres_Click(object sender, EventArgs e)
@@ -129,7 +132,7 @@ namespace CartesAcces
             Globale.Actuelle = new FrmImportation();
             Text = "CARTE D'ACCES - IMPORTATION";
             FrmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
@@ -169,7 +172,7 @@ namespace CartesAcces
             Globale.Actuelle = new FrmCartesParListe();
             Text = "CARTE D'ACCES - CARTE PAR LISTE";
             FrmConnexion.timer.ajoutEvenement();
-            Globale.Accueil.Invoke(new MethodInvoker(delegate { openChildForm(Globale.Actuelle); }));
+            Globale.Accueil.Invoke(new MethodInvoker(delegate { OpenChildForm(Globale.Actuelle); }));
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -179,10 +182,13 @@ namespace CartesAcces
 
         private void on_closing(object sender, FormClosingEventArgs e)
         {
-            Securite.chiffrerDossier();
+            Securite.ChiffrerDossier();
         }
 
 
+        /// <summary>
+        ///    Vérifie si une mise à jour est disponible sur GitHub
+        /// </summary>
         public void CheckForUpdate()
         {
             var client = new WebClient();

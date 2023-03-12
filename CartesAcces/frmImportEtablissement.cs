@@ -48,10 +48,10 @@ namespace CartesAcces
             etablissement.NumeroTelephoneEtablissement = txtTelEtablissement.Text;
             etablissement.NumeroRueEtablissement = Convert.ToInt32(txtNumRueEtablissement.Text);
             etablissement.UrlEtablissement = textBox1.Text;
-            etablissement.CodeHexa6eme = getCodeHexa6Eme();
-            etablissement.CodeHexa5eme = getCodeHexa5Eme();
-            etablissement.CodeHexa4eme = getCodeHexa4Eme();
-            etablissement.CodeHexa3eme = getCodeHexa3Eme();
+            etablissement.CodeHexa6eme = GetCodeHexa6Eme();
+            etablissement.CodeHexa5eme = GetCodeHexa5Eme();
+            etablissement.CodeHexa4eme = GetCodeHexa4Eme();
+            etablissement.CodeHexa3eme = GetCodeHexa3Eme();
             etablissement.Bordure = cbBordure.Checked;
             ClassSql.Db.InsertOrReplace(etablissement);
             var macAddress = string.Empty;
@@ -226,7 +226,7 @@ namespace CartesAcces
             }
         }
 
-        private string getCodeHexa6Eme()
+        private string GetCodeHexa6Eme()
         {
             var codeHexa6Eme = "";
             foreach (var variable in gb6eme.Controls)
@@ -260,7 +260,7 @@ namespace CartesAcces
             return codeHexa6Eme;
         }
 
-        private string getCodeHexa5Eme()
+        private string GetCodeHexa5Eme()
         {
             var codeHexa5Eme = "";
             foreach (var variable in gb5eme.Controls)
@@ -294,7 +294,7 @@ namespace CartesAcces
             return codeHexa5Eme;
         }
 
-        private string getCodeHexa4Eme()
+        private string GetCodeHexa4Eme()
         {
             var codeHexa4Eme = "";
             foreach (var variable in gb4eme.Controls)
@@ -328,7 +328,7 @@ namespace CartesAcces
             return codeHexa4Eme;
         }
 
-        private string getCodeHexa3Eme()
+        private string GetCodeHexa3Eme()
         {
             var codeHexa3Eme = "";
             foreach (var variable in gb3eme.Controls)

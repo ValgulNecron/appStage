@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using CarteAcces;
 using CarteAccesLib;
 
 namespace CartesAcces
@@ -21,7 +20,7 @@ namespace CartesAcces
             Couleur.setCouleurFenetre(this);
         }
 
-        private void changementTexte(object sender, EventArgs e)
+        private void ChangementTexte(object sender, EventArgs e)
         {
             var prenom = txtPrenom.Text;
             var nom = txtNom.Text;
@@ -62,7 +61,7 @@ namespace CartesAcces
             try
             {
                 Edition.fondCarteNiveau(pbCarteFace, cbbSection);
-                Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+                Edt.AfficheEmploiDuTemps(cbbClasse, pbCarteArriere);
                 txtPrenom.Text = "";
                 txtNom.Text = "";
                 groupBox2.Enabled = true;
@@ -105,7 +104,7 @@ namespace CartesAcces
         {
             try
             {
-                Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+                Edt.AfficheEmploiDuTemps(cbbClasse, pbCarteArriere);
                 btnSelect.Enabled = true;
             }
             catch
@@ -145,7 +144,7 @@ namespace CartesAcces
                 // -- On remet les paramètres et l'image de base --
                 pbCarteArriere.Width = 540;
                 pbCarteArriere.Height = 354;
-                Edt.afficheEmploiDuTemps(cbbClasse, pbCarteArriere);
+                Edt.AfficheEmploiDuTemps(cbbClasse, pbCarteArriere);
                 pbCarteArriere.Refresh();
                 btnSelect.Enabled = true;
                 btnCancel.Enabled = false;
@@ -236,7 +235,7 @@ namespace CartesAcces
                             pathEdt = Chemin.CheminEdtPerso;
 
                         Edition.SelectionClique = false;
-                        Edt.rognageEdt(pbCarteArriere, pathEdt);
+                        Edt.RognageEdt(pbCarteArriere, pathEdt);
                     }
                     else
                     {
@@ -359,7 +358,7 @@ namespace CartesAcces
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FichierWord.getDossierCarteProvisoire();
+            FichierWord.GetDossierCarteProvisoire();
             Globale.ListeSauvegardeProvisoire = new Tuple<PictureBox, PictureBox, PictureBox, TextBox, TextBox>
                 (pbCarteArriere, pbPhoto, pbCarteFace, txtNom, txtPrenom);
             Globale.Cas = 5;
@@ -390,7 +389,7 @@ namespace CartesAcces
         {
             try
             {
-                Edt.ajouterEdtPerso(pbCarteArriere, btnSelect);
+                Edt.AjouterEdtPerso(pbCarteArriere, btnSelect);
                 btnSelect.Enabled = true;
             }
             catch
@@ -405,8 +404,8 @@ namespace CartesAcces
 
         private void frmCarteProvisoire_Load(object sender, EventArgs e)
         {
-            txtNom.TextChanged += changementTexte;
-            txtPrenom.TextChanged += changementTexte;
+            txtNom.TextChanged += ChangementTexte;
+            txtPrenom.TextChanged += ChangementTexte;
             pbCarteArriere.MouseWheel += pictureBox1_MouseWheel;
         }
 

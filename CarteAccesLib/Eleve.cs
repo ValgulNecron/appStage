@@ -1,11 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using CartesAcces;
 
-namespace CartesAcces
+namespace CarteAccesLib
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Eleve
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public Eleve()
         {
             NumEleve = 0;
@@ -18,34 +25,73 @@ namespace CartesAcces
             OptionTroisEleve = "null";
             OptionQuatreEleve = "null";
             MefEleve = "null";
-            SansEDT = false;
+            SansEdt = false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static List<string> ListeCleeEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int NumEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string NomEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string PrenomEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string ClasseEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string RegimeEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string OptionUnEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string OptionDeuxEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string OptionTroisEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string OptionQuatreEleve { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string MefEleve { get; set; }
 
-        public bool SansEDT { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool SansEdt { get; set; }
 
-        public static void setLesClasses()
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void SetLesClasses()
         {
             foreach (var eleve in Globale.ListeEleve.Select(x => x.ClasseEleve))
             {
@@ -69,7 +115,12 @@ namespace CartesAcces
             Globale.Classes6Eme.Sort();
         }
 
-        public static string creeCleEleve(Eleve eleve)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eleve"></param>
+        /// <returns></returns>
+        public static string CreeCleEleve(Eleve eleve)
         {
             var cle = eleve.NomEleve + eleve.PrenomEleve + eleve.ClasseEleve;
 
@@ -93,12 +144,16 @@ namespace CartesAcces
             return cle;
         }
 
-        public static void possedeEdt(List<Eleve> listeEleve)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="listeEleve"></param>
+        public static void PossedeEdt(List<Eleve> listeEleve)
         {
             foreach (var eleve in listeEleve)
-                if (!File.Exists("./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" + creeCleEleve(eleve) +
+                if (!File.Exists("./data/image/" + eleve.ClasseEleve.Substring(0, 1) + "eme/" + CreeCleEleve(eleve) +
                                  ".jpg"))
-                    eleve.SansEDT = true;
+                    eleve.SansEdt = true;
         }
     }
 }

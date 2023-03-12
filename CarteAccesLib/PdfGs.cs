@@ -4,8 +4,9 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using CartesAcces;
 
-namespace CartesAcces
+namespace CarteAccesLib
 {
     /// <summary>
     /// Cette classe permet de récupérer des images d'un pdf
@@ -19,7 +20,7 @@ namespace CartesAcces
         /// </summary>
         /// <param name="path"></param>
         /// <param name="classe"></param>
-        public static void getImageFromPdf(string path, int classe)
+        public static void GetImageFromPdf(string path, int classe)
         {
             switch (classe)
             {
@@ -76,7 +77,7 @@ namespace CartesAcces
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string getTextePdf(string path)
+        public static string GetTextePdf(string path)
         {
             var outputFile = "./output.txt";
 
@@ -110,7 +111,7 @@ namespace CartesAcces
         /// </summary>
         /// <param name="pdftext"></param>
         /// <returns></returns>
-        public static List<string> getNomPrenomPdf(string pdftext)
+        public static List<string> GetNomPrenomPdf(string pdftext)
         {
             var listeExtractPdf = new List<string>();
 
@@ -152,7 +153,7 @@ namespace CartesAcces
         /// </summary>
         /// <param name="pdftext"></param>
         /// <returns></returns>
-        public static List<string> getClassePdf(string pdftext)
+        public static List<string> GetClassePdf(string pdftext)
         {
             var listeExtractPdf = new List<string>();
 
@@ -193,14 +194,14 @@ namespace CartesAcces
         /// Cette fonction permet de renommer les edt
         /// </summary>
         /// <param name="pdf"></param>
-        public static void renameEdt(string pdf)
+        public static void RenameEdt(string pdf)
         {
-            var name = new List<string>();
+            List<string> name;
 
             if (Globale.Classe == 7)
-                name = getClassePdf(getTextePdf(pdf));
+                name = GetClassePdf(GetTextePdf(pdf));
             else
-                name = getNomPrenomPdf(getTextePdf(pdf));
+                name = GetNomPrenomPdf(GetTextePdf(pdf));
             MessageBox.Show(new Form {TopMost = true}, name.Count
                                                        + " emplois de temps ont été importés");
             var d = new DirectoryInfo(_outputPath);
