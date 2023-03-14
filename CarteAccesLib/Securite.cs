@@ -8,7 +8,7 @@ using CartesAcces;
 namespace CarteAccesLib
 {
     /// <summary>
-    /// Classe de sécurité
+    /// Classe de sécurité pour la gestion de la sécurité du système
     /// </summary>
     public static class Securite
     {
@@ -18,61 +18,63 @@ namespace CarteAccesLib
         public static string PathFolder { get; set; } = "./data/";
 
         /// <summary>
-        /// Chemin du fichier de donnéesx   
+        /// Crée un hash unique à partir d'un mot de passe et d'un sel
         /// </summary>
-        /// <param name="motDePasse"></param>
-        /// <returns></returns>
+        /// <param name="motDePasse">Le mot de passe à hasher</param>
+        /// <returns>Le hash du mot de passe</returns>
         public static string CreationHash(string motDePasse)
         {
-            //on crée le sel qui permettra au mot de passe d'avoir un hash unique et différent à chaque fois meme si le mot de passe est le meme
+            // On crée un sel qui permettra au hash d'être unique même si le mot de passe est le même
             var salt = new byte[16];
             new RNGCryptoServiceProvider().GetBytes(salt);
 
-            //on cree le hash du mot de passe avec le sel 
+            // On crée le hash du mot de passe avec le sel
             var pbkdf2 = new Rfc2898DeriveBytes(motDePasse, salt, 100000);
             var hash = pbkdf2.GetBytes(20);
 
-            //on concatene le hash et le sel pour avoir un hash unique 
+            // On concatène le hash et le sel pour avoir un hash unique
             var hashBytes = new byte[36];
             Array.Copy(salt, 0, hashBytes, 0, 16);
             Array.Copy(hash, 0, hashBytes, 16, 20);
 
-            //on retourne le hash sous forme string encoder en base64 
+            // On retourne le hash sous forme de string encodé en base64 
             var savedPasswordHash = Convert.ToBase64String(hashBytes);
             return savedPasswordHash;
         }
 
         /// <summary>
-        /// Verifie le hash du mot de passe entré avec le hash du mot de passe enregistré
+        /// Vérifie si le hash d'un mot de passe entré correspond au hash d'un mot de passe enregistré
         /// </summary>
-        /// <param name="motDePasse"></param>
-        /// <param name="savedPasswordHash"></param>
-        /// <returns></returns>
-        /// <exception cref="UnauthorizedAccessException"></exception>
+        /// <param name="motDePasse">Le mot de passe entré</param>
+        /// <param name="savedPasswordHash">Le hash du mot de passe enregistré</param>
+        /// <returns>True si le mot de passe est correct, sinon lance une exception UnauthorizedAccessException</returns>
+        /// <exception cref="UnauthorizedAccessException">Lance une exception si le hash du mot de passe est différent du hash enregistré</exception>
         public static bool VerificationHash(string motDePasse, string savedPasswordHash)
         {
-            //on recupere le hash et le sel du mot de passe enregistréw
+            // On récupère le hash et le sel du mot de passe enregistré
             var hashBytes = Convert.FromBase64String(savedPasswordHash);
             var salt = new byte[16];
             Array.Copy(hashBytes, 0, salt, 0, 16);
 
-            //on recree le hash du mot de passe entré avec le sel du mot dhashBytese passe enregistré
+            // On recrée le hash du mot de passe entré avec le sel du mot de passe enregistré
             var pbkdf2 = new Rfc2898DeriveBytes(motDePasse, salt, 100000);
             var hash = pbkdf2.GetBytes(20);
 
-            //on compare le hash du mot de passe entré avec le hash du mot de passe enregistré
+            // On compare le hash du mot de passe entré avec le hash du mot de passe enregistré
             for (var i = 0; i < 20; i++)
                 if (hashBytes[i + 16] != hash[i])
-                    //si le hash est different on envoie une erreur
+                    // Si le hash est différent, on lance une erreur
                     throw new UnauthorizedAccessException();
             return true;
         }
 
         /// <summary>
-        /// Verifie si le mot de passe entré respecte les prérequis
+        /// V///érifie si un mot de passe respecte les prérequis suivants:
+        ///- au moins 12 caractères
+        ///- au moins une majuscule, une minuscule, un chiffre et un caractère spécial
         /// </summary>
-        /// <param name="motDePasse">mot de passe a verifier</param>
-        /// <returns></returns>
+        /// <param name="motDePasse">Le mot de passe à vérifier</param>
+        /// <returns>True si le mot de passe respecte les prérequis, False sinon</returns>
         public static bool ValidationPrerequisMdp(string motDePasse)
         {
             if (string.IsNullOrEmpty(motDePasse)) return false;
@@ -84,7 +86,7 @@ namespace CarteAccesLib
             var caractereSpecial = false;
             foreach (var c in motDePasse)
             {
-                if (c >= 'A' && c <= 'Z')
+                if (c >= 'A' && c <= 'Z')   
                     majuscule = true;
                 else if (c >= 'a' && c <= 'z')
                     minuscule = true;
@@ -101,7 +103,7 @@ namespace CarteAccesLib
 
 
         /// <summary>
-        /// Chiffre le dossier data
+        /// Chiffre le dossier "data" en utilisant le mot de passe de chiffrement
         /// </summary>
         public static void ChiffrerDossier()
         {
@@ -138,11 +140,11 @@ namespace CarteAccesLib
         }
         
         /// <summary>
-        /// Chiffre un fichier
+        /// Chiffre un fichier en utilisant un mot de passe de chiffrement
         /// </summary>
-        /// <param name="inputFile"></param>
-        /// <param name="outputFile"></param>
-        /// <param name="password"></param>
+        /// <param name="inputFile">Le fichier à chiffrer</param>
+        /// <param name="outputFile">Le nom du fichier chiffré</param>
+        /// <param name="password">Le mot de passe de chiffrement</param>
         public static void ChiffrerFichier(string inputFile, string outputFile, string password)
         {
             var file = new FileInfo(inputFile);
@@ -184,7 +186,7 @@ namespace CarteAccesLib
         }
 
         /// <summary>
-        /// Dechiffre le dossier data
+        /// Déchiffre le dossier "data" en utilisant le mot de passe de chiffrement
         /// </summary>
         public static void DechiffrerDossier()
         {
@@ -222,11 +224,11 @@ namespace CarteAccesLib
         }
 
         /// <summary>
-        /// Dechiffre un fichier
+        /// Déchiffre un fichier en utilisant un mot de passe de chiffrement
         /// </summary>
-        /// <param name="inputFile">Fichier chiffrer</param>
-        /// <param name="outputFile">Nom du fichier de sortie</param>
-        /// <param name="password">Mot de passe de chiffrement</param>
+        /// <param name="inputFile">Le fichier chiffré</param>
+        /// <param name="outputFile">Le nom du fichier déchiffré</param>
+        /// <param name="password">Le mot de passe de chiffrement</param>
         public static void DechiffrerFichier(string inputFile, string outputFile, string password)
         {
             var salt = new byte[16];
