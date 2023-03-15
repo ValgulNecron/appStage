@@ -26,10 +26,8 @@ namespace CartesAcces
             catch (Exception e)
             {
                 Globale.ConnectionBdd = false;
-                
                 MessageBox.Show("Connection impossible : " + e.Message);
                 MessageBox.Show("Veuiller verifier le fichier config.xml et relancer l'application");
-                
             }
 
             // mettre les fonction et le code a execute au lancement de l'application
