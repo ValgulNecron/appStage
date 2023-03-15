@@ -237,9 +237,7 @@ namespace CartesAcces
                     // Fermer l'application
                     Application.Exit();
                 }
-            }
-           
-            
+            }  
         }
     }
 }
