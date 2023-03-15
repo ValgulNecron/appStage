@@ -1,4 +1,5 @@
 # appStage 
+[![MSBuild](https://github.com/ValgulNecron/appStage/actions/workflows/msbuild.yml/badge.svg)](https://github.com/ValgulNecron/appStage/actions/workflows/msbuild.yml) 
 
 pour pouvoir utiliser l'application il faut suivre les étapes suivantes :
 <img src=./file/lib/catcatcat.gif align="right" height="250" width="250">
