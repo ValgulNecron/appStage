@@ -9,7 +9,7 @@ namespace CarteAccesLib
         public MessagePersonnalisee(string message, string hypertext, string url)
         {
             Text = "Message personnalisee";
-            Size = new System.Drawing.Size(700, 200);
+            Size = new System.Drawing.Size(500, 200);
             StartPosition = FormStartPosition.CenterScreen; 
             TopMost = true;
             TopLevel = true;
