@@ -8,8 +8,8 @@ namespace CarteAccesLib
     {
         public MessagePersonnalisee(string message, string hypertext, string url)
         {
-            Text = "Message personnalisee";
-            Size = new System.Drawing.Size(500, 200);
+            Text = "Retour d'information";
+            Size = new System.Drawing.Size(370, 160);
             StartPosition = FormStartPosition.CenterScreen; 
             TopMost = true;
             TopLevel = true;
@@ -35,7 +35,7 @@ namespace CarteAccesLib
             Button okBouton = new Button
             {
                 Text = "OK",
-                Location = new System.Drawing.Point(150, 100),
+                Location = new System.Drawing.Point(270, 80),
                 AutoSize = true
             };
             okBouton.Click += (sender, e) => Close();
