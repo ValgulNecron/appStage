@@ -223,6 +223,19 @@ namespace CartesAcces
                 MessageBox.Show("Connection impossible : " + exception.Message);
                 MessageBox.Show("Veuiller verifier le fichier config.xml et relancer l'application");
             }
+            
+            if (Globale.ConnectionBdd)
+            {
+                btnRetry.Visible = false;
+                lbConnection.Text = "Connexion à la base de données réussie";
+                lbConnection.ForeColor = Color.Green;
+            }
+            else
+            {
+                btnRetry.Visible = true;
+                lbConnection.Text = "Connexion à la base de données échouée";
+                lbConnection.ForeColor = Color.Red;
+            }
         }
     }
 }
