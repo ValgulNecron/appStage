@@ -219,9 +219,14 @@ namespace CartesAcces
             catch (Exception exception)
             {
                 Globale.ConnectionBdd = false;
-                Globale.ConnectionBdd = false;
+                
                 MessageBox.Show("Connection impossible : " + exception.Message);
-                MessageBox.Show("Veuiller verifier le fichier config.xml et relancer l'application");
+
+                string message = "Veuiller verifier le fichier config.xml et relancer l'application :";
+                string hypertext = "Lien vers le Guide de l'utilisateur";
+                string url = "https://github.com/ValgulNecron/appStage/blob/main/file/pdf/Guide_de_l'utilisateur_-_16.02.2023.pdf";
+
+                MessagePersonnalisee.Show(message, hypertext, url);
             }
             
             if (Globale.ConnectionBdd)
