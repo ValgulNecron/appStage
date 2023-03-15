@@ -9,7 +9,7 @@ namespace CarteAccesLib
         public MessagePersonnalisee(string message, string hypertext, string url)
         {
             Text = "Message personnalisee";
-            Size = new System.Drawing.Size(400, 200);
+            Size = new System.Drawing.Size(700, 200);
             StartPosition = FormStartPosition.CenterScreen; 
             TopMost = true;
             TopLevel = true;
@@ -18,7 +18,7 @@ namespace CarteAccesLib
             {
                 Text = message,
                 Location = new System.Drawing.Point(20, 20),
-                AutoSize = false
+                AutoSize = true
             };
             Controls.Add(messageLibelle);
 
@@ -26,8 +26,10 @@ namespace CarteAccesLib
             {
                 Text = hypertext,
                 Location = new System.Drawing.Point(20, 60),
-                AutoSize = false
+                AutoSize = true
             };
+            linkLibelle.Links.Add(0, hypertext.Length, url);
+            linkLibelle.LinkClicked += (sender, e) => System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
             Controls.Add(linkLibelle);
 
             Button okBouton = new Button
