@@ -61,12 +61,13 @@ namespace CartesAcces
          * si le nom d'utilisateur n'existe pas elle affiche un message d'erreur
          * et elle vide les champs
          */
-        private void Connexion()
+        private void connexion()
         {
             try
             {
                 var user = ClassSql.Db.GetTable<Utilisateurs>()
                     .FirstOrDefault(u => u.NomUtilisateur == txtIdentifiant.Text);
+                
                 if (!user.Active)
                 {
                     MessageBox.Show(new Form {TopMost = true}, "Le nom d'utilisateur ou le mot de passe est invalide");
@@ -114,9 +115,10 @@ namespace CartesAcces
                         log.AdMac = macAddress;
                         ClassSql.Db.Insert(log);
                         timer = new Timer(Globale.Accueil);
+                        
                         if (Globale.MotsDePasseChifffrement != "")
                         {
-                            Securite.DechiffrerDossier();
+                            // Securite.dechiffrerDossier();
 
                             Globale.Cas = 1;
                             var frmWait = new BarDeProgression();
@@ -161,7 +163,7 @@ namespace CartesAcces
             }
             else
             {
-                Connexion();
+                connexion();
             }
         }
 
@@ -200,7 +202,7 @@ namespace CartesAcces
                 }
                 else
                 {
-                    Connexion();
+                    connexion();
                 }
             }
         }
