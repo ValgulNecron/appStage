@@ -15,7 +15,7 @@ namespace CartesAcces
         private static void Main()
         {
             Globale.VersionDate = "09/03/2023";
-            Globale.Version = "1.4.6";
+            Globale.Version = "1.4.7";
             // App code goes here. Dispose the SDK before exiting to flush events.
             try
             {
