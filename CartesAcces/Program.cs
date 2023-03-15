@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using CarteAccesLib;
 using LinqToDB;
 
 namespace CartesAcces
@@ -27,7 +28,15 @@ namespace CartesAcces
             {
                 Globale.ConnectionBdd = false;
                 MessageBox.Show("Connection impossible : " + e.Message);
-                MessageBox.Show("Veuiller verifier le fichier config.xml et relancer l'application");
+                
+                // MessageBox.Show("Veuiller verifier le fichier config.xml et relancer l'application");
+                // Ancienne version
+
+                string message = "Veuiller verifier le fichier config.xml et relancer l'application :";
+                string hypertext = "Lien vers le Guide";
+                string url = "https://github.com/ValgulNecron/appStage/blob/main/file/pdf/Guide_de_l'utilisateur_-_16.02.2023.pdf";
+
+                MessagePersonnalisee.Show(message, hypertext, url);
             }
 
             // mettre les fonction et le code a execute au lancement de l'application
