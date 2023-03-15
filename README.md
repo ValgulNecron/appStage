@@ -1,6 +1,7 @@
 # appStage 
 
 pour pouvoir utiliser l'application il faut suivre les étapes suivantes :
+[![MSBuild](https://github.com/ValgulNecron/appStage/actions/workflows/msbuild.yml/badge.svg)](https://github.com/ValgulNecron/appStage/actions/workflows/msbuild.yml) :
 <img src=./file/lib/catcatcat.gif align="right" height="250" width="250">
 - [Activer la virtualisation](./file/pdf/Activer_la_virtualisation.pdf)
 - [Installation de la base de donnée](./file/pdf/Mise_en_place_BDD__WinSCP__Script.pdf)
